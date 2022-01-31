@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { startGameFn } from './actions';
+import Main from './Main';
+import Footer from './Footer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+    const startGame = useSelector(state => state.startGame)
+    const dispatch = useDispatch();
+    return(
+      <div className="wrapper pageFix">
+          <div className="allWrapping">
+          {startGame ? <Main /> : 
+          <div>
+            <h1>Atlan Adventure</h1>
+            <button onClick={() => dispatch(startGameFn())}>Start</button>
+          </div>
+          }
+          </div>
+          <Footer />
+      </div>
+    );
 }
 
 export default App;
