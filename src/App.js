@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
+import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authorLogoFn } from './actions';
 import StartMenu from './StartMenu';
 import Footer from './Footer'
-import useSound from 'use-sound';
+// import useSound from 'use-sound';
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 
 
 function App(){
     const authorLogo = useSelector(state => state.authorLogo)
-    const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
+    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
     useEffect(() => {
       const audio = new Audio(audioStartUpGame);
       audio.volume = 0.15;
-      audio.play();
-      setTimeout(() => {
-        dispatch(authorLogoFn())}, 6400);
-    }, []);
+      audio.play(); 
+      setTimeout(() => {dispatch(authorLogoFn())}, 6400);
+      //happens
+    }, [dispatch]);
     
     return(
       <div className="wrapper pageFix">
