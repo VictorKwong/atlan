@@ -64,6 +64,12 @@ export const startGameFn = () => {
     };
 };
 
+export const authorLogoFn = () => {
+    return {
+        type: 'authorLogoFn',
+    };
+};
+
 export const easterEggFn = () => {
     return {
         type: 'easterEggFn',
@@ -78,3 +84,4 @@ export const userAttackEnemyFn = (userAttackStats) => {
         };
     };
 
+    

@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authorLogoFn } from './actions';
-import StartMenu from './StartMenu';
+import { startGameFn } from './actions';
+import Main from './Main';
 import Footer from './Footer'
+
 import useSound from 'use-sound';
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
@@ -10,27 +11,24 @@ import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 function App(){
     const authorLogo = useSelector(state => state.authorLogo)
+    const startGame = useSelector(state => state.startGame)
     const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
-    useEffect(() => {
-      const audio = new Audio(audioStartUpGame);
-      audio.volume = 0.15;
-      audio.play();
+    const startGameQtn = (e) => {
+      e.preventDefault();
       setTimeout(() => {
-        dispatch(authorLogoFn())}, 6000);
-    }, []);
+        dispatch(startGameFn())}, 3000);
+    };
     
     return(
-      <div className="wrapper pageFix">
-          <div className="allWrapping">
-          {authorLogo ? <StartMenu/> :
+      <div>
+          {startGame ? <Main /> : 
           <div>
-            <h1>Lemoneko</h1>
+            <h1>Atlan Adventure</h1>
+            <button onClick={startGameQtn}>Start</button>
           </div>
           }
-          </div>
-          <Footer />
       </div>
     );
 }

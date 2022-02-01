@@ -11,6 +11,7 @@ import userMaxHealthReducer from "./userMaxHealth";
 import userCurrentHealthReducer from "./userCurrentHealth";
 import userGoldReducer from "./userGold";
 import userPowerStatsReducer from './userPowerStats';
+import authorLogoReducer from "./authorLogo";
 import startGameReducer from "./startGame";
 import footerEasterEggReducer from "./footerEasterEgg"
 
@@ -28,6 +29,7 @@ import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
     startGame: startGameReducer,
+    authorLogo: authorLogoReducer,
     lifePotion: lifePotionReducer,
     isLogged: loggedReducer,
     userLevel: userLevelReducer,
