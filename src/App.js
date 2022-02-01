@@ -18,15 +18,24 @@ function App(){
       audio.volume = 0.15;
       audio.play();
       setTimeout(() => {
-        dispatch(authorLogoFn())}, 6000);
+        dispatch(authorLogoFn())}, 6400);
     }, []);
     
     return(
       <div className="wrapper pageFix">
           <div className="allWrapping">
           {authorLogo ? <StartMenu/> :
-          <div>
-            <h1>Lemoneko</h1>
+          <div className="logoBox">
+            <span className="logoLetter1">L</span>
+            <span className="logoLetter2">e</span>
+            <span className="logoLetter3">m</span>
+            <span className="logoLetter4">o</span>
+            <span className="logoLetter5">n</span>
+            <span className="logoLetter6">e</span>
+            <span className="logoLetter7">k</span>
+            <span className="logoLetter8">k</span>
+            <span className="logoLetter9">o</span>
+            <span className="logoLetter10">🍋</span>
           </div>
           }
           </div>

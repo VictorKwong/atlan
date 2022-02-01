@@ -48,3 +48,78 @@ html, body {
   bottom: 0;
 }
 /* setup */
+
+.logoBox{
+  text-align: center;
+  height: calc(100vh - 3rem);
+  line-height: calc(100vh - 3rem);
+  animation-name: fadeOut;
+  animation-duration: 1.4s;
+}
+
+@keyframes fadeOut {
+
+
+  0%,60%{background-color: black; opacity: 1;}
+  100%{opacity: 0;}
+}
+
+.logoLetter1,
+.logoLetter2,
+.logoLetter3,
+.logoLetter4,
+.logoLetter5,
+.logoLetter6,
+.logoLetter7,
+.logoLetter8,
+.logoLetter9,
+.logoLetter10{
+  left:-1000px; 
+  top: 4000px;
+  font-size: 50px;
+  position: relative;
+  animation-name: fly;
+  animation-duration: 5.8s;
+}
+.logoLetter2{
+  animation-delay: 0.05s;
+}
+.logoLetter3{
+  animation-delay: 0.1s;
+}
+.logoLetter4{
+  animation-delay: 0.15s;
+}
+.logoLetter5{
+  animation-delay: 0.2s;
+}
+.logoLetter6{
+  animation-delay: 0.25s;
+}
+.logoLetter7{
+  animation-delay: 0.3s;
+}
+.logoLetter8{
+  animation-delay: 0.35s;
+}
+.logoLetter9{
+  animation-delay: 0.4s;
+}
+.logoLetter10{
+  animation-delay: 0.45s;
+}
+
+@keyframes fly {
+  0%  {color:black; left:-1000px; top:4000px;}
+  20% {color:black; left:-1000px; top:4000px;}
+  39% {color:red; left: 40px; top: -40px}
+  42% {color:orange; left: 40px; top: 0px}
+  45% {color:yellow; left: 0px; top:0px}
+  47.5% {color:green; left:0px; top:-30px}
+  50% {color:cyan; left:0px; top:0px}
+  52.5% {color:blue; left:0px; top:-15px}
+  55% {color:violet; left:0px; top:0px}
+  57.5% {color:yellow; left:0px; top:-5px}
+  60% {color:violet; left:0px; top:0px}
+  100% {color:yellow; left:0px; top:0px}
+}
