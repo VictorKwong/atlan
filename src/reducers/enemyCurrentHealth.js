@@ -1,9 +1,10 @@
 
 const enemyCurrentHealthReducer = (state = 100, action) => {
     switch(action.type){
+        
         case 'userAttackEnemyFn':
-            console.log(action.userUpgradeAttack);
-            return state - action.userUpgradeAttack;
+            console.log(action.userAttackStats);
+            return state - action.userAttackStats;
         default:
             return state;
     }

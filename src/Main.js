@@ -7,6 +7,7 @@ function Main(){
     const lifePotion = useSelector(state => state.lifePotion)
     const userLevel = useSelector(state => state.userLevel)
     const userAttackStats = useSelector(state => state.userAttackStats)
+    const userPowerStats = useSelector(state => state.userPowerStats)
     const userDefenceStats = useSelector(state => state.userDefenceStats)
     const userSpeedStats = useSelector(state => state.userSpeedStats)
     const userHitRateStats = useSelector(state => state.userHitRateStats)
@@ -21,12 +22,20 @@ function Main(){
     const enemyLevel = useSelector(state => state.enemyLevel)
     const enemyCurrentHealth = useSelector(state => state.enemyCurrentHealth)
     const enemyAttackStats = useSelector(state => state.enemyAttackStats)
+    const enemyPowerStats = useSelector(state => state.enemyPowerStats)
     const enemyDefenceStats = useSelector(state => state.enemyDefenceStats)
     const enemySpeedStats = useSelector(state => state.enemySpeedStats)
     const enemyHitRateStats = useSelector(state => state.enemyHitRateStats)
     const enemyDodgeRateStats = useSelector(state => state.enemyDodgeRateStats)
     const enemyCritRateStats = useSelector(state => state.enemyCritRateStats)
     const dispatch = useDispatch();
+
+    const testFn = (e) => {
+        e.preventDefault();
+        setTimeout(() => {
+          dispatch(userAttackEnemyFn(userAttackStats))}, 500);
+      };
+
     return(
       <div>
         <h1>React Redux</h1>
@@ -36,8 +45,8 @@ function Main(){
                 <h2>Enemy Status</h2>
                 <p>Enemy Level {enemyLevel}</p>
                 <p>Enemy Health {enemyCurrentHealth}/{enemyMaxHealth}</p>
-
                 <p>Enemy Attack {enemyAttackStats}</p>
+                <p>Enemy Power {enemyPowerStats}</p>
                 <p>Enemy Defence {enemyDefenceStats}</p>
                 <p>Enemy Speed {enemySpeedStats}</p>
                 <p>Enemy Hit Rate {enemyHitRateStats}</p>
@@ -52,6 +61,7 @@ function Main(){
                 <li>Player Level {userLevel}</li>
                 <li>Player Health {userCurrentHealth}/{userMaxHealth}</li>
                 <li>Player Attack {userAttackStats}</li>
+                <li>Player Power {userPowerStats}</li>
                 <li>Player Defence {userDefenceStats}</li>
                 <li>Player Speed {userSpeedStats}</li>
                 <li>Player Hit Rate {userHitRateStats}</li>
@@ -67,7 +77,7 @@ function Main(){
             <h3>lifePotion {lifePotion}</h3>
 
           <button onClick={() => dispatch(usingLifePotion(lifePotion))}>use Potion</button>
-          <button onClick={() => dispatch((userAttackEnemyFn(userAttackStats)))}>Attack</button>
+          <button onClick={testFn}>Attack</button>
           
             <div>
               <h2>Admin</h2>

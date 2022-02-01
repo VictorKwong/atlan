@@ -10,6 +10,7 @@ import userCritRateStatsReducer from "./userCritRateStats";
 import userMaxHealthReducer from "./userMaxHealth";
 import userCurrentHealthReducer from "./userCurrentHealth";
 import userGoldReducer from "./userGold";
+import userPowerStatsReducer from './userPowerStats';
 import startGameReducer from "./startGame";
 import footerEasterEggReducer from "./footerEasterEgg"
 
@@ -17,6 +18,7 @@ import enemyMaxHealthReducer from "./enemyMaxHealth";
 import enemyCurrentHealthReducer from "./enemyCurrentHealth";
 import enemyLevelReducer from "./enemyLevel";
 import enemyAttackStatsReducer from "./enemyAttackStats";
+import enemyPowerStatsReducer from "./enemyPowerStats";
 import enemyDefenceStatsReducer from "./enemyDefenceStats";
 import enemySpeedStatsReducer from "./enemySpeedStats";
 import enemyHitRateStatsReducer from "./enemyHitRateStats";
@@ -38,10 +40,12 @@ const allReducers = combineReducers({
     userHitRateStats: userHitRateStatsReducer,
     userDodgeRateStats: userDodgeRateStatsReducer,
     userCritRateStats: userCritRateStatsReducer,
+    userPowerStats: userPowerStatsReducer,
     footerEasterEgg: footerEasterEggReducer,
     enemyMaxHealth: enemyMaxHealthReducer,
     enemyCurrentHealth: enemyCurrentHealthReducer,
     enemyAttackStats: enemyAttackStatsReducer,
+    enemyPowerStats: enemyPowerStatsReducer,
     enemyDefenceStats: enemyDefenceStatsReducer,
     enemySpeedStats: enemySpeedStatsReducer,
     enemyHitRateStats: enemyHitRateStatsReducer,

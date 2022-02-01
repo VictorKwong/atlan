@@ -70,11 +70,11 @@ export const easterEggFn = () => {
     };
 };
 
-export const userAttackEnemyFn = (userUpgradeAttack) => {
-    return {
-        type: 'userAttackEnemyFn',
-        payload: 10,
-        userUpgradeAttack: userUpgradeAttack
+export const userAttackEnemyFn = (userAttackStats) => {
+        return {
+            type: 'userAttackEnemyFn',
+            payload: 10,
+            userAttackStats: userAttackStats
+        };
     };
-};
 
