@@ -8,7 +8,7 @@ function App(){
     return(
         <footer className="footerPosition">
         {!footerEasterEgg ? <p onClick={() => dispatch(easterEggFn())}>Copyright ⓒ 2020 Victor Wong</p>
-        : <p onClick={() => dispatch(easterEggFn())}>Thanks for Playing!^^ <a href="https://github.com/VictorKwong" target="_blank" rel="noreferrer">GitHub</a></p>}
+        : <p onClick={() => dispatch(easterEggFn())}>Thanks for Playing!^^ <a href="https://github.com/VictorKwong">GitHub</a></p>}
         </footer>
     );
 }
