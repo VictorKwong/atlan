@@ -1,18 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7a146af5.css",
-    "main.js": "/static/js/main.aa776482.js",
-    "static/js/845.db9e616e.chunk.js": "/static/js/845.db9e616e.chunk.js",
-    "static/js/787.e0a67ab0.chunk.js": "/static/js/787.e0a67ab0.chunk.js",
-    "static/media/audioStartUpGame.mp3": "/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
-    "index.html": "/index.html",
-    "main.7a146af5.css.map": "/static/css/main.7a146af5.css.map",
-    "main.aa776482.js.map": "/static/js/main.aa776482.js.map",
-    "845.db9e616e.chunk.js.map": "/static/js/845.db9e616e.chunk.js.map",
-    "787.e0a67ab0.chunk.js.map": "/static/js/787.e0a67ab0.chunk.js.map"
+    "main.css": "/atlan/static/css/main.7a146af5.css",
+    "main.js": "/atlan/static/js/main.72924ffd.js",
+    "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
+    "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
+    "index.html": "/atlan/index.html",
+    "main.7a146af5.css.map": "/atlan/static/css/main.7a146af5.css.map",
+    "main.72924ffd.js.map": "/atlan/static/js/main.72924ffd.js.map",
+    "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7a146af5.css",
-    "static/js/main.aa776482.js"
+    "static/js/main.72924ffd.js"
   ]
 }
