@@ -9,7 +9,7 @@ import Main from './Main';
 
 
 function App(){
-    const startGame = useSelector(state => state.startGame)
+    const screenControlRoom = useSelector(state => state.screenControlRoom)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function App(){
     
     return(
       <div>
-          {startGame ? <Main /> : 
+          {screenControlRoom.startGame ? <Main /> : 
           <div>
             <h1>Atlan Adventure</h1>
             <button onClick={startGameQtn}>Start</button>

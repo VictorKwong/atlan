@@ -1,48 +1,22 @@
 
-export const increment = () => {
-    return {
-        type: 'increment',
-        payload: 1
-    };
-};
-
-export const decrement = () => {
-    return {
-        type: 'decrement'
-    };
-};
 
 export const sign_in = () => {
     return {
         type: 'sign_in'
     }
 }
-
-export const userAtkIncrement = () => {
+export const enemyAttackUserFn = (eAttack,uDefence) => {
     return {
-        type: 'userAtkIncrement',
-        payload: 50
-    };
-};
-
-export const userArmorIncrement = () => {
-    return {
-        type: 'userArmorIncrement',
-        payload: 20
+        type: 'enemyAttackUserFn',
+        payloadeAttack: eAttack,
+        payloaduDefence: uDefence
     };
 };
 
 export const usingLifePotion = () => {
     return {
         type: 'usingLifePotion',
-        payload: 25,
-    };
-};
-
-export const userDecrementHealth = () => {
-    return {
-        type: 'userDecrementHealth',
-        payload: 10
+        payload: 1
     };
 };
 
@@ -87,5 +61,17 @@ export const userAttackEnemyFn = (userAttackStats) => {
 export const testgaga = () => {
     return {
         type: 'testgaga',
+    };
+};
+
+export const testrara = () => {
+    return {
+        type: 'testrara',
+    };
+};
+
+export const testnana = () => {
+    return {
+        type: 'testnana',
     };
 };

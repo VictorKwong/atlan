@@ -1,40 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, sign_in, userAtkIncrement, userArmorIncrement , usingLifePotion, userDecrementHealth, buyPotion, sellPotion, userAttackEnemyFn, testgaga } from './actions';
+import { sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga } from './actions';
 
 function Main(){
 
     const lifePotion = useSelector(state => state.lifePotion)
     const userStats = useSelector(state => state.userStats)
-    const userLevel = useSelector(state => state.userLevel)
-    const userAttackStats = useSelector(state => state.userAttackStats)
-    const userPowerStats = useSelector(state => state.userPowerStats)
-    const userDefenceStats = useSelector(state => state.userDefenceStats)
-    const userSpeedStats = useSelector(state => state.userSpeedStats)
-    const userHitRateStats = useSelector(state => state.userHitRateStats)
-    const userDodgeRateStats = useSelector(state => state.userDodgeRateStats)
-    const userCritRateStats = useSelector(state => state.userCritRateStats)
-    const userMaxHealth = useSelector(state => state.userMaxHealth)
-    const userCurrentHealth = useSelector(state => state.userCurrentHealth)
+    const userAttribute = useSelector(state => state.userAttribute)
     const userGold = useSelector(state => state.userGold)
+
+    const enemyStats = useSelector(state => state.enemyStats)
     const isLogged = useSelector(state => state.isLogged)
     //Enemy
-    const enemyMaxHealth = useSelector(state => state.enemyMaxHealth)
-    const enemyLevel = useSelector(state => state.enemyLevel)
-    const enemyCurrentHealth = useSelector(state => state.enemyCurrentHealth)
-    const enemyAttackStats = useSelector(state => state.enemyAttackStats)
-    const enemyPowerStats = useSelector(state => state.enemyPowerStats)
-    const enemyDefenceStats = useSelector(state => state.enemyDefenceStats)
-    const enemySpeedStats = useSelector(state => state.enemySpeedStats)
-    const enemyHitRateStats = useSelector(state => state.enemyHitRateStats)
-    const enemyDodgeRateStats = useSelector(state => state.enemyDodgeRateStats)
-    const enemyCritRateStats = useSelector(state => state.enemyCritRateStats)
     const dispatch = useDispatch();
 
     const testFn = (e) => {
         e.preventDefault();
         setTimeout(() => {
-          dispatch(userAttackEnemyFn(userAttackStats))}, 500);
+          dispatch(userAttackEnemyFn(userStats.attack))}, 500);
       };
 
     return(
@@ -44,32 +27,31 @@ function Main(){
           <div className="userScreenAction">
             <div>
                 <h2>Enemy Status</h2>
-                <p>Enemy Level {enemyLevel}</p>
-                <p>Enemy Health {enemyCurrentHealth}/{enemyMaxHealth}</p>
-                <p>Enemy Attack {enemyAttackStats}</p>
-                <p>Enemy Power {enemyPowerStats}</p>
-                <p>Enemy Defence {enemyDefenceStats}</p>
-                <p>Enemy Speed {enemySpeedStats}</p>
-                <p>Enemy Hit Rate {enemyHitRateStats}</p>
-                <p>Enemy Dodge Rate {enemyDodgeRateStats}</p>
-                <p>Enemy Crit Rate {enemyCritRateStats}</p>
-                <p>{userStats.gaga}</p>
+                <p>Enemy Level {enemyStats.level}</p>
+                <p>Enemy Health {enemyStats.currentHealth}/{enemyStats.maxHealth}</p>
+                <p>Enemy Attack {enemyStats.attack}</p>
+                <p>Enemy Power {enemyStats.power}</p>
+                <p>Enemy Defence {enemyStats.defence}</p>
+                <p>Enemy Speed {enemyStats.speed}</p>
+                <p>Enemy Hit Rate {enemyStats.hitRate}</p>
+                <p>Enemy Dodge Rate {enemyStats.dodgeRate}</p>
+                <p>Enemy Crit Rate {enemyStats.critRate}</p>
+                <p>{userStats.Attack}</p>
                 <button onClick={() => dispatch(testgaga())}>testgaga</button>
-                <button onClick={() => dispatch(userDecrementHealth(enemyAttackStats,userDefenceStats))}>Enemy attack</button>
+                <button onClick={() => dispatch(enemyAttackUserFn(enemyStats.attack,userStats.defence))}>Enemy attack</button>
             </div>
             <div>
             <h2>Player Status</h2>
             <nav className="userHUD">
               <ul>
-                <li>Player Level {userLevel}</li>
-                <li>Player Health {userCurrentHealth}/{userMaxHealth}</li>
-                <li>Player Attack {userAttackStats}</li>
-                <li>Player Power {userPowerStats}</li>
-                <li>Player Defence {userDefenceStats}</li>
-                <li>Player Speed {userSpeedStats}</li>
-                <li>Player Hit Rate {userHitRateStats}</li>
-                <li>Player Dodge Rate {userDodgeRateStats}</li>
-                <li>Player Crit Rate {userCritRateStats}</li>
+                <li>Player Level {userStats.level}</li>
+                <li>Player Health {userStats.currentHealth}/{userStats.maxHealth}</li>
+                <li>Player Attack {userStats.attack}</li>
+                <li>Player Defence {userStats.defence}</li>
+                <li>Player Speed {userStats.speed}</li>
+                <li>Player Hit Rate {userStats.hitRate}</li>
+                <li>Player Dodge Rate {userStats.dodgeRate}</li>
+                <li>Player Crit Rate {userStats.critRate}</li>
                 <li>Player $ {userGold}</li>
               </ul>
             </nav>  
@@ -84,10 +66,10 @@ function Main(){
           
             <div>
               <h2>Admin</h2>
-              <button onClick={() => dispatch(increment())}>Add Potion</button>
-              <button onClick={() => dispatch(decrement())}>Drop Potion</button>
-              <button onClick={() => dispatch(userAtkIncrement())}>atk increase</button>
-              <button onClick={() => dispatch(userArmorIncrement())}>armor increase</button>
+              <button >Add Potion</button>
+              <button >Drop Potion</button>
+              <button >atk increase</button>
+              <button >armor increase</button>
             </div>
             <div>
               <h2>Shop</h2>

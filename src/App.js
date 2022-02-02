@@ -9,7 +9,7 @@ import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 
 function App(){
-    const authorLogo = useSelector(state => state.authorLogo)
+    const screenControlRoom = useSelector(state => state.screenControlRoom)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ function App(){
       <div className="logoBackground">
         <div className="wrapper pageFix">
             <div className="allWrapping">
-            {authorLogo ? <StartMenu/> :
+            {screenControlRoom.authorLogo ? <StartMenu/> :
             <div className="logoBox">
               <div className="logoLine1"></div>
               <div className="logoLine2"></div>
