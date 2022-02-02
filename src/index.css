@@ -46,23 +46,56 @@ html, body {
   height: 3rem;
   position: absolute;
   bottom: 0;
+  text-align: center;
 }
 /* setup */
-
+.logoBackground{
+  animation-name: fadeOut;
+  animation-duration: 1.7s;
+}
 .logoBox{
   text-align: center;
   height: calc(100vh - 3rem);
   line-height: calc(100vh - 3rem);
-  animation-name: fadeOut;
-  animation-duration: 1.4s;
 }
-
 @keyframes fadeOut {
-
-
-  0%,60%{background-color: black; opacity: 1;}
+  0%,80%{background-color: black; opacity: 1;}
   100%{opacity: 0;}
 }
+
+.logoLine1,
+.logoLine2,
+.logoLine3,
+.logoLine4{
+  position: relative;
+  left: 0px;
+  top: 50vh;
+  height: 2px;
+  width: 100%;
+  transform: rotate(-90deg);
+  animation-name: fadeOutLine;
+  animation-duration: 1.7s;
+}
+.logoLine1{
+  left: 60px;
+}
+.logoLine2{
+  left: 90px;
+}
+.logoLine3{
+  left: 94px;
+}
+.logoLine4{
+  left: 98px;
+}
+@keyframes fadeOutLine {
+  0%,69%{background-color: black; opacity: 1;}
+  70%{background-color: white; opacity: 1;}
+  80%{background-color: black; opacity: 0.1;}
+  100%{opacity: 0;}
+}
+
+
 
 .logoLetter1,
 .logoLetter2,
@@ -76,7 +109,7 @@ html, body {
 .logoLetter10{
   left:-1000px; 
   top: 4000px;
-  font-size: 50px;
+  font-size: 100px;
   position: relative;
   animation-name: fly;
   animation-duration: 5.8s;
@@ -119,7 +152,7 @@ html, body {
   50% {color:cyan; left:0px; top:0px}
   52.5% {color:blue; left:0px; top:-15px}
   55% {color:violet; left:0px; top:0px}
-  57.5% {color:yellow; left:0px; top:-5px}
+  57.5% {color:#FFEF00; left:0px; top:-5px}
   60% {color:violet; left:0px; top:0px}
-  100% {color:yellow; left:0px; top:0px}
+  100% {color:#FFEF00; left:0px; top:0px}
 }

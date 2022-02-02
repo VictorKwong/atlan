@@ -1,6 +1,7 @@
 import lifePotionReducer from "./lifePotion";
 import loggedReducer from "./isLogged";
 import userLevelReducer from "./userLevel";
+import userStatsReducer from "./userStats";
 import userAttackStatsReducer from "./userAttackStats";
 import userDefenceStatsReducer from "./userDefenceStats";
 import userSpeedStatsReducer from "./userSpeedStats";
@@ -27,11 +28,13 @@ import enemyDodgeRateStatsReducer from "./enemyDodgeRateStats";
 import enemyCritRateStatsReducer from "./enemyCritRateStats";
 import { combineReducers } from "redux";
 
+
 const allReducers = combineReducers({
     startGame: startGameReducer,
     authorLogo: authorLogoReducer,
     lifePotion: lifePotionReducer,
     isLogged: loggedReducer,
+    userStats: userStatsReducer,
     userLevel: userLevelReducer,
     userMaxHealth: userMaxHealthReducer,
     userCurrentHealth: userCurrentHealthReducer,

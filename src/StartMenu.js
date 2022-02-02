@@ -16,7 +16,7 @@ function App(){
     const startGameQtn = (e) => {
       e.preventDefault();
       setTimeout(() => {
-        dispatch(startGameFn())}, 3000);
+        dispatch(startGameFn())}, 1000);
     };
     
     return(

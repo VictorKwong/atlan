@@ -84,4 +84,8 @@ export const userAttackEnemyFn = (userAttackStats) => {
         };
     };
 
-    
+export const testgaga = () => {
+    return {
+        type: 'testgaga',
+    };
+};

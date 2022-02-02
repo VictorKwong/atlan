@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, sign_in, userAtkIncrement, userArmorIncrement , usingLifePotion, userDecrementHealth, buyPotion, sellPotion, userAttackEnemyFn } from './actions';
+import { increment, decrement, sign_in, userAtkIncrement, userArmorIncrement , usingLifePotion, userDecrementHealth, buyPotion, sellPotion, userAttackEnemyFn, testgaga } from './actions';
 
 function Main(){
 
     const lifePotion = useSelector(state => state.lifePotion)
+    const userStats = useSelector(state => state.userStats)
     const userLevel = useSelector(state => state.userLevel)
     const userAttackStats = useSelector(state => state.userAttackStats)
     const userPowerStats = useSelector(state => state.userPowerStats)
@@ -52,6 +53,8 @@ function Main(){
                 <p>Enemy Hit Rate {enemyHitRateStats}</p>
                 <p>Enemy Dodge Rate {enemyDodgeRateStats}</p>
                 <p>Enemy Crit Rate {enemyCritRateStats}</p>
+                <p>{userStats.gaga}</p>
+                <button onClick={() => dispatch(testgaga())}>testgaga</button>
                 <button onClick={() => dispatch(userDecrementHealth(enemyAttackStats,userDefenceStats))}>Enemy attack</button>
             </div>
             <div>

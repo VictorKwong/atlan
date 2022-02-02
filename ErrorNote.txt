@@ -1,0 +1,31 @@
+Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().
+
+Review:
+if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          // Automatic playback started!
+          audio.play()
+        })
+        .catch(error => {
+          // Auto-play was prevented
+        });
+
+Update child component's state from the parent component in react-redux
+
+Review:
+
+state = {
+    count: 0
+}
+reducer = (state = this.state, action) => {
+    switch (action.type) {
+        case actionTypes.INCREASE:
+            return { count: ++state.count };
+
+        case actionTypes.DECREASE:
+            return { count: --state.count };
+
+        default:
+            return state;
+    }
+}
