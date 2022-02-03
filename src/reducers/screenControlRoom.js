@@ -1,6 +1,7 @@
 const Fn = {
     authorLogo: false,
     startGame: false,
+    gameTitleOptionScreen: false
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
@@ -9,11 +10,25 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 authorLogo: !state.authorLogo,
                 startGame: state.startGame,
+                gameTitleOptionScreen: state.gameTitleOptionScreen
             }
         case 'startGameFn':
             return {
                 authorLogo: state.authorLogo,
                 startGame: !state.startGame,
+                gameTitleOptionScreen: state.gameTitleOptionScreen
+            }
+        case 'gameTitleOptionScreenFn':
+            return {
+                authorLogo: state.authorLogo,
+                startGame: state.startGame,
+                gameTitleOptionScreen: !state.gameTitleOptionScreen
+            }
+        case 'returnToTitleScreenFn':
+            return {
+                authorLogo: state.authorLogo,
+                startGame: state.startGame,
+                gameTitleOptionScreen: !state.gameTitleOptionScreen
             }
         default:
             return state;

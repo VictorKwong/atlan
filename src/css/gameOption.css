@@ -1,0 +1,12 @@
+.gameOptionTitle,
+.gameOptionSelect{
+    text-align: center;
+}
+.gameOptionTitle{
+    height: 25vh;
+    line-height: 25vh;
+}
+.gameOptionSelect{
+    height: calc(75vh - 3rem);
+    line-height: 40px;
+}

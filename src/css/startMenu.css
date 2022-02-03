@@ -1,0 +1,15 @@
+.menuTitle,
+.menuSelect{
+  text-align: center;
+
+}
+.menuTitle{
+  height: 50vh;
+  line-height: 50vh;
+}
+
+.menuSelect{
+  height: calc(50vh - 3rem);
+  line-height: 40px;
+}
+

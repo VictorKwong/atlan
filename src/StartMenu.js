@@ -1,14 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startGameFn } from './actions';
+import { startGameFn, gameTitleOptionScreenFn } from './actions';
 import Main from './Main';
-
+import GameOption from './GameOption';
+import './css/startMenu.css'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 
 
-function App(){
+function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
@@ -21,14 +22,27 @@ function App(){
     
     return(
       <div>
-          {screenControlRoom.startGame ? <Main /> : 
-          <div>
+        {/* Click startGame goes to Main */}
+        {screenControlRoom.startGame && !screenControlRoom.gameTitleOptionScreen ? <Main />
+        // Click Option goes to GameOption
+        : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
+        : 
+        <div>
+          <div className="menuTitle">
             <h1>Atlan Adventure</h1>
-            <button onClick={startGameQtn}>Start</button>
           </div>
-          }
+          <div className="menuSelect">
+            <div>
+              <button onClick={startGameQtn}>Start</button>
+            </div>
+            <div>
+              <button onClick={() => dispatch(gameTitleOptionScreenFn())}>Option</button>
+            </div>
+          </div>
+        </div>
+        }
       </div>
     );
 }
 
-export default App;
+export default StartMenu;

@@ -44,6 +44,18 @@ export const authorLogoFn = () => {
     };
 };
 
+export const gameTitleOptionScreenFn = () => {
+    return {
+        type: 'gameTitleOptionScreenFn',
+    };
+};
+
+export const returnToTitleScreenFn = () => {
+    return {
+        type: 'returnToTitleScreenFn',
+    };
+};
+
 export const easterEggFn = () => {
     return {
         type: 'easterEggFn',
