@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.188ac0dc.css",
-    "main.js": "/atlan/static/js/main.03f7b757.js",
+    "main.css": "/atlan/static/css/main.d284d3a2.css",
+    "main.js": "/atlan/static/js/main.dd7d858b.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
     "index.html": "/atlan/index.html",
-    "main.188ac0dc.css.map": "/atlan/static/css/main.188ac0dc.css.map",
-    "main.03f7b757.js.map": "/atlan/static/js/main.03f7b757.js.map",
+    "main.d284d3a2.css.map": "/atlan/static/css/main.d284d3a2.css.map",
+    "main.dd7d858b.js.map": "/atlan/static/js/main.dd7d858b.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.188ac0dc.css",
-    "static/js/main.03f7b757.js"
+    "static/css/main.d284d3a2.css",
+    "static/js/main.dd7d858b.js"
   ]
 }
