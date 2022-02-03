@@ -61,7 +61,16 @@ export const finishStoryLineOneFn = () => {
         type: 'finishStoryLineOneFn',
     };
 };
-
+export const GotoPronteraFn = () => {
+    return {
+        type: 'GotoPronteraFn',
+    };
+};
+export const GotoPronteraSouthGateFn = () => {
+    return {
+        type: 'GotoPronteraSouthGateFn',
+    };
+};
 export const typeWritterEffectFn = () => {
     return {
         type: 'typeWritterEffectFn',

@@ -1,0 +1,34 @@
+.storyScreen,
+.storyChat{
+  text-align: center;
+}
+
+.storyMapScreen{
+  height: calc(75vh - 3rem);
+  display: flex;
+}
+
+.storyChat{
+  height: 25vh;
+}
+
+.PronteraMap{
+  width:80%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+}
+
+.StoryHUD{
+  width:20%;
+  border: 1px solid black;
+}
+
+
+.toolDealerNPC { grid-area: 3 / 3 / 4 / 4; }
+.weaponArmorDealerNPC { grid-area: 3 / 5 / 4 / 6; }
+.pronteraSouthGate { grid-area: 7 / 4 / 8 / 5; }

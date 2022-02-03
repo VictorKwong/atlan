@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startGameFn, gameTitleOptionScreenFn, finishStoryLineOneFn, typeWritterEffectFn, resetTypeWritterEffectFn } from './actions';
-import Main from './Main'
+import WorldMap from './WorldMap'
 import './css/storyLine.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
@@ -75,7 +75,7 @@ function StartMenu(){
 
     return(
       <div>
-        {screenControlRoom.storyLineOne ? <Main /> :
+        {screenControlRoom.storyLineOne ? <WorldMap  /> :
         <div>
           <div className="storyScreen">
             <h1>Screen</h1>
