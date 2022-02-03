@@ -1,0 +1,13 @@
+.storyScreen,
+.storyChat{
+  text-align: center;
+}
+
+.storyScreen{
+  height: calc(75vh - 3rem);
+  line-height: 75vh;
+}
+
+.storyChat{
+  height: 25vh;
+}

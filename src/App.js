@@ -20,6 +20,7 @@ function App(){
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
+          // audio.loop = true;
           audio.play()
         })
         .catch(error => {

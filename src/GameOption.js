@@ -1,8 +1,7 @@
 import React from 'react';
 import './css/gameOption.css'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { returnToTitleScreenFn } from './actions';
-import StartMenu from './StartMenu';
 
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
@@ -10,14 +9,13 @@ import StartMenu from './StartMenu';
 
 
 function GameOption(){
-    const screenControlRoom = useSelector(state => state.screenControlRoom)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     
     return(
       <div>
         <div className="gameOptionTitle">
-          <h1>Option</h1>
+          <h1>Options</h1>
         </div>
         <div className="gameOptionSelect">
           <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startGameFn, gameTitleOptionScreenFn } from './actions';
-import Main from './Main';
+import StoryLineOne from './StoryLineOne'
 import GameOption from './GameOption';
 import './css/startMenu.css'
 // import useSound from 'use-sound';
@@ -19,11 +19,12 @@ function StartMenu(){
       setTimeout(() => {
         dispatch(startGameFn())}, 1000);
     };
+
     
     return(
       <div>
         {/* Click startGame goes to Main */}
-        {screenControlRoom.startGame && !screenControlRoom.gameTitleOptionScreen ? <Main />
+        {screenControlRoom.startGame && !screenControlRoom.gameTitleOptionScreen ? <StoryLineOne />
         // Click Option goes to GameOption
         : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
         : 
@@ -33,10 +34,10 @@ function StartMenu(){
           </div>
           <div className="menuSelect">
             <div>
-              <button onClick={startGameQtn}>Start</button>
+              <button onClick={startGameQtn}>New Game</button>
             </div>
             <div>
-              <button onClick={() => dispatch(gameTitleOptionScreenFn())}>Option</button>
+              <button onClick={() => dispatch(gameTitleOptionScreenFn())}>Options</button>
             </div>
           </div>
         </div>
