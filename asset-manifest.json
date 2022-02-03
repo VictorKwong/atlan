@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.d284d3a2.css",
-    "main.js": "/atlan/static/js/main.2f34a3bd.js",
+    "main.css": "/atlan/static/css/main.41d1b82e.css",
+    "main.js": "/atlan/static/js/main.f4918cee.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
+    "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
     "index.html": "/atlan/index.html",
-    "main.d284d3a2.css.map": "/atlan/static/css/main.d284d3a2.css.map",
-    "main.2f34a3bd.js.map": "/atlan/static/js/main.2f34a3bd.js.map",
+    "main.41d1b82e.css.map": "/atlan/static/css/main.41d1b82e.css.map",
+    "main.f4918cee.js.map": "/atlan/static/js/main.f4918cee.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d284d3a2.css",
-    "static/js/main.2f34a3bd.js"
+    "static/css/main.41d1b82e.css",
+    "static/js/main.f4918cee.js"
   ]
 }
