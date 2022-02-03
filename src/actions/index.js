@@ -56,6 +56,24 @@ export const returnToTitleScreenFn = () => {
     };
 };
 
+export const finishStoryLineOneFn = () => {
+    return {
+        type: 'finishStoryLineOneFn',
+    };
+};
+
+export const typeWritterEffectFn = () => {
+    return {
+        type: 'typeWritterEffectFn',
+    };
+};
+export const resetTypeWritterEffectFn = () => {
+    return {
+        type: 'resetTypeWritterEffectFn',
+    };
+};
+
+
 export const easterEggFn = () => {
     return {
         type: 'easterEggFn',
@@ -87,3 +105,4 @@ export const testnana = () => {
         type: 'testnana',
     };
 };
+

@@ -1,13 +1,13 @@
 
 const Fn = [
     {
-        name:'Altan',
-        text:'I see you'
+        name:'???',
+        text:'...'
     },
     {
-        name:'Ruthless',
-        text:'No, you are not...'
-    }
+        name:'???',
+        text:'Altan...'
+    },
 ]
 
 const storyLineOneReducer = (state = Fn, action) => {

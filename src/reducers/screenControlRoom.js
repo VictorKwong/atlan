@@ -35,6 +35,13 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 gameTitleOptionScreen: !state.gameTitleOptionScreen,
                 storyLineOne: state.storyLineOne,
             }
+        case 'finishStoryLineOneFn':
+            return {
+                authorLogo: state.authorLogo,
+                startGame: state.startGame,
+                gameTitleOptionScreen: state.gameTitleOptionScreen,
+                storyLineOne: !state.storyLineOne,
+            }
         default:
             return state;
     }
