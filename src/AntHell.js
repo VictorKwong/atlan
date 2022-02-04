@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {GotoWorldMapFn ,finishStoryLineOneFn, typeWritterEffectFn} from './actions';
-import Main from './Main'
 import WorldMap from './WorldMap'
 import './css/mapAntHell.css'
 import $ from 'jquery'
@@ -65,7 +64,7 @@ function StartMenu(){
 
     return(
       <div>
-        {screenControlRoom.storyMainMap ? <Main /> :
+        {
         screenControlRoom.WorldMap ? <WorldMap/> :
         <div>
           <div className="storyMapScreen">

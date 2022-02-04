@@ -1,0 +1,19 @@
+.storyScreen,
+.storyChat{
+  text-align: center;
+}
+
+.storyMapScreen{
+  height: calc(75vh - 3rem);
+  display: flex;
+}
+
+.storyChat{
+  height: 25vh;
+}
+
+
+.StoryHUD{
+  width:20%;
+  border: 1px solid black;
+}

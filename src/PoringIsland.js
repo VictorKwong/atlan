@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn ,finishStoryLineOneFn, typeWritterEffectFn} from './actions';
-import Main from './Main'
+import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , typeWritterEffectFn} from './actions';
+import BattlePoringIslandMap from './BattlePoringIslandMap'
 import WorldMap from './WorldMap'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
@@ -65,13 +65,14 @@ function StartMenu(){
 
     return(
       <div>
-        {screenControlRoom.storyMainMap ? <Main /> :
+        {
         screenControlRoom.WorldMap ? <WorldMap/> :
+        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
         <div>
           <div className="storyMapScreen">
             <div className="PoringIslandMap">
               <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
-              <button className="smallIsland" onClick={() =>{changePlaceFadeAudio()}}>small Island</button>
+              <button className="smallIsland" onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
             </div>
             <div className="StoryHUD">
             <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>

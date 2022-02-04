@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
-import Main from './Main'
+import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PoringIsland from './PoringIsland'
 import AntHell from './AntHell'
@@ -18,14 +18,13 @@ function StartMenu(){
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
-    const testing = () => {
-    }
     return(
       <div>
-        {screenControlRoom.storyMainMap ? <Main /> :
+        {
         screenControlRoom.Prontera ? <Prontera />:
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.AntHell ? <AntHell />:
+        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
         <div>
           <div className="storyMapScreen">
             <div className="StoryMap">

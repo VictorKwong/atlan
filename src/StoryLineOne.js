@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startGameFn, gameTitleOptionScreenFn, finishStoryLineOneFn, typeWritterEffectFn, resetTypeWritterEffectFn } from './actions';
+import { startGameFn, gameTitleOptionScreenFn, finishStoryLineOneFn, typeWritterEffectFn, resetTypeWritterEffectFn, GotoWorldMapFn } from './actions';
 import WorldMap from './WorldMap'
 import './css/storyLine.css'
 import $ from 'jquery'
@@ -85,7 +85,7 @@ function StartMenu(){
           <p className="storySpeech">......</p>
             { (storyLineOne.length === textReadAndSpeed.count) ?
               <div>
-                <button className="nextLine" onClick={() => dispatch(finishStoryLineOneFn())}>Continue</button>
+                <button className="nextLine" onClick={() => {dispatch(finishStoryLineOneFn()); dispatch(GotoWorldMapFn());}}>Continue</button>
               </div>
             :
             <div>

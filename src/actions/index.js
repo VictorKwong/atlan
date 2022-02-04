@@ -83,6 +83,12 @@ export const GotoAntHellFn = () => {
     };
 };
 
+export const GotoBattlePoringIslandMapFn = () => {
+    return {
+        type: 'GotoBattlePoringIslandMapFn',
+    };
+};
+
 export const typeWritterEffectFn = () => {
     return {
         type: 'typeWritterEffectFn',
