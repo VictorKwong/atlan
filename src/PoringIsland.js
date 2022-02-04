@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {GotoWorldMapFn ,finishStoryLineOneFn, typeWritterEffectFn} from './actions';
 import Main from './Main'
 import WorldMap from './WorldMap'
-import './css/mapProntera.css'
+import './css/mapPoringIsland.css'
 import $ from 'jquery'
-import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
+import audioStreamside from './audio/112Streamside.mp3'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
@@ -14,7 +14,7 @@ import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
-    const audioBGM = new Audio(audioThemeOfProntera);
+    const audioBGM = new Audio(audioStreamside);
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -44,11 +44,6 @@ function StartMenu(){
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
           }
-          $('.toolDealerNPC').on('click', function(event) {
-            event.preventDefault();
-              audioBGM.volume = 0.15;
-              clearInterval(fadeAudio);
-          })
         }, 10);
     }
 
@@ -74,10 +69,9 @@ function StartMenu(){
         screenControlRoom.WorldMap ? <WorldMap/> :
         <div>
           <div className="storyMapScreen">
-            <div className="PronteraMap">
-              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio()}}>ToolDealer</button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio()}}>WeaponArmorDealer</button>
-              <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>PronteraSouthGate</button>
+            <div className="PoringIslandMap">
+              <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
+              <button className="smallIsland" onClick={() =>{changePlaceFadeAudio()}}>small Island</button>
             </div>
             <div className="StoryHUD">
             <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>

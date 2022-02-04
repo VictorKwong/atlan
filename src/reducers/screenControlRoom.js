@@ -6,6 +6,8 @@ const Fn = {
     WorldMap: false,
     Prontera: false,
     PronteraSouth: false,
+    PoringIsland: false,
+    AntHell: false,
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
@@ -19,6 +21,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: state.WorldMap,
                 Prontera: state.Prontera,
                 PronteraSouth: state.PronteraSouth,
+                PoringIsland: state.PoringIsland,
+                AntHell: state.AntHell,
             }
         case 'startGameFn':
             return {
@@ -29,6 +33,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: state.WorldMap,
                 Prontera: state.Prontera,
                 PronteraSouth: state.PronteraSouth,
+                PoringIsland: state.PoringIsland,
+                AntHell: state.AntHell,
                 
             }
         case 'gameTitleOptionScreenFn':
@@ -40,6 +46,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: state.WorldMap,
                 Prontera: state.Prontera,
                 PronteraSouth: state.PronteraSouth,
+                PoringIsland: state.PoringIsland,
+                AntHell: state.AntHell,
             }
         case 'returnToTitleScreenFn':
             return {
@@ -50,6 +58,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: state.WorldMap,
                 Prontera: state.Prontera,
                 PronteraSouth: state.PronteraSouth,
+                PoringIsland: state.PoringIsland,
+                AntHell: state.AntHell,
             }
         case 'finishStoryLineOneFn':
             return {
@@ -60,6 +70,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: state.WorldMap,
                 Prontera: state.Prontera,
                 PronteraSouth: state.PronteraSouth,
+                PoringIsland: state.PoringIsland,
+                AntHell: state.AntHell,
             }
         case 'GotoPronteraFn':
             return {
@@ -67,19 +79,47 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 startGame: state.startGame,
                 gameTitleOptionScreen: state.gameTitleOptionScreen,
                 storyLineOne: state.storyLineOne,
-                WorldMap: state.WorldMap,
+                WorldMap: false,
                 Prontera: !state.Prontera,
                 PronteraSouth: false,
+                PoringIsland: false,
+                AntHell: false,
             }
-            case 'GotoPronteraSouthGateFn':
+            case 'GotoPoringIslandFn':
                 return {
                     authorLogo: state.authorLogo,
                     startGame: state.startGame,
                     gameTitleOptionScreen: state.gameTitleOptionScreen,
                     storyLineOne: state.storyLineOne,
-                    WorldMap: state.WorldMap,
+                    WorldMap: false,
                     Prontera: false,
-                    PronteraSouth: !state.PronteraSouth,
+                    PronteraSouth: false,
+                    PoringIsland: !state.PoringIsland,
+                    AntHell: false,
+                }
+            case 'GotoWorldMapFn':
+                return {
+                    authorLogo: state.authorLogo,
+                    startGame: state.startGame,
+                    gameTitleOptionScreen: state.gameTitleOptionScreen,
+                    storyLineOne: state.storyLineOne,
+                    WorldMap: !state.WorldMap,
+                    Prontera: false,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    AntHell: false,
+                }
+            case 'GotoAntHellFn':
+                return {
+                    authorLogo: state.authorLogo,
+                    startGame: state.startGame,
+                    gameTitleOptionScreen: state.gameTitleOptionScreen,
+                    storyLineOne: state.storyLineOne,
+                    WorldMap: false,
+                    Prontera: false,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    AntHell: !state.AntHell,
                 }
         default:
             return state;

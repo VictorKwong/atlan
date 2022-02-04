@@ -61,16 +61,28 @@ export const finishStoryLineOneFn = () => {
         type: 'finishStoryLineOneFn',
     };
 };
+export const GotoWorldMapFn = () => {
+    return {
+        type: 'GotoWorldMapFn',
+    };
+};
+
 export const GotoPronteraFn = () => {
     return {
         type: 'GotoPronteraFn',
     };
 };
-export const GotoPronteraSouthGateFn = () => {
+export const GotoPoringIslandFn = () => {
     return {
-        type: 'GotoPronteraSouthGateFn',
+        type: 'GotoPoringIslandFn',
     };
 };
+export const GotoAntHellFn = () => {
+    return {
+        type: 'GotoAntHellFn',
+    };
+};
+
 export const typeWritterEffectFn = () => {
     return {
         type: 'typeWritterEffectFn',

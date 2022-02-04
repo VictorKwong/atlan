@@ -33,3 +33,19 @@ reducer = (state = this.state, action) => {
             return state;
     }
 }
+
+React in Jquery:
+
+Review:
+$('.toolDealerNPC').on('click', function(event) {
+    event.preventDefault();
+    audioBGM.volume = 0.15;
+    clearInterval(fadeAudio);
+})
+https://tech.oyster.com/using-react-and-jquery-together/
+
+activate two function on one click:
+
+Review:
+<a href="#" onClick={() => { func1(); func2();}}>Test Link</a>
+https://stackoverflow.com/questions/26069238/call-multiple-functions-onclick-reactjs

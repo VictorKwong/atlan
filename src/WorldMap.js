@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn, finishStoryLineOneFn, typeWritterEffectFn} from './actions';
+import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
 import Main from './Main'
 import Prontera from './Prontera'
+import PoringIsland from './PoringIsland'
+import AntHell from './AntHell'
 import './css/storyMainMap.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
@@ -22,11 +24,14 @@ function StartMenu(){
       <div>
         {screenControlRoom.storyMainMap ? <Main /> :
         screenControlRoom.Prontera ? <Prontera />:
+        screenControlRoom.PoringIsland ? <PoringIsland />:
+        screenControlRoom.AntHell ? <AntHell />:
         <div>
           <div className="storyMapScreen">
             <div className="StoryMap">
               <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
-              <button className="PronteraSouth">PronteraSouth</button>
+              <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
+              <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
             </div>
             <div className="StoryHUD">
               <h1>HUD</h1>
