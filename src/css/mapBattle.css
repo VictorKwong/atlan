@@ -8,10 +8,21 @@
   display: flex;
 }
 
+
 .storyChat{
   height: 25vh;
 }
 
+.battleScreen{
+  width:80%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+}
 
 .StoryHUD{
   width:20%;

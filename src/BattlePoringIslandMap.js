@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga } from './actions';
 import './css/mapBattle.css'
 import PoringIsland from './PoringIsland'
-
+import axios from 'axios';
 
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -22,15 +22,23 @@ function Main(){
         setTimeout(() => {
           dispatch(userAttackEnemyFn(userStats.attack))}, 500);
       };
+    // *API Call was success, but cannot call the cross region api: https://ragnapi.com/api/v1/old-times/monsters/1002 (Poring)
+    useEffect(() => {
+      axios.get('https://ragnapi.com/api/v1/old-times/monsters/1002').then((x) => {
+              console.log(x);
+            })
+            .catch ((error) => {
+              console.log(error);
+            })
+    }, []);
     return(
       <div>
-
+        {
+        screenControlRoom.PoringIsland ? <PoringIsland />:
         <div>
-
-              <h1>React Redux</h1>
-
-              <div className="userScreenAction">
-                <div>
+            <div className="storyMapScreen">
+              <div className="battleScreen">
+              <div>
                     <h2>Enemy Status</h2>
                     <p>Enemy Level {enemyStats.level}</p>
                     <p>Enemy Health {enemyStats.currentHealth}/{enemyStats.maxHealth}</p>
@@ -45,52 +53,53 @@ function Main(){
                     <button onClick={() => dispatch(testgaga())}>testgaga</button>
                     <button onClick={() => dispatch(enemyAttackUserFn(enemyStats.attack,userStats.defence))}>Enemy attack</button>
                 </div>
-              <div>
-                <h2>Player Status</h2>
-                <nav className="userHUD">
-                  <ul>
-                    <li>Player Level {userStats.level}</li>
-                    <li>Player Health {userStats.currentHealth}/{userStats.maxHealth}</li>
-                    <li>Player Attack {userStats.attack}</li>
-                    <li>Player Defence {userStats.defence}</li>
-                    <li>Player Speed {userStats.speed}</li>
-                    <li>Player Hit Rate {userStats.hitRate}</li>
-                    <li>Player Dodge Rate {userStats.dodgeRate}</li>
-                    <li>Player Crit Rate {userStats.critRate}</li>
-                    <li>Player $ {userGold}</li>
-                  </ul>
-                </nav>  
-               </div>
+                <div>
+                  <h2>Player Status</h2>
+                  <p>Player Level {userStats.level}</p>
+                  <p>Player Health {userStats.currentHealth}/{userStats.maxHealth}</p>
+                  <p>Player Attack {userStats.attack}</p>
+                  <p>Player Defence {userStats.defence}</p>
+                  <p>Player Speed {userStats.speed}</p>
+                  <p>Player Hit Rate {userStats.hitRate}</p>
+                  <p>Player Dodge Rate {userStats.dodgeRate}</p>
+                  <p>Player Crit Rate {userStats.critRate}</p>
+                  <p>Player $ {userGold}</p>
+                </div>
+              <div className="userItems">
+                <h3>lifePotion {lifePotion}</h3>
 
+              <button onClick={() => dispatch(usingLifePotion(lifePotion))}>use Potion</button>
+              <button onClick={testFn}>Attack</button>
+              
+                    <div>
+                      <h2>Admin</h2>
+                      <button >Add Potion</button>
+                      <button >Drop Potion</button>
+                      <button >atk increase</button>
+                      <button >armor increase</button>
+                    </div>
+                    <div>
+                      <h2>Shop</h2>
+                    <button onClick={() => dispatch(buyPotion())}>$Buy Potion</button>
+                    <button onClick={() => dispatch(sellPotion())}>$Sell Potion</button>
+                    </div>
+                    {isLogged ? <h3>You are Log in</h3> : <h3>you are not log In</h3>}
+                    <button onClick={() => dispatch(sign_in())}>sign in</button>
               </div>
-          <div className="userItems">
-            <h3>lifePotion {lifePotion}</h3>
-
-          <button onClick={() => dispatch(usingLifePotion(lifePotion))}>use Potion</button>
-          <button onClick={testFn}>Attack</button>
-          
-            <div>
-              <h2>Admin</h2>
-              <button >Add Potion</button>
-              <button >Drop Potion</button>
-              <button >atk increase</button>
-              <button >armor increase</button>
-            </div>
-            <div>
-              <h2>Shop</h2>
-            <button onClick={() => dispatch(buyPotion())}>$Buy Potion</button>
-            <button onClick={() => dispatch(sellPotion())}>$Sell Potion</button>
-            </div>
-            {isLogged ? <h3>You are Log in</h3> : <h3>you are not log In</h3>}
-            <button onClick={() => dispatch(sign_in())}>sign in</button>
+              </div>  
+              <div className="StoryHUD">
+                <button>Stop Music</button>
+                <h1>HUD</h1>
+                <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn())}}>PoringIsland</button>
+              </div>
           </div>
-          
+          <fieldset className="storyChat">
+            <legend className="storyCharacter"></legend>
+            <p className="storySpeech">TestMap</p>
 
-
-            <div>
-              <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn())}}>PoringIsland</button>
-            </div>
+          </fieldset>
         </div>
+        }
 
 
 

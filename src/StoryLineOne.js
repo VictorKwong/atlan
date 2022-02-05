@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startGameFn, gameTitleOptionScreenFn, finishStoryLineOneFn, typeWritterEffectFn, resetTypeWritterEffectFn, GotoWorldMapFn } from './actions';
+import { finishStoryLineOneFn, typeWritterEffectFn, GotoWorldMapFn } from './actions';
 import WorldMap from './WorldMap'
 import './css/storyLine.css'
 import $ from 'jquery'
