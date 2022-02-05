@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.b88d5f9f.css",
-    "main.js": "/atlan/static/js/main.1abfab6c.js",
+    "main.css": "/atlan/static/css/main.dc334439.css",
+    "main.js": "/atlan/static/js/main.5caf99e3.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
     "static/media/112Streamside.mp3": "/atlan/static/media/112Streamside.0add809a90de7ff81355.mp3",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
     "index.html": "/atlan/index.html",
-    "main.b88d5f9f.css.map": "/atlan/static/css/main.b88d5f9f.css.map",
-    "main.1abfab6c.js.map": "/atlan/static/js/main.1abfab6c.js.map",
+    "main.dc334439.css.map": "/atlan/static/css/main.dc334439.css.map",
+    "main.5caf99e3.js.map": "/atlan/static/js/main.5caf99e3.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b88d5f9f.css",
-    "static/js/main.1abfab6c.js"
+    "static/css/main.dc334439.css",
+    "static/js/main.5caf99e3.js"
   ]
 }
