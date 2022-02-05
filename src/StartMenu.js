@@ -17,7 +17,7 @@ function StartMenu(){
     const startGameQtn = (e) => {
       e.preventDefault();
       setTimeout(() => {
-        dispatch(startGameFn())}, 1000);
+        dispatch(startGameFn())}, 500);
     };
 
     

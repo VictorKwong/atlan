@@ -15,76 +15,35 @@ const screenControlRoomReducer = (state = Fn, action) => {
     switch(action.type){
         case 'authorLogoFn':
             return {
+                ...state,
                 authorLogo: !state.authorLogo,
-                startGame: state.startGame,
-                gameTitleOptionScreen: state.gameTitleOptionScreen,
-                storyLineOne: state.storyLineOne,
-                WorldMap: state.WorldMap,
-                BattlePoringIslandMap: state.BattlePoringIslandMap,
-                Prontera: state.Prontera,
-                PronteraSouth: state.PronteraSouth,
-                PoringIsland: state.PoringIsland,
-                AntHell: state.AntHell,
             }
         case 'startGameFn':
             return {
-                authorLogo: state.authorLogo,
+                ...state,
                 startGame: !state.startGame,
-                gameTitleOptionScreen: state.gameTitleOptionScreen,
-                storyLineOne: state.storyLineOne,
-                WorldMap: state.WorldMap,
-                BattlePoringIslandMap: state.BattlePoringIslandMap,
-                Prontera: state.Prontera,
-                PronteraSouth: state.PronteraSouth,
-                PoringIsland: state.PoringIsland,
-                AntHell: state.AntHell,
                 
             }
         case 'gameTitleOptionScreenFn':
             return {
-                authorLogo: state.authorLogo,
-                startGame: state.startGame,
+                ...state,
                 gameTitleOptionScreen: !state.gameTitleOptionScreen,
-                storyLineOne: state.storyLineOne,
-                WorldMap: state.WorldMap,
-                BattlePoringIslandMap: state.BattlePoringIslandMap,
-                Prontera: state.Prontera,
-                PronteraSouth: state.PronteraSouth,
-                PoringIsland: state.PoringIsland,
-                AntHell: state.AntHell,
+
             }
         case 'returnToTitleScreenFn':
             return {
-                authorLogo: state.authorLogo,
-                startGame: state.startGame,
+                ...state,
                 gameTitleOptionScreen: !state.gameTitleOptionScreen,
-                storyLineOne: state.storyLineOne,
-                WorldMap: state.WorldMap,
-                BattlePoringIslandMap: state.BattlePoringIslandMap,
-                Prontera: state.Prontera,
-                PronteraSouth: state.PronteraSouth,
-                PoringIsland: state.PoringIsland,
-                AntHell: state.AntHell,
+
             }
         case 'finishStoryLineOneFn':
             return {
-                authorLogo: state.authorLogo,
-                startGame: state.startGame,
-                gameTitleOptionScreen: state.gameTitleOptionScreen,
+                ...state,
                 storyLineOne: !state.storyLineOne,
-                WorldMap: state.WorldMap,
-                BattlePoringIslandMap: state.BattlePoringIslandMap,
-                Prontera: state.Prontera,
-                PronteraSouth: state.PronteraSouth,
-                PoringIsland: state.PoringIsland,
-                AntHell: state.AntHell,
             }
         case 'GotoPronteraFn':
             return {
-                authorLogo: state.authorLogo,
-                startGame: state.startGame,
-                gameTitleOptionScreen: state.gameTitleOptionScreen,
-                storyLineOne: state.storyLineOne,
+                ...state,
                 WorldMap: false,
                 BattlePoringIslandMap: false,
                 Prontera: !state.Prontera,
@@ -94,10 +53,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
             }
             case 'GotoPoringIslandFn':
                 return {
-                    authorLogo: state.authorLogo,
-                    startGame: state.startGame,
-                    gameTitleOptionScreen: state.gameTitleOptionScreen,
-                    storyLineOne: state.storyLineOne,
+                    ...state,
                     WorldMap: false,
                     BattlePoringIslandMap: false,
                     Prontera: false,
@@ -107,10 +63,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 }
             case 'GotoWorldMapFn':
                 return {
-                    authorLogo: state.authorLogo,
-                    startGame: state.startGame,
-                    gameTitleOptionScreen: state.gameTitleOptionScreen,
-                    storyLineOne: state.storyLineOne,
+                    ...state,
                     WorldMap: !state.WorldMap,
                     BattlePoringIslandMap: false,
                     Prontera: false,
@@ -120,10 +73,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 }
             case 'GotoBattlePoringIslandMapFn':
                 return {
-                    authorLogo: state.authorLogo,
-                    startGame: state.startGame,
-                    gameTitleOptionScreen: state.gameTitleOptionScreen,
-                    storyLineOne: state.storyLineOne,
+                    ...state,
                     WorldMap: false,
                     BattlePoringIslandMap: !state.BattlePoringIslandMap,
                     Prontera: false,
@@ -133,10 +83,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 }
             case 'GotoAntHellFn':
                 return {
-                    authorLogo: state.authorLogo,
-                    startGame: state.startGame,
-                    gameTitleOptionScreen: state.gameTitleOptionScreen,
-                    storyLineOne: state.storyLineOne,
+                    ...state,
                     WorldMap: false,
                     BattlePoringIslandMap: false,
                     Prontera: false,

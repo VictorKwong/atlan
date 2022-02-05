@@ -133,3 +133,8 @@ export const testnana = () => {
     };
 };
 
+export const testwin = () => {
+    return {
+        type: 'testwin',
+    };
+};

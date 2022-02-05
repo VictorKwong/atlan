@@ -49,3 +49,15 @@ activate two function on one click:
 Review:
 <a href="#" onClick={() => { func1(); func2();}}>Test Link</a>
 https://stackoverflow.com/questions/26069238/call-multiple-functions-onclick-reactjs
+
+
+
+*API Call was success, but cannot call the cross region api: https://ragnapi.com/api/v1/old-times/monsters/1002 (Poring):
+useEffect(() => {
+    axios.get('https://ragnapi.com/api/v1/old-times/monsters/1002').then((x) => {
+            console.log(x);
+        })
+        .catch ((error) => {
+            console.log(error);
+        })
+}, []);

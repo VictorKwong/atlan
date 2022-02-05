@@ -1,6 +1,7 @@
 
 const Fn = {
     level: 1,
+    Experience: 0,
     maxHealth: 100,
     currentHealth: 100,
     attack: 25,
@@ -16,31 +17,19 @@ const userStatsReducer = (state = Fn, action) => {
     switch(action.type){
         case 'testgaga':
             return {
-                level: state.level,
-                maxHealth: state.maxHealth,
-                currentHealth: state.currentHealth,
+                ...state,
                 attack: ++state.attack,
-                power: state.power,
-                defence: state.defence,
-                speed: state.speed,
-                hitRate: state.hitRate,
-                dodgeRate: state.dodgeRate,
-                critRate: state.critRate
             }
         case 'enemyAttackUserFn':
             return {
-                level: state.level,
-                maxHealth: state.maxHealth,
+                ...state,
                 currentHealth: state.currentHealth - (action.payloadeAttack)/(action.payloaduDefence),
-                attack: state.attack,
-                power: state.power,
-                defence: state.defence,
-                speed: state.speed,
-                hitRate: state.hitRate,
-                dodgeRate: state.dodgeRate,
-                critRate: state.critRate
             }
-
+        case 'testwin':
+            return{
+                ...state,
+                Experience: state.Experience + 10
+            }
         default:
             return state;
     }

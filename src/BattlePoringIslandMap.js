@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga } from './actions';
+import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga, testnana, testwin } from './actions';
 import './css/mapBattle.css'
 import PoringIsland from './PoringIsland'
-import axios from 'axios';
+import Poring from './img/Poring.gif'
+import Lunatic from './img/Lunatic.gif'
+import $ from 'jquery'
 
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -22,15 +24,15 @@ function Main(){
         setTimeout(() => {
           dispatch(userAttackEnemyFn(userStats.attack))}, 500);
       };
-    // *API Call was success, but cannot call the cross region api: https://ragnapi.com/api/v1/old-times/monsters/1002 (Poring)
-    useEffect(() => {
-      axios.get('https://ragnapi.com/api/v1/old-times/monsters/1002').then((x) => {
-              console.log(x);
-            })
-            .catch ((error) => {
-              console.log(error);
-            })
-    }, []);
+      useEffect(() => {
+          if (enemyStats[0].currentHealth <= 0){
+            dispatch(testwin());
+            $('.goGoAttack').prop("disabled", true);
+          }
+      }, [enemyStats[0].currentHealth]);
+
+    let i = 0;
+
     return(
       <div>
         {
@@ -40,18 +42,25 @@ function Main(){
               <div className="battleScreen">
               <div>
                     <h2>Enemy Status</h2>
-                    <p>Enemy Level {enemyStats.level}</p>
-                    <p>Enemy Health {enemyStats.currentHealth}/{enemyStats.maxHealth}</p>
-                    <p>Enemy Attack {enemyStats.attack}</p>
-                    <p>Enemy Power {enemyStats.power}</p>
-                    <p>Enemy Defence {enemyStats.defence}</p>
-                    <p>Enemy Speed {enemyStats.speed}</p>
-                    <p>Enemy Hit Rate {enemyStats.hitRate}</p>
-                    <p>Enemy Dodge Rate {enemyStats.dodgeRate}</p>
-                    <p>Enemy Crit Rate {enemyStats.critRate}</p>
+                    {
+                      i === 0 ? <img src={Poring} alt={enemyStats[0].name} /> :
+                      i === 1 ? <img src={Lunatic} alt={enemyStats[0].name} /> :
+                      null
+                    }
+                    <p>Enemy name {enemyStats[0].name}</p>  
+                    <p>Enemy Level {enemyStats[0].level}</p>
+                    <p>Enemy Health {enemyStats[0].currentHealth}/{enemyStats[0].maxHealth}</p>
+                    <p>Enemy Attack {enemyStats[0].attack}</p>
+                    <p>Enemy Power {enemyStats[0].power}</p>
+                    <p>Enemy Defence {enemyStats[0].defence}</p>
+                    <p>Enemy Speed {enemyStats[0].speed}</p>
+                    <p>Enemy Hit Rate {enemyStats[0].hitRate}</p>
+                    <p>Enemy Dodge Rate {enemyStats[0].dodgeRate}</p>
+                    <p>Enemy Crit Rate {enemyStats[0].critRate}</p>
                     <p>{userStats.Attack}</p>
                     <button onClick={() => dispatch(testgaga())}>testgaga</button>
-                    <button onClick={() => dispatch(enemyAttackUserFn(enemyStats.attack,userStats.defence))}>Enemy attack</button>
+                    <button className="goGoAttack" onClick={() => {dispatch(testnana())}}>testnana</button>
+                    <button onClick={() => dispatch(enemyAttackUserFn(enemyStats[0].attack,userStats.defence))}>Enemy attack</button>
                 </div>
                 <div>
                   <h2>Player Status</h2>
@@ -63,6 +72,7 @@ function Main(){
                   <p>Player Hit Rate {userStats.hitRate}</p>
                   <p>Player Dodge Rate {userStats.dodgeRate}</p>
                   <p>Player Crit Rate {userStats.critRate}</p>
+                  <p>Player Exp {userStats.Experience}</p>
                   <p>Player $ {userGold}</p>
                 </div>
               <div className="userItems">
