@@ -32,7 +32,7 @@ function StartMenu(){
           // Auto-play was prevented
         });
       }
-    })
+    }, [])
     const changeMapFadeAudio = () => {
       const fadeAudio = setInterval(() => {
           if (audioBGM.volume !== 0) {

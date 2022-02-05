@@ -114,6 +114,35 @@ export const userAttackEnemyFn = (userAttackStats) => {
             userAttackStats: userAttackStats
         };
     };
+export const EnemyOnHitAnimationFn = () => {
+    return {
+        type: 'EnemyOnHitAnimationFn'
+    };
+};
+
+export const ResetEnemyOnHitAnimationFn = () => {
+    return {
+        type: 'ResetEnemyOnHitAnimationFn'
+    };
+};
+
+export const IfEnemyOnHitFn = () => {
+    return {
+        type: 'IfEnemyOnHitFn',
+    };
+};
+export const switchOnAudio = () => {
+    return {
+        type: 'switchOnAudio',
+    };
+};
+export const switchOffAudio = () => {
+    return {
+        type: 'switchOffAudio',
+    };
+};
+
+
 
 export const testgaga = () => {
     return {
@@ -127,11 +156,7 @@ export const testrara = () => {
     };
 };
 
-export const testnana = () => {
-    return {
-        type: 'testnana',
-    };
-};
+
 
 export const testwin = () => {
     return {

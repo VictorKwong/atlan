@@ -34,7 +34,7 @@ const Fn = [
 
 const enemyStatsReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'testnana':
+        case 'IfEnemyOnHitFn':
             return [{
                 ...state[0],
                 currentHealth: state[0].currentHealth - 20

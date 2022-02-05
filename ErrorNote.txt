@@ -61,3 +61,19 @@ useEffect(() => {
             console.log(error);
         })
 }, []);
+
+Resource:
+https://ro-character-simulator.ratemyserver.net/##
+https://ratemyserver.net/index.php?page=mob_db
+https://irowiki.org/wiki/Emotes
+https://cp.originsro.org/monster/view/?id=1002#
+
+http://nn.ai4rei.net/dev/npclist/?q=tag:animated
+
+Strugarden NEO
+
+button onclick:
+https://erikmartinjordan.com/add-animation-onClick-react
+
+Actual Control Audio in React:
+https://www.codegrepper.com/code-examples/javascript/is+it+possible+to+store+audio+files+in+state+variables+reactjs

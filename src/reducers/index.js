@@ -5,8 +5,11 @@ import userAttributeReducer from "./userAttribute"
 import userGoldReducer from "./userGold";
 import footerEasterEggReducer from "./footerEasterEgg"
 import screenControlRoomReducer from "./screenControlRoom";
+import ImageControlRoomReducer from "./ImageControlRoom";
 import storyLineOneReducer from "./storyLineOne";
 import textReadAndSpeedReducer from "./textReadAndSpeed";
+
+import AudioRoomReducer from "./AudioRoom";
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
@@ -14,6 +17,8 @@ import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
     screenControlRoom: screenControlRoomReducer,
+    ImageControlRoom: ImageControlRoomReducer,
+    AudioRoom: AudioRoomReducer,
     storyLineOne: storyLineOneReducer,
     textReadAndSpeed: textReadAndSpeedReducer,
     lifePotion: lifePotionReducer,

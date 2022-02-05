@@ -31,7 +31,7 @@ function StartMenu(){
           // Auto-play was prevented
         });
       }
-    })
+    }, [])
     const changeMapFadeAudio = () => {
       const fadeAudio = setInterval(() => {
           if (audioBGM.volume !== 0) {
@@ -53,10 +53,8 @@ function StartMenu(){
 
     const changePlaceFadeAudio = () => {
       const fadeAudioOut = setInterval(() => {
-        console.log(audioBGM.volume);
         if (audioBGM.volume > 0.01) {
           audioBGM.volume -= 0.004
-          console.log(audioBGM.volume);
           audioBGM.volume = audioBGM.volume.toFixed(4)
         }
           if (audioBGM.volume === 0.01) {
