@@ -1,18 +1,20 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.dc334439.css",
-    "main.js": "/atlan/static/js/main.86a74856.js",
+    "main.css": "/atlan/static/css/main.8baf3a0c.css",
+    "main.js": "/atlan/static/js/main.e4adadec.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
     "static/media/112Streamside.mp3": "/atlan/static/media/112Streamside.0add809a90de7ff81355.mp3",
+    "static/media/StrugardenNEOBattle1.mp3": "/atlan/static/media/StrugardenNEOBattle1.a804f15e1ab7a78ad2a9.mp3",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
+    "static/media/CharacterBattlePost1.gif": "/atlan/static/media/CharacterBattlePost1.5624a2a8bcad12a4c829.gif",
     "index.html": "/atlan/index.html",
-    "main.dc334439.css.map": "/atlan/static/css/main.dc334439.css.map",
-    "main.86a74856.js.map": "/atlan/static/js/main.86a74856.js.map",
+    "main.8baf3a0c.css.map": "/atlan/static/css/main.8baf3a0c.css.map",
+    "main.e4adadec.js.map": "/atlan/static/js/main.e4adadec.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc334439.css",
-    "static/js/main.86a74856.js"
+    "static/css/main.8baf3a0c.css",
+    "static/js/main.e4adadec.js"
   ]
 }
