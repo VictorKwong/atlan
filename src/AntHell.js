@@ -7,13 +7,13 @@ import $ from 'jquery'
 import audioThemeOfProntera from './audio/112Streamside.mp3'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
-
+const audioBGM = new Audio(audioThemeOfProntera);
 
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
-    const audioBGM = new Audio(audioThemeOfProntera);
+
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -33,7 +33,12 @@ function StartMenu(){
       }
     })
     const changeMapFadeAudio = () => {
+      let i = 0;
       const fadeAudio = setInterval(() => {
+        console.log(audioBGM.volume);
+          if (audioBGM.volume === 0.15){
+            i = i + 1;
+          }
           if (audioBGM.volume !== 0) {
             audioBGM.volume -= 0.002
             audioBGM.volume = audioBGM.volume.toFixed(4)
@@ -42,10 +47,12 @@ function StartMenu(){
               audioBGM.pause();
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
+          }else if (i >= 2){
+            audioBGM.volume = 0.15
+            clearInterval(fadeAudio);
           }
         }, 10);
     }
-
     const changePlaceFadeAudio = () => {
       const fadeAudioOut = setInterval(() => {
         console.log(audioBGM.volume);

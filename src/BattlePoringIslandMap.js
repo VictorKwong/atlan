@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga, IfEnemyOnHitFn, testwin, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, switchOffAudio ,switchOnAudio  } from './actions';
+import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga, IfEnemyOnHitFn, testwin, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn } from './actions';
 import './css/mapBattle.css'
 import PoringIsland from './PoringIsland'
 import Poring from './img/Poring.gif'
 import Lunatic from './img/Lunatic.gif'
-import MainCharacter from './img/Character/CharacterBattlePost1.gif'
+import UserBattlePost from './img/Character/USerBattlePost1.gif'
+import UserAttackPost from './img/Character/UserAttackPost1.gif'
+import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import $ from 'jquery'
 
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
@@ -14,7 +16,6 @@ const audioBGM = new Audio(audioStrugardenNEOBattle1);
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
-    const AudioRoom = useSelector(state => state.AudioRoom)
     const lifePotion = useSelector(state => state.lifePotion)
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
@@ -30,15 +31,12 @@ function Main(){
     useEffect(() => {
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
-
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
           audioBGM.loop = true;
           audioBGM.play()
-            
-        })
-        .catch(error => {
+        }).catch(error => {
           // Auto-play was prevented
         });
       }
@@ -66,17 +64,22 @@ function Main(){
       useEffect(() => {
           if (enemyStats[0].currentHealth <= 0){
             dispatch(testwin());
-            $('.goGoAttack').prop("disabled", true);
+            // $('.goGoAttack').prop("disabled", true);
           }
-      }, [enemyStats[0].currentHealth]);
+      }, [enemyStats, dispatch]);
 
     const userAttackEnemyButton = () => {
-
+      dispatch(UserAttackAnimationFn());
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1100);
       dispatch(IfEnemyOnHitFn());
       dispatch(EnemyOnHitAnimationFn());
       setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-      console.log(audioBGM.volume);
-      console.log(audioBGM);
+    }
+
+    const EmenyAttackUserQFn = () => {
+      dispatch(UserOnHitAnimationFn());
+      setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
+      dispatch(enemyAttackUserFn(enemyStats[0].attack,userStats.defence))
     }
 
     let i = 0;
@@ -107,13 +110,14 @@ function Main(){
                     <p>Enemy Crit Rate {enemyStats[0].critRate}</p> */}
                     <p>{userStats.Attack}</p>
                     <button onClick={() => dispatch(testgaga())}>testgaga</button>
-                    <button onClick={() => dispatch(enemyAttackUserFn(enemyStats[0].attack,userStats.defence))}>Enemy attack</button>
+                    <button onClick={() => EmenyAttackUserQFn()}>Enemy attack</button>
                 </div>
                 <div>
                   <h2>Player Status</h2>
 
                   <p>Player Health {userStats.currentHealth}/{userStats.maxHealth}</p>
-                    <img src={MainCharacter} alt="MainCharacter" />
+                    {ImageControlRoom.UserAttack ? <img src={UserAttackPost} alt="UserAttackPost" /> :
+                    ImageControlRoom.UserOnHit ? <img src={UserOnHitPost} alt="UserOnHitPost" /> : <img src={UserBattlePost} alt="UserBattlePost"/>}
                     <button className="goGoAttack" onClick={() => userAttackEnemyButton()}>Attack</button>
                   {/* <p>Player Level {userStats.level}</p>
                   <p>Player Attack {userStats.attack}</p>
@@ -149,8 +153,6 @@ function Main(){
               </div>  
               <div className="StoryHUD">
                 <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
-                <button onClick={() => dispatch(switchOnAudio())}>Stop Music GO</button>
-                <button onClick={() => dispatch(switchOffAudio())}>Stop Music2</button>
                 <h1>HUD</h1>
                 <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn());  changeMapFadeAudio();}}>PoringIsland</button>
               </div>
