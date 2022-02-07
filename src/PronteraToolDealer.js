@@ -10,9 +10,6 @@ import Prontera from './Prontera'
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
 // import useSound from 'use-sound';
-let confirmRedPotion = false;
-let confirmYellowPotion = false;
-
 
 // AudioCurrentTimeSaverFn
 function StartMenu(){
@@ -26,10 +23,6 @@ function StartMenu(){
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
-    useEffect(() => {
-      $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][0].text}</p>`)
-      $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][0].name}</p>`)
-    }, [])
 
     const talkToToolDealerBuy = () => {
       $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][1].text}</p>`)
@@ -39,60 +32,61 @@ function StartMenu(){
       $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][2].text}</p>`)
       $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][2].name}</p>`)
     }
-    const talkToToolDealerBuyItem = () => {
-      console.log(confirmRedPotion);
+    const talkToToolDealerBuyRedPotion = () => {
       (() => {
         switch (true) {
-          case (userGoldItem.Gold >= 50 && confirmRedPotion === true):
+          case (userGoldItem.Gold >= 50):
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            confirmRedPotion = false;
             dispatch(BuyRedPotionFn());
             break;
-          case (userGoldItem.Gold >= 200 && confirmYellowPotion === true):
+          default:
+            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][4].text}</p>`)
+            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][4].name}</p>`)
+        }
+      })()
+    }
+    const talkToToolDealerBuyYellowPotion = () => {
+      (() => {
+        switch (true) {
+          case (userGoldItem.Gold >= 200):
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            confirmYellowPotion = false;
             dispatch(BuyYellowPotionFn());
             break;
           default:
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][4].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][4].name}</p>`)
-            confirmRedPotion = false;
-            confirmYellowPotion = false;
         }
       })()
     }
-    const talkToToolDealerSellItem = () => {
+    const talkToToolDealerSellRedPotion = () => {
       (() => {
         switch (true) {
-          case (userGoldItem.RedPotion >= 1 && confirmRedPotion === true):
+          case (userGoldItem.RedPotion >= 1):
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            confirmRedPotion = false;
             dispatch(SellRedPotionFn());
             break;
-          case (userGoldItem.YellowPotion >= 1 && confirmYellowPotion === true):
+          default:
+            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][5].text}</p>`)
+            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][5].name}</p>`)
+        }
+      })()
+    }
+    const talkToToolDealerSellYellowPotion = () => {
+      (() => {
+        switch (true) {
+          case (userGoldItem.YellowPotion >= 1):
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            confirmYellowPotion = false;
             dispatch(SellYellowPotionFn());
             break;
           default:
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][5].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][5].name}</p>`)
-            confirmRedPotion = false;
-            confirmYellowPotion = false;
         }
       })()
-    }
-
-// Confirm Order
-    const confirmRedPotionQtn = () => {
-        confirmRedPotion = true;
-    }
-    const confirmYellowPotionQtn = () => { 
-        confirmYellowPotion = true;
     }
 
     return(
@@ -105,13 +99,13 @@ function StartMenu(){
               
               {npcControlRoom.ToolDealerBuy ?
                 <div>
-                  <button onClick={() =>{talkToToolDealerBuyItem(); confirmRedPotionQtn();}}><img src={RedPotion} alt="RedPotion" /> -$50</button>
-                  <button onClick={() =>{talkToToolDealerBuyItem(); confirmYellowPotionQtn(); }}><img src={YellowPotion} alt="YellowPotion" /> -$200</button>
+                  <button onClick={() =>{talkToToolDealerBuyRedPotion();}}><img src={RedPotion} alt="RedPotion" /> -$50</button>
+                  <button onClick={() =>{talkToToolDealerBuyYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> -$200</button>
                 </div>
                 : npcControlRoom.ToolDealerSell ?
                 <div>
-                  <button onClick={() =>{talkToToolDealerSellItem(); confirmRedPotionQtn();}}><img src={RedPotion} alt="RedPotion" /> +$40</button>
-                  <button onClick={() =>{talkToToolDealerSellItem(); confirmYellowPotionQtn();}}><img src={YellowPotion} alt="YellowPotion" /> +$160</button>
+                  <button onClick={() =>{talkToToolDealerSellRedPotion();}}><img src={RedPotion} alt="RedPotion" /> +$40</button>
+                  <button onClick={() =>{talkToToolDealerSellYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> +$160</button>
                 </div> : null
                 }
 
@@ -124,8 +118,8 @@ function StartMenu(){
           </div>
         </div>
         <fieldset className="storyChat">
-        <legend className="storyCharacter"></legend>
-        <p className="storySpeech">TestMap</p>
+        <legend className="storyCharacter">{npcSpeech['ToolDealer'][0].text}</legend>
+        <p className="storySpeech">{npcSpeech['ToolDealer'][0].name}</p>
           <button onClick={() =>{dispatch(ToolDealerBuyFn()); talkToToolDealerBuy();}}>Buy</button>
           <button onClick={() =>{dispatch(ToolDealerSellFn()); talkToToolDealerSell();}}>Sell</button>
           <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetToolDealerBuySellFn());}}>Leave</button>

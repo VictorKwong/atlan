@@ -1,7 +1,15 @@
+//State['User'].UserTurn
 const Fn = {
-    BattleSkillScreen: false,
-    UserTurn: false,
-    EnemyTurn: false,
+    User:{
+        BattleSkillScreen: false,
+        UserTurn: false,
+        UserBlock: false,
+    },
+    Enemy:{
+        EnemyTurn: false,
+        EnemyBlock: false,
+    }
+    
 }
 
 const SkillControlRoomReducer = (state = Fn, action) => {
@@ -9,37 +17,91 @@ const SkillControlRoomReducer = (state = Fn, action) => {
         case 'UserInSelectSkillFn':
             return {
                 ...state,
-                BattleSkillScreen: true
+                User:{
+                    ...state['User'],
+                    BattleSkillScreen: true,
+                    
                 }
+        }
         case 'ReturnUserInSelectSkillFn':
             return {
                 ...state,
-                BattleSkillScreen: false
+                User:{
+                    ...state['User'],
+                    BattleSkillScreen: false,
+                    
                 }
+        }
         case 'UserTurnFn':
             return {
-                ...state,
-                UserTurn: true
-                }
+                    ...state,
+                    User:{
+                        ...state['User'],
+                        UserTurn: true,
+                    }
+            }
         case 'ResetUserTurnFn':
             return {
                 ...state,
-                UserTurn: false,
+                User:{
+                    ...state['User'],
+                    UserTurn: false,
                 }
+        }
+        case 'UserTurnBlockFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserBlock: true,
+                }
+        }
+        case 'ResetUserTurnBlockFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserBlock: false,
+                }
+        }
         case 'EnemyTurnFn':
             return {
                 ...state,
-                EnemyTurn: true
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyTurn: true,
+                    
                 }
+            }
         case 'ResetEnemyTurnFn':
             return {
                 ...state,
-                EnemyTurn: false,
-                }        
-        default:
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyTurn: false,
+                    
+                }
+            }
+        case 'EnemyTurnBlockFn':
             return {
                 ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyBlock: true,
                 }
+            }
+        case 'ResetEnemyTurnBlockFn':
+            return {
+                ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyBlock: false,
+                }
+            }
+        default:
+            return {
+                    ...state
+                }
+            }
     }
-}
 export default SkillControlRoomReducer;

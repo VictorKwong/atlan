@@ -11,14 +11,14 @@ import $ from 'jquery'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
+function StartMenu(){
 
-function StartMenu(props){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
-    
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     return(
+      
       <div>
         {
         screenControlRoom.Prontera ? <Prontera />:

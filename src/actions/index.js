@@ -13,6 +13,18 @@ export const enemyAttackUserFn = (eAttack,uDefence) => {
     };
 };
 
+export const EnemyAttackBlockUserFn = () => {
+    return {
+        type: 'EnemyAttackBlockUserFn',
+    };
+};
+export const UserAttackBlockEnemyFn = () => {
+    return {
+        type: 'UserAttackBlockEnemyFn',
+    };
+};
+
+
 export const usingLifePotion = () => {
     return {
         type: 'usingLifePotion',
@@ -174,6 +186,17 @@ export const ResetUserIsDeadAnimationFn = () => {
         type: 'ResetUserIsDeadAnimationFn'
     };
 };
+export const UserIsBlockAnimationFn = () => {
+    return {
+        type: 'UserIsBlockAnimationFn'
+    };
+};
+export const ResetUserIsBlockAnimationFn = () => {
+    return {
+        type: 'ResetUserIsBlockAnimationFn'
+    };
+};
+
 
 //Skills
 export const UserInSelectSkillFn = () => {
@@ -186,17 +209,6 @@ export const ReturnUserInSelectSkillFn = () => {
         type: 'ReturnUserInSelectSkillFn'
     };
 };
-export const UserTurnFn = () => {
-    return {
-        type: 'UserTurnFn'
-    };
-};
-export const ResetUserTurnFn = () => {
-    return {
-        type: 'ResetUserTurnFn'
-    };
-};
-
 export const EnemyTurnFn = () => {
     return {
         type: 'EnemyTurnFn'
@@ -207,6 +219,43 @@ export const ResetEnemyTurnFn = () => {
         type: 'ResetEnemyTurnFn'
     };
 };
+export const UserTurnBlockFn = () => {
+    return {
+        type: 'UserTurnBlockFn'
+    };
+};
+export const ResetUserTurnBlockFn = () => {
+    return {
+        type: 'ResetUserTurnBlockFn'
+    };
+};
+export const UserTurnFn = () => {
+    return {
+        type: 'UserTurnFn'
+    };
+};
+export const ResetUserTurnFn = () => {
+    return {
+        type: 'ResetUserTurnFn'
+    };
+};
+export const EnemyTurnBlockFn = () => {
+    return {
+        type: 'EnemyTurnBlockFn'
+    };
+};
+export const ResetEnemyTurnBlockFn = () => {
+    return {
+        type: 'ResetEnemyTurnBlockFn'
+    };
+};
+
+
+
+
+
+
+
 
 export const IfEnemyOnHitFn = () => {
     return {
@@ -296,6 +345,18 @@ export const SellRedPotionFn = () => {
 export const SellYellowPotionFn = () => {
     return {
         type: 'SellYellowPotionFn'
+    };
+};
+
+//Clock Fixing
+export const userClockDefendFn = () => {
+    return {
+        type: 'userClockDefendFn'
+    };
+};
+export const enemyClockDefendFn = () => {
+    return {
+        type: 'enemyClockDefendFn'
     };
 };
 

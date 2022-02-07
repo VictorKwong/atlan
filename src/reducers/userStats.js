@@ -7,10 +7,12 @@ const Fn = {
     attack: 25,
     power: 10,
     defence: 18,
+    defencebuffer: 28, // 18 + 10
     speed: 10,
     hitRate: 0.8,
     dodgeRate: 0.1,
-    critRate: 0.05
+    critRate: 0.05,
+    userClockDefend: false,
 }
 
 const userStatsReducer = (state = Fn, action) => {
@@ -26,6 +28,12 @@ const userStatsReducer = (state = Fn, action) => {
                 currentHealth: state.currentHealth - 20,
                 //(action.payloadeAttack)/(action.payloaduDefence)
             }
+        case 'EnemyAttackBlockUserFn':
+            return {
+                ...state,
+                currentHealth: state.currentHealth - 10,
+                //(action.payloadeAttack)/(action.payloaduDefence)
+        }
         case 'WinResultFn':
             return{
                 ...state,
@@ -40,6 +48,12 @@ const userStatsReducer = (state = Fn, action) => {
             return{
                 ...state,
                 currentHealth: state.maxHealth,
+            }
+        //Rerender Fn
+        case 'userClockDefendFn':
+            return {
+                ...state,
+                userClockDefend: !state.userClockDefend,
             }
         default:
             return state;
