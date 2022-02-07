@@ -17,6 +17,15 @@ if (playPromise !== undefined) {
 Update child component's state from the parent component in react-redux
 
 ~Review:
+https://medium.com/nerd-for-tech/a-case-to-switch-using-switch-statements-in-react-e83e01154f60
+
+{(() => {
+switch (game) {
+    case 'start':
+    return <Start handleClick={handleClick} />
+    default:
+    return null
+}
 
 state = {
     count: 0

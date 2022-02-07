@@ -6,6 +6,7 @@ const Fn = {
     WorldMap: false,
     BattlePoringIslandMap: false,
     Prontera: false,
+    PronteraToolDealer: false,
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
@@ -47,6 +48,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: false,
                 BattlePoringIslandMap: false,
                 Prontera: !state.Prontera,
+                PronteraToolDealer: false,
                 PronteraSouth: false,
                 PoringIsland: false,
                 AntHell: false,
@@ -57,6 +59,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: false,
                     Prontera: false,
+                    PronteraToolDealer: false,
                     PronteraSouth: false,
                     PoringIsland: !state.PoringIsland,
                     AntHell: false,
@@ -67,6 +70,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: !state.WorldMap,
                     BattlePoringIslandMap: false,
                     Prontera: false,
+                    PronteraToolDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
@@ -77,6 +81,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: !state.BattlePoringIslandMap,
                     Prontera: false,
+                    PronteraToolDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
@@ -87,11 +92,22 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: false,
                     Prontera: false,
+                    PronteraToolDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: !state.AntHell,
                 }
-
+            case 'GotoPronteraToolDealerFn':
+                return {
+                    ...state,
+                    WorldMap: false,
+                    BattlePoringIslandMap: false,
+                    Prontera: false,
+                    PronteraToolDealer: !state.PronteraToolDealer,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    AntHell: false,
+                }
         default:
             return state;
     }

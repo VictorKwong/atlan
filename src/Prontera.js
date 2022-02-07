@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , typeWritterEffectFn } from './actions';
-import { TalktoKafraEmployeeFn, ResetTalktoKafraEmployeeFn, KafraEmployeeHealFn } from './actions';
+import { GotoWorldMapFn , GotoPronteraToolDealerFn } from './actions';
+import { AudioCurrentTimeSaverFn } from './actions';
+
+import { TalktoKafraEmployeeFn, ResetTalktoKafraEmployeeFn, KafraEmployeeHealFn, } from './actions';
 
 
 import WorldMap from './WorldMap'
+import PronteraToolDealer from './PronteraToolDealer'
 import './css/mapProntera.css'
 import $ from 'jquery'
 import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
@@ -14,8 +17,10 @@ const audioBGM = new Audio(audioThemeOfProntera);
 
 
 function StartMenu(){
+    const userStats = useSelector(state => state.userStats)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
+    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
@@ -49,6 +54,8 @@ function StartMenu(){
           }
           if (audioBGM.volume < 0.002) {
               audioBGM.pause();
+              console.log(audioBGM.currentTime)
+              dispatch(AudioCurrentTimeSaverFn(audioBGM.currentTime))
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
           }else if (i >= 2){
@@ -73,6 +80,7 @@ function StartMenu(){
             audioBGM.volume = 0.15;
             clearInterval(fadeAudioOut);
           }
+          
       }, 10);
   }
     const talkToKafraEmployee = () => {
@@ -84,19 +92,24 @@ function StartMenu(){
       $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][1].text}</p>`)
       $('.storyCharacter').html(`<p>${npcSpeech['KafraEmployee'][1].name}</p>`)
       dispatch(KafraEmployeeHealFn());
+      if (userStats.currentHealth === userStats.maxHealth ){
+        $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][2].text}</p>`)
+        $('.storyCharacter').html(`<p>${npcSpeech['KafraEmployee'][2].name}</p>`)
+      }
     }
     
     return(
       <div>
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
+        screenControlRoom.PronteraToolDealer ? <PronteraToolDealer/>:
         <div>
           <div className="storyMapScreen">
             <div className="PronteraMap">
-              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>ToolDealer</button>
+              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn()); dispatch(GotoPronteraToolDealerFn());}}>ToolDealer</button>
               <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>WeaponArmorDealer</button>
               <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>PronteraSouthGate</button>
-              <button className="kafraEmployee" onClick={() => {changePlaceFadeAudio(); talkToKafraEmployee();}}>Kafra Employee</button>
+              <button className="kafraEmployee" onClick={() => {talkToKafraEmployee();}}>Kafra Employee</button>
               
 
             </div>
@@ -108,7 +121,7 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech">TestMap</p>
-              {npcControlRoom.KafraEmployee ? <button onClick={() =>{talkToKafraEmployeeHeal();}}>Heal</button> : null}
+              {npcControlRoom.KafraEmployee ? <button className="kafraEmployeeHeal" onClick={() =>{talkToKafraEmployeeHeal();}}>Heal</button> : null}
           </fieldset>
         </div>
         }

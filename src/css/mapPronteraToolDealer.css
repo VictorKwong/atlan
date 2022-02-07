@@ -1,0 +1,29 @@
+.storyScreen,
+.storyChat{
+  text-align: center;
+}
+
+.storyMapScreen{
+  height: calc(75vh - 3rem);
+  display: flex;
+}
+
+.storyChat{
+  height: 25vh;
+}
+
+.PronteraToolDealerMap{
+  width:80%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+}
+
+.StoryHUD{
+  width:20%;
+  border: 1px solid black;
+}

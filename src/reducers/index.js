@@ -7,11 +7,11 @@ import footerEasterEggReducer from "./footerEasterEgg"
 import screenControlRoomReducer from "./screenControlRoom";
 import ImageControlRoomReducer from "./ImageControlRoom";
 import SkillControlRoomReducer from "./SkillControlRoom";
+import audioControlRoomReducer from "./audioControlRoom";
 import npcControlRoomReducer from "./npcControlRoom";
 import storyLineOneReducer from "./storyLineOne";
 import textReadAndSpeedReducer from "./textReadAndSpeed";
 import npcSpeechReducer from "./npcSpeech";
-
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
@@ -22,6 +22,7 @@ const allReducers = combineReducers({
     ImageControlRoom: ImageControlRoomReducer,
     SkillControlRoom: SkillControlRoomReducer,
     npcControlRoom: npcControlRoomReducer,
+    audioControlRoom: audioControlRoomReducer,
     storyLineOne: storyLineOneReducer,
     textReadAndSpeed: textReadAndSpeedReducer,
     npcSpeech: npcSpeechReducer,

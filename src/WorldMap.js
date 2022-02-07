@@ -5,14 +5,14 @@ import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PoringIsland from './PoringIsland'
 import AntHell from './AntHell'
+import PronteraToolDealer from './PronteraToolDealer'
 import './css/storyMainMap.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 
-
-function StartMenu(){
+function StartMenu(props){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
@@ -25,6 +25,7 @@ function StartMenu(){
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.AntHell ? <AntHell />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
+        screenControlRoom.PronteraToolDealer ? <PronteraToolDealer /> :
         <div>
           <div className="storyMapScreen">
             <div className="StoryMap">

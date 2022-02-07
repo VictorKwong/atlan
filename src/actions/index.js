@@ -72,6 +72,12 @@ export const GotoPronteraFn = () => {
         type: 'GotoPronteraFn',
     };
 };
+export const GotoPronteraToolDealerFn = () => {
+    return {
+        type: 'GotoPronteraToolDealerFn',
+    };
+};
+
 export const GotoPoringIslandFn = () => {
     return {
         type: 'GotoPoringIslandFn',
@@ -251,10 +257,30 @@ export const ResetTalktoKafraEmployeeFn = () => {
         type: 'ResetTalktoKafraEmployeeFn'
     };
 };
-
 export const KafraEmployeeHealFn = () => {
     return {
         type: 'KafraEmployeeHealFn'
+    };
+};
+export const ToolDealerBuyFn = () => {
+    return {
+        type: 'ToolDealerBuyFn'
+    };
+};
+export const ResetToolDealerBuyFn = () => {
+    return {
+        type: 'ResetToolDealerBuyFn'
+    };
+};
+
+
+
+
+//Audio Interaction
+export const AudioCurrentTimeSaverFn = (currentTime) => {
+    return {
+        type: 'AudioCurrentTimeSaverFn',
+        currentTime: currentTime
     };
 };
 

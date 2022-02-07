@@ -1,5 +1,6 @@
 const Fn = {
     KafraEmployee: false,
+    ToolDealerBuy: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -14,6 +15,17 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 KafraEmployee: false,
             }
+        case 'ToolDealerBuyFn':
+            return {
+                ...state,
+                ToolDealerBuy: true,
+            }
+        case 'ResetToolDealerBuyFn':
+            return {
+                ...state,
+                ToolDealerBuy: false,
+            }
+        
         default:
             return state;
     }
