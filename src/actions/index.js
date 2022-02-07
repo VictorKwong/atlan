@@ -142,13 +142,65 @@ export const EnemyOnHitAnimationFn = () => {
         type: 'EnemyOnHitAnimationFn'
     };
 };
-
 export const ResetEnemyOnHitAnimationFn = () => {
     return {
         type: 'ResetEnemyOnHitAnimationFn'
     };
 };
+export const UserIsDyingAnimationFn = () => {
+    return {
+        type: 'UserIsDyingAnimationFn'
+    };
+};
+export const ResetUserIsDyingAnimationFn = () => {
+    return {
+        type: 'ResetUserIsDyingAnimationFn'
+    };
+};
 
+export const UserIsDeadAnimationFn = () => {
+    return {
+        type: 'UserIsDeadAnimationFn'
+    };
+};
+export const ResetUserIsDeadAnimationFn = () => {
+    return {
+        type: 'ResetUserIsDeadAnimationFn'
+    };
+};
+
+//Skills
+export const UserInSelectSkillFn = () => {
+    return {
+        type: 'UserInSelectSkillFn'
+    };
+};
+export const ReturnUserInSelectSkillFn = () => {
+    return {
+        type: 'ReturnUserInSelectSkillFn'
+    };
+};
+export const UserTurnFn = () => {
+    return {
+        type: 'UserTurnFn'
+    };
+};
+export const ResetUserTurnFn = () => {
+    return {
+        type: 'ResetUserTurnFn'
+    };
+};
+
+export const EnemyTurnFn = () => {
+    return {
+        type: 'EnemyTurnFn'
+    };
+};
+export const ResetEnemyTurnFn = () => {
+    return {
+        type: 'ResetEnemyTurnFn'
+    };
+};
 
 export const IfEnemyOnHitFn = () => {
     return {
@@ -169,9 +221,40 @@ export const testrara = () => {
 };
 
 
-
-export const testwin = () => {
+//Win & Lose Reset
+export const WinResultFn = (EnemyExperience) => {
     return {
-        type: 'testwin',
+        type: 'WinResultFn',
+        enemyExperience: EnemyExperience,
     };
 };
+
+export const ResetEnemyCurrentHealthFn = () => {
+    return {
+        type: 'ResetEnemyCurrentHealthFn'
+    };
+};
+export const ReturnCheckPointFn = () => {
+    return {
+        type: 'ReturnCheckPointFn'
+    };
+};
+
+//NPC Interaction
+export const TalktoKafraEmployeeFn = () => {
+    return {
+        type: 'TalktoKafraEmployeeFn'
+    };
+};
+export const ResetTalktoKafraEmployeeFn = () => {
+    return {
+        type: 'ResetTalktoKafraEmployeeFn'
+    };
+};
+
+export const KafraEmployeeHealFn = () => {
+    return {
+        type: 'KafraEmployeeHealFn'
+    };
+};
+

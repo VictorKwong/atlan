@@ -10,10 +10,11 @@ const Fn = [
         attack: 5,
         power: 2,
         defence: 5,
-        speed: 1,
+        speed: 3,
         hitRate: 0.7,
         dodgeRate: 0.05,
-        critRate: 0.03
+        critRate: 0.03,
+        Experience: 1,
     },
     {
         name: 'Lunatic',
@@ -23,10 +24,11 @@ const Fn = [
         attack: 10,
         power: 3,
         defence: 7,
-        speed: 2,
+        speed: 7,
         hitRate: 0.8,
         dodgeRate: 0.05,
-        critRate: 0.03
+        critRate: 0.03,
+        Experience: 2,
     },
     
 
@@ -42,7 +44,15 @@ const enemyStatsReducer = (state = Fn, action) => {
             {
                 ...state[1]
             }]
-            
+        case 'ResetEnemyCurrentHealthFn':
+            return [{
+                ...state[0],
+                currentHealth: 100,
+            },
+            {
+                ...state[1],
+                currentHealth: 200,
+            }]
         default:
             return state;
     }

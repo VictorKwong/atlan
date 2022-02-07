@@ -46,3 +46,7 @@
 60%{opacity: 1;}
 100%{opacity: 1;}
 }
+
+.userSkillBox{
+  border: 1px soilid black;
+}

@@ -1,6 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga, IfEnemyOnHitFn, testwin, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn } from './actions';
+import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga, IfEnemyOnHitFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn } from './actions';
+import { ReturnUserInSelectSkillFn, UserInSelectSkillFn } from './actions';
+
+import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn } from './actions';
+
+import { WinResultFn, ResetEnemyCurrentHealthFn } from './actions';
+
+import { ReturnCheckPointFn } from './actions'
+
 import './css/mapBattle.css'
 import PoringIsland from './PoringIsland'
 import Poring from './img/Poring.gif'
@@ -8,14 +16,24 @@ import Lunatic from './img/Lunatic.gif'
 import UserBattlePost from './img/Character/USerBattlePost1.gif'
 import UserAttackPost from './img/Character/UserAttackPost1.gif'
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
+import UserIsDyingPost from './img/Character/UserDyingPost1.png'
+import UserIsDeadPost from './img/Character/UserDeadPost1.png'
+import skillBash from './img/Skill/sm_bash.gif'
+import skillMagnum from './img/Skill/sm_magnum.gif'
 import $ from 'jquery'
 
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
 
+let clockBarObject = {
+  userClockBar: 0,
+  enemyClockBar: 0,
+}
+
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
+    const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const lifePotion = useSelector(state => state.lifePotion)
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
@@ -61,27 +79,96 @@ function Main(){
         setTimeout(() => {
           dispatch(userAttackEnemyFn(userStats.attack))}, 500);
       };
+    // VICTORY FUCNTION
       useEffect(() => {
           if (enemyStats[0].currentHealth <= 0){
-            dispatch(testwin());
+            $('.storySpeech').html(`Victory! ${enemyStats[0].Experience} EXP received.`)
+            dispatch(WinResultFn(enemyStats[0].Experience));
+  
             // $('.goGoAttack').prop("disabled", true);
           }
+      }, [enemyStats, dispatch,clockBarObject ]);
+    // DEFEAT FUNCTION
+      useEffect(() => {
+        if (userStats.currentHealth <= 0){
+          $('.storySpeech').html(`Defeat... Altan Fainted......`)
+          // $('.goGoAttack').prop("disabled", true);
+        }
       }, [enemyStats, dispatch]);
+    // RESET CLOCK
+    const resetClockButton = () => {
+                //Reset Clock;
+                clockBarObject.userClockBar = 0;
+                clockBarObject.enemyClockBar = 0;
+    }
+      useEffect(() => {
+        if (userStats.currentHealth <= 0){
+          setTimeout(() => dispatch(UserIsDyingAnimationFn()), 250);
+          setTimeout(() => dispatch(ResetUserIsDyingAnimationFn()), 400);
+          dispatch(UserIsDeadAnimationFn());
+          // $('.goGoAttack').prop("disabled", true);
+        }
+    }, [userStats, dispatch]);
+ 
 
+
+    // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1100);
       dispatch(IfEnemyOnHitFn());
       dispatch(EnemyOnHitAnimationFn());
       setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+      // Text display
+      $('.storySpeech').html('<p>Altan Attack!</p>' + "\n" + `<p>Enemy Received ${userStats.attack} damage</p>`)
+      // End turn
+      // dispatch(ResetUserClockFn());
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
     }
 
     const EmenyAttackUserQFn = () => {
       dispatch(UserOnHitAnimationFn());
       setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
       dispatch(enemyAttackUserFn(enemyStats[0].attack,userStats.defence))
+      // Text display
+      $('.storySpeech').html(`<p>${enemyStats[0].name} Attack!</p>` + "\n" + `<p>Altan Received ${enemyStats[0].attack} damage</p>`)
+      // End turn
+      // dispatch(ResetUserClockFn());
+      clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
+      dispatch(ResetEnemyTurnFn());
     }
 
+    useEffect(() => {
+      if (enemyStats[0].currentHealth > 0 && userStats.currentHealth > 0){
+        const ClockTurn = setInterval(() => {
+          // *study
+          (() => {
+            switch (true) {
+              case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed >= enemyStats[0].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
+                dispatch(UserTurnFn());
+                console.log('UserTurn is good')
+                return clearInterval(ClockTurn);
+              case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed < enemyStats[0].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
+                dispatch(EnemyTurnFn());
+                console.log('EnemyTurn is good')
+                return clearInterval(ClockTurn);
+              default:
+                console.log(`userClock: ${clockBarObject.userClockBar}`)
+                console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
+                return clockBarObject = {
+                  userClockBar: clockBarObject.userClockBar + userStats.speed,
+                  enemyClockBar: clockBarObject.enemyClockBar + enemyStats[0].speed,
+                }
+            }
+          })()
+          console.log('ticking')
+          }, 100);
+      }
+    }, [enemyStats, userStats.speed, SkillControlRoom.UserTurn, SkillControlRoom.EnemyTurn, dispatch]);
+
+
+    //Monster Random Number
     let i = 0;
 
     return(
@@ -110,15 +197,37 @@ function Main(){
                     <p>Enemy Crit Rate {enemyStats[0].critRate}</p> */}
                     <p>{userStats.Attack}</p>
                     <button onClick={() => dispatch(testgaga())}>testgaga</button>
-                    <button onClick={() => EmenyAttackUserQFn()}>Enemy attack</button>
+                    { SkillControlRoom.EnemyTurn ?
+                    <button onClick={() => EmenyAttackUserQFn()}>Enemy attack</button> : <p>Not Enemy Turn</p>}
+
                 </div>
                 <div>
                   <h2>Player Status</h2>
 
                   <p>Player Health {userStats.currentHealth}/{userStats.maxHealth}</p>
                     {ImageControlRoom.UserAttack ? <img src={UserAttackPost} alt="UserAttackPost" /> :
-                    ImageControlRoom.UserOnHit ? <img src={UserOnHitPost} alt="UserOnHitPost" /> : <img src={UserBattlePost} alt="UserBattlePost"/>}
-                    <button className="goGoAttack" onClick={() => userAttackEnemyButton()}>Attack</button>
+                    ImageControlRoom.UserOnHit ? <img src={UserOnHitPost} alt="UserOnHitPost" /> : 
+                    ImageControlRoom.UserIsDying ? <img src={UserIsDyingPost} alt="UserIsDyingPost" /> :
+                    ImageControlRoom.UserIsDead ? <img src={UserIsDeadPost} alt="UserIsDeadPost"/> : <img src={UserBattlePost} alt="UserBattlePost"/>}
+                    
+                    <div className="userSkillBox">
+                      { SkillControlRoom.BattleSkillScreen && SkillControlRoom.UserTurn ? 
+                      <div>
+                        <button><img src={skillBash} alt="skillBash" /> Bash</button>
+                        <button><img src={skillMagnum} alt="skillBash" /> Magnum Break</button>
+                        <button onClick={() => dispatch(ReturnUserInSelectSkillFn())}>Back</button>
+                        
+                      </div>
+                      : SkillControlRoom.UserTurn ? 
+                      <div>
+                        <button className="goGoAttack" onClick={() => userAttackEnemyButton()}>Attack</button>
+                        <button className="goGoSkill"  onClick={() => dispatch(UserInSelectSkillFn())}>Skills</button>
+                      </div>
+                      : null
+                      }
+                      {/* <button onClick={TurnBaseQFn}>TurnBaseUserTest</button> */}
+                      <p>userClockBar: {clockBarObject.userClockBar}</p>
+                    </div>
                   {/* <p>Player Level {userStats.level}</p>
                   <p>Player Attack {userStats.attack}</p>
                   <p>Player Defence {userStats.defence}</p>
@@ -149,17 +258,22 @@ function Main(){
                     </div>
                     {isLogged ? <h3>You are Log in</h3> : <h3>you are not log In</h3>}
                     <button onClick={() => dispatch(sign_in())}>sign in</button>
+                    <div>
+                      <h2>Clock Turn:</h2>
+                    </div>
               </div>
               </div>  
               <div className="StoryHUD">
                 <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
                 <h1>HUD</h1>
-                <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn());  changeMapFadeAudio();}}>PoringIsland</button>
+                <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); changeMapFadeAudio();}}>PoringIsland</button>
               </div>
           </div>
           <fieldset className="storyChat">
             <legend className="storyCharacter"></legend>
             <p className="storySpeech">TestMap</p>
+            {enemyStats[0].currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio();}}>Press to Continue</button> 
+            : userStats.currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button> : null}
 
           </fieldset>
         </div>

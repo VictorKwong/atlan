@@ -6,8 +6,11 @@ import userGoldReducer from "./userGold";
 import footerEasterEggReducer from "./footerEasterEgg"
 import screenControlRoomReducer from "./screenControlRoom";
 import ImageControlRoomReducer from "./ImageControlRoom";
+import SkillControlRoomReducer from "./SkillControlRoom";
+import npcControlRoomReducer from "./npcControlRoom";
 import storyLineOneReducer from "./storyLineOne";
 import textReadAndSpeedReducer from "./textReadAndSpeed";
+import npcSpeechReducer from "./npcSpeech";
 
 
 import enemyStatsReducer from "./enemyStats";
@@ -17,8 +20,11 @@ import { combineReducers } from "redux";
 const allReducers = combineReducers({
     screenControlRoom: screenControlRoomReducer,
     ImageControlRoom: ImageControlRoomReducer,
+    SkillControlRoom: SkillControlRoomReducer,
+    npcControlRoom: npcControlRoomReducer,
     storyLineOne: storyLineOneReducer,
     textReadAndSpeed: textReadAndSpeedReducer,
+    npcSpeech: npcSpeechReducer,
     lifePotion: lifePotionReducer,
     isLogged: loggedReducer,
     userStats: userStatsReducer,

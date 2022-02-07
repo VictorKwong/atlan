@@ -4,7 +4,7 @@ https://ragnapi.com/
 
 Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().
 
-Review:
+~Review:
 if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
@@ -16,7 +16,7 @@ if (playPromise !== undefined) {
 
 Update child component's state from the parent component in react-redux
 
-Review:
+~Review:
 
 state = {
     count: 0
@@ -36,7 +36,7 @@ reducer = (state = this.state, action) => {
 
 React in Jquery:
 
-Review:
+~Review:
 $('.toolDealerNPC').on('click', function(event) {
     event.preventDefault();
     audioBGM.volume = 0.15;
@@ -46,7 +46,7 @@ https://tech.oyster.com/using-react-and-jquery-together/
 
 activate two function on one click:
 
-Review:
+~Review:
 <a href="#" onClick={() => { func1(); func2();}}>Test Link</a>
 https://stackoverflow.com/questions/26069238/call-multiple-functions-onclick-reactjs
 
@@ -61,6 +61,19 @@ useEffect(() => {
             console.log(error);
         })
 }, []);
+
+Return Multiple Values at once in java (return):
+
+~Review:
+https://www.geeksforgeeks.org/returning-multiple-values-in-java/
+ {
+        int[] ans = new int[2];
+        ans[0] = a + b;
+        ans[1] = a - b;
+  
+        // returning array of elements
+        return ans;
+    }
 
 Resource:
 https://ro-character-simulator.ratemyserver.net/##

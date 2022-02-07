@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , typeWritterEffectFn} from './actions';
+import {GotoWorldMapFn , typeWritterEffectFn } from './actions';
+import { TalktoKafraEmployeeFn, ResetTalktoKafraEmployeeFn, KafraEmployeeHealFn } from './actions';
+
+
 import WorldMap from './WorldMap'
 import './css/mapProntera.css'
 import $ from 'jquery'
@@ -12,7 +15,10 @@ const audioBGM = new Audio(audioThemeOfProntera);
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
+    const npcControlRoom = useSelector(state => state.npcControlRoom)
+    const npcSpeech = useSelector(state => state.npcSpeech)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
+    
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -68,9 +74,18 @@ function StartMenu(){
             clearInterval(fadeAudioOut);
           }
       }, 10);
-
   }
-
+    const talkToKafraEmployee = () => {
+      $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][0].text}</p>`)
+      $('.storyCharacter').html(`<p>${npcSpeech['KafraEmployee'][0].name}</p>`)
+      dispatch(TalktoKafraEmployeeFn());
+    }
+    const talkToKafraEmployeeHeal = () => {
+      $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][1].text}</p>`)
+      $('.storyCharacter').html(`<p>${npcSpeech['KafraEmployee'][1].name}</p>`)
+      dispatch(KafraEmployeeHealFn());
+    }
+    
     return(
       <div>
         {
@@ -78,9 +93,12 @@ function StartMenu(){
         <div>
           <div className="storyMapScreen">
             <div className="PronteraMap">
-              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio()}}>ToolDealer</button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio()}}>WeaponArmorDealer</button>
-              <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>PronteraSouthGate</button>
+              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>ToolDealer</button>
+              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>WeaponArmorDealer</button>
+              <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>PronteraSouthGate</button>
+              <button className="kafraEmployee" onClick={() => {changePlaceFadeAudio(); talkToKafraEmployee();}}>Kafra Employee</button>
+              
+
             </div>
             <div className="StoryHUD">
             <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
@@ -90,7 +108,7 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech">TestMap</p>
-        
+              {npcControlRoom.KafraEmployee ? <button onClick={() =>{talkToKafraEmployeeHeal();}}>Heal</button> : null}
           </fieldset>
         </div>
         }

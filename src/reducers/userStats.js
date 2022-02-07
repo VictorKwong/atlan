@@ -23,12 +23,23 @@ const userStatsReducer = (state = Fn, action) => {
         case 'enemyAttackUserFn':
             return {
                 ...state,
-                currentHealth: state.currentHealth - (action.payloadeAttack)/(action.payloaduDefence),
+                currentHealth: state.currentHealth - 20,
+                //(action.payloadeAttack)/(action.payloaduDefence)
             }
-        case 'testwin':
+        case 'WinResultFn':
             return{
                 ...state,
-                Experience: state.Experience + 10
+                Experience: state.Experience + action.enemyExperience,
+            }
+        case 'ReturnCheckPointFn':
+            return{
+                ...state,
+                currentHealth: 1,
+            }
+        case 'KafraEmployeeHealFn':
+            return{
+                ...state,
+                currentHealth: state.maxHealth,
             }
         default:
             return state;
