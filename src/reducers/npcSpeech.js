@@ -15,10 +15,19 @@ const Fn = {
             text: 'Welcome, it`s a good day isn`t it? What do you want to buy?'
         },{
             name: 'ToolDealer',
-            text: 'Have a look of our store selection.'
+            text: 'Have a look of our store.'
+        },{
+            name: 'ToolDealer',
+            text: 'What do you want to sell?'
         },{
             name: 'ToolDealer',
             text: 'Thank you. Nice to do business with you.'
+        },{
+            name: 'ToolDealer',
+            text: 'You don`t have enough Zen.'
+        },{
+            name: 'ToolDealer',
+            text: 'You don`t have enough Item to sell it.'
     }]
 
 }

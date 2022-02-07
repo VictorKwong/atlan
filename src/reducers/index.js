@@ -2,7 +2,7 @@ import lifePotionReducer from "./lifePotion";
 import loggedReducer from "./isLogged";
 import userStatsReducer from "./userStats";
 import userAttributeReducer from "./userAttribute"
-import userGoldReducer from "./userGold";
+import userGoldItemReducer from "./userGoldItem";
 import footerEasterEggReducer from "./footerEasterEgg"
 import screenControlRoomReducer from "./screenControlRoom";
 import ImageControlRoomReducer from "./ImageControlRoom";
@@ -30,7 +30,7 @@ const allReducers = combineReducers({
     isLogged: loggedReducer,
     userStats: userStatsReducer,
     userAttribute: userAttributeReducer,
-    userGold: userGoldReducer,
+    userGoldItem: userGoldItemReducer,
     enemyStats: enemyStatsReducer,
     footerEasterEgg: footerEasterEggReducer,
 

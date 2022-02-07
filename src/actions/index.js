@@ -267,13 +267,37 @@ export const ToolDealerBuyFn = () => {
         type: 'ToolDealerBuyFn'
     };
 };
-export const ResetToolDealerBuyFn = () => {
+export const ToolDealerSellFn = () => {
     return {
-        type: 'ResetToolDealerBuyFn'
+        type: 'ToolDealerSellFn'
     };
 };
 
-
+export const ResetToolDealerBuySellFn = () => {
+    return {
+        type: 'ResetToolDealerBuySellFn'
+    };
+};
+export const BuyRedPotionFn = () => {
+    return {
+        type: 'BuyRedPotionFn'
+    };
+};
+export const BuyYellowPotionFn = () => {
+    return {
+        type: 'BuyYellowPotionFn'
+    };
+};
+export const SellRedPotionFn = () => {
+    return {
+        type: 'SellRedPotionFn'
+    };
+};
+export const SellYellowPotionFn = () => {
+    return {
+        type: 'SellYellowPotionFn'
+    };
+};
 
 
 //Audio Interaction
