@@ -1,9 +1,11 @@
 
 const Fn = {
-    level: 1,
+    Level: 1,
     Experience: 0,
-    maxHealth: 100,
-    currentHealth: 100,
+    maxHealth: 150,
+    currentHealth: 150,
+    maxSP: 50,
+    currentSP: 50,
     attack: 25,
     power: 10,
     defence: 18,
@@ -48,6 +50,33 @@ const userStatsReducer = (state = Fn, action) => {
             return{
                 ...state,
                 currentHealth: state.maxHealth,
+                currentSP: state.maxSP,
+            }
+        case 'UserSkillBashBlockEnemyFn':
+        case 'UserSkillBashEnemyFn':
+            return{
+                ...state,
+                currentSP: state.currentSP - 10,
+            }
+        case 'UserSkillMagnumBreakBlockEnemyFn':
+        case 'UserSkillMagnumBreakEnemyFn':
+        return{
+            ...state,
+            currentSP: state.currentSP - 15,
+        }
+        case 'UserLevelUpFn':
+            return {
+                ...state,
+                Level: state.Level + 1,
+                maxHealth: state.maxHealth + 40,
+                currentHealth: state.maxHealth + 40,
+                maxSP: state.maxSP + 25,
+                currentSP: state.maxSP + 25,
+                attack: state.attack + 15,
+                power: state.power + 10,
+                defence: state.defence + 8,
+                defencebuffer: state.defencebuffer + 8, 
+                speed: state.speed + (state.Level),
             }
         //Rerender Fn
         case 'userClockDefendFn':

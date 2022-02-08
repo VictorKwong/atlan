@@ -99,3 +99,6 @@ https://erikmartinjordan.com/add-animation-onClick-react
 
 Actual Control Audio in React:
 https://www.codegrepper.com/code-examples/javascript/is+it+possible+to+store+audio+files+in+state+variables+reactjs
+
+React Hook useEffect has a missing dependency:
+// eslint-disable-next-line react-hooks/exhaustive-deps

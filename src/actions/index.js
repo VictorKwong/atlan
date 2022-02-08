@@ -23,6 +23,31 @@ export const UserAttackBlockEnemyFn = () => {
         type: 'UserAttackBlockEnemyFn',
     };
 };
+export const UserSkillBashEnemyFn = () => {
+    return {
+        type: 'UserSkillBashEnemyFn',
+    };
+};
+export const UserSkillBashBlockEnemyFn = () => {
+    return {
+        type: 'UserSkillBashBlockEnemyFn',
+    };
+};
+export const UserSkillMagnumBreakEnemyFn = () => {
+    return {
+        type: 'UserSkillMagnumBreakEnemyFn',
+    };
+};
+export const UserSkillMagnumBreakBlockEnemyFn = () => {
+    return {
+        type: 'UserSkillMagnumBreakBlockEnemyFn',
+    };
+};
+export const UserLevelUpFn = () => {
+    return {
+        type: 'UserLevelUpFn',
+    };
+};
 
 
 export const usingLifePotion = () => {

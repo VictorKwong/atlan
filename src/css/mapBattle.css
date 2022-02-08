@@ -50,3 +50,35 @@
 .userSkillBox{
   border: 1px soilid black;
 }
+
+progress {
+	height: 5px;
+  border: 1px solid black;
+  background-color: #463C57;
+}
+progress::-webkit-progress-bar {  
+	background-color: #463C57;
+} 
+.greenHP::-webkit-progress-value,
+.greenHP::-moz-progress-bar{  
+	background-color: #10EF21
+}
+.yellowHP::-webkit-progress-value,
+.yellowHP::-moz-progress-bar{  
+	background-color: #B6B72A
+}
+
+.redHP::-webkit-progress-value,
+.redHP::-moz-progress-bar{  
+	background-color: #B91514
+}
+
+.purpleHP::-webkit-progress-value,
+.purpleHP::-moz-progress-bar{  
+	background-color: #DD13F3
+}
+.blueSP::-webkit-progress-value,
+.blueSP::-moz-progress-bar{  
+	background-color: #1D5DE7
+}
+

@@ -15,7 +15,7 @@ const Fn = [
         hitRate: 0.7,
         dodgeRate: 0.05,
         critRate: 0.03,
-        Experience: 1,
+        Experience: 500,
         enemyClockDefend: false,
     },
     {
@@ -54,6 +54,43 @@ const enemyStatsReducer = (state = Fn, action) => {
             {
                 ...state[1]
             }]
+        case 'UserSkillBashEnemyFn':
+            return [{
+                ...state[0],
+                currentHealth: state[0].currentHealth - 50
+            },
+            {
+                ...state[1]
+            }]
+        case 'UserSkillBashBlockEnemyFn':
+        return [{
+            ...state[0],
+            currentHealth: state[0].currentHealth - 30
+        },
+        {
+            ...state[1]
+        }]
+        
+        case 'UserSkillMagnumBreakEnemyFn':
+            return [{
+                ...state[0],
+                currentHealth: state[0].currentHealth - 80
+            },
+            {
+                ...state[1]
+            }]
+        case 'UserSkillMagnumBreakBlockEnemyFn':
+        return [{
+            ...state[0],
+            currentHealth: state[0].currentHealth - 40
+        },
+        {
+            ...state[1]
+        }]
+
+
+
+
         case 'ResetEnemyCurrentHealthFn':
             return [{
                 ...state[0],

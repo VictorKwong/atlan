@@ -5,12 +5,12 @@ import { ReturnUserInSelectSkillFn, UserInSelectSkillFn } from './actions';
 //Clock
 import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn } from './actions';
 //Game Result (Victory/Defeat)
-import { WinResultFn, ResetEnemyCurrentHealthFn } from './actions';
+import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn} from './actions'
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn} from './actions'
+import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn} from './actions'
 
 import './css/mapBattle.css'
 import PoringIsland from './PoringIsland'
@@ -38,6 +38,7 @@ function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
+    const baseEXPChart = useSelector(state => state.baseEXPChart)
     const lifePotion = useSelector(state => state.lifePotion)
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
@@ -83,20 +84,27 @@ function Main(){
         setTimeout(() => {
           dispatch(userAttackEnemyFn(userStats.attack))}, 500);
       };
+
+
     // VICTORY FUCNTION
+    // EXP FUNCTION
+    useEffect(() => {
+      if (enemyStats[0].currentHealth <= 0){
+        dispatch(WinResultFn(enemyStats[0].Experience));
+        $('.storySpeech').html(`Victory! ${enemyStats[0].Experience} EXP received.`)
+        console.log('Add Exp')
+      }
+    }, [enemyStats, dispatch]);
+    // $('.goGoAttack').prop("disabled", true);
       useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
           if (enemyStats[0].currentHealth <= 0){
-            resetClockButton();
-            $('.storySpeech').html(`Victory! ${enemyStats[0].Experience} EXP received.`)
-            dispatch(WinResultFn(enemyStats[0].Experience));
-  
-            // $('.goGoAttack').prop("disabled", true);
+            
           }
       }, [enemyStats, dispatch]);
     // DEFEAT FUNCTION
       useEffect(() => {
         if (userStats.currentHealth <= 0){
-          resetClockButton();
           $('.storySpeech').html(`Defeat... Altan Fainted......`)
           // $('.goGoAttack').prop("disabled", true);
         }
@@ -106,7 +114,36 @@ function Main(){
                 //Reset Clock;
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
+                dispatch(ResetEnemyTurnBlockFn());
+                dispatch(ResetUserTurnBlockFn());
+                dispatch(ReturnUserInSelectSkillFn());
     }
+    // LEVEL FUNCTION
+    useEffect(() => {
+      if (enemyStats[0].currentHealth <= 0){
+        console.log(userStats.Level)
+        console.log(userStats.Experience)
+        console.log(baseEXPChart[1])
+        console.log(userStats.Experience >= baseEXPChart[userStats.Level])
+        console.log(baseEXPChart[userStats.Level])
+        //MAX Lv10
+        if((userStats.Level < 10) && (userStats.Experience >= baseEXPChart[userStats.Level])){
+          console.log('pass level')
+          dispatch(UserLevelUpFn());
+          $('.storySpeech').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
+            switch (true) {
+              case(userStats.Level === 3):
+                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+              case(userStats.Level === 5):
+                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+              default:
+                return 0;
+            }
+        }
+      }
+    }, [enemyStats, dispatch, userStats]);
+
+
 
     // USER DEAD ANIMATION
       useEffect(() => {
@@ -128,7 +165,7 @@ function Main(){
       (() => {
         switch (true) {
           case(SkillControlRoom['Enemy'].EnemyBlock):
-            return  setTimeout(() => dispatch(UserAttackBlockEnemyFn()), 300);
+            return setTimeout(() => dispatch(UserAttackBlockEnemyFn()), 300);
           default:
             return setTimeout(() => dispatch(IfEnemyOnHitFn()), 300);
         }
@@ -156,13 +193,67 @@ function Main(){
       clockBarObject.userClockBar = clockBarObject.userClockBar - 70;
       dispatch(ResetUserTurnFn());
     }
+
+    
+
+    //COMBAT SKILLS
+    const userSkillBashButton = () => {
+      if (userStats.currentSP >= 10){
+      dispatch(UserAttackAnimationFn());
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      //Rerender, Block or not block
+      (() => {
+        switch (true) {
+          case(SkillControlRoom['Enemy'].EnemyBlock):
+            return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn()), 300);
+          default:
+            return setTimeout(() => dispatch(UserSkillBashEnemyFn()), 300);
+        }
+        })()
+        dispatch(EnemyOnHitAnimationFn());
+        setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+        // Text display
+        $('.storySpeech').html(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
+        // End turn
+        // dispatch(ResetUserClockFn());
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').html(`<p>Not enough SP.</p>`)
+      }
+    }
+    const userSkillMagnumBreakButton = () => {
+      if (userStats.currentSP >= 15){
+      dispatch(UserAttackAnimationFn());
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      //Rerender, Block or not block
+      (() => {
+        switch (true) {
+          case(SkillControlRoom['Enemy'].EnemyBlock):
+            return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn()), 300);
+          default:
+            return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn()), 300);
+        }
+        })()
+        dispatch(EnemyOnHitAnimationFn());
+        setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+        // Text display
+        $('.storySpeech').html(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
+        // End turn
+        // dispatch(ResetUserClockFn());
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').html(`<p>Not enough SP.</p>`)
+      }
+    }
     // Enemy AI
     const enemyDecisionQFn = () => {
       const enemyDecision = Math.random();
       (() => {
             switch (true) {
           //EnemyAttack & Hit
-          case(enemyDecision === 1):
+          case(enemyDecision < 1):
             dispatch(UserOnHitAnimationFn());
             setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
                 //Rerender, Block or not block
@@ -181,7 +272,7 @@ function Main(){
             dispatch(ResetEnemyTurnFn());
              break;
             //Enemy Defend itself
-          case(enemyDecision < 1):
+          case(enemyDecision === 1):
             dispatch(EnemyTurnBlockFn());
             //Rerender
             setTimeout(() => dispatch(enemyClockDefendFn()), 300);
@@ -208,6 +299,7 @@ function Main(){
               //Reset All Block
               dispatch(ResetUserIsBlockAnimationFn());
               dispatch(ResetUserTurnBlockFn());
+              dispatch(ReturnUserInSelectSkillFn());
               dispatch(UserTurnFn());
               console.log('UserTurn is good')
               return clearInterval(ClockTurn);
@@ -234,6 +326,7 @@ function Main(){
     // Longest Animation 1.1 = 0.3 onhit + 0.9 delay
     useEffect(() => {
       setTimeout(() => clockBaseQtn(), 900);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
 
@@ -256,6 +349,9 @@ function Main(){
                     }
                     <p>{enemyStats[0].name}</p>  
                     <p>Enemy Health {enemyStats[0].currentHealth}/{enemyStats[0].maxHealth}</p>
+                    
+                     <progress className="purpleHP" value={(enemyStats[0].currentHealth/enemyStats[0].maxHealth)*100} max="100"></progress>
+
                     {/* <p>Enemy Level {enemyStats[0].level}</p>
                     <p>Enemy Attack {enemyStats[0].attack}</p>
                     <p>Enemy Power {enemyStats[0].power}</p>
@@ -272,6 +368,10 @@ function Main(){
                   <h2>Player Status</h2>
 
                   <p>Player Health {userStats.currentHealth}/{userStats.maxHealth}</p>
+                  
+                  <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100"/>
+                  <p>Player SP {userStats.currentSP}/{userStats.maxSP}</p>
+                  <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100"/>
                     {ImageControlRoom.UserAttack ? <img src={UserAttackPost} alt="UserAttackPost" /> :
                     ImageControlRoom.UserOnHit ? <img src={UserOnHitPost} alt="UserOnHitPost" /> : 
                     ImageControlRoom.UserIsDying ? <img src={UserIsDyingPost} alt="UserIsDyingPost" /> :
@@ -280,10 +380,11 @@ function Main(){
                     <img src={UserBattlePost} alt="UserBattlePost"/>}
                     
                     <div className="userSkillBox">
+                      
                       { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
                       <div>
-                        <button><img src={skillBash} alt="skillBash" /> Bash</button>
-                        <button><img src={skillMagnum} alt="skillBash" /> Magnum Break</button>
+                        {userStats.Level >= 3 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash</button> : null}
+                        {userStats.Level >= 5 ? <button onClick={() => userSkillMagnumBreakButton()}><img src={skillMagnum} alt="skillMagnumBreak" /> Magnum Break</button> : null}
                         <button onClick={() => dispatch(ReturnUserInSelectSkillFn())}>Back</button>
                       </div>
                       : SkillControlRoom['User'].UserTurn ? 
@@ -297,15 +398,7 @@ function Main(){
                       {/* <button onClick={TurnBaseQFn}>TurnBaseUserTest</button> */}
                       <p>userClockBar: {clockBarObject.userClockBar}</p>
                     </div>
-                  {/* <p>Player Level {userStats.level}</p>
-                  <p>Player Attack {userStats.attack}</p>
-                  <p>Player Defence {userStats.defence}</p>
-                  <p>Player Speed {userStats.speed}</p>
-                  <p>Player Hit Rate {userStats.hitRate}</p>
-                  <p>Player Dodge Rate {userStats.dodgeRate}</p>
-                  <p>Player Crit Rate {userStats.critRate}</p>
-                  <p>Player Exp {userStats.Experience}</p>
-                  <p>Player $ {userGold}</p> */}
+
                 </div>
               <div className="userItems">
                 <h3>lifePotion {lifePotion}</h3>
@@ -335,13 +428,22 @@ function Main(){
               <div className="StoryHUD">
                 <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
                 <h1>HUD</h1>
+                  <p>Player Level {userStats.Level}</p>
+                  <p>Player Attack {userStats.attack}</p>
+                  <p>Player Defence {userStats.defence}</p>
+                  <p>Player Speed {userStats.speed}</p>
+                  <p>Player Hit Rate {userStats.hitRate}</p>
+                  <p>Player Dodge Rate {userStats.dodgeRate}</p>
+                  <p>Player Crit Rate {userStats.critRate}</p>
+                  <p>Player Exp {userStats.Experience}</p>
+                  <p>Player $ {userGold}</p>
                 <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); changeMapFadeAudio();}}>PoringIsland</button>
               </div>
           </div>
           <fieldset className="storyChat">
             <legend className="storyCharacter"></legend>
             <p className="storySpeech">TestMap</p>
-            {enemyStats[0].currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio();}}>Press to Continue</button>
+            {enemyStats[0].currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             : userStats.currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button> : null}
 
           </fieldset>
