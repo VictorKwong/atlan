@@ -1,5 +1,5 @@
 const Fn = {
-    Gold: 2000,
+    Zeny: 2000,
     RedPotion: 10,
     YellowPotion: 5,
 }
@@ -9,25 +9,25 @@ const userGoldItemReducer = (state = Fn, action) => {
         case 'BuyRedPotionFn':
             return{
                 ...state,
-                Gold: state.Gold - 50,
+                Zeny: state.Zeny - 50,
                 RedPotion: state.RedPotion + 1,
             }
         case 'BuyYellowPotionFn':
             return{
                 ...state,
-                Gold: state.Gold - 200,
+                Zeny: state.Zeny - 200,
                 YellowPotion: state.YellowPotion + 1,
             }
         case 'SellRedPotionFn':
             return{
                 ...state,
-                Gold: state.Gold + 40,
+                Zeny: state.Zeny + 40,
                 RedPotion: state.RedPotion - 1,
             }
         case 'SellYellowPotionFn':
             return{
                 ...state,
-                Gold: state.Gold + 160,
+                Zeny: state.Zeny + 160,
                 YellowPotion: state.YellowPotion - 1,
             }
         case 'UseRedPotionFn':
@@ -39,6 +39,11 @@ const userGoldItemReducer = (state = Fn, action) => {
             return{
                 ...state,
                 YellowPotion: state.YellowPotion - 1,
+            }
+        case 'WinResultFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.enemyZeny
             }
         default:
             return state;

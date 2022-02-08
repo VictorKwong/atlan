@@ -24,7 +24,7 @@ const Fn = {
             text: 'Thank you. Nice to do business with you.'
         },{
             name: 'ToolDealer',
-            text: 'You don`t have enough Zen.'
+            text: 'You don`t have enough Zeny.'
         },{
             name: 'ToolDealer',
             text: 'You don`t have enough Item to sell it.'

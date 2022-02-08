@@ -44,6 +44,8 @@ let clockBarObject = {
 }
 //Monster Random Number 0 1 
 let i = Math.floor((Math.random() * 3));
+//Music
+let k = 0;
 
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -56,7 +58,6 @@ function Main(){
     const userGoldItem = useSelector(state => state.userGoldItem)
 
     const enemyStats = useSelector(state => state.enemyStats)
-    const isLogged = useSelector(state => state.isLogged)
     console.log('you are rerender')
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
@@ -76,27 +77,39 @@ function Main(){
     }, [])
 
     const changeMapFadeAudio = () => {
+      let i = 0;
       const fadeAudio = setInterval(() => {
+          if (audioBGM.volume === 0.15){
+            i = i + 1;
+          }
           if (audioBGM.volume !== 0) {
             audioBGM.volume -= 0.002
             audioBGM.volume = audioBGM.volume.toFixed(4)
           }
           if (audioBGM.volume < 0.002) {
               audioBGM.pause();
+              console.log(audioBGM.currentTime)
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
+          }else if (i >= 2){
+            audioBGM.volume = 0.15
+            clearInterval(fadeAudio);
           }
+          $('.toolDealerNPC').on('click', function(event) {
+            event.preventDefault();
+              audioBGM.volume = 0.15;
+              clearInterval(fadeAudio);
+          })
         }, 10);
     }
-
 
 
     // VICTORY FUCNTION
     // EXP FUNCTION
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
-        dispatch(WinResultFn(enemyStats[i].Experience));
-        $('.storySpeech').html(`Victory! ${enemyStats[i].Experience} EXP received.`)
+        dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
+        $('.storySpeech').html(`<p>Victory! ${enemyStats[i].Experience} EXP received.</p>\n<p>${enemyStats[i].Zeny} Zeny.</p>`)
         console.log('Add Exp')
       }
     }, [enemyStats, dispatch]);
@@ -121,6 +134,7 @@ function Main(){
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
                 i = Math.floor((Math.random() * 3));
+                k = k + 1;
                 dispatch(ResetEnemyTurnFn());
                 dispatch(ResetUserTurnFn());
                 dispatch(ResetEnemyTurnBlockFn());
@@ -151,7 +165,7 @@ function Main(){
             }
         }
       }
-    }, [enemyStats, dispatch, userStats]);
+    }, [enemyStats, dispatch, userStats, baseEXPChart]);
 
 
 
@@ -466,6 +480,7 @@ function Main(){
               <div className="StoryHUD">
                 <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
                 <h1>HUD</h1>
+                  <p>Zeny {userGoldItem.Zeny}</p>
                   <p>Player Level {userStats.Level}</p>
                   <p>Player Attack {userStats.attack}</p>
                   <p>Player Defence {userStats.defence}</p>
@@ -474,7 +489,7 @@ function Main(){
                   <p>Player Dodge Rate {userStats.dodgeRate}</p>
                   <p>Player Crit Rate {userStats.critRate}</p>
                   <p>Player Exp {userStats.Experience}</p>
-                  <p>Player $ {userGold}</p>
+                  {userStats.Level >= 10 ? <progress className="blueSP" value="100" max="100"></progress> : <progress className="blueSP" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100"></progress> }
                   <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
               </div>
           </div>

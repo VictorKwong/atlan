@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn , ToolDealerBuyFn, ToolDealerSellFn, ResetToolDealerBuySellFn } from './actions';
 import { BuyRedPotionFn , BuyYellowPotionFn, } from './actions';
@@ -35,7 +35,7 @@ function StartMenu(){
     const talkToToolDealerBuyRedPotion = () => {
       (() => {
         switch (true) {
-          case (userGoldItem.Gold >= 50):
+          case (userGoldItem.Zeny >= 50):
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
             dispatch(BuyRedPotionFn());
@@ -49,7 +49,7 @@ function StartMenu(){
     const talkToToolDealerBuyYellowPotion = () => {
       (() => {
         switch (true) {
-          case (userGoldItem.Gold >= 200):
+          case (userGoldItem.Zeny >= 200):
             $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
             $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
             dispatch(BuyYellowPotionFn());
@@ -112,7 +112,7 @@ function StartMenu(){
           </div>
           <div className="StoryHUD">
             <h1>HUD</h1>
-            <p>Gold {userGoldItem.Gold}</p>
+            <p>Zeny {userGoldItem.Zeny}</p>
             <p><img src={RedPotion} alt="RedPotion" />Red Potion {userGoldItem.RedPotion}</p>
             <p><img src={YellowPotion} alt="YellowPotion" />Yellow Potion {userGoldItem.YellowPotion}</p>
           </div>

@@ -273,10 +273,11 @@ export const ResetEnemyTurnBlockFn = () => {
 
 
 //Win & Lose Reset
-export const WinResultFn = (EnemyExperience) => {
+export const WinResultFn = (EnemyExperience, EnemyZeny) => {
     return {
         type: 'WinResultFn',
         enemyExperience: EnemyExperience,
+        enemyZeny: EnemyZeny
     };
 };
 

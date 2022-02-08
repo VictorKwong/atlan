@@ -16,6 +16,7 @@ const Fn = [
         dodgeRate: 0.05,
         critRate: 0.03,
         Experience: 200,
+        Zeny: (30 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },
     {
@@ -32,6 +33,7 @@ const Fn = [
         dodgeRate: 0.05,
         critRate: 0.03,
         Experience: 200,
+        Zeny: (40 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },
     {
@@ -48,6 +50,7 @@ const Fn = [
         dodgeRate: 0.05,
         critRate: 0.03,
         Experience: 200,
+        Zeny: (60 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },
 ]
