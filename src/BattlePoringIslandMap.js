@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPoringIslandFn, sign_in, usingLifePotion, enemyAttackUserFn, buyPotion, sellPotion, userAttackEnemyFn, testgaga, IfEnemyOnHitFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn } from './actions';
-import { ReturnUserInSelectSkillFn, UserInSelectSkillFn } from './actions';
+import { GotoPoringIslandFn, enemyAttackUserFn, userAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn } from './actions';
+//Battle UI
+import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
 import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn } from './actions';
 //Game Result (Victory/Defeat)
@@ -11,19 +12,27 @@ import { ReturnCheckPointFn } from './actions'
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn} from './actions'
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn} from './actions'
+//ITEMS
+import { UseYellowPotionFn, UseRedPotionFn } from './actions'
+
+
 
 import './css/mapBattle.css'
 import PoringIsland from './PoringIsland'
-import Poring from './img/Poring.gif'
-import Lunatic from './img/Lunatic.gif'
+import Poring from './img/Monster/Poring.gif'
+import Lunatic from './img/Monster/Lunatic.gif'
+import Rocker from './img/Monster/Rocker.gif'
 import UserBattlePost from './img/Character/USerBattlePost1.gif'
 import UserAttackPost from './img/Character/UserAttackPost1.gif'
 import UserDefendPost from './img/Character/UserDefendPost1.gif'
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
 import UserIsDeadPost from './img/Character/UserDeadPost1.png'
+import UserChannelPost from './img/Character/UserChannel1.png'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+import RedPotion from './img/Item/RedPotion.gif'
+import YellowPotion from './img/Item/YellowPotion.gif'
 import $ from 'jquery'
 
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
@@ -33,24 +42,25 @@ let clockBarObject = {
   userClockBar: 0,
   enemyClockBar: 0,
 }
+//Monster Random Number 0 1 
+let i = Math.floor((Math.random() * 3));
 
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
-    const lifePotion = useSelector(state => state.lifePotion)
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
     const userGold = useSelector(state => state.userGold)
-
+    const userGoldItem = useSelector(state => state.userGoldItem)
 
     const enemyStats = useSelector(state => state.enemyStats)
     const isLogged = useSelector(state => state.isLogged)
     console.log('you are rerender')
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
-
+    console.log(`here: ${i}`)
     useEffect(() => {
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
@@ -79,26 +89,21 @@ function Main(){
         }, 10);
     }
 
-    const testFn = (e) => {
-        e.preventDefault();
-        setTimeout(() => {
-          dispatch(userAttackEnemyFn(userStats.attack))}, 500);
-      };
 
 
     // VICTORY FUCNTION
     // EXP FUNCTION
     useEffect(() => {
-      if (enemyStats[0].currentHealth <= 0){
-        dispatch(WinResultFn(enemyStats[0].Experience));
-        $('.storySpeech').html(`Victory! ${enemyStats[0].Experience} EXP received.`)
+      if (enemyStats[i].currentHealth <= 0){
+        dispatch(WinResultFn(enemyStats[i].Experience));
+        $('.storySpeech').html(`Victory! ${enemyStats[i].Experience} EXP received.`)
         console.log('Add Exp')
       }
     }, [enemyStats, dispatch]);
     // $('.goGoAttack').prop("disabled", true);
       useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
-          if (enemyStats[0].currentHealth <= 0){
+          if (enemyStats[i].currentHealth <= 0){
             
           }
       }, [enemyStats, dispatch]);
@@ -112,15 +117,20 @@ function Main(){
     // RESET CLOCK
     const resetClockButton = () => {
                 //Reset Clock;
+                $('.storySpeech').html();
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
+                i = Math.floor((Math.random() * 3));
+                dispatch(ResetEnemyTurnFn());
+                dispatch(ResetUserTurnFn());
                 dispatch(ResetEnemyTurnBlockFn());
                 dispatch(ResetUserTurnBlockFn());
                 dispatch(ReturnUserInSelectSkillFn());
+                dispatch(ReturnUserInSelectItemFn());
     }
     // LEVEL FUNCTION
     useEffect(() => {
-      if (enemyStats[0].currentHealth <= 0){
+      if (enemyStats[i].currentHealth <= 0){
         console.log(userStats.Level)
         console.log(userStats.Experience)
         console.log(baseEXPChart[1])
@@ -167,14 +177,14 @@ function Main(){
           case(SkillControlRoom['Enemy'].EnemyBlock):
             return setTimeout(() => dispatch(UserAttackBlockEnemyFn()), 300);
           default:
-            return setTimeout(() => dispatch(IfEnemyOnHitFn()), 300);
+            return setTimeout(() => dispatch(userAttackEnemyFn()), 300);
         }
         })()
       
       dispatch(EnemyOnHitAnimationFn());
       setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
       // Text display
-      $('.storySpeech').html(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
+      $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
       // End turn
       // dispatch(ResetUserClockFn());
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -187,7 +197,7 @@ function Main(){
       dispatch(UserIsBlockAnimationFn());
       dispatch(UserTurnBlockFn());
       // Text display
-      $('.storySpeech').html('<p>Altan Defend himself!</p>')
+      $('.storySpeech').append('<p>Altan Defend himself!</p>')
       // End turn
       // dispatch(ResetUserClockFn());
       clockBarObject.userClockBar = clockBarObject.userClockBar - 70;
@@ -213,7 +223,7 @@ function Main(){
         dispatch(EnemyOnHitAnimationFn());
         setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
         // Text display
-        $('.storySpeech').html(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
+        $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
         // End turn
         // dispatch(ResetUserClockFn());
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -238,7 +248,7 @@ function Main(){
         dispatch(EnemyOnHitAnimationFn());
         setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
         // Text display
-        $('.storySpeech').html(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
+        $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
         // End turn
         // dispatch(ResetUserClockFn());
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -246,6 +256,31 @@ function Main(){
       }else{
         $('.storySpeech').html(`<p>Not enough SP.</p>`)
       }
+    }
+    //ITEMS
+    const userItemRedPotionButton = () => {
+        dispatch(UserChannelAnimationFn());
+        setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+        //Rerender
+        setTimeout(() => dispatch(UseRedPotionFn()), 300);
+        // Text display
+        $('.storySpeech').append('<p>Altan Heal himself! Recover 50 hp </p>')
+        // End turn
+        // dispatch(ResetUserClockFn());
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+    }
+    const userItemYellowPotionButton = () => {
+        dispatch(UserChannelAnimationFn());
+        setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+        //Rerender
+        setTimeout(() => dispatch(UseYellowPotionFn()), 300);
+        // Text display
+        $('.storySpeech').append('<p>Altan Heal himself! Recover 150 hp </p>')
+        // End turn
+        // dispatch(ResetUserClockFn());
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
     }
     // Enemy AI
     const enemyDecisionQFn = () => {
@@ -262,11 +297,11 @@ function Main(){
                   case(SkillControlRoom['User'].UserBlock):
                     return dispatch(EnemyAttackBlockUserFn());
                   default:
-                    return dispatch(enemyAttackUserFn(enemyStats[0].attack,userStats.defence));
+                    return dispatch(enemyAttackUserFn(enemyStats[i].attack,userStats.defence));
                 }
                 })()
             // Text display
-            $('.storySpeech').html(`<p>${enemyStats[0].name} Attack!</p>\n <p>Altan Received ${enemyStats[0].attack} damage</p>`)
+            $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${enemyStats[i].attack} damage</p>`)
             // End turn
             clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
             dispatch(ResetEnemyTurnFn());
@@ -277,7 +312,7 @@ function Main(){
             //Rerender
             setTimeout(() => dispatch(enemyClockDefendFn()), 300);
             // Text display
-            $('.storySpeech').html(`<p>${enemyStats[0].name} Defend itself...</p>`)
+            $('.storySpeech').append(`<p>${enemyStats[i].name} Defend itself...</p>`)
             // End turn
             clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
             dispatch(ResetEnemyTurnFn());
@@ -290,22 +325,25 @@ function Main(){
 
 
   const clockBaseQtn = () => {
-    if (enemyStats[0].currentHealth > 0 && userStats.currentHealth > 0){
+    if (enemyStats[i].currentHealth > 0 && userStats.currentHealth > 0){
       const ClockTurn = setInterval(() => {
         // *study
         (() => {
           switch (true) {
-            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed >= enemyStats[0].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
+            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed >= enemyStats[i].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
               //Reset All Block
               dispatch(ResetUserIsBlockAnimationFn());
               dispatch(ResetUserTurnBlockFn());
               dispatch(ReturnUserInSelectSkillFn());
+              dispatch(ReturnUserInSelectItemFn());
               dispatch(UserTurnFn());
+              $('.storySpeech').html('---Altan Turn---')
               console.log('UserTurn is good')
               return clearInterval(ClockTurn);
-            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed < enemyStats[0].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
+            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
               dispatch(ResetEnemyTurnBlockFn());
               dispatch(EnemyTurnFn());
+              $('.storySpeech').html(`---${enemyStats[i].name} Turn---`)
               enemyDecisionQFn();
               console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
@@ -314,7 +352,7 @@ function Main(){
               console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               return clockBarObject = {
                 userClockBar: clockBarObject.userClockBar + userStats.speed,
-                enemyClockBar: clockBarObject.enemyClockBar + enemyStats[0].speed,
+                enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
               }
           }
         })()
@@ -330,8 +368,7 @@ function Main(){
     }, [userStats,enemyStats, dispatch]);
 
 
-    //Monster Random Number
-    let i = 0;
+
 
     return(
       <div>
@@ -343,25 +380,25 @@ function Main(){
               <div> 
                     <h2>Enemy Status</h2>
                     {
-                      i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Poring} alt={enemyStats[0].name} /> :
-                      i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Lunatic} alt={enemyStats[0].name} /> :
+                      i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Poring} alt={enemyStats[i].name} /> :
+                      i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Lunatic} alt={enemyStats[i].name} /> :
+                      i === 2 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Rocker} alt={enemyStats[i].name} /> :
                       null
                     }
-                    <p>{enemyStats[0].name}</p>  
-                    <p>Enemy Health {enemyStats[0].currentHealth}/{enemyStats[0].maxHealth}</p>
+                    <p>{enemyStats[i].name}</p>  
+                    <p>Enemy Health {enemyStats[i].currentHealth}/{enemyStats[i].maxHealth}</p>
                     
-                     <progress className="purpleHP" value={(enemyStats[0].currentHealth/enemyStats[0].maxHealth)*100} max="100"></progress>
+                     <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100"></progress>
 
-                    {/* <p>Enemy Level {enemyStats[0].level}</p>
-                    <p>Enemy Attack {enemyStats[0].attack}</p>
-                    <p>Enemy Power {enemyStats[0].power}</p>
-                    <p>Enemy Defence {enemyStats[0].defence}</p>
-                    <p>Enemy Speed {enemyStats[0].speed}</p>
-                    <p>Enemy Hit Rate {enemyStats[0].hitRate}</p>
-                    <p>Enemy Dodge Rate {enemyStats[0].dodgeRate}</p>
-                    <p>Enemy Crit Rate {enemyStats[0].critRate}</p> */}
+                    {/* <p>Enemy Level {enemyStats[i].level}</p>
+                    <p>Enemy Attack {enemyStats[i].attack}</p>
+                    <p>Enemy Power {enemyStats[i].power}</p>
+                    <p>Enemy Defence {enemyStats[i].defence}</p>
+                    <p>Enemy Speed {enemyStats[i].speed}</p>
+                    <p>Enemy Hit Rate {enemyStats[i].hitRate}</p>
+                    <p>Enemy Dodge Rate {enemyStats[i].dodgeRate}</p>
+                    <p>Enemy Crit Rate {enemyStats[i].critRate}</p> */}
                     <p>{userStats.Attack}</p>
-                    <button onClick={() => dispatch(testgaga())}>testgaga</button>
 
                 </div>
                 <div>
@@ -377,6 +414,7 @@ function Main(){
                     ImageControlRoom.UserIsDying ? <img src={UserIsDyingPost} alt="UserIsDyingPost" /> :
                     ImageControlRoom.UserIsDead ? <img src={UserIsDeadPost} alt="UserIsDeadPost"/> : 
                     ImageControlRoom.UserIsDefend ? <img src={UserDefendPost} alt="UserDefendPost"/> :
+                    ImageControlRoom.UserChannel ? <img src={UserChannelPost} alt="UserChannelPost"/> :
                     <img src={UserBattlePost} alt="UserBattlePost"/>}
                     
                     <div className="userSkillBox">
@@ -387,25 +425,28 @@ function Main(){
                         {userStats.Level >= 5 ? <button onClick={() => userSkillMagnumBreakButton()}><img src={skillMagnum} alt="skillMagnumBreak" /> Magnum Break</button> : null}
                         <button onClick={() => dispatch(ReturnUserInSelectSkillFn())}>Back</button>
                       </div>
+                      : SkillControlRoom['User'].BattleItemScreen && SkillControlRoom['User'].UserTurn ? 
+                      <div>
+                        {userGoldItem.RedPotion >= 1 ? <button onClick={() => userItemRedPotionButton()}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}
+                        {userGoldItem.YellowPotion >= 1 ? <button onClick={() => userItemYellowPotionButton()}><img src={YellowPotion} alt="YellowPotion" /> YellowPotion x{userGoldItem.YellowPotion}</button> : null }
+                        <button onClick={() => dispatch(ReturnUserInSelectItemFn())}>Back</button>
+                      </div>
                       : SkillControlRoom['User'].UserTurn ? 
                       <div>
                         <button className="goGoAttack" onClick={() => userAttackEnemyButton()}>Attack</button>
-                        <button className="goGoAttack" onClick={() => userDefendButton()}>Defend</button>
+                        <button className="goGoDefend" onClick={() => userDefendButton()}>Defend</button>
                         <button className="goGoSkill"  onClick={() => dispatch(UserInSelectSkillFn())}>Skills</button>
+                        <button className="goGoItem"  onClick={() => dispatch(UserInSelectItemFn())}>Item</button>
+                        
+                        <button className="goGoRun" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Run</button>
                       </div>
-                      : null
-                      }
+                      : null }
                       {/* <button onClick={TurnBaseQFn}>TurnBaseUserTest</button> */}
-                      <p>userClockBar: {clockBarObject.userClockBar}</p>
+                      
                     </div>
 
                 </div>
               <div className="userItems">
-                <h3>lifePotion {lifePotion}</h3>
-
-              <button onClick={() => dispatch(usingLifePotion(lifePotion))}>use Potion</button>
-              <button onClick={testFn}>Attack</button>
-              
                     <div>
                       <h2>Admin</h2>
                       <button >Add Potion</button>
@@ -414,14 +455,11 @@ function Main(){
                       <button >armor increase</button>
                     </div>
                     <div>
-                      <h2>Shop</h2>
-                    <button onClick={() => dispatch(buyPotion())}>$Buy Potion</button>
-                    <button onClick={() => dispatch(sellPotion())}>$Sell Potion</button>
-                    </div>
-                    {isLogged ? <h3>You are Log in</h3> : <h3>you are not log In</h3>}
-                    <button onClick={() => dispatch(sign_in())}>sign in</button>
-                    <div>
                       <h2>Clock Turn:</h2>
+                      <p>userClockBar: {clockBarObject.userClockBar}</p>
+                      <progress value={clockBarObject.userClockBar} max="100"></progress>
+                      <p>enemyClockBar: {clockBarObject.enemyClockBar}</p>
+                      <progress value={clockBarObject.enemyClockBar} max="100"></progress>
                     </div>
               </div>
               </div>  
@@ -437,23 +475,18 @@ function Main(){
                   <p>Player Crit Rate {userStats.critRate}</p>
                   <p>Player Exp {userStats.Experience}</p>
                   <p>Player $ {userGold}</p>
-                <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); changeMapFadeAudio();}}>PoringIsland</button>
+                  <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
               </div>
           </div>
           <fieldset className="storyChat">
             <legend className="storyCharacter"></legend>
             <p className="storySpeech">TestMap</p>
-            {enemyStats[0].currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
+            {enemyStats[i].currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             : userStats.currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button> : null}
 
           </fieldset>
         </div>
         }
-
-
-
-
-
       </div>
     );
 }

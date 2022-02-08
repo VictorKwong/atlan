@@ -35,7 +35,6 @@ function StartMenu(){
     const changeMapFadeAudio = () => {
       let i = 0;
       const fadeAudio = setInterval(() => {
-        console.log(audioBGM.volume);
           if (audioBGM.volume === 0.15){
             i = i + 1;
           }

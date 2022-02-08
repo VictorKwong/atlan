@@ -1,10 +1,3 @@
-
-
-export const sign_in = () => {
-    return {
-        type: 'sign_in'
-    }
-}
 export const enemyAttackUserFn = (eAttack,uDefence) => {
     return {
         type: 'enemyAttackUserFn',
@@ -46,26 +39,6 @@ export const UserSkillMagnumBreakBlockEnemyFn = () => {
 export const UserLevelUpFn = () => {
     return {
         type: 'UserLevelUpFn',
-    };
-};
-
-
-export const usingLifePotion = () => {
-    return {
-        type: 'usingLifePotion',
-        payload: 1
-    };
-};
-
-export const buyPotion = () => {
-    return {
-        type: 'buyPotion',
-        payload: 1
-    };
-};
-export const sellPotion = () => {
-    return {
-        type: 'sellPotion',
     };
 };
 
@@ -221,7 +194,16 @@ export const ResetUserIsBlockAnimationFn = () => {
         type: 'ResetUserIsBlockAnimationFn'
     };
 };
-
+export const UserChannelAnimationFn = () => {
+    return {
+        type: 'UserChannelAnimationFn'
+    };
+};
+export const ResetUserChannelAnimationFn = () => {
+    return {
+        type: 'ResetUserChannelAnimationFn'
+    };
+};
 
 //Skills
 export const UserInSelectSkillFn = () => {
@@ -234,6 +216,18 @@ export const ReturnUserInSelectSkillFn = () => {
         type: 'ReturnUserInSelectSkillFn'
     };
 };
+export const UserInSelectItemFn= () => {
+    return {
+        type: 'UserInSelectItemFn'
+    };
+};
+export const ReturnUserInSelectItemFn = () => {
+    return {
+        type: 'ReturnUserInSelectItemFn'
+    };
+};
+
+
 export const EnemyTurnFn = () => {
     return {
         type: 'EnemyTurnFn'
@@ -276,29 +270,6 @@ export const ResetEnemyTurnBlockFn = () => {
 };
 
 
-
-
-
-
-
-
-export const IfEnemyOnHitFn = () => {
-    return {
-        type: 'IfEnemyOnHitFn',
-    };
-};
-
-export const testgaga = () => {
-    return {
-        type: 'testgaga',
-    };
-};
-
-export const testrara = () => {
-    return {
-        type: 'testrara',
-    };
-};
 
 
 //Win & Lose Reset
@@ -370,6 +341,19 @@ export const SellRedPotionFn = () => {
 export const SellYellowPotionFn = () => {
     return {
         type: 'SellYellowPotionFn'
+    };
+};
+
+//ITEMS
+
+export const UseRedPotionFn = () => {
+    return {
+        type: 'UseRedPotionFn'
+    };
+};
+export const UseYellowPotionFn = () => {
+    return {
+        type: 'UseYellowPotionFn'
     };
 };
 

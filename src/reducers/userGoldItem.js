@@ -1,7 +1,7 @@
 const Fn = {
     Gold: 2000,
-    RedPotion: 0,
-    YellowPotion: 0,
+    RedPotion: 10,
+    YellowPotion: 5,
 }
 
 const userGoldItemReducer = (state = Fn, action) => {
@@ -28,6 +28,16 @@ const userGoldItemReducer = (state = Fn, action) => {
             return{
                 ...state,
                 Gold: state.Gold + 160,
+                YellowPotion: state.YellowPotion - 1,
+            }
+        case 'UseRedPotionFn':
+            return{
+                ...state,
+                RedPotion: state.RedPotion - 1,
+            }
+        case 'UseYellowPotionFn':
+            return{
+                ...state,
                 YellowPotion: state.YellowPotion - 1,
             }
         default:

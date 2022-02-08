@@ -5,6 +5,7 @@ const Fn = {
     UserIsDying: false,
     UserIsDead: false,
     UserIsDefend: false,
+    UserChannel: false,
 
 }
 
@@ -69,6 +70,16 @@ const ImageControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 UserIsDefend: false,
+                }
+        case 'UserChannelAnimationFn':
+            return {
+                ...state,
+                UserChannel: true,
+                }
+        case 'ResetUserChannelAnimationFn':
+            return {
+                ...state,
+                UserChannel: false,
                 }
         default:
             return {

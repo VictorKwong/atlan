@@ -3,7 +3,7 @@ const Fn = {
     Level: 1,
     Experience: 0,
     maxHealth: 150,
-    currentHealth: 150,
+    currentHealth: 130,
     maxSP: 50,
     currentSP: 50,
     attack: 25,
@@ -19,11 +19,6 @@ const Fn = {
 
 const userStatsReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'testgaga':
-            return {
-                ...state,
-                attack: ++state.attack,
-            }
         case 'enemyAttackUserFn':
             return {
                 ...state,
@@ -78,6 +73,33 @@ const userStatsReducer = (state = Fn, action) => {
                 defencebuffer: state.defencebuffer + 8, 
                 speed: state.speed + (state.Level),
             }
+        //ITEMS
+        case 'UseRedPotionFn':
+            switch(true){
+                case ((state.currentHealth + 50) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 50
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            }
+        case 'UseYellowPotionFn':
+            switch(true){
+                case ((state.currentHealth + 150) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 150
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            }   
         //Rerender Fn
         case 'userClockDefendFn':
             return {

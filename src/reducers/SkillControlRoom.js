@@ -2,6 +2,7 @@
 const Fn = {
     User:{
         BattleSkillScreen: false,
+        BattleItemScreen: false,
         UserTurn: false,
         UserBlock: false,
     },
@@ -29,6 +30,24 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 User:{
                     ...state['User'],
                     BattleSkillScreen: false,
+                    
+                }
+        }
+        case 'UserInSelectItemFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    BattleItemScreen: true,
+                    
+                }
+        }
+        case 'ReturnUserInSelectItemFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    BattleItemScreen: false,
                     
                 }
         }

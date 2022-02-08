@@ -1,5 +1,3 @@
-import lifePotionReducer from "./lifePotion";
-import loggedReducer from "./isLogged";
 import userStatsReducer from "./userStats";
 import userAttributeReducer from "./userAttribute"
 import userGoldItemReducer from "./userGoldItem";
@@ -28,8 +26,6 @@ const allReducers = combineReducers({
     storyLineOne: storyLineOneReducer,
     textReadAndSpeed: textReadAndSpeedReducer,
     npcSpeech: npcSpeechReducer,
-    lifePotion: lifePotionReducer,
-    isLogged: loggedReducer,
     userStats: userStatsReducer,
     userAttribute: userAttributeReducer,
     userGoldItem: userGoldItemReducer,
