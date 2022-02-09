@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.12541d32.css",
-    "main.js": "/atlan/static/js/main.75b4334b.js",
+    "main.css": "/atlan/static/css/main.58b9ef3d.css",
+    "main.js": "/atlan/static/js/main.0fac8560.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
     "static/media/112Streamside.mp3": "/atlan/static/media/112Streamside.0add809a90de7ff81355.mp3",
     "static/media/StrugardenNEOBattle1.mp3": "/atlan/static/media/StrugardenNEOBattle1.a804f15e1ab7a78ad2a9.mp3",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
-    "static/media/UserAttackPost1.gif": "/atlan/static/media/UserAttackPost1.ef94c230a3146f90a6ee.gif",
+    "static/media/Rocker.gif": "/atlan/static/media/Rocker.72e3fcadf21440da167c.gif",
     "static/media/USerBattlePost1.gif": "/atlan/static/media/USerBattlePost1.9300c779be85a58dc893.gif",
+    "static/media/UserAttackPost1.gif": "/atlan/static/media/UserAttackPost1.f924c567e4b5d9d386c4.gif",
     "index.html": "/atlan/index.html",
-    "main.12541d32.css.map": "/atlan/static/css/main.12541d32.css.map",
-    "main.75b4334b.js.map": "/atlan/static/js/main.75b4334b.js.map",
+    "main.58b9ef3d.css.map": "/atlan/static/css/main.58b9ef3d.css.map",
+    "main.0fac8560.js.map": "/atlan/static/js/main.0fac8560.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.12541d32.css",
-    "static/js/main.75b4334b.js"
+    "static/css/main.58b9ef3d.css",
+    "static/js/main.0fac8560.js"
   ]
 }
