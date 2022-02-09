@@ -157,3 +157,125 @@ html, body {
   60% {color:violet; left:0px; top:0px}
   100% {color:#FFEF00; left:0px; top:0px}
 }
+
+
+/* HUD */
+.basicStatsHUD{
+  background-color: #A6C1E4;
+  border: 1px solid #6983A8;
+}
+.nameStatsHUD{
+  font-size: 20px;
+}
+.destextHUD{
+  margin: 0 10px 0;
+}
+.HUDBox{
+  display: flex;
+  align-items: center;
+}
+.hptextHUD,
+.sptextHUD,
+.hpPerHUD,
+.spPerHUD{
+  margin: 0 5px 0;
+}
+.BarBasicHUD::-webkit-progress-value,
+.BarBasicHUD::-moz-progress-bar{
+  background-color:#CBDAF9;
+  border-radius: 12px;
+}
+.expBarBasicHUD::-webkit-progress-value,
+.expBarBasicHUD::-moz-progress-bar{
+  background-color:#6587BE;
+}
+
+.BarBasicHUD{
+	height: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 12px;
+  width: 130px;
+}
+
+.expBarBasicHUD{
+  width: 90%;
+  border-radius: 0px;
+  margin: 0 5% 0;
+}
+
+.leveltextHUD{
+  background-color: #E8E5F1;
+  border-radius: 5px;
+  margin: 10px 0 10px;
+  padding: 3px 0 3px;
+}
+
+.zenytextHUD{
+  text-align: right;
+  padding: 0 5px 0;
+  border-bottom: 1px solid black;
+}
+
+
+@media (max-width: 1199px){
+  .BarBasicHUD{
+    width: 100px;
+  }
+  .expBarBasicHUD{
+    width: 80%;
+  }
+}
+
+@media (max-width: 1023px){
+  .BarBasicHUD{
+    width: 50px;
+  }
+  .expBarBasicHUD{
+    width: 80%;
+  }
+
+}
+@media (max-width: 767px){
+  .hptextHUD,
+  .sptextHUD,
+  .hpPerHUD,
+  .spPerHUD{
+    display: none;
+  }
+  .BarBasicHUD{
+    width: 70px;
+    margin: 0 5px 5px;
+  }
+  .HUDBox{
+    justify-content: center;
+  }
+  .leveltext{
+    font-size: 14px;
+  }
+  .greenHP,
+  .redHP,
+  .yellowHP,
+  .blueSP,
+  .purpleHP{
+    width: 85%;
+  }
+}
+@media (max-width: 467px){
+  .BarBasicHUD{
+    width: 50px;
+  }
+  .nameStatsHUD,
+  .zenytextHUD{
+    margin: 0;
+    text-align: center;
+  }
+  .leveltextHUD{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .basicStatsHUD{
+    font-size: 12px;
+  }
+}

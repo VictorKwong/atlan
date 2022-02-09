@@ -1,39 +1,55 @@
-export const enemyAttackUserFn = (eAttack,uDefence) => {
+export const EnemyAttackUserFn = (Crit) => {
     return {
-        type: 'enemyAttackUserFn',
-        payloadeAttack: eAttack,
-        payloaduDefence: uDefence
+        type: 'EnemyAttackUserFn',
+        CriticalAttack: Crit
     };
 };
 
-export const EnemyAttackBlockUserFn = () => {
+export const EnemyAttackBlockUserFn = (Crit) => {
     return {
         type: 'EnemyAttackBlockUserFn',
+        CriticalAttack: Crit
     };
 };
-export const UserAttackBlockEnemyFn = () => {
+export const UserAttackBlockEnemyFn = (Crit) => {
     return {
         type: 'UserAttackBlockEnemyFn',
+        CritialAttack: Crit
     };
 };
-export const UserSkillBashEnemyFn = () => {
+export const UserSkillBashEnemyFn = (Crit) => {
     return {
         type: 'UserSkillBashEnemyFn',
+        CriticalAttack: Crit
     };
 };
-export const UserSkillBashBlockEnemyFn = () => {
+export const UserSkillBashBlockEnemyFn = (Crit) => {
     return {
         type: 'UserSkillBashBlockEnemyFn',
+        CriticalAttack: Crit
     };
 };
-export const UserSkillMagnumBreakEnemyFn = () => {
+export const UserSkillBashMissedFn = () => {
+    return {
+        type: 'UserSkillBashMissedFn',
+    };
+};
+
+export const UserSkillMagnumBreakEnemyFn = (Crit) => {
     return {
         type: 'UserSkillMagnumBreakEnemyFn',
+        CriticalAttack: Crit
     };
 };
-export const UserSkillMagnumBreakBlockEnemyFn = () => {
+export const UserSkillMagnumBreakBlockEnemyFn = (Crit) => {
     return {
         type: 'UserSkillMagnumBreakBlockEnemyFn',
+        CriticalAttack: Crit
+    };
+};
+export const UserSkillMagnumBreakMissedFn = () => {
+    return {
+        type: 'UserSkillMagnumBreakMissedFn',
     };
 };
 export const UserLevelUpFn = () => {
@@ -123,13 +139,12 @@ export const easterEggFn = () => {
     };
 };
 
-export const userAttackEnemyFn = (userAttackStats) => {
-        return {
-            type: 'userAttackEnemyFn',
-            payload: 10,
-            userAttackStats: userAttackStats
-        };
+export const userAttackEnemyFn = (Crit) => {
+    return {
+        type: 'userAttackEnemyFn',
+        CriticalAttack: Crit
     };
+};
 
 // Animation
 export const UserAttackAnimationFn = () => {

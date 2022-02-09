@@ -1,6 +1,9 @@
-.storyScreen,
-.storyChat{
+.wordCenter{
   text-align: center;
+}
+
+.disFlex{
+  display: flex;
 }
 
 .storyMapScreen{
@@ -16,12 +19,9 @@
 .battleScreen{
   width:80%;
   border: 1px solid black;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .StoryHUD{
@@ -31,6 +31,11 @@
 
 .imgFlip{
   transform: scaleX(-1);
+  height: 50px;
+}
+.imgFlipRocker{
+  height: 150px;
+  width: 80px;
 }
 
 .onHitAnimate{
@@ -48,20 +53,30 @@
 }
 
 .userSkillBox{
-  border: 1px soilid black;
+  display: flex;
+  flex-direction: column;
 }
 
-progress {
+.greenHP,
+.redHP,
+.yellowHP,
+.blueSP,
+.purpleHP{
 	height: 5px;
   border: 1px solid black;
   background-color: #463C57;
+  display: block;
 }
-progress::-webkit-progress-bar {  
+.greenHP::-webkit-progress-bar,
+.redHP::-webkit-progress-bar,
+.yellowHP::-webkit-progress-bar,
+.blueSP::-webkit-progress-bar,
+.purpleHP::-webkit-progress-bar{  
 	background-color: #463C57;
 } 
 .greenHP::-webkit-progress-value,
 .greenHP::-moz-progress-bar{  
-	background-color: #10EF21
+	background-color: #38DB5C
 }
 .yellowHP::-webkit-progress-value,
 .yellowHP::-moz-progress-bar{  
@@ -82,3 +97,177 @@ progress::-webkit-progress-bar {
 	background-color: #1D5DE7
 }
 
+
+.BarBasicHUD::-webkit-progress-value,
+.BarBasicHUD::-moz-progress-bar{
+  background-color:#CBDAF9;
+  border-radius: 12px;
+}
+.expBarBasicHUD::-webkit-progress-value,
+.expBarBasicHUD::-moz-progress-bar{
+  background-color:#6587BE;
+}
+
+.clockBarBasicHUD::-webkit-progress-value,
+.clockBarBasicHUD::-moz-progress-bar{
+  border-radius: 5px;
+}
+
+
+.HUDBox{
+  display: flex;
+  align-items: center;
+}
+
+.BarBasicHUD{
+	height: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 12px;
+  width: 130px;
+}
+
+.expBarBasicHUD{
+  width: 90%;
+  border-radius: 0px;
+  margin: 0 5% 0;
+}
+
+.clockBarBasicHUD{
+  border-radius: 5px;
+}
+
+.basicStatsHUD{
+  background-color: #A6C1E4;
+  border: 1px solid #6983A8;
+}
+
+.nameStatsHUD{
+  font-size: 20px;
+}
+
+.destextHUD{
+  margin: 0 10px 0;
+}
+.hptextHUD,
+.sptextHUD,
+.hpPerHUD,
+.spPerHUD{
+  margin: 0 5px 0;
+}
+
+.leveltextHUD{
+  background-color: #E8E5F1;
+  border-radius: 5px;
+  margin: 10px 0 10px;
+  padding: 3px 0 3px;
+}
+
+.zenytextHUD{
+  text-align: right;
+  padding: 0 5px 0;
+  border-bottom: 1px solid black;
+}
+
+.hptextHUD,
+.sptextHUD{
+  width: 21px;
+}
+
+.altanImg{
+  height: 180px;
+}
+
+.enemyBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.clockHUD{
+  text-align: left;
+}
+
+@media (max-width: 1199px){
+  .BarBasicHUD{
+    width: 100px;
+  }
+  .expBarBasicHUD{
+    width: 80%;
+  }
+}
+
+@media (max-width: 1023px){
+  .BarBasicHUD{
+    width: 50px;
+  }
+  .expBarBasicHUD{
+    width: 80%;
+  }
+
+}
+@media (max-width: 767px){
+  .hptextHUD,
+  .sptextHUD,
+  .hpPerHUD,
+  .spPerHUD,
+  .classTitle,
+  .clockName{
+    display: none;
+  }
+  .BarBasicHUD{
+    width: 70px;
+    margin: 0 5px 5px;
+  }
+  .HUDBox{
+    justify-content: center;
+  }
+  .leveltext{
+    font-size: 14px;
+  }
+  .clockTitle{
+    font-size: 13px;
+  }
+  .greenHP,
+  .redHP,
+  .yellowHP,
+  .blueSP,
+  .purpleHP{
+    width: 85%;
+  }
+}
+@media (max-width: 467px){
+  .BarBasicHUD{
+    width: 50px;
+  }
+  .expBarBasicHUD{
+    margin: 0;
+  }
+  .nameStatsHUD,
+  .zenytextHUD{
+    margin: 0;
+    text-align: center;
+  }
+  .basicStatsHUD{
+    font-size: 12px;
+  }
+  .clockTitle{
+    display: none;
+  }
+  .clockBarBasicHUD{
+    margin: 5px 0 0;
+  }
+  .userSkillBox{
+    font-size: 14px;
+  }
+  .altanImg{
+    height: 120px;
+  }
+  .imgFlip{
+    height: 35px;
+  }
+  .imgFlipRocker{
+    height: 100px;
+    width: 53px;
+  }
+}

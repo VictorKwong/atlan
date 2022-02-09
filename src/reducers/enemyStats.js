@@ -1,3 +1,4 @@
+import { act } from "react-dom/cjs/react-dom-test-utils.production.min"
 
 
 const Fn = [
@@ -60,81 +61,81 @@ const enemyStatsReducer = (state = Fn, action) => {
         case 'userAttackEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - 20,
+                currentHealth: state[0].currentHealth - (20 * action.CriticalAttack)
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - 20,
+                currentHealth: state[1].currentHealth - (20 * action.CriticalAttack)
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - 20,
+                currentHealth: state[2].currentHealth - (20 * action.CriticalAttack)
             }]
         case 'UserAttackBlockEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - 10
+                currentHealth: state[0].currentHealth - (10 * action.CriticalAttack)
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - 10
+                currentHealth: state[1].currentHealth - (10 * action.CriticalAttack)
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - 10,
+                currentHealth: state[2].currentHealth - (10 * action.CriticalAttack)
             }]
         case 'UserSkillBashEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - 50
+                currentHealth: state[0].currentHealth - (50 * action.CriticalAttack)
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - 50
+                currentHealth: state[1].currentHealth - (50 * action.CriticalAttack)
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - 50,
+                currentHealth: state[2].currentHealth - (50 * action.CriticalAttack)
             }]
         case 'UserSkillBashBlockEnemyFn':
         return [{
             ...state[0],
-            currentHealth: state[0].currentHealth - 30
+            currentHealth: state[0].currentHealth - (30 * action.CriticalAttack)
         },
         {
             ...state[1],
-            currentHealth: state[1].currentHealth - 30
+            currentHealth: state[1].currentHealth - (30 * action.CriticalAttack)
         },
         {
             ...state[2],
-            currentHealth: state[2].currentHealth - 30,
+            currentHealth: state[2].currentHealth - (30 * action.CriticalAttack)
         }]
         
         case 'UserSkillMagnumBreakEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - 80
+                currentHealth: state[0].currentHealth - (80 * action.CriticalAttack)
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - 80
+                currentHealth: state[1].currentHealth - (80 * action.CriticalAttack)
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - 80,
+                currentHealth: state[2].currentHealth - (80 * action.CriticalAttack)
             }]
         case 'UserSkillMagnumBreakBlockEnemyFn':
         return [{
             ...state[0],
-            currentHealth: state[0].currentHealth - 40
+            currentHealth: state[0].currentHealth - (40 * action.CriticalAttack)
         },
         {
             ...state[1],
-            currentHealth: state[1].currentHealth - 40
+            currentHealth: state[1].currentHealth - (40 * action.CriticalAttack)
         },
         {
             ...state[2],
-            currentHealth: state[2].currentHealth - 40,
+            currentHealth: state[2].currentHealth - (40 * action.CriticalAttack)
         }]
 
 

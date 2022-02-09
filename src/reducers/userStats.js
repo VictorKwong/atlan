@@ -3,7 +3,7 @@ const Fn = {
     Level: 1,
     Experience: 0,
     maxHealth: 150,
-    currentHealth: 130,
+    currentHealth: 150,
     maxSP: 50,
     currentSP: 50,
     attack: 25,
@@ -11,24 +11,24 @@ const Fn = {
     defence: 18,
     defencebuffer: 28, // 18 + 10
     speed: 10,
-    hitRate: 0.8,
+    hitRate: 0.95, //0.95
     dodgeRate: 0.1,
-    critRate: 0.05,
+    critRate: 0.05, // 0.05
     userClockDefend: false,
 }
 
 const userStatsReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'enemyAttackUserFn':
+        case 'EnemyAttackUserFn':
             return {
                 ...state,
-                currentHealth: state.currentHealth - 20,
+                currentHealth: state.currentHealth - (20 * action.CriticalAttack),
                 //(action.payloadeAttack)/(action.payloaduDefence)
             }
         case 'EnemyAttackBlockUserFn':
             return {
                 ...state,
-                currentHealth: state.currentHealth - 10,
+                currentHealth: state.currentHealth - (10 * action.CriticalAttack),
                 //(action.payloadeAttack)/(action.payloaduDefence)
         }
         case 'WinResultFn':
@@ -49,12 +49,14 @@ const userStatsReducer = (state = Fn, action) => {
             }
         case 'UserSkillBashBlockEnemyFn':
         case 'UserSkillBashEnemyFn':
+        case 'UserSkillBashMissedFn':
             return{
                 ...state,
                 currentSP: state.currentSP - 10,
             }
         case 'UserSkillMagnumBreakBlockEnemyFn':
         case 'UserSkillMagnumBreakEnemyFn':
+        case 'UserSkillMagnumBreakMissedFn':
         return{
             ...state,
             currentSP: state.currentSP - 15,

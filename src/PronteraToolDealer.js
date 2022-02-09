@@ -17,6 +17,8 @@ function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
+    const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
@@ -111,8 +113,33 @@ function StartMenu(){
 
           </div>
           <div className="StoryHUD">
-            <h1>HUD</h1>
-            <p>Zeny {userGoldItem.Zeny}</p>
+              <p className="basicStatsHUD">Basic Info</p>
+              <p className="nameStatsHUD destextHUD">Altan</p>
+              <p className="destextHUD classTitle">Knight</p>
+                <div className="HUDBox">
+                  <p className="hptextHUD">HP</p>
+                  <progress className="BarBasicHUD" value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={userStats.currentHealth + "/" + userStats.maxHealth}/>
+                  <p className="hpPerHUD">{((userStats.currentHealth/userStats.maxHealth)*100).toFixed(0) + "%"}</p>
+                </div>
+                <div className="HUDBox">
+                  <p className="sptextHUD">SP</p>
+                  <progress className="BarBasicHUD" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={userStats.currentSP + "/" + userStats.maxSP}/>
+                  <p className="spPerHUD">{((userStats.currentSP/userStats.maxSP)*100).toFixed(0) + "%"}</p>
+                </div>
+
+                <div className="leveltextHUD">
+                    <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
+                    {/* <p>Player Attack {userStats.attack}</p>
+                    <p>Player Defence {userStats.defence}</p>
+                    <p>Player Speed {userStats.speed}</p>
+                    <p>Player Hit Rate {userStats.hitRate}</p>
+                    <p>Player Dodge Rate {userStats.dodgeRate}</p>
+                    <p>Player Crit Rate {userStats.critRate}</p>
+                    <p>Player Exp {userStats.Experience}</p> */}
+                    {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
+                </div>
+                <p className="zenytextHUD">Zeny {userGoldItem.Zeny}</p>
             <p><img src={RedPotion} alt="RedPotion" />Red Potion {userGoldItem.RedPotion}</p>
             <p><img src={YellowPotion} alt="YellowPotion" />Yellow Potion {userGoldItem.YellowPotion}</p>
           </div>
