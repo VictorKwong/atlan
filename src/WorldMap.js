@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -6,6 +6,7 @@ import Prontera from './Prontera'
 import PoringIsland from './PoringIsland'
 import AntHell from './AntHell'
 import PronteraToolDealer from './PronteraToolDealer'
+import WeaponArmorDealer from './WeaponArmorDealer'
 import './css/storyMainMap.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
@@ -29,9 +30,11 @@ function StartMenu(){
         screenControlRoom.AntHell ? <AntHell />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
         screenControlRoom.PronteraToolDealer ? <PronteraToolDealer /> :
+        screenControlRoom.WeaponArmorDealer ? <WeaponArmorDealer /> :
         <div>
           <div className="storyMapScreen">
             <div className="StoryMap">
+              <h3>World Map</h3>
               <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
               <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
               <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
@@ -63,7 +66,7 @@ function StartMenu(){
                     {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
-                <p className="zenytextHUD">Zeny {userGoldItem.Zeny}</p>
+                <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
             </div>
           </div>
           <fieldset className="storyChat">

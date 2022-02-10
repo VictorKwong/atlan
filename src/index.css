@@ -160,40 +160,16 @@ html, body {
 
 
 /* HUD */
-.basicStatsHUD{
-  background-color: #A6C1E4;
-  border: 1px solid #6983A8;
-}
-.nameStatsHUD{
-  font-size: 20px;
-}
-.destextHUD{
-  margin: 0 10px 0;
-}
+
 .HUDBox{
   display: flex;
   align-items: center;
-}
-.hptextHUD,
-.sptextHUD,
-.hpPerHUD,
-.spPerHUD{
-  margin: 0 5px 0;
-}
-.BarBasicHUD::-webkit-progress-value,
-.BarBasicHUD::-moz-progress-bar{
-  background-color:#CBDAF9;
-  border-radius: 12px;
-}
-.expBarBasicHUD::-webkit-progress-value,
-.expBarBasicHUD::-moz-progress-bar{
-  background-color:#6587BE;
 }
 
 .BarBasicHUD{
 	height: 10px;
   border: 1px solid black;
-  background-color: white;
+  background-color: #E2E9E3;
   border-radius: 12px;
   width: 130px;
 }
@@ -204,11 +180,63 @@ html, body {
   margin: 0 5% 0;
 }
 
+.basicStatsHUD{
+  background-color: #A6C1E4;
+  border: 1px solid #6983A8;
+}
+
 .leveltextHUD{
   background-color: #E8E5F1;
   border-radius: 5px;
   margin: 10px 0 10px;
   padding: 3px 0 3px;
+}
+
+progress.BarBasicHUD::-webkit-progress-bar{
+  background-color: #FEFEFF;
+  border-radius: 12px;
+}
+
+.BarBasicHUD::-webkit-progress-value{
+  background-color:#CBDAF9;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #b7c4e0, #cce1ff);
+  box-shadow:  10px 10px 80px #adb9d4,
+             -10px -10px 60px #c2d4ed;
+}
+.BarBasicHUD::-moz-progress-bar{
+  background-color:#CBDAF9;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #b7c4e0, #cce1ff);
+  box-shadow:  10px 10px 80px #adb9d4,
+             -10px -10px 80px #c2d4ed;
+}
+.expBarBasicHUD::-webkit-progress-value{
+  background-color:#6587BE;
+  border-radius: 0px;
+}
+.expBarBasicHUD::-moz-progress-bar{
+  background-color:#6587BE;
+  border-radius: 0px;
+}
+.clockBarBasicHUD::-webkit-progress-value{
+  border-radius: 5px;
+}
+.clockBarBasicHUD::-moz-progress-bar{
+  border-radius: 5px;
+}
+
+.nameStatsHUD{
+  font-size: 20px;
+}
+.destextHUD{
+  margin: 0 10px 0;
+}
+.hptextHUD,
+.sptextHUD,
+.hpPerHUD,
+.spPerHUD{
+  margin: 0 5px 0;
 }
 
 .zenytextHUD{
@@ -217,6 +245,10 @@ html, body {
   border-bottom: 1px solid black;
 }
 
+.hptextHUD,
+.sptextHUD{
+  width: 21px;
+}
 
 @media (max-width: 1199px){
   .BarBasicHUD{
@@ -240,7 +272,8 @@ html, body {
   .hptextHUD,
   .sptextHUD,
   .hpPerHUD,
-  .spPerHUD{
+  .spPerHUD,
+  .classTitle{
     display: none;
   }
   .BarBasicHUD{
@@ -265,17 +298,18 @@ html, body {
   .BarBasicHUD{
     width: 50px;
   }
+  .expBarBasicHUD{
+    margin: 0;
+  }
   .nameStatsHUD,
   .zenytextHUD{
     margin: 0;
     text-align: center;
   }
-  .leveltextHUD{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
   .basicStatsHUD{
     font-size: 12px;
+  }
+  .leveltext{
+    text-align: center;
   }
 }

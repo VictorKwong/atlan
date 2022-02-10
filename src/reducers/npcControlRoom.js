@@ -16,23 +16,23 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 KafraEmployee: false,
             }
-        case 'ToolDealerBuyFn':
+        case 'DealerBuyFn':
             return {
                 ...state,
-                ToolDealerBuy: true,
-                ToolDealerSell: false,
+                DealerBuy: true,
+                DealerSell: false,
             }
-        case 'ToolDealerSellFn':
+        case 'DealerSellFn':
             return {
                 ...state,
-                ToolDealerBuy: false,
-                ToolDealerSell: true,
+                DealerBuy: false,
+                DealerSell: true,
             }
-        case 'ResetToolDealerBuySellFn':
+        case 'ResetDealerBuySellFn':
             return {
                 ...state,
-                ToolDealerBuy: false,
-                ToolDealerSell: false,
+                DealerBuy: false,
+                DealerSell: false,
             }
         
         default:

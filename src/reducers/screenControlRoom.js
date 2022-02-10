@@ -7,6 +7,7 @@ const Fn = {
     BattlePoringIslandMap: false,
     Prontera: false,
     PronteraToolDealer: false,
+    WeaponArmorDealer: false,
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
@@ -49,6 +50,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 BattlePoringIslandMap: false,
                 Prontera: !state.Prontera,
                 PronteraToolDealer: false,
+                WeaponArmorDealer: false,
                 PronteraSouth: false,
                 PoringIsland: false,
                 AntHell: false,
@@ -60,6 +62,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     BattlePoringIslandMap: false,
                     Prontera: false,
                     PronteraToolDealer: false,
+                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: !state.PoringIsland,
                     AntHell: false,
@@ -71,6 +74,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     BattlePoringIslandMap: false,
                     Prontera: false,
                     PronteraToolDealer: false,
+                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
@@ -82,6 +86,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     BattlePoringIslandMap: !state.BattlePoringIslandMap,
                     Prontera: false,
                     PronteraToolDealer: false,
+                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
@@ -93,6 +98,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     BattlePoringIslandMap: false,
                     Prontera: false,
                     PronteraToolDealer: false,
+                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: !state.AntHell,
@@ -104,10 +110,24 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     BattlePoringIslandMap: false,
                     Prontera: false,
                     PronteraToolDealer: !state.PronteraToolDealer,
+                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
                 }
+            case 'GotoWeaponArmorDealerFn':
+                return {
+                    ...state,
+                    WorldMap: false,
+                    BattlePoringIslandMap: false,
+                    Prontera: false,
+                    PronteraToolDealer: false,
+                    WeaponArmorDealer: !state.WeaponArmorDealer,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    AntHell: false,
+                }
+            
         default:
             return state;
     }

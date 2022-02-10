@@ -1,6 +1,3 @@
-import { act } from "react-dom/cjs/react-dom-test-utils.production.min"
-
-
 const Fn = [
     //Poring
     {
@@ -58,31 +55,31 @@ const Fn = [
 
 const enemyStatsReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'userAttackEnemyFn':
+        case 'UserAttackEnemyFn':
             return [{
-                ...state[0],
-                currentHealth: state[0].currentHealth - (20 * action.CriticalAttack)
+                ...state[0], //20
+                currentHealth: state[0].currentHealth - action.TestCalcuation
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - (20 * action.CriticalAttack)
+                currentHealth: state[1].currentHealth - action.TestCalcuation
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - (20 * action.CriticalAttack)
+                currentHealth: state[2].currentHealth - action.TestCalcuation
             }]
         case 'UserAttackBlockEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - (10 * action.CriticalAttack)
+                currentHealth: state[0].currentHealth - action.TestCalcuation
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - (10 * action.CriticalAttack)
+                currentHealth: state[1].currentHealth - action.TestCalcuation
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - (10 * action.CriticalAttack)
+                currentHealth: state[2].currentHealth - action.TestCalcuation
             }]
         case 'UserSkillBashEnemyFn':
             return [{

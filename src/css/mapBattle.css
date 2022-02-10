@@ -57,63 +57,6 @@
   flex-direction: column;
 }
 
-.greenHP,
-.redHP,
-.yellowHP,
-.blueSP,
-.purpleHP{
-	height: 5px;
-  border: 1px solid black;
-  background-color: #463C57;
-  display: block;
-}
-.greenHP::-webkit-progress-bar,
-.redHP::-webkit-progress-bar,
-.yellowHP::-webkit-progress-bar,
-.blueSP::-webkit-progress-bar,
-.purpleHP::-webkit-progress-bar{  
-	background-color: #463C57;
-} 
-.greenHP::-webkit-progress-value,
-.greenHP::-moz-progress-bar{  
-	background-color: #38DB5C
-}
-.yellowHP::-webkit-progress-value,
-.yellowHP::-moz-progress-bar{  
-	background-color: #B6B72A
-}
-
-.redHP::-webkit-progress-value,
-.redHP::-moz-progress-bar{  
-	background-color: #B91514
-}
-
-.purpleHP::-webkit-progress-value,
-.purpleHP::-moz-progress-bar{  
-	background-color: #DD13F3
-}
-.blueSP::-webkit-progress-value,
-.blueSP::-moz-progress-bar{  
-	background-color: #1D5DE7
-}
-
-
-.BarBasicHUD::-webkit-progress-value,
-.BarBasicHUD::-moz-progress-bar{
-  background-color:#CBDAF9;
-  border-radius: 12px;
-}
-.expBarBasicHUD::-webkit-progress-value,
-.expBarBasicHUD::-moz-progress-bar{
-  background-color:#6587BE;
-}
-
-.clockBarBasicHUD::-webkit-progress-value,
-.clockBarBasicHUD::-moz-progress-bar{
-  border-radius: 5px;
-}
-
-
 .HUDBox{
   display: flex;
   align-items: center;
@@ -122,12 +65,13 @@
 .BarBasicHUD{
 	height: 10px;
   border: 1px solid black;
-  background-color: white;
+  background-color: #E2E9E3;
   border-radius: 12px;
   width: 130px;
 }
 
 .expBarBasicHUD{
+  height: 8px;
   width: 90%;
   border-radius: 0px;
   margin: 0 5% 0;
@@ -142,10 +86,107 @@
   border: 1px solid #6983A8;
 }
 
+.leveltextHUD{
+  background-color: #E8E5F1;
+  border-radius: 5px;
+  margin: 10px 0 10px;
+  padding: 3px 0 3px;
+}
+
+.greenHP,
+.redHP,
+.yellowHP,
+.blueSP,
+.purpleHP{
+	height: 5px;
+  border: 1px solid black;
+  background-color: #463C57;
+  display: block;
+}
+progress.greenHP::-webkit-progress-bar,
+progress.redHP::-webkit-progress-bar,
+progress.yellowHP::-webkit-progress-bar,
+progress.blueSP::-webkit-progress-bar,
+progress.purpleHP::-webkit-progress-bar{  
+	background-color: #463C57;
+}
+progress.BarBasicHUD::-webkit-progress-bar{
+  background-color: #FEFEFF;
+  border-radius: 12px;
+}
+
+/* Unfortunately, It doesn't work if I combine them together (nice in CSS) */
+.greenHP::-webkit-progress-value{
+	background-color: rgb(56, 219, 92)
+}
+.greenHP::-moz-progress-bar{  
+	background-color: rgb(56, 219, 92)
+}
+.yellowHP::-webkit-progress-value{  
+	background-color: #B6B72A
+}
+.yellowHP::-moz-progress-bar{  
+	background-color: #B6B72A
+}
+.redHP::-webkit-progress-value{  
+	background-color: #B91514
+}
+.redHP::-moz-progress-bar{  
+	background-color: #B91514
+}
+.purpleHP::-webkit-progress-value{  
+	background-color: #DD13F3
+}
+.purpleHP::-moz-progress-bar{  
+	background-color: #DD13F3
+}
+.blueSP::-webkit-progress-value{  
+	background-color: #1D5DE7
+}
+.blueSP::-moz-progress-bar{  
+	background-color: #1D5DE7
+}
+
+.BarBasicHUD::-webkit-progress-value{
+  background-color:#CBDAF9;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #b7c4e0, #cce1ff);
+  box-shadow:  10px 10px 80px #adb9d4,
+             -10px -10px 60px #c2d4ed;
+}
+.BarBasicHUD::-moz-progress-bar{
+  background-color:#CBDAF9;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #b7c4e0, #cce1ff);
+  box-shadow:  10px 10px 80px #adb9d4,
+             -10px -10px 80px #c2d4ed;
+}
+.expBarBasicHUD::-webkit-progress-value{
+  background-color:#6587BE;
+  border-radius: 0px;
+  background: #6587BE;
+  box-shadow: none;
+}
+.expBarBasicHUD::-moz-progress-bar{
+  background-color:#6587BE;
+  border-radius: 0px;
+  background: #6587BE;
+  box-shadow: none;
+}
+.clockBarBasicHUD::-webkit-progress-value{
+  border-radius: 5px;
+  background: #6587BE;
+  box-shadow: none;
+}
+.clockBarBasicHUD::-moz-progress-bar{
+  border-radius: 5px;
+  background: #6587BE;
+  box-shadow: none;
+}
+
 .nameStatsHUD{
   font-size: 20px;
 }
-
 .destextHUD{
   margin: 0 10px 0;
 }
@@ -154,13 +195,6 @@
 .hpPerHUD,
 .spPerHUD{
   margin: 0 5px 0;
-}
-
-.leveltextHUD{
-  background-color: #E8E5F1;
-  border-radius: 5px;
-  margin: 10px 0 10px;
-  padding: 3px 0 3px;
 }
 
 .zenytextHUD{
@@ -270,4 +304,8 @@
     height: 100px;
     width: 53px;
   }
+  .leveltext{
+    text-align: center;
+  }
+
 }

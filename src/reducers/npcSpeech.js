@@ -28,6 +28,11 @@ const Fn = {
         },{
             name: 'ToolDealer',
             text: 'You don`t have enough Item to sell it.'
+    }],
+    WeaponArmorDealer:[{
+            name: 'Dealer',
+            text: 'Our shop sell best weapon and armor in Prontera, what can I get for you?'
+        },{
     }]
 
 }

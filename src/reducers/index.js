@@ -11,6 +11,7 @@ import storyLineOneReducer from "./storyLineOne";
 import textReadAndSpeedReducer from "./textReadAndSpeed";
 import npcSpeechReducer from "./npcSpeech";
 import baseEXPChartReducer from "./baseEXPChart";
+import clockControlRoomReducer from './clockControlRoom'
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
@@ -20,6 +21,7 @@ const allReducers = combineReducers({
     screenControlRoom: screenControlRoomReducer,
     ImageControlRoom: ImageControlRoomReducer,
     SkillControlRoom: SkillControlRoomReducer,
+    clockControlRoom: clockControlRoomReducer,
     npcControlRoom: npcControlRoomReducer,
     audioControlRoom: audioControlRoomReducer,
     baseEXPChart: baseEXPChartReducer,

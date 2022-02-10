@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPoringIslandFn, EnemyAttackUserFn, userAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn } from './actions';
+import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
-import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn } from './actions';
+import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn, TickingClockFn } from './actions';
 //Game Result (Victory/Defeat)
 import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
@@ -18,6 +18,7 @@ import { UseYellowPotionFn, UseRedPotionFn } from './actions'
 
 
 import './css/mapBattle.css'
+import './index.css'
 import PoringIsland from './PoringIsland'
 import Poring from './img/Monster/Poring.gif'
 import Lunatic from './img/Monster/Lunatic.gif'
@@ -44,9 +45,8 @@ let clockBarObject = {
 }
 //Monster Random Number 0 1 
 let i = Math.floor((Math.random() * 3));
-//Music
-let k = 0;
-
+let Uclock = 0;
+let clockCheck = 0;
 function Main(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
@@ -54,13 +54,11 @@ function Main(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
-    const userGold = useSelector(state => state.userGold)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const enemyStats = useSelector(state => state.enemyStats)
     console.log('you are rerender')
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
-    console.log(`here: ${i}`)
     useEffect(() => {
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
@@ -87,41 +85,29 @@ function Main(){
           }
           if (audioBGM.volume < 0.002) {
               audioBGM.pause();
-              console.log(audioBGM.currentTime)
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
           }else if (i >= 2){
             audioBGM.volume = 0.15
             clearInterval(fadeAudio);
           }
-          $('.toolDealerNPC').on('click', function(event) {
-            event.preventDefault();
-              audioBGM.volume = 0.15;
-              clearInterval(fadeAudio);
-          })
         }, 10);
     }
-
 
     // VICTORY FUCNTION
     // EXP FUNCTION
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
+        setTimeout(() => (clockCheck = 1), 300);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
-        $('.storySpeech').html(`<p>Victory! ${enemyStats[i].Experience} EXP received.</p>\n<p>${enemyStats[i].Zeny} Zeny.</p>`)
-        console.log('Add Exp')
+        $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
       }
     }, [enemyStats, dispatch]);
-    // $('.goGoAttack').prop("disabled", true);
-      useEffect(() => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-          if (enemyStats[i].currentHealth <= 0){
-            
-          }
-      }, [enemyStats, dispatch]);
     // DEFEAT FUNCTION
       useEffect(() => {
         if (userStats.currentHealth <= 0){
+          setTimeout(() => (clockCheck = 1), 300);
           $('.storySpeech').html(`Defeat... Altan Fainted......`)
           // $('.goGoAttack').prop("disabled", true);
         }
@@ -133,7 +119,8 @@ function Main(){
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
                 i = Math.floor((Math.random() * 3));
-                k = k + 1;
+                Uclock = 0;
+                clockCheck = 0;
                 dispatch(ResetEnemyTurnFn());
                 dispatch(ResetUserTurnFn());
                 dispatch(ResetEnemyTurnBlockFn());
@@ -177,6 +164,7 @@ function Main(){
 
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
+      setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
       //Rerender, Block or not block
@@ -206,14 +194,14 @@ function Main(){
               // Text display
               $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
               //Rerender
-              return setTimeout(() => dispatch(userAttackEnemyFn(1.5)), 300);
+              return setTimeout(() => dispatch(UserAttackEnemyFn(1.5)), 300);
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               // Text display
               $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
               //Rerender
-              return setTimeout(() => dispatch(userAttackEnemyFn(1)), 300);
+              return setTimeout(() => dispatch(UserAttackEnemyFn(1)), 300);
           // ENEMY DODGE
           default:
             $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
@@ -222,18 +210,21 @@ function Main(){
         }
         })()
       // End turn
+      clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
       dispatch(ResetUserTurnFn());
 
     }
     const userDefendButton = () => {
       //Rerender
+      setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(userClockDefendFn()), 300);
       dispatch(UserIsBlockAnimationFn());
       dispatch(UserTurnBlockFn());
       // Text display
       $('.storySpeech').append('<p>Altan Defend himself!</p>')
       // End turn
+      clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 70;
       dispatch(ResetUserTurnFn());
     }
@@ -245,6 +236,7 @@ function Main(){
       if (userStats.currentSP >= 10){
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       (() => {
         switch (true) {
@@ -253,7 +245,7 @@ function Main(){
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
-            if(userStats.critRate >=Math.random()){
+            if(userStats.critRate >= Math.random()){
               // Text display
               $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
               // Rerender
@@ -264,7 +256,6 @@ function Main(){
               // Rerender
               return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(1)), 300);
             }
-
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
             dispatch(EnemyOnHitAnimationFn());
@@ -288,8 +279,8 @@ function Main(){
             return setTimeout(() => dispatch(UserSkillBashMissedFn()), 300);
         }
         })()
-
         // End turn
+        clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -298,8 +289,11 @@ function Main(){
     }
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 15){
+      let rate1 = Math.random();
+      let rate2 = Math.random();
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       (() => {
         switch (true) {
@@ -319,7 +313,6 @@ function Main(){
               // Rerender
               return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(1)), 300);
             }
-
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
             dispatch(EnemyOnHitAnimationFn());
@@ -344,6 +337,7 @@ function Main(){
         }
         })()
         // End turn
+        clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -355,10 +349,12 @@ function Main(){
         dispatch(UserChannelAnimationFn());
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
+        setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn()), 300);
         // Text display
         $('.storySpeech').append('<p>Altan Heal himself! Recover 50 hp </p>')
         // End turn
+        clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
     }
@@ -366,20 +362,23 @@ function Main(){
         dispatch(UserChannelAnimationFn());
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
+        setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn()), 300);
         // Text display
         $('.storySpeech').append('<p>Altan Heal himself! Recover 150 hp </p>')
         // End turn
+        clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
     }
     // Enemy AI
     const enemyDecisionQFn = () => {
-      const enemyDecision = Math.random();
+      setTimeout(() => (Uclock = 0), 300);
+  
       (() => {
           switch (true) {
           //EnemyAttack & Hit
-            case(enemyDecision < 1):
+            case(Math.random() <= 0.7):
               //Rerender, Block or not block
               (() => {
               switch (true) {
@@ -422,30 +421,29 @@ function Main(){
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
               }
               })()
-            // End turn
-            clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
-            dispatch(ResetEnemyTurnFn());
-             break;
+            break;
             //Enemy Defend itself
-          case(enemyDecision === 1):
-            dispatch(EnemyTurnBlockFn());
-            // Text display
-            $('.storySpeech').append(`<p>${enemyStats[i].name} Defend itself...</p>`)
-            //Rerender
-            setTimeout(() => dispatch(enemyClockDefendFn()), 300);
-            // End turn
-            clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
-            dispatch(ResetEnemyTurnFn());
-          break;
-          default:
-            return;
-        }
+            case(true):
+              dispatch(EnemyTurnBlockFn());
+              // Text display
+              $('.storySpeech').append(`<p>${enemyStats[i].name} Defend itself...</p>`)
+              //Rerender
+              return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
+            default:
+              clockCheck = 0;
+              clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
+              return dispatch(ResetEnemyTurnFn());
+            }
       })()
+      // End turn
+      clockCheck = 0;
+      clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
+      dispatch(ResetEnemyTurnFn());
     }
 
 
   const clockBaseQtn = () => {
-    if (enemyStats[i].currentHealth > 0 && userStats.currentHealth > 0){
+    if (enemyStats[i].currentHealth > 0 && userStats.currentHealth > 0 && Uclock === 0){
       const ClockTurn = setInterval(() => {
         // *study
         (() => {
@@ -456,20 +454,23 @@ function Main(){
               dispatch(ResetUserTurnBlockFn());
               dispatch(ReturnUserInSelectSkillFn());
               dispatch(ReturnUserInSelectItemFn());
+              clockCheck = 1;
               dispatch(UserTurnFn());
               $('.storySpeech').html('<p>--------- Altan Turn ---------</p>')
               console.log('UserTurn is good')
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
               dispatch(ResetEnemyTurnBlockFn());
+              clockCheck = 1;
               dispatch(EnemyTurnFn());
               $('.storySpeech').append(`<p>--------- ${enemyStats[i].name} Turn ---------</p>\n`)
               enemyDecisionQFn();
               console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
-              console.log(`userClock: ${clockBarObject.userClockBar}`)
-              console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
+              // console.log(`userClock: ${clockBarObject.userClockBar}`)
+              // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
+              Uclock = 1
               return clockBarObject = {
                 userClockBar: clockBarObject.userClockBar + userStats.speed,
                 enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
@@ -487,8 +488,27 @@ function Main(){
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
-
-
+    //Rerender Clock FN
+    const clockRenderQtn = () => {
+      if (Uclock === 0){
+      const ClockTurn = setInterval(() => {
+        (() => {
+          switch (true) {
+           case(clockCheck === 1):
+              return clearInterval(ClockTurn);
+           default:
+              return dispatch(TickingClockFn());
+          }
+        })()
+      },100)
+      }
+    }
+    //Rerender Clock FN
+    //Uclock, clockCheck = 0;
+    useEffect(() => {
+      setTimeout(() => clockRenderQtn(), 900);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userStats,enemyStats, dispatch]);
 
     return(
       <div>
@@ -560,19 +580,19 @@ function Main(){
                     {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
-                <p className="zenytextHUD">Zeny {userGoldItem.Zeny}</p>
+                <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div className="zenytextHUD clockHUD">
                       <h2 className="clockTitle">Clock Turn:</h2>
                       <p className="clockName">Altan: {clockBarObject.userClockBar}</p>
-                      <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title="Altan"/>
+                      <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={"Altan: " + clockBarObject.userClockBar}/>
                       <p className="clockName">{enemyStats[i].name}: {clockBarObject.enemyClockBar}</p>
-                      <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name}/>
+                      <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name + ": " + clockBarObject.enemyClockBar }/>
                 </div>
                 <div>
                       
                       { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
-                        {userStats.Level >= 3 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash MP10</button> : null}
+                        {userStats.Level >= 2 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash MP10</button> : null}
                         {userStats.Level >= 5 ? <button onClick={() => userSkillMagnumBreakButton()}><img src={skillMagnum} alt="skillMagnumBreak" /> Magnum Break MP25</button> : null}
                         <button onClick={() => dispatch(ReturnUserInSelectSkillFn())}>Back</button>
                       </div>

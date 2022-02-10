@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoPronteraToolDealerFn } from './actions';
+import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoWeaponArmorDealerFn } from './actions';
 import { AudioCurrentTimeSaverFn } from './actions';
 
 import { TalktoKafraEmployeeFn, ResetTalktoKafraEmployeeFn, KafraEmployeeHealFn, } from './actions';
@@ -8,6 +8,7 @@ import { TalktoKafraEmployeeFn, ResetTalktoKafraEmployeeFn, KafraEmployeeHealFn,
 
 import WorldMap from './WorldMap'
 import PronteraToolDealer from './PronteraToolDealer'
+import WeaponArmorDealer from './WeaponArmorDealer'
 import './css/mapProntera.css'
 import $ from 'jquery'
 import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
@@ -105,11 +106,13 @@ function StartMenu(){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.PronteraToolDealer ? <PronteraToolDealer/>:
+        screenControlRoom.WeaponArmorDealer ? <WeaponArmorDealer /> :
         <div>
           <div className="storyMapScreen">
             <div className="PronteraMap">
+              <h3>Prontera</h3>
               <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn()); dispatch(GotoPronteraToolDealerFn());}}>ToolDealer</button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>WeaponArmorDealer</button>
+              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn()); dispatch(GotoWeaponArmorDealerFn());}}>WeaponArmorDealer</button>
               <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>PronteraSouthGate</button>
               <button className="kafraEmployee" onClick={() => {talkToKafraEmployee();}}>Kafra Employee</button>
               
@@ -142,7 +145,7 @@ function StartMenu(){
                     {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
-                <p className="zenytextHUD">Zeny {userGoldItem.Zeny}</p>
+                <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
             </div>
           </div>
           <fieldset className="storyChat">

@@ -145,8 +145,8 @@ function StartMenu(){
           </div>
         </div>
         <fieldset className="storyChat">
-        <legend className="storyCharacter">{npcSpeech['ToolDealer'][0].text}</legend>
-        <p className="storySpeech">{npcSpeech['ToolDealer'][0].name}</p>
+        <legend className="storyCharacter">{npcSpeech['WeaponArmorDealer'][0].text}</legend>
+        <p className="storySpeech">{npcSpeech['WeaponArmorDealer'][0].name}</p>
           <button onClick={() =>{dispatch(DealerBuyFn()); talkToToolDealerBuy();}}>Buy</button>
           <button onClick={() =>{dispatch(DealerSellFn()); talkToToolDealerSell();}}>Sell</button>
           <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetToolDealerBuySellFn());}}>Leave</button>

@@ -11,10 +11,18 @@ export const EnemyAttackBlockUserFn = (Crit) => {
         CriticalAttack: Crit
     };
 };
+export const UserAttackEnemyFn = (Crit) => {
+    return {
+        type: 'UserAttackEnemyFn',
+        CriticalAttack: Crit,
+        TestCalcuation: (Crit * 50)
+    };
+};
 export const UserAttackBlockEnemyFn = (Crit) => {
     return {
         type: 'UserAttackBlockEnemyFn',
-        CritialAttack: Crit
+        CritialAttack: Crit,
+        TestCalcuation: (Crit * 50)
     };
 };
 export const UserSkillBashEnemyFn = (Crit) => {
@@ -104,6 +112,11 @@ export const GotoPronteraToolDealerFn = () => {
     };
 };
 
+export const GotoWeaponArmorDealerFn = () => {
+    return {
+        type: 'GotoWeaponArmorDealerFn',
+    };
+};
 export const GotoPoringIslandFn = () => {
     return {
         type: 'GotoPoringIslandFn',
@@ -139,12 +152,6 @@ export const easterEggFn = () => {
     };
 };
 
-export const userAttackEnemyFn = (Crit) => {
-    return {
-        type: 'userAttackEnemyFn',
-        CriticalAttack: Crit
-    };
-};
 
 // Animation
 export const UserAttackAnimationFn = () => {
@@ -323,14 +330,14 @@ export const KafraEmployeeHealFn = () => {
         type: 'KafraEmployeeHealFn'
     };
 };
-export const ToolDealerBuyFn = () => {
+export const DealerBuyFn = () => {
     return {
-        type: 'ToolDealerBuyFn'
+        type: 'DealerBuyFn'
     };
 };
-export const ToolDealerSellFn = () => {
+export const DealerSellFn = () => {
     return {
-        type: 'ToolDealerSellFn'
+        type: 'DealerSellFn'
     };
 };
 
@@ -385,6 +392,12 @@ export const enemyClockDefendFn = () => {
     };
 };
 
+//Clock Fn
+export const TickingClockFn = () => {
+    return {
+        type: 'TickingClockFn'
+    };
+};
 
 //Audio Interaction
 export const AudioCurrentTimeSaverFn = (currentTime) => {

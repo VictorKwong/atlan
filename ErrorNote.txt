@@ -84,6 +84,17 @@ https://www.geeksforgeeks.org/returning-multiple-values-in-java/
         return ans;
     }
 
+Warning: Received NaN for the `value` attribute. If this is expected, cast the value to a string:
+
+if (fromCurrency !== undefined && toCurrency !== undefined) {
+    // ...
+}
+
+toAmount = amount * exchangeRate // 1 * undefined → NaN
+
+fromAmount = amount / exchangeRate // 1 / undefined → NaN
+
+
 Resource:
 https://ro-character-simulator.ratemyserver.net/##
 https://ratemyserver.net/index.php?page=mob_db
