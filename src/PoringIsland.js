@@ -7,12 +7,24 @@ import AltanEquipment from './AltanEquipment'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
+
+// EQUIP ACTION
+import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn} from './actions'
+
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
 import GaiaSword from './img/Equipment/Weapon/GaiaSword.gif'
 import TwinEdgeofNaghtSieger from './img/Equipment/Weapon/TwinEdgeofNaghtSieger.gif'
 import VioletFear from './img/Equipment/Weapon/VioletFear.gif'
+// ARMOR IMAGE
+import CottonShirt from './img/Equipment/Armor/CottonShirt.gif'
+import AdventureSuit from './img/Equipment/Armor/AdventurersSuit.gif'
+import WoodenMail from './img/Equipment/Armor/WoodenMail.gif'
+import Coat from './img/Equipment/Armor/Coat.gif'
+import PaddedArmor from './img/Equipment/Armor/PaddedArmor.gif'
+import ChainMail from './img/Equipment/Armor/ChainMail.gif'
+import FullPlate from './img/Equipment/Armor/FullPlate.gif'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 const audioBGM = new Audio(audioStreamside);
@@ -116,7 +128,7 @@ function StartMenu(){
                     <p>Player Dodge Rate {userStats.dodgeRate}</p>
                     <p>Player Crit Rate {userStats.critRate}</p>
                     <p>Player Exp {userStats.Experience}</p> */}
-                    {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {userStats.Level >= 10 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
@@ -131,15 +143,37 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech">TestMap</p>
+
+          {/* WEAPONS */}
            {screenControlRoom.WeaponEquipmentChoice ? 
                 <div>
-                  <button ><img src={Katana} alt="Katana" />Katana</button>
-                  <button ><img src={BastardSword} alt="BastardSword" />Bastard Sword</button>
-                  <button ><img src={GaiaSword} alt="GaiaSword" />GaiaSword</button>
-                  <button ><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />Twin Edge of Naght Sieger</button>
-                  <button ><img src={VioletFear} alt="VioletFear"/>Violet Fear</button>
+                  {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
+                  <div>
+                    {userGoldItem.Katana >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Katana",Katana, 60));}}><img src={Katana} alt="Katana" />Katana</button> : null}
+                    {userGoldItem.BastardSword >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Bastard Sword",BastardSword, 115));}}><img src={BastardSword} alt="BastardSword" />Bastard Sword</button> : null}
+                    {userGoldItem.GaiaSword >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Gaia Sword",GaiaSword, 140));}}><img src={GaiaSword} alt="GaiaSword" />GaiaSword</button> : null }
+                    {userGoldItem.TwinEdgeofNaghtSieger >= 1 ?<button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160));}}><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />Twin Edge of Naght Sieger</button> : null}
+                    {userGoldItem.VioletFear >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275));}}><img src={VioletFear} alt="VioletFear"/>Violet Fear</button>: null}
+                  </div> 
+                  : <p>Empty Weapon Storage T^T</p>}
                 </div> 
             : null}
+          {/* ARMOR */}
+            {screenControlRoom.ArmorEquipmentChoice ?
+                 <div>
+                 {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
+                 <div>
+                   {userGoldItem.CottonShirt >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Cotton Shirt",CottonShirt, 10));}}><img src={CottonShirt} alt="CottonShirt" />CottonShirt</button> : null}
+                   {userGoldItem.AdventureSuit >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Adventure Suit",AdventureSuit, 30));}}><img src={AdventureSuit} alt="AdventureSuit" />AdventureSuit</button> : null}
+                   {userGoldItem.WoodenMail >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Wooden Mail",WoodenMail, 40));}}><img src={WoodenMail} alt="WoodenMail" />WoodenMail</button> : null }
+                   {userGoldItem.Coat >= 1 ?<button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Coat",Coat, 50));}}><img src={Coat} alt="Coat" />Coat</button> : null}
+                   {userGoldItem.PaddedArmor >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Padded Armor",PaddedArmor, 70));}}><img src={PaddedArmor} alt="PaddedArmor"/>Padded Armor</button>: null}
+                   {userGoldItem.ChainMail >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80));}}><img src={ChainMail} alt="ChainMail"/>ChainMail</button>: null}
+                   {userGoldItem.FullPlate >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90));}}><img src={FullPlate} alt="FullPlate"/>Full Plate</button>: null}
+                 </div> 
+                 : <p>Empty Armor Storage T^T</p>}
+               </div> 
+           : null}
           </fieldset>
         </div>
         }

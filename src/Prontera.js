@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoWeaponArmorDealerFn } from './actions';
 import { AudioCurrentTimeSaverFn } from './actions';
 
-import { TalktoKafraEmployeeFn, ResetTalktoKafraEmployeeFn, KafraEmployeeHealFn, } from './actions';
+import { TalktoKafraEmployeeFn, ResetTalktoFn, KafraEmployeeHealFn, } from './actions';
 
 
 import WorldMap from './WorldMap'
@@ -111,9 +111,9 @@ function StartMenu(){
           <div className="storyMapScreen">
             <div className="PronteraMap">
               <h3>Prontera</h3>
-              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn()); dispatch(GotoPronteraToolDealerFn());}}>ToolDealer</button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn()); dispatch(GotoWeaponArmorDealerFn());}}>WeaponArmorDealer</button>
-              <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoKafraEmployeeFn());}}>PronteraSouthGate</button>
+              <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoFn()); dispatch(GotoPronteraToolDealerFn());}}>ToolDealer</button>
+              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoFn()); dispatch(GotoWeaponArmorDealerFn());}}>WeaponArmorDealer</button>
+              <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
               <button className="kafraEmployee" onClick={() => {talkToKafraEmployee();}}>Kafra Employee</button>
               
 
@@ -142,7 +142,7 @@ function StartMenu(){
                     <p>Player Dodge Rate {userStats.dodgeRate}</p>
                     <p>Player Crit Rate {userStats.critRate}</p>
                     <p>Player Exp {userStats.Experience}</p> */}
-                    {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {userStats.Level >= 10 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                 <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>

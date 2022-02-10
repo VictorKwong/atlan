@@ -15,6 +15,12 @@ const Fn = {
     dodgeRate: 0.1,
     critRate: 0.05, // 0.05
     userClockDefend: false,
+    userWeapon: 'Gaia Sword',
+    userWeaponImg: null,
+    BaseWeaponDamage: 0,
+    userArmor: 'CottonShirt',
+    userArmorImg: null,
+    BaseArmorDef: 0,
 }
 
 const userStatsReducer = (state = Fn, action) => {
@@ -74,6 +80,21 @@ const userStatsReducer = (state = Fn, action) => {
                 defence: state.defence + 8,
                 defencebuffer: state.defencebuffer + 8, 
                 speed: state.speed + (state.Level),
+            }
+        //EQUIP STAGE
+        case 'ReturnWeaponEquipmentChoiceFn':
+            return {
+                ...state,
+                userWeapon: action.Weapon,
+                userWeaponImg: action.WeaponImg,
+                BaseWeaponDamage: action.WeaponDamage,
+            }
+        case 'ReturnArmorEquipmentChoiceFn':
+            return {
+                ...state,
+                userArmor: action.Armor,
+                userArmorImg: action.ArmorImg,
+                BaseArmorDef: action.ArmorDef,
             }
         //ITEMS
         case 'UseRedPotionFn':

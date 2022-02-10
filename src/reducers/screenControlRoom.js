@@ -15,6 +15,7 @@ const Fn = {
     AltanEquipment: false,
     //Mini Screen (StoryChat)
     WeaponEquipmentChoice: false,
+    ArmorEquipmentChoice: false,
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
@@ -52,14 +53,29 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 AltanEquipment: !state.AltanEquipment,
-                WeaponEquipmentChoice: false
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
                 ...state,
-                WeaponEquipmentChoice: true,
+                WeaponEquipmentChoice: !state.WeaponEquipmentChoice,
             }
-            
+        case 'ReturnWeaponEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: false,
+            }
+        case 'GotoArmorEquipmentChoiceFn':
+            return {
+                ...state,
+                ArmorEquipmentChoice: !state.ArmorEquipmentChoice,
+            }
+        case 'ReturnArmorEquipmentChoiceFn':
+            return {
+                ...state,
+                ArmorEquipmentChoice: false,
+            }
         // WORLD MAP
         case 'GotoPronteraFn':
             return {

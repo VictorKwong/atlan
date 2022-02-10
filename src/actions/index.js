@@ -15,14 +15,14 @@ export const UserAttackEnemyFn = (Crit) => {
     return {
         type: 'UserAttackEnemyFn',
         CriticalAttack: Crit,
-        TestCalcuation: (Crit * 50)
+        TestCalcuation: (Crit * 50)^2 + (Crit * 50 * Math.random())
     };
 };
 export const UserAttackBlockEnemyFn = (Crit) => {
     return {
         type: 'UserAttackBlockEnemyFn',
         CritialAttack: Crit,
-        TestCalcuation: (Crit * 50)
+        TestCalcuation: (Crit * 50) + (Crit * 50 * Math.random())
     };
 };
 export const UserSkillBashEnemyFn = (Crit) => {
@@ -106,6 +106,30 @@ export const GotoWeaponEquipmentChoiceFn = () => {
         type: 'GotoWeaponEquipmentChoiceFn',
     };
 };
+export const GotoArmorEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoArmorEquipmentChoiceFn',
+    };
+};
+
+//EQUIPMENT SCREEN
+export const ReturnWeaponEquipmentChoiceFn = (Weapon,WeaponImg,WeaponDamage) => {
+    return {
+        type: 'ReturnWeaponEquipmentChoiceFn',
+        Weapon: Weapon,
+        WeaponImg: WeaponImg,
+        WeaponDamage: WeaponDamage
+    };
+};
+export const ReturnArmorEquipmentChoiceFn = (Armor,ArmorImg,ArmorDef) => {
+    return {
+        type: 'ReturnArmorEquipmentChoiceFn',
+        Armor: Armor,
+        ArmorImg: ArmorImg,
+        ArmorDef: ArmorDef
+    };
+};
+
 
 
 //WORLD MAP
@@ -334,11 +358,22 @@ export const TalktoKafraEmployeeFn = () => {
         type: 'TalktoKafraEmployeeFn'
     };
 };
-export const ResetTalktoKafraEmployeeFn = () => {
+export const TalktoWeaponDealerFn = () => {
     return {
-        type: 'ResetTalktoKafraEmployeeFn'
+        type: 'TalktoWeaponDealerFn'
     };
 };
+export const TalktoArmorDealerFn = () => {
+    return {
+        type: 'TalktoArmorDealerFn'
+    };
+};
+export const ResetTalktoFn = () => {
+    return {
+        type: 'ResetTalktoFn'
+    };
+};
+
 export const KafraEmployeeHealFn = () => {
     return {
         type: 'KafraEmployeeHealFn'
@@ -434,8 +469,80 @@ export const SellVioletFearFn = () => {
         type: 'SellVioletFearFn',
     };
 };
-//ITEMS USEAGE
+//ARMOR BUY SELL
 
+export const BuyCottonShirtFn = () => {
+    return {
+        type: 'BuyCottonShirtFn',
+    };
+};
+export const SellCottonShirtFn = () => {
+    return {
+        type: 'SellCottonShirtFn',
+    };
+};
+export const BuyAdventureSuitFn = () => {
+    return {
+        type: 'BuyAdventureSuitFn',
+    };
+};
+export const SellAdventureSuitFn = () => {
+    return {
+        type: 'SellAdventureSuitFn',
+    };
+};
+export const BuyWoodenMailFn = () => {
+    return {
+        type: 'BuyWoodenMailFn',
+    };
+};
+export const SellWoodenMailFn = () => {
+    return {
+        type: 'SellWoodenMailFn',
+    };
+};
+export const BuyCoatFn = () => {
+    return {
+        type: 'BuyCoatFn',
+    };
+};
+export const SellCoatFn = () => {
+    return {
+        type: 'SellCoatFn',
+    };
+};
+export const BuyPaddedArmorFn = () => {
+    return {
+        type: 'BuyPaddedArmorFn',
+    };
+};
+export const SellPaddedArmorFn = () => {
+    return {
+        type: 'SellPaddedArmorFn',
+    };
+};
+export const BuyChainMailFn = () => {
+    return {
+        type: 'BuyChainMailFn',
+    };
+};
+export const SellChainMailFn = () => {
+    return {
+        type: 'SellChainMailFn',
+    };
+};
+export const BuyFullPlateFn = () => {
+    return {
+        type: 'BuyFullPlateFn',
+    };
+};
+export const SellFullPlateFn = () => {
+    return {
+        type: 'SellFullPlateFn',
+    };
+};
+
+//ITEMS USEAGE
 export const UseRedPotionFn = () => {
     return {
         type: 'UseRedPotionFn'

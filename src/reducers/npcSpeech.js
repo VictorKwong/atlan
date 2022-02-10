@@ -34,7 +34,7 @@ const Fn = {
             text: 'Our shop sell best weapon and armor in Prontera, what can I get for you?'
         },{
             name: 'Dealer',
-            text: 'THe swords are all well forged!'
+            text: 'The swords are all well forged!'
         },{
             name: 'Dealer',
             text: 'Huhh? What kind of equipment did you wanna sell?'

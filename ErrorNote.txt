@@ -94,6 +94,16 @@ toAmount = amount * exchangeRate // 1 * undefined → NaN
 
 fromAmount = amount / exchangeRate // 1 / undefined → NaN
 
+~Review:
+Dont do calculation inside reducer, do it in action
+
+2000 => 2,000
+(2000).toLocaleString(undefined, { maximumFractionDigits: 2 })
+
+ERROR in src\actions\index.js
+  Line xx:1:  Expected an assignment or function call and instead saw an expression
+
+~Review: look at actions file
 
 Resource:
 https://ro-character-simulator.ratemyserver.net/##

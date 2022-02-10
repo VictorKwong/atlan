@@ -101,13 +101,13 @@ function StartMenu(){
               
               {npcControlRoom.DealerBuy ?
                 <div>
-                  <button onClick={() =>{talkToToolDealerBuyRedPotion();}}><img src={RedPotion} alt="RedPotion" /> -$50</button>
-                  <button onClick={() =>{talkToToolDealerBuyYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> -$200</button>
+                  <button onClick={() =>{talkToToolDealerBuyRedPotion();}}><img src={RedPotion} alt="RedPotion" /> -50z</button>
+                  <button onClick={() =>{talkToToolDealerBuyYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> -200z</button>
                 </div>
                 : npcControlRoom.DealerSell ?
                 <div>
-                  <button onClick={() =>{talkToToolDealerSellRedPotion();}}><img src={RedPotion} alt="RedPotion" /> +$40</button>
-                  <button onClick={() =>{talkToToolDealerSellYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> +$160</button>
+                  <button onClick={() =>{talkToToolDealerSellRedPotion();}}><img src={RedPotion} alt="RedPotion" /> +40z</button>
+                  <button onClick={() =>{talkToToolDealerSellYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> +160z</button>
                 </div> : null
                 }
 
@@ -136,7 +136,7 @@ function StartMenu(){
                     <p>Player Dodge Rate {userStats.dodgeRate}</p>
                     <p>Player Crit Rate {userStats.critRate}</p>
                     <p>Player Exp {userStats.Experience}</p> */}
-                    {userStats.Level >= 10 ? <progress className="BarBasicHUD expBarBasicHUD" value="100" max="100"></progress> : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {userStats.Level >= 10 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                 <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>

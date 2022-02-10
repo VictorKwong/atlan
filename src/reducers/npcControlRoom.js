@@ -1,5 +1,7 @@
 const Fn = {
     KafraEmployee: false,
+    WeaponDealer: false,
+    ArmorDealer: false,
     DealerBuy: false,
     DealerSell: false,
 }
@@ -11,10 +13,28 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 KafraEmployee: true,
             }
-        case 'ResetTalktoKafraEmployeeFn':
+        case 'ResetTalktoFn':
             return {
                 ...state,
                 KafraEmployee: false,
+                WeaponDealer: false,
+                ArmorDealer: false
+            }
+        case 'TalktoWeaponDealerFn':
+            return {
+                ...state,
+                WeaponDealer: true,
+                ArmorDealer: false,
+                DealerBuy: false,
+                DealerSell: false,
+            }
+        case 'TalktoArmorDealerFn':
+            return {
+                ...state,
+                WeaponDealer: false,
+                ArmorDealer: true,
+                DealerBuy: false,
+                DealerSell: false,
             }
         case 'DealerBuyFn':
             return {
