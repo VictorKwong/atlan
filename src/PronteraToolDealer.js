@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn , DealerBuyFn, DealerSellFn, ResetToolDealerBuySellFn } from './actions';
+import { GotoPronteraFn , DealerBuyFn, DealerSellFn, ResetDealerBuySellFn } from './actions';
 import { BuyRedPotionFn , BuyYellowPotionFn, } from './actions';
 import { SellRedPotionFn , SellYellowPotionFn, } from './actions';
 
@@ -149,7 +149,7 @@ function StartMenu(){
         <p className="storySpeech">{npcSpeech['ToolDealer'][0].name}</p>
           <button onClick={() =>{dispatch(DealerBuyFn()); talkToToolDealerBuy();}}>Buy</button>
           <button onClick={() =>{dispatch(DealerSellFn()); talkToToolDealerSell();}}>Sell</button>
-          <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetToolDealerBuySellFn());}}>Leave</button>
+          <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetDealerBuySellFn());}}>Leave</button>
         </fieldset>
       </div>
       }

@@ -33,6 +33,20 @@ const Fn = {
             name: 'Dealer',
             text: 'Our shop sell best weapon and armor in Prontera, what can I get for you?'
         },{
+            name: 'Dealer',
+            text: 'THe swords are all well forged!'
+        },{
+            name: 'Dealer',
+            text: 'Huhh? What kind of equipment did you wanna sell?'
+        },{
+            name: 'Dealer',
+            text: 'Thank you. Nice to do business with you.'
+        },{
+            name: 'Dealer',
+            text: 'You don`t have enough Zeny.'
+        },{
+            name: 'Dealer',
+            text: 'You don`t have enough Item to sell it.'
     }]
 
 }

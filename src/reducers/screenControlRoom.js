@@ -11,6 +11,10 @@ const Fn = {
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
+    //Mini Screen (StoryMap)
+    AltanEquipment: false,
+    //Mini Screen (StoryChat)
+    WeaponEquipmentChoice: false,
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
@@ -43,6 +47,20 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 storyLineOne: !state.storyLineOne,
             }
+        // Mini Screen
+        case 'GotoAltanEquipmentFn':
+            return {
+                ...state,
+                AltanEquipment: !state.AltanEquipment,
+                WeaponEquipmentChoice: false
+            }
+        case 'GotoWeaponEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: true,
+            }
+            
+        // WORLD MAP
         case 'GotoPronteraFn':
             return {
                 ...state,

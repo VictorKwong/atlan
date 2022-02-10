@@ -1,7 +1,7 @@
 const Fn = {
     KafraEmployee: false,
-    ToolDealerBuy: false,
-    ToolDealerSell: false,
+    DealerBuy: false,
+    DealerSell: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {

@@ -95,6 +95,20 @@ export const finishStoryLineOneFn = () => {
         type: 'finishStoryLineOneFn',
     };
 };
+//Mini Screen
+export const GotoAltanEquipmentFn = () => {
+    return {
+        type: 'GotoAltanEquipmentFn',
+    };
+};
+export const GotoWeaponEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoWeaponEquipmentChoiceFn',
+    };
+};
+
+
+//WORLD MAP
 export const GotoWorldMapFn = () => {
     return {
         type: 'GotoWorldMapFn',
@@ -341,14 +355,16 @@ export const DealerSellFn = () => {
     };
 };
 
-export const ResetToolDealerBuySellFn = () => {
+export const ResetDealerBuySellFn = () => {
     return {
-        type: 'ResetToolDealerBuySellFn'
+        type: 'ResetDealerBuySellFn'
     };
 };
+
+// ITEM BUY SELL
 export const BuyRedPotionFn = () => {
     return {
-        type: 'BuyRedPotionFn'
+        type: 'BuyRedPotionFn',
     };
 };
 export const BuyYellowPotionFn = () => {
@@ -367,7 +383,58 @@ export const SellYellowPotionFn = () => {
     };
 };
 
-//ITEMS
+//WEAPON BUY SELL
+export const BuyKatanaFn = () => {
+    return {
+        type: 'BuyKatanaFn',
+    };
+};
+export const SellKatanaFn = () => {
+    return {
+        type: 'SellKatanaFn',
+    };
+};
+export const BuyBastardSwordFn = () => {
+    return {
+        type: 'BuyBastardSwordFn',
+    };
+};
+export const SellBastardSwordFn = () => {
+    return {
+        type: 'SellBastardSwordFn',
+    };
+};
+export const BuyGaiaSwordFn = () => {
+    return {
+        type: 'BuyGaiaSwordFn',
+    };
+};
+export const SellGaiaSwordFn = () => {
+    return {
+        type: 'SellGaiaSwordFn',
+    };
+};
+export const BuyTwinEdgeofNaghtSiegerFn = () => {
+    return {
+        type: 'BuyTwinEdgeofNaghtSiegerFn',
+    };
+};
+export const SellTwinEdgeofNaghtSiegerFn = () => {
+    return {
+        type: 'SellTwinEdgeofNaghtSiegerFn',
+    };
+};
+export const BuyVioletFearFn = () => {
+    return {
+        type: 'BuyVioletFearFn',
+    };
+};
+export const SellVioletFearFn = () => {
+    return {
+        type: 'SellVioletFearFn',
+    };
+};
+//ITEMS USEAGE
 
 export const UseRedPotionFn = () => {
     return {

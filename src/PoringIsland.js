@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , typeWritterEffectFn} from './actions';
+import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoAltanEquipmentFn} from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import WorldMap from './WorldMap'
+import AltanEquipment from './AltanEquipment'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
+// WEAPON IMAGE
+import Katana from './img/Equipment/Weapon/Katana.gif'
+import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
+import GaiaSword from './img/Equipment/Weapon/GaiaSword.gif'
+import TwinEdgeofNaghtSieger from './img/Equipment/Weapon/TwinEdgeofNaghtSieger.gif'
+import VioletFear from './img/Equipment/Weapon/VioletFear.gif'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 const audioBGM = new Audio(audioStreamside);
@@ -13,7 +20,6 @@ const audioBGM = new Audio(audioStreamside);
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
-    const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
@@ -79,11 +85,13 @@ function StartMenu(){
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
         <div>
           <div className="storyMapScreen">
+            {screenControlRoom.AltanEquipment ? <AltanEquipment /> :
             <div className="PoringIslandMap">
               <h3>Poring Island</h3>
               <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
               <button className="smallIsland" onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
             </div>
+            }
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
               <p className="nameStatsHUD destextHUD">Altan</p>
@@ -112,12 +120,26 @@ function StartMenu(){
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
+                <div>
+                  <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>Equip</button>
+                  <button className="altanItems">Items</button>
+                  <button className="altanItems">Stats</button>
+                  <button className="altanItems">Quest</button>
+                </div>
             </div>
           </div>
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech">TestMap</p>
-        
+           {screenControlRoom.WeaponEquipmentChoice ? 
+                <div>
+                  <button ><img src={Katana} alt="Katana" />Katana</button>
+                  <button ><img src={BastardSword} alt="BastardSword" />Bastard Sword</button>
+                  <button ><img src={GaiaSword} alt="GaiaSword" />GaiaSword</button>
+                  <button ><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />Twin Edge of Naght Sieger</button>
+                  <button ><img src={VioletFear} alt="VioletFear"/>Violet Fear</button>
+                </div> 
+            : null}
           </fieldset>
         </div>
         }
