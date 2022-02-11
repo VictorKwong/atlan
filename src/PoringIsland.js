@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoAltanEquipmentFn} from './actions';
+import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoAltanEquipmentFn, GotoAltanStatsFn} from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
+import AltanStats from './AltanStats'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
@@ -98,6 +99,7 @@ function StartMenu(){
         <div>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? <AltanEquipment /> :
+            screenControlRoom.AltanStats ? <AltanStats /> :
             <div className="PoringIslandMap">
               <h3>Poring Island</h3>
               <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
@@ -135,7 +137,7 @@ function StartMenu(){
                 <div>
                   <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>Equip</button>
                   <button className="altanItems">Items</button>
-                  <button className="altanItems">Stats</button>
+                  <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanItems">Quest</button>
                 </div>
             </div>

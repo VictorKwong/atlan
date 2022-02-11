@@ -15,6 +15,9 @@ import UserStandPost from './img/Character/UserStand.png'
 // import TwinEdgeofNaghtSieger from './img/Equipment/Weapon/TwinEdgeofNaghtSieger.gif'
 // import VioletFear from './img/Equipment/Weapon/VioletFear.gif'
 
+import Katana from './img/Equipment/Weapon/Katana.gif'
+import CottonShirt from './img/Equipment/Armor/CottonShirt.gif'
+
 // AudioCurrentTimeSaverFn
 function StartMenu(){
     console.log('rerender')
@@ -33,8 +36,8 @@ function StartMenu(){
       <div className="AltanEquipmentMap">
         <h2>Equipment</h2>
         <img src={UserStandPost} alt="UserStandPost" />
-        <button className="altanChooseWeapon" value={userStats.userWeapon} onClick={() => dispatch(GotoWeaponEquipmentChoiceFn())}><img src={userStats.userWeaponImg} alt={userStats.userWeapon} />{userStats.userWeapon}</button>
-        <button className="altanChooseArmor" value={userStats.userArmor} onClick={() => dispatch(GotoArmorEquipmentChoiceFn())}><img src={userStats.userArmorImg} alt={userStats.userArmor} />{userStats.userArmor}</button>
+        <button className="altanChooseWeapon" value={userStats.userWeapon} onClick={() => dispatch(GotoWeaponEquipmentChoiceFn())}><img src={userStats.userWeaponImg === null ? Katana : userStats.userWeaponImg} alt={userStats.userWeapon} />{userStats.userWeapon}</button>
+        <button className="altanChooseArmor" value={userStats.userArmor} onClick={() => dispatch(GotoArmorEquipmentChoiceFn())}><img src={userStats.userArmorImg === null ? CottonShirt : userStats.userArmorImg} alt={userStats.userArmor} />{userStats.userArmor}</button>
         <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>back</button>
       </div>
     );

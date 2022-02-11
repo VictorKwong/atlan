@@ -15,10 +15,10 @@ const Fn = {
     dodgeRate: 0.1,
     critRate: 0.05, // 0.05
     userClockDefend: false,
-    userWeapon: 'Gaia Sword',
+    userWeapon: 'Katana',
     userWeaponImg: null,
     BaseWeaponDamage: 0,
-    userArmor: 'CottonShirt',
+    userArmor: 'Cotton Shirt',
     userArmorImg: null,
     BaseArmorDef: 0,
 }

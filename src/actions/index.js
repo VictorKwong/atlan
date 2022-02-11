@@ -15,14 +15,14 @@ export const UserAttackEnemyFn = (Crit) => {
     return {
         type: 'UserAttackEnemyFn',
         CriticalAttack: Crit,
-        TestCalcuation: (Crit * 50)^2 + (Crit * 50 * Math.random())
+        TestCalcuation: ((Crit * 50)^2 + (Crit * 50 * Math.random())).toFixed(0)
     };
 };
 export const UserAttackBlockEnemyFn = (Crit) => {
     return {
         type: 'UserAttackBlockEnemyFn',
         CritialAttack: Crit,
-        TestCalcuation: (Crit * 50) + (Crit * 50 * Math.random())
+        TestCalcuation: ((Crit * 50) + (Crit * 50 * Math.random())).toFixed(0)
     };
 };
 export const UserSkillBashEnemyFn = (Crit) => {
@@ -99,6 +99,11 @@ export const finishStoryLineOneFn = () => {
 export const GotoAltanEquipmentFn = () => {
     return {
         type: 'GotoAltanEquipmentFn',
+    };
+};
+export const GotoAltanStatsFn = () => {
+    return {
+        type: 'GotoAltanStatsFn',
     };
 };
 export const GotoWeaponEquipmentChoiceFn = () => {
@@ -264,6 +269,15 @@ export const ResetUserChannelAnimationFn = () => {
         type: 'ResetUserChannelAnimationFn'
     };
 };
+export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg) => {
+    return {
+        type: 'UserWeaponImgFn',
+        WeaponBattleImg: WeaponBattleImg,
+        WeaponAttackImg: WeaponAttackImg,
+        WeaponDefendImg: WeaponDefendImg
+    };
+};
+
 
 //Skills
 export const UserInSelectSkillFn = () => {
@@ -554,6 +568,43 @@ export const UseYellowPotionFn = () => {
     };
 };
 
+//ATTRIBUTES
+export const STRPointsFn = (ReqPoints) => {
+    return {
+        type: 'STRPointsFn',
+        ReqPoints: ReqPoints
+    };
+};
+export const AGIPointsFn = (ReqPoints) => {
+    return {
+        type: 'AGIPointsFn',
+        ReqPoints: ReqPoints
+    };
+};
+export const VITPointsFn = (ReqPoints) => {
+    return {
+        type: 'VITPointsFn',
+        ReqPoints: ReqPoints
+    };
+};
+export const INTPointsFn = (ReqPoints) => {
+    return {
+        type: 'INTPointsFn',
+        ReqPoints: ReqPoints
+    };
+};
+export const DEXPointsFn = (ReqPoints) => {
+    return {
+        type: 'DEXPointsFn',
+        ReqPoints: ReqPoints
+    };
+};
+export const LUKPointsFn = (ReqPoints) => {
+    return {
+        type: 'LUKPointsFn',
+        ReqPoints: ReqPoints
+    };
+};
 //Clock Fixing
 export const userClockDefendFn = () => {
     return {

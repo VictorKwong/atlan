@@ -6,7 +6,7 @@ const Fn = {
     UserIsDead: false,
     UserIsDefend: false,
     UserChannel: false,
-
+    UserWeaponImg: null,
 }
 
 const ImageControlRoomReducer = (state = Fn, action) => {
@@ -81,6 +81,13 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 UserChannel: false,
                 }
+        case 'UserWeaponImgFn':
+            return {
+                ...state,
+                UserWeaponBattleImg: action.WeaponBattleImg,
+                UserWeaponAttackImg: action.WeaponAttackImg,
+                UserWeaponDefendImg: action.WeaponDefendImg
+            }
         default:
             return {
                 ...state,

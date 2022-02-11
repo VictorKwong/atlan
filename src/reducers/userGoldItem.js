@@ -4,11 +4,11 @@ const Fn = {
     RedPotion: 10,
     YellowPotion: 5,
     //Weapons
-    Katana: 0,
-    BastardSword: 0,
-    GaiaSword: 0,
-    TwinEdgeofNaghtSieger: 0,
-    VioletFear: 0,
+    Katana: 1,
+    BastardSword: 1,
+    GaiaSword: 1,
+    TwinEdgeofNaghtSieger: 1,
+    VioletFear: 1,
     //Armor
     CottonShirt: 0,
     AdventureSuit: 0,

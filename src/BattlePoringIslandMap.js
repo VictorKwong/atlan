@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn } from './actions';
+import $ from 'jquery'
+import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -16,16 +17,12 @@ import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn 
 import { UseYellowPotionFn, UseRedPotionFn } from './actions'
 
 
-
 import './css/mapBattle.css'
 import './index.css'
 import PoringIsland from './PoringIsland'
 import Poring from './img/Monster/Poring.gif'
 import Lunatic from './img/Monster/Lunatic.gif'
 import Rocker from './img/Monster/Rocker.gif'
-import UserBattlePost from './img/Character/USerBattlePost1.gif'
-import UserAttackPost from './img/Character/UserAttackPost1.gif'
-import UserDefendPost from './img/Character/UserDefendPost1.gif'
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
 import UserIsDeadPost from './img/Character/UserDeadPost1.png'
@@ -34,7 +31,32 @@ import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
-import $ from 'jquery'
+
+import UserBattlePost from './img/Character/UserBattlePostGaiaSword1.gif'
+import UserAttackPost from './img/Character/UserAttackPostGaiaSword1.gif'
+import UserDefendPost from './img/Character/UserDefendPostGaiaSword1.gif'
+
+
+// KATANA
+import UserBattlePostKatana1 from './img/Character/UserBattlePostKatana1.gif'
+import UserAttackPostKatana1 from './img/Character/UserAttackPostKatana1.gif'
+import UserDefendPostKatana1 from './img/Character/UserDefendPostKatana1.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1 from './img/Character/UserBattlePostBastardSword1.gif'
+import UserAttackPostBastardSword1 from './img/Character/UserAttackPostBastardSword1.gif'
+import UserDefendPostBastardSword1 from './img/Character/UserDefendPostBastardSword1.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1 from './img/Character/UserBattlePostGaiaSword1.gif'
+import UserAttackPostGaiaSword1 from './img/Character/UserAttackPostGaiaSword1.gif'
+import UserDefendPostGaiaSword1 from './img/Character/UserDefendPostGaiaSword1.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1 from './img/Character/UserBattlePostTwinEdgeofNaghtSieger1.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1 from './img/Character/UserAttackPostTwinEdgeofNaghtSieger1.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1 from './img/Character/UserDefendPostTwinEdgeofNaghtSieger1.gif'
+//Violet Fear
+import UserBattlePostVioletFear1 from './img/Character/UserBattlePostVioletFear1.gif'
+import UserAttackPostVioletFear1 from './img/Character/UserAttackPostVioletFear1.gif'
+import UserDefendPostVioletFear1 from './img/Character/UserDefendPostVioletFear1.gif'
 
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
@@ -47,7 +69,9 @@ let clockBarObject = {
 let i = Math.floor((Math.random() * 3));
 let Uclock = 0;
 let clockCheck = 0;
+
 function Main(){
+  
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
@@ -60,6 +84,7 @@ function Main(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     useEffect(() => {
+      
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
@@ -71,6 +96,22 @@ function Main(){
           // Auto-play was prevented
         });
       }
+      //ANIMATION PART
+      switch(true){
+        case (userStats.userWeapon === "Katana"):
+          return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
+        case (userStats.userWeapon === "Bastard Sword"):
+          return dispatch(UserWeaponImgFn(UserBattlePostBastardSword1,UserAttackPostBastardSword1,UserDefendPostBastardSword1))
+        case (userStats.userWeapon === "Gaia Sword"):
+          return dispatch(UserWeaponImgFn(UserBattlePostGaiaSword1,UserAttackPostGaiaSword1,UserDefendPostGaiaSword1))
+        case (userStats.userWeapon === "Twin Edge of Naght Sieger"):
+          return dispatch(UserWeaponImgFn(UserBattlePostTwinEdgeofNaghtSieger1,UserAttackPostTwinEdgeofNaghtSieger1,UserDefendPostTwinEdgeofNaghtSieger1))
+        case (userStats.userWeapon === "Violet Fear"):
+          return dispatch(UserWeaponImgFn(UserBattlePostVioletFear1,UserAttackPostVioletFear1,UserDefendPostVioletFear1))
+        default:
+          return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const changeMapFadeAudio = () => {
@@ -289,8 +330,6 @@ function Main(){
     }
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 15){
-      let rate1 = Math.random();
-      let rate2 = Math.random();
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
       setTimeout(() => (Uclock = 0), 300);
@@ -540,13 +579,16 @@ function Main(){
                 </div>
                 <div>
                   <h2 className="wordCenter">Altan</h2>
-                  {ImageControlRoom.UserAttack ? <img src={UserAttackPost} alt="UserAttackPost" className="altanImg" /> :
+                  {/* User attack Post */}
+                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserWeaponAttackImg} alt="UserAttackPost" className="altanImg" /> :
                   ImageControlRoom.UserOnHit ? <img src={UserOnHitPost} alt="UserOnHitPost" className="altanImg"/> : 
                   ImageControlRoom.UserIsDying ? <img src={UserIsDyingPost} alt="UserIsDyingPost" className="altanImg"/> :
                   ImageControlRoom.UserIsDead ? <img src={UserIsDeadPost} alt="UserIsDeadPost" className="altanImg"/> : 
-                  ImageControlRoom.UserIsDefend ? <img src={UserDefendPost} alt="UserDefendPost" className="altanImg"/> :
+                  // User Defend Post
+                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserWeaponDefendImg} alt="UserDefendPost" className="altanImg"/> :
                   ImageControlRoom.UserChannel ? <img src={UserChannelPost} alt="UserChannelPost" className="altanImg"/> :
-                  <img src={UserBattlePost} alt="UserBattlePost" className="altanImg"/>}                  
+                  // User Battle Post
+                  <img src={ImageControlRoom.UserWeaponBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
                   <p>Health {userStats.currentHealth}/{userStats.maxHealth}</p>
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100"/>
                   <p>SP {userStats.currentSP}/{userStats.maxSP}</p>
