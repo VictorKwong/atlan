@@ -106,6 +106,12 @@ export const GotoAltanStatsFn = () => {
         type: 'GotoAltanStatsFn',
     };
 };
+export const GotoAltanItemFn = () => {
+    return {
+        type: 'GotoAltanItemFn',
+    };
+};
+
 export const GotoWeaponEquipmentChoiceFn = () => {
     return {
         type: 'GotoWeaponEquipmentChoiceFn',
@@ -116,6 +122,22 @@ export const GotoArmorEquipmentChoiceFn = () => {
         type: 'GotoArmorEquipmentChoiceFn',
     };
 };
+export const GotoItemChoiceFn = () => {
+    return {
+        type: 'GotoItemChoiceFn',
+    };
+};
+export const GotoEquipChoiceFn = () => {
+    return {
+        type: 'GotoEquipChoiceFn',
+    };
+};
+export const GotoETCChoiceFn = () => {
+    return {
+        type: 'GotoETCChoiceFn',
+    };
+};
+
 
 //EQUIPMENT SCREEN
 export const ReturnWeaponEquipmentChoiceFn = (Weapon,WeaponImg,WeaponDamage) => {

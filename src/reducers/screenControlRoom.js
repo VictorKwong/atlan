@@ -14,9 +14,14 @@ const Fn = {
     //Mini Screen (StoryMap)
     AltanEquipment: false,
     AltanStats: false,
+    AltanItem: false,
     //Mini Screen (StoryChat)
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
+    ItemChoice: false,
+    EquipChoice: false,
+    ETCChoice: false,
+
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
@@ -55,6 +60,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 AltanEquipment: !state.AltanEquipment,
                 AltanStats: false,
+                AltanItem: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
             }
@@ -63,21 +69,65 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 AltanEquipment: false,
                 AltanStats: !state.AltanStats,
+                AltanItem: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
+            }
+        case 'GotoAltanItemFn':
+            return {
+                ...state,
+                AltanEquipment: false,
+                AltanStats: false,
+                AltanItem: !state.AltanItem,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                ItemChoice: true,
+                EquipChoice: false,
+                ETCChoice: false,
+            
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
                 ...state,
                 WeaponEquipmentChoice: !state.WeaponEquipmentChoice,
-                ArmorEquipmentChoice: false
+                ArmorEquipmentChoice: false,
+                ItemChoice: false,
+                EquipChoice: false,
+                ETCChoice: false,
             }
         case 'GotoArmorEquipmentChoiceFn':
             return {
                 ...state,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: !state.ArmorEquipmentChoice,
+                ItemChoice: false,
+                EquipChoice: false,
+                ETCChoice: false,
             }
+        case 'GotoItemChoiceFn':
+            return {
+                ...state,
+                ItemChoice: true,
+                EquipChoice: false,
+                ETCChoice: false,
+            }
+        case 'GotoEquipChoiceFn':
+            return {
+                ...state,
+
+                ItemChoice: false,
+                EquipChoice: true,
+                ETCChoice: false,
+            }
+        case 'GotoETCChoiceFn':
+            return {
+                ...state,
+
+                ItemChoice: false,
+                EquipChoice: false,
+                ETCChoice: true,
+            }
+
         case 'ReturnWeaponEquipmentChoiceFn':
             return {
                 ...state,
