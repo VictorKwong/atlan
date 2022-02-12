@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoItemChoiceFn} from './actions';
+import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
+import AltanQuest from './AltanQuest'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
@@ -102,6 +103,7 @@ function StartMenu(){
             {screenControlRoom.AltanEquipment ? <AltanEquipment /> :
             screenControlRoom.AltanStats ? <AltanStats /> :
             screenControlRoom.AltanItem ? <AltanItem /> :
+            screenControlRoom.AltanQuest ? <AltanQuest /> :
             <div className="PoringIslandMap">
               <h3>Poring Island</h3>
               <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
@@ -138,9 +140,9 @@ function StartMenu(){
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div>
                   <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>Equip</button>
-                  <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn()); dispatch(GotoItemChoiceFn());}}>Items</button>
+                  <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
-                  <button className="altanItems">Quest</button>
+                  <button className="altanItems" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
                 </div>
             </div>
           </div>

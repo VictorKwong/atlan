@@ -33,3 +33,5 @@
 .weaponArmorDealerNPC { grid-area: 3 / 5 / 4 / 6; }
 .pronteraSouthGate { grid-area: 7 / 4 / 8 / 5; }
 .kafraEmployee { grid-area: 6 / 3 / 7 / 4; }
+.pronteraFountain { grid-area: 4 / 4 / 5 / 5; }
+.questBoard { grid-area: 6 / 5 / 7 / 6; }

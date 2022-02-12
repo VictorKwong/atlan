@@ -15,6 +15,7 @@ const Fn = {
     AltanEquipment: false,
     AltanStats: false,
     AltanItem: false,
+    AltanQuest: false,
     //Mini Screen (StoryChat)
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
@@ -61,6 +62,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanEquipment: !state.AltanEquipment,
                 AltanStats: false,
                 AltanItem: false,
+                AltanQuest: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
             }
@@ -70,6 +72,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanEquipment: false,
                 AltanStats: !state.AltanStats,
                 AltanItem: false,
+                AltanQuest: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
             }
@@ -79,12 +82,25 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanEquipment: false,
                 AltanStats: false,
                 AltanItem: !state.AltanItem,
+                AltanQuest: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 ItemChoice: true,
                 EquipChoice: false,
                 ETCChoice: false,
-            
+            }
+        case 'GotoAltanQuestFn':
+            return {
+                ...state,
+                AltanEquipment: false,
+                AltanStats: false,
+                AltanItem: false,
+                AltanQuest: !state.AltanQuest,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                ItemChoice: true,
+                EquipChoice: false,
+                ETCChoice: false,
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
@@ -122,12 +138,10 @@ const screenControlRoomReducer = (state = Fn, action) => {
         case 'GotoETCChoiceFn':
             return {
                 ...state,
-
                 ItemChoice: false,
                 EquipChoice: false,
                 ETCChoice: true,
             }
-
         case 'ReturnWeaponEquipmentChoiceFn':
             return {
                 ...state,

@@ -5,6 +5,7 @@ import footerEasterEggReducer from "./footerEasterEgg"
 import screenControlRoomReducer from "./screenControlRoom";
 import ImageControlRoomReducer from "./ImageControlRoom";
 import SkillControlRoomReducer from "./SkillControlRoom";
+import questControlRoomReducer from "./questControlRoom"
 import audioControlRoomReducer from "./audioControlRoom";
 import npcControlRoomReducer from "./npcControlRoom";
 import storyLineOneReducer from "./storyLineOne";
@@ -21,6 +22,7 @@ const allReducers = combineReducers({
     screenControlRoom: screenControlRoomReducer,
     ImageControlRoom: ImageControlRoomReducer,
     SkillControlRoom: SkillControlRoomReducer,
+    questControlRoom: questControlRoomReducer,
     clockControlRoom: clockControlRoomReducer,
     npcControlRoom: npcControlRoomReducer,
     audioControlRoom: audioControlRoomReducer,

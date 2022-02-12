@@ -1,5 +1,9 @@
 const Fn = {
+    //Mini Talk
+    Fountain: false,
     KafraEmployee: false,
+    QuestBoard: false,
+    //Shop Talk
     WeaponDealer: false,
     ArmorDealer: false,
     DealerBuy: false,
@@ -11,12 +15,31 @@ const npcControlRoomReducer = (state = Fn, action) => {
         case 'TalktoKafraEmployeeFn':
             return {
                 ...state,
+                Fountain: false,
                 KafraEmployee: true,
+                QuestBoard: false,
+
+            }
+        case 'TalktoFountainFn':
+            return {
+                ...state,
+                Fountain: true,
+                KafraEmployee: false,
+                QuestBoard: false,
+            }
+        case 'TalktoQuestBoardFn':
+            return {
+                ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: true,
             }
         case 'ResetTalktoFn':
             return {
                 ...state,
+                Fountain: false,
                 KafraEmployee: false,
+                QuestBoard: false,
                 WeaponDealer: false,
                 ArmorDealer: false
             }

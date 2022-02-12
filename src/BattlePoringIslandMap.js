@@ -15,6 +15,8 @@ import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTur
 import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn, UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn} from './actions'
 //ITEMS
 import { UseYellowPotionFn, UseRedPotionFn } from './actions'
+//QUEST
+import { ProgressQuestDialogFn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -77,6 +79,7 @@ function Main(){
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
+    const questControlRoom = useSelector(state => state.questControlRoom)
     const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const enemyStats = useSelector(state => state.enemyStats)
@@ -136,13 +139,23 @@ function Main(){
     }
 
     // VICTORY FUCNTION
-    // EXP FUNCTION
+    // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
         setTimeout(() => (clockCheck = 1), 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
         $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
+        //QUEST
+          switch (true) {
+            //accept QUEST & Correct Event monster
+            case ((questControlRoom.QuestDialog).indexOf("0") > -1 && i === 0):
+              return dispatch(ProgressQuestDialogFn(0));
+            case ((questControlRoom.QuestDialog).indexOf("1") > -1 && i === 1):
+              return dispatch(ProgressQuestDialogFn(1));
+            default:
+              return null;
+          }
       }
     }, [enemyStats, dispatch]);
     // DEFEAT FUNCTION
@@ -174,8 +187,30 @@ function Main(){
       if (enemyStats[i].currentHealth <= 0){
         //MAX Lv10
         if((userStats.Level < 10) && (userStats.Experience >= baseEXPChart[userStats.Level])){
-          console.log('pass level')
-          dispatch(UserLevelUpFn());
+          (() => {
+            switch (true) {
+              case((userStats.Level + 1) <= 11):
+                return dispatch(UserLevelUpFn(2));
+              case((userStats.Level + 1) <= 21):
+                return dispatch(UserLevelUpFn(3));
+              case((userStats.Level + 1) <= 31):
+                return dispatch(UserLevelUpFn(4));           
+              case((userStats.Level + 1) <= 41):
+                return dispatch(UserLevelUpFn(5));
+              case((userStats.Level + 1) <= 51):
+                return dispatch(UserLevelUpFn(6));
+              case((userStats.Level + 1) <= 61):
+                return dispatch(UserLevelUpFn(7));
+              case((userStats.Level + 1) <= 71):
+                return dispatch(UserLevelUpFn(8));
+              case((userStats.Level + 1) <= 81):
+                return dispatch(UserLevelUpFn(9));     
+              case((userStats.Level + 1) <= 91):
+                return dispatch(UserLevelUpFn(10));
+              default:
+                return dispatch(UserLevelUpFn(11));
+            }
+            })()
           $('.storySpeech').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
             switch (true) {
               case(userStats.Level === 3):

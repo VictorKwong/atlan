@@ -44,9 +44,9 @@ function StartMenu(){
     return(
       <div className="AltanEquipmentMap">
         <h2>Inventory</h2>
-        <button className="itemChoice" onClick={() => dispatch(GotoItemChoiceFn())}>Item</button>
-        <button className="weaponChoice" onClick={() => dispatch(GotoEquipChoiceFn())}>Equip</button>
-        <button className="armorChoice" onClick={() => dispatch(GotoETCChoiceFn())}>Armor</button>
+        <button className="itemChoice" onClick={() => dispatch(GotoItemChoiceFn())}>item</button>
+        <button className="weaponChoice" onClick={() => dispatch(GotoEquipChoiceFn())}>equip</button>
+        <button className="armorChoice" onClick={() => dispatch(GotoETCChoiceFn())}>etc</button>
         {screenControlRoom.ItemChoice ?
           <div>
             {userGoldItem.RedPotion >= 1 ? <button onClick={() => dispatch(UseRedPotionFn())}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}

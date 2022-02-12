@@ -3,8 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoWeaponArmorDealerFn } from './actions';
 import { AudioCurrentTimeSaverFn } from './actions';
 
-import { TalktoKafraEmployeeFn, ResetTalktoFn, KafraEmployeeHealFn, } from './actions';
+import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, ResetTalktoFn} from './actions';
 
+//Function
+import { AcceptQuestDialogFn, ReturnQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn } from './actions'
 
 import WorldMap from './WorldMap'
 import PronteraToolDealer from './PronteraToolDealer'
@@ -16,6 +18,13 @@ import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 const audioBGM = new Audio(audioThemeOfProntera);
 
+//QUEST
+
+const QuestBox = [
+  {id: 0, num: "0", acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z"},
+  {id: 1, num: "1", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z"}
+]
+
 
 function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
@@ -23,6 +32,7 @@ function StartMenu(){
     const userGoldItem = useSelector(state => state.userGoldItem)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
+    const questControlRoom = useSelector(state => state.questControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
@@ -115,7 +125,8 @@ function StartMenu(){
               <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoFn()); dispatch(GotoWeaponArmorDealerFn());}}>WeaponArmorDealer</button>
               <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
               <button className="kafraEmployee" onClick={() => {talkToKafraEmployee();}}>Kafra Employee</button>
-              
+              <button className="pronteraFountain" onClick={() => {dispatch(TalktoFountainFn());}}>Fountain</button>
+              <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}>Quest Board</button>
 
             </div>
             <div className="StoryHUD">
@@ -151,7 +162,30 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech">TestMap</p>
+              {npcControlRoom.Fountain ? <button onClick={() =>{dispatch(ResetMyPointsFn());}}>Reset my Status Point</button> : null }
               {npcControlRoom.KafraEmployee ? <button className="kafraEmployeeHeal" onClick={() =>{talkToKafraEmployeeHeal();}}>Heal</button> : null}
+              {/* QUEST */}
+              {npcControlRoom.QuestBoard ? 
+              <div>
+                {/* index -1 means not found, > -1 means found */}
+                {((questControlRoom.QuestDialog).indexOf("0") === -1 && questControlRoom.CompleteQuestDialog.indexOf("0") === -1) ? <button className="questBoard" onClick={() => {dispatch(AcceptQuestDialogFn("1"));}}>Killing Poring</button> : 
+                // Quest Accept && Kill more than 3 monster
+                (questControlRoom.QuestDialog).indexOf("0") > -1  && ((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll("0","").length) >= 3 ? <button className="questBoard" onClick={() => {dispatch(ReturnQuestDialogFn("0"));}}>Finish Killing Poring</button> : null }
+                <ul>
+                  {QuestBox.map(Quest => {
+                    return (
+                      <li key={Quest.id}>
+                        {/* index -1 means not found, > -1 means found */}
+                        {((questControlRoom.QuestDialog).indexOf(Quest.num) === -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? <button className="questBoard" onClick={() => {dispatch(AcceptQuestDialogFn(Quest.num));}}>{Quest.acceptName} + {Quest.acceptDescription}</button> : 
+                        // Quest Accept && Kill more than 3 monster
+                        (questControlRoom.QuestDialog).indexOf(Quest.num) > -1  && ((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length) >= 3 ? <button className="questBoard" onClick={() => {dispatch(ReturnQuestDialogFn(Quest.num));}}>{Quest.finishName} + {Quest.finishText} </button> : null }
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div> : null}
+
+
               <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
           </fieldset>
         </div>

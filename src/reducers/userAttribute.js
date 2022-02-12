@@ -12,6 +12,7 @@ const Fn = {
     BonusHeadGearDex: 0,
     BonusHeadGearLuk: 0,
     Points: 48, //48
+    TotalPoints: 48
 }
 
 const userAttributeReducer = (state = Fn, action) => {
@@ -81,6 +82,23 @@ const userAttributeReducer = (state = Fn, action) => {
                 dex: state.dex,
                 luk: state.luk + 1,
                 Points: state.Points - action.ReqPoints
+            }
+        case 'UserLevelUpFn':
+            return{
+                ...state,
+                Points: state.Points + action.Points,
+                TotalPoints: state.Points + action.Points
+            }
+        case 'ResetMyPointsFn':
+            return {
+                ...state,
+                str: 1,
+                agi: 1,
+                vit: 1,
+                int: 1,
+                dex: 1,
+                luk: 1,
+                Points: state.TotalPoints
             }
         default:
             return {...state};

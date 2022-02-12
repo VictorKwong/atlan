@@ -60,9 +60,10 @@ export const UserSkillMagnumBreakMissedFn = () => {
         type: 'UserSkillMagnumBreakMissedFn',
     };
 };
-export const UserLevelUpFn = () => {
+export const UserLevelUpFn = (Points) => {
     return {
         type: 'UserLevelUpFn',
+        Points: Points
     };
 };
 
@@ -111,6 +112,13 @@ export const GotoAltanItemFn = () => {
         type: 'GotoAltanItemFn',
     };
 };
+export const GotoAltanQuestFn = () => {
+    return {
+        type: 'GotoAltanQuestFn',
+    };
+};
+
+
 
 export const GotoWeaponEquipmentChoiceFn = () => {
     return {
@@ -394,6 +402,19 @@ export const TalktoKafraEmployeeFn = () => {
         type: 'TalktoKafraEmployeeFn'
     };
 };
+export const TalktoFountainFn = () => {
+    return {
+        type: 'TalktoFountainFn'
+    };
+};
+export const TalktoQuestBoardFn = () => {
+    return {
+        type: 'TalktoQuestBoardFn'
+    };
+};
+
+
+
 export const TalktoWeaponDealerFn = () => {
     return {
         type: 'TalktoWeaponDealerFn'
@@ -409,6 +430,12 @@ export const ResetTalktoFn = () => {
         type: 'ResetTalktoFn'
     };
 };
+export const ResetMyPointsFn = () => {
+    return {
+        type: 'ResetMyPointsFn'
+    };
+};
+
 
 export const KafraEmployeeHealFn = () => {
     return {
@@ -638,7 +665,6 @@ export const enemyClockDefendFn = () => {
         type: 'enemyClockDefendFn'
     };
 };
-
 //Clock Fn
 export const TickingClockFn = () => {
     return {
@@ -646,6 +672,35 @@ export const TickingClockFn = () => {
     };
 };
 
+//QUEST
+export const AcceptClearPoringQuestFn = () => {
+    return {
+        type: 'AcceptClearPoringQuestFn'
+    };
+};
+export const ReturnClearPoringQuestFn = () => {
+    return {
+        type: 'ReturnClearPoringQuestFn'
+    };
+};
+export const AcceptQuestDialogFn = (Num) => {
+    return {
+        type: 'AcceptQuestDialogFn',
+        Number: Num
+    };
+};
+export const ReturnQuestDialogFn = (Num) => {
+    return {
+        type: 'ReturnQuestDialogFn',
+        Number: Num
+    };
+};
+export const ProgressQuestDialogFn = (Num) => {
+    return {
+        type: 'ProgressQuestDialogFn',
+        Number: Num
+    };
+};
 //Audio Interaction
 export const AudioCurrentTimeSaverFn = (currentTime) => {
     return {
