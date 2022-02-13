@@ -11,18 +11,17 @@ export const EnemyAttackBlockUserFn = (Crit) => {
         CriticalAttack: Crit
     };
 };
-export const UserAttackEnemyFn = (Crit) => {
+export const UserAttackEnemyFn = (Damage) => {
     return {
         type: 'UserAttackEnemyFn',
-        CriticalAttack: Crit,
-        TestCalcuation: ((Crit * 50)^2 + (Crit * 50 * Math.random())).toFixed(0)
+        DamageCalculation: Damage
     };
 };
-export const UserAttackBlockEnemyFn = (Crit) => {
+
+export const UserAttackBlockEnemyFn = (Damage) => {
     return {
         type: 'UserAttackBlockEnemyFn',
-        CritialAttack: Crit,
-        TestCalcuation: ((Crit * 50) + (Crit * 50 * Math.random())).toFixed(0)
+        DamageCalculation: Damage
     };
 };
 export const UserSkillBashEnemyFn = (Crit) => {

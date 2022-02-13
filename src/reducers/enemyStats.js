@@ -58,28 +58,28 @@ const enemyStatsReducer = (state = Fn, action) => {
         case 'UserAttackEnemyFn':
             return [{
                 ...state[0], //20
-                currentHealth: state[0].currentHealth - action.TestCalcuation
+                currentHealth: state[0].currentHealth - action.DamageCalculation
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - action.TestCalcuation
+                currentHealth: state[1].currentHealth - action.DamageCalculation
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - action.TestCalcuation
+                currentHealth: state[2].currentHealth - action.DamageCalculation
             }]
         case 'UserAttackBlockEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - action.TestCalcuation
+                currentHealth: state[0].currentHealth - action.DamageCalculation
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - action.TestCalcuation
+                currentHealth: state[1].currentHealth - action.DamageCalculation
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - action.TestCalcuation
+                currentHealth: state[2].currentHealth - action.DamageCalculation
             }]
         case 'UserSkillBashEnemyFn':
             return [{

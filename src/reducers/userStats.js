@@ -17,10 +17,10 @@ const Fn = {
     userClockDefend: false,
     userWeapon: 'Katana',
     userWeaponImg: null,
-    BaseWeaponDamage: 0,
+    BaseWeaponDamage: 60,
     userArmor: 'Cotton Shirt',
     userArmorImg: null,
-    BaseArmorDef: 0,
+    BaseArmorDef: 1,
 }
 
 const userStatsReducer = (state = Fn, action) => {
