@@ -34,11 +34,6 @@ import skillMagnum from './img/Skill/sm_magnum.gif'
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
 
-import UserBattlePost from './img/Character/UserBattlePostGaiaSword1.gif'
-import UserAttackPost from './img/Character/UserAttackPostGaiaSword1.gif'
-import UserDefendPost from './img/Character/UserDefendPostGaiaSword1.gif'
-
-
 // KATANA
 import UserBattlePostKatana1 from './img/Character/UserBattlePostKatana1.gif'
 import UserAttackPostKatana1 from './img/Character/UserAttackPostKatana1.gif'
@@ -214,9 +209,9 @@ function Main(){
             })()
           $('.storySpeech').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
             switch (true) {
-              case(userStats.Level === 3):
+              case((userStats.Level + 1) === 3):
                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
-              case(userStats.Level === 5):
+              case((userStats.Level + 1) === 5):
                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               default:
                 return 0;
@@ -241,7 +236,7 @@ function Main(){
 
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
-      Damage = Math.floor(userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.1) - 0.05)
+      Damage = Math.floor(userStats.attack +  userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
        
@@ -255,36 +250,36 @@ function Main(){
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              Math.sign((Damage - enemyStats[i].defencebuffer)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              //Rerender, (Level + Str + Dex + Luk + BWD + 60 - Def)*Crit*BuffAtk
-              Damage = (Damage - enemyStats[i].defencebuffer)*1.5
+              $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackBlockEnemyFn(Damage), 300));
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              //Rerender, (Level + Str + Dex + Luk + BWD + 60 - Def)*Crit*BuffAtk
-              Damage = (Damage - enemyStats[i].defencebuffer)
+              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackBlockEnemyFn(Damage)), 300)
           // ENEMY HIT
           // CRIT RATE
           case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              Math.sign((Damage - enemyStats[i].defence)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              //Rerender, (Level + Str + Dex + Luk + BWD + 60 - Def)*Crit*BuffAtk
-              Damage = (Damage - enemyStats[i].defence)*1.5
+              $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage)), 300);
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              //Rerender, (Level + Str + Dex + Luk + BWD + 60 - Def)*Crit*BuffAtk
-              Damage = (Damage - enemyStats[i].defence)
+              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage)), 300);
           // ENEMY DODGE
           default:
@@ -317,7 +312,8 @@ function Main(){
 
     //COMBAT SKILLS
     const userSkillBashButton = () => {
-      if (userStats.currentSP >= 10){
+      if (userStats.currentSP >= 15){
+      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
       setTimeout(() => (Uclock = 0), 300);
@@ -329,37 +325,44 @@ function Main(){
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
-            if(userStats.critRate >= Math.random()){
-              // Text display
-              $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(1.5)), 300);
-            }else{
-              // Text display
-              $('.storySpeech').append(`<p>Altan use Bash!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(1)), 300);
-            }
+            switch (true) {
+              case(userStats.critRate >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
+              default:
+                Math.sign((Damage - enemyStats[i].defencebuffer)*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5) : Damage = 1;
+                Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
+                // Text display
+                $('.storySpeech').append(`<p>Altan use Bash!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
+                return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
+              }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
-            if (userStats.critRate >= Math.random()){
-              // Text display
-              $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillBashEnemyFn(1.5)), 300);
-            }else{
-              // Text display
-              $('.storySpeech').append(`<p>Altan use Bash!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillBashEnemyFn(1)), 300);
-            }
+            switch (true) {
+              case (userStats.critRate >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
+              default:
+                Math.sign((Damage - enemyStats[i].defence)*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Altan use Bash!</p>\n<p>${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
+              }
           // ENEMY DODGE
           default:
             $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
-            //Rerender
+            // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
             return setTimeout(() => dispatch(UserSkillBashMissedFn()), 300);
         }
         })()
@@ -372,7 +375,8 @@ function Main(){
       }
     }
     const userSkillMagnumBreakButton = () => {
-      if (userStats.currentSP >= 15){
+      if (userStats.currentSP >= 35){
+      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
       setTimeout(() => (Uclock = 0), 300);
@@ -384,33 +388,39 @@ function Main(){
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
-            if (userStats.critRate >= Math.random()){
-              // Text display
-              $('.storySpeech').append(`<p>Critical Hit Magnum Break!!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(1.5)), 300);
-            }else{
-              // Text display
-              $('.storySpeech').append(`<p>Altan use Magnum Break!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(1)), 300);
+            switch(true){
+              case(userStats.critRate >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5 + 100) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Magnum Break!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
+              default:
+                Math.sign((Damage - enemyStats[i].defencebuffer)*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5 + 100) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Altan use Magnum Break!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender
+                return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
             }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
-            if(userStats.critRate >= Math.random()){
-              // Text display
-              $('.storySpeech').append(`<p>Critical Hit Magnum Break!!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(1.5)), 300);
-            }else{
-              // Text display
-              $('.storySpeech').append(`<p>Altan use Magnum Break!!</p>\n<p>Enemy Received ${userStats.attack} damage</p>`)
-              // Rerender
-              return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(1)), 300);
-            }
+            switch(true){
+              case(userStats.critRate >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defence)*1.5*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5 + 100) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Magnum Break!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
+              default:
+                Math.sign((Damage - enemyStats[i].defence)*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5 + 100) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Altan use Magnum Break!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
+              }
           // ENEMY DODGE 
           default:
               $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
@@ -456,11 +466,11 @@ function Main(){
     // Enemy AI
     const enemyDecisionQFn = () => {
       setTimeout(() => (Uclock = 0), 300);
-  
+      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + 2000) / ((userStats.BaseArmorDef * 10) + 2000)) - (userAttribute.vit*2 + userAttribute.agi/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       (() => {
           switch (true) {
           //EnemyAttack & Hit
-            case(Math.random() <= 0.7):
+            case(Math.random() <= 0.8):
               //Rerender, Block or not block
               (() => {
               switch (true) {
@@ -469,32 +479,38 @@ function Main(){
                   dispatch(UserOnHitAnimationFn());
                   setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
                   //CRIT RATE
-                  if(enemyStats[i].critRate >= Math.random()){
-                    // Text display
-                    $('.storySpeech').append(`<p>${enemyStats[i].name} Critical Hit Attack!!</p>\n <p>Altan Received ${enemyStats[i].attack} damage</p>`)
-                    //Rerender
-                    return dispatch(EnemyAttackBlockUserFn(1.5));
-                  }else{
-                    // Text display
-                    $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${enemyStats[i].attack} damage</p>`)
-                    //Rerender
-                    return dispatch(EnemyAttackBlockUserFn(1));
+                  switch (true) {
+                    case(enemyStats[i].critRate >= Math.random()):
+                      Math.sign((Damage * 1.5) - userStats.defencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer) : Damage = 1;
+                      // Text display
+                      $('.storySpeech').append(`<p>${enemyStats[i].name} Critical Hit Attack!!</p>\n <p>Altan Received ${Damage} damage</p>`)
+                      //Rerender
+                      return dispatch(EnemyAttackBlockUserFn(Damage));
+                    default:
+                      Math.sign(Damage - userStats.defencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer : Damage = 1;
+                      // Text display
+                      $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${Damage} damage</p>`)
+                      //Rerender
+                      return dispatch(EnemyAttackBlockUserFn(Damage));
                   }
                 // USER HIT
                 case ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Math.random()):
                   dispatch(UserOnHitAnimationFn());
                   setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
                   //CRIT RATE
-                  if(enemyStats[i].critRate >= Math.random()){
+                  switch (true) {
+                  case(enemyStats[i].critRate >= Math.random()):
+                    Math.sign((Damage * 1.5) - userStats.defence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence) : Damage = 1;
                     // Text display
-                    $('.storySpeech').append(`<p>${enemyStats[i].name} Critical Hit Attack!!</p>\n <p>Altan Received ${enemyStats[i].attack} damage</p>`)
+                    $('.storySpeech').append(`<p>${enemyStats[i].name} Critical Hit Attack!!</p>\n <p>Altan Received ${Damage} damage</p>`)
                     //Rerender
-                    return dispatch(EnemyAttackUserFn(1.5));
-                  }else{
+                    return dispatch(EnemyAttackUserFn(Damage));
+                  default:
+                    Math.sign(Damage - userStats.defence) > 0 ? Damage = Damage - userStats.defence : Damage = 1;
                     // Text display
-                    $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${enemyStats[i].attack} damage</p>`)
+                    $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${Damage} damage</p>`)
                     //Rerender
-                    return dispatch(EnemyAttackUserFn(1));                     
+                    return dispatch(EnemyAttackUserFn(Damage));                     
                   }
                 // USER DODGE
                 default:
@@ -677,7 +693,7 @@ function Main(){
                       
                       { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
-                        {userStats.Level >= 2 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash MP10</button> : null}
+                        {userStats.Level >= 3 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash MP10</button> : null}
                         {userStats.Level >= 5 ? <button onClick={() => userSkillMagnumBreakButton()}><img src={skillMagnum} alt="skillMagnumBreak" /> Magnum Break MP25</button> : null}
                         <button onClick={() => dispatch(ReturnUserInSelectSkillFn())}>Back</button>
                       </div>

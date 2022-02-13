@@ -48,7 +48,7 @@ function App(){
               <span className="logoLetter3">m</span>
               <span className="logoLetter4">o</span>
               <span className="logoLetter5">n</span>
-              <span className="logoLetter6">e</span>
+              <span className="logoLetter6">E</span>
               <span className="logoLetter7">k</span>
               <span className="logoLetter8">k</span>
               <span className="logoLetter9">o</span>

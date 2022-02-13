@@ -9,7 +9,7 @@ const Fn = {
     attack: 25,
     power: 10,
     defence: 18,
-    defencebuffer: 28, // 18 + 10
+    defencebuffer: 38, // 18 + 20
     speed: 10,
     hitRate: 0.95, //0.95
     dodgeRate: 0.1,
@@ -20,7 +20,7 @@ const Fn = {
     BaseWeaponDamage: 60,
     userArmor: 'Cotton Shirt',
     userArmorImg: null,
-    BaseArmorDef: 1,
+    BaseArmorDef: 10,
 }
 
 const userStatsReducer = (state = Fn, action) => {
@@ -28,14 +28,12 @@ const userStatsReducer = (state = Fn, action) => {
         case 'EnemyAttackUserFn':
             return {
                 ...state,
-                currentHealth: state.currentHealth - (20 * action.CriticalAttack),
-                //(action.payloadeAttack)/(action.payloaduDefence)
+                currentHealth: state.currentHealth - action.DamageCalculation,
             }
         case 'EnemyAttackBlockUserFn':
             return {
                 ...state,
-                currentHealth: state.currentHealth - (10 * action.CriticalAttack),
-                //(action.payloadeAttack)/(action.payloaduDefence)
+                currentHealth: state.currentHealth - action.DamageCalculation,
         }
         case 'WinResultFn':
             return{
@@ -58,14 +56,14 @@ const userStatsReducer = (state = Fn, action) => {
         case 'UserSkillBashMissedFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 10,
+                currentSP: state.currentSP - 15,
             }
         case 'UserSkillMagnumBreakBlockEnemyFn':
         case 'UserSkillMagnumBreakEnemyFn':
         case 'UserSkillMagnumBreakMissedFn':
         return{
             ...state,
-            currentSP: state.currentSP - 15,
+            currentSP: state.currentSP - 35,
         }
         case 'UserLevelUpFn':
             return {

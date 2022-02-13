@@ -5,7 +5,7 @@ const Fn = [
         level: 1,
         maxHealth: 100,
         currentHealth: 100,
-        attack: 5,
+        attack: 50,
         power: 2,
         defence: 5,
         defencebuffer: 10, // 5+5
@@ -22,7 +22,7 @@ const Fn = [
         level: 2,
         maxHealth: 200,
         currentHealth: 200,
-        attack: 10,
+        attack: 70,
         power: 3,
         defence: 7,
         defencebuffer: 12, //7+5
@@ -39,7 +39,7 @@ const Fn = [
         level: 3,
         maxHealth: 300,
         currentHealth: 300,
-        attack: 12,
+        attack: 80,
         power: 4,
         defence: 9,
         defencebuffer: 14, //7+5
@@ -84,55 +84,55 @@ const enemyStatsReducer = (state = Fn, action) => {
         case 'UserSkillBashEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - (50 * action.CriticalAttack)
+                currentHealth: state[0].currentHealth - action.DamageCalculation
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - (50 * action.CriticalAttack)
+                currentHealth: state[1].currentHealth - action.DamageCalculation
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - (50 * action.CriticalAttack)
+                currentHealth: state[2].currentHealth - action.DamageCalculation
             }]
         case 'UserSkillBashBlockEnemyFn':
         return [{
             ...state[0],
-            currentHealth: state[0].currentHealth - (30 * action.CriticalAttack)
+            currentHealth: state[0].currentHealth - action.DamageCalculation
         },
         {
             ...state[1],
-            currentHealth: state[1].currentHealth - (30 * action.CriticalAttack)
+            currentHealth: state[1].currentHealth - action.DamageCalculation
         },
         {
             ...state[2],
-            currentHealth: state[2].currentHealth - (30 * action.CriticalAttack)
+            currentHealth: state[2].currentHealth - action.DamageCalculation
         }]
         
         case 'UserSkillMagnumBreakEnemyFn':
             return [{
                 ...state[0],
-                currentHealth: state[0].currentHealth - (80 * action.CriticalAttack)
+                currentHealth: state[0].currentHealth - action.DamageCalculation
             },
             {
                 ...state[1],
-                currentHealth: state[1].currentHealth - (80 * action.CriticalAttack)
+                currentHealth: state[1].currentHealth - action.DamageCalculation
             },
             {
                 ...state[2],
-                currentHealth: state[2].currentHealth - (80 * action.CriticalAttack)
+                currentHealth: state[2].currentHealth - action.DamageCalculation
             }]
         case 'UserSkillMagnumBreakBlockEnemyFn':
         return [{
             ...state[0],
-            currentHealth: state[0].currentHealth - (40 * action.CriticalAttack)
+            currentHealth: state[0].currentHealth - action.DamageCalculation
         },
         {
             ...state[1],
-            currentHealth: state[1].currentHealth - (40 * action.CriticalAttack)
+            currentHealth: state[1].currentHealth - action.DamageCalculation
         },
         {
             ...state[2],
-            currentHealth: state[2].currentHealth - (40 * action.CriticalAttack)
+            currentHealth: state[2].currentHealth - action.DamageCalculation
         }]
 
 

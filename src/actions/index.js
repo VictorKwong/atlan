@@ -1,14 +1,14 @@
-export const EnemyAttackUserFn = (Crit) => {
+export const EnemyAttackUserFn = (Damage) => {
     return {
         type: 'EnemyAttackUserFn',
-        CriticalAttack: Crit
+        DamageCalculation: Damage
     };
 };
 
-export const EnemyAttackBlockUserFn = (Crit) => {
+export const EnemyAttackBlockUserFn = (Damage) => {
     return {
         type: 'EnemyAttackBlockUserFn',
-        CriticalAttack: Crit
+        DamageCalculation: Damage
     };
 };
 export const UserAttackEnemyFn = (Damage) => {
@@ -24,16 +24,16 @@ export const UserAttackBlockEnemyFn = (Damage) => {
         DamageCalculation: Damage
     };
 };
-export const UserSkillBashEnemyFn = (Crit) => {
+export const UserSkillBashEnemyFn = (Damage) => {
     return {
         type: 'UserSkillBashEnemyFn',
-        CriticalAttack: Crit
+        DamageCalculation: Damage
     };
 };
-export const UserSkillBashBlockEnemyFn = (Crit) => {
+export const UserSkillBashBlockEnemyFn = (Damage) => {
     return {
         type: 'UserSkillBashBlockEnemyFn',
-        CriticalAttack: Crit
+        DamageCalculation: Damage
     };
 };
 export const UserSkillBashMissedFn = () => {
@@ -42,16 +42,16 @@ export const UserSkillBashMissedFn = () => {
     };
 };
 
-export const UserSkillMagnumBreakEnemyFn = (Crit) => {
+export const UserSkillMagnumBreakEnemyFn = (Damage) => {
     return {
         type: 'UserSkillMagnumBreakEnemyFn',
-        CriticalAttack: Crit
+        DamageCalculation: Damage
     };
 };
-export const UserSkillMagnumBreakBlockEnemyFn = (Crit) => {
+export const UserSkillMagnumBreakBlockEnemyFn = (Damage) => {
     return {
         type: 'UserSkillMagnumBreakBlockEnemyFn',
-        CriticalAttack: Crit
+        DamageCalculation: Damage
     };
 };
 export const UserSkillMagnumBreakMissedFn = () => {
