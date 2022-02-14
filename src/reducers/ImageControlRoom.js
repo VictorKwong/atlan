@@ -1,12 +1,16 @@
 const Fn = {
     EnemyOnHit: false,
+    EnemyAttack:false,
+    EnemyDead: false,
     UserAttack: false,
     UserOnHit: false,
     UserIsDying: false,
     UserIsDead: false,
     UserIsDefend: false,
     UserChannel: false,
+    UserPickUp: false,
     UserWeaponImg: null,
+    
 }
 
 const ImageControlRoomReducer = (state = Fn, action) => {
@@ -61,6 +65,11 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 EnemyOnHit: false,
             }
+        case 'EnemyAttackUserAnimationFn':
+            return {
+                ...state,
+                EnemyOnHit: false,
+            }
         case 'UserIsBlockAnimationFn':
             return {
                 ...state,
@@ -87,6 +96,21 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 UserWeaponBattleImg: action.WeaponBattleImg,
                 UserWeaponAttackImg: action.WeaponAttackImg,
                 UserWeaponDefendImg: action.WeaponDefendImg
+            }
+        case 'UserPickUpAnimationFn':
+            return{
+                ...state,
+                UserPickUp: action.Turn
+            }
+        case 'EnemyAttackAnimationFn':
+            return{
+                ...state,
+                EnemyAttack: action.Turn
+            }
+        case 'EnemyDeadAnimationFn':
+            return{
+                ...state,
+                EnemyDead: action.Turn
             }
         default:
             return {

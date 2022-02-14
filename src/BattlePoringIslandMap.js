@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn } from './actions';
+import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -17,18 +17,22 @@ import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn 
 import { UseYellowPotionFn, UseRedPotionFn } from './actions'
 //QUEST
 import { ProgressQuestDialogFn } from './actions'
-
+//Win ETC Items
+import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn, WinGrasshoppersLegFn} from './actions'
 
 import './css/mapBattle.css'
 import './index.css'
 import PoringIsland from './PoringIsland'
 import Poring from './img/Monster/Poring.gif'
+import PoringHit from './img/Monster/PoringHit.png'
+import PoringAttack from './img/Monster/PoringAttack.gif'
+import PoringDead from './img/Monster/PoringDead.png'
 import Lunatic from './img/Monster/Lunatic.gif'
-import Rocker from './img/Monster/Rocker.gif'
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
 import UserIsDeadPost from './img/Character/UserDeadPost1.png'
 import UserChannelPost from './img/Character/UserChannel1.png'
+import UserPickUp from './img/Character/UserPickUp1.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import RedPotion from './img/Item/RedPotion.gif'
@@ -54,6 +58,12 @@ import UserDefendPostTwinEdgeofNaghtSieger1 from './img/Character/UserDefendPost
 import UserBattlePostVioletFear1 from './img/Character/UserBattlePostVioletFear1.gif'
 import UserAttackPostVioletFear1 from './img/Character/UserAttackPostVioletFear1.gif'
 import UserDefendPostVioletFear1 from './img/Character/UserDefendPostVioletFear1.gif'
+//ETC
+import Jellopy from './img/Etc/Poring_Jellopy70.gif'
+import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
+import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
+import Clover from './img/Etc/Lunatic_Clover65.gif'
+import Feather from './img/Etc/Lunatic_Feather10.gif'
 
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
@@ -64,9 +74,29 @@ let clockBarObject = {
 }
 let Damage = 0;
 //Monster Random Number 0 1 
-let i = Math.floor((Math.random() * 3));
+let i = Math.floor((Math.random() * 2));
 let Uclock = 0;
 let clockCheck = 0;
+
+//ETC Drops
+//Obtain Once
+let obtain = false;
+const EtcBox = [
+  {id: 0, num: 0, name: "Jellopy", img: Jellopy , percent: 0.7, Gain: WinJellopyFn},
+  {id: 1, num: 0, name: "Empty Bottle", img: EmptyBottle , percent: 1, Gain: WinEmptyBottleFn},
+  {id: 2, num: 0, name: "Sticky Mucus", img: StickyMucus , percent: 1, Gain: WinStickyMucusFn},
+  {id: 3, num: 1, name: "Clover", img: Clover , percent: 0.65, Gain: WinFeatherFn},
+  {id: 4, num: 1, name: "Feather", img: Feather , percent: 0.1, Gain: WinCloverFn},
+]
+
+//ANIMATION PART
+const AnimationBox =[
+  {name: "Katana" , Battle: UserBattlePostKatana1, Attack: UserAttackPostKatana1, Defend: UserDefendPostKatana1},
+  {name: "Bastard Sword" , Battle: UserBattlePostBastardSword1, Attack: UserAttackPostBastardSword1, Defend: UserDefendPostBastardSword1},
+  {name: "Gaia Sword" , Battle: UserBattlePostGaiaSword1, Attack: UserAttackPostGaiaSword1, Defend:  UserDefendPostGaiaSword1},
+  {name: "Twin Edge of Naght Sieger" , Battle: UserBattlePostTwinEdgeofNaghtSieger1, Attack: UserAttackPostTwinEdgeofNaghtSieger1, Defend: UserDefendPostTwinEdgeofNaghtSieger1},
+  {name: "Violet Fear" , Battle: UserBattlePostVioletFear1, Attack: UserAttackPostVioletFear1, Defend: UserDefendPostVioletFear1},
+]
 
 function Main(){
   
@@ -96,20 +126,25 @@ function Main(){
         });
       }
       //ANIMATION PART
-      switch(true){
-        case (userStats.userWeapon === "Katana"):
-          return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
-        case (userStats.userWeapon === "Bastard Sword"):
-          return dispatch(UserWeaponImgFn(UserBattlePostBastardSword1,UserAttackPostBastardSword1,UserDefendPostBastardSword1))
-        case (userStats.userWeapon === "Gaia Sword"):
-          return dispatch(UserWeaponImgFn(UserBattlePostGaiaSword1,UserAttackPostGaiaSword1,UserDefendPostGaiaSword1))
-        case (userStats.userWeapon === "Twin Edge of Naght Sieger"):
-          return dispatch(UserWeaponImgFn(UserBattlePostTwinEdgeofNaghtSieger1,UserAttackPostTwinEdgeofNaghtSieger1,UserDefendPostTwinEdgeofNaghtSieger1))
-        case (userStats.userWeapon === "Violet Fear"):
-          return dispatch(UserWeaponImgFn(UserBattlePostVioletFear1,UserAttackPostVioletFear1,UserDefendPostVioletFear1))
-        default:
-          return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
-      }
+      AnimationBox.map(Animation => {
+        if(userStats.userWeapon === Animation.name){
+          return dispatch(UserWeaponImgFn(Animation.Battle, Animation.Attack, Animation.Defend))
+        }
+      })
+      // switch(true){
+      //   case (userStats.userWeapon === "Katana"):
+      //     return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
+      //   case (userStats.userWeapon === "Bastard Sword"):
+      //     return dispatch(UserWeaponImgFn(UserBattlePostBastardSword1,UserAttackPostBastardSword1,UserDefendPostBastardSword1))
+      //   case (userStats.userWeapon === "Gaia Sword"):
+      //     return dispatch(UserWeaponImgFn(UserBattlePostGaiaSword1,UserAttackPostGaiaSword1,UserDefendPostGaiaSword1))
+      //   case (userStats.userWeapon === "Twin Edge of Naght Sieger"):
+      //     return dispatch(UserWeaponImgFn(UserBattlePostTwinEdgeofNaghtSieger1,UserAttackPostTwinEdgeofNaghtSieger1,UserDefendPostTwinEdgeofNaghtSieger1))
+      //   case (userStats.userWeapon === "Violet Fear"):
+      //     return dispatch(UserWeaponImgFn(UserBattlePostVioletFear1,UserAttackPostVioletFear1,UserDefendPostVioletFear1))
+      //   default:
+      //     return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
+      // }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -138,10 +173,24 @@ function Main(){
     // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
+        setTimeout(() => dispatch(EnemyDeadAnimationFn(true)), 1000);
         setTimeout(() => (clockCheck = 1), 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
         $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
+        //ETC items
+        EtcBox.map(EtcItems => {
+          if((i === EtcItems.num) && (EtcItems.percent > Math.random())){
+            if (obtain === false){
+              setTimeout(() => dispatch(UserPickUpAnimationFn(true)), 1050);
+              setTimeout(() => dispatch(UserPickUpAnimationFn(false)), 1350);
+              $('.storySpeech').append(`<span>Obtained: </span>`)
+              obtain = true;
+            }
+            dispatch((EtcItems.Gain)())
+            $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
+          }
+        })
         //QUEST
           switch (true) {
             //accept QUEST & Correct Event monster
@@ -171,6 +220,8 @@ function Main(){
                 i = Math.floor((Math.random() * 3));
                 Uclock = 0;
                 clockCheck = 0;
+                obtain = false;
+                dispatch(EnemyDeadAnimationFn(false));
                 dispatch(ResetEnemyTurnFn());
                 dispatch(ResetUserTurnFn());
                 dispatch(ResetEnemyTurnBlockFn());
@@ -240,7 +291,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
        
-      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       //Rerender, Block or not block
       
       (() => {
@@ -315,7 +366,7 @@ function Main(){
       if (userStats.currentSP >= 15){
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
-      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       (() => {
@@ -378,7 +429,7 @@ function Main(){
       if (userStats.currentSP >= 35){
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
-      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1050);
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       (() => {
@@ -476,6 +527,8 @@ function Main(){
               switch (true) {
                 // USER BLOCK
                 case (SkillControlRoom['User'].UserBlock && ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Math.random())):
+                  dispatch(EnemyAttackAnimationFn(true));
+                  setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserOnHitAnimationFn());
                   setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
                   //CRIT RATE
@@ -495,6 +548,8 @@ function Main(){
                   }
                 // USER HIT
                 case ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Math.random()):
+                  dispatch(EnemyAttackAnimationFn(true));
+                  setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserOnHitAnimationFn());
                   setTimeout(() => dispatch(ResetUserOnHitAnimationFn()), 300);
                   //CRIT RATE
@@ -580,7 +635,7 @@ function Main(){
     }
   }
 
-    // Longest Animation 1.1 = 0.3 onhit + 0.9 delay
+    // Longest Animation 1.2 = 0.3 onhit + 0.9 delay
     useEffect(() => {
       setTimeout(() => clockBaseQtn(), 900);
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -618,9 +673,8 @@ function Main(){
                 <div className="enemyBox"> 
                     <h2 className="wordCenter">{enemyStats[i].name}</h2>
                     {
-                      i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Poring} alt={enemyStats[i].name} /> :
+                      i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} /> :
                       i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Lunatic} alt={enemyStats[i].name} /> :
-                      i === 2 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip imgFlipRocker` : `imgFlip imgFlipRocker`} src={Rocker} alt={enemyStats[i].name} /> :
                       null
                     }
                     <p>Enemy Health {enemyStats[i].currentHealth}/{enemyStats[i].maxHealth}</p>
@@ -646,6 +700,7 @@ function Main(){
                   // User Defend Post
                   ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserWeaponDefendImg} alt="UserDefendPost" className="altanImg"/> :
                   ImageControlRoom.UserChannel ? <img src={UserChannelPost} alt="UserChannelPost" className="altanImg"/> :
+                  ImageControlRoom.UserPickUp ? <img src={UserPickUp} alt="UserPickUp" className="altanImg"/> :
                   // User Battle Post
                   <img src={ImageControlRoom.UserWeaponBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
                   <p>Health {userStats.currentHealth}/{userStats.maxHealth}</p>

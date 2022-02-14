@@ -114,6 +114,7 @@ https://ro-character-simulator.ratemyserver.net/##
 https://ratemyserver.net/index.php?page=mob_db
 https://irowiki.org/wiki/Emotes
 https://cp.originsro.org/monster/view/?id=1002#
+http://rosprites.blogspot.com/2012/05/monsters-all.html
 
 http://nn.ai4rei.net/dev/npclist/?q=tag:animated
 

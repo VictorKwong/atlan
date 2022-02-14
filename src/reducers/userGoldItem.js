@@ -16,7 +16,15 @@ const Fn = {
     Coat: 0,
     PaddedArmor: 0,
     ChainMail: 0,
-    FullPlate: 0
+    FullPlate: 0,
+    //Etc
+    Jellopy: 0,
+    EmptyBottle: 0,
+    StickyMucus: 0,
+    Clover: 0,
+    Feather: 0,
+    GrasshoppersLeg: 0,
+
 }
 
 
@@ -204,6 +212,37 @@ const userGoldItemReducer = (state = Fn, action) => {
             return{
                 ...state,
                 YellowPotion: state.YellowPotion - 1,
+            }
+        //WIN Etc Items
+        case 'WinJellopyFn':
+            return{
+                ...state,
+                Jellopy: state.Jellopy + 1
+            }
+        case 'WinEmptyBottleFn':
+            return{
+                ...state,
+                EmptyBottle: state.EmptyBottle + 1
+            }
+        case 'WinStickyMucusFn':
+            return{
+                ...state,
+                StickyMucus: state.StickyMucus + 1
+            }
+        case 'WinCloverFn':
+            return{
+                ...state,
+                Clover: state.Clover + 1
+            }
+        case 'WinFeatherFn':
+            return{
+                ...state,
+                Feather: state.Feather + 1
+            }
+        case 'WinGrasshoppersLegFn':
+            return{
+                ...state,
+                GrasshoppersLeg: state.GrasshoppersLeg + 1
             }
         case 'WinResultFn':
             return{

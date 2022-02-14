@@ -306,7 +306,24 @@ export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg)
         WeaponDefendImg: WeaponDefendImg
     };
 };
-
+export const UserPickUpAnimationFn = (Turn) => {
+    return {
+        type: 'UserPickUpAnimationFn',
+        Turn: Turn
+    };
+};
+export const EnemyAttackAnimationFn = (Turn) => {
+    return {
+        type: 'EnemyAttackAnimationFn',
+        Turn: Turn
+    };
+};
+export const EnemyDeadAnimationFn = (Turn) => {
+    return {
+        type: 'EnemyDeadAnimationFn',
+        Turn: Turn
+    };
+};
 
 //Skills
 export const UserInSelectSkillFn = () => {
@@ -700,6 +717,41 @@ export const ProgressQuestDialogFn = (Num) => {
         Number: Num
     };
 };
+//WIN Etc Items
+//PORING
+export const WinJellopyFn = () => {
+    return {
+        type: 'WinJellopyFn'
+    };
+};
+export const WinEmptyBottleFn = () => {
+    return {
+        type: 'WinEmptyBottleFn'
+    };
+};
+export const WinStickyMucusFn = () => {
+    return {
+        type: 'WinStickyMucusFn'
+    };
+};
+//LUNATIC
+export const WinCloverFn = () => {
+    return {
+        type: 'WinCloverFn'
+    };
+};
+export const WinFeatherFn = () => {
+    return {
+        type: 'WinFeatherFn'
+    };
+};
+export const WinGrasshoppersLegFn = () => {
+    return {
+        type: 'WinGrasshoppersLegFn'
+    };
+};
+
+
 //Audio Interaction
 export const AudioCurrentTimeSaverFn = (currentTime) => {
     return {
