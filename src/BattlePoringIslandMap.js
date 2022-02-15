@@ -31,16 +31,21 @@ import Lunatic from './img/Monster/Lunatic.gif'
 import LunaticHit from './img/Monster/LunaticHit.png'
 import LunaticAttack from './img/Monster/LunaticAttack.gif'
 import LunaticDead from './img/Monster/LunaticDead.png'
-import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
-import UserIsDyingPost from './img/Character/UserDyingPost1.png'
-import UserIsDeadPost from './img/Character/UserDeadPost1.png'
-import UserChannelPost from './img/Character/UserChannel1.png'
-import UserPickUp from './img/Character/UserPickUp1.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
 
+import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
+import UserIsDyingPost from './img/Character/UserDyingPost1.png'
+import UserIsDeadPost from './img/Character/UserDeadPost1.png'
+import UserChannelPost from './img/Character/UserChannel1.png'
+import UserPickUp from './img/Character/UserPickUp1.gif'
+
+// EMPTY HAND
+import UserBattleEmptyHand1 from './img/Character/UserBattlePostEmptyHand1.gif'
+import UserAttackEmptyHand1 from './img/Character/UserAttackPostEmptyHand1.gif'
+import UserDefendEmptyHand1 from './img/Character/UserDefendPostEmptyHand1.gif'
 // KATANA
 import UserBattlePostKatana1 from './img/Character/UserBattlePostKatana1.gif'
 import UserAttackPostKatana1 from './img/Character/UserAttackPostKatana1.gif'
@@ -61,6 +66,41 @@ import UserDefendPostTwinEdgeofNaghtSieger1 from './img/Character/UserDefendPost
 import UserBattlePostVioletFear1 from './img/Character/UserBattlePostVioletFear1.gif'
 import UserAttackPostVioletFear1 from './img/Character/UserAttackPostVioletFear1.gif'
 import UserDefendPostVioletFear1 from './img/Character/UserDefendPostVioletFear1.gif'
+
+//LordKahosHorn
+import UserOnHitPost_LordKahosHorn from './img/Character/LordKahosHorn/UserOnHitPost1_LordKahosHorn.gif'
+import UserIsDyingPost_LordKahosHorn from './img/Character/LordKahosHorn/UserDyingPost1_LordKahosHorn.png'
+import UserIsDeadPost_LordKahosHorn from './img/Character/LordKahosHorn/UserDeadPost1_LordKahosHorn.png'
+import UserChannelPost_LordKahosHorn from './img/Character//LordKahosHorn/UserChannel1_LordKahosHorn.png'
+import UserPickUp_LordKahosHorn from './img/Character/LordKahosHorn/UserPickUp1_LordKahosHorn.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostEmptyHand1_LordKahosHorn.gif'
+import UserAttackPostEmptyHand1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostEmptyHand1_LordKahosHorn.gif'
+import UserDefendPostEmptyHand1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostEmptyHand1_LordKahosHorn.gif'
+// KATANA
+import UserBattlePostKatana1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostKatana1_LordKahosHorn.gif'
+import UserAttackPostKatana1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostKatana1_LordKahosHorn.gif'
+import UserDefendPostKatana1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostKatana1_LordKahosHorn.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostBastardSword1_LordKahosHorn.gif'
+import UserAttackPostBastardSword1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostBastardSword1_LordKahosHorn.gif'
+import UserDefendPostBastardSword1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostBastardSword1_LordKahosHorn.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostGaiaSword1_LordKahosHorn.gif'
+import UserAttackPostGaiaSword1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostGaiaSword1_LordKahosHorn.gif'
+import UserDefendPostGaiaSword1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostGaiaSword1_LordKahosHorn.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostTwinEdgeofNaghtSieger1_LordKahosHorn.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostTwinEdgeofNaghtSieger1_LordKahosHorn.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostTwinEdgeofNaghtSieger1_LordKahosHorn.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostVioletFear1_LordKahosHorn.gif'
+import UserAttackPostVioletFear1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostVioletFear1_LordKahosHorn.gif'
+import UserDefendPostVioletFear1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostVioletFear1_LordKahosHorn.gif'
+
+
+
+
 //ETC
 import Jellopy from './img/Etc/Poring_Jellopy70.gif'
 import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
@@ -92,13 +132,21 @@ const EtcBox = [
   {id: 4, num: 1, name: "Feather", img: Feather , percent: 0.1, Gain: WinFeatherFn},
 ]
 
-//ANIMATION PART
+//ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
-  {name: "Katana" , Battle: UserBattlePostKatana1, Attack: UserAttackPostKatana1, Defend: UserDefendPostKatana1},
-  {name: "Bastard Sword" , Battle: UserBattlePostBastardSword1, Attack: UserAttackPostBastardSword1, Defend: UserDefendPostBastardSword1},
-  {name: "Gaia Sword" , Battle: UserBattlePostGaiaSword1, Attack: UserAttackPostGaiaSword1, Defend:  UserDefendPostGaiaSword1},
-  {name: "Twin Edge of Naght Sieger" , Battle: UserBattlePostTwinEdgeofNaghtSieger1, Attack: UserAttackPostTwinEdgeofNaghtSieger1, Defend: UserDefendPostTwinEdgeofNaghtSieger1},
-  {name: "Violet Fear" , Battle: UserBattlePostVioletFear1, Attack: UserAttackPostVioletFear1, Defend: UserDefendPostVioletFear1},
+  {weaponName: null, headGearName: null, Battle: UserBattleEmptyHand1, Attack: UserAttackEmptyHand1, Defend: UserDefendEmptyHand1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  {weaponName: "Katana", headGearName: null, Battle: UserBattlePostKatana1, Attack: UserAttackPostKatana1, Defend: UserDefendPostKatana1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  {weaponName: "Bastard Sword", headGearName: null , Battle: UserBattlePostBastardSword1, Attack: UserAttackPostBastardSword1, Defend: UserDefendPostBastardSword1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  {weaponName: "Gaia Sword", headGearName: null , Battle: UserBattlePostGaiaSword1, Attack: UserAttackPostGaiaSword1, Defend:  UserDefendPostGaiaSword1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: null , Battle: UserBattlePostTwinEdgeofNaghtSieger1, Attack: UserAttackPostTwinEdgeofNaghtSieger1, Defend: UserDefendPostTwinEdgeofNaghtSieger1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  {weaponName: "Violet Fear", headGearName: null , Battle: UserBattlePostVioletFear1, Attack: UserAttackPostVioletFear1, Defend: UserDefendPostVioletFear1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  //LordKahosHorn
+  {weaponName: null, headGearName: "Lord Kaho`s Horn", Battle: UserBattlePostEmptyHand1_LordKahosHorn, Attack: UserAttackPostEmptyHand1_LordKahosHorn, Defend: UserDefendPostEmptyHand1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  {weaponName: "Katana", headGearName: "Lord Kaho`s Horn", Battle: UserBattlePostKatana1_LordKahosHorn, Attack: UserAttackPostKatana1_LordKahosHorn, Defend: UserDefendPostKatana1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  {weaponName: "Bastard Sword", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostBastardSword1_LordKahosHorn, Attack: UserAttackPostBastardSword1_LordKahosHorn, Defend: UserDefendPostBastardSword1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  {weaponName: "Gaia Sword", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostGaiaSword1_LordKahosHorn, Attack: UserAttackPostGaiaSword1_LordKahosHorn, Defend:  UserDefendPostGaiaSword1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_LordKahosHorn, Attack: UserAttackPostTwinEdgeofNaghtSieger1_LordKahosHorn, Defend: UserDefendPostTwinEdgeofNaghtSieger1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  {weaponName: "Violet Fear", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostVioletFear1_LordKahosHorn, Attack: UserAttackPostVioletFear1_LordKahosHorn, Defend: UserDefendPostVioletFear1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
 ]
 
 function Main(){
@@ -129,8 +177,8 @@ function Main(){
       }
       //ANIMATION PART
       AnimationBox.map(Animation => {
-        if(userStats.userWeapon === Animation.name){
-          dispatch(UserWeaponImgFn(Animation.Battle, Animation.Attack, Animation.Defend))
+        if(userStats.userWeapon === Animation.weaponName && userStats.userHeadGear === Animation.headGearName){
+          dispatch(UserWeaponImgFn(Animation.Battle, Animation.Attack, Animation.Defend, Animation.OnHit, Animation.Dying, Animation.Dead, Animation.Channel, Animation.PickUp))
         }
         return null;
       })
@@ -697,16 +745,16 @@ function Main(){
                 <div>
                   <h2 className="wordCenter">Altan</h2>
                   {/* User attack Post */}
-                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserWeaponAttackImg} alt="UserAttackPost" className="altanImg" /> :
-                  ImageControlRoom.UserOnHit ? <img src={UserOnHitPost} alt="UserOnHitPost" className="altanImg"/> : 
-                  ImageControlRoom.UserIsDying ? <img src={UserIsDyingPost} alt="UserIsDyingPost" className="altanImg"/> :
-                  ImageControlRoom.UserIsDead ? <img src={UserIsDeadPost} alt="UserIsDeadPost" className="altanImg"/> : 
+                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className="altanImg" /> :
+                  ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className="altanImg"/> : 
+                  ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className="altanImg"/> :
+                  ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className="altanImg"/> : 
                   // User Defend Post
-                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserWeaponDefendImg} alt="UserDefendPost" className="altanImg"/> :
-                  ImageControlRoom.UserChannel ? <img src={UserChannelPost} alt="UserChannelPost" className="altanImg"/> :
-                  ImageControlRoom.UserPickUp ? <img src={UserPickUp} alt="UserPickUp" className="altanImg"/> :
+                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className="altanImg"/> :
+                  ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className="altanImg"/> :
+                  ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className="altanImg"/> :
                   // User Battle Post
-                  <img src={ImageControlRoom.UserWeaponBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
+                  <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
                   <p>Health {userStats.currentHealth}/{userStats.maxHealth}</p>
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100"/>
                   <p>SP {userStats.currentSP}/{userStats.maxSP}</p>

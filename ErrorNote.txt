@@ -108,6 +108,15 @@ ERROR in src\actions\index.js
 -100 to 100 Random:
 var randomN = Math.floor(Math.random() * (n-m+1)) + m
 
+Map:
+QuestBox.map(Quest =>{
+    return(
+        <div key>
+            ...
+        </div>
+    )
+})
+
 
 Resource:
 https://ro-character-simulator.ratemyserver.net/##
@@ -115,6 +124,7 @@ https://ratemyserver.net/index.php?page=mob_db
 https://irowiki.org/wiki/Emotes
 https://cp.originsro.org/monster/view/?id=1002#
 http://rosprites.blogspot.com/2012/05/monsters-all.html
+https://bghq.com/textures.php?game=ro
 
 http://nn.ai4rei.net/dev/npclist/?q=tag:animated
 

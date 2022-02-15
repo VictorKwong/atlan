@@ -6,7 +6,7 @@ import { AudioCurrentTimeSaverFn } from './actions';
 import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, ResetTalktoFn} from './actions';
 
 //New Function
-import { TalktoHeadGearDealerFn } from './actions';
+import { TalktoHeadGearDealerFn, ResetDealerBuySellFn, DealerBuyFn, DealerSellFn } from './actions';
 //Function
 import { AcceptQuestDialogFn, ReturnQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn } from './actions'
 
@@ -27,7 +27,6 @@ const QuestBox = [
   {id: 1, num: "1", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z"}
 ]
 
-
 function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
@@ -42,8 +41,14 @@ function StartMenu(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
+    //define
+  const TalkNPCBox =[
+    //HEAD GEAR
+    {id:9000, NPCScreen:screenControlRoom.PronteraHeadGearDealer, target:npcControlRoom.HeadGearDealer, buy: npcControlRoom.DealerBuy, sell: npcControlRoom.DealerSell, name:"HeadGearDealer" , buySuccess: npcControlRoom.DealerBuySuccess, buyFailure: npcControlRoom.DealerBuyFailure, sellSuccess:npcControlRoom.DealerSellSuccess, sellFailure:npcControlRoom.DealerSellFailure}
+  ]
+
+
     useEffect(() => {
-      
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
@@ -97,6 +102,64 @@ function StartMenu(){
           }
       }, 10);
   }
+  //NPC Speech
+  useEffect(() => {
+    TalkNPCBox.map(TalkNPC => {
+      switch(true){
+        //Welcome shop message
+        case(TalkNPC.NPCScreen && TalkNPC.target === false && TalkNPC.buy === false && TalkNPC.sell === false):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][0].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][0].name}</p>`)
+          break;
+        //Talk message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy === false && TalkNPC.sell === false):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][1].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][1].name}</p>`)
+          break;
+        //Buy Success message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy && TalkNPC.sell === false && TalkNPC.buySuccess):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][3].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][3].name}</p>`)
+          break;
+        //Buy Success message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy && TalkNPC.sell === false && TalkNPC.buyFailure):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][4].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][4].name}</p>`)
+          break;
+        //Sell Success message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy === false && TalkNPC.sell && TalkNPC.sellSuccess):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][6].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][6].name}</p>`)
+          break;
+        //Sell Failure message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy === false && TalkNPC.sell && TalkNPC.sellFailure):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][7].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][7].name}</p>`)
+          break;
+        //Buy message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy && TalkNPC.sell === false):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][2].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][2].name}</p>`)
+          break;
+        //Sell message
+        case(TalkNPC.NPCScreen && TalkNPC.target && TalkNPC.buy === false && TalkNPC.sell):
+          $('.storySpeech').html(`<p>${npcSpeech[TalkNPC.name][5].text}</p>`)
+          $('.storyCharacter').html(`<p>${npcSpeech[TalkNPC.name][5].name}</p>`)
+          break;
+        //reset
+        case(TalkNPC.NPCScreen === false && TalkNPC.target === false && TalkNPC.buy === false && TalkNPC.sell === false):
+          $('.storySpeech').html('')  
+          $('.storyCharacter').html(`Altan`)
+          break;
+      }
+
+    })
+
+  }, [screenControlRoom, npcControlRoom, dispatch])
+
+
+
+
     const talkToKafraEmployee = () => {
       $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][0].text}</p>`)
       $('.storyCharacter').html(`<p>${npcSpeech['KafraEmployee'][0].name}</p>`)
@@ -112,6 +175,17 @@ function StartMenu(){
       }
     }
     
+    //HEAD GEAR
+    const talkToHeadGearDealerBuy = () => {
+      $('.storySpeech').html(`<p>${npcSpeech['HeadGearDealer'][1].text}</p>`)
+      $('.storyCharacter').html(`<p>${npcSpeech['HeadGearDealer'][1].name}</p>`)
+    }
+
+    const talkToHeadGearDealerSell = () => {
+      $('.storySpeech').html(`<p>${npcSpeech['HeadGearDealer'][2].text}</p>`)
+      $('.storyCharacter').html(`<p>${npcSpeech['HeadGearDealer'][2].name}</p>`)
+    }
+
     return(
       <div>
         {
@@ -123,7 +197,7 @@ function StartMenu(){
             {screenControlRoom.PronteraHeadGearDealer ? 
             <div className="ReturnParent">
               <PronteraHeadGearDealer />
-              <button className="ReturnHUD" onClick={() =>{dispatch(GotoPronteraHeadGearDealerFn()); changePlaceFadeAudio();}}>x</button>
+              <button className="ReturnHUD" onClick={() =>{dispatch(GotoPronteraHeadGearDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellFn()); changePlaceFadeAudio();}}>x</button>
             </div>:
             <div className="PronteraMap">
               <h3>Prontera</h3>
@@ -191,11 +265,11 @@ function StartMenu(){
                 </ul>
               </div> : null}
               {/* BUY SELL FN */}
-              {npcControlRoom.HeadGearDealer ?
+              {screenControlRoom.PronteraHeadGearDealer ?
               <div>
-                {/* <button onClick={() =>{dispatch(DealerBuyFn());}}>Buy</button>
-                <button onClick={() =>{dispatch(DealerSellFn());}}>Sell</button>
-                <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetDealerBuySellFn());}}>Leave</button> */}
+                <button onClick={() =>{dispatch(DealerBuyFn()); talkToHeadGearDealerBuy();}}>Buy</button>
+                <button onClick={() =>{dispatch(DealerSellFn()); talkToHeadGearDealerSell();}}>Sell</button>
+                <button onClick={() => {dispatch(GotoPronteraHeadGearDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellFn()); changePlaceFadeAudio();}}>Leave HeadGearShop</button>
               </div> : null}
           </fieldset>
         </div>

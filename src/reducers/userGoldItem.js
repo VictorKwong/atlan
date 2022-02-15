@@ -17,6 +17,8 @@ const Fn = {
     PaddedArmor: 0,
     ChainMail: 0,
     FullPlate: 0,
+    //HeadGear
+    LordKahosHorn: 1,
     //Etc
     Jellopy: 0,
     EmptyBottle: 0,
@@ -202,6 +204,14 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + 64000,
                 FullPlate: state.FullPlate - 1,
             }
+        //HeadGear Shop
+        case 'LordKahosHornFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                LordKahosHorn: state.LordKahosHorn + action.Item,
+            }
+            
         //Battle USEAGE
         case 'UseRedPotionFn':
             return{

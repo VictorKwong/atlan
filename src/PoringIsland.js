@@ -28,8 +28,13 @@ import Coat from './img/Equipment/Armor/Coat.gif'
 import PaddedArmor from './img/Equipment/Armor/PaddedArmor.gif'
 import ChainMail from './img/Equipment/Armor/ChainMail.gif'
 import FullPlate from './img/Equipment/Armor/FullPlate.gif'
+//HEADGEAR
+import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
+
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
+
+
 const audioBGM = new Audio(audioStreamside);
 
 
@@ -41,8 +46,12 @@ function StartMenu(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
+    let HeadGearBox = [
+      {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty"},
+      {id:7001, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn"}
+    ]
+ 
     useEffect(() => {
-      
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
@@ -82,8 +91,8 @@ function StartMenu(){
         console.log(audioBGM.volume);
         if (audioBGM.volume > 0.01) {
           audioBGM.volume -= 0.004
-          console.log(audioBGM.volume);
           audioBGM.volume = audioBGM.volume.toFixed(4)
+          console.log(audioBGM.volume);
         }
           if (audioBGM.volume === 0.01) {
             audioBGM.volume = 0.15;
@@ -172,13 +181,14 @@ function StartMenu(){
                 <div>
                   {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>
+                    <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>
                     {userGoldItem.Katana >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Katana",Katana, 60));}}><img src={Katana} alt="Katana" />Katana</button> : null}
                     {userGoldItem.BastardSword >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Bastard Sword",BastardSword, 115));}}><img src={BastardSword} alt="BastardSword" />Bastard Sword</button> : null}
                     {userGoldItem.GaiaSword >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Gaia Sword",GaiaSword, 140));}}><img src={GaiaSword} alt="GaiaSword" />GaiaSword</button> : null }
                     {userGoldItem.TwinEdgeofNaghtSieger >= 1 ?<button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160));}}><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />Twin Edge of Naght Sieger</button> : null}
                     {userGoldItem.VioletFear >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275));}}><img src={VioletFear} alt="VioletFear"/>Violet Fear</button>: null}
                   </div> 
-                  : <p>Empty Weapon Storage T^T</p>}
+                  : <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn(null,null, 1));}}>Empty</button>}
                 </div> 
             : null}
           {/* ARMOR */}
@@ -200,9 +210,16 @@ function StartMenu(){
           {/* HEADGEAR */}
             {screenControlRoom.HeadGearEquipmentChoice ?
                   <div>
-                  {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
-                  <div>
-                  </div> 
+                  {userGoldItem.LordKahosHorn >= 1 ?
+                    <div>
+                    {HeadGearBox.map(Equip => {
+                      return(
+                        <span key={Equip.id}>
+                          {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
+                        </span>
+                      )
+                    })}
+                    </div>
                   : <p>Empty HeadGear Storage T^T</p>}
                 </div> 
               : null}

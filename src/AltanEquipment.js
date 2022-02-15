@@ -8,6 +8,7 @@ import './css/mapAltanEquipment.css'
 // import useSound from 'use-sound';
 
 import UserStandPost from './img/Character/UserStand.png'
+import UserStand_LordKahosHorn from './img/Character/UserStand_LordKahosHorn.png'
 // WEAPON IMAGE
 // import Katana from './img/Equipment/Weapon/Katana.gif'
 // import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
@@ -41,12 +42,12 @@ function StartMenu(){
     return(
       <div className="AltanEquipmentMap">
         <h2>Equipment</h2>
-        <img src={UserStandPost} alt="UserStandPost" />
+        {userStats.userHeadGear === "Lord Kaho`s Horn" ? <img src={UserStand_LordKahosHorn} alt="UserStand_LordKahosHorn" /> : <img src={UserStandPost} alt="UserStandPost" />}
 
         {GotoList.map(Equip => {
           return(
             <div key={Equip.id}>
-              <button value={Equip.name} onClick={() => dispatch(Equip.DirectTo)}><img src={Equip.Img === null ? Equip.preload : Equip.Img} alt={Equip.name} />{Equip.name === null ? `Empty` : Equip.name}</button>
+              <button value={Equip.name} onClick={() => dispatch(Equip.DirectTo)}><img src={Equip.Img === 'initial' ? Equip.preload : Equip.Img === null ? '' : Equip.Img} alt={Equip.Img === null ? '' : Equip.name} />{Equip.name === null ? `Empty` : Equip.name}</button>
             </div>
           )
         })}

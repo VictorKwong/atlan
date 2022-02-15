@@ -21,6 +21,8 @@ import Coat from './img/Equipment/Armor/Coat.gif'
 import PaddedArmor from './img/Equipment/Armor/PaddedArmor.gif'
 import ChainMail from './img/Equipment/Armor/ChainMail.gif'
 import FullPlate from './img/Equipment/Armor/FullPlate.gif'
+//HEADGEAR
+import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
@@ -64,7 +66,9 @@ function StartMenu(){
       {id:10009, Img:Coat, name:"Coat", itemCheck:userGoldItem.Coat},
       {id:10010, Img:PaddedArmor, name:"PaddedArmor", itemCheck:userGoldItem.PaddedArmor},
       {id:10011, Img:ChainMail, name:"ChainMail", itemCheck:userGoldItem.ChainMail},
-      {id:10012, Img:FullPlate, name:"FullPlate", itemCheck:userGoldItem.FullPlate}
+      {id:10012, Img:FullPlate, name:"FullPlate", itemCheck:userGoldItem.FullPlate},
+      //HeadGear
+      {id:10013, Img:LordKahosHorn, name:"Lord Kaho`s Horn", itemCheck:userGoldItem.LordKahosHorn}
     ]
     let EtcBox = [
       {id:1000, Img:Jellopy, name:"Jellopy", itemCheck:userGoldItem.Jellopy},

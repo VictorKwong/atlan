@@ -9,8 +9,14 @@ const Fn = {
     UserIsDefend: false,
     UserChannel: false,
     UserPickUp: false,
-    UserWeaponImg: null,
-    
+    UserBattleImg: null,
+    UserAttackImg: null,
+    UserDefendImg: null,
+    UserOnHitImg: null,
+    UserDyingImg: null,
+    UserDeadImg: null,
+    UserChannelImg: null,
+    UserPickUpImg: null,
 }
 
 const ImageControlRoomReducer = (state = Fn, action) => {
@@ -93,9 +99,14 @@ const ImageControlRoomReducer = (state = Fn, action) => {
         case 'UserWeaponImgFn':
             return {
                 ...state,
-                UserWeaponBattleImg: action.WeaponBattleImg,
-                UserWeaponAttackImg: action.WeaponAttackImg,
-                UserWeaponDefendImg: action.WeaponDefendImg
+                UserBattleImg: action.WeaponBattleImg,
+                UserAttackImg: action.WeaponAttackImg,
+                UserDefendImg: action.WeaponDefendImg,
+                UserOnHitImg: action.WeaponOnHitImg,
+                UserDyingImg: action.WeaponDyingImg,
+                UserDeadImg: action.WeaponDeadImg,
+                UserChannelImg: action.WeaponChannelImg,
+                UserPickUpImg: action.WeaponPickUpImg,
             }
         case 'UserPickUpAnimationFn':
             return{

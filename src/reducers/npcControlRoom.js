@@ -9,6 +9,10 @@ const Fn = {
     HeadGearDealer: false,
     DealerBuy: false,
     DealerSell: false,
+    DealerBuySuccess: false,
+    DealerBuyFailure: false,
+    DealerSellSuccess: false,
+    DealerSellFailure: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -77,18 +81,55 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 DealerBuy: true,
                 DealerSell: false,
+                DealerBuySuccess: false,
+                DealerBuyFailure: false,
+                DealerSellSuccess: false,
+                DealerSellFailure: false,
             }
         case 'DealerSellFn':
             return {
                 ...state,
                 DealerBuy: false,
                 DealerSell: true,
+                DealerBuySuccess: false,
+                DealerBuyFailure: false,
+                DealerSellSuccess: false,
+                DealerSellFailure: false,
+            }
+        //Inside BuySell Fn
+        case 'DealerBuySuccessFn':
+            return {
+                ...state,
+                DealerBuySuccess: true,
+                DealerBuyFailure: false,
+            }
+        case 'DealerBuyFailureFn':
+            return {
+                ...state,
+                DealerBuySuccess: false,
+                DealerBuyFailure: true,
+            }
+        case 'DealerSellSuccessFn':
+            return {
+                ...state,
+                DealerSellSuccess: true,
+                DealerSellFailure: false,
+            }
+        case 'DealerSellFailureFn':
+            return {
+                ...state,
+                DealerSellSuccess: false,
+                DealerSellFailure: true,
             }
         case 'ResetDealerBuySellFn':
             return {
                 ...state,
                 DealerBuy: false,
                 DealerSell: false,
+                DealerBuySuccess: false,
+                DealerBuyFailure: false,
+                DealerSellSuccess: false,
+                DealerSellFailure: false,
             }
         
         default:

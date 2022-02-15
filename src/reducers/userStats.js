@@ -16,10 +16,10 @@ const Fn = {
     critRate: 0.05, // 0.05
     userClockDefend: false,
     userWeapon: 'Katana',
-    userWeaponImg: null,
+    userWeaponImg: 'initial',
     BaseWeaponDamage: 60,
     userArmor: 'Cotton Shirt',
-    userArmorImg: null,
+    userArmorImg: 'initial',
     BaseArmorDef: 10,
     userHeadGear: null,
     userHeadGearImg: null,

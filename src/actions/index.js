@@ -318,12 +318,18 @@ export const ResetUserChannelAnimationFn = () => {
         type: 'ResetUserChannelAnimationFn'
     };
 };
-export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg) => {
+export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg,WeaponOnHitImg,WeaponDyingImg,WeaponDeadImg,WeaponChannelImg,WeaponPickUpImg) => {
     return {
         type: 'UserWeaponImgFn',
         WeaponBattleImg: WeaponBattleImg,
         WeaponAttackImg: WeaponAttackImg,
-        WeaponDefendImg: WeaponDefendImg
+        WeaponDefendImg: WeaponDefendImg,
+        WeaponOnHitImg: WeaponOnHitImg,
+        WeaponDyingImg: WeaponDyingImg,
+        WeaponDeadImg: WeaponDeadImg,
+        WeaponChannelImg: WeaponChannelImg,
+        WeaponPickUpImg: WeaponPickUpImg
+        
     };
 };
 export const UserPickUpAnimationFn = (Turn) => {
@@ -495,6 +501,29 @@ export const DealerSellFn = () => {
         type: 'DealerSellFn'
     };
 };
+//Inside BuySell Fn
+export const DealerBuySuccessFn = () => {
+    return {
+        type: 'DealerBuySuccessFn'
+    };
+};
+export const DealerBuyFailureFn = () => {
+    return {
+        type: 'DealerBuyFailureFn'
+    };
+};
+export const DealerSellSuccessFn = () => {
+    return {
+        type: 'DealerSellSuccessFn'
+    };
+};
+export const DealerSellFailureFn = () => {
+    return {
+        type: 'DealerSellFailureFn'
+    };
+};
+
+
 
 export const ResetDealerBuySellFn = () => {
     return {
@@ -647,7 +676,13 @@ export const SellFullPlateFn = () => {
         type: 'SellFullPlateFn',
     };
 };
-
+export const LordKahosHornFn = (Zeny,Item) => {
+    return {
+        type: 'LordKahosHornFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
 //ITEMS USEAGE
 export const UseRedPotionFn = () => {
     return {

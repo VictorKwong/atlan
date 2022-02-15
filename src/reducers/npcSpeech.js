@@ -47,7 +47,34 @@ const Fn = {
         },{
             name: 'Dealer',
             text: 'You don`t have enough Item to sell it.'
+    }],
+    //Welcome, talk, buy, buy success, buy failure, sell, sell success, sell failure
+    HeadGearDealer:[{
+            name: 'HeadGearDealer',
+            text: 'Welcome To Protera headGear shop!'
+        },{
+            name: 'HeadGearDealer',
+            text: 'Hi Altan! Nice to see you :)'
+        },{
+            name: 'HeadGearDealer',
+            text: 'What do you want to buy?'
+        },{
+            name: 'HeadGearDealer',
+            text: 'Here is your item ^^!'
+        },{
+            name: 'HeadGearDealer',
+            text: 'You don`t have enough Zeny. ><'
+        },{
+            name: 'HeadGearDealer',
+            text: 'What do you want to sell?'
+        },{
+            name: 'HeadGearDealer',
+            text: 'Sure~ Here is your Zeny :D'
+        },{
+            name: 'HeadGearDealer',
+            text: 'You don`t have the item to sell =.='
     }]
+
 
 }
 
