@@ -12,7 +12,7 @@ import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
 
 // EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn} from './actions'
+import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -100,10 +100,27 @@ function StartMenu(){
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
         <div>
           <div className="storyMapScreen">
-            {screenControlRoom.AltanEquipment ? <AltanEquipment /> :
-            screenControlRoom.AltanStats ? <AltanStats /> :
-            screenControlRoom.AltanItem ? <AltanItem /> :
-            screenControlRoom.AltanQuest ? <AltanQuest /> :
+            {screenControlRoom.AltanEquipment ? 
+              <div className="ReturnParent">
+                <AltanEquipment/>
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanEquipmentFn()); changePlaceFadeAudio();}}>x</button>
+              </div>:
+            screenControlRoom.AltanStats ? 
+              <div className="ReturnParent">
+                <AltanStats />
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanStatsFn()); changePlaceFadeAudio();}}>x</button>
+              </div>:
+            screenControlRoom.AltanItem ? 
+              <div className="ReturnParent">
+                <AltanItem />
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanItemFn()); changePlaceFadeAudio();}}>x</button>
+              </div>:
+            screenControlRoom.AltanQuest ?
+              <div className="ReturnParent">
+                <AltanQuest /> 
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn()); changePlaceFadeAudio();}}>x</button>
+              </div>:
+
             <div className="PoringIslandMap">
               <h3>Poring Island</h3>
               <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
@@ -139,10 +156,10 @@ function StartMenu(){
                 </div>
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div>
-                  <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>Equip</button>
-                  <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
-                  <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
-                  <button className="altanItems" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn()); changePlaceFadeAudio();}}>Equip</button>
+                  <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn()); changePlaceFadeAudio();}}>Items</button>
+                  <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn()); changePlaceFadeAudio();}}>Stats</button>
+                  <button className="altanItems" onClick={() => {dispatch(GotoAltanQuestFn()); changePlaceFadeAudio();}}>Quest</button>
                 </div>
             </div>
           </div>
@@ -180,6 +197,15 @@ function StartMenu(){
                  : <p>Empty Armor Storage T^T</p>}
                </div> 
            : null}
+          {/* HEADGEAR */}
+            {screenControlRoom.HeadGearEquipmentChoice ?
+                  <div>
+                  {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
+                  <div>
+                  </div> 
+                  : <p>Empty HeadGear Storage T^T</p>}
+                </div> 
+              : null}
           </fieldset>
         </div>
         }

@@ -16,9 +16,12 @@ const Fn = {
     AltanStats: false,
     AltanItem: false,
     AltanQuest: false,
+    //Mini Screen (Shop)
+    PronteraHeadGearDealer: false,
     //Mini Screen (StoryChat)
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
+    HeadGearEquipmentChoice: false,
     ItemChoice: false,
     EquipChoice: false,
     ETCChoice: false,
@@ -65,6 +68,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanQuest: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
             }
         case 'GotoAltanStatsFn':
             return {
@@ -75,6 +79,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanQuest: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
             }
         case 'GotoAltanItemFn':
             return {
@@ -85,6 +90,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanQuest: false,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
                 ItemChoice: true,
                 EquipChoice: false,
                 ETCChoice: false,
@@ -98,6 +104,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AltanQuest: !state.AltanQuest,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
                 ItemChoice: true,
                 EquipChoice: false,
                 ETCChoice: false,
@@ -107,6 +114,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 WeaponEquipmentChoice: !state.WeaponEquipmentChoice,
                 ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
                 ItemChoice: false,
                 EquipChoice: false,
                 ETCChoice: false,
@@ -116,6 +124,17 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: !state.ArmorEquipmentChoice,
+                HeadGearEquipmentChoice: false,
+                ItemChoice: false,
+                EquipChoice: false,
+                ETCChoice: false,
+            }
+        case 'GotoHeadGearEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: !state.HeadGearEquipmentChoice,
                 ItemChoice: false,
                 EquipChoice: false,
                 ETCChoice: false,
@@ -152,7 +171,17 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 ArmorEquipmentChoice: false,
             }
-
+        case 'ReturnHeadGearEquipmentChoiceFn':
+            return {
+                ...state,
+                HeadGearEquipmentChoice: false,
+            }
+        // Mini Screen Shop
+        case 'GotoPronteraHeadGearDealerFn':
+            return {
+                ...state,
+                PronteraHeadGearDealer: !state.PronteraHeadGearDealer,
+            }
         // WORLD MAP
         case 'GotoPronteraFn':
             return {
@@ -238,7 +267,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: false,
                     AntHell: false,
                 }
-            
         default:
             return state;
     }

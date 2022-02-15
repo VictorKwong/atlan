@@ -129,6 +129,11 @@ export const GotoArmorEquipmentChoiceFn = () => {
         type: 'GotoArmorEquipmentChoiceFn',
     };
 };
+export const GotoHeadGearEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoHeadGearEquipmentChoiceFn',
+    };
+};
 export const GotoItemChoiceFn = () => {
     return {
         type: 'GotoItemChoiceFn',
@@ -163,8 +168,14 @@ export const ReturnArmorEquipmentChoiceFn = (Armor,ArmorImg,ArmorDef) => {
         ArmorDef: ArmorDef
     };
 };
-
-
+export const ReturnHeadGearEquipmentChoiceFn = (HeadGear,HeadGearImg,HeadGearDef) => {
+    return {
+        type: 'ReturnHeadGearEquipmentChoiceFn',
+        HeadGear: HeadGear,
+        HeadGearImg: HeadGearImg,
+        HeadGearDef: HeadGearDef
+    };
+};
 
 //WORLD MAP
 export const GotoWorldMapFn = () => {
@@ -189,6 +200,15 @@ export const GotoWeaponArmorDealerFn = () => {
         type: 'GotoWeaponArmorDealerFn',
     };
 };
+
+export const GotoPronteraHeadGearDealerFn = () => {
+    return {
+        type: 'GotoPronteraHeadGearDealerFn',
+    };
+};
+
+
+
 export const GotoPoringIslandFn = () => {
     return {
         type: 'GotoPoringIslandFn',
@@ -441,6 +461,13 @@ export const TalktoArmorDealerFn = () => {
         type: 'TalktoArmorDealerFn'
     };
 };
+export const TalktoHeadGearDealerFn = () => {
+    return {
+        type: 'TalktoHeadGearDealerFn'
+    };
+};
+
+
 export const ResetTalktoFn = () => {
     return {
         type: 'ResetTalktoFn'

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn} from './actions';
-
+import $ from 'jquery'
 //ITEM
 import { UseRedPotionFn, UseYellowPotionFn} from './actions';
-import $ from 'jquery'
+
 import './css/mapAltanEquipment.css'
 // import useSound from 'use-sound';
 //WEAPON
@@ -24,6 +24,12 @@ import FullPlate from './img/Equipment/Armor/FullPlate.gif'
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
+//ETC
+import Jellopy from './img/Etc/Poring_Jellopy70.gif'
+import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
+import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
+import Clover from './img/Etc/Lunatic_Clover65.gif'
+import Feather from './img/Etc/Lunatic_Feather10.gif'
 
 // AudioCurrentTimeSaverFn
 function StartMenu(){
@@ -38,6 +44,35 @@ function StartMenu(){
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
+    let ItemBox = [
+      //WEAPON
+      {id:20001, Img:RedPotion, name:"Red Potion", itemCheck:userGoldItem.RedPotion, useItem:UseRedPotionFn()},
+      {id:20002, Img:YellowPotion, name:"Yellow Potion", itemCheck:userGoldItem.YellowPotion, useItem:UseYellowPotionFn()},
+    ]
+    
+    let EquipBox = [
+      //WEAPON
+      {id:10001, Img:Katana, name:"Katana", itemCheck:userGoldItem.Katana},
+      {id:10002, Img:BastardSword, name:"Bastard Sword", itemCheck:userGoldItem.BastardSword},
+      {id:10003, Img:GaiaSword, name:"Gaia Sword", itemCheck:userGoldItem.GaiaSword},
+      {id:10004, Img:TwinEdgeofNaghtSieger, name:"Twin Edge of Naght Sieger", itemCheck:userGoldItem.TwinEdgeofNaghtSieger},
+      {id:10005, Img:VioletFear, name:"VioletFear", itemCheck:userGoldItem.VioletFear},
+      //ARMOR
+      {id:10006, Img:CottonShirt, name:"Cotton Shirt", itemCheck:userGoldItem.CottonShirt},
+      {id:10007, Img:AdventureSuit, name:"Adventure Suit", itemCheck:userGoldItem.AdventureSuit},
+      {id:10008, Img:WoodenMail, name:"WoodenMail", itemCheck:userGoldItem.WoodenMail},
+      {id:10009, Img:Coat, name:"Coat", itemCheck:userGoldItem.Coat},
+      {id:10010, Img:PaddedArmor, name:"PaddedArmor", itemCheck:userGoldItem.PaddedArmor},
+      {id:10011, Img:ChainMail, name:"ChainMail", itemCheck:userGoldItem.ChainMail},
+      {id:10012, Img:FullPlate, name:"FullPlate", itemCheck:userGoldItem.FullPlate}
+    ]
+    let EtcBox = [
+      {id:1000, Img:Jellopy, name:"Jellopy", itemCheck:userGoldItem.Jellopy},
+      {id:1001, Img:EmptyBottle, name:"EmptyBottle", itemCheck:userGoldItem.EmptyBottle},
+      {id:1002, Img:StickyMucus, name:"StickyMucus", itemCheck:userGoldItem.StickyMucus},
+      {id:1003, Img:Clover, name:"Clover", itemCheck:userGoldItem.Clover},
+      {id:1004, Img:Feather, name:"Feather", itemCheck:userGoldItem.Feather}
+    ]
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
 
     const dispatch = useDispatch();
@@ -49,12 +84,24 @@ function StartMenu(){
         <button className="armorChoice" onClick={() => dispatch(GotoETCChoiceFn())}>etc</button>
         {screenControlRoom.ItemChoice ?
           <div>
-            {userGoldItem.RedPotion >= 1 ? <button onClick={() => dispatch(UseRedPotionFn())}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}
-            {userGoldItem.YellowPotion >= 1 ? <button onClick={() => dispatch(UseYellowPotionFn())}><img src={YellowPotion} alt="YellowPotion" /> YellowPotion x{userGoldItem.YellowPotion}</button> : null }
+              {ItemBox.map(Item => {
+                return( 
+                  <div key={Item.id}>
+                    {Item.itemCheck >= 1 ? <button onClick={() => dispatch((Item.useItem))}><img src={Item.Img} alt={Item.name} />x{Item.itemCheck} {Item.name}</button> : null}
+                  </div>
+                )})}
+            {/* {userGoldItem.RedPotion >= 1 ? <button onClick={() => dispatch(UseRedPotionFn())}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}
+            {userGoldItem.YellowPotion >= 1 ? <button onClick={() => dispatch(UseYellowPotionFn())}><img src={YellowPotion} alt="YellowPotion" /> YellowPotion x{userGoldItem.YellowPotion}</button> : null } */}
           </div>: null }
         {screenControlRoom.EquipChoice ?
           <div>
-            {userGoldItem.Katana >= 1 ? <p><img src={Katana} alt="Katana" />x{userGoldItem.Katana} Katana</p> : null}
+            {EquipBox.map(Equip => {
+                return( 
+                  <div key={Equip.id}>
+                    {Equip.itemCheck >= 1 ? <p><img src={Equip.Img} alt={Equip.name} />x{Equip.itemCheck} {Equip.name}</p> : null}
+                  </div>
+                )})}
+            {/* {userGoldItem.Katana >= 1 ? <p><img src={Katana} alt="Katana" />x{userGoldItem.Katana} Katana</p> : null}
             {userGoldItem.BastardSword >= 1 ? <p><img src={BastardSword} alt="BastardSword" />x{userGoldItem.BastardSword} BastardSword </p> : null}
             {userGoldItem.GaiaSword >= 1 ? <p><img src={GaiaSword} alt="GaiaSword" />x{userGoldItem.GaiaSword} GaiaSword</p> : null}
             {userGoldItem.TwinEdgeofNaghtSieger >= 1 ? <p><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />x{userGoldItem.TwinEdgeofNaghtSieger} TwinEdgeofNaghtSieger</p> : null}
@@ -65,11 +112,16 @@ function StartMenu(){
             {userGoldItem.Coat >= 1 ? <p><img src={Coat} alt="Coat" />x{userGoldItem.Coat} Coat</p> : null}
             {userGoldItem.PaddedArmor >= 1 ? <p><img src={PaddedArmor} alt="PaddedArmor" />x{userGoldItem.PaddedArmor} PaddedArmor</p> : null}
             {userGoldItem.ChainMail >= 1 ? <p><img src={ChainMail} alt="ChainMail" />x{userGoldItem.ChainMail} ChainMail</p> : null}
-            {userGoldItem.FullPlate >= 1 ? <p><img src={FullPlate} alt="FullPlate" />x{userGoldItem.FullPlate} FullPlate</p> : null}
+            {userGoldItem.FullPlate >= 1 ? <p><img src={FullPlate} alt="FullPlate" />x{userGoldItem.FullPlate} FullPlate</p> : null} */}
           </div> : null }
         {screenControlRoom.ETCChoice ?
           <div>
-            <p>add later</p>
+              {EtcBox.map(Etc => {
+                return( 
+                  <div key={Etc.id}>
+                    {Etc.itemCheck >= 1 ? <p><img src={Etc.Img} alt={Etc.name} />x{Etc.itemCheck} {Etc.name}</p> : null}
+                  </div>
+                )})}
           </div> : null }
         <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanItemFn());}}>back</button>
       </div>

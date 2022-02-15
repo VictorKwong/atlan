@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
+
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PoringIsland from './PoringIsland'
@@ -31,6 +32,7 @@ function StartMenu(){
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
         screenControlRoom.PronteraToolDealer ? <PronteraToolDealer /> :
         screenControlRoom.WeaponArmorDealer ? <WeaponArmorDealer /> :
+        screenControlRoom.WorldMap ?
         <div>
           <div className="storyMapScreen">
             <div className="StoryMap">
@@ -75,7 +77,7 @@ function StartMenu(){
         
           </fieldset>
         </div>
-        }
+        : null }
       </div>
     );
 }

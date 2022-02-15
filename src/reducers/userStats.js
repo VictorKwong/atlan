@@ -21,6 +21,9 @@ const Fn = {
     userArmor: 'Cotton Shirt',
     userArmorImg: null,
     BaseArmorDef: 10,
+    userHeadGear: null,
+    userHeadGearImg: null,
+    BaseHeadGearDef: 0,
 }
 
 const userStatsReducer = (state = Fn, action) => {
@@ -93,6 +96,13 @@ const userStatsReducer = (state = Fn, action) => {
                 userArmor: action.Armor,
                 userArmorImg: action.ArmorImg,
                 BaseArmorDef: action.ArmorDef,
+            }
+        case 'ReturnHeadGearEquipmentChoiceFn':
+            return {
+                ...state,
+                userHeadGear: action.HeadGear,
+                userHeadGearImg: action.HeadGearImg,
+                BaseHeadGearDef: action.HeadGearDef
             }
         //ITEMS
         case 'UseRedPotionFn':

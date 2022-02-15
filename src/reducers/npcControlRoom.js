@@ -6,6 +6,7 @@ const Fn = {
     //Shop Talk
     WeaponDealer: false,
     ArmorDealer: false,
+    HeadGearDealer: false,
     DealerBuy: false,
     DealerSell: false,
 }
@@ -41,13 +42,15 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 KafraEmployee: false,
                 QuestBoard: false,
                 WeaponDealer: false,
-                ArmorDealer: false
+                ArmorDealer: false,
+                HeadGearDealer: false,
             }
         case 'TalktoWeaponDealerFn':
             return {
                 ...state,
                 WeaponDealer: true,
                 ArmorDealer: false,
+                HeadGearDealer: false,
                 DealerBuy: false,
                 DealerSell: false,
             }
@@ -56,6 +59,16 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 WeaponDealer: false,
                 ArmorDealer: true,
+                HeadGearDealer: false,
+                DealerBuy: false,
+                DealerSell: false,
+            }
+        case 'TalktoHeadGearDealerFn':
+            return {
+                ...state,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: true,
                 DealerBuy: false,
                 DealerSell: false,
             }

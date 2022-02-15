@@ -18,7 +18,7 @@ import { UseYellowPotionFn, UseRedPotionFn } from './actions'
 //QUEST
 import { ProgressQuestDialogFn } from './actions'
 //Win ETC Items
-import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn, WinGrasshoppersLegFn} from './actions'
+import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
 
 import './css/mapBattle.css'
 import './index.css'
@@ -28,6 +28,9 @@ import PoringHit from './img/Monster/PoringHit.png'
 import PoringAttack from './img/Monster/PoringAttack.gif'
 import PoringDead from './img/Monster/PoringDead.png'
 import Lunatic from './img/Monster/Lunatic.gif'
+import LunaticHit from './img/Monster/LunaticHit.png'
+import LunaticAttack from './img/Monster/LunaticAttack.gif'
+import LunaticDead from './img/Monster/LunaticDead.png'
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
 import UserIsDeadPost from './img/Character/UserDeadPost1.png'
@@ -74,7 +77,7 @@ let clockBarObject = {
 }
 let Damage = 0;
 //Monster Random Number 0 1 
-let i = Math.floor((Math.random() * 2));
+let i = Math.round(Math.random())
 let Uclock = 0;
 let clockCheck = 0;
 
@@ -85,8 +88,8 @@ const EtcBox = [
   {id: 0, num: 0, name: "Jellopy", img: Jellopy , percent: 0.7, Gain: WinJellopyFn},
   {id: 1, num: 0, name: "Empty Bottle", img: EmptyBottle , percent: 1, Gain: WinEmptyBottleFn},
   {id: 2, num: 0, name: "Sticky Mucus", img: StickyMucus , percent: 1, Gain: WinStickyMucusFn},
-  {id: 3, num: 1, name: "Clover", img: Clover , percent: 0.65, Gain: WinFeatherFn},
-  {id: 4, num: 1, name: "Feather", img: Feather , percent: 0.1, Gain: WinCloverFn},
+  {id: 3, num: 1, name: "Clover", img: Clover , percent: 0.65, Gain: WinCloverFn},
+  {id: 4, num: 1, name: "Feather", img: Feather , percent: 0.1, Gain: WinFeatherFn},
 ]
 
 //ANIMATION PART
@@ -99,7 +102,7 @@ const AnimationBox =[
 ]
 
 function Main(){
-  
+    console.log(i)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
@@ -113,7 +116,6 @@ function Main(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     useEffect(() => {
-      
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
@@ -128,8 +130,9 @@ function Main(){
       //ANIMATION PART
       AnimationBox.map(Animation => {
         if(userStats.userWeapon === Animation.name){
-          return dispatch(UserWeaponImgFn(Animation.Battle, Animation.Attack, Animation.Defend))
+          dispatch(UserWeaponImgFn(Animation.Battle, Animation.Attack, Animation.Defend))
         }
+        return null;
       })
       // switch(true){
       //   case (userStats.userWeapon === "Katana"):
@@ -149,10 +152,10 @@ function Main(){
     }, [])
 
     const changeMapFadeAudio = () => {
-      let i = 0;
+      let k = 0;
       const fadeAudio = setInterval(() => {
           if (audioBGM.volume === 0.15){
-            i = i + 1;
+            k = k + 1;
           }
           if (audioBGM.volume !== 0) {
             audioBGM.volume -= 0.002
@@ -162,7 +165,7 @@ function Main(){
               audioBGM.pause();
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
-          }else if (i >= 2){
+          }else if (k >= 2){
             audioBGM.volume = 0.15
             clearInterval(fadeAudio);
           }
@@ -173,7 +176,7 @@ function Main(){
     // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
-        setTimeout(() => dispatch(EnemyDeadAnimationFn(true)), 1000);
+        dispatch(EnemyDeadAnimationFn(true))
         setTimeout(() => (clockCheck = 1), 300);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
@@ -190,6 +193,7 @@ function Main(){
             dispatch((EtcItems.Gain)())
             $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
           }
+          return null;
         })
         //QUEST
           switch (true) {
@@ -217,7 +221,7 @@ function Main(){
                 $('.storySpeech').html();
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
-                i = Math.floor((Math.random() * 3));
+                i = Math.round(Math.random());
                 Uclock = 0;
                 clockCheck = 0;
                 obtain = false;
@@ -674,7 +678,7 @@ function Main(){
                     <h2 className="wordCenter">{enemyStats[i].name}</h2>
                     {
                       i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} /> :
-                      i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={Lunatic} alt={enemyStats[i].name} /> :
+                      i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} /> :
                       null
                     }
                     <p>Enemy Health {enemyStats[i].currentHealth}/{enemyStats[i].maxHealth}</p>

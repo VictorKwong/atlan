@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoWeaponArmorDealerFn } from './actions';
+import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoWeaponArmorDealerFn, GotoPronteraHeadGearDealerFn } from './actions';
 import { AudioCurrentTimeSaverFn } from './actions';
 
 import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, ResetTalktoFn} from './actions';
 
+//New Function
+import { TalktoHeadGearDealerFn } from './actions';
 //Function
 import { AcceptQuestDialogFn, ReturnQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn } from './actions'
 
 import WorldMap from './WorldMap'
 import PronteraToolDealer from './PronteraToolDealer'
 import WeaponArmorDealer from './WeaponArmorDealer'
+import PronteraHeadGearDealer from './PronteraHeadGearDealer'
 import './css/mapProntera.css'
 import $ from 'jquery'
 import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
@@ -19,7 +22,6 @@ import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
 const audioBGM = new Audio(audioThemeOfProntera);
 
 //QUEST
-
 const QuestBox = [
   {id: 0, num: "0", acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z"},
   {id: 1, num: "1", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z"}
@@ -93,7 +95,6 @@ function StartMenu(){
             audioBGM.volume = 0.15;
             clearInterval(fadeAudioOut);
           }
-          
       }, 10);
   }
     const talkToKafraEmployee = () => {
@@ -115,20 +116,25 @@ function StartMenu(){
       <div>
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
-        screenControlRoom.PronteraToolDealer ? <PronteraToolDealer/>:
+        screenControlRoom.PronteraToolDealer ? <PronteraToolDealer />:
         screenControlRoom.WeaponArmorDealer ? <WeaponArmorDealer /> :
         <div>
           <div className="storyMapScreen">
+            {screenControlRoom.PronteraHeadGearDealer ? 
+            <div className="ReturnParent">
+              <PronteraHeadGearDealer />
+              <button className="ReturnHUD" onClick={() =>{dispatch(GotoPronteraHeadGearDealerFn()); changePlaceFadeAudio();}}>x</button>
+            </div>:
             <div className="PronteraMap">
               <h3>Prontera</h3>
               <button className="toolDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoFn()); dispatch(GotoPronteraToolDealerFn());}}>ToolDealer</button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoFn()); dispatch(GotoWeaponArmorDealerFn());}}>WeaponArmorDealer</button>
+              <button className="weaponArmorDealerNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(ResetTalktoFn()); dispatch(GotoWeaponArmorDealerFn());}}>WeaponArmorShop</button>
               <button className="pronteraSouthGate" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
               <button className="kafraEmployee" onClick={() => {talkToKafraEmployee();}}>Kafra Employee</button>
               <button className="pronteraFountain" onClick={() => {dispatch(TalktoFountainFn());}}>Fountain</button>
-              <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}>Quest Board</button>
-
-            </div>
+              <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}>Quest Board</button> 
+              <button className="headGearDealerNPC" onClick={() => {dispatch(TalktoHeadGearDealerFn()); dispatch(GotoPronteraHeadGearDealerFn()); changePlaceFadeAudio();}}>HeadGearShop</button> 
+            </div>}
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
               <p className="nameStatsHUD destextHUD">Altan</p>
@@ -184,9 +190,13 @@ function StartMenu(){
                   })}
                 </ul>
               </div> : null}
-
-
-              <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
+              {/* BUY SELL FN */}
+              {npcControlRoom.HeadGearDealer ?
+              <div>
+                {/* <button onClick={() =>{dispatch(DealerBuyFn());}}>Buy</button>
+                <button onClick={() =>{dispatch(DealerSellFn());}}>Sell</button>
+                <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetDealerBuySellFn());}}>Leave</button> */}
+              </div> : null}
           </fieldset>
         </div>
         }

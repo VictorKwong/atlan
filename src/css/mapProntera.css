@@ -28,6 +28,18 @@
   border: 1px solid black;
 }
 
+.ReturnParent{
+  position: relative;
+  width:80%;
+  border: 1px solid black;
+}
+
+.ReturnHUD{
+  position:absolute;
+  top: 0px;
+  right: 0px;
+}
+
 
 .toolDealerNPC { grid-area: 3 / 3 / 4 / 4; }
 .weaponArmorDealerNPC { grid-area: 3 / 5 / 4 / 6; }
@@ -35,3 +47,4 @@
 .kafraEmployee { grid-area: 6 / 3 / 7 / 4; }
 .pronteraFountain { grid-area: 4 / 4 / 5 / 5; }
 .questBoard { grid-area: 6 / 5 / 7 / 6; }
+.headGearDealerNPC { grid-area: 3 / 6 / 4 / 7; }
