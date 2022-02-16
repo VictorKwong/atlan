@@ -30,7 +30,12 @@ import ChainMail from './img/Equipment/Armor/ChainMail.gif'
 import FullPlate from './img/Equipment/Armor/FullPlate.gif'
 //HEADGEAR
 import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
-
+import TeddybearHat from './img/Equipment/HeadGear/TeddybearHat.gif'
+import Crown from './img/Equipment/HeadGear/Crown.gif'
+import Helm from './img/Equipment/HeadGear/Helm.gif'
+import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
+import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
+import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
@@ -48,7 +53,13 @@ function StartMenu(){
 
     let HeadGearBox = [
       {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty"},
-      {id:7001, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn"}
+      {id:7001, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn"},
+      {id:7002, num: userGoldItem.TeddybearHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Teddybear Hat", TeddybearHat, 20), Img:TeddybearHat, name:"Teddybear Hat"},
+      {id:7003, num: userGoldItem.Crown, EquipItem:ReturnHeadGearEquipmentChoiceFn("Crown", Crown, 20), Img:Crown, name:"Crown"},
+      {id:7004, num: userGoldItem.Helm, EquipItem:ReturnHeadGearEquipmentChoiceFn("Helm", Helm, 20), Img:Helm, name:"Helm"},
+      {id:7005, num: userGoldItem.PandaHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Panda Hat", PandaHat, 20), Img:PandaHat, name:"Panda Hat"},
+      {id:7006, num: userGoldItem.ChefHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Chef Hat", ChefHat, 20), Img:ChefHat, name:"Chef Hat"},
+      {id:7007, num: userGoldItem.SantaPoringHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Santa Poring Hat", SantaPoringHat, 20), Img:SantaPoringHat, name:"Santa Poring Hat"}
     ]
  
     useEffect(() => {
@@ -188,7 +199,7 @@ function StartMenu(){
                     {userGoldItem.TwinEdgeofNaghtSieger >= 1 ?<button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160));}}><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />Twin Edge of Naght Sieger</button> : null}
                     {userGoldItem.VioletFear >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275));}}><img src={VioletFear} alt="VioletFear"/>Violet Fear</button>: null}
                   </div> 
-                  : <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn(null,null, 1));}}>Empty</button>}
+                  : <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>}
                 </div> 
             : null}
           {/* ARMOR */}

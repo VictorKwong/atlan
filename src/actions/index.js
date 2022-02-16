@@ -683,6 +683,48 @@ export const LordKahosHornFn = (Zeny,Item) => {
         Item: Item
     };
 };
+export const TeddybearHatFn = (Zeny,Item) => {
+    return {
+        type: 'TeddybearHatFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const CrownFn = (Zeny,Item) => {
+    return {
+        type: 'CrownFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const HelmFn = (Zeny,Item) => {
+    return {
+        type: 'HelmFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const PandaHatFn = (Zeny,Item) => {
+    return {
+        type: 'PandaHatFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const ChefHatFn = (Zeny,Item) => {
+    return {
+        type: 'ChefHatFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const SantaPoringHatFn = (Zeny,Item) => {
+    return {
+        type: 'SantaPoringHatFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
 //ITEMS USEAGE
 export const UseRedPotionFn = () => {
     return {

@@ -23,6 +23,12 @@ import ChainMail from './img/Equipment/Armor/ChainMail.gif'
 import FullPlate from './img/Equipment/Armor/FullPlate.gif'
 //HEADGEAR
 import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
+import TeddybearHat from './img/Equipment/HeadGear/TeddybearHat.gif'
+import Crown from './img/Equipment/HeadGear/Crown.gif'
+import Helm from './img/Equipment/HeadGear/Helm.gif'
+import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
+import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
+import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
@@ -68,7 +74,13 @@ function StartMenu(){
       {id:10011, Img:ChainMail, name:"ChainMail", itemCheck:userGoldItem.ChainMail},
       {id:10012, Img:FullPlate, name:"FullPlate", itemCheck:userGoldItem.FullPlate},
       //HeadGear
-      {id:10013, Img:LordKahosHorn, name:"Lord Kaho`s Horn", itemCheck:userGoldItem.LordKahosHorn}
+      {id:10013, Img:LordKahosHorn, name:"Lord Kaho`s Horn", itemCheck:userGoldItem.LordKahosHorn},
+      {id:10014, Img:TeddybearHat, name:"Teddybea Hat", itemCheck:userGoldItem.TeddybearHat},
+      {id:10015, Img:Crown, name:"Crown", itemCheck:userGoldItem.Crown},
+      {id:10016, Img:Helm, name:"Helm", itemCheck:userGoldItem.Helm},
+      {id:10017, Img:PandaHat, name:"Panda Hat", itemCheck:userGoldItem.PandaHat},
+      {id:10018, Img:ChefHat, name:"Chef Hat", itemCheck:userGoldItem.ChefHat},
+      {id:10019, Img:SantaPoringHat, name:"Santa Poring Hat", itemCheck:userGoldItem.SantaPoringHat}
     ]
     let EtcBox = [
       {id:1000, Img:Jellopy, name:"Jellopy", itemCheck:userGoldItem.Jellopy},

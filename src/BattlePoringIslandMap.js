@@ -98,7 +98,191 @@ import UserBattlePostVioletFear1_LordKahosHorn from './img/Character/LordKahosHo
 import UserAttackPostVioletFear1_LordKahosHorn from './img/Character/LordKahosHorn/UserAttackPostVioletFear1_LordKahosHorn.gif'
 import UserDefendPostVioletFear1_LordKahosHorn from './img/Character/LordKahosHorn/UserDefendPostVioletFear1_LordKahosHorn.gif'
 
+//TeddybearHat
+import UserOnHitPost_TeddybearHat from './img/Character/TeddybearHat/UserOnHitPost1_TeddybearHat.gif'
+import UserIsDyingPost_TeddybearHat from './img/Character/TeddybearHat/UserDyingPost1_TeddybearHat.png'
+import UserIsDeadPost_TeddybearHat from './img/Character/TeddybearHat/UserDeadPost1_TeddybearHat.png'
+import UserChannelPost_TeddybearHat from './img/Character//TeddybearHat/UserChannel1_TeddybearHat.png'
+import UserPickUp_TeddybearHat from './img/Character/TeddybearHat/UserPickUp1_TeddybearHat.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostEmptyHand1_TeddybearHat.gif'
+import UserAttackPostEmptyHand1_TeddybearHat from './img/Character/TeddybearHat/UserAttackPostEmptyHand1_TeddybearHat.gif'
+import UserDefendPostEmptyHand1_TeddybearHat from './img/Character/TeddybearHat/UserDefendPostEmptyHand1_TeddybearHat.gif'
+// KATANA
+import UserBattlePostKatana1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostKatana1_TeddybearHat.gif'
+import UserAttackPostKatana1_TeddybearHat from './img/Character/TeddybearHat/UserAttackPostKatana1_TeddybearHat.gif'
+import UserDefendPostKatana1_TeddybearHat from './img/Character/TeddybearHat/UserDefendPostKatana1_TeddybearHat.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostBastardSword1_TeddybearHat.gif'
+import UserAttackPostBastardSword1_TeddybearHat from './img/Character/TeddybearHat/UserAttackPostBastardSword1_TeddybearHat.gif'
+import UserDefendPostBastardSword1_TeddybearHat from './img/Character/TeddybearHat/UserDefendPostBastardSword1_TeddybearHat.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostGaiaSword1_TeddybearHat.gif'
+import UserAttackPostGaiaSword1_TeddybearHat from './img/Character/TeddybearHat/UserAttackPostGaiaSword1_TeddybearHat.gif'
+import UserDefendPostGaiaSword1_TeddybearHat from './img/Character/TeddybearHat/UserDefendPostGaiaSword1_TeddybearHat.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostTwinEdgeofNaghtSieger1_TeddybearHat.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_TeddybearHat from './img/Character/TeddybearHat/UserAttackPostTwinEdgeofNaghtSieger1_TeddybearHat.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_TeddybearHat from './img/Character/TeddybearHat/UserDefendPostTwinEdgeofNaghtSieger1_TeddybearHat.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostVioletFear1_TeddybearHat.gif'
+import UserAttackPostVioletFear1_TeddybearHat from './img/Character/TeddybearHat/UserAttackPostVioletFear1_TeddybearHat.gif'
+import UserDefendPostVioletFear1_TeddybearHat from './img/Character/TeddybearHat/UserDefendPostVioletFear1_TeddybearHat.gif'
 
+//Crown
+import UserOnHitPost_Crown from './img/Character/Crown/UserOnHitPost1_Crown.gif'
+import UserIsDyingPost_Crown from './img/Character/Crown/UserDyingPost1_Crown.png'
+import UserIsDeadPost_Crown from './img/Character/Crown/UserDeadPost1_Crown.png'
+import UserChannelPost_Crown from './img/Character//Crown/UserChannel1_Crown.png'
+import UserPickUp_Crown from './img/Character/Crown/UserPickUp1_Crown.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_Crown from './img/Character/Crown/UserBattlePostEmptyHand1_Crown.gif'
+import UserAttackPostEmptyHand1_Crown from './img/Character/Crown/UserAttackPostEmptyHand1_Crown.gif'
+import UserDefendPostEmptyHand1_Crown from './img/Character/Crown/UserDefendPostEmptyHand1_Crown.gif'
+// KATANA
+import UserBattlePostKatana1_Crown from './img/Character/Crown/UserBattlePostKatana1_Crown.gif'
+import UserAttackPostKatana1_Crown from './img/Character/Crown/UserAttackPostKatana1_Crown.gif'
+import UserDefendPostKatana1_Crown from './img/Character/Crown/UserDefendPostKatana1_Crown.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_Crown from './img/Character/Crown/UserBattlePostBastardSword1_Crown.gif'
+import UserAttackPostBastardSword1_Crown from './img/Character/Crown/UserAttackPostBastardSword1_Crown.gif'
+import UserDefendPostBastardSword1_Crown from './img/Character/Crown/UserDefendPostBastardSword1_Crown.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_Crown from './img/Character/Crown/UserBattlePostGaiaSword1_Crown.gif'
+import UserAttackPostGaiaSword1_Crown from './img/Character/Crown/UserAttackPostGaiaSword1_Crown.gif'
+import UserDefendPostGaiaSword1_Crown from './img/Character/Crown/UserDefendPostGaiaSword1_Crown.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_Crown from './img/Character/Crown/UserBattlePostTwinEdgeofNaghtSieger1_Crown.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_Crown from './img/Character/Crown/UserAttackPostTwinEdgeofNaghtSieger1_Crown.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_Crown from './img/Character/Crown/UserDefendPostTwinEdgeofNaghtSieger1_Crown.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_Crown from './img/Character/Crown/UserBattlePostVioletFear1_Crown.gif'
+import UserAttackPostVioletFear1_Crown from './img/Character/Crown/UserAttackPostVioletFear1_Crown.gif'
+import UserDefendPostVioletFear1_Crown from './img/Character/Crown/UserDefendPostVioletFear1_Crown.gif'
+
+//Helm
+import UserOnHitPost_Helm from './img/Character/Helm/UserOnHitPost1_Helm.gif'
+import UserIsDyingPost_Helm from './img/Character/Helm/UserDyingPost1_Helm.png'
+import UserIsDeadPost_Helm from './img/Character/Helm/UserDeadPost1_Helm.png'
+import UserChannelPost_Helm from './img/Character//Helm/UserChannel1_Helm.png'
+import UserPickUp_Helm from './img/Character/Helm/UserPickUp1_Helm.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_Helm from './img/Character/Helm/UserBattlePostEmptyHand1_Helm.gif'
+import UserAttackPostEmptyHand1_Helm from './img/Character/Helm/UserAttackPostEmptyHand1_Helm.gif'
+import UserDefendPostEmptyHand1_Helm from './img/Character/Helm/UserDefendPostEmptyHand1_Helm.gif'
+// KATANA
+import UserBattlePostKatana1_Helm from './img/Character/Helm/UserBattlePostKatana1_Helm.gif'
+import UserAttackPostKatana1_Helm from './img/Character/Helm/UserAttackPostKatana1_Helm.gif'
+import UserDefendPostKatana1_Helm from './img/Character/Helm/UserDefendPostKatana1_Helm.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_Helm from './img/Character/Helm/UserBattlePostBastardSword1_Helm.gif'
+import UserAttackPostBastardSword1_Helm from './img/Character/Helm/UserAttackPostBastardSword1_Helm.gif'
+import UserDefendPostBastardSword1_Helm from './img/Character/Helm/UserDefendPostBastardSword1_Helm.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_Helm from './img/Character/Helm/UserBattlePostGaiaSword1_Helm.gif'
+import UserAttackPostGaiaSword1_Helm from './img/Character/Helm/UserAttackPostGaiaSword1_Helm.gif'
+import UserDefendPostGaiaSword1_Helm from './img/Character/Helm/UserDefendPostGaiaSword1_Helm.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_Helm from './img/Character/Helm/UserBattlePostTwinEdgeofNaghtSieger1_Helm.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_Helm from './img/Character/Helm/UserAttackPostTwinEdgeofNaghtSieger1_Helm.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_Helm from './img/Character/Helm/UserDefendPostTwinEdgeofNaghtSieger1_Helm.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_Helm from './img/Character/Helm/UserBattlePostVioletFear1_Helm.gif'
+import UserAttackPostVioletFear1_Helm from './img/Character/Helm/UserAttackPostVioletFear1_Helm.gif'
+import UserDefendPostVioletFear1_Helm from './img/Character/Helm/UserDefendPostVioletFear1_Helm.gif'
+
+//PandaHat
+import UserOnHitPost_PandaHat from './img/Character/PandaHat/UserOnHitPost1_PandaHat.gif'
+import UserIsDyingPost_PandaHat from './img/Character/PandaHat/UserDyingPost1_PandaHat.png'
+import UserIsDeadPost_PandaHat from './img/Character/PandaHat/UserDeadPost1_PandaHat.png'
+import UserChannelPost_PandaHat from './img/Character//PandaHat/UserChannel1_PandaHat.png'
+import UserPickUp_PandaHat from './img/Character/PandaHat/UserPickUp1_PandaHat.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_PandaHat from './img/Character/PandaHat/UserBattlePostEmptyHand1_PandaHat.gif'
+import UserAttackPostEmptyHand1_PandaHat from './img/Character/PandaHat/UserAttackPostEmptyHand1_PandaHat.gif'
+import UserDefendPostEmptyHand1_PandaHat from './img/Character/PandaHat/UserDefendPostEmptyHand1_PandaHat.gif'
+// KATANA
+import UserBattlePostKatana1_PandaHat from './img/Character/PandaHat/UserBattlePostKatana1_PandaHat.gif'
+import UserAttackPostKatana1_PandaHat from './img/Character/PandaHat/UserAttackPostKatana1_PandaHat.gif'
+import UserDefendPostKatana1_PandaHat from './img/Character/PandaHat/UserDefendPostKatana1_PandaHat.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_PandaHat from './img/Character/PandaHat/UserBattlePostBastardSword1_PandaHat.gif'
+import UserAttackPostBastardSword1_PandaHat from './img/Character/PandaHat/UserAttackPostBastardSword1_PandaHat.gif'
+import UserDefendPostBastardSword1_PandaHat from './img/Character/PandaHat/UserDefendPostBastardSword1_PandaHat.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_PandaHat from './img/Character/PandaHat/UserBattlePostGaiaSword1_PandaHat.gif'
+import UserAttackPostGaiaSword1_PandaHat from './img/Character/PandaHat/UserAttackPostGaiaSword1_PandaHat.gif'
+import UserDefendPostGaiaSword1_PandaHat from './img/Character/PandaHat/UserDefendPostGaiaSword1_PandaHat.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_PandaHat from './img/Character/PandaHat/UserBattlePostTwinEdgeofNaghtSieger1_PandaHat.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_PandaHat from './img/Character/PandaHat/UserAttackPostTwinEdgeofNaghtSieger1_PandaHat.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_PandaHat from './img/Character/PandaHat/UserDefendPostTwinEdgeofNaghtSieger1_PandaHat.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_PandaHat from './img/Character/PandaHat/UserBattlePostVioletFear1_PandaHat.gif'
+import UserAttackPostVioletFear1_PandaHat from './img/Character/PandaHat/UserAttackPostVioletFear1_PandaHat.gif'
+import UserDefendPostVioletFear1_PandaHat from './img/Character/PandaHat/UserDefendPostVioletFear1_PandaHat.gif'
+
+//ChefHat
+import UserOnHitPost_ChefHat from './img/Character/ChefHat/UserOnHitPost1_ChefHat.gif'
+import UserIsDyingPost_ChefHat from './img/Character/ChefHat/UserDyingPost1_ChefHat.png'
+import UserIsDeadPost_ChefHat from './img/Character/ChefHat/UserDeadPost1_ChefHat.png'
+import UserChannelPost_ChefHat from './img/Character//ChefHat/UserChannel1_ChefHat.png'
+import UserPickUp_ChefHat from './img/Character/ChefHat/UserPickUp1_ChefHat.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_ChefHat from './img/Character/ChefHat/UserBattlePostEmptyHand1_ChefHat.gif'
+import UserAttackPostEmptyHand1_ChefHat from './img/Character/ChefHat/UserAttackPostEmptyHand1_ChefHat.gif'
+import UserDefendPostEmptyHand1_ChefHat from './img/Character/ChefHat/UserDefendPostEmptyHand1_ChefHat.gif'
+// KATANA
+import UserBattlePostKatana1_ChefHat from './img/Character/ChefHat/UserBattlePostKatana1_ChefHat.gif'
+import UserAttackPostKatana1_ChefHat from './img/Character/ChefHat/UserAttackPostKatana1_ChefHat.gif'
+import UserDefendPostKatana1_ChefHat from './img/Character/ChefHat/UserDefendPostKatana1_ChefHat.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_ChefHat from './img/Character/ChefHat/UserBattlePostBastardSword1_ChefHat.gif'
+import UserAttackPostBastardSword1_ChefHat from './img/Character/ChefHat/UserAttackPostBastardSword1_ChefHat.gif'
+import UserDefendPostBastardSword1_ChefHat from './img/Character/ChefHat/UserDefendPostBastardSword1_ChefHat.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_ChefHat from './img/Character/ChefHat/UserBattlePostGaiaSword1_ChefHat.gif'
+import UserAttackPostGaiaSword1_ChefHat from './img/Character/ChefHat/UserAttackPostGaiaSword1_ChefHat.gif'
+import UserDefendPostGaiaSword1_ChefHat from './img/Character/ChefHat/UserDefendPostGaiaSword1_ChefHat.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_ChefHat from './img/Character/ChefHat/UserBattlePostTwinEdgeofNaghtSieger1_ChefHat.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_ChefHat from './img/Character/ChefHat/UserAttackPostTwinEdgeofNaghtSieger1_ChefHat.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_ChefHat from './img/Character/ChefHat/UserDefendPostTwinEdgeofNaghtSieger1_ChefHat.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_ChefHat from './img/Character/ChefHat/UserBattlePostVioletFear1_ChefHat.gif'
+import UserAttackPostVioletFear1_ChefHat from './img/Character/ChefHat/UserAttackPostVioletFear1_ChefHat.gif'
+import UserDefendPostVioletFear1_ChefHat from './img/Character/ChefHat/UserDefendPostVioletFear1_ChefHat.gif'
+
+//SantaPoringHat
+import UserOnHitPost_SantaPoringHat from './img/Character/SantaPoringHat/UserOnHitPost1_SantaPoringHat.gif'
+import UserIsDyingPost_SantaPoringHat from './img/Character/SantaPoringHat/UserDyingPost1_SantaPoringHat.png'
+import UserIsDeadPost_SantaPoringHat from './img/Character/SantaPoringHat/UserDeadPost1_SantaPoringHat.png'
+import UserChannelPost_SantaPoringHat from './img/Character//SantaPoringHat/UserChannel1_SantaPoringHat.png'
+import UserPickUp_SantaPoringHat from './img/Character/SantaPoringHat/UserPickUp1_SantaPoringHat.gif'
+// EMPTY HAND
+import UserBattlePostEmptyHand1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostEmptyHand1_SantaPoringHat.gif'
+import UserAttackPostEmptyHand1_SantaPoringHat from './img/Character/SantaPoringHat/UserAttackPostEmptyHand1_SantaPoringHat.gif'
+import UserDefendPostEmptyHand1_SantaPoringHat from './img/Character/SantaPoringHat/UserDefendPostEmptyHand1_SantaPoringHat.gif'
+// KATANA
+import UserBattlePostKatana1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostKatana1_SantaPoringHat.gif'
+import UserAttackPostKatana1_SantaPoringHat from './img/Character/SantaPoringHat/UserAttackPostKatana1_SantaPoringHat.gif'
+import UserDefendPostKatana1_SantaPoringHat from './img/Character/SantaPoringHat/UserDefendPostKatana1_SantaPoringHat.gif'
+// BASTARD SWORD
+import UserBattlePostBastardSword1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostBastardSword1_SantaPoringHat.gif'
+import UserAttackPostBastardSword1_SantaPoringHat from './img/Character/SantaPoringHat/UserAttackPostBastardSword1_SantaPoringHat.gif'
+import UserDefendPostBastardSword1_SantaPoringHat from './img/Character/SantaPoringHat/UserDefendPostBastardSword1_SantaPoringHat.gif'
+// GAIA SWORD
+import UserBattlePostGaiaSword1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostGaiaSword1_SantaPoringHat.gif'
+import UserAttackPostGaiaSword1_SantaPoringHat from './img/Character/SantaPoringHat/UserAttackPostGaiaSword1_SantaPoringHat.gif'
+import UserDefendPostGaiaSword1_SantaPoringHat from './img/Character/SantaPoringHat/UserDefendPostGaiaSword1_SantaPoringHat.gif'
+//Twin Edge of Naght Sieger
+import UserBattlePostTwinEdgeofNaghtSieger1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostTwinEdgeofNaghtSieger1_SantaPoringHat.gif'
+import UserAttackPostTwinEdgeofNaghtSieger1_SantaPoringHat from './img/Character/SantaPoringHat/UserAttackPostTwinEdgeofNaghtSieger1_SantaPoringHat.gif'
+import UserDefendPostTwinEdgeofNaghtSieger1_SantaPoringHat from './img/Character/SantaPoringHat/UserDefendPostTwinEdgeofNaghtSieger1_SantaPoringHat.gif'
+//Violet Fear
+import UserBattlePostVioletFear1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostVioletFear1_SantaPoringHat.gif'
+import UserAttackPostVioletFear1_SantaPoringHat from './img/Character/SantaPoringHat/UserAttackPostVioletFear1_SantaPoringHat.gif'
+import UserDefendPostVioletFear1_SantaPoringHat from './img/Character/SantaPoringHat/UserDefendPostVioletFear1_SantaPoringHat.gif'
 
 
 //ETC
@@ -134,19 +318,61 @@ const EtcBox = [
 
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
-  {weaponName: null, headGearName: null, Battle: UserBattleEmptyHand1, Attack: UserAttackEmptyHand1, Defend: UserDefendEmptyHand1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
+  {weaponName: "Empty", headGearName: null, Battle: UserBattleEmptyHand1, Attack: UserAttackEmptyHand1, Defend: UserDefendEmptyHand1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
   {weaponName: "Katana", headGearName: null, Battle: UserBattlePostKatana1, Attack: UserAttackPostKatana1, Defend: UserDefendPostKatana1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
   {weaponName: "Bastard Sword", headGearName: null , Battle: UserBattlePostBastardSword1, Attack: UserAttackPostBastardSword1, Defend: UserDefendPostBastardSword1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
   {weaponName: "Gaia Sword", headGearName: null , Battle: UserBattlePostGaiaSword1, Attack: UserAttackPostGaiaSword1, Defend:  UserDefendPostGaiaSword1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
   {weaponName: "Twin Edge of Naght Sieger", headGearName: null , Battle: UserBattlePostTwinEdgeofNaghtSieger1, Attack: UserAttackPostTwinEdgeofNaghtSieger1, Defend: UserDefendPostTwinEdgeofNaghtSieger1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
   {weaponName: "Violet Fear", headGearName: null , Battle: UserBattlePostVioletFear1, Attack: UserAttackPostVioletFear1, Defend: UserDefendPostVioletFear1, OnHit: UserOnHitPost, Dying: UserIsDyingPost, Dead: UserIsDeadPost, Channel: UserChannelPost, PickUp:UserPickUp},
   //LordKahosHorn
-  {weaponName: null, headGearName: "Lord Kaho`s Horn", Battle: UserBattlePostEmptyHand1_LordKahosHorn, Attack: UserAttackPostEmptyHand1_LordKahosHorn, Defend: UserDefendPostEmptyHand1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  {weaponName: "Empty", headGearName: "Lord Kaho`s Horn", Battle: UserBattlePostEmptyHand1_LordKahosHorn, Attack: UserAttackPostEmptyHand1_LordKahosHorn, Defend: UserDefendPostEmptyHand1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
   {weaponName: "Katana", headGearName: "Lord Kaho`s Horn", Battle: UserBattlePostKatana1_LordKahosHorn, Attack: UserAttackPostKatana1_LordKahosHorn, Defend: UserDefendPostKatana1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
   {weaponName: "Bastard Sword", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostBastardSword1_LordKahosHorn, Attack: UserAttackPostBastardSword1_LordKahosHorn, Defend: UserDefendPostBastardSword1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
   {weaponName: "Gaia Sword", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostGaiaSword1_LordKahosHorn, Attack: UserAttackPostGaiaSword1_LordKahosHorn, Defend:  UserDefendPostGaiaSword1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
   {weaponName: "Twin Edge of Naght Sieger", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_LordKahosHorn, Attack: UserAttackPostTwinEdgeofNaghtSieger1_LordKahosHorn, Defend: UserDefendPostTwinEdgeofNaghtSieger1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
   {weaponName: "Violet Fear", headGearName: "Lord Kaho`s Horn" , Battle: UserBattlePostVioletFear1_LordKahosHorn, Attack: UserAttackPostVioletFear1_LordKahosHorn, Defend: UserDefendPostVioletFear1_LordKahosHorn, OnHit: UserOnHitPost_LordKahosHorn, Dying: UserIsDyingPost_LordKahosHorn, Dead: UserIsDeadPost_LordKahosHorn, Channel: UserChannelPost_LordKahosHorn, PickUp:UserPickUp_LordKahosHorn},
+  //TeddybearHat
+  {weaponName: "Empty", headGearName: "Teddybear Hat", Battle: UserBattlePostEmptyHand1_TeddybearHat, Attack: UserAttackPostEmptyHand1_TeddybearHat, Defend: UserDefendPostEmptyHand1_TeddybearHat, OnHit: UserOnHitPost_TeddybearHat, Dying: UserIsDyingPost_TeddybearHat, Dead: UserIsDeadPost_TeddybearHat, Channel: UserChannelPost_TeddybearHat, PickUp:UserPickUp_TeddybearHat},
+  {weaponName: "Katana", headGearName: "Teddybear Hat", Battle: UserBattlePostKatana1_TeddybearHat, Attack: UserAttackPostKatana1_TeddybearHat, Defend: UserDefendPostKatana1_TeddybearHat, OnHit: UserOnHitPost_TeddybearHat, Dying: UserIsDyingPost_TeddybearHat, Dead: UserIsDeadPost_TeddybearHat, Channel: UserChannelPost_TeddybearHat, PickUp:UserPickUp_TeddybearHat},
+  {weaponName: "Bastard Sword", headGearName: "Teddybear Hat" , Battle: UserBattlePostBastardSword1_TeddybearHat, Attack: UserAttackPostBastardSword1_TeddybearHat, Defend: UserDefendPostBastardSword1_TeddybearHat, OnHit: UserOnHitPost_TeddybearHat, Dying: UserIsDyingPost_TeddybearHat, Dead: UserIsDeadPost_TeddybearHat, Channel: UserChannelPost_TeddybearHat, PickUp:UserPickUp_TeddybearHat},
+  {weaponName: "Gaia Sword", headGearName: "Teddybear Hat" , Battle: UserBattlePostGaiaSword1_TeddybearHat, Attack: UserAttackPostGaiaSword1_TeddybearHat, Defend:  UserDefendPostGaiaSword1_TeddybearHat, OnHit: UserOnHitPost_TeddybearHat, Dying: UserIsDyingPost_TeddybearHat, Dead: UserIsDeadPost_TeddybearHat, Channel: UserChannelPost_TeddybearHat, PickUp:UserPickUp_TeddybearHat},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Teddybear Hat" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_TeddybearHat, Attack: UserAttackPostTwinEdgeofNaghtSieger1_TeddybearHat, Defend: UserDefendPostTwinEdgeofNaghtSieger1_TeddybearHat, OnHit: UserOnHitPost_TeddybearHat, Dying: UserIsDyingPost_TeddybearHat, Dead: UserIsDeadPost_TeddybearHat, Channel: UserChannelPost_TeddybearHat, PickUp:UserPickUp_TeddybearHat},
+  {weaponName: "Violet Fear", headGearName: "Teddybear Hat" , Battle: UserBattlePostVioletFear1_TeddybearHat, Attack: UserAttackPostVioletFear1_TeddybearHat, Defend: UserDefendPostVioletFear1_TeddybearHat, OnHit: UserOnHitPost_TeddybearHat, Dying: UserIsDyingPost_TeddybearHat, Dead: UserIsDeadPost_TeddybearHat, Channel: UserChannelPost_TeddybearHat, PickUp:UserPickUp_TeddybearHat},
+  //Crown
+  {weaponName: "Empty", headGearName: "Crown", Battle: UserBattlePostEmptyHand1_Crown, Attack: UserAttackPostEmptyHand1_Crown, Defend: UserDefendPostEmptyHand1_Crown, OnHit: UserOnHitPost_Crown, Dying: UserIsDyingPost_Crown, Dead: UserIsDeadPost_Crown, Channel: UserChannelPost_Crown, PickUp:UserPickUp_Crown},
+  {weaponName: "Katana", headGearName: "Crown", Battle: UserBattlePostKatana1_Crown, Attack: UserAttackPostKatana1_Crown, Defend: UserDefendPostKatana1_Crown, OnHit: UserOnHitPost_Crown, Dying: UserIsDyingPost_Crown, Dead: UserIsDeadPost_Crown, Channel: UserChannelPost_Crown, PickUp:UserPickUp_Crown},
+  {weaponName: "Bastard Sword", headGearName: "Crown" , Battle: UserBattlePostBastardSword1_Crown, Attack: UserAttackPostBastardSword1_Crown, Defend: UserDefendPostBastardSword1_Crown, OnHit: UserOnHitPost_Crown, Dying: UserIsDyingPost_Crown, Dead: UserIsDeadPost_Crown, Channel: UserChannelPost_Crown, PickUp:UserPickUp_Crown},
+  {weaponName: "Gaia Sword", headGearName: "Crown" , Battle: UserBattlePostGaiaSword1_Crown, Attack: UserAttackPostGaiaSword1_Crown, Defend:  UserDefendPostGaiaSword1_Crown, OnHit: UserOnHitPost_Crown, Dying: UserIsDyingPost_Crown, Dead: UserIsDeadPost_Crown, Channel: UserChannelPost_Crown, PickUp:UserPickUp_Crown},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Crown" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_Crown, Attack: UserAttackPostTwinEdgeofNaghtSieger1_Crown, Defend: UserDefendPostTwinEdgeofNaghtSieger1_Crown, OnHit: UserOnHitPost_Crown, Dying: UserIsDyingPost_Crown, Dead: UserIsDeadPost_Crown, Channel: UserChannelPost_Crown, PickUp:UserPickUp_Crown},
+  {weaponName: "Violet Fear", headGearName: "Crown" , Battle: UserBattlePostVioletFear1_Crown, Attack: UserAttackPostVioletFear1_Crown, Defend: UserDefendPostVioletFear1_Crown, OnHit: UserOnHitPost_Crown, Dying: UserIsDyingPost_Crown, Dead: UserIsDeadPost_Crown, Channel: UserChannelPost_Crown, PickUp:UserPickUp_Crown},
+  //Helm
+  {weaponName: "Empty", headGearName: "Helm", Battle: UserBattlePostEmptyHand1_Helm, Attack: UserAttackPostEmptyHand1_Helm, Defend: UserDefendPostEmptyHand1_Helm, OnHit: UserOnHitPost_Helm, Dying: UserIsDyingPost_Helm, Dead: UserIsDeadPost_Helm, Channel: UserChannelPost_Helm, PickUp:UserPickUp_Helm},
+  {weaponName: "Katana", headGearName: "Helm", Battle: UserBattlePostKatana1_Helm, Attack: UserAttackPostKatana1_Helm, Defend: UserDefendPostKatana1_Helm, OnHit: UserOnHitPost_Helm, Dying: UserIsDyingPost_Helm, Dead: UserIsDeadPost_Helm, Channel: UserChannelPost_Helm, PickUp:UserPickUp_Helm},
+  {weaponName: "Bastard Sword", headGearName: "Helm" , Battle: UserBattlePostBastardSword1_Helm, Attack: UserAttackPostBastardSword1_Helm, Defend: UserDefendPostBastardSword1_Helm, OnHit: UserOnHitPost_Helm, Dying: UserIsDyingPost_Helm, Dead: UserIsDeadPost_Helm, Channel: UserChannelPost_Helm, PickUp:UserPickUp_Helm},
+  {weaponName: "Gaia Sword", headGearName: "Helm" , Battle: UserBattlePostGaiaSword1_Helm, Attack: UserAttackPostGaiaSword1_Helm, Defend:  UserDefendPostGaiaSword1_Helm, OnHit: UserOnHitPost_Helm, Dying: UserIsDyingPost_Helm, Dead: UserIsDeadPost_Helm, Channel: UserChannelPost_Helm, PickUp:UserPickUp_Helm},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Helm" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_Helm, Attack: UserAttackPostTwinEdgeofNaghtSieger1_Helm, Defend: UserDefendPostTwinEdgeofNaghtSieger1_Helm, OnHit: UserOnHitPost_Helm, Dying: UserIsDyingPost_Helm, Dead: UserIsDeadPost_Helm, Channel: UserChannelPost_Helm, PickUp:UserPickUp_Helm},
+  {weaponName: "Violet Fear", headGearName: "Helm" , Battle: UserBattlePostVioletFear1_Helm, Attack: UserAttackPostVioletFear1_Helm, Defend: UserDefendPostVioletFear1_Helm, OnHit: UserOnHitPost_Helm, Dying: UserIsDyingPost_Helm, Dead: UserIsDeadPost_Helm, Channel: UserChannelPost_Helm, PickUp:UserPickUp_Helm},
+  //PandaHat
+  {weaponName: "Empty", headGearName: "Panda Hat", Battle: UserBattlePostEmptyHand1_PandaHat, Attack: UserAttackPostEmptyHand1_PandaHat, Defend: UserDefendPostEmptyHand1_PandaHat, OnHit: UserOnHitPost_PandaHat, Dying: UserIsDyingPost_PandaHat, Dead: UserIsDeadPost_PandaHat, Channel: UserChannelPost_PandaHat, PickUp:UserPickUp_PandaHat},
+  {weaponName: "Katana", headGearName: "Panda Hat", Battle: UserBattlePostKatana1_PandaHat, Attack: UserAttackPostKatana1_PandaHat, Defend: UserDefendPostKatana1_PandaHat, OnHit: UserOnHitPost_PandaHat, Dying: UserIsDyingPost_PandaHat, Dead: UserIsDeadPost_PandaHat, Channel: UserChannelPost_PandaHat, PickUp:UserPickUp_PandaHat},
+  {weaponName: "Bastard Sword", headGearName: "Panda Hat" , Battle: UserBattlePostBastardSword1_PandaHat, Attack: UserAttackPostBastardSword1_PandaHat, Defend: UserDefendPostBastardSword1_PandaHat, OnHit: UserOnHitPost_PandaHat, Dying: UserIsDyingPost_PandaHat, Dead: UserIsDeadPost_PandaHat, Channel: UserChannelPost_PandaHat, PickUp:UserPickUp_PandaHat},
+  {weaponName: "Gaia Sword", headGearName: "Panda Hat" , Battle: UserBattlePostGaiaSword1_PandaHat, Attack: UserAttackPostGaiaSword1_PandaHat, Defend:  UserDefendPostGaiaSword1_PandaHat, OnHit: UserOnHitPost_PandaHat, Dying: UserIsDyingPost_PandaHat, Dead: UserIsDeadPost_PandaHat, Channel: UserChannelPost_PandaHat, PickUp:UserPickUp_PandaHat},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Panda Hat" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_PandaHat, Attack: UserAttackPostTwinEdgeofNaghtSieger1_PandaHat, Defend: UserDefendPostTwinEdgeofNaghtSieger1_PandaHat, OnHit: UserOnHitPost_PandaHat, Dying: UserIsDyingPost_PandaHat, Dead: UserIsDeadPost_PandaHat, Channel: UserChannelPost_PandaHat, PickUp:UserPickUp_PandaHat},
+  {weaponName: "Violet Fear", headGearName: "Panda Hat" , Battle: UserBattlePostVioletFear1_PandaHat, Attack: UserAttackPostVioletFear1_PandaHat, Defend: UserDefendPostVioletFear1_PandaHat, OnHit: UserOnHitPost_PandaHat, Dying: UserIsDyingPost_PandaHat, Dead: UserIsDeadPost_PandaHat, Channel: UserChannelPost_PandaHat, PickUp:UserPickUp_PandaHat},
+  //ChefHat
+  {weaponName: "Empty", headGearName: "Chef Hat", Battle: UserBattlePostEmptyHand1_ChefHat, Attack: UserAttackPostEmptyHand1_ChefHat, Defend: UserDefendPostEmptyHand1_ChefHat, OnHit: UserOnHitPost_ChefHat, Dying: UserIsDyingPost_ChefHat, Dead: UserIsDeadPost_ChefHat, Channel: UserChannelPost_ChefHat, PickUp:UserPickUp_ChefHat},
+  {weaponName: "Katana", headGearName: "Chef Hat", Battle: UserBattlePostKatana1_ChefHat, Attack: UserAttackPostKatana1_ChefHat, Defend: UserDefendPostKatana1_ChefHat, OnHit: UserOnHitPost_ChefHat, Dying: UserIsDyingPost_ChefHat, Dead: UserIsDeadPost_ChefHat, Channel: UserChannelPost_ChefHat, PickUp:UserPickUp_ChefHat},
+  {weaponName: "Bastard Sword", headGearName: "Chef Hat" , Battle: UserBattlePostBastardSword1_ChefHat, Attack: UserAttackPostBastardSword1_ChefHat, Defend: UserDefendPostBastardSword1_ChefHat, OnHit: UserOnHitPost_ChefHat, Dying: UserIsDyingPost_ChefHat, Dead: UserIsDeadPost_ChefHat, Channel: UserChannelPost_ChefHat, PickUp:UserPickUp_ChefHat},
+  {weaponName: "Gaia Sword", headGearName: "Chef Hat" , Battle: UserBattlePostGaiaSword1_ChefHat, Attack: UserAttackPostGaiaSword1_ChefHat, Defend:  UserDefendPostGaiaSword1_ChefHat, OnHit: UserOnHitPost_ChefHat, Dying: UserIsDyingPost_ChefHat, Dead: UserIsDeadPost_ChefHat, Channel: UserChannelPost_ChefHat, PickUp:UserPickUp_ChefHat},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Chef Hat" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_ChefHat, Attack: UserAttackPostTwinEdgeofNaghtSieger1_ChefHat, Defend: UserDefendPostTwinEdgeofNaghtSieger1_ChefHat, OnHit: UserOnHitPost_ChefHat, Dying: UserIsDyingPost_ChefHat, Dead: UserIsDeadPost_ChefHat, Channel: UserChannelPost_ChefHat, PickUp:UserPickUp_ChefHat},
+  {weaponName: "Violet Fear", headGearName: "Chef Hat" , Battle: UserBattlePostVioletFear1_ChefHat, Attack: UserAttackPostVioletFear1_ChefHat, Defend: UserDefendPostVioletFear1_ChefHat, OnHit: UserOnHitPost_ChefHat, Dying: UserIsDyingPost_ChefHat, Dead: UserIsDeadPost_ChefHat, Channel: UserChannelPost_ChefHat, PickUp:UserPickUp_ChefHat},
+  //SantaPoringHat
+  {weaponName: "Empty", headGearName: "Santa Poring Hat", Battle: UserBattlePostEmptyHand1_SantaPoringHat, Attack: UserAttackPostEmptyHand1_SantaPoringHat, Defend: UserDefendPostEmptyHand1_SantaPoringHat, OnHit: UserOnHitPost_SantaPoringHat, Dying: UserIsDyingPost_SantaPoringHat, Dead: UserIsDeadPost_SantaPoringHat, Channel: UserChannelPost_SantaPoringHat, PickUp:UserPickUp_SantaPoringHat},
+  {weaponName: "Katana", headGearName: "Santa Poring Hat", Battle: UserBattlePostKatana1_SantaPoringHat, Attack: UserAttackPostKatana1_SantaPoringHat, Defend: UserDefendPostKatana1_SantaPoringHat, OnHit: UserOnHitPost_SantaPoringHat, Dying: UserIsDyingPost_SantaPoringHat, Dead: UserIsDeadPost_SantaPoringHat, Channel: UserChannelPost_SantaPoringHat, PickUp:UserPickUp_SantaPoringHat},
+  {weaponName: "Bastard Sword", headGearName: "Santa Poring Hat" , Battle: UserBattlePostBastardSword1_SantaPoringHat, Attack: UserAttackPostBastardSword1_SantaPoringHat, Defend: UserDefendPostBastardSword1_SantaPoringHat, OnHit: UserOnHitPost_SantaPoringHat, Dying: UserIsDyingPost_SantaPoringHat, Dead: UserIsDeadPost_SantaPoringHat, Channel: UserChannelPost_SantaPoringHat, PickUp:UserPickUp_SantaPoringHat},
+  {weaponName: "Gaia Sword", headGearName: "Santa Poring Hat" , Battle: UserBattlePostGaiaSword1_SantaPoringHat, Attack: UserAttackPostGaiaSword1_SantaPoringHat, Defend:  UserDefendPostGaiaSword1_SantaPoringHat, OnHit: UserOnHitPost_SantaPoringHat, Dying: UserIsDyingPost_SantaPoringHat, Dead: UserIsDeadPost_SantaPoringHat, Channel: UserChannelPost_SantaPoringHat, PickUp:UserPickUp_SantaPoringHat},
+  {weaponName: "Twin Edge of Naght Sieger", headGearName: "Santa Poring Hat" , Battle: UserBattlePostTwinEdgeofNaghtSieger1_SantaPoringHat, Attack: UserAttackPostTwinEdgeofNaghtSieger1_SantaPoringHat, Defend: UserDefendPostTwinEdgeofNaghtSieger1_SantaPoringHat, OnHit: UserOnHitPost_SantaPoringHat, Dying: UserIsDyingPost_SantaPoringHat, Dead: UserIsDeadPost_SantaPoringHat, Channel: UserChannelPost_SantaPoringHat, PickUp:UserPickUp_SantaPoringHat},
+  {weaponName: "Violet Fear", headGearName: "Santa Poring Hat" , Battle: UserBattlePostVioletFear1_SantaPoringHat, Attack: UserAttackPostVioletFear1_SantaPoringHat, Defend: UserDefendPostVioletFear1_SantaPoringHat, OnHit: UserOnHitPost_SantaPoringHat, Dying: UserIsDyingPost_SantaPoringHat, Dead: UserIsDeadPost_SantaPoringHat, Channel: UserChannelPost_SantaPoringHat, PickUp:UserPickUp_SantaPoringHat},
 ]
 
 function Main(){

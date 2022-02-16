@@ -19,6 +19,13 @@ const Fn = {
     FullPlate: 0,
     //HeadGear
     LordKahosHorn: 1,
+    TeddybearHat: 1,
+    Crown: 1,
+    Helm: 1,
+    PandaHat: 1,
+    ChefHat: 1,
+    SantaPoringHat: 1,
+
     //Etc
     Jellopy: 0,
     EmptyBottle: 0,
@@ -211,7 +218,42 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 LordKahosHorn: state.LordKahosHorn + action.Item,
             }
-            
+        case 'TeddybearHatFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                TeddybearHat: state.TeddybearHat + action.Item,
+            }
+        case 'CrownFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Crown: state.Crown + action.Item,
+            }
+        case 'HelmFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Helm: state.Helm + action.Item,
+            }
+        case 'PandaHatFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                PandaHat: state.PandaHat + action.Item,
+            }
+        case 'ChefHatFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                ChefHat: state.ChefHat + action.Item,
+            }
+        case 'SantaPoringHatFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SantaPoringHat: state.SantaPoringHat + action.Item,
+            }
         //Battle USEAGE
         case 'UseRedPotionFn':
             return{
