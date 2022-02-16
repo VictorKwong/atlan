@@ -6,8 +6,6 @@ const Fn = {
     WorldMap: false,
     BattlePoringIslandMap: false,
     Prontera: false,
-    PronteraToolDealer: false,
-    WeaponArmorDealer: false,
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
@@ -18,6 +16,8 @@ const Fn = {
     AltanQuest: false,
     //Mini Screen (Shop)
     PronteraHeadGearDealer: false,
+    PronteraToolDealer: false,
+    PronteraWeaponArmorDealer: false,
     //Mini Screen (StoryChat)
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
@@ -182,6 +182,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PronteraHeadGearDealer: !state.PronteraHeadGearDealer,
             }
+        case 'GotoPronteraToolDealerFn':
+            return {
+                ...state,
+                PronteraToolDealer: !state.PronteraToolDealer,
+            }
+        case 'GotoPronteraWeaponArmorDealerFn':
+            return {
+                ...state,
+                PronteraWeaponArmorDealer: !state.PronteraWeaponArmorDealer,
+            }
         // WORLD MAP
         case 'GotoPronteraFn':
             return {
@@ -189,8 +199,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WorldMap: false,
                 BattlePoringIslandMap: false,
                 Prontera: !state.Prontera,
-                PronteraToolDealer: false,
-                WeaponArmorDealer: false,
                 PronteraSouth: false,
                 PoringIsland: false,
                 AntHell: false,
@@ -201,8 +209,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: false,
                     Prontera: false,
-                    PronteraToolDealer: false,
-                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: !state.PoringIsland,
                     AntHell: false,
@@ -213,8 +219,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: !state.WorldMap,
                     BattlePoringIslandMap: false,
                     Prontera: false,
-                    PronteraToolDealer: false,
-                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
@@ -225,8 +229,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: !state.BattlePoringIslandMap,
                     Prontera: false,
-                    PronteraToolDealer: false,
-                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
@@ -237,36 +239,11 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: false,
                     Prontera: false,
-                    PronteraToolDealer: false,
-                    WeaponArmorDealer: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: !state.AntHell,
                 }
-            case 'GotoPronteraToolDealerFn':
-                return {
-                    ...state,
-                    WorldMap: false,
-                    BattlePoringIslandMap: false,
-                    Prontera: false,
-                    PronteraToolDealer: !state.PronteraToolDealer,
-                    WeaponArmorDealer: false,
-                    PronteraSouth: false,
-                    PoringIsland: false,
-                    AntHell: false,
-                }
-            case 'GotoWeaponArmorDealerFn':
-                return {
-                    ...state,
-                    WorldMap: false,
-                    BattlePoringIslandMap: false,
-                    Prontera: false,
-                    PronteraToolDealer: false,
-                    WeaponArmorDealer: !state.WeaponArmorDealer,
-                    PronteraSouth: false,
-                    PoringIsland: false,
-                    AntHell: false,
-                }
+
         default:
             return state;
     }

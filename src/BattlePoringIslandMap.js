@@ -14,7 +14,7 @@ import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTur
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn, UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn} from './actions'
 //ITEMS
-import { UseYellowPotionFn, UseRedPotionFn } from './actions'
+import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
 import { ProgressQuestDialogFn } from './actions'
 //Win ETC Items
@@ -31,10 +31,18 @@ import Lunatic from './img/Monster/Lunatic.gif'
 import LunaticHit from './img/Monster/LunaticHit.png'
 import LunaticAttack from './img/Monster/LunaticAttack.gif'
 import LunaticDead from './img/Monster/LunaticDead.png'
+//SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+//ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
+import OrangePotion from './img/Item/OrangePotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
+import WhitePotion from './img/Item/WhitePotion.gif'
+import AnniversaryCake from './img/Item/AnniversaryCake.gif'
+import MastelaFruit from './img/Item/MastelaFruit.gif'
+import BluePotion from './img/Item/BluePotion.gif'
+import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
@@ -452,7 +460,7 @@ function Main(){
       if (enemyStats[i].currentHealth <= 0){
         dispatch(EnemyDeadAnimationFn(true))
         setTimeout(() => (clockCheck = 1), 300);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
         $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
         //ETC items
@@ -464,7 +472,7 @@ function Main(){
               $('.storySpeech').append(`<span>Obtained: </span>`)
               obtain = true;
             }
-            dispatch((EtcItems.Gain)())
+            dispatch((EtcItems.Gain)());
             $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
           }
           return null;
@@ -480,7 +488,9 @@ function Main(){
               return null;
           }
       }
-    }, [enemyStats,questControlRoom, dispatch]);
+      // QuestBoard not depend
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [enemyStats, dispatch]);
     // DEFEAT FUNCTION
       useEffect(() => {
         if (userStats.currentHealth <= 0){
@@ -773,11 +783,24 @@ function Main(){
         setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn()), 300);
         // Text display
-        $('.storySpeech').append('<p>Altan Heal himself! Recover 50 hp </p>')
+        $('.storySpeech').append('<p>Altan use red potion! Recover 50 hp </p>')
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
+    }
+    const userItemOrangePotionButton = () => {
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UseOrangePotionFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p>Altan use orange potion! Recover 150 hp </p>')
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
     }
     const userItemYellowPotionButton = () => {
         dispatch(UserChannelAnimationFn());
@@ -786,11 +809,76 @@ function Main(){
         setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn()), 300);
         // Text display
-        $('.storySpeech').append('<p>Altan Heal himself! Recover 150 hp </p>')
+        $('.storySpeech').append('<p>Altan use yellow potion! Recover 400 hp </p>')
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
+    }
+    const userItemWhitePotionButton = () => {
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UseWhitePotionFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p>Altan use white potion! Recover 800 hp </p>')
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
+    }
+    const userItemAnniversaryCakeButton = () => {
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UseAnniversaryCakeFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p>Altan use anniversary cake! Recover 1200 hp </p>')
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
+    }
+    const userItemMastelaFruitButton = () => {
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UseMastelaFruitFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p>Altan use mastela fruit! Recover 2000 hp </p>')
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
+    }
+    const userItemBluePotionButton = () => {
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UseBluePotionFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p>Altan use blue potion! Recover 60 sp </p>')
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
+    }
+    const userItemYggdrasilBerryButton = () => {
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UseYggdrasilBerryFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p>Altan use Yggdrasil Berry!! HP SP fully recover! </p>')
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
     }
     // Enemy AI
     const enemyDecisionQFn = () => {
@@ -925,7 +1013,7 @@ function Main(){
       const ClockTurn = setInterval(() => {
         (() => {
           switch (true) {
-           case(clockCheck === 1):
+           case(clockCheck === 1 || userStats.currentHealth <= 0 || enemyStats[i].currentHealth <= 0):
               return clearInterval(ClockTurn);
            default:
               return dispatch(TickingClockFn());
@@ -1032,8 +1120,15 @@ function Main(){
                       </div>
                       : SkillControlRoom['User'].BattleItemScreen && SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
-                        {userGoldItem.RedPotion >= 1 ? <button onClick={() => userItemRedPotionButton()}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}
-                        {userGoldItem.YellowPotion >= 1 ? <button onClick={() => userItemYellowPotionButton()}><img src={YellowPotion} alt="YellowPotion" /> YellowPotion x{userGoldItem.YellowPotion}</button> : null }
+                        {userGoldItem.RedPotion >= 1 ? <button onClick={() => userItemRedPotionButton()}><img src={RedPotion} alt="RedPotion" /> Red Potion x{userGoldItem.RedPotion}</button> : null}
+                        {userGoldItem.OrangePotion >= 1 ? <button onClick={() => userItemOrangePotionButton()}><img src={OrangePotion} alt="OrangePotion" /> Orange Potion x{userGoldItem.OrangePotion}</button> : null }
+                        {userGoldItem.YellowPotion >= 1 ? <button onClick={() => userItemYellowPotionButton()}><img src={YellowPotion} alt="YellowPotion" /> Yellow Potion x{userGoldItem.YellowPotion}</button> : null }
+                        {userGoldItem.WhitePotion >= 1 ? <button onClick={() => userItemWhitePotionButton()}><img src={WhitePotion} alt="WhitePotion" /> White Potion x{userGoldItem.WhitePotion}</button> : null }
+                        
+                        {userGoldItem.AnniversaryCake >= 1 ? <button onClick={() => userItemAnniversaryCakeButton()}><img src={AnniversaryCake} alt="AnniversaryCake" /> Anniversary Cake x{userGoldItem.AnniversaryCake}</button> : null }
+                        {userGoldItem.MastelaFruit >= 1 ? <button onClick={() => userItemMastelaFruitButton()}><img src={MastelaFruit} alt="MastelaFruit" /> Mastela Fruit x{userGoldItem.MastelaFruit}</button> : null }
+                        {userGoldItem.BluePotion >= 1 ? <button onClick={() => userItemBluePotionButton()}><img src={BluePotion} alt="BluePotion" /> Blue Potion x{userGoldItem.BluePotion}</button> : null }
+                        {userGoldItem.YggdrasilBerry >= 1 ? <button onClick={() => userItemYggdrasilBerryButton()}><img src={YggdrasilBerry} alt="YggdrasilBerry" /> Yggdrasil Berry x{userGoldItem.YggdrasilBerry}</button> : null }
                         <button onClick={() => dispatch(ReturnUserInSelectItemFn())}>Back</button>
                       </div>
                       : SkillControlRoom['User'].UserTurn ? 
@@ -1046,7 +1141,6 @@ function Main(){
                         <button className="goGoRun" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Run</button>
                       </div>
                       : null }
-                      
                 </div>
               </div>
           </div>

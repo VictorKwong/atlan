@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn , DealerSellFailureFn} from './actions';
+import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
 import { LordKahosHornFn , TeddybearHatFn , CrownFn , HelmFn , PandaHatFn , ChefHatFn , SantaPoringHatFn } from './actions';
 
 import './css/mapPronteraToolDealer.css'
@@ -54,7 +54,7 @@ function StartMenu(){
       <div>
         <div className="storyMapScreen">
           <div>
-              <p>Hiasfknsokagndsokgnasdokgnaoskdg</p>
+              <p>Head Gear Shop</p>
               
               {npcControlRoom.DealerBuy ?
                 <div>
@@ -73,7 +73,7 @@ function StartMenu(){
                   {HeadGearSellBox.map(Sell => {
                       return(
                         <div key={Sell.id}>
-                          <button onClick={Sell.Item >= 1 ? () =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());} : () => {dispatch(DealerSellFailureFn());}}><img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button>
+                          {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
                         </div>
                       )
                   })}

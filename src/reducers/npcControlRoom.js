@@ -7,12 +7,16 @@ const Fn = {
     WeaponDealer: false,
     ArmorDealer: false,
     HeadGearDealer: false,
+    ToolDealer: false,
+    //Shop Trade Fn
     DealerBuy: false,
     DealerSell: false,
     DealerBuySuccess: false,
     DealerBuyFailure: false,
     DealerSellSuccess: false,
     DealerSellFailure: false,
+    //Heal Fn
+    KafraEmployeeHealState: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -23,6 +27,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Fountain: false,
                 KafraEmployee: true,
                 QuestBoard: false,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: false,
 
             }
         case 'TalktoFountainFn':
@@ -31,6 +39,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Fountain: true,
                 KafraEmployee: false,
                 QuestBoard: false,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: false,
             }
         case 'TalktoQuestBoardFn':
             return {
@@ -38,6 +50,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Fountain: false,
                 KafraEmployee: false,
                 QuestBoard: true,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: false,
             }
         case 'ResetTalktoFn':
             return {
@@ -48,31 +64,57 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 WeaponDealer: false,
                 ArmorDealer: false,
                 HeadGearDealer: false,
+                ToolDealer: false,
             }
         case 'TalktoWeaponDealerFn':
             return {
                 ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
                 WeaponDealer: true,
                 ArmorDealer: false,
                 HeadGearDealer: false,
+                ToolDealer: false,
                 DealerBuy: false,
                 DealerSell: false,
             }
         case 'TalktoArmorDealerFn':
             return {
                 ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
                 WeaponDealer: false,
                 ArmorDealer: true,
                 HeadGearDealer: false,
+                ToolDealer: false,
                 DealerBuy: false,
                 DealerSell: false,
             }
         case 'TalktoHeadGearDealerFn':
             return {
                 ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
                 WeaponDealer: false,
                 ArmorDealer: false,
                 HeadGearDealer: true,
+                ToolDealer: false,
+                DealerBuy: false,
+                DealerSell: false,
+            }
+        case 'TalktoToolDealerFn':
+            return {
+                ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: true,
                 DealerBuy: false,
                 DealerSell: false,
             }
@@ -121,7 +163,13 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerSellSuccess: false,
                 DealerSellFailure: true,
             }
-        case 'ResetDealerBuySellFn':
+        //HEAL
+        case 'KafraEmployeeHealStateFn':
+            return{
+                ...state,
+                KafraEmployeeHealState: true,
+            }
+        case 'ResetDealerBuySellHealFn':
             return {
                 ...state,
                 DealerBuy: false,
@@ -130,8 +178,9 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuyFailure: false,
                 DealerSellSuccess: false,
                 DealerSellFailure: false,
+                KafraEmployeeHealState: false,
             }
-        
+
         default:
             return state;
     }

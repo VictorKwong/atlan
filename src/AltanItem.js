@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn} from './actions';
 import $ from 'jquery'
 //ITEM
-import { UseRedPotionFn, UseYellowPotionFn} from './actions';
+import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 
 import './css/mapAltanEquipment.css'
 // import useSound from 'use-sound';
@@ -31,7 +31,13 @@ import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
+import OrangePotion from './img/Item/OrangePotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
+import WhitePotion from './img/Item/WhitePotion.gif'
+import AnniversaryCake from './img/Item/AnniversaryCake.gif'
+import MastelaFruit from './img/Item/MastelaFruit.gif'
+import BluePotion from './img/Item/BluePotion.gif'
+import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 //ETC
 import Jellopy from './img/Etc/Poring_Jellopy70.gif'
 import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
@@ -55,9 +61,14 @@ function StartMenu(){
     let ItemBox = [
       //WEAPON
       {id:20001, Img:RedPotion, name:"Red Potion", itemCheck:userGoldItem.RedPotion, useItem:UseRedPotionFn()},
-      {id:20002, Img:YellowPotion, name:"Yellow Potion", itemCheck:userGoldItem.YellowPotion, useItem:UseYellowPotionFn()},
+      {id:20002, Img:OrangePotion, name:"Orange Potion", itemCheck:userGoldItem.OrangePotion, useItem:UseOrangePotionFn()},
+      {id:20003, Img:YellowPotion, name:"Yellow Potion", itemCheck:userGoldItem.YellowPotion, useItem:UseYellowPotionFn()},
+      {id:20004, Img:WhitePotion, name:"White Potion", itemCheck:userGoldItem.WhitePotion, useItem:UseWhitePotionFn()},
+      {id:20005, Img:AnniversaryCake, name:"Anniversary Cake", itemCheck:userGoldItem.AnniversaryCake, useItem:UseAnniversaryCakeFn()},
+      {id:20006, Img:MastelaFruit, name:"Mastela Fruit", itemCheck:userGoldItem.MastelaFruit, useItem:UseMastelaFruitFn()},
+      {id:20007, Img:BluePotion, name:"Blue Potion", itemCheck:userGoldItem.BluePotion, useItem:UseBluePotionFn()},
+      {id:20008, Img:YggdrasilBerry, name:"Yggdrasil Berry", itemCheck:userGoldItem.YggdrasilBerry, useItem:UseYggdrasilBerryFn()},
     ]
-    
     let EquipBox = [
       //WEAPON
       {id:10001, Img:Katana, name:"Katana", itemCheck:userGoldItem.Katana},

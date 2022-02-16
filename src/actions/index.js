@@ -195,9 +195,9 @@ export const GotoPronteraToolDealerFn = () => {
     };
 };
 
-export const GotoWeaponArmorDealerFn = () => {
+export const GotoPronteraWeaponArmorDealerFn = () => {
     return {
-        type: 'GotoWeaponArmorDealerFn',
+        type: 'GotoPronteraWeaponArmorDealerFn',
     };
 };
 
@@ -472,6 +472,11 @@ export const TalktoHeadGearDealerFn = () => {
         type: 'TalktoHeadGearDealerFn'
     };
 };
+export const TalktoToolDealerFn = () => {
+    return {
+        type: 'TalktoToolDealerFn'
+    };
+};
 
 
 export const ResetTalktoFn = () => {
@@ -491,6 +496,12 @@ export const KafraEmployeeHealFn = () => {
         type: 'KafraEmployeeHealFn'
     };
 };
+export const KafraEmployeeHealStateFn = () => {
+    return {
+        type: 'KafraEmployeeHealStateFn'
+    };
+};
+
 export const DealerBuyFn = () => {
     return {
         type: 'DealerBuyFn'
@@ -525,157 +536,167 @@ export const DealerSellFailureFn = () => {
 
 
 
-export const ResetDealerBuySellFn = () => {
+export const ResetDealerBuySellHealFn = () => {
     return {
-        type: 'ResetDealerBuySellFn'
+        type: 'ResetDealerBuySellHealFn'
     };
 };
 
 // ITEM BUY SELL
-export const BuyRedPotionFn = () => {
+export const RedPotionFn = (Zeny,Item) => {
     return {
-        type: 'BuyRedPotionFn',
+        type: 'RedPotionFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const BuyYellowPotionFn = () => {
+export const OrangePotionFn = (Zeny,Item) => {
     return {
-        type: 'BuyYellowPotionFn'
+        type: 'OrangePotionFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellRedPotionFn = () => {
+
+export const YellowPotionFn = (Zeny,Item) => {
     return {
-        type: 'SellRedPotionFn'
+        type: 'YellowPotionFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellYellowPotionFn = () => {
+export const WhitePotionFn = (Zeny,Item) => {
     return {
-        type: 'SellYellowPotionFn'
+        type: 'WhitePotionFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+
+export const AnniversaryCakeFn = (Zeny,Item) => {
+    return {
+        type: 'AnniversaryCakeFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const MastelaFruitFn = (Zeny,Item) => {
+    return {
+        type: 'MastelaFruitFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const BluePotionFn = (Zeny,Item) => {
+    return {
+        type: 'BluePotionFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const YggdrasilBerryFn = (Zeny,Item) => {
+    return {
+        type: 'YggdrasilBerryFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
 
 //WEAPON BUY SELL
-export const BuyKatanaFn = () => {
+export const KatanaFn = (Zeny,Item) => {
     return {
-        type: 'BuyKatanaFn',
+        type: 'KatanaFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellKatanaFn = () => {
+
+export const BastardSwordFn = (Zeny,Item) => {
     return {
-        type: 'SellKatanaFn',
+        type: 'BastardSwordFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const BuyBastardSwordFn = () => {
+export const GaiaSwordFn = (Zeny,Item) => {
     return {
-        type: 'BuyBastardSwordFn',
+        type: 'GaiaSwordFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellBastardSwordFn = () => {
+export const TwinEdgeofNaghtSiegerFn = (Zeny,Item) => {
     return {
-        type: 'SellBastardSwordFn',
+        type: 'TwinEdgeofNaghtSiegerFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const BuyGaiaSwordFn = () => {
+export const VioletFearFn = (Zeny,Item) => {
     return {
-        type: 'BuyGaiaSwordFn',
-    };
-};
-export const SellGaiaSwordFn = () => {
-    return {
-        type: 'SellGaiaSwordFn',
-    };
-};
-export const BuyTwinEdgeofNaghtSiegerFn = () => {
-    return {
-        type: 'BuyTwinEdgeofNaghtSiegerFn',
-    };
-};
-export const SellTwinEdgeofNaghtSiegerFn = () => {
-    return {
-        type: 'SellTwinEdgeofNaghtSiegerFn',
-    };
-};
-export const BuyVioletFearFn = () => {
-    return {
-        type: 'BuyVioletFearFn',
-    };
-};
-export const SellVioletFearFn = () => {
-    return {
-        type: 'SellVioletFearFn',
+        type: 'VioletFearFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
 //ARMOR BUY SELL
 
-export const BuyCottonShirtFn = () => {
+export const CottonShirtFn = (Zeny,Item) => {
     return {
-        type: 'BuyCottonShirtFn',
+        type: 'CottonShirtFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellCottonShirtFn = () => {
+
+export const AdventureSuitFn = (Zeny,Item) => {
     return {
-        type: 'SellCottonShirtFn',
+        type: 'AdventureSuitFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const BuyAdventureSuitFn = () => {
+export const WoodenMailFn = (Zeny,Item) => {
     return {
-        type: 'BuyAdventureSuitFn',
+        type: 'WoodenMailFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellAdventureSuitFn = () => {
+
+export const CoatFn = (Zeny,Item) => {
     return {
-        type: 'SellAdventureSuitFn',
+        type: 'CoatFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const BuyWoodenMailFn = () => {
+
+export const PaddedArmorFn = (Zeny,Item) => {
     return {
-        type: 'BuyWoodenMailFn',
+        type: 'PaddedArmorFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellWoodenMailFn = () => {
+
+export const ChainMailFn = (Zeny,Item) => {
     return {
-        type: 'SellWoodenMailFn',
+        type: 'ChainMailFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const BuyCoatFn = () => {
+
+export const FullPlateFn = (Zeny,Item) => {
     return {
-        type: 'BuyCoatFn',
+        type: 'FullPlateFn',
+        Zeny: Zeny,
+        Item: Item
     };
 };
-export const SellCoatFn = () => {
-    return {
-        type: 'SellCoatFn',
-    };
-};
-export const BuyPaddedArmorFn = () => {
-    return {
-        type: 'BuyPaddedArmorFn',
-    };
-};
-export const SellPaddedArmorFn = () => {
-    return {
-        type: 'SellPaddedArmorFn',
-    };
-};
-export const BuyChainMailFn = () => {
-    return {
-        type: 'BuyChainMailFn',
-    };
-};
-export const SellChainMailFn = () => {
-    return {
-        type: 'SellChainMailFn',
-    };
-};
-export const BuyFullPlateFn = () => {
-    return {
-        type: 'BuyFullPlateFn',
-    };
-};
-export const SellFullPlateFn = () => {
-    return {
-        type: 'SellFullPlateFn',
-    };
-};
+
+//HeadGear
 export const LordKahosHornFn = (Zeny,Item) => {
     return {
         type: 'LordKahosHornFn',
@@ -731,9 +752,43 @@ export const UseRedPotionFn = () => {
         type: 'UseRedPotionFn'
     };
 };
+export const UseOrangePotionFn = () => {
+    return {
+        type: 'UseOrangePotionFn'
+    };
+};
 export const UseYellowPotionFn = () => {
     return {
         type: 'UseYellowPotionFn'
+    };
+};
+export const UseWhitePotionFn = () => {
+    return {
+        type: 'UseWhitePotionFn'
+    };
+};
+
+export const UseAnniversaryCakeFn = () => {
+    return {
+        type: 'UseAnniversaryCakeFn'
+    };
+};
+
+export const UseMastelaFruitFn = () => {
+    return {
+        type: 'UseMastelaFruitFn'
+    };
+};
+
+export const UseBluePotionFn = () => {
+    return {
+        type: 'UseBluePotionFn'
+    };
+};
+
+export const UseYggdrasilBerryFn = () => {
+    return {
+        type: 'UseYggdrasilBerryFn'
     };
 };
 

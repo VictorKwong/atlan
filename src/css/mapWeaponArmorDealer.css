@@ -1,36 +1,15 @@
-.storyScreen,
-.storyChat{
-  text-align: center;
-}
-
 .storyMapScreen{
   height: calc(75vh - 3rem);
-  display: flex;
 }
-
-.storyChat{
-  height: 25vh;
-}
-
-.PronteraWeaponArmorDealerMapBoard{
-  width: 80%;
-  border: 1px solid black;
-}
-
 .PronteraWeaponArmorDealerMap{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: 100%;
-
 }
 
-.StoryHUD{
-  width:20%;
-  border: 1px solid black;
-}
-  
-  .armorDealer { grid-area: 2 / 3 / 3 / 4; }
-  .weaponDealer { grid-area: 3 / 3 / 4 / 4; }
+.armorDealer{ grid-area: 1 / 2 / 2 / 3; }
+.weaponDealer { grid-area: 1 / 4 / 2 / 5; }
+

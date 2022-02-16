@@ -1,0 +1,76 @@
+    let MiscBuyBox = [
+      {id:90000,cost: 50, Get:RedPotionFn(-50,1), Img: RedPotion, name: "Red Potion"},
+      {id:90001,cost: 100, Get:OrangePotionFn(-100,1), Img: OrangePotion, name: "Orange Potion"},
+      {id:90002,cost: 200, Get:YellowPotionFn(-200,1), Img: YellowPotion, name: "Yellow Potion"},
+      {id:90003,cost: 500, Get:WhitePotionFn(-500,1), Img: WhitePotion, name: "White Potion"},
+      {id:90004,cost: 1000, Get:AnniversaryCakeFn(-1000,1), Img: AnniversaryCake, name: "Anniversary Cake"},
+      {id:90005,cost: 2000, Get:MastelaFruitFn(-2000,1), Img: MastelaFruit, name: "Mastela Fruit"},
+      {id:90006,cost: 400, Get:BluePotionFn(-400,1), Img: BluePotion, name: "Blue Potion"},
+      {id:90007,cost: 4000, Get:YggdrasilBerryFn(-4000,1), Img: YggdrasilBerry, name: "Yggdrasil Berry"},
+
+    ]
+    let MiscSellBox = [
+      {id:100000,cost: 40, Get:RedPotionFn(40,-1), Img: RedPotion, name: "Red Potion", Item: userGoldItem.RedPotion},
+      {id:100001,cost: 80, Get:OrangePotionFn(80,-1), Img: OrangePotion, name: "Orange Potion", Item: userGoldItem.OrangePotion},
+      {id:100002,cost: 160, Get:YellowPotionFn(160,-1), Img: YellowPotion, name: "Yellow Potion", Item: userGoldItem.YellowPotion},
+      {id:100003,cost: 400, Get:WhitePotionFn(400,-1), Img: WhitePotion, name: "White Potion", Item: userGoldItem.WhitePotion},
+      {id:100004,cost: 800, Get:AnniversaryCakeFn(800,-1), Img: AnniversaryCake, name: "Anniversary Cake", Item: userGoldItem.AnniversaryCake},
+      {id:100005,cost: 1600, Get:MastelaFruitFn(1600,-1), Img: MastelaFruit, name: "Mastela Fruit", Item: userGoldItem.MastelaFruit},
+      {id:100006,cost: 320, Get:BluePotionFn(320,-1), Img: BluePotion, name: "Blue Potion", Item: userGoldItem.BluePotion},
+      {id:100007,cost: 3200, Get:YggdrasilBerryFn(3200,-1), Img: YggdrasilBerry, name: "Yggdrasil Berry", Item: userGoldItem.YggdrasilBerry},
+    ]
+
+
+    
+    let HeadGearBuyBox = [
+      {id:90000,cost: 100, Get:LordKahosHornFn(-100,1), Img: LordKahosHorn, name: "Lord Kaho`s Horn"},
+      {id:90001,cost: 100, Get:TeddybearHatFn(-100,1), Img: TeddybearHat, name: "Teddybear Hat"},
+      {id:90002,cost: 100, Get:CrownFn(-100,1), Img: Crown, name: "Crown"},
+      {id:90003,cost: 100, Get:HelmFn(-100,1), Img: Helm, name: "Helm"},
+      {id:90004,cost: 100, Get:PandaHatFn(-100,1), Img: PandaHat, name: "Panda Hat"},
+      {id:90005,cost: 100, Get:ChefHatFn(-100,1), Img: ChefHat, name: "Chef Hat"},
+      {id:90006,cost: 100, Get:SantaPoringHatFn(-100,1), Img: SantaPoringHat, name: "Santa Poring Hat"}
+    ]
+    let HeadGearSellBox = [
+      {id:90000,cost: 80, Get:LordKahosHornFn(80,-1), Img: LordKahosHorn, name: "Lord Kaho`s Horn", Item: userGoldItem.LordKahosHorn},
+      {id:90001,cost: 80, Get:TeddybearHatFn(80,-1), Img: TeddybearHat, name: "Teddybear Hat", Item: userGoldItem.TeddybearHat},
+      {id:90002,cost: 80, Get:CrownFn(80,-1), Img: Crown, name: "Crown", Item: userGoldItem.Crown},
+      {id:90003,cost: 80, Get:HelmFn(80,-1), Img: Helm, name: "Helm", Item: userGoldItem.Helm},
+      {id:90004,cost: 80, Get:PandaHatFn(80,-1), Img: PandaHat, name: "Panda Hat", Item: userGoldItem.PandaHat},
+      {id:90005,cost: 80, Get:ChefHatFn(80,-1), Img: ChefHat, name: "Chef Hat", Item: userGoldItem.ChefHat},
+      {id:90006,cost: 80, Get:SantaPoringHatFn(80,-1), Img: SantaPoringHat, name: "Santa Poring Hat", Item: userGoldItem.SantaPoringHat}
+    ]
+
+    
+    let WeaponBuyBox = [
+      {id:91000,cost: 100, Get:KatanaFn(-100,1), Img: Katana, name: "Katana"},
+      {id:91001,cost: 300, Get:BastardSwordFn(-300,1), Img: BastardSword, name: "Bastard Sword"},
+      {id:91002,cost: 800, Get:GaiaSwordFn(-800,1), Img: GaiaSword, name: "Gaia Sword"},
+      {id:91003,cost: 3000, Get:TwinEdgeofNaghtSiegerFn(-3000,1), Img: TwinEdgeofNaghtSieger, name: "Twin Edge of Naght Sieger"},
+      {id:91004,cost: 4880, Get:VioletFearFn(-4880,1), Img: VioletFear, name: "Violet Fear"},
+    ]
+    let WeaponSellBox = [
+      {id:92000,cost: 80, Get:KatanaFn(80,-1), Img: Katana, name: "Katana", Item: userGoldItem.Katana},
+      {id:92001,cost: 240, Get:BastardSwordFn(240,-1), Img: BastardSword, name: "Bastard Sword", Item: userGoldItem.BastardSword},
+      {id:92002,cost: 640, Get:GaiaSwordFn(640,-1), Img: GaiaSword, name: "Gaia Sword", Item: userGoldItem.GaiaSword},
+      {id:92003,cost: 1600, Get:TwinEdgeofNaghtSiegerFn(1600,-1), Img: TwinEdgeofNaghtSieger, name: "Twin Edge of Naght Sieger", Item: userGoldItem.TwinEdgeofNaghtSieger},
+      {id:92004,cost: 3904, Get:VioletFearFn(3904,-1), Img: VioletFear, name: "Violet Fear", Item: userGoldItem.VioletFear},
+    ]
+    let ArmorBuyBox = [
+      {id:93000,cost: 10, Get:CottonShirtFn(-10,1), Img: CottonShirt, name: "Cotton Shirt"},
+      {id:93001,cost: 1000, Get:AdventureSuitFn(-1000,1), Img: AdventureSuit, name: "Adventure Suit"},
+      {id:93002,cost: 5500, Get:WoodenMailFn(-5500,1), Img: WoodenMail, name: "Wooden Mail"},
+      {id:93003,cost: 22000, Get:CoatFn(-22000,1), Img: Coat, name: "Coat"},
+      {id:93004,cost: 48000, Get:PaddedArmorFn(-48000,1), Img: PaddedArmor, name: "Padded Armor"},
+      {id:93005,cost: 65000, Get:ChainMailFn(-65000,1), Img: ChainMail, name: "Chain Mail"},
+      {id:93006,cost: 80000, Get:FullPlateFn(-80000,1), Img: FullPlate, name: "Full Plate"}
+    ]
+    let ArmorSellBox = [
+      {id:94000,cost: 8, Get:CottonShirtFn(8,-1), Img: CottonShirt, name: "Cotton Shirt", Item: userGoldItem.CottonShirt},
+      {id:94001,cost: 800, Get:AdventureSuitFn(800,-1), Img: AdventureSuit, name: "Adventure Suit", Item: userGoldItem.AdventureSuit},
+      {id:94002,cost: 4400, Get:WoodenMailFn(4400,-1), Img: WoodenMail, name: "WoodenMail", Item: userGoldItem.WoodenMail},
+      {id:94003,cost: 17600, Get:CoatFn(17600,-1), Img: Coat, name: "Coat", Item: userGoldItem.Coat},
+      {id:94004,cost: 38400, Get:PaddedArmorFn(38400,-1), Img: PaddedArmor, name: "Padded Armor", Item: userGoldItem.PaddedArmor},
+      {id:94005,cost: 52000, Get:ChainMailFn(52000,-1), Img: ChainMail, name: "Chain Mail", Item: userGoldItem.ChainMail},
+      {id:94006,cost: 64000, Get:FullPlateFn(640000,-1), Img: FullPlate, name: "Full Plate", Item: userGoldItem.FullPlate}
+    ]

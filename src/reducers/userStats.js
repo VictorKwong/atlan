@@ -3,7 +3,7 @@ const Fn = {
     Level: 1,
     Experience: 0,
     maxHealth: 150,
-    currentHealth: 150,
+    currentHealth: 140,
     maxSP: 50,
     currentSP: 50,
     attack: 25,
@@ -118,7 +118,7 @@ const userStatsReducer = (state = Fn, action) => {
                         currentHealth: state.maxHealth
                     }
             }
-        case 'UseYellowPotionFn':
+        case 'UseOrangePotionFn':
             switch(true){
                 case ((state.currentHealth + 150) <= state.maxHealth):
                     return {
@@ -131,6 +131,79 @@ const userStatsReducer = (state = Fn, action) => {
                         currentHealth: state.maxHealth
                     }
             }   
+        case 'UseYellowPotionFn':
+            switch(true){
+                case ((state.currentHealth + 400) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 400
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            }
+        case 'UseWhitePotionFn':
+            switch(true){
+                case ((state.currentHealth + 800) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 800
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            } 
+        case 'UseAnniversaryCakeFn':
+            switch(true){
+                case ((state.currentHealth + 1200) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 1200
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            } 
+        case 'UseMastelaFruitFn':
+            switch(true){
+                case ((state.currentHealth + 2000) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 2000
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            }
+        case 'UseBluePotionFn':
+            switch(true){
+                case ((state.currentSP + 2000) <= state.maxSP):
+                    return {
+                        ...state,
+                        currentSP: state.currentSP + 60
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentSP: state.maxSP
+                    }
+            }
+        case 'UseYggdrasilBerryFn':
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth,
+                        currentSP: state.maxSP
+                    }
+
+
         //Rerender Fn
         case 'userClockDefendFn':
             return {

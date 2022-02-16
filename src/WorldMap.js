@@ -6,8 +6,6 @@ import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PoringIsland from './PoringIsland'
 import AntHell from './AntHell'
-import PronteraToolDealer from './PronteraToolDealer'
-import WeaponArmorDealer from './WeaponArmorDealer'
 import './css/storyMainMap.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
@@ -30,8 +28,6 @@ function StartMenu(){
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.AntHell ? <AntHell />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
-        screenControlRoom.PronteraToolDealer ? <PronteraToolDealer /> :
-        screenControlRoom.WeaponArmorDealer ? <WeaponArmorDealer /> :
         screenControlRoom.WorldMap ?
         <div>
           <div className="storyMapScreen">

@@ -1,14 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn , DealerBuyFn, DealerSellFn, ResetDealerBuySellFn } from './actions';
-import { BuyRedPotionFn , BuyYellowPotionFn, } from './actions';
-import { SellRedPotionFn , SellYellowPotionFn, } from './actions';
+import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
+import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn } from './actions';
 
 import './css/mapPronteraToolDealer.css'
 import $ from 'jquery'
 import Prontera from './Prontera'
 import RedPotion from './img/Item/RedPotion.gif'
+import OrangePotion from './img/Item/OrangePotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
+import WhitePotion from './img/Item/WhitePotion.gif'
+import AnniversaryCake from './img/Item/AnniversaryCake.gif'
+import MastelaFruit from './img/Item/MastelaFruit.gif'
+import BluePotion from './img/Item/BluePotion.gif'
+import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 // import useSound from 'use-sound';
 
 // AudioCurrentTimeSaverFn
@@ -26,135 +31,58 @@ function StartMenu(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
-    const talkToToolDealerBuy = () => {
-      $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][1].text}</p>`)
-      $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][1].name}</p>`)
-    }
-    const talkToToolDealerSell = () => {
-      $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][2].text}</p>`)
-      $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][2].name}</p>`)
-    }
-    const talkToToolDealerBuyRedPotion = () => {
-      (() => {
-        switch (true) {
-          case (userGoldItem.Zeny >= 50):
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            dispatch(BuyRedPotionFn());
-            break;
-          default:
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][4].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][4].name}</p>`)
-        }
-      })()
-    }
-    const talkToToolDealerBuyYellowPotion = () => {
-      (() => {
-        switch (true) {
-          case (userGoldItem.Zeny >= 200):
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            dispatch(BuyYellowPotionFn());
-            break;
-          default:
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][4].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][4].name}</p>`)
-        }
-      })()
-    }
-    const talkToToolDealerSellRedPotion = () => {
-      (() => {
-        switch (true) {
-          case (userGoldItem.RedPotion >= 1):
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            dispatch(SellRedPotionFn());
-            break;
-          default:
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][5].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][5].name}</p>`)
-        }
-      })()
-    }
-    const talkToToolDealerSellYellowPotion = () => {
-      (() => {
-        switch (true) {
-          case (userGoldItem.YellowPotion >= 1):
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][3].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][3].name}</p>`)
-            dispatch(SellYellowPotionFn());
-            break;
-          default:
-            $('.storySpeech').html(`<p>${npcSpeech['ToolDealer'][5].text}</p>`)
-            $('.storyCharacter').html(`<p>${npcSpeech['ToolDealer'][5].name}</p>`)
-        }
-      })()
-    }
+    let MiscBuyBox = [
+      {id:90000,cost: 50, Get:RedPotionFn(-50,1), Img: RedPotion, name: "Red Potion"},
+      {id:90001,cost: 100, Get:OrangePotionFn(-100,1), Img: OrangePotion, name: "Orange Potion"},
+      {id:90002,cost: 200, Get:YellowPotionFn(-200,1), Img: YellowPotion, name: "Yellow Potion"},
+      {id:90003,cost: 500, Get:WhitePotionFn(-500,1), Img: WhitePotion, name: "White Potion"},
+      {id:90004,cost: 1000, Get:AnniversaryCakeFn(-1000,1), Img: AnniversaryCake, name: "Anniversary Cake"},
+      {id:90005,cost: 2000, Get:MastelaFruitFn(-2000,1), Img: MastelaFruit, name: "Mastela Fruit"},
+      {id:90006,cost: 400, Get:BluePotionFn(-400,1), Img: BluePotion, name: "Blue Potion"},
+      {id:90007,cost: 4000, Get:YggdrasilBerryFn(-4000,1), Img: YggdrasilBerry, name: "Yggdrasil Berry"},
 
+    ]
+    let MiscSellBox = [
+      {id:100000,cost: 40, Get:RedPotionFn(40,-1), Img: RedPotion, name: "Red Potion", Item: userGoldItem.RedPotion},
+      {id:100001,cost: 80, Get:OrangePotionFn(80,-1), Img: OrangePotion, name: "Orange Potion", Item: userGoldItem.OrangePotion},
+      {id:100002,cost: 160, Get:YellowPotionFn(160,-1), Img: YellowPotion, name: "Yellow Potion", Item: userGoldItem.YellowPotion},
+      {id:100003,cost: 400, Get:WhitePotionFn(400,-1), Img: WhitePotion, name: "White Potion", Item: userGoldItem.WhitePotion},
+      {id:100004,cost: 800, Get:AnniversaryCakeFn(800,-1), Img: AnniversaryCake, name: "Anniversary Cake", Item: userGoldItem.AnniversaryCake},
+      {id:100005,cost: 1600, Get:MastelaFruitFn(1600,-1), Img: MastelaFruit, name: "Mastela Fruit", Item: userGoldItem.MastelaFruit},
+      {id:100006,cost: 320, Get:BluePotionFn(320,-1), Img: BluePotion, name: "Blue Potion", Item: userGoldItem.BluePotion},
+      {id:100007,cost: 3200, Get:YggdrasilBerryFn(3200,-1), Img: YggdrasilBerry, name: "Yggdrasil Berry", Item: userGoldItem.YggdrasilBerry},
+    ]
     return(
-      <div>
-        {screenControlRoom.Prontera ? <Prontera />:
         <div>
-        <div className="storyMapScreen">
-          <div className="PronteraToolDealerMap">
-              <p>Hi</p>
-              
+          <div className="storyMapScreen">
+            <div>
+            <p>Tool Shop</p>
               {npcControlRoom.DealerBuy ?
                 <div>
-                  <button onClick={() =>{talkToToolDealerBuyRedPotion();}}><img src={RedPotion} alt="RedPotion" /> -50z</button>
-                  <button onClick={() =>{talkToToolDealerBuyYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> -200z</button>
+                  {/* 1.Zeny, 2.Buy or sell */}
+                  {/* If you have enough money, you will get item. if you don't, pass failure */}
+                  {MiscBuyBox.map(Buy => {
+                      return(
+                        <div key={Buy.id}>
+                          <button onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</button>
+                        </div>
+                      )
+                  })}
                 </div>
                 : npcControlRoom.DealerSell ?
                 <div>
-                  <button onClick={() =>{talkToToolDealerSellRedPotion();}}><img src={RedPotion} alt="RedPotion" /> +40z</button>
-                  <button onClick={() =>{talkToToolDealerSellYellowPotion();}}><img src={YellowPotion} alt="YellowPotion" /> +160z</button>
-                </div> : null
-                }
-
-          </div>
-          <div className="StoryHUD">
-              <p className="basicStatsHUD">Basic Info</p>
-              <p className="nameStatsHUD destextHUD">Altan</p>
-              <p className="destextHUD classTitle">Knight</p>
-                <div className="HUDBox">
-                  <p className="hptextHUD">HP</p>
-                  <progress className="BarBasicHUD" value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={userStats.currentHealth + "/" + userStats.maxHealth}/>
-                  <p className="hpPerHUD">{((userStats.currentHealth/userStats.maxHealth)*100).toFixed(0) + "%"}</p>
-                </div>
-                <div className="HUDBox">
-                  <p className="sptextHUD">SP</p>
-                  <progress className="BarBasicHUD" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={userStats.currentSP + "/" + userStats.maxSP}/>
-                  <p className="spPerHUD">{((userStats.currentSP/userStats.maxSP)*100).toFixed(0) + "%"}</p>
-                </div>
-
-                <div className="leveltextHUD">
-                    <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
-                    {/* <p>Player Attack {userStats.attack}</p>
-                    <p>Player Defence {userStats.defence}</p>
-                    <p>Player Speed {userStats.speed}</p>
-                    <p>Player Hit Rate {userStats.hitRate}</p>
-                    <p>Player Dodge Rate {userStats.dodgeRate}</p>
-                    <p>Player Crit Rate {userStats.critRate}</p>
-                    <p>Player Exp {userStats.Experience}</p> */}
-                    {userStats.Level >= 10 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
-                    {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
-                </div>
-                <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
-            <p><img src={RedPotion} alt="RedPotion" />Red Potion {userGoldItem.RedPotion}</p>
-            <p><img src={YellowPotion} alt="YellowPotion" />Yellow Potion {userGoldItem.YellowPotion}</p>
+                  {MiscSellBox.map(Sell => {
+                      return(
+                        <div key={Sell.id}>
+                          {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
+                        </div>
+                      )
+                  })}
+                </div> : null}
+            </div>  
           </div>
         </div>
-        <fieldset className="storyChat">
-        <legend className="storyCharacter">{npcSpeech['ToolDealer'][0].name}</legend>
-        <p className="storySpeech">{npcSpeech['ToolDealer'][0].text}</p>
-          <button onClick={() =>{dispatch(DealerBuyFn()); talkToToolDealerBuy();}}>Buy</button>
-          <button onClick={() =>{dispatch(DealerSellFn()); talkToToolDealerSell();}}>Sell</button>
-          <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetDealerBuySellFn());}}>Leave</button>
-        </fieldset>
-      </div>
-      }
-      </div>
     );
-}
 
+}
 export default StartMenu;
