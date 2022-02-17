@@ -12,7 +12,7 @@ import { ReturnCheckPointFn } from './actions'
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn} from './actions'
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn, UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn} from './actions'
+import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn, UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -32,8 +32,9 @@ import LunaticHit from './img/Monster/LunaticHit.png'
 import LunaticAttack from './img/Monster/LunaticAttack.gif'
 import LunaticDead from './img/Monster/LunaticDead.png'
 //SKILLS
-import skillBash from './img/Skill/sm_bash.gif'
-import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillBash from './img/Skill/sm_Bash.gif'
+import skillMagnum from './img/Skill/sm_MagnumBreak.gif'
+import skillBowlingBash from './img/Skill/sm_BowlingBash.gif'
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
 import OrangePotion from './img/Item/OrangePotion.gif'
@@ -313,6 +314,9 @@ let i = Math.round(Math.random())
 let Uclock = 0;
 let clockCheck = 0;
 
+//Chat reading
+let listResult = document.getElementsByClassName('storyChat')[0];
+
 //ETC Drops
 //Obtain Once
 let obtain = false;
@@ -521,44 +525,69 @@ function Main(){
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
         //MAX Lv10
-        if((userStats.Level < 10) && (userStats.Experience >= baseEXPChart[userStats.Level])){
+        if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
           (() => {
             switch (true) {
-              case((userStats.Level + 1) <= 11):
-                return dispatch(UserLevelUpFn(2));
-              case((userStats.Level + 1) <= 21):
+              case((userStats.Level + 1) <= 4):
                 return dispatch(UserLevelUpFn(3));
-              case((userStats.Level + 1) <= 31):
-                return dispatch(UserLevelUpFn(4));           
-              case((userStats.Level + 1) <= 41):
-                return dispatch(UserLevelUpFn(5));
-              case((userStats.Level + 1) <= 51):
+              case((userStats.Level + 1) <= 9):
+                return dispatch(UserLevelUpFn(4));
+              case((userStats.Level + 1) <= 14):
+                return dispatch(UserLevelUpFn(5));           
+              case((userStats.Level + 1) <= 19):
                 return dispatch(UserLevelUpFn(6));
-              case((userStats.Level + 1) <= 61):
+              case((userStats.Level + 1) <= 24):
                 return dispatch(UserLevelUpFn(7));
-              case((userStats.Level + 1) <= 71):
+              case((userStats.Level + 1) <= 29):
                 return dispatch(UserLevelUpFn(8));
-              case((userStats.Level + 1) <= 81):
-                return dispatch(UserLevelUpFn(9));     
-              case((userStats.Level + 1) <= 91):
-                return dispatch(UserLevelUpFn(10));
-              default:
+              case((userStats.Level + 1) <= 34):
+                return dispatch(UserLevelUpFn(9));
+              case((userStats.Level + 1) <= 39):
+                return dispatch(UserLevelUpFn(10));     
+              case((userStats.Level + 1) <= 44):
                 return dispatch(UserLevelUpFn(11));
+              case((userStats.Level + 1) <= 49):
+                return dispatch(UserLevelUpFn(12));
+              case((userStats.Level + 1) <= 54):
+                return dispatch(UserLevelUpFn(13));
+              case((userStats.Level + 1) <= 59):
+                return dispatch(UserLevelUpFn(14));
+              case((userStats.Level + 1) <= 64):
+                return dispatch(UserLevelUpFn(15));
+              case((userStats.Level + 1) <= 69):
+                return dispatch(UserLevelUpFn(16));
+              case((userStats.Level + 1) <= 74):
+                return dispatch(UserLevelUpFn(17));
+              case((userStats.Level + 1) <= 79):
+                return dispatch(UserLevelUpFn(18));
+              case((userStats.Level + 1) <= 84):
+                return dispatch(UserLevelUpFn(19));
+              case((userStats.Level + 1) <= 89):
+                return dispatch(UserLevelUpFn(20));
+              case((userStats.Level + 1) <= 94):
+                return dispatch(UserLevelUpFn(21));
+              case((userStats.Level + 1) <= 98):
+                return dispatch(UserLevelUpFn(22));
+              default:
+                return dispatch(UserLevelUpFn(23));
             }
             })()
           $('.storySpeech').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
             switch (true) {
-              case((userStats.Level + 1) === 3):
-                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
               case((userStats.Level + 1) === 5):
+                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+              case((userStats.Level + 1) === 20):
                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+              case((userStats.Level + 1) === 70):
+                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:
                 return 0;
             }
         }
       }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
     }, [enemyStats, dispatch, userStats, baseEXPChart]);
-
 
 
     // USER DEAD ANIMATION
@@ -571,8 +600,7 @@ function Main(){
         }
     }, [userStats, dispatch]);
 
-    
-
+  
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
       Damage = Math.floor(userStats.attack +  userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
@@ -628,6 +656,8 @@ function Main(){
         }
         })()
       // End turn
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
       dispatch(ResetUserTurnFn());
@@ -641,6 +671,8 @@ function Main(){
       dispatch(UserTurnBlockFn());
       // Text display
       $('.storySpeech').append('<p>Altan Defend himself!</p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 70;
@@ -651,7 +683,7 @@ function Main(){
 
     //COMBAT SKILLS
     const userSkillBashButton = () => {
-      if (userStats.currentSP >= 15){
+      if (userStats.currentSP >= 40){
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -706,6 +738,8 @@ function Main(){
         }
         })()
         // End turn
+        listResult = document.getElementsByClassName('storyChat')[0];
+        listResult.scrollTop = listResult.scrollHeight;
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
@@ -714,7 +748,7 @@ function Main(){
       }
     }
     const userSkillMagnumBreakButton = () => {
-      if (userStats.currentSP >= 35){
+      if (userStats.currentSP >= 100){
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -768,6 +802,72 @@ function Main(){
         }
         })()
         // End turn
+        listResult = document.getElementsByClassName('storyChat')[0];
+        listResult.scrollTop = listResult.scrollHeight;
+        clockCheck = 0;
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').html(`<p>Not enough SP.</p>`)
+      }
+    }
+    const userSkillBowlingBashButton = () => {
+      if (userStats.currentSP >= 250){
+      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*5 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      dispatch(UserAttackAnimationFn());
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
+      setTimeout(() => (Uclock = 0), 300);
+      //Rerender, Block or not block
+      (() => {
+        switch (true) {
+          // ENEMY BLOCK
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE
+            switch(true){
+              case(userStats.critRate >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5 + 200) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+              default:
+                Math.sign((Damage - enemyStats[i].defencebuffer)*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5 + 200) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Altan use Bowling Bash!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+            }
+          // ENEMY HIT
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE
+            switch(true){
+              case(userStats.critRate >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defence)*1.5*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5 + 200) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+              default:
+                Math.sign((Damage - enemyStats[i].defence)*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5 + 200) : Damage = 1;
+                // Text display
+                $('.storySpeech').append(`<p>Altan use Bowling Bash!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                // Rerender
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+              }
+          // ENEMY DODGE 
+          default:
+              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
+              //Rerender
+              return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
+        }
+        })()
+        listResult = document.getElementsByClassName('storyChat')[0];
+        listResult.scrollTop = listResult.scrollHeight;
+        // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
@@ -784,6 +884,8 @@ function Main(){
         setTimeout(() => dispatch(UseRedPotionFn()), 300);
         // Text display
         $('.storySpeech').append('<p>Altan use red potion! Recover 50 hp </p>')
+        listResult = document.getElementsByClassName('storyChat')[0];
+        listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -797,6 +899,8 @@ function Main(){
       setTimeout(() => dispatch(UseOrangePotionFn()), 300);
       // Text display
       $('.storySpeech').append('<p>Altan use orange potion! Recover 150 hp </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -810,6 +914,8 @@ function Main(){
         setTimeout(() => dispatch(UseYellowPotionFn()), 300);
         // Text display
         $('.storySpeech').append('<p>Altan use yellow potion! Recover 400 hp </p>')
+        listResult = document.getElementsByClassName('storyChat')[0];
+        listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -823,6 +929,8 @@ function Main(){
       setTimeout(() => dispatch(UseWhitePotionFn()), 300);
       // Text display
       $('.storySpeech').append('<p>Altan use white potion! Recover 800 hp </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -836,6 +944,8 @@ function Main(){
       setTimeout(() => dispatch(UseAnniversaryCakeFn()), 300);
       // Text display
       $('.storySpeech').append('<p>Altan use anniversary cake! Recover 1200 hp </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -849,6 +959,8 @@ function Main(){
       setTimeout(() => dispatch(UseMastelaFruitFn()), 300);
       // Text display
       $('.storySpeech').append('<p>Altan use mastela fruit! Recover 2000 hp </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -862,6 +974,8 @@ function Main(){
       setTimeout(() => dispatch(UseBluePotionFn()), 300);
       // Text display
       $('.storySpeech').append('<p>Altan use blue potion! Recover 60 sp </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -875,6 +989,8 @@ function Main(){
       setTimeout(() => dispatch(UseYggdrasilBerryFn()), 300);
       // Text display
       $('.storySpeech').append('<p>Altan use Yggdrasil Berry!! HP SP fully recover! </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -883,7 +999,7 @@ function Main(){
     // Enemy AI
     const enemyDecisionQFn = () => {
       setTimeout(() => (Uclock = 0), 300);
-      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + 2000) / ((userStats.BaseArmorDef * 10) + 2000)) - (userAttribute.vit*2 + userAttribute.agi/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
+      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) * 10) + 2000)) - (userAttribute.vit*2 + userAttribute.agi/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       (() => {
           switch (true) {
           //EnemyAttack & Hit
@@ -955,6 +1071,8 @@ function Main(){
             }
       })()
       // End turn
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
       clockCheck = 0;
       clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
       dispatch(ResetEnemyTurnFn());
@@ -975,7 +1093,9 @@ function Main(){
               dispatch(ReturnUserInSelectItemFn());
               clockCheck = 1;
               dispatch(UserTurnFn());
-              $('.storySpeech').html('<p>--------- Altan Turn ---------</p>')
+              $('.storySpeech').append('<p>--------- Altan Turn ---------</p>')
+              listResult = document.getElementsByClassName('storyChat')[0];
+              listResult.scrollTop = listResult.scrollHeight;
               console.log('UserTurn is good')
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
@@ -983,6 +1103,8 @@ function Main(){
               clockCheck = 1;
               dispatch(EnemyTurnFn());
               $('.storySpeech').append(`<p>--------- ${enemyStats[i].name} Turn ---------</p>\n`)
+              listResult = document.getElementsByClassName('storyChat')[0];
+              listResult.scrollTop = listResult.scrollHeight;
               enemyDecisionQFn();
               console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
@@ -1037,15 +1159,13 @@ function Main(){
             <div className="storyMapScreen">
               <div className="battleScreen">
                 <div className="enemyBox"> 
-                    <h2 className="wordCenter">{enemyStats[i].name}</h2>
+                    <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
                     {
                       i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} /> :
                       i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} /> :
                       null
-                    }
-                    <p>Enemy Health {enemyStats[i].currentHealth}/{enemyStats[i].maxHealth}</p>
-                    
-                     <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100"></progress>
+                    }                    
+                     <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
 
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
@@ -1057,7 +1177,7 @@ function Main(){
                     <p>Enemy Crit Rate {enemyStats[i].critRate}</p> */}
                 </div>
                 <div>
-                  <h2 className="wordCenter">Altan</h2>
+                  <h2 className="wordCenter titleName">Altan</h2>
                   {/* User attack Post */}
                   {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className="altanImg" /> :
                   ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className="altanImg"/> : 
@@ -1069,10 +1189,8 @@ function Main(){
                   ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className="altanImg"/> :
                   // User Battle Post
                   <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
-                  <p>Health {userStats.currentHealth}/{userStats.maxHealth}</p>
-                  <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100"/>
-                  <p>SP {userStats.currentSP}/{userStats.maxSP}</p>
-                  <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100"/>
+                  <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
+                  <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
                 </div>
               </div>  
               <div className="StoryHUD">
@@ -1114,8 +1232,10 @@ function Main(){
                       
                       { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
-                        {userStats.Level >= 3 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash MP10</button> : null}
-                        {userStats.Level >= 5 ? <button onClick={() => userSkillMagnumBreakButton()}><img src={skillMagnum} alt="skillMagnumBreak" /> Magnum Break MP25</button> : null}
+                        {userStats.Level >= 5 ? <button onClick={() => userSkillBashButton()}><img src={skillBash} alt="skillBash" /> Bash SP40</button> : null}
+                        {userStats.Level >= 20 ? <button onClick={() => userSkillMagnumBreakButton()}><img src={skillMagnum} alt="skillMagnumBreak" /> Magnum Break SP100</button> : null}
+                        {userStats.Level >= 70 ? <button onClick={() => userSkillBowlingBashButton()}><img src={skillBowlingBash} alt="skillBowlingBash" /> Bowling Bash SP250</button> : null}
+                        
                         <button onClick={() => dispatch(ReturnUserInSelectSkillFn())}>Back</button>
                       </div>
                       : SkillControlRoom['User'].BattleItemScreen && SkillControlRoom['User'].UserTurn ? 

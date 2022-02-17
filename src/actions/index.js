@@ -59,6 +59,20 @@ export const UserSkillMagnumBreakMissedFn = () => {
         type: 'UserSkillMagnumBreakMissedFn',
     };
 };
+export const UserSkillBowlingBashEnemyFn = (Damage) => {
+    return {
+        type: 'UserSkillBowlingBashEnemyFn',
+        DamageCalculation: Damage
+    };
+};
+export const UserSkillBowlingBashMissedFn = () => {
+    return {
+        type: 'UserSkillBowlingBashMissedFn',
+    };
+};
+
+
+
 export const UserLevelUpFn = (Points) => {
     return {
         type: 'UserLevelUpFn',

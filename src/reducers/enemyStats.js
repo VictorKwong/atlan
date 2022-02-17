@@ -13,7 +13,7 @@ const Fn = [
         hitRate: 0.7,
         dodgeRate: 0.05,
         critRate: 0.03,
-        Experience: 200,
+        Experience: 99999999,
         Zeny: (30 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },
@@ -122,19 +122,33 @@ const enemyStatsReducer = (state = Fn, action) => {
                 currentHealth: state[2].currentHealth - action.DamageCalculation
             }]
         case 'UserSkillMagnumBreakBlockEnemyFn':
-        return [{
-            ...state[0],
-            currentHealth: state[0].currentHealth - action.DamageCalculation
-        },
-        {
-            ...state[1],
-            currentHealth: state[1].currentHealth - action.DamageCalculation
-        },
-        {
-            ...state[2],
-            currentHealth: state[2].currentHealth - action.DamageCalculation
-        }]
-
+            return [{
+                ...state[0],
+                currentHealth: state[0].currentHealth - action.DamageCalculation
+            },
+            {
+                ...state[1],
+                currentHealth: state[1].currentHealth - action.DamageCalculation
+            },
+            {
+                ...state[2],
+                currentHealth: state[2].currentHealth - action.DamageCalculation
+            }]
+        case 'UserSkillBowlingBashEnemyFn':
+            return [{
+                ...state[0],
+                currentHealth: state[0].currentHealth - action.DamageCalculation
+            },
+            {
+                ...state[1],
+                currentHealth: state[1].currentHealth - action.DamageCalculation
+            },
+            {
+                ...state[2],
+                currentHealth: state[2].currentHealth - action.DamageCalculation
+            }]
+            
+        
 
 
         case 'ResetEnemyCurrentHealthFn':

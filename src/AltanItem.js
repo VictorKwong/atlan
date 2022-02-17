@@ -114,7 +114,7 @@ function StartMenu(){
               {ItemBox.map(Item => {
                 return( 
                   <div key={Item.id}>
-                    {Item.itemCheck >= 1 ? <button onClick={() => dispatch((Item.useItem))}><img src={Item.Img} alt={Item.name} />x{Item.itemCheck} {Item.name}</button> : null}
+                    {Item.itemCheck >= 1 ? <button onClick={() => dispatch((Item.useItem))}>{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</button> : null}
                   </div>
                 )})}
             {/* {userGoldItem.RedPotion >= 1 ? <button onClick={() => dispatch(UseRedPotionFn())}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}
@@ -125,7 +125,7 @@ function StartMenu(){
             {EquipBox.map(Equip => {
                 return( 
                   <div key={Equip.id}>
-                    {Equip.itemCheck >= 1 ? <p><img src={Equip.Img} alt={Equip.name} />x{Equip.itemCheck} {Equip.name}</p> : null}
+                    {Equip.itemCheck >= 1 ? <p>{Equip.itemCheck}x <img src={Equip.Img} alt={Equip.name} /> {Equip.name}</p> : null}
                   </div>
                 )})}
             {/* {userGoldItem.Katana >= 1 ? <p><img src={Katana} alt="Katana" />x{userGoldItem.Katana} Katana</p> : null}
@@ -146,7 +146,7 @@ function StartMenu(){
               {EtcBox.map(Etc => {
                 return( 
                   <div key={Etc.id}>
-                    {Etc.itemCheck >= 1 ? <p><img src={Etc.Img} alt={Etc.name} />x{Etc.itemCheck} {Etc.name}</p> : null}
+                    {Etc.itemCheck >= 1 ? <p>{Etc.itemCheck}x <img src={Etc.Img} alt={Etc.name} />{Etc.name}</p> : null}
                   </div>
                 )})}
           </div> : null }

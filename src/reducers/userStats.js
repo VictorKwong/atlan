@@ -59,14 +59,20 @@ const userStatsReducer = (state = Fn, action) => {
         case 'UserSkillBashMissedFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 15,
+                currentSP: state.currentSP - 40,
             }
         case 'UserSkillMagnumBreakBlockEnemyFn':
         case 'UserSkillMagnumBreakEnemyFn':
         case 'UserSkillMagnumBreakMissedFn':
         return{
             ...state,
-            currentSP: state.currentSP - 35,
+            currentSP: state.currentSP - 100,
+        }
+        case 'UserSkillBowlingBashEnemyFn':
+        case 'UserSkillBowlingBashMissedFn':
+        return{
+            ...state,
+            currentSP: state.currentSP - 250,
         }
         case 'UserLevelUpFn':
             return {
