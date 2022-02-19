@@ -19,13 +19,13 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url('../img/Background/Grass3.png');
+  background-image: url('../img/Background/Grass5.png');
   background-repeat: round;
 }
 
 .titleName{
-  -webkit-text-stroke: 0.8px black;
-  stroke: 0.8px black;
+  -webkit-text-stroke: 0.2px black;
+  stroke: 0.2px black;
   color: white;
 }
 
@@ -103,7 +103,7 @@
 .yellowHP,
 .blueSP,
 .purpleHP{
-	height: 8px;
+	height: 6px;
   border: 1px solid black;
   background-color: #463C57;
   display: block;
@@ -225,6 +225,77 @@ progress.BarBasicHUD::-webkit-progress-bar{
 
 .clockHUD{
   text-align: left;
+}
+
+/* Story HUD Button */
+.goGoButton{
+  position: relative;
+  height:25px;
+}
+.goGoButton:hover p{
+  opacity: 0;
+}
+.goGoButton:hover span{
+  opacity: 1;
+}
+.goGoButtonFig{
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.goGoButtonFig::before{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  background-color: #764abc;
+  content: '';
+  transition: all 0.35s;
+  transform-origin: 50%;
+  transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,-45deg) scale3d(0,0,1);
+  opacity: 0;
+}
+
+.goGoButtonFig:hover::before{
+  transform: translate3d(-50%,-50%,0) rotate3d(0,0,1,-45deg) scale3d(1,1,1);
+  opacity: 1;
+}
+
+.goGoButtonFig1{
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+  transform-origin: 50%;
+}
+.goGoButtonFig1::before{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid black;
+  background-color: white;
+  content: '';
+  transition: all 0.35s;
+  transform: translate3d(0,-50%,0) translateX(-100%) rotate3d(0,0,1,-45deg) scale3d(1,1,1);
+  opacity: 1;
+}
+.goGoButtonFig2{
+  color:black;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+  transform-origin: 50%;
+  transition: 0.35s ease-out;
 }
 
 @media (max-width: 1199px){

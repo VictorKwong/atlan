@@ -1159,14 +1159,14 @@ function Main(){
             <div className="storyMapScreen">
               <div className="battleScreen">
                 <div className="enemyBox"> 
-                    <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
+                    
                     {
                       i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} /> :
                       i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} /> :
                       null
                     }                    
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
-
+                     <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
                     <p>Enemy Power {enemyStats[i].power}</p>
@@ -1177,7 +1177,6 @@ function Main(){
                     <p>Enemy Crit Rate {enemyStats[i].critRate}</p> */}
                 </div>
                 <div>
-                  <h2 className="wordCenter titleName">Altan</h2>
                   {/* User attack Post */}
                   {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className="altanImg" /> :
                   ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className="altanImg"/> : 
@@ -1191,6 +1190,7 @@ function Main(){
                   <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                   <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
+                  <h2 className="wordCenter titleName">Altan</h2>
                 </div>
               </div>  
               <div className="StoryHUD">
@@ -1253,12 +1253,18 @@ function Main(){
                       </div>
                       : SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
-                        <button className="goGoAttack" onClick={() => userAttackEnemyButton()}>Attack</button>
-                        <button className="goGoDefend" onClick={() => userDefendButton()}>Defend</button>
-                        <button className="goGoSkill"  onClick={() => dispatch(UserInSelectSkillFn())}>Skills</button>
-                        <button className="goGoItem"  onClick={() => dispatch(UserInSelectItemFn())}>Item</button>
+                        <button className="goGoButton" onClick={() => userAttackEnemyButton()}>
+                          <figcaption className="goGoButtonFig">
+                            <p className="goGoButtonFig1">Attack</p>
+                            <span className="goGoButtonFig2">Yoyoyo</span>
+
+                          </figcaption>
+                        </button>
+                        <button className="goGoButton" onClick={() => userDefendButton()}>Defend</button>
+                        <button className="goGoButton"  onClick={() => dispatch(UserInSelectSkillFn())}>Skills</button>
+                        <button className="goGoButton"  onClick={() => dispatch(UserInSelectItemFn())}>Item</button>
                         
-                        <button className="goGoRun" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Run</button>
+                        <button className="goGoButton" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Run</button>
                       </div>
                       : null }
                 </div>
