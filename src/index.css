@@ -20,7 +20,9 @@ h2,
 h3,
 p,
 a,
-fieldset{
+fieldset,
+button,
+figcaption{
   margin: 0;
   padding: 0;
 }

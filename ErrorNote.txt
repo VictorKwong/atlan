@@ -126,8 +126,10 @@ https://cp.originsro.org/monster/view/?id=1002#
 http://rosprites.blogspot.com/2012/05/monsters-all.html
 https://bghq.com/textures.php?game=ro
 
-http://nn.ai4rei.net/dev/npclist/?q=tag:animated
 
+https://drive.google.com/drive/folders/1HD9PpaxwJtcnUwrih2r8VizaMaQMrmM3
+http://nn.ai4rei.net/dev/npclist/?q=tag:animated
+https://ianlunn.github.io/Hover/
 Strugarden NEO
 
 button onclick:
