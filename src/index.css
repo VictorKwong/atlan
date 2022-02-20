@@ -56,40 +56,40 @@ html, body {
   animation-name: fadeOut;
   animation-duration: 1.7s;
 }
+@keyframes fadeOut {
+  0%,80%{background-color: black; opacity: 1;}
+  100%{opacity: 0;}
+}
+
 .logoBox{
   text-align: center;
   height: calc(100vh - 3rem);
   line-height: calc(100vh - 3rem);
-}
-@keyframes fadeOut {
-  0%,80%{background-color: black; opacity: 1;}
-  100%{opacity: 0;}
+  position: relative;
 }
 
 .logoLine1,
 .logoLine2,
 .logoLine3,
 .logoLine4{
-  position: relative;
-  left: 0px;
-  top: 50vh;
-  height: 2px;
-  width: 100%;
-  transform: rotate(-90deg);
+  position: absolute;
+  top: 0px;
+  height: 300%;
+  width: 2px;
   animation-name: fadeOutLine;
   animation-duration: 1.7s;
 }
 .logoLine1{
-  left: 60px;
+  left: calc(55vw + 30px);
 }
 .logoLine2{
-  left: 90px;
+  left: calc(55vw + 60px);
 }
 .logoLine3{
-  left: 94px;
+  left: calc(55vw + 64px);
 }
 .logoLine4{
-  left: 98px;
+  left: calc(55vw + 68px);
 }
 @keyframes fadeOutLine {
   0%,69%{background-color: black; opacity: 1;}
@@ -113,6 +113,7 @@ html, body {
   left:-1000px; 
   top: 4000px;
   font-size: 100px;
+  font-family: 'Mochiy Pop One', sans-serif;
   position: relative;
   animation-name: fly;
   animation-duration: 5.8s;
@@ -188,7 +189,6 @@ html, body {
 }
 
 .leveltextHUD{
-  background-color: #E8E5F1;
   border-radius: 5px;
   margin: 10px 0 10px;
   padding: 3px 0 3px;
@@ -268,6 +268,19 @@ progress.BarBasicHUD::-webkit-progress-bar{
   .expBarBasicHUD{
     width: 80%;
   }
+  /* title screen */
+  .logoLetter1,
+  .logoLetter2,
+  .logoLetter3,
+  .logoLetter4,
+  .logoLetter5,
+  .logoLetter6,
+  .logoLetter7,
+  .logoLetter8,
+  .logoLetter9,
+  .logoLetter10{
+    font-size: 80px;
+  }
 
 }
 @media (max-width: 767px){
@@ -295,6 +308,19 @@ progress.BarBasicHUD::-webkit-progress-bar{
   .purpleHP{
     width: 85%;
   }
+  /* title screen */
+  .logoLetter1,
+  .logoLetter2,
+  .logoLetter3,
+  .logoLetter4,
+  .logoLetter5,
+  .logoLetter6,
+  .logoLetter7,
+  .logoLetter8,
+  .logoLetter9,
+  .logoLetter10{
+    font-size: 50px;
+  }
 }
 @media (max-width: 467px){
   .BarBasicHUD{
@@ -313,5 +339,18 @@ progress.BarBasicHUD::-webkit-progress-bar{
   }
   .leveltext{
     text-align: center;
+  }
+  /* title screen */
+  .logoLetter1,
+  .logoLetter2,
+  .logoLetter3,
+  .logoLetter4,
+  .logoLetter5,
+  .logoLetter6,
+  .logoLetter7,
+  .logoLetter8,
+  .logoLetter9,
+  .logoLetter10{
+    font-size: 35px;
   }
 }

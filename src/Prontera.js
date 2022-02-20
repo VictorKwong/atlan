@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDealerFn, GotoPronteraHeadGearDealerFn } from './actions';
-import { AudioCurrentTimeSaverFn } from './actions';
 
 import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, ResetTalktoFn} from './actions';
 
@@ -75,19 +74,12 @@ function StartMenu(){
           }
           if (audioBGM.volume < 0.002) {
               audioBGM.pause();
-              console.log(audioBGM.currentTime)
-              dispatch(AudioCurrentTimeSaverFn(audioBGM.currentTime))
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
           }else if (i >= 2){
             audioBGM.volume = 0.15
             clearInterval(fadeAudio);
           }
-          $('.toolDealerNPC').on('click', function(event) {
-            event.preventDefault();
-              audioBGM.volume = 0.15;
-              clearInterval(fadeAudio);
-          })
         }, 10);
     }
 

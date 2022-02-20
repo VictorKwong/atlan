@@ -140,3 +140,11 @@ https://www.codegrepper.com/code-examples/javascript/is+it+possible+to+store+aud
 
 React Hook useEffect has a missing dependency:
 // eslint-disable-next-line react-hooks/exhaustive-deps
+
+https://webdesign-assistant.com/button-editor/css-button-generator.php#
+
+$('.toolDealerNPC').on('click', function(event) {
+    event.preventDefault();
+    audioBGM.volume = 0.15;
+    clearInterval(fadeAudio);
+})

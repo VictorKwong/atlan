@@ -1,13 +1,15 @@
 const Fn = {
-    AudioCurrentTime: 0
+    AudioVolumeBGM: 0.15,
+    AudioVolumeBGMFixed: 0.15
 }
 
 const audioControlRoomReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'AudioCurrentTimeSaverFn':
+        case 'AudioVolumeBGMSaverFn':
             return {
                 ...state,
-                AudioCurrentTime: action.currentTime,
+                AudioVolumeBGM: state.AudioVolumeBGM + action.Volume,
+                AudioVolumeBGMFixed: state.AudioVolumeBGM + action.Volume
                 }
         default:
             return {

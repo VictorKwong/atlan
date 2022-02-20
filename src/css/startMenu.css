@@ -6,9 +6,91 @@
 .menuTitle{
   height: 50vh;
   line-height: 50vh;
+  font-family: 'Trade Winds', cursive;
+  -webkit-text-stroke: 1.2px white;
+  stroke: 1.2px white;
+  font-size: 28px;
 }
 
 .menuSelect{
   height: calc(50vh - 3rem);
   line-height: 40px;
+}
+
+.menuBackground{
+  background-image: url('../img/Background/Login.jpg');
+  background-position: center;
+  background-size: auto 100%;
+}
+
+.menuButton{
+  cursor: pointer;
+  font-family: 'Sniglet', cursive;
+  position: relative;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  font-family: 'Sniglet', cursive;
+  background: linear-gradient(110deg, rgba(220,220,220,1) 0%, rgba(186,219,225,1) 100%);
+  border: solid #7CAFFF 1px;
+  border-radius: 5px;
+  padding:20px;
+  text-shadow: 2px 2px 2px #657c9c;
+  box-shadow: 6px 6px 7px #0D2444;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.menuButton:hover{
+  text-shadow: 1px 1px 1px #657c9c;
+  box-shadow: 3px 3px 3px #0D2444;
+}
+
+.menuButton::before,
+.menuButton::after{
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  background-color: #764abc;
+  content: '';
+  transition: all 0.1s;
+  transform: translate3d(0,-50%,0) rotate3d(0,0,1,-45deg) scale3d(0,0,1);
+  opacity: 0;
+  transform-origin: 50%;
+}
+
+.menuButton:hover::before,
+.menuButton:hover::after{
+  transform: translate3d(0,-50%,0) rotate3d(0,0,1,-45deg) scale3d(1,1,1);
+  opacity: 1;
+}
+.menuButton::before{
+  left: 5px;
+}
+.menuButton::after{
+  right: 5px;
+}
+
+@media (max-width: 1199px){
+
+}
+
+@media (max-width: 1023px){
+
+}
+
+@media (max-width: 767px){
+  .menuTitle{
+    font-size: 20px;
+  }
+}
+@media (max-width: 467px){
+  .menuTitle{
+    font-size: 12px;
+  }
 }

@@ -28,16 +28,16 @@ function StartMenu(){
         // Click Option goes to GameOption
         : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
         : 
-        <div>
+        <div className="menuBackground">
           <div className="menuTitle">
-            <h1>Atlan Adventure</h1>
+            <h1>Atlan - Ragnarok</h1>
           </div>
           <div className="menuSelect">
             <div>
-              <button onClick={startGameQtn}>New Game</button>
+              <button className="menuButton" onClick={startGameQtn}>New Game</button>
             </div>
             <div>
-              <button onClick={() => dispatch(gameTitleOptionScreenFn())}>Options</button>
+              <button className="menuButton" onClick={() => dispatch(gameTitleOptionScreenFn())}>Options</button>
             </div>
           </div>
         </div>

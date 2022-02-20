@@ -926,10 +926,10 @@ export const WinGrasshoppersLegFn = () => {
 
 
 //Audio Interaction
-export const AudioCurrentTimeSaverFn = (currentTime) => {
+export const AudioVolumeBGMSaverFn = (Volume) => {
     return {
-        type: 'AudioCurrentTimeSaverFn',
-        currentTime: currentTime
+        type: 'AudioVolumeBGMSaverFn',
+        Volume: Volume,
     };
 };
 

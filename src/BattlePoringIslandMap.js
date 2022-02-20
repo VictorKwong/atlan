@@ -620,7 +620,7 @@ function Main(){
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackBlockEnemyFn(Damage), 300));
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
@@ -628,7 +628,7 @@ function Main(){
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackBlockEnemyFn(Damage)), 300)
           // ENEMY HIT
@@ -638,7 +638,7 @@ function Main(){
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defence)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Critial Hit!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage)), 300);
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
@@ -646,12 +646,12 @@ function Main(){
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage)), 300);
           // ENEMY DODGE
           default:
-            $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
+            $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
             //Rerender
             return setTimeout(() => dispatch(userClockDefendFn()), 300);
         }
@@ -701,14 +701,14 @@ function Main(){
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5) : Damage = 1;
                 Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bash!</p>\n<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
                 return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
               }
@@ -721,19 +721,19 @@ function Main(){
               case (userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defence)*1.5*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Critical Hit Bash!!</p>\n<p>${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
+                $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defence)*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bash!</p>\n<p>${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
+                $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
               }
           // ENEMY DODGE
           default:
-            $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
+            $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
             // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
             return setTimeout(() => dispatch(UserSkillBashMissedFn()), 300);
         }
@@ -766,13 +766,13 @@ function Main(){
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5 + 100) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Critical Hit Magnum Break!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5 + 100) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Magnum Break!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Altan use Magnum Break! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
             }
@@ -785,19 +785,19 @@ function Main(){
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defence)*1.5*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5 + 100) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Critical Hit Magnum Break!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defence)*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5 + 100) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Magnum Break!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Altan use Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
               }
           // ENEMY DODGE 
           default:
-              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
+              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
         }
@@ -830,13 +830,13 @@ function Main(){
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5 + 200) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5 + 200) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bowling Bash!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Altan use Bowling Bash! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
             }
@@ -849,19 +849,19 @@ function Main(){
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defence)*1.5*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5 + 200) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defence)*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5 + 200) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bowling Bash!!</p>\n<p>Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Altan use Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
               }
           // ENEMY DODGE 
           default:
-              $('.storySpeech').append(`<p>Altan Attack!</p>\n<p>${enemyStats[i].name} dodge the attack.</p>`)
+              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
         }
@@ -884,7 +884,7 @@ function Main(){
         setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn()), 300);
         // Text display
-        $('.storySpeech').append('<p>Altan use red potion! Recover 50 hp </p>')
+        $('.storySpeech').append('<p style="color:#3fff00;">Altan use red potion! Recover 50 hp </p>')
         listResult = document.getElementsByClassName('storyChat')[0];
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
@@ -899,7 +899,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseOrangePotionFn()), 300);
       // Text display
-      $('.storySpeech').append('<p>Altan use orange potion! Recover 150 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use orange potion! Recover 150 hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -914,7 +914,7 @@ function Main(){
         setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn()), 300);
         // Text display
-        $('.storySpeech').append('<p>Altan use yellow potion! Recover 400 hp </p>')
+        $('.storySpeech').append('<p style="color:#3fff00;">Altan use yellow potion! Recover 400 hp </p>')
         listResult = document.getElementsByClassName('storyChat')[0];
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
@@ -929,7 +929,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseWhitePotionFn()), 300);
       // Text display
-      $('.storySpeech').append('<p>Altan use white potion! Recover 800 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use white potion! Recover 800 hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -944,7 +944,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseAnniversaryCakeFn()), 300);
       // Text display
-      $('.storySpeech').append('<p>Altan use anniversary cake! Recover 1200 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use anniversary cake! Recover 1200 hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -959,7 +959,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseMastelaFruitFn()), 300);
       // Text display
-      $('.storySpeech').append('<p>Altan use mastela fruit! Recover 2000 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use mastela fruit! Recover 2000 hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -974,7 +974,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseBluePotionFn()), 300);
       // Text display
-      $('.storySpeech').append('<p>Altan use blue potion! Recover 60 sp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use blue potion! Recover 60 sp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -989,7 +989,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseYggdrasilBerryFn()), 300);
       // Text display
-      $('.storySpeech').append('<p>Altan use Yggdrasil Berry!! HP SP fully recover! </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use Yggdrasil Berry!! HP SP fully recover! </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1019,13 +1019,13 @@ function Main(){
                     case(enemyStats[i].critRate >= Math.random()):
                       Math.sign((Damage * 1.5) - userStats.defencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer) : Damage = 1;
                       // Text display
-                      $('.storySpeech').append(`<p>${enemyStats[i].name} Critical Hit Attack!!</p>\n <p>Altan Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Altan Received ${Damage} damage</p>`)
                       //Rerender
                       return dispatch(EnemyAttackBlockUserFn(Damage));
                     default:
                       Math.sign(Damage - userStats.defencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer : Damage = 1;
                       // Text display
-                      $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan Received ${Damage} damage</p>`)
                       //Rerender
                       return dispatch(EnemyAttackBlockUserFn(Damage));
                   }
@@ -1040,19 +1040,19 @@ function Main(){
                   case(enemyStats[i].critRate >= Math.random()):
                     Math.sign((Damage * 1.5) - userStats.defence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence) : Damage = 1;
                     // Text display
-                    $('.storySpeech').append(`<p>${enemyStats[i].name} Critical Hit Attack!!</p>\n <p>Altan Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!!Altan Received ${Damage} damage</p>`)
                     //Rerender
                     return dispatch(EnemyAttackUserFn(Damage));
                   default:
                     Math.sign(Damage - userStats.defence) > 0 ? Damage = Damage - userStats.defence : Damage = 1;
                     // Text display
-                    $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan Received ${Damage} damage</p>`)
                     //Rerender
                     return dispatch(EnemyAttackUserFn(Damage));                     
                   }
                 // USER DODGE
                 default:
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} Attack!</p>\n <p>Altan dodge the attack!</p>`)
+                  $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack!<Altan dodge the attack!</p>`)
                   //Rerender
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
               }
@@ -1062,7 +1062,7 @@ function Main(){
             case(true):
               dispatch(EnemyTurnBlockFn());
               // Text display
-              $('.storySpeech').append(`<p>${enemyStats[i].name} Defend itself...</p>`)
+              $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Defend itself...</p>`)
               //Rerender
               return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
             default:
@@ -1103,7 +1103,7 @@ function Main(){
               dispatch(ResetEnemyTurnBlockFn());
               clockCheck = 1;
               dispatch(EnemyTurnFn());
-              $('.storySpeech').append(`<p>--------- ${enemyStats[i].name} Turn ---------</p>\n`)
+              $('.storySpeech').append(`<p style="color:red">--------- ${enemyStats[i].name} Turn ---------</p>\n`)
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               enemyDecisionQFn();
@@ -1177,7 +1177,7 @@ function Main(){
                     <p>Enemy Dodge Rate {enemyStats[i].dodgeRate}</p>
                     <p>Enemy Crit Rate {enemyStats[i].critRate}</p> */}
                 </div>
-                <div>
+                <div className="UserImageBox">
                   {/* User attack Post */}
                   {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className="altanImg" /> :
                   ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className="altanImg"/> : 
@@ -1191,7 +1191,7 @@ function Main(){
                   <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                   <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
-                  <h2 className="wordCenter titleName">Altan</h2>
+                  <h2 className="wordCenter titleName userNamePosition">Altan</h2>
                 </div>
               </div>  
               <div className="StoryHUD">
@@ -1236,7 +1236,7 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillBashButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBash} alt="skillBash" /> Bash</p>
-                              <span className={userStats.currentSP >= 40 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> SP40</span>
+                              <span className={userStats.currentSP >= 40 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> SP:40</span>
                             </figcaption>
                           </button>
                         : null}
@@ -1244,7 +1244,7 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Magnum Break</p>
-                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> SP100</span>
+                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> SP:100</span>
                             </figcaption>
                           </button>
                         : null}
@@ -1252,7 +1252,7 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillBowlingBashButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img img src={skillBowlingBash} alt="skillBowlingBash" /> Bowling Bash</p>
-                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img img src={skillBowlingBash} alt="skillBowlingBash"/> SP250</span>
+                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img img src={skillBowlingBash} alt="skillBowlingBash"/> SP:250</span>
                             </figcaption>
                           </button>
                         : null}
