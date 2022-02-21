@@ -143,8 +143,22 @@ React Hook useEffect has a missing dependency:
 
 https://webdesign-assistant.com/button-editor/css-button-generator.php#
 
+
+
+Notes:
+1.
 $('.toolDealerNPC').on('click', function(event) {
     event.preventDefault();
     audioBGM.volume = 0.15;
     clearInterval(fadeAudio);
 })
+
+2.
+useEffect(() => {
+    document.addEventListener('keypress', (e) => {
+        e.preventDefault();
+        console.log(e.code)
+        console.log(`this is ${e.key}`)
+        //KeyZ
+    })
+}, [])

@@ -15,7 +15,7 @@ import { AcceptQuestDialogFn, ReturnQuestDialogFn , KafraEmployeeHealFn, ResetMy
 
 import WorldMap from './WorldMap'
 import PronteraToolDealer from './PronteraToolDealer'
-import ProternaWeaponArmorDealer from './ProternaWeaponArmorDealer'
+import PronteraWeaponArmorDealer from './PronteraWeaponArmorDealer'
 import PronteraHeadGearDealer from './PronteraHeadGearDealer'
 import './css/mapProntera.css'
 import $ from 'jquery'
@@ -274,7 +274,7 @@ function StartMenu(){
             </div>:
             screenControlRoom.PronteraWeaponArmorDealer ? 
             <div className="ReturnParent">
-              <ProternaWeaponArmorDealer />
+              <PronteraWeaponArmorDealer />
               <button className="ReturnHUD" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>x</button>
             </div>:
             <div className="PronteraMap">

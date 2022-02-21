@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+import {GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
+import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
@@ -61,7 +62,25 @@ function StartMenu(){
       {id:7006, num: userGoldItem.ChefHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Chef Hat", ChefHat, 20), Img:ChefHat, name:"Chef Hat"},
       {id:7007, num: userGoldItem.SantaPoringHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Santa Poring Hat", SantaPoringHat, 20), Img:SantaPoringHat, name:"Santa Poring Hat"}
     ]
- 
+    let WeaponGearBox = [
+      {id:8000, num: 1, EquipItem:ReturnWeaponEquipmentChoiceFn("Empty",null, 1), Img: null, name:"Empty"},
+      {id:8001, num: userGoldItem.Katana, EquipItem:ReturnWeaponEquipmentChoiceFn("Katana",Katana, 60), Img:Katana, name:"Katana"},
+      {id:8002, num: userGoldItem.BastardSword, EquipItem:ReturnWeaponEquipmentChoiceFn("Bastard Sword",BastardSword, 115), Img:BastardSword, name:"Bastard Sword"},
+      {id:8003, num: userGoldItem.GaiaSword, EquipItem:ReturnWeaponEquipmentChoiceFn("Gaia Sword",GaiaSword, 140), Img:GaiaSword, name:"Gaia Sword"},
+      {id:8004, num: userGoldItem.TwinEdgeofNaghtSieger, EquipItem:ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160), Img:TwinEdgeofNaghtSieger, name:"Twin Edge of Naght Sieger"},
+      {id:8005, num: userGoldItem.VioletFear, EquipItem:ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275), Img:VioletFear, name:"Violet Fear"}
+    ]
+    let ArmorGearBox = [
+      {id:9000, num:userGoldItem.CottonShirt, EquipItem:ReturnArmorEquipmentChoiceFn("Cotton Shirt",CottonShirt, 10), Img:CottonShirt, name:"Cotton Shirt"},
+      {id:9001, num:userGoldItem.AdventureSuit, EquipItem:ReturnArmorEquipmentChoiceFn("Adventure Suit",AdventureSuit, 30), Img:AdventureSuit, name:"Adventure Suit"},
+      {id:9002, num:userGoldItem.WoodenMail, EquipItem:ReturnArmorEquipmentChoiceFn("Wooden Mail",WoodenMail, 40), Img:WoodenMail, name:"Wooden Mail"},
+      {id:9003, num:userGoldItem.Coat, EquipItem:ReturnArmorEquipmentChoiceFn("Coat",Coat, 50), Img:Coat, name:"Coat"},
+      {id:9004, num:userGoldItem.PaddedArmor, EquipItem:ReturnArmorEquipmentChoiceFn("Padded Armor",PaddedArmor, 70), Img:PaddedArmor, name:"Padded Armor"},
+      {id:9005, num:userGoldItem.ChainMail, EquipItem:ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80), Img:ChainMail, name:"Chain Mail"},
+      {id:9006, num:userGoldItem.FullPlate, EquipItem:ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90), Img:FullPlate, name:"Full Plate"},
+    ]
+
+
     useEffect(() => {
       audioBGM.volume = 0.15;
       let playPromise = audioBGM.play(); 
@@ -179,7 +198,7 @@ function StartMenu(){
                   <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn()); changePlaceFadeAudio();}}>Equip</button>
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn()); changePlaceFadeAudio();}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn()); changePlaceFadeAudio();}}>Stats</button>
-                  <button className="altanItems" onClick={() => {dispatch(GotoAltanQuestFn()); changePlaceFadeAudio();}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn()); changePlaceFadeAudio();}}>Quest</button>
                 </div>
             </div>
           </div>
@@ -189,7 +208,21 @@ function StartMenu(){
 
           {/* WEAPONS */}
            {screenControlRoom.WeaponEquipmentChoice ? 
-                <div>
+                  <div>
+                    {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
+                      <div>
+                      {WeaponGearBox.map(Equip => {
+                        return(
+                          <span key={Equip.id}>
+                            {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
+                          </span>
+                        )
+                      })}
+                      </div>
+                    : <p>Empty WeaponGear Storage T^T</p>}
+                  </div> 
+                  : null} 
+                {/* <div>
                   {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>
                     <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>
@@ -201,10 +234,24 @@ function StartMenu(){
                   </div> 
                   : <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>}
                 </div> 
-            : null}
+            : null} */}
           {/* ARMOR */}
             {screenControlRoom.ArmorEquipmentChoice ?
-                 <div>
+                  <div>
+                  {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
+                    <div>
+                    {ArmorGearBox.map(Equip => {
+                      return(
+                        <span key={Equip.id}>
+                          {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
+                        </span>
+                      )
+                    })}
+                    </div>
+                  : <p>Empty ArmorGear Storage T^T</p>}
+                </div> 
+                : null}
+                 {/* <div>
                  {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
                  <div>
                    {userGoldItem.CottonShirt >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Cotton Shirt",CottonShirt, 10));}}><img src={CottonShirt} alt="CottonShirt" />CottonShirt</button> : null}
@@ -217,11 +264,11 @@ function StartMenu(){
                  </div> 
                  : <p>Empty Armor Storage T^T</p>}
                </div> 
-           : null}
+           : null} */}
           {/* HEADGEAR */}
             {screenControlRoom.HeadGearEquipmentChoice ?
                   <div>
-                  {userGoldItem.LordKahosHorn >= 1 ?
+                  {userGoldItem.LordKahosHorn >= 1 || userGoldItem.TeddybearHat >= 1 || userGoldItem.Crown >= 1 || userGoldItem.Helm >= 1 || userGoldItem.PandaHat >= 1 || userGoldItem.ChefHat >= 1 || userGoldItem.SantaPoringHat >= 1 ?
                     <div>
                     {HeadGearBox.map(Equip => {
                       return(

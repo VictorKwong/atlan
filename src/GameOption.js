@@ -14,7 +14,6 @@ function GameOption(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const dispatch = useDispatch();
-    console.log('red')
     return(
       <div className="gameOptionBackground">
         <div className="gameOptionTitle">

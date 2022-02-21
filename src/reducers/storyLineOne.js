@@ -1,13 +1,41 @@
 
 const Fn = [
     {
-        name:'???',
+        name:'Maiya',
         text:'...'
     },
-    {
-        name:'???',
-        text:'Altan...'
-    },
+    // {
+    //     name:'Maiya',
+    //     text:'Altan...I`m sorry...'
+    // },
+    // {
+    //     name:'Atlan',
+    //     text:'No..Nonono!'
+    // },
+    // {
+    //     name:'?????',
+    //     text:'AhhAHAHA!! A foolish person summon me.'
+    // },
+    // {
+    //     name:'?????',
+    //     text:'Let me cleanse the world!'
+    // },
+    // {
+    //     name:'?????',
+    //     text:'...(Teleportation)'
+    // },
+    // {
+    //     name:'Atlan',
+    //     text:'Mayai!!!!!'
+    // },
+    // {
+    //     name:'Atlan',
+    //     text:'......'
+    // },
+    // {
+    //     name:'Atlan',
+    //     text:'...'
+    // },
 ]
 
 const storyLineOneReducer = (state = Fn, action) => {

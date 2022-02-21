@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { finishStoryLineOneFn, typeWritterEffectFn, GotoWorldMapFn } from './actions';
 import WorldMap from './WorldMap'
@@ -7,8 +7,14 @@ import $ from 'jquery'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
+import Baphomet from './img/Monster/Baphomet.gif'
+import BaphometAttack from './img/Monster/BaphometAttack.gif'
+import MaiyaDead from './img/Character/Movie/Maiya/MaiyaDead1.png'
+import MaiyaDying from './img/Character/Movie/Maiya/MaiyaDying.png'
+import AtlanWalk2 from './img/Character/Movie/Altan/AltanWalk2.gif'
+import AtlanFight2 from './img/Character/Movie/Altan/AltanFight2.gif'
 
-
+let Story = 0;
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const storyLineOne = useSelector(state => state.storyLineOne)
@@ -19,8 +25,6 @@ function StartMenu(){
     let i = 0;
 
     const typeWrite = () => {
-
-
       switch(true){
         // Read text
         case(i < (storyLineOne[textReadAndSpeed.count].text).length):
@@ -35,7 +39,9 @@ function StartMenu(){
         case(i === (storyLineOne[textReadAndSpeed.count].text).length):
           console.log(storyLineOne.length);
           $('.nextLine').prop("disabled", false);
-          return ;
+          return null;
+        default:
+          return null;
         }
 
       }
@@ -45,52 +51,34 @@ function StartMenu(){
       const nextLine = () => {
         $('.nextLine').prop("disabled", true);
         $('.storySpeech').html('');
-        $('.storyCharacter').html(`${storyLineOne[textReadAndSpeed.count].name}`)
+        $('.storyCharacterOne').html(`${storyLineOne[textReadAndSpeed.count].name}`)
         setTimeout(() => {typeWrite()}, 0);
         dispatch(typeWritterEffectFn());
+        Story = Story + 1;
       }
 
-    // window.onclick = (e) =>{
-    //     e.preventDefault();
-    //     $('.storySpeech').html('');
-    //     $('.storyCharacter').html(`${storyLineOne[textReadAndSpeed.count].name}`)
-    //     // *minor fix
-    //     setTimeout(() => {test()}, 0);
-    //     i = 0;
-    //     dispatch(typeWritterEffectFn());
 
-    //     console.log('Here')
-    //     // dispatch(resetTypeWritterEffectFn());
-    //   };
 
-    
-    useEffect(() => {
-        document.addEventListener('keypress', (e) => {
-            e.preventDefault();
-            console.log(e.code)
-            console.log(`this is ${e.key}`)
-            //KeyZ
-        })
-    }, [])
 
     return(
       <div>
         {screenControlRoom.storyLineOne ? <WorldMap  /> :
-        <div>
-          <div className="storyScreen">
-            <h1>Screen</h1>
+        <div className={Story >= 7 ? "storyScreenStoryfadeOut storyScreenStoryLineBackground" : "storyScreenStoryLineBackground"}>
+          <div className="storyScreenStoryLineOne">
+            { Story === 0 ? <img src={BaphometAttack} alt="BaphometAttack" className="StoryImgFlip StoryImgMonster" /> : Story >= 6 ? null : <img src={Baphomet} alt="Baphomet" className="StoryImgFlip StoryImgMonster"/>}
+            { Story === 0 ? <img src={MaiyaDying} alt="MaiyaDying" className="StoryImgChar"/> : <img src={MaiyaDead} alt="MaiyaDead" className={ Story === 8 ? "StoryImgCharDead StoryImgCharfadeOne" : Story === 9 ? "StoryImgCharDead StoryImgCharfadeTwo" : "StoryImgCharDead"} />}
+            { Story === 7 || Story === 8 || Story ===  9 ? <img src={AtlanWalk2} alt="AtlanWalk" className={ Story === 8 ? "StoryImgChar StoryImgCharfadeOne" : Story === 9 ? "StoryImgChar StoryImgCharfadeTwo" : "StoryImgChar"}/> : <img src={AtlanFight2} alt="AtlanFight" className="StoryImgChar" />}
           </div>
           <fieldset className="storyChat">
-          <legend className="storyCharacter">???</legend>
+          <legend className="storyCharacterOne">???</legend>
           <p className="storySpeech">......</p>
             { (storyLineOne.length === textReadAndSpeed.count) ?
               <div>
-                <button className="nextLine" onClick={() => {dispatch(finishStoryLineOneFn()); dispatch(GotoWorldMapFn());}}>Continue</button>
+                <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(finishStoryLineOneFn()); dispatch(GotoWorldMapFn());}}>Continue</button>
               </div>
-            :
-            <div>
-              <button className="nextLine" onClick={() => nextLine()}>Next</button>
-            </div>
+            : <div>
+                <button className="nextLine StoryButton StoryButtonPositon" onClick={() => nextLine()}>Next</button>
+              </div>
             }
         
           </fieldset>

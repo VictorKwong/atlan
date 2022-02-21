@@ -48,7 +48,7 @@ function StartMenu(){
     const dispatch = useDispatch();
     return(
       <div className="AltanEquipmentMap">
-        <h2>Equipment</h2>
+        <h2 className="altanEquipTitle">Equipment</h2>
         {userStats.userHeadGear === "Lord Kaho`s Horn" ? <img src={UserStand_LordKahosHorn} alt="UserStand_LordKahosHorn" /> : 
         userStats.userHeadGear === "Teddybear Hat" ? <img src={UserStand_TeddybearHat} alt="UserStand_TeddybearHat" /> :
         userStats.userHeadGear === "Crown" ? <img src={UserStand_Crown} alt="UserStand_Crown" /> :
