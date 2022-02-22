@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn} from './actions';
-import $ from 'jquery'
 //ITEM
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 
-import './css/mapAltanEquipment.css'
+import './css/mapAltanItem.css'
 // import useSound from 'use-sound';
 //WEAPON
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -104,29 +103,38 @@ function StartMenu(){
 
     const dispatch = useDispatch();
     return(
-      <div className="AltanEquipmentMap">
-        <h2>Inventory</h2>
-        <button className="itemChoice" onClick={() => dispatch(GotoItemChoiceFn())}>item</button>
-        <button className="weaponChoice" onClick={() => dispatch(GotoEquipChoiceFn())}>equip</button>
-        <button className="armorChoice" onClick={() => dispatch(GotoETCChoiceFn())}>etc</button>
+      <div className="AltanItemMap">
+        <h2 className="altanItemTitle">Inventory</h2>
+        <button className={screenControlRoom.ItemChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoItemChoiceFn())}>item</button>
+        <button className={screenControlRoom.EquipChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoEquipChoiceFn())}>equip</button>
+        <button className={screenControlRoom.ETCChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoETCChoiceFn())}>etc</button>
         {screenControlRoom.ItemChoice ?
-          <div>
+          <div className="itemBoxDisplay">
               {ItemBox.map(Item => {
                 return( 
-                  <div key={Item.id}>
-                    {Item.itemCheck >= 1 ? <button onClick={() => dispatch((Item.useItem))}>{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</button> : null}
-                  </div>
+                  <span key={Item.id}>
+                    {Item.itemCheck >= 1 ? <button className="altanItemButton altanItemButtonFix" onClick={() => dispatch((Item.useItem))}>
+                      <div className="adjImgCenterBox">
+                        <p className="adjImgCenter">{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</p>
+                      </div>
+                      </button> : null}
+                  </span>
                 )})}
             {/* {userGoldItem.RedPotion >= 1 ? <button onClick={() => dispatch(UseRedPotionFn())}><img src={RedPotion} alt="RedPotion" /> RedPotion x{userGoldItem.RedPotion}</button> : null}
             {userGoldItem.YellowPotion >= 1 ? <button onClick={() => dispatch(UseYellowPotionFn())}><img src={YellowPotion} alt="YellowPotion" /> YellowPotion x{userGoldItem.YellowPotion}</button> : null } */}
           </div>: null }
         {screenControlRoom.EquipChoice ?
-          <div>
+          <div className="equipBoxDisplay">
             {EquipBox.map(Equip => {
                 return( 
-                  <div key={Equip.id}>
-                    {Equip.itemCheck >= 1 ? <p>{Equip.itemCheck}x <img src={Equip.Img} alt={Equip.name} /> {Equip.name}</p> : null}
-                  </div>
+                  <span key={Equip.id}>
+                    {Equip.itemCheck >= 1 ? 
+                    <button className="equipDisplayList">
+                      <div className="adjImgCenterBoxEquip">
+                        <p className="adjImgCenterEquip">{Equip.itemCheck}x <img src={Equip.Img} alt={Equip.name} /> {Equip.name}</p> 
+                      </div>
+                    </button>: null}
+                  </span>
                 )})}
             {/* {userGoldItem.Katana >= 1 ? <p><img src={Katana} alt="Katana" />x{userGoldItem.Katana} Katana</p> : null}
             {userGoldItem.BastardSword >= 1 ? <p><img src={BastardSword} alt="BastardSword" />x{userGoldItem.BastardSword} BastardSword </p> : null}
@@ -142,15 +150,22 @@ function StartMenu(){
             {userGoldItem.FullPlate >= 1 ? <p><img src={FullPlate} alt="FullPlate" />x{userGoldItem.FullPlate} FullPlate</p> : null} */}
           </div> : null }
         {screenControlRoom.ETCChoice ?
-          <div>
+          <div className="etcBoxDisplay">
               {EtcBox.map(Etc => {
                 return( 
-                  <div key={Etc.id}>
-                    {Etc.itemCheck >= 1 ? <p>{Etc.itemCheck}x <img src={Etc.Img} alt={Etc.name} />{Etc.name}</p> : null}
-                  </div>
+                  <span key={Etc.id}>
+                    {Etc.itemCheck >= 1 ? 
+                      <button className="equipDisplayList">
+                        <div className="adjImgCenterBoxEquip">
+                          <p className="adjImgCenterEquip">{Etc.itemCheck}x <img src={Etc.Img} alt={Etc.name} />{Etc.name}</p>
+                        </div>
+                      </button> : null}
+                  </span>
                 )})}
           </div> : null }
-        <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanItemFn());}}>back</button>
+        <div className="itemBackPosition">
+          <button className="altanItemButton itemBackButtonPosition" onClick={() =>{dispatch(GotoAltanItemFn());}}>back</button>
+        </div>
       </div>
     );
 }

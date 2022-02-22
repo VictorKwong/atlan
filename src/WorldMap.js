@@ -114,10 +114,14 @@ function StartMenu(){
 
               <div className="StoryMap">
                 <h3 className="mapTitle storyScreen">World Map</h3>
-                  <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
-                  <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
-                  <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
-                  <button className="AntHellTest" >Another</button>
+                {/* click x trigger hover */}
+                <button className="ReturnHUDBugFix"></button>
+                <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
+                <button className="AntHellTest" >Another</button>
+                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
+                <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
+                
+                  
               </div>
             }
             <div className="StoryHUD">
@@ -164,10 +168,16 @@ function StartMenu(){
               <div>
                 {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>
+                    <p className="chatDescriptTitle">Weapon Bag</p>
                   {WeaponGearBox.map(Equip => {
                     return(
                       <span key={Equip.id}>
-                        {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
+                        {Equip.num >= 1 ? 
+                        <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                          <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                          </div>
+                        </button> : null}
                       </span>
                     )
                   })}
@@ -179,10 +189,16 @@ function StartMenu(){
               <div>
               {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
                 <div>
+                  <p className="chatDescriptTitle">Armor Bag</p>
                 {ArmorGearBox.map(Equip => {
                   return(
                     <span key={Equip.id}>
-                      {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
                     </span>
                   )
                 })}
@@ -192,12 +208,18 @@ function StartMenu(){
             {/* HEADGEAR */}
             {screenControlRoom.HeadGearEquipmentChoice ?
               <div>
+                <p className="chatDescriptTitle">Head Gear Bag</p>
               {userGoldItem.LordKahosHorn >= 1 || userGoldItem.TeddybearHat >= 1 || userGoldItem.Crown >= 1 || userGoldItem.Helm >= 1 || userGoldItem.PandaHat >= 1 || userGoldItem.ChefHat >= 1 || userGoldItem.SantaPoringHat >= 1 ?
                 <div>
                 {HeadGearBox.map(Equip => {
                   return(
                     <span key={Equip.id}>
-                      {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
                     </span>
                   )
                 })}

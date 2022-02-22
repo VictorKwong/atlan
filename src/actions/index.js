@@ -761,42 +761,49 @@ export const SantaPoringHatFn = (Zeny,Item) => {
     };
 };
 //ITEMS USEAGE
-export const UseRedPotionFn = () => {
+export const UseRedPotionFn = (vit) => {
     return {
-        type: 'UseRedPotionFn'
+        type: 'UseRedPotionFn',
+        Vit:vit
     };
 };
-export const UseOrangePotionFn = () => {
+export const UseOrangePotionFn = (vit) => {
     return {
-        type: 'UseOrangePotionFn'
+        type: 'UseOrangePotionFn',
+        Vit:vit
     };
 };
-export const UseYellowPotionFn = () => {
+export const UseYellowPotionFn = (vit) => {
     return {
-        type: 'UseYellowPotionFn'
+        type: 'UseYellowPotionFn',
+        Vit:vit
     };
 };
-export const UseWhitePotionFn = () => {
+export const UseWhitePotionFn = (vit) => {
     return {
-        type: 'UseWhitePotionFn'
-    };
-};
-
-export const UseAnniversaryCakeFn = () => {
-    return {
-        type: 'UseAnniversaryCakeFn'
-    };
-};
-
-export const UseMastelaFruitFn = () => {
-    return {
-        type: 'UseMastelaFruitFn'
+        type: 'UseWhitePotionFn',
+        Vit:vit
     };
 };
 
-export const UseBluePotionFn = () => {
+export const UseAnniversaryCakeFn = (vit) => {
     return {
-        type: 'UseBluePotionFn'
+        type: 'UseAnniversaryCakeFn',
+        Vit:vit
+    };
+};
+
+export const UseMastelaFruitFn = (vit) => {
+    return {
+        type: 'UseMastelaFruitFn',
+        Vit:vit
+    };
+};
+
+export const UseBluePotionFn = (int) => {
+    return {
+        type: 'UseBluePotionFn',
+        Int:int
     };
 };
 
@@ -819,16 +826,18 @@ export const AGIPointsFn = (ReqPoints) => {
         ReqPoints: ReqPoints
     };
 };
-export const VITPointsFn = (ReqPoints) => {
+export const VITPointsFn = (ReqPoints,vit) => {
     return {
         type: 'VITPointsFn',
-        ReqPoints: ReqPoints
+        ReqPoints: ReqPoints,
+        Vit:vit
     };
 };
-export const INTPointsFn = (ReqPoints) => {
+export const INTPointsFn = (ReqPoints,int) => {
     return {
         type: 'INTPointsFn',
-        ReqPoints: ReqPoints
+        ReqPoints: ReqPoints,
+        Int:int
     };
 };
 export const DEXPointsFn = (ReqPoints) => {

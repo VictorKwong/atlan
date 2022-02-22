@@ -1,16 +1,16 @@
-.AltanEquipmentMap{
+.AltanItemMap{
   border: 1px solid black;
   width: 100%;
   height: 100%;
-  background: rgb(210,224,224);
-  background: -moz-radial-gradient(circle, rgba(210,224,224,1) 0%, rgba(138,229,232,1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(210,224,224,1) 0%, rgba(138,229,232,1) 100%);
-  background: radial-gradient(circle, rgba(210,224,224,1) 0%, rgba(138,229,232,1) 100%);
+  background: rgb(221,220,224);
+  background: -moz-radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(231,231,177,1) 45%, rgba(238,240,141,1) 71%, rgba(245,248,109,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(231,231,177,1) 45%, rgba(238,240,141,1) 71%, rgba(245,248,109,1) 100%);
+  background: radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(231,231,177,1) 45%, rgba(238,240,141,1) 71%, rgba(245,248,109,1) 100%);
   position: relative;
   overflow: auto;
   overflow-x: hidden;
 }
-.altanEquipTitle{
+.altanItemTitle{
   text-align: center;
   font-size: 30px;
   font-family: 'Chelsea Market', cursive;
@@ -23,42 +23,26 @@
   padding-bottom: 5px;
   border-bottom: 1px solid black;
   position: sticky;
-  top:0;
+  top: 0;
   z-index: 5;
 }
-
-.equipBox{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-bottom: 35px;
-}
-
 .descriptBox{
   display: flex;
   align-items: center;
   font-size: 20px;
   margin-bottom: 20px;
 }
-
-.ImgStandEquip{
-  width:300px;
-}
-
-.equipDescript{
-  width:50%;
-}
-
 .equipWording{
   width:100px;
   margin-right: 5px;
 }
 
-.altanEquipmentButtonFix{
+.altanItemButtonFix{
   height: 35px;
 }
 
-.adjImgCenterBox{
+.adjImgCenterBox,
+.adjImgCenterBoxEquip{
   position: relative;
   width: 100%;
   height: 100%;
@@ -75,7 +59,21 @@
   width: 100%;
 }
 
-.equipBackPosition{
+.adjImgCenterEquip{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.itemBoxDisplay,
+.equipBoxDisplay,
+.etcBoxDisplay{
+  margin-top: 20px;
+  padding-bottom: 35px;
+}
+
+
+.itemBackPosition{
   max-width: 1200px;
   width: calc(90% - 5px);
   margin: 0 auto;
@@ -83,12 +81,12 @@
   top:calc(75vh - 3rem - 29px);
 }
 
-.equipBackButtonPosition{
+.itemBackButtonPosition{
   width:80% !important;
   margin: 0px !important;
 }
 
-.altanEquipmentGearButton{
+.altanItemButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
@@ -97,14 +95,15 @@
   cursor: pointer;
   position: relative;
   font-family: 'Balsamiq Sans', cursive;
-  width: 75%;
+  width: calc(50% - 4px);
+  margin: 2px;
 }
 
-.altanEquipmentGearButton:hover{
+.altanItemButton:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
-.altanEquipmentGearButton::before{
+.altanItemButton::before{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -119,55 +118,84 @@
   opacity: 0;
 }
 
-.altanEquipmentGearButton:hover::before{
+.altanItemButton:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
+}
+
+/* Item Weapon ETC */
+.ItemSelectionButton{
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  font-family: 'Balsamiq Sans', cursive;
+  background: linear-gradient(110deg, rgba(220,220,220,1) 0%, rgba(186,219,225,1) 100%);
+  border: solid #7CAFFF 1px;
+  border-radius: 5px 5px 0 0;
+  padding: 20px;
+  text-shadow: 2px 2px 2px #657c9c;
+  margin-bottom: 10px;
+  width:33.33%;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.ItemSelctionButtonBeingSelect{
+  background: linear-gradient(0deg, rgb(235, 236, 157) 0%, rgb(247, 250, 105) 100%) !important;
+  border-bottom: none !important;
+}
+
+.ItemSelectionButton:hover{
+  text-shadow: 1px 1px 1px #657c9c;
+}
+.equipDisplayList{
+  height: 35px;
+  width: 50%;
+  font-family: 'Balsamiq Sans', cursive;
+  border: none;
+  padding: 0;
+  background: none;
 }
 
 @media (max-width: 1199px){
   .adjImgCenter{
     font-size: 16px;
   }
-  .equipWording{
-    font-size: 17px;
-  }
 }
 
 @media (max-width: 1023px){
-  .ImgStandEquip{
-    width:170px;
-  }
-  .equipWording{
-    font-size: 12px;
-    width:70px;
-  }
   .adjImgCenter{
     font-size: 13px;
   }
 }
 
 @media (max-width: 767px){
-  .equipBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  .altanItemButton{
+    width: calc(100% - 4px);
   }
-  .equipDescript{
+  .adjImgCenterEquip{
+    font-size: 13px;
+  }
+  .equipDisplayList{
     width: 100%;
-    padding: 0 20px 0;
+  }
+  .adjImgCenterEquip{
+    justify-content: center;
   }
 }
 @media (max-width: 467px){
-  .equipWording{
-    display: none;
-  }
-  .altanEquipmentGearButton{
-    width: 100%;
-  }
-  .altanEquipTitle{
+
+  .altanItemTitle{
     font-size: 20px;
   }
-  .ImgStandEquip{
-    width:200px;
+  .adjImgCenterEquip{
+    font-size: 12px;
+  }
+  .ItemSelectionButton{
+    padding: 5px;
   }
 }

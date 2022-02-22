@@ -39,9 +39,9 @@ function StartMenu(){
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
     let GotoList = [
-      {id:90001, name:userStats.userWeapon, DirectTo: GotoWeaponEquipmentChoiceFn(), Img:userStats.userWeaponImg, preload: Katana},
-      {id:90002, name:userStats.userArmor, DirectTo: GotoArmorEquipmentChoiceFn(), Img:userStats.userArmorImg, preload: CottonShirt},
-      {id:90003, name:userStats.userHeadGear, DirectTo: GotoHeadGearEquipmentChoiceFn(), Img:userStats.userHeadGearImg, preload: ''},
+      {id:90001, name:userStats.userWeapon, DirectTo: GotoWeaponEquipmentChoiceFn(), Img:userStats.userWeaponImg, preload: Katana, wordDisplay:"Weapon:"},
+      {id:90002, name:userStats.userArmor, DirectTo: GotoArmorEquipmentChoiceFn(), Img:userStats.userArmorImg, preload: CottonShirt, wordDisplay:"Armor:"},
+      {id:90003, name:userStats.userHeadGear, DirectTo: GotoHeadGearEquipmentChoiceFn(), Img:userStats.userHeadGearImg, preload: '', wordDisplay:"HeadGear:"},
     ]
 
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
@@ -49,26 +49,37 @@ function StartMenu(){
     return(
       <div className="AltanEquipmentMap">
         <h2 className="altanEquipTitle">Equipment</h2>
-        {userStats.userHeadGear === "Lord Kaho`s Horn" ? <img src={UserStand_LordKahosHorn} alt="UserStand_LordKahosHorn" /> : 
-        userStats.userHeadGear === "Teddybear Hat" ? <img src={UserStand_TeddybearHat} alt="UserStand_TeddybearHat" /> :
-        userStats.userHeadGear === "Crown" ? <img src={UserStand_Crown} alt="UserStand_Crown" /> :
-        userStats.userHeadGear === "Helm" ? <img src={UserStand_Helm} alt="UserStand_Helm" /> :
-        userStats.userHeadGear === "Panda Hat" ? <img src={UserStand_PandaHat} alt="UserStand_PandaHat" /> :
-        userStats.userHeadGear === "Chef Hat" ? <img src={UserStand_ChefHat} alt="UserStand_ChefHat" /> :
-        userStats.userHeadGear === "Santa Poring Hat" ? <img src={UserStand_SantaPoringHat} alt="UserStand_SantaPoringHat" /> : 
-        <img src={UserStandPost} alt="UserStandPost" />}
+        <div className="equipBox">
+        {userStats.userHeadGear === "Lord Kaho`s Horn" ? <img src={UserStand_LordKahosHorn} alt="UserStand_LordKahosHorn" className="ImgStandEquip"/> : 
+        userStats.userHeadGear === "Teddybear Hat" ? <img src={UserStand_TeddybearHat} alt="UserStand_TeddybearHat" className="ImgStandEquip"/> :
+        userStats.userHeadGear === "Crown" ? <img src={UserStand_Crown} alt="UserStand_Crown" className="ImgStandEquip"/> :
+        userStats.userHeadGear === "Helm" ? <img src={UserStand_Helm} alt="UserStand_Helm" className="ImgStandEquip"/> :
+        userStats.userHeadGear === "Panda Hat" ? <img src={UserStand_PandaHat} alt="UserStand_PandaHat" className="ImgStandEquip"/> :
+        userStats.userHeadGear === "Chef Hat" ? <img src={UserStand_ChefHat} alt="UserStand_ChefHat" className="ImgStandEquip"/> :
+        userStats.userHeadGear === "Santa Poring Hat" ? <img src={UserStand_SantaPoringHat} alt="UserStand_SantaPoringHat" className="ImgStandEquip"/> : 
+        <img src={UserStandPost} alt="UserStandPost" className="ImgStandEquip"/>}
 
+        <div className="equipDescript">
         {GotoList.map(Equip => {
           return(
-            <div key={Equip.id}>
-              <button value={Equip.name} onClick={() => dispatch(Equip.DirectTo)}><img src={Equip.Img === 'initial' ? Equip.preload : Equip.Img === null ? '' : Equip.Img} alt={Equip.Img === null ? '' : Equip.name} />{Equip.name === null ? `Empty` : Equip.name}</button>
+            <div key={Equip.id} className="descriptBox">
+              <p className="equipWording">{Equip.wordDisplay}</p>
+              <button value={Equip.name} onClick={() => dispatch(Equip.DirectTo)} className="altanEquipmentGearButton altanEquipmentButtonFix">
+                <div className="adjImgCenterBox">
+                    <p className="adjImgCenter"><img src={Equip.Img === 'initial' ? Equip.preload : Equip.Img === null ? '' : Equip.Img} alt={Equip.Img === null ? '' : Equip.name} />{Equip.name === null ? `Empty` : Equip.name}</p> 
+                </div>
+                </button>
             </div>
           )
         })}
+        </div>
         {/* <button className="altanChooseWeapon" value={userStats.userWeapon} onClick={() => dispatch(GotoWeaponEquipmentChoiceFn())}><img src={userStats.userWeaponImg === null ? Katana : userStats.userWeaponImg} alt={userStats.userWeapon} />{userStats.userWeapon}</button>
         <button className="altanChooseArmor" value={userStats.userArmor} onClick={() => dispatch(GotoArmorEquipmentChoiceFn())}><img src={userStats.userArmorImg === null ? CottonShirt : userStats.userArmorImg} alt={userStats.userArmor} />{userStats.userArmor}</button>
         <button className="altanChooseHeadGear" value={userStats.userArmor} onClick={() => dispatch(GotoHeadGearEquipmentChoiceFn())}><img src={userStats.userArmorImg === null ? CottonShirt : userStats.userArmorImg} alt={userStats.userArmor} />{userStats.userArmor}</button> */}
-        <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>back</button>
+        </div>
+        <div className="equipBackPosition">
+          <button className="altanEquipmentGearButton equipBackButtonPosition" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>back</button>
+        </div>
       </div>
     );
 }

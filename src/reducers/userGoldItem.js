@@ -33,12 +33,12 @@ const Fn = {
     SantaPoringHat: 1,
 
     //Etc
-    Jellopy: 0,
-    EmptyBottle: 0,
-    StickyMucus: 0,
-    Clover: 0,
-    Feather: 0,
-    GrasshoppersLeg: 0,
+    Jellopy: 1,
+    EmptyBottle: 1,
+    StickyMucus: 1,
+    Clover: 1,
+    Feather: 1,
+    GrasshoppersLeg: 1,
 
 }
 

@@ -1,0 +1,169 @@
+.AltanStatsMap{
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  background: rgb(221,220,224);
+  background: -moz-radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(212,232,178,1) 45%, rgba(205,240,144,1) 71%, rgba(198,248,109,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(212,232,178,1) 45%, rgba(205,240,144,1) 71%, rgba(198,248,109,1) 100%);
+  background: radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(212,232,178,1) 45%, rgba(205,240,144,1) 71%, rgba(198,248,109,1) 100%);
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.altanStatsTitle{
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  -webkit-text-stroke: 1px black;
+  stroke: 1px black;
+  background: rgb(207,217,230);
+  background: -moz-linear-gradient(124deg, rgba(207,217,230,1) 0%, rgba(177,194,214,1) 13%, rgba(179,201,230,1) 45%, rgba(150,176,209,1) 71%, rgba(158,191,235,1) 100%);
+  background: -webkit-linear-gradient(124deg, rgba(207,217,230,1) 0%, rgba(177,194,214,1) 13%, rgba(179,201,230,1) 45%, rgba(150,176,209,1) 71%, rgba(158,191,235,1) 100%);
+  background: linear-gradient(124deg, rgba(207,217,230,1) 0%, rgba(177,194,214,1) 13%, rgba(179,201,230,1) 45%, rgba(150,176,209,1) 71%, rgba(158,191,235,1) 100%);
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.statsBackButtonPosition{
+  width:80% !important;
+  margin: 0px !important;
+}
+
+.altanStatsButton{
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  cursor: pointer;
+  position: relative;
+  font-family: 'Balsamiq Sans', cursive;
+  font-size: 20px;
+}
+
+.altanStatsButton:hover{
+  text-shadow: 1px 1px 1px #657c9c;
+}
+/* sadasdsad */
+.statsBox{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.statsDescript{
+  width:50%;
+  display: grid;
+  grid-template-columns: 40px 20px 30px 20px;
+  grid-template-rows: repeat(6, 25px);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  justify-content: center;
+}
+.statsBackPosition{
+  max-width: 1200px;
+  width: calc(90% - 5px);
+  margin: 0 auto;
+  position: fixed;  
+  top:calc(75vh - 3rem - 29px);
+}
+
+.str1 { grid-area: 1 / 1 / 2 / 2; }
+.str2 { grid-area: 1 / 2 / 2 / 3; }
+.str3 { grid-area: 1 / 3 / 2 / 4; }
+.str4 { grid-area: 1 / 4 / 2 / 5; }
+.agi5 { grid-area: 2 / 1 / 3 / 2; }
+.agi6 { grid-area: 2 / 2 / 3 / 3; }
+.agi7 { grid-area: 2 / 3 / 3 / 4; }
+.agi8 { grid-area: 2 / 4 / 3 / 5; }
+.vit9 { grid-area: 3 / 1 / 4 / 2; }
+.vit10 { grid-area: 3 / 2 / 4 / 3; }
+.vit11 { grid-area: 3 / 3 / 4 / 4; }
+.vit12 { grid-area: 3 / 4 / 4 / 5; }
+.int13 { grid-area: 4 / 1 / 5 / 2; }
+.int14 { grid-area: 4 / 2 / 5 / 3; }
+.int15 { grid-area: 4 / 3 / 5 / 4; }
+.int16 { grid-area: 4 / 4 / 5 / 5; }
+.dex17 { grid-area: 5 / 1 / 6 / 2; }
+.dex18 { grid-area: 5 / 2 / 6 / 3; }
+.dex19 { grid-area: 5 / 3 / 6 / 4; }
+.dex20 { grid-area: 5 / 4 / 6 / 5; }
+.luk21 { grid-area: 6 / 1 / 7 / 2; }
+.luk22 { grid-area: 6 / 2 / 7 / 3; }
+.luk23 { grid-area: 6 / 3 / 7 / 4; }
+.luk24 { grid-area: 6 / 4 / 7 / 5; }
+.stats25 { 
+  grid-area: 7 / 1 / 8 / 5; 
+  margin: 30px 0 30px;
+}
+
+.str1,.str2,.str4,
+.agi5,.agi6,.agi8,
+.vit9,.vit10,.vit12,
+.int13,.int14,.int16,
+.dex17,.dex18,.dex20,
+.luk21,.luk22,.luk24{
+  display: flex;
+  align-items: center;
+}
+.str4,.agi8,.vit12,.int16,.dex20,.luk24{
+  justify-content: flex-end;
+}
+
+.statsDescriptDetails{
+  display: grid;
+  grid-template-columns: 40px 100px 40px 100px;
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 5px;
+  padding-bottom: 35px;
+  justify-content: center;
+}
+
+
+.hp1 { grid-area: 1 / 1 / 2 / 2; }
+.hp2 { grid-area: 1 / 2 / 2 / 3; }
+.sp3 { grid-area: 1 / 3 / 2 / 4; }
+.sp4 { grid-area: 1 / 4 / 2 / 5; }
+.atk1 { grid-area: 2 / 1 / 3 / 2; }
+.atk2 { grid-area: 2 / 2 / 3 / 3; }
+.def3 { grid-area: 2 / 3 / 3 / 4; }
+.def4 { grid-area: 2 / 4 / 3 / 5; }
+.hit5 { grid-area: 3 / 1 / 4 / 2; }
+.hit6 { grid-area: 3 / 2 / 4 / 3; }
+.fle7 { grid-area: 3 / 3 / 4 / 4; }
+.fle8 { grid-area: 3 / 4 / 4 / 5; }
+.crit9 { grid-area: 4 / 1 / 5 / 2; }
+.crit10 { grid-area: 4 / 2 / 5 / 3; }
+.aspd11 { grid-area: 4 / 3 / 5 / 4; }
+.aspd12 { grid-area: 4 / 4 / 5 / 5; }
+
+
+
+@media (max-width: 1199px){
+
+}
+
+@media (max-width: 1023px){
+
+  .statsBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .statsDescript{
+    width: 100%;
+    padding: 0 20px 0;
+  }
+}
+@media (max-width: 467px){
+  .altanStatsTitle{
+    font-size: 20px;
+  }
+  .statsDescriptDetails{
+    grid-template-columns: 35px 75px 35px 75px;
+    font-size: 13px;
+  }
+}

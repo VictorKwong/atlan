@@ -7,7 +7,6 @@ const Fn = {
     maxSP: 50,
     currentSP: 50,
     attack: 25,
-    power: 10,
     defence: 18,
     defencebuffer: 38, // 18 + 20
     speed: 10,
@@ -24,6 +23,14 @@ const Fn = {
     userHeadGear: null,
     userHeadGearImg: null,
     BaseHeadGearDef: 0,
+    //Reset
+    BasemaxHealth: 150,
+    BasemaxSP: 50,
+    Baseattack: 25,
+    Basedefence: 18,
+    Basedefencebuffer: 38,
+    Basespeed: 10
+
 }
 
 const userStatsReducer = (state = Fn, action) => {
@@ -83,10 +90,69 @@ const userStatsReducer = (state = Fn, action) => {
                 maxSP: state.maxSP + 25,
                 currentSP: state.maxSP + 25,
                 attack: state.attack + 15,
-                power: state.power + 10,
                 defence: state.defence + 8,
                 defencebuffer: state.defencebuffer + 8, 
-                speed: state.speed + (state.Level),
+                speed: state.speed + 0.2,
+                //Track
+                BasemaxHealth: state.BasemaxHealth + 40,
+                BasemaxSP: state.BasemaxSP + 25,
+                Baseattack: state.Baseattack + 15,
+                Basedefence: state.Basedefence + 8,
+                Basedefencebuffer: state.Basedefencebuffer + 8, 
+                Basespeed: state.Basespeed + 0.2,
+            }
+        //Stats Upgrade
+        case 'STRPointsFn':
+            return {
+                ...state,
+                attack: state.attack + 1,
+            }
+        case 'AGIPointsFn':
+            return {
+                ...state,
+                speed: state.speed + 0.2,
+                dodgeRate: state.dodgeRate + 0.01,
+            }
+        case 'VITPointsFn':
+            return {
+                ...state,
+                maxHealth: Math.floor(state.BasemaxHealth * (1 + action.Vit *0.01 + 0.01)),
+                defence: state.defence + 0.5,
+                defencebuffer: state.defencebuffer + 1,
+            }
+        case 'INTPointsFn':
+            return {
+                ...state,
+                maxSP: Math.floor(state.BasemaxSP * (1 + action.Int *0.01 + 0.01)),
+            }
+        case 'DEXPointsFn':
+            return {
+                ...state,
+                attack: state.attack + 0.2,
+                speed: state.speed + 0.1,
+                hitRate: state.hitRate + 0.01
+            }
+        case 'LUKPointsFn':
+            return {
+                ...state,
+                critRate: state.critRate + 0.03,
+                attack: state.attack + 0.5
+            } 
+        case 'ResetMyPointsFn':
+            return {
+                ...state,
+                maxHealth: state.BasemaxHealth,
+                currentHealth: state.BasemaxHealth,
+                maxSP: state.BasemaxSP,
+                currentSP: state.BasemaxSP,
+                attack: state.Baseattack,
+                defence: state.Basedefence,
+                defencebuffer: state.Basedefencebuffer,
+                speed: state.Basespeed,
+                hitRate: 0.95,
+                dodgeRate: 0.1,
+                critRate: 0.05,
+                //Track
             }
         //EQUIP STAGE
         case 'ReturnWeaponEquipmentChoiceFn':
@@ -113,10 +179,10 @@ const userStatsReducer = (state = Fn, action) => {
         //ITEMS
         case 'UseRedPotionFn':
             switch(true){
-                case ((state.currentHealth + 50) <= state.maxHealth):
+                case ((state.currentHealth + 50*(1 + action.Vit*0.02)) <= state.maxHealth):
                     return {
                         ...state,
-                        currentHealth: state.currentHealth + 50
+                        currentHealth: state.currentHealth + Math.floor(50*(1 + action.Vit*0.02))
                     }
                 default:
                     return {
@@ -126,10 +192,10 @@ const userStatsReducer = (state = Fn, action) => {
             }
         case 'UseOrangePotionFn':
             switch(true){
-                case ((state.currentHealth + 150) <= state.maxHealth):
+                case ((state.currentHealth + 150*(1 + action.Vit*0.02)) <= state.maxHealth):
                     return {
                         ...state,
-                        currentHealth: state.currentHealth + 150
+                        currentHealth: state.currentHealth + Math.floor(150*(1 + action.Vit*0.02))
                     }
                 default:
                     return {
@@ -139,10 +205,10 @@ const userStatsReducer = (state = Fn, action) => {
             }   
         case 'UseYellowPotionFn':
             switch(true){
-                case ((state.currentHealth + 400) <= state.maxHealth):
+                case ((state.currentHealth + 400*(1 + action.Vit*0.02)) <= state.maxHealth):
                     return {
                         ...state,
-                        currentHealth: state.currentHealth + 400
+                        currentHealth: state.currentHealth + Math.floor(400*(1 + action.Vit*0.02))
                     }
                 default:
                     return {
@@ -152,10 +218,10 @@ const userStatsReducer = (state = Fn, action) => {
             }
         case 'UseWhitePotionFn':
             switch(true){
-                case ((state.currentHealth + 800) <= state.maxHealth):
+                case ((state.currentHealth + 800*(1 + action.Vit*0.02)) <= state.maxHealth):
                     return {
                         ...state,
-                        currentHealth: state.currentHealth + 800
+                        currentHealth: state.currentHealth + Math.floor(800*(1 + action.Vit*0.02))
                     }
                 default:
                     return {
@@ -165,10 +231,10 @@ const userStatsReducer = (state = Fn, action) => {
             } 
         case 'UseAnniversaryCakeFn':
             switch(true){
-                case ((state.currentHealth + 1200) <= state.maxHealth):
+                case ((state.currentHealth + 1200*(1 + action.Vit*0.02)) <= state.maxHealth):
                     return {
                         ...state,
-                        currentHealth: state.currentHealth + 1200
+                        currentHealth: state.currentHealth + Math.floor(1200*(1 + action.Vit*0.02))
                     }
                 default:
                     return {
@@ -178,10 +244,10 @@ const userStatsReducer = (state = Fn, action) => {
             } 
         case 'UseMastelaFruitFn':
             switch(true){
-                case ((state.currentHealth + 2000) <= state.maxHealth):
+                case ((state.currentHealth + 2000*(1 + action.Vit*0.02)) <= state.maxHealth):
                     return {
                         ...state,
-                        currentHealth: state.currentHealth + 2000
+                        currentHealth: state.currentHealth + Math.floor(2000*(1 + action.Vit*0.02))
                     }
                 default:
                     return {
@@ -191,10 +257,10 @@ const userStatsReducer = (state = Fn, action) => {
             }
         case 'UseBluePotionFn':
             switch(true){
-                case ((state.currentSP + 2000) <= state.maxSP):
+                case ((state.currentSP + 60*(1 + action.Int*0.02)) <= state.maxSP):
                     return {
                         ...state,
-                        currentSP: state.currentSP + 60
+                        currentSP: state.currentSP + Math.floor(60*(1 + action.Int*0.02))
                     }
                 default:
                     return {

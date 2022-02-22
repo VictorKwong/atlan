@@ -604,7 +604,7 @@ function Main(){
   
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
-      Damage = Math.floor(userStats.attack +  userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack +  userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
        
@@ -685,7 +685,7 @@ function Main(){
     //COMBAT SKILLS
     const userSkillBashButton = () => {
       if (userStats.currentSP >= 40){
-      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
@@ -699,13 +699,13 @@ function Main(){
             //CRIT RATE
             switch (true) {
               case(userStats.critRate >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -719,13 +719,13 @@ function Main(){
             //CRIT RATE
             switch (true) {
               case (userStats.critRate >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defence)*2.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
@@ -750,7 +750,7 @@ function Main(){
     }
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 100){
-      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
@@ -764,13 +764,13 @@ function Main(){
             //CRIT RATE
             switch(true){
               case(userStats.critRate >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5 + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5 + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Magnum Break! Enemy Received ${Damage} damage</p>`)
                 // Rerender
@@ -783,13 +783,13 @@ function Main(){
             //CRIT RATE
             switch(true){
               case(userStats.critRate >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defence)*1.5*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5 + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defence)*3.5 + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5 + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
@@ -814,7 +814,7 @@ function Main(){
     }
     const userSkillBowlingBashButton = () => {
       if (userStats.currentSP >= 250){
-      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*5 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*5 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
@@ -828,13 +828,13 @@ function Main(){
             //CRIT RATE
             switch(true){
               case(userStats.critRate >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5 + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5 + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bowling Bash! Enemy Received ${Damage} damage</p>`)
                 // Rerender
@@ -847,13 +847,13 @@ function Main(){
             //CRIT RATE
             switch(true){
               case(userStats.critRate >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defence)*1.5*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5 + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defence)*5 + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5 + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
@@ -882,9 +882,9 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
         setTimeout(() => (Uclock = 0), 300);
-        setTimeout(() => dispatch(UseRedPotionFn()), 300);
+        setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit)), 300);
         // Text display
-        $('.storySpeech').append('<p style="color:#3fff00;">Altan use red potion! Recover 50 hp </p>')
+        $('.storySpeech').append('<p style="color:#3fff00;">Altan use red potion! Recover ' + Math.floor(50*(1+userAttribute.vit*0.02)) + ' hp </p>')
         listResult = document.getElementsByClassName('storyChat')[0];
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
@@ -897,9 +897,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseOrangePotionFn()), 300);
+      setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use orange potion! Recover 150 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use orange potion! Recover ' + Math.floor(150*(1+userAttribute.vit*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -912,9 +912,9 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
         setTimeout(() => (Uclock = 0), 300);
-        setTimeout(() => dispatch(UseYellowPotionFn()), 300);
+        setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit)), 300);
         // Text display
-        $('.storySpeech').append('<p style="color:#3fff00;">Altan use yellow potion! Recover 400 hp </p>')
+        $('.storySpeech').append('<p style="color:#3fff00;">Altan use yellow potion! Recover ' + Math.floor(400*(1+userAttribute.vit*0.02)) + ' hp </p>')
         listResult = document.getElementsByClassName('storyChat')[0];
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
@@ -927,9 +927,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseWhitePotionFn()), 300);
+      setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use white potion! Recover 800 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use white potion!Recover ' + Math.floor(800*(1+userAttribute.vit*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -942,9 +942,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseAnniversaryCakeFn()), 300);
+      setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use anniversary cake! Recover 1200 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use anniversary cake! Recover ' + Math.floor(1200*(1+userAttribute.vit*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -957,9 +957,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseMastelaFruitFn()), 300);
+      setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use mastela fruit! Recover 2000 hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use mastela fruit! Recover ' + Math.floor(2000*(1+userAttribute.vit*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -972,9 +972,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseBluePotionFn()), 300);
+      setTimeout(() => dispatch(UseBluePotionFn(userAttribute.int)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use blue potion! Recover 60 sp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Altan use blue potion! Recover ' + Math.floor(60*(1+userAttribute.int*0.02)) + ' sp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1086,7 +1086,7 @@ function Main(){
         // *study
         (() => {
           switch (true) {
-            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed >= enemyStats[i].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
+            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) >= enemyStats[i].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
               //Reset All Block
               dispatch(ResetUserIsBlockAnimationFn());
               dispatch(ResetUserTurnBlockFn());
@@ -1099,7 +1099,7 @@ function Main(){
               listResult.scrollTop = listResult.scrollHeight;
               console.log('UserTurn is good')
               return clearInterval(ClockTurn);
-            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (userStats.speed < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
+            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
               dispatch(ResetEnemyTurnBlockFn());
               clockCheck = 1;
               dispatch(EnemyTurnFn());
@@ -1114,7 +1114,7 @@ function Main(){
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               Uclock = 1
               return clockBarObject = {
-                userClockBar: clockBarObject.userClockBar + userStats.speed,
+                userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
                 enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
               }
           }
