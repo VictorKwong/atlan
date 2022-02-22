@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.987744a8.css",
-    "main.js": "/atlan/static/js/main.67752998.js",
+    "main.css": "/atlan/static/css/main.1d4f8c61.css",
+    "main.js": "/atlan/static/js/main.50c915ff.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
     "static/media/112Streamside.mp3": "/atlan/static/media/112Streamside.0add809a90de7ff81355.mp3",
@@ -86,12 +86,12 @@
     "static/media/UserBattlePostBastardSword1_LordKahosHorn.gif": "/atlan/static/media/UserBattlePostBastardSword1_LordKahosHorn.8e209c45c1ad670b3d31.gif",
     "static/media/AltanWalk2.gif": "/atlan/static/media/AltanWalk2.a548e7ce18f30a35c30a.gif",
     "index.html": "/atlan/index.html",
-    "main.987744a8.css.map": "/atlan/static/css/main.987744a8.css.map",
-    "main.67752998.js.map": "/atlan/static/js/main.67752998.js.map",
+    "main.1d4f8c61.css.map": "/atlan/static/css/main.1d4f8c61.css.map",
+    "main.50c915ff.js.map": "/atlan/static/js/main.50c915ff.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.987744a8.css",
-    "static/js/main.67752998.js"
+    "static/css/main.1d4f8c61.css",
+    "static/js/main.50c915ff.js"
   ]
 }
