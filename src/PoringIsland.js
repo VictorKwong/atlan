@@ -142,22 +142,22 @@ function StartMenu(){
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
                 <AltanEquipment/>
-                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanEquipmentFn()); changePlaceFadeAudio();}}>x</button>
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>x</button>
               </div>:
             screenControlRoom.AltanStats ? 
               <div className="ReturnParent">
                 <AltanStats />
-                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanStatsFn()); changePlaceFadeAudio();}}>x</button>
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanStatsFn());}}>x</button>
               </div>:
             screenControlRoom.AltanItem ? 
               <div className="ReturnParent">
                 <AltanItem />
-                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanItemFn()); changePlaceFadeAudio();}}>x</button>
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanItemFn());}}>x</button>
               </div>:
             screenControlRoom.AltanQuest ?
               <div className="ReturnParent">
                 <AltanQuest /> 
-                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn()); changePlaceFadeAudio();}}>x</button>
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
 
             <div className="PoringIslandMap">
