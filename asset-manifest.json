@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.1d4f8c61.css",
-    "main.js": "/atlan/static/js/main.50c915ff.js",
+    "main.css": "/atlan/static/css/main.f3914979.css",
+    "main.js": "/atlan/static/js/main.46bc8660.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
     "static/media/112Streamside.mp3": "/atlan/static/media/112Streamside.0add809a90de7ff81355.mp3",
@@ -12,6 +12,9 @@
     "static/media/Prontera.jpg": "/atlan/static/media/Prontera.0558c4fdd784ba1f2a1a.jpg",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
     "static/media/Sound.jpg": "/atlan/static/media/Sound.fed266924496da9437f4.jpg",
+    "static/media/SmallIlsland.png": "/atlan/static/media/SmallIlsland.2f4ff29b5c22f88d75f1.png",
+    "static/media/SmallIlsland1.png": "/atlan/static/media/SmallIlsland1.c3a372d60abeb408d088.png",
+    "static/media/SmallIlsland2.jpg": "/atlan/static/media/SmallIlsland2.da0a2cece5f7c3a08fb5.jpg",
     "static/media/Grass6.png": "/atlan/static/media/Grass6.d6f30700a6f1fff5259e.png",
     "static/media/Grass5.png": "/atlan/static/media/Grass5.849dbbbb18c8fa2bf8aa.png",
     "static/media/UserAttackPostVioletFear1.gif": "/atlan/static/media/UserAttackPostVioletFear1.c8f072ad938be5ee97f9.gif",
@@ -86,12 +89,12 @@
     "static/media/UserBattlePostBastardSword1_LordKahosHorn.gif": "/atlan/static/media/UserBattlePostBastardSword1_LordKahosHorn.8e209c45c1ad670b3d31.gif",
     "static/media/AltanWalk2.gif": "/atlan/static/media/AltanWalk2.a548e7ce18f30a35c30a.gif",
     "index.html": "/atlan/index.html",
-    "main.1d4f8c61.css.map": "/atlan/static/css/main.1d4f8c61.css.map",
-    "main.50c915ff.js.map": "/atlan/static/js/main.50c915ff.js.map",
+    "main.f3914979.css.map": "/atlan/static/css/main.f3914979.css.map",
+    "main.46bc8660.js.map": "/atlan/static/js/main.46bc8660.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d4f8c61.css",
-    "static/js/main.50c915ff.js"
+    "static/css/main.f3914979.css",
+    "static/js/main.46bc8660.js"
   ]
 }
