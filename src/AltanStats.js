@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanStatsFn } from './actions';
-import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn} from './actions'
-import $ from 'jquery'
 import './css/mapAltanStats.css'
 // import useSound from 'use-sound';
 
@@ -17,10 +15,7 @@ import UserStand_PandaHat from './img/Character/UserStand_PandaHat.png'
 import UserStand_ChefHat from './img/Character/UserStand_ChefHat.png'
 import UserStand_SantaPoringHat from './img/Character/UserStand_SantaPoringHat.png'
 
-// AudioCurrentTimeSaverFn
 function StartMenu(){
-  
-    console.log('rerender')
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)

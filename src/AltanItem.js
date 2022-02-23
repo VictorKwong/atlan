@@ -44,9 +44,7 @@ import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
 import Clover from './img/Etc/Lunatic_Clover65.gif'
 import Feather from './img/Etc/Lunatic_Feather10.gif'
 
-// AudioCurrentTimeSaverFn
 function StartMenu(){
-    console.log('rerender')
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)

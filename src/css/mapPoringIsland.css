@@ -12,6 +12,27 @@
   height: 25vh;
 }
 
+.PoringIslandMapBackground{
+  background-image: url('../img/Background/PoringIsland.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.PoringIslandMapTitle{
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  color: rgb(23, 218, 23);
+  -webkit-text-stroke: 0.8px rgb(48, 48, 48);
+  stroke: 0.8px rgb(48, 48, 48);
+  animation-name: fadeOutMapName;
+  animation-duration: 3s;
+  opacity: 0;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+}
+
 .PoringIslandMap{
   width:80%;
   border: 1px solid black;
@@ -20,6 +41,66 @@
   grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  position: relative;
+}
+
+.WorldMap::before,
+.SmallIsland::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-image: url('../img/Background/WorldMap.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.3s ease-in-out;
+  border: solid #7CAFFF 1px;
+}
+.WorldMap:hover::before,
+.SmallIsland:hover::before{
+  opacity: 1;
+  background-image: url('../img/Background/WorldMap.jpg');
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.3s ease-in-out;
+  border: 1px solid rgb(23, 218, 23);
+  cursor: pointer;
+}
+.SmallIsland::before{
+  background-image: url('../img/Background/SmallIlsland.png');
+}
+.SmallIsland:hover::before{
+  background-image: url('../img/Background/SmallIlsland.png');
+}
+.SmallIsland1::before{
+  background-image: url('../img/Background/SmallIlsland1.png');
+}
+.SmallIsland1:hover::before{
+  background-image: url('../img/Background/SmallIlsland1.png');
+}
+.SmallIsland2::before{
+  background-image: url('../img/Background/SmallIlsland2.jpg');
+}
+.SmallIsland2:hover::before{
+  background-image: url('../img/Background/SmallIlsland2.jpg');
+}
+
+
+
+.WorldMap,
+.SmallIsland{
+  position: relative;
+  font-family: 'Pangolin', cursive;
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(144, 166, 212) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
 }
 
 .StoryHUD{
@@ -40,5 +121,5 @@
 }
 
 
-.toWorldMap { grid-area: 4 / 1 / 5 / 2; }
-.smallIsland { grid-area: 4 / 4 / 5 / 5; }
+.WorldMap { grid-area: 4 / 1 / 5 / 2; }
+.SmallIsland { grid-area: 4 / 4 / 5 / 5; }

@@ -137,7 +137,7 @@ function StartMenu(){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div>
+        <div className="PoringIslandMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -161,9 +161,9 @@ function StartMenu(){
               </div>:
 
             <div className="PoringIslandMap">
-              <h3>Poring Island</h3>
-              <button className="toWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
-              <button className="smallIsland" onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
+              <h3 className="PoringIslandMapTitle storyScreen">Poring Island</h3>
+              <button className="WorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
+              <button className={Math.random() <= 0.33 ? "SmallIsland SmallIsland1": Math.random() <= 0.33 ? "SmallIsland SmallIsland2" : "SmallIsland"} onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
             </div>
             }
             <div className="StoryHUD">
@@ -204,24 +204,71 @@ function StartMenu(){
           </div>
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
-          <p className="storySpeech">TestMap</p>
-
-          {/* WEAPONS */}
-           {screenControlRoom.WeaponEquipmentChoice ? 
+          <p className="storySpeech"></p>
+          <p className="storySpeech"></p>
+            {/* WEAPONS */}
+            {screenControlRoom.WeaponEquipmentChoice ? 
+              <div>
+                {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>
-                    {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
-                      <div>
-                      {WeaponGearBox.map(Equip => {
-                        return(
-                          <span key={Equip.id}>
-                            {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
-                          </span>
-                        )
-                      })}
-                      </div>
-                    : <p>Empty WeaponGear Storage T^T</p>}
-                  </div> 
-                  : null} 
+                    <p className="chatDescriptTitle">Weapon Bag</p>
+                  {WeaponGearBox.map(Equip => {
+                    return(
+                      <span key={Equip.id}>
+                        {Equip.num >= 1 ? 
+                        <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                          <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                          </div>
+                        </button> : null}
+                      </span>
+                    )
+                  })}
+                  </div>
+                : <p>Empty WeaponGear Storage T^T</p>}
+              </div> : null} 
+            {/* ARMOR */}
+            {screenControlRoom.ArmorEquipmentChoice ?
+              <div>
+              {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
+                <div>
+                  <p className="chatDescriptTitle">Armor Bag</p>
+                {ArmorGearBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty ArmorGear Storage T^T</p>}
+              </div> : null}
+            {/* HEADGEAR */}
+            {screenControlRoom.HeadGearEquipmentChoice ?
+              <div>
+                <p className="chatDescriptTitle">Head Gear Bag</p>
+              {userGoldItem.LordKahosHorn >= 1 || userGoldItem.TeddybearHat >= 1 || userGoldItem.Crown >= 1 || userGoldItem.Helm >= 1 || userGoldItem.PandaHat >= 1 || userGoldItem.ChefHat >= 1 || userGoldItem.SantaPoringHat >= 1 ?
+                <div>
+                {HeadGearBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty HeadGear Storage T^T</p>}
+              </div> : null}
                 {/* <div>
                   {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>
@@ -235,22 +282,6 @@ function StartMenu(){
                   : <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>}
                 </div> 
             : null} */}
-          {/* ARMOR */}
-            {screenControlRoom.ArmorEquipmentChoice ?
-                  <div>
-                  {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
-                    <div>
-                    {ArmorGearBox.map(Equip => {
-                      return(
-                        <span key={Equip.id}>
-                          {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
-                        </span>
-                      )
-                    })}
-                    </div>
-                  : <p>Empty ArmorGear Storage T^T</p>}
-                </div> 
-                : null}
                  {/* <div>
                  {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
                  <div>
@@ -265,22 +296,6 @@ function StartMenu(){
                  : <p>Empty Armor Storage T^T</p>}
                </div> 
            : null} */}
-          {/* HEADGEAR */}
-            {screenControlRoom.HeadGearEquipmentChoice ?
-                  <div>
-                  {userGoldItem.LordKahosHorn >= 1 || userGoldItem.TeddybearHat >= 1 || userGoldItem.Crown >= 1 || userGoldItem.Helm >= 1 || userGoldItem.PandaHat >= 1 || userGoldItem.ChefHat >= 1 || userGoldItem.SantaPoringHat >= 1 ?
-                    <div>
-                    {HeadGearBox.map(Equip => {
-                      return(
-                        <span key={Equip.id}>
-                          {Equip.num >= 1 ? <button onClick={() => {dispatch(Equip.EquipItem)}}><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</button> : null}
-                        </span>
-                      )
-                    })}
-                    </div>
-                  : <p>Empty HeadGear Storage T^T</p>}
-                </div> 
-              : null}
           </fieldset>
         </div>
         }

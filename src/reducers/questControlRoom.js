@@ -2,6 +2,8 @@ const Fn = {
     //Kill 3 Poring 500z +20exp
     //1. Kill 3 Poring 500z +20exp
     //2. Kill 3 Lunatic +1000z +60xp
+    //{ num: "123456" }
+    // -1 reuturns nothing, >= 0 good returns
     ClearPoringQuest: false,
     CompleteClearPoringQuest: false,
     QuestDialog: "",

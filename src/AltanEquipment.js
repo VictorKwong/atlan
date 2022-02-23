@@ -2,8 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanEquipmentFn } from './actions';
 import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn, GotoHeadGearEquipmentChoiceFn} from './actions'
-import $ from 'jquery'
-import Prontera from './Prontera'
 import './css/mapAltanEquipment.css'
 // import useSound from 'use-sound';
 
@@ -26,9 +24,7 @@ import UserStand_SantaPoringHat from './img/Character/UserStand_SantaPoringHat.p
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import CottonShirt from './img/Equipment/Armor/CottonShirt.gif'
 
-// AudioCurrentTimeSaverFn
 function StartMenu(){
-    console.log('rerender')
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
