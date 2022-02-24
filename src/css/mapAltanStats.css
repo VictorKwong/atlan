@@ -28,7 +28,7 @@
 }
 
 .statsBackButtonPosition{
-  width:80% !important;
+  width:calc(80% - 3px) !important;
   margin: 0px !important;
 }
 
@@ -46,6 +46,27 @@
 .altanStatsButton:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
+
+.statsBackButtonPosition::before{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 100%;
+  height: 0px;
+  border-top: 7px solid transparent;  
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid #764abc;
+  content: '';
+  transition: all 0.1s;
+  transform: translate3d(0,-50%,0) scale3d(0,0,1);
+  opacity: 0;
+}
+
+.statsBackButtonPosition:hover::before{
+  transform: translate3d(0,-50%,0) scale3d(1,1,1);
+  opacity: 1;
+}
+
 /* sadasdsad */
 .statsBox{
   display: flex;
@@ -64,7 +85,7 @@
 }
 .statsBackPosition{
   max-width: 1200px;
-  width: calc(90% - 5px);
+  width: 90%;
   margin: 0 auto;
   position: fixed;  
   top:calc(75vh - 3rem - 29px);

@@ -31,6 +31,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ArmorDealer: false,
                 HeadGearDealer: false,
                 ToolDealer: false,
+                KafraEmployeeHealState: false,
 
             }
         case 'TalktoFountainFn':

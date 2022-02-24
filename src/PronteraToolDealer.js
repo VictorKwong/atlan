@@ -5,7 +5,7 @@ import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, Anniversar
 
 import './css/mapPronteraToolDealer.css'
 import $ from 'jquery'
-import Prontera from './Prontera'
+
 import RedPotion from './img/Item/RedPotion.gif'
 import OrangePotion from './img/Item/OrangePotion.gif'
 import YellowPotion from './img/Item/YellowPotion.gif'
@@ -53,10 +53,8 @@ function StartMenu(){
       {id:100007,cost: 3200, Get:YggdrasilBerryFn(3200,-1), Img: YggdrasilBerry, name: "Yggdrasil Berry", Item: userGoldItem.YggdrasilBerry},
     ]
     return(
-        <div>
-          <div className="storyMapScreen">
-            <div>
-            <p>Tool Shop</p>
+        <div className="toolDealerMap">
+            <p className="toolDealerTitle">Tool Shop</p>
               {npcControlRoom.DealerBuy ?
                 <div>
                   {/* 1.Zeny, 2.Buy or sell */}
@@ -79,8 +77,6 @@ function StartMenu(){
                       )
                   })}
                 </div> : null}
-            </div>  
-          </div>
         </div>
     );
 

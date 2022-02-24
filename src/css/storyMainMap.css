@@ -1,5 +1,5 @@
 .storyScreen,
-.storyChat{
+.storySpeech{
   text-align: center;
 }
 
@@ -131,7 +131,10 @@
 .altanEquipment,
 .altanItems,
 .altanStats,
-.altanQuest{
+.altanQuest,
+.questBoardItems,
+.kafraEmployeeHeal,
+.fountainResetPoint{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
@@ -143,17 +146,30 @@
   font-family: 'Balsamiq Sans', cursive;
 }
 
+.questBoardItems,
+.kafraEmployeeHeal,
+.fountainResetPoint{
+  width: 80%;
+  margin: 10px 0 10px;
+}
+
 .altanEquipment:hover,
 .altanItems:hover,
 .altanStats:hover,
-.altanQuest:hover{
+.altanQuest:hover,
+.questBoardItems:hover,
+.kafraEmployeeHeal:hover,
+.fountainResetPoint:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
 .altanEquipment::before,
 .altanItems::before,
 .altanStats::before,
-.altanQuest::before{
+.altanQuest::before,
+.questBoardItems::before,
+.kafraEmployeeHeal::before,
+.fountainResetPoint::before{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -172,7 +188,10 @@
 .altanEquipment:hover::before,
 .altanItems:hover::before,
 .altanStats:hover::before,
-.altanQuest:hover::before{
+.altanQuest:hover::before,
+.questBoardItems:hover::before,
+.kafraEmployeeHeal:hover::before,
+.fountainResetPoint:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
 }

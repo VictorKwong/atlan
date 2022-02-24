@@ -75,14 +75,14 @@
 
 .itemBackPosition{
   max-width: 1200px;
-  width: calc(90% - 5px);
+  width: 90%;
   margin: 0 auto;
   position: fixed;  
   top:calc(75vh - 3rem - 29px);
 }
 
 .itemBackButtonPosition{
-  width:80% !important;
+  width:calc(80% - 3px) !important;
   margin: 0px !important;
 }
 
