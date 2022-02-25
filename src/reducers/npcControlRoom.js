@@ -15,8 +15,9 @@ const Fn = {
     DealerBuyFailure: false,
     DealerSellSuccess: false,
     DealerSellFailure: false,
-    //Heal Fn
+    //Heal & Rest Fn
     KafraEmployeeHealState: false,
+    ResetStatsPoint: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -32,6 +33,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 HeadGearDealer: false,
                 ToolDealer: false,
                 KafraEmployeeHealState: false,
+                ResetStatsPoint: false,
 
             }
         case 'TalktoFountainFn':
@@ -170,6 +172,13 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 KafraEmployeeHealState: true,
             }
+        //RESET STATS POINT
+        case 'ResetStatsPointFn':
+            return{
+                ...state,
+                ResetStatsPoint: true,
+            }
+         
         case 'ResetDealerBuySellHealFn':
             return {
                 ...state,
@@ -180,6 +189,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerSellSuccess: false,
                 DealerSellFailure: false,
                 KafraEmployeeHealState: false,
+                ResetStatsPoint: false,
             }
 
         default:

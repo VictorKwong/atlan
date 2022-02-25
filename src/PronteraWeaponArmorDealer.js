@@ -26,6 +26,8 @@ import PaddedArmor from './img/Equipment/Armor/PaddedArmor.gif'
 import ChainMail from './img/Equipment/Armor/ChainMail.gif'
 import FullPlate from './img/Equipment/Armor/FullPlate.gif'
 
+import PronteraArmorDealerImg from './img/NPC/PronteraArmorDealer.gif'
+import PronteraWeaponDealerImg from './img/NPC/PronteraWeaponDealer.gif'
 // import useSound from 'use-sound';
 
 // AudioCurrentTimeSaverFn
@@ -414,10 +416,8 @@ function StartMenu(){
 
 
     return(
-      <div>
-        <div className="storyMapScreen">
-          <div>
-              <p>Weapon & Armor Shop</p>
+      <div className="WeaponArmorDealerMap">
+              <p className="WeaponArmorDealerTitle">Equip Shop</p>
               {/* {npcControlRoom.DealerBuy && npcControlRoom.WeaponDealer ?
                 <div>
                   <button onClick={() =>{talkToWeaponDealerBuyKatana();}}><img src={Katana} alt="Katana" />Katana -100z</button>
@@ -460,55 +460,71 @@ function StartMenu(){
                 </div>
               } */}
               {npcControlRoom.WeaponDealer && npcControlRoom.DealerBuy ?
-                <div>
+                <div className="WeaponArmorDealerGoodsBox">
                   {/* 1.Zeny, 2.Buy or sell */}
                   {/* If you have enough money, you will get item. if you don't, pass failure */}
                   {WeaponBuyBox.map(Buy => {
                       return(
-                        <div key={Buy.id}>
-                          <button onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</button>
-                        </div>
+                        <span key={Buy.id}>
+                          <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
+                            </div>
+                          </button>
+                        </span>
                       )
                   })}
                 </div>
                 : npcControlRoom.WeaponDealer && npcControlRoom.DealerSell ?
-                <div>
+                <div className="WeaponArmorDealerGoodsBox">
                   {WeaponSellBox.map(Sell => {
                       return(
-                        <div key={Sell.id}>
-                            {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
-                        </div>
+                        <span key={Sell.id}>
+                          {/* We have item, and (item name is not our equip name or item is not have one) */}
+                          {Sell.Item >= 1  && (userStats.userWeapon !== Sell.name || Sell.Item !== 1 ) ? <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix sellWeaponArmorDealerItemButton"  onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter">{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</p>
+                            </div>
+                          </button> :null}
+                        </span>
                       )
                   })}
                 </div> 
                 : npcControlRoom.ArmorDealer && npcControlRoom.DealerBuy ?
-                  <div>
+                  <div className="WeaponArmorDealerGoodsBox">
                     {/* 1.Zeny, 2.Buy or sell */}
                     {/* If you have enough money, you will get item. if you don't, pass failure */}
                     {ArmorBuyBox.map(Buy => {
                         return(
-                          <div key={Buy.id}>
-                            <button onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</button>
-                          </div>
+                          <span key={Buy.id}>
+                            <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                              <div className="adjImgCenterBox">
+                                <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
+                              </div>
+                            </button>
+                          </span>
                         )
                     })}
                   </div>
                   : npcControlRoom.ArmorDealer && npcControlRoom.DealerSell ?
-                  <div>
+                  <div className="WeaponArmorDealerGoodsBox">
                     {ArmorSellBox.map(Sell => {
                         return(
-                          <div key={Sell.id}>
-                            {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
-                          </div>
+                          <span key={Sell.id}>
+                            {/* We have item, and (item name is not our equip name or item is not have one) */}
+                            {Sell.Item >= 1  && (userStats.userArmor !== Sell.name || Sell.Item !== 1 ) ? <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix sellWeaponArmorDealerItemButton"  onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>
+                              <div className="adjImgCenterBox">
+                                <p className="adjImgCenter">{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</p>
+                              </div>
+                            </button> :null}
+                          </span>
                         )
                     })}
                   </div> 
                 :  <div className="PronteraWeaponArmorDealerMap">
-                    <button className="armorDealer" onClick={() => {dispatch(TalktoArmorDealerFn())}}>Armor Dealer</button>
-                    <button className="weaponDealer" onClick={() => {dispatch(TalktoWeaponDealerFn())}}>Weapon Dealer</button>
+                    <button className="armorDealer" onClick={() => {dispatch(TalktoArmorDealerFn())}}><img src={PronteraArmorDealerImg} alt="PronteraArmorDealer" /></button>
+                    <button className="weaponDealer" onClick={() => {dispatch(TalktoWeaponDealerFn())}}><img src={PronteraWeaponDealerImg} alt="PronteraWeaponDealer" /></button>
                   </div>}
-          </div>
-        </div>
       </div>
     );
 }

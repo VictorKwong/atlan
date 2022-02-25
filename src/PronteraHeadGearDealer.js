@@ -51,28 +51,37 @@ function StartMenu(){
       {id:90006,cost: 80, Get:SantaPoringHatFn(80,-1), Img: SantaPoringHat, name: "Santa Poring Hat", Item: userGoldItem.SantaPoringHat}
     ]
     return(
-      <div className="HeadGearDealerMap">
+      <div className={npcControlRoom.DealerBuy || npcControlRoom.DealerSell ? "HeadGearDealerMapSmile" : "HeadGearDealerMap"}>
         <p className="HeadGearDealerTitle">Head Gear Shop</p>
         
         {npcControlRoom.DealerBuy ?
-          <div>
+          <div className="headGearDealerGoodsBox">
             {/* 1.Zeny, 2.Buy or sell */}
             {/* If you have enough money, you will get item. if you don't, pass failure */}
             {HeadGearBuyBox.map(Buy => {
                 return(
-                  <div key={Buy.id}>
-                    <button onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</button>
-                  </div>
+                  <span key={Buy.id}>
+                          <button className="buyHeadGearDealerItemButton headGearDealerGoodsButtonFix"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
+                            </div>
+                          </button>
+                  </span>
                 )
             })}
           </div>
           : npcControlRoom.DealerSell ?
-          <div>
+          <div className="headGearDealerGoodsBox">
             {HeadGearSellBox.map(Sell => {
                 return(
-                  <div key={Sell.id}>
-                    {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
-                  </div>
+                  <span key={Sell.id}>
+                          {/* We have item, and (item name is not our equip name or item is not have one) */}
+                          {Sell.Item >= 1  && (userStats.userHeadGear !== Sell.name || Sell.Item !== 1 ) ? <button className="buyHeadGearDealerItemButton headGearDealerGoodsButtonFix sellHeadGearDealerItemButton"  onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter">{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</p>
+                            </div>
+                          </button> : null}
+                  </span>
                 )
             })}
           </div> : null}

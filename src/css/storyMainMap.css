@@ -140,7 +140,14 @@
 .returnToolDealerButton,
 .buyHeadGearDealerButton,
 .sellHeadGearDealerButton,
-.returnHeadGearDealerButton{
+.returnHeadGearDealerButton,
+.buyWeaponDealerButton,
+.sellWeaponDealerButton,
+.returnWeaponDealerButton,
+.buyArmorDealerButton,
+.sellArmorDealerButton,
+.returnArmorDealerButton,
+.returnWeaponArmorDealerButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
@@ -173,10 +180,31 @@
   margin: 10px;
 }   
 
+.buyWeaponDealerButton,
+.sellWeaponDealerButton,
+.returnWeaponDealerButton{
+  background: rgb(187,172,196);
+  background: -moz-linear-gradient(121deg, rgba(187,172,196,1) 0%, rgba(180,120,215,1) 41%, rgba(176,92,225,1) 71%, rgba(173,68,233,1) 100%);
+  background: -webkit-linear-gradient(121deg, rgba(187,172,196,1) 0%, rgba(180,120,215,1) 41%, rgba(176,92,225,1) 71%, rgba(173,68,233,1) 100%);
+  background: linear-gradient(121deg, rgba(187,172,196,1) 0%, rgba(180,120,215,1) 41%, rgba(176,92,225,1) 71%, rgba(173,68,233,1) 100%);
+  width:40%;
+  margin: 10px;
+}
+.buyArmorDealerButton,
+.sellArmorDealerButton,
+.returnArmorDealerButton{
+  background: rgb(195,167,191);
+  background: -moz-linear-gradient(76deg, rgba(195,167,191,1) 0%, rgba(209,130,198,1) 41%, rgba(226,87,206,1) 71%, rgba(233,68,210,1) 100%);
+  background: -webkit-linear-gradient(76deg, rgba(195,167,191,1) 0%, rgba(209,130,198,1) 41%, rgba(226,87,206,1) 71%, rgba(233,68,210,1) 100%);
+  background: linear-gradient(76deg, rgba(195,167,191,1) 0%, rgba(209,130,198,1) 41%, rgba(226,87,206,1) 71%, rgba(233,68,210,1) 100%);
+  width:40%;
+  margin: 10px;
+}
 
 .questBoardItems,
 .kafraEmployeeHeal,
-.fountainResetPoint{
+.fountainResetPoint,
+.returnWeaponArmorDealerButton{
   width: 80%;
   margin: 10px 0 10px;
 }
@@ -193,7 +221,14 @@
 .returnToolDealerButton:hover,
 .buyHeadGearDealerButton:hover,
 .sellHeadGearDealerButton:hover,
-.returnHeadGearDealerButton:hover{
+.returnHeadGearDealerButton:hover,
+.buyWeaponDealerButton:hover,
+.sellWeaponDealerButton:hover,
+.returnWeaponDealerButton:hover,
+.buyArmorDealerButton:hover,
+.sellArmorDealerButton:hover,
+.returnArmorDealerButton:hover,
+.returnWeaponArmorDealerButton:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
@@ -209,7 +244,14 @@
 .returnToolDealerButton::before,
 .buyHeadGearDealerButton::before,
 .sellHeadGearDealerButton::before,
-.returnHeadGearDealerButton::before{
+.returnHeadGearDealerButton::before,
+.buyWeaponDealerButton::before,
+.sellWeaponDealerButton::before,
+.returnWeaponDealerButton::before,
+.buyArmorDealerButton::before,
+.sellArmorDealerButton::before,
+.returnArmorDealerButton::before,
+.returnWeaponArmorDealerButton::before{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -237,7 +279,14 @@
 .returnToolDealerButton:hover::before,
 .buyHeadGearDealerButton:hover::before,
 .sellHeadGearDealerButton:hover::before,
-.returnHeadGearDealerButton:hover::before{
+.returnHeadGearDealerButton:hover::before,
+.buyWeaponDealerButton:hover::before,
+.sellWeaponDealerButton:hover::before,
+.returnWeaponDealerButton:hover::before,
+.buyArmorDealerButton:hover::before,
+.sellArmorDealerButton:hover::before,
+.returnArmorDealerButton:hover::before,
+.returnWeaponArmorDealerButton:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
 }

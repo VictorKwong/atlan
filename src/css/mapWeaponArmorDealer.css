@@ -1,15 +1,139 @@
-.storyMapScreen{
-  height: calc(75vh - 3rem);
+
+.WeaponArmorDealerMap{
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  background: url('../img/Background/WeaponArmorDealer.jpg');
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  background-size: cover;
+  background-position: center;
 }
+
+.WeaponArmorDealerTitle{
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  -webkit-text-stroke: 1px black;
+  stroke: 1px black;
+  background: rgb(222,210,198);
+  background: -moz-linear-gradient(357deg, rgb(224, 148, 67) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgb(224, 148, 67) 100%);
+  background: -webkit-linear-gradient(357deg, rgb(224, 148, 67) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgb(224, 148, 67) 100%);
+  background: linear-gradient(357deg, rgb(224, 148, 67) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgb(224, 148, 67) 100%);
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  position: sticky;
+  top:0;
+  z-index: 5;
+}
+
+.WeaponArmorDealerGoodsBox{
+  margin: 10px 0 10px;
+}
+.WeaponArmorDealerGoodsButtonFix{
+  height: 35px;
+}
+
+.buyWeaponArmorDealerItemButton{
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  width:calc(50% - 4px);
+  cursor: pointer;
+  position: relative;
+  font-family: 'Balsamiq Sans', cursive;
+  margin: 0 2px 0;
+}
+
+.sellWeaponArmorDealerItemButton{
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(229, 228, 153) 50%, rgb(206, 203, 173) 100%);
+}
+
+.buyWeaponArmorDealerItemButton{
+  margin-top: 5px;
+}
+.buyWeaponArmorDealerItemButton:hover{
+  text-shadow: 1px 1px 1px #657c9c;
+}
+
+.buyWeaponArmorDealerItemButton::before{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  /* Change 0px */
+  width: 100%;
+  height: 0px;
+  border-top: 7px solid transparent;  
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid #764abc;
+  content: '';
+  transition: all 0.1s;
+  transform: translate3d(0,-50%,0) scale3d(0,0,1);
+  opacity: 0;
+}
+
+.buyWeaponArmorDealerItemButton:hover::before{
+  transform: translate3d(0,-50%,0) scale3d(1,1,1);
+  opacity: 1;
+}
+
+.armorDealer::before,
+.weaponDealer::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.armorDealer:hover::before,
+.weaponDealer:hover::before{
+  border: solid #3c70ff 1px;
+}
+
+.armorDealer,
+.weaponDealer{
+  position: relative;
+  font-family: 'Pangolin', cursive;
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(144, 166, 212) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  cursor: pointer;
+}
+
 .PronteraWeaponArmorDealerMap{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  height: 100%;
 }
 
-.armorDealer{ grid-area: 1 / 2 / 2 / 3; }
-.weaponDealer { grid-area: 1 / 4 / 2 / 5; }
+.armorDealer{ grid-area: 2 / 1 / 3 / 2; }
+.weaponDealer { grid-area: 2 / 3 / 3 / 4; }
 
+@media (max-width: 1199px){
+
+}
+
+@media (max-width: 1023px){
+
+}
+
+@media (max-width: 767px){
+  .buyWeaponArmorDealerItemButton{
+    width:calc(100% - 4px);
+  }
+}
+@media (max-width: 467px){
+  .WeaponArmorDealerTitle{
+    font-size: 20px;
+  }
+}

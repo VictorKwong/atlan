@@ -21,7 +21,7 @@
 .PronteraMapTitle{
   font-size: 30px;
   font-family: 'Chelsea Market', cursive;
-  color: rgb(66, 177, 241);
+  color: rgb(31, 173, 255);
   -webkit-text-stroke: 0.8px rgb(48, 48, 48);
   stroke: 0.8px rgb(48, 48, 48);
   animation-name: fadeOutMapName;

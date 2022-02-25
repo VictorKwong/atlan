@@ -92,5 +92,7 @@
   }
 }
 @media (max-width: 467px){
-
+  .toolDealerTitle{
+    font-size: 20px;
+  }
 }

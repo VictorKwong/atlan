@@ -6,7 +6,7 @@ import './css/mapAltanQuest.css'
 
 const QuestBox = [
   {id: 1, num: "0", acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", totalNum: "3"},
-  {id: 2, num: "1", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", totalNum: "5test"}
+  {id: 2, num: "1", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", totalNum: "3"}
 ]
 
 function StartMenu(){

@@ -515,6 +515,12 @@ export const KafraEmployeeHealStateFn = () => {
         type: 'KafraEmployeeHealStateFn'
     };
 };
+export const ResetStatsPointFn = () => {
+    return {
+        type: 'ResetStatsPointFn'
+    };
+};
+
 
 export const DealerBuyFn = () => {
     return {
