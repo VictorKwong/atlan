@@ -120,8 +120,6 @@ function StartMenu(){
                 <button className="AntHellTest" >Another</button>
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
                 <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
-                
-                  
               </div>
             }
             <div className="StoryHUD">

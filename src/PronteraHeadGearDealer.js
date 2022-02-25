@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
 import { LordKahosHornFn , TeddybearHatFn , CrownFn , HelmFn , PandaHatFn , ChefHatFn , SantaPoringHatFn } from './actions';
 
-import './css/mapPronteraToolDealer.css'
+import './css/mapPronteraHeadGearDealer.css'
 import $ from 'jquery'
 import Prontera from './Prontera'
 import RedPotion from './img/Item/RedPotion.gif'
@@ -51,36 +51,32 @@ function StartMenu(){
       {id:90006,cost: 80, Get:SantaPoringHatFn(80,-1), Img: SantaPoringHat, name: "Santa Poring Hat", Item: userGoldItem.SantaPoringHat}
     ]
     return(
-      <div>
-        <div className="storyMapScreen">
+      <div className="HeadGearDealerMap">
+        <p className="HeadGearDealerTitle">Head Gear Shop</p>
+        
+        {npcControlRoom.DealerBuy ?
           <div>
-              <p>Head Gear Shop</p>
-              
-              {npcControlRoom.DealerBuy ?
-                <div>
-                  {/* 1.Zeny, 2.Buy or sell */}
-                  {/* If you have enough money, you will get item. if you don't, pass failure */}
-                  {HeadGearBuyBox.map(Buy => {
-                      return(
-                        <div key={Buy.id}>
-                          <button onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</button>
-                        </div>
-                      )
-                  })}
-                </div>
-                : npcControlRoom.DealerSell ?
-                <div>
-                  {HeadGearSellBox.map(Sell => {
-                      return(
-                        <div key={Sell.id}>
-                          {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
-                        </div>
-                      )
-                  })}
-                </div> : null}
-
+            {/* 1.Zeny, 2.Buy or sell */}
+            {/* If you have enough money, you will get item. if you don't, pass failure */}
+            {HeadGearBuyBox.map(Buy => {
+                return(
+                  <div key={Buy.id}>
+                    <button onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</button>
+                  </div>
+                )
+            })}
           </div>
-        </div>
+          : npcControlRoom.DealerSell ?
+          <div>
+            {HeadGearSellBox.map(Sell => {
+                return(
+                  <div key={Sell.id}>
+                    {Sell.Item >= 1 ? <button onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null}
+                  </div>
+                )
+            })}
+          </div> : null}
+
       </div>
     );
 }

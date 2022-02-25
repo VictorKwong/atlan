@@ -134,7 +134,13 @@
 .altanQuest,
 .questBoardItems,
 .kafraEmployeeHeal,
-.fountainResetPoint{
+.fountainResetPoint,
+.buyToolDealerButton,
+.sellToolDealerButton,
+.returnToolDealerButton,
+.buyHeadGearDealerButton,
+.sellHeadGearDealerButton,
+.returnHeadGearDealerButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
@@ -145,6 +151,28 @@
   position: relative;
   font-family: 'Balsamiq Sans', cursive;
 }
+
+.buyToolDealerButton,
+.sellToolDealerButton,
+.returnToolDealerButton{
+  background: rgb(222,210,198);
+  background: -moz-linear-gradient(357deg, rgba(222,210,198,1) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgba(223,189,152,1) 100%);
+  background: -webkit-linear-gradient(357deg, rgba(222,210,198,1) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgba(223,189,152,1) 100%);
+  background: linear-gradient(357deg, rgba(222,210,198,1) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgba(223,189,152,1) 100%);
+  width:40%;
+  margin: 10px;
+}   
+.buyHeadGearDealerButton,
+.sellHeadGearDealerButton,
+.returnHeadGearDealerButton{
+  background: rgb(184,198,177);
+  background: -moz-linear-gradient(278deg, rgba(184,198,177,1) 0%, rgba(168,211,147,1) 41%, rgba(153,223,117,1) 71%, rgba(141,233,93,1) 100%);
+  background: -webkit-linear-gradient(278deg, rgba(184,198,177,1) 0%, rgba(168,211,147,1) 41%, rgba(153,223,117,1) 71%, rgba(141,233,93,1) 100%);
+  background: linear-gradient(278deg, rgba(184,198,177,1) 0%, rgba(168,211,147,1) 41%, rgba(153,223,117,1) 71%, rgba(141,233,93,1) 100%);
+  width:40%;
+  margin: 10px;
+}   
+
 
 .questBoardItems,
 .kafraEmployeeHeal,
@@ -159,7 +187,13 @@
 .altanQuest:hover,
 .questBoardItems:hover,
 .kafraEmployeeHeal:hover,
-.fountainResetPoint:hover{
+.fountainResetPoint:hover,
+.buyToolDealerButton:hover,
+.sellToolDealerButton:hover,
+.returnToolDealerButton:hover,
+.buyHeadGearDealerButton:hover,
+.sellHeadGearDealerButton:hover,
+.returnHeadGearDealerButton:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
@@ -169,7 +203,13 @@
 .altanQuest::before,
 .questBoardItems::before,
 .kafraEmployeeHeal::before,
-.fountainResetPoint::before{
+.fountainResetPoint::before,
+.buyToolDealerButton::before,
+.sellToolDealerButton::before,
+.returnToolDealerButton::before,
+.buyHeadGearDealerButton::before,
+.sellHeadGearDealerButton::before,
+.returnHeadGearDealerButton::before{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -191,7 +231,13 @@
 .altanQuest:hover::before,
 .questBoardItems:hover::before,
 .kafraEmployeeHeal:hover::before,
-.fountainResetPoint:hover::before{
+.fountainResetPoint:hover::before,
+.buyToolDealerButton:hover::before,
+.sellToolDealerButton:hover::before,
+.returnToolDealerButton:hover::before,
+.buyHeadGearDealerButton:hover::before,
+.sellHeadGearDealerButton:hover::before,
+.returnHeadGearDealerButton:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
 }
