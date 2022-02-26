@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
+import {GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
+import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -129,7 +130,6 @@ function StartMenu(){
             clearInterval(fadeAudioOut);
           }
       }, 10);
-
   }
 
     return(
@@ -159,12 +159,17 @@ function StartMenu(){
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
-
+            // TREASURE MAP
+            screenControlRoom.TreasurePoringIslandMap ?
+              <div className="ReturnParent">
+                <TreasurePoringIslandMap />
+              </div>:
             <div className="PoringIslandMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="PoringIslandMapTitle storyScreen">Poring Island</h3>
               <button className="WorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
               <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1": "SmallIsland"} onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
+              <button className="TreasureBoxPoringIsland"onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>treasure box</button>
             </div>
             }
             <div className="StoryHUD">
@@ -196,10 +201,10 @@ function StartMenu(){
                 </div>
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div>
-                  <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn()); changePlaceFadeAudio();}}>Equip</button>
-                  <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn()); changePlaceFadeAudio();}}>Items</button>
-                  <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn()); changePlaceFadeAudio();}}>Stats</button>
-                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn()); changePlaceFadeAudio();}}>Quest</button>
+                  <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>Equip</button>
+                  <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
+                  <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
+                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
                 </div>
             </div>
           </div>
@@ -270,6 +275,11 @@ function StartMenu(){
                 </div>
               : <p>Empty HeadGear Storage T^T</p>}
               </div> : null}
+              {screenControlRoom.TreasurePoringIslandMap ? 
+              <div className="storyScreen">
+                <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
+              </div> : null}
+
                 {/* <div>
                   {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>

@@ -9,6 +9,8 @@ const Fn = {
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
+    //Mini Screen (TreasurePoringIsland)
+    TreasurePoringIslandMap: false,
     //Mini Screen (StoryMap)
     AltanEquipment: false,
     AltanStats: false,
@@ -243,7 +245,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: false,
                     AntHell: !state.AntHell,
                 }
-
+            //Poring Island Mini Map
+            case 'GotoTreasurePoringIslandMapFn':
+                return {
+                    ...state,
+                    TreasurePoringIslandMap: !state.TreasurePoringIslandMap,
+                }
         default:
             return state;
     }

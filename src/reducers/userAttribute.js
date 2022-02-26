@@ -84,6 +84,7 @@ const userAttributeReducer = (state = Fn, action) => {
                 Points: state.Points - action.ReqPoints
             }
         case 'UserLevelUpFn':
+        case 'GetStatsPointFn':
             return{
                 ...state,
                 Points: state.Points + action.Points,

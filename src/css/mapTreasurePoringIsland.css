@@ -1,0 +1,11 @@
+.TreasurePoringIslandMap{
+  width: 100%;
+  height: 100%;
+  background: rgb(221,220,224);
+  background: -moz-radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(231,231,177,1) 45%, rgba(238,240,141,1) 71%, rgba(245,248,109,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(231,231,177,1) 45%, rgba(238,240,141,1) 71%, rgba(245,248,109,1) 100%);
+  background: radial-gradient(circle, rgba(221,220,224,1) 0%, rgba(231,231,177,1) 45%, rgba(238,240,141,1) 71%, rgba(245,248,109,1) 100%);
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+}

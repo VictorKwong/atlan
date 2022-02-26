@@ -79,6 +79,12 @@ export const UserLevelUpFn = (Points) => {
         Points: Points
     };
 };
+export const GetStatsPointFn = (Points) => {
+    return {
+        type: 'GetStatsPointFn',
+        Points: Points
+    };
+};
 
 export const startGameFn = () => {
     return {
@@ -239,6 +245,13 @@ export const GotoBattlePoringIslandMapFn = () => {
         type: 'GotoBattlePoringIslandMapFn',
     };
 };
+export const GotoTreasurePoringIslandMapFn = () => {
+    return {
+        type: 'GotoTreasurePoringIslandMapFn',
+    };
+};
+
+
 
 export const typeWritterEffectFn = () => {
     return {
