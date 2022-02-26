@@ -46,6 +46,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ArmorDealer: false,
                 HeadGearDealer: false,
                 ToolDealer: false,
+                ResetStatsPoint: false,
             }
         case 'TalktoQuestBoardFn':
             return {
@@ -57,6 +58,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ArmorDealer: false,
                 HeadGearDealer: false,
                 ToolDealer: false,
+                ResetStatsPoint: false,
             }
         case 'ResetTalktoFn':
             return {
@@ -68,6 +70,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ArmorDealer: false,
                 HeadGearDealer: false,
                 ToolDealer: false,
+                ResetStatsPoint: false,
             }
         case 'TalktoWeaponDealerFn':
             return {
@@ -81,6 +84,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ToolDealer: false,
                 DealerBuy: false,
                 DealerSell: false,
+                ResetStatsPoint: false,
             }
         case 'TalktoArmorDealerFn':
             return {
@@ -94,6 +98,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ToolDealer: false,
                 DealerBuy: false,
                 DealerSell: false,
+                ResetStatsPoint: false,
             }
         case 'TalktoHeadGearDealerFn':
             return {
@@ -107,6 +112,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ToolDealer: false,
                 DealerBuy: false,
                 DealerSell: false,
+                ResetStatsPoint: false,
             }
         case 'TalktoToolDealerFn':
             return {
@@ -120,6 +126,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ToolDealer: true,
                 DealerBuy: false,
                 DealerSell: false,
+                ResetStatsPoint: false,
             }
         case 'DealerBuyFn':
             return {

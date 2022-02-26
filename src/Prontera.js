@@ -16,6 +16,11 @@ import { KafraEmployeeHealStateFn, ResetStatsPointFn } from'./actions';
 //Function
 import { AcceptQuestDialogFn, ReturnQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn } from './actions'
 
+//Quest Result
+import { WinResultFn, UserLevelUpFn } from './actions';
+//Win ETC Items
+import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
+
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -60,14 +65,16 @@ import Fountain from './img/NPC/Fountain.gif'
 import PronteraToolDealerImg from './img/NPC/PronteraToolDealer.gif'
 import Warp from './img/NPC/Warp.gif'
 import PronteraHeadGearDealerImg from './img/NPC/PronteraHeadGearDealer.gif'
+//SKILLS
+import skillBash from './img/Skill/sm_bash.gif'
+import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 const audioBGM = new Audio(audioThemeOfProntera);
 
-//QUEST
-const QuestBox = [
-  {id: 0, num: "0", CompleteNum: "3", acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z"},
-  {id: 1, num: "1", CompleteNum: "3", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z"}
-]
+//Chat reading
+let listResult = document.getElementsByClassName('storyChat')[0];
+
 
 function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
@@ -109,6 +116,16 @@ function StartMenu(){
       {id:9004, num:userGoldItem.PaddedArmor, EquipItem:ReturnArmorEquipmentChoiceFn("Padded Armor",PaddedArmor, 70), Img:PaddedArmor, name:"Padded Armor"},
       {id:9005, num:userGoldItem.ChainMail, EquipItem:ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80), Img:ChainMail, name:"Chain Mail"},
       {id:9006, num:userGoldItem.FullPlate, EquipItem:ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90), Img:FullPlate, name:"Full Plate"},
+    ]
+    //QUEST
+    const QuestBox = [
+      {id: 0, num: "Poring", CompleteNum: 3, acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z", exp:100, zeny:1000},
+      {id: 1, num: "Lunatic", CompleteNum: 3, acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z", exp:200, zeny:2000}
+    ]
+    //QUEST
+    const QuestItemBox = [
+      {id: 1001, num: "Jellopy", CompleteNum: 3, ItemTarget: userGoldItem.Jellopy, ReturnItem: WinJellopyFn , acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", finishName: "Submit 3 Jellopy",  finishText: "Received +150Exp +1500z", exp:150, zeny:1500},
+      {id: 1002, num: "EmptyBottle", CompleteNum: 5, ItemTarget: userGoldItem.EmptyBottle, ReturnItem: WinEmptyBottleFn , acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", finishName: "Submit 5 Empty Bottle",  finishText: "Received +200Exp +200z", exp:200, zeny:200}
     ]
 
     useEffect(() => {
@@ -158,6 +175,72 @@ function StartMenu(){
           }
       }, 10);
   }
+
+    // LEVEL FUNCTION
+    useEffect(() => {
+        //MAX Lv10
+        if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
+          (() => {
+            switch (true) {
+              case((userStats.Level + 1) <= 4):
+                return dispatch(UserLevelUpFn(3));
+              case((userStats.Level + 1) <= 9):
+                return dispatch(UserLevelUpFn(4));
+              case((userStats.Level + 1) <= 14):
+                return dispatch(UserLevelUpFn(5));           
+              case((userStats.Level + 1) <= 19):
+                return dispatch(UserLevelUpFn(6));
+              case((userStats.Level + 1) <= 24):
+                return dispatch(UserLevelUpFn(7));
+              case((userStats.Level + 1) <= 29):
+                return dispatch(UserLevelUpFn(8));
+              case((userStats.Level + 1) <= 34):
+                return dispatch(UserLevelUpFn(9));
+              case((userStats.Level + 1) <= 39):
+                return dispatch(UserLevelUpFn(10));     
+              case((userStats.Level + 1) <= 44):
+                return dispatch(UserLevelUpFn(11));
+              case((userStats.Level + 1) <= 49):
+                return dispatch(UserLevelUpFn(12));
+              case((userStats.Level + 1) <= 54):
+                return dispatch(UserLevelUpFn(13));
+              case((userStats.Level + 1) <= 59):
+                return dispatch(UserLevelUpFn(14));
+              case((userStats.Level + 1) <= 64):
+                return dispatch(UserLevelUpFn(15));
+              case((userStats.Level + 1) <= 69):
+                return dispatch(UserLevelUpFn(16));
+              case((userStats.Level + 1) <= 74):
+                return dispatch(UserLevelUpFn(17));
+              case((userStats.Level + 1) <= 79):
+                return dispatch(UserLevelUpFn(18));
+              case((userStats.Level + 1) <= 84):
+                return dispatch(UserLevelUpFn(19));
+              case((userStats.Level + 1) <= 89):
+                return dispatch(UserLevelUpFn(20));
+              case((userStats.Level + 1) <= 94):
+                return dispatch(UserLevelUpFn(21));
+              case((userStats.Level + 1) <= 98):
+                return dispatch(UserLevelUpFn(22));
+              default:
+                return dispatch(UserLevelUpFn(23));
+            }
+            })()
+          $('.questCompleteResult').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
+            switch (true) {
+              case((userStats.Level + 1) === 5):
+                 return $('.questCompleteResult').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+              case((userStats.Level + 1) === 20):
+                return $('.questCompleteResult').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+              case((userStats.Level + 1) === 70):
+                return $('.questCompleteResult').append(`\n <p>Altan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
+              default:
+                return 0;
+            }
+        }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+    }, [questControlRoom, dispatch, userStats, baseEXPChart]);
 
   //NPC Speech
   useEffect(() => {
@@ -312,13 +395,16 @@ function StartMenu(){
           $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['KafraEmployee'][0].name}</p>`)
           break;
-        case(npcControlRoom.ResetStatsPoint):
-          $('.fountainResetConfirm').html(`<p>Reset all attribute point</p>`);
+        case(npcControlRoom.Fountain && npcControlRoom.ResetStatsPoint):
+          $('.fountainResetConfirm').html(`Reset all attribute point`);
           break;
         // reset
           default:
             $('.storySpeech').html('')  
             $('.storyCharacter').html('')
+            $('.fountainResetConfirm').html('');
+            $('.questCompleteResult').html('');
+            
             break;
       }
   //userState,screenControRoom not included
@@ -370,6 +456,7 @@ function StartMenu(){
             </div>:
             <div className="PronteraMap">
               <h3 className="PronteraMapTitle">Prontera</h3>
+              <button className="ReturnHUDBugFix"></button>
               <button className="toolDealerNPC" onClick={() =>{dispatch(GotoPronteraToolDealerFn()); dispatch(TalktoToolDealerFn()); changePlaceFadeAudio();}}><img src={PronteraToolDealerImg} alt="Prontera Tool Dealer" /></button>
               <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img className="weaponArmorDealerNPCImg" src={Warp} alt="Warp Portal" /></button>
               <button className="kafraEmployee" onClick={() => dispatch(TalktoKafraEmployeeFn())}><img src={KafraEmployee} alt="Kafra Employee" /></button>
@@ -402,7 +489,7 @@ function StartMenu(){
                     <p>Player Dodge Rate {userStats.dodgeRate}</p>
                     <p>Player Crit Rate {userStats.critRate}</p>
                     <p>Player Exp {userStats.Experience}</p> */}
-                    {userStats.Level >= 10 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                 <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
@@ -417,7 +504,7 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech"></p>
-                    {/* <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetDealerBuySellHealFn());}}>Leave</button> */}
+            {/* <button onClick={() => {dispatch(GotoPronteraFn()); dispatch(ResetDealerBuySellHealFn());}}>Leave</button> */}
             {/* WEAPONS */}
             {screenControlRoom.WeaponEquipmentChoice ? 
               <div className="textCenter">
@@ -504,11 +591,22 @@ function StartMenu(){
                         {/* index -1 means not found, > -1 means found */}
                         {((questControlRoom.QuestDialog).indexOf(Quest.num) === -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? <button className="questBoardItems" onClick={() => {dispatch(AcceptQuestDialogFn(Quest.num));}}>{Quest.acceptName} + {Quest.acceptDescription}</button> : 
                         // Quest Accept && Kill more than 3 monster
-                        (questControlRoom.QuestDialog).indexOf(Quest.num) > -1  && ((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length) >= Quest.CompleteNum ? <button className="questBoardItems" onClick={() => {dispatch(ReturnQuestDialogFn(Quest.num));}}>{Quest.finishName} + {Quest.finishText} </button> : null }
+                        (questControlRoom.QuestDialog).indexOf(Quest.num) > -1  && ((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length) >= ((Quest.num).length*Quest.CompleteNum) ? <button className="questBoardItems" onClick={() => {dispatch(ReturnQuestDialogFn(Quest.num)); dispatch(WinResultFn(Quest.exp,Quest.zeny));}}>{Quest.finishName} + {Quest.finishText} </button> : null }
                       </li>
                     )
                   })}
-                </ul> 
+                  {QuestItemBox.map(Quest => {
+                    return (
+                      <li key={Quest.id} className="questList">
+                        {/* index -1 means not found, > -1 means found */}
+                        {((questControlRoom.QuestDialog).indexOf(Quest.num) === -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? <button className="questBoardItems" onClick={() => {dispatch(AcceptQuestDialogFn(Quest.num));}}>{Quest.acceptName} + {Quest.acceptDescription}</button> : 
+                        // Quest Accept && Item Bag is >= Complete number
+                        (questControlRoom.QuestDialog).indexOf(Quest.num) > -1  && Quest.ItemTarget >= Quest.CompleteNum ? <button className="questBoardItems" onClick={() => {dispatch(ReturnQuestDialogFn(Quest.num)); dispatch(WinResultFn(Quest.exp,Quest.zeny)); dispatch((Quest.ReturnItem)(-(Quest.CompleteNum)))}}>{Quest.finishName} + {Quest.finishText} </button> : null }
+                      </li>
+                    )
+                  })}
+                </ul>
+                <p className="questCompleteResult"></p>
               </div> : 
               // {/* BUY SELL FN */}
               screenControlRoom.PronteraHeadGearDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?

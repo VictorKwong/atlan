@@ -33,10 +33,10 @@ const Fn = {
     SantaPoringHat: 1,
 
     //Etc
-    Jellopy: 1,
-    EmptyBottle: 1,
-    StickyMucus: 1,
-    Clover: 1,
+    Jellopy: 3,
+    EmptyBottle: 5,
+    StickyMucus: 5,
+    Clover: 6,
     Feather: 1,
     GrasshoppersLeg: 1,
 
@@ -260,32 +260,32 @@ const userGoldItemReducer = (state = Fn, action) => {
         case 'WinJellopyFn':
             return{
                 ...state,
-                Jellopy: state.Jellopy + 1
+                Jellopy: state.Jellopy + action.Number
             }
         case 'WinEmptyBottleFn':
             return{
                 ...state,
-                EmptyBottle: state.EmptyBottle + 1
+                EmptyBottle: state.EmptyBottle + action.Number
             }
         case 'WinStickyMucusFn':
             return{
                 ...state,
-                StickyMucus: state.StickyMucus + 1
+                StickyMucus: state.StickyMucus + action.Number
             }
         case 'WinCloverFn':
             return{
                 ...state,
-                Clover: state.Clover + 1
+                Clover: state.Clover + action.Number
             }
         case 'WinFeatherFn':
             return{
                 ...state,
-                Feather: state.Feather + 1
+                Feather: state.Feather + action.Number
             }
         case 'WinGrasshoppersLegFn':
             return{
                 ...state,
-                GrasshoppersLeg: state.GrasshoppersLeg + 1
+                GrasshoppersLeg: state.GrasshoppersLeg + action.Number
             }
         case 'WinResultFn':
             return{

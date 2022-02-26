@@ -477,7 +477,7 @@ function Main(){
               $('.storySpeech').append(`<span>Obtained: </span>`)
               obtain = true;
             }
-            dispatch((EtcItems.Gain)());
+            dispatch((EtcItems.Gain)(1));
             $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
           }
           return null;
@@ -485,10 +485,10 @@ function Main(){
         //QUEST
           switch (true) {
             //accept QUEST & Correct Event monster
-            case ((questControlRoom.QuestDialog).indexOf("0") > -1 && i === 0):
-              return dispatch(ProgressQuestDialogFn(0));
-            case ((questControlRoom.QuestDialog).indexOf("1") > -1 && i === 1):
-              return dispatch(ProgressQuestDialogFn(1));
+            case ((questControlRoom.QuestDialog).indexOf("Poring") > -1 && i === 0):
+              return dispatch(ProgressQuestDialogFn("Poring"));
+            case ((questControlRoom.QuestDialog).indexOf("Lunatic") > -1 && i === 1):
+              return dispatch(ProgressQuestDialogFn("Lunatic"));
             default:
               return null;
           }
@@ -1218,7 +1218,7 @@ function Main(){
                     <p>Player Dodge Rate {userStats.dodgeRate}</p>
                     <p>Player Crit Rate {userStats.critRate}</p>
                     <p>Player Exp {userStats.Experience}</p> */}
-                    {userStats.Level >= 10 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                 <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>

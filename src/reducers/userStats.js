@@ -92,14 +92,14 @@ const userStatsReducer = (state = Fn, action) => {
                 attack: state.attack + 15,
                 defence: state.defence + 8,
                 defencebuffer: state.defencebuffer + 8, 
-                speed: state.speed + 0.2,
+                speed: state.speed + 0.1,
                 //Track
                 BasemaxHealth: state.BasemaxHealth + 40,
                 BasemaxSP: state.BasemaxSP + 25,
                 Baseattack: state.Baseattack + 15,
                 Basedefence: state.Basedefence + 8,
                 Basedefencebuffer: state.Basedefencebuffer + 8, 
-                Basespeed: state.Basespeed + 0.2,
+                Basespeed: state.Basespeed + 0.1,
             }
         //Stats Upgrade
         case 'STRPointsFn':

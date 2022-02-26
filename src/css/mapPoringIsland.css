@@ -71,21 +71,15 @@
   cursor: pointer;
 }
 .SmallIsland::before{
-  background-image: url('../img/Background/SmallIlsland.png');
+  background-image: url('../img/Background/SmallIlsland1.jpg');
 }
 .SmallIsland:hover::before{
-  background-image: url('../img/Background/SmallIlsland.png');
+  background-image: url('../img/Background/SmallIlsland1.jpg');
 }
 .SmallIsland1::before{
-  background-image: url('../img/Background/SmallIlsland1.png');
-}
-.SmallIsland1:hover::before{
-  background-image: url('../img/Background/SmallIlsland1.png');
-}
-.SmallIsland2::before{
   background-image: url('../img/Background/SmallIlsland2.jpg');
 }
-.SmallIsland2:hover::before{
+.SmallIsland1:hover::before{
   background-image: url('../img/Background/SmallIlsland2.jpg');
 }
 

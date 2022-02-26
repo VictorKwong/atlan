@@ -103,6 +103,14 @@
 }
 
 
+.questBox{
+  margin-top: 20px;
+  padding-bottom: 35px;
+}
+
+.questList{
+  margin-top:10px;
+}
 
 @media (max-width: 1199px){
 

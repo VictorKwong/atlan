@@ -907,35 +907,42 @@ export const ProgressQuestDialogFn = (Num) => {
 };
 //WIN Etc Items
 //PORING
-export const WinJellopyFn = () => {
+export const WinJellopyFn = (Num) => {
     return {
-        type: 'WinJellopyFn'
+        type: 'WinJellopyFn',
+        Number: Num
     };
 };
-export const WinEmptyBottleFn = () => {
+export const WinEmptyBottleFn = (Num) => {
     return {
-        type: 'WinEmptyBottleFn'
+        type: 'WinEmptyBottleFn',
+        Number: Num
     };
 };
-export const WinStickyMucusFn = () => {
+export const WinStickyMucusFn = (Num) => {
     return {
-        type: 'WinStickyMucusFn'
+        type: 'WinStickyMucusFn',
+        Number: Num
     };
 };
 //LUNATIC
-export const WinCloverFn = () => {
+export const WinCloverFn = (Num) => {
     return {
-        type: 'WinCloverFn'
+        type: 'WinCloverFn',
+        Number: Num
     };
 };
-export const WinFeatherFn = () => {
+export const WinFeatherFn = (Num) => {
     return {
-        type: 'WinFeatherFn'
+        type: 'WinFeatherFn',
+        Number: Num
     };
 };
-export const WinGrasshoppersLegFn = () => {
+//ROCKER
+export const WinGrasshoppersLegFn = (Num) => {
     return {
-        type: 'WinGrasshoppersLegFn'
+        type: 'WinGrasshoppersLegFn',
+        Number: Num
     };
 };
 
