@@ -30,7 +30,7 @@ const Fn = [
         hitRate: 0.8,
         dodgeRate: 0.05,
         critRate: 0.03,
-        Experience: 1,
+        Experience: 200,
         Zeny: (40 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },
@@ -56,128 +56,72 @@ const Fn = [
 const enemyStatsReducer = (state = Fn, action) => {
     switch(action.type){
         case 'UserAttackEnemyFn':
-            return [{
-                ...state[0], //20
-                currentHealth: state[0].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[1],
-                currentHealth: state[1].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[2],
-                currentHealth: state[2].currentHealth - action.DamageCalculation
-            }]
-        case 'UserAttackBlockEnemyFn':
-            return [{
-                ...state[0],
-                currentHealth: state[0].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[1],
-                currentHealth: state[1].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[2],
-                currentHealth: state[2].currentHealth - action.DamageCalculation
-            }]
+            // If i is the monster, update it's current health
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content)                  
+            // [{
+            //     ...state[0], //20
+            //     currentHealth: state[0].currentHealth - action.DamageCalculation
+            // },
+            // {
+            //     ...state[1],
+            //     currentHealth: state[1].currentHealth - action.DamageCalculation
+            // },
+            // {
+            //     ...state[2],
+            //     currentHealth: state[2].currentHealth - action.DamageCalculation
+            // }]
         case 'UserSkillBashEnemyFn':
-            return [{
-                ...state[0],
-                currentHealth: state[0].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[1],
-                currentHealth: state[1].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[2],
-                currentHealth: state[2].currentHealth - action.DamageCalculation
-            }]
-        case 'UserSkillBashBlockEnemyFn':
-        return [{
-            ...state[0],
-            currentHealth: state[0].currentHealth - action.DamageCalculation
-        },
-        {
-            ...state[1],
-            currentHealth: state[1].currentHealth - action.DamageCalculation
-        },
-        {
-            ...state[2],
-            currentHealth: state[2].currentHealth - action.DamageCalculation
-        }]
-        
+            // If i is the monster, update it's current health
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content)  
+            // [{
+            //     ...state[0],
+            //     currentHealth: state[0].currentHealth - action.DamageCalculation
+            // },
+            // {
+            //     ...state[1],
+            //     currentHealth: state[1].currentHealth - action.DamageCalculation
+            // },
+            // {
+            //     ...state[2],
+            //     currentHealth: state[2].currentHealth - action.DamageCalculation
+            // }]
         case 'UserSkillMagnumBreakEnemyFn':
-            return [{
-                ...state[0],
-                currentHealth: state[0].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[1],
-                currentHealth: state[1].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[2],
-                currentHealth: state[2].currentHealth - action.DamageCalculation
-            }]
-        case 'UserSkillMagnumBreakBlockEnemyFn':
-            return [{
-                ...state[0],
-                currentHealth: state[0].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[1],
-                currentHealth: state[1].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[2],
-                currentHealth: state[2].currentHealth - action.DamageCalculation
-            }]
+            // If i is the monster, update it's current health
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content) 
         case 'UserSkillBowlingBashEnemyFn':
-            return [{
-                ...state[0],
-                currentHealth: state[0].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[1],
-                currentHealth: state[1].currentHealth - action.DamageCalculation
-            },
-            {
-                ...state[2],
-                currentHealth: state[2].currentHealth - action.DamageCalculation
-            }]
-            
-        
-
-
+            // If i is the monster, update it's current health
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content) 
         case 'ResetEnemyCurrentHealthFn':
-            return [{
-                ...state[0],
-                currentHealth: 100,
-            },
-            {
-                ...state[1],
-                currentHealth: 200,
-            },
-            {
-                ...state[2],
-                currentHealth: 300,
-            }]
+            // If i is the monster, update it's current health
+            return state.map((content, i) => true ? {...content, currentHealth: state[i].maxHealth} : content) 
+            // return [{
+            //     ...state[0],
+            //     currentHealth: 100,
+            // },
+            // {
+            //     ...state[1],
+            //     currentHealth: 200,
+            // },
+            // {
+            //     ...state[2],
+            //     currentHealth: 300,
+            // }]
         case 'enemyClockDefendFn':
             //Rerender Fn
-            return [{
-                ...state[0],
-                enemyClockDefend: !state[0].enemyClockDefend,
-            },
-            {
-                ...state[1],
-                enemyClockDefend: !state[1].enemyClockDefend,
-            },
-            {
-                ...state[2],
-                enemyClockDefend: !state[2].enemyClockDefend,
-            }]
+            // If i is the monster, update it's current health
+            return state.map((content, i) => i === action.Target ? {...content, enemyClockDefend: !state[i].enemyClockDefend } : content) 
+            // return [{
+            //     ...state[0],
+            //     enemyClockDefend: !state[0].enemyClockDefend,
+            // },
+            // {
+            //     ...state[1],
+            //     enemyClockDefend: !state[1].enemyClockDefend,
+            // },
+            // {
+            //     ...state[2],
+            //     enemyClockDefend: !state[2].enemyClockDefend,
+            // }]
         default:
             return state;
     }

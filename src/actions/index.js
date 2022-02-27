@@ -11,47 +11,33 @@ export const EnemyAttackBlockUserFn = (Damage) => {
         DamageCalculation: Damage
     };
 };
-export const UserAttackEnemyFn = (Damage) => {
+export const UserAttackEnemyFn = (Damage,Target) => {
     return {
         type: 'UserAttackEnemyFn',
-        DamageCalculation: Damage
+        DamageCalculation: Damage,
+        Target: Target,
     };
 };
 
-export const UserAttackBlockEnemyFn = (Damage) => {
-    return {
-        type: 'UserAttackBlockEnemyFn',
-        DamageCalculation: Damage
-    };
-};
-export const UserSkillBashEnemyFn = (Damage) => {
+export const UserSkillBashEnemyFn = (Damage,Target) => {
     return {
         type: 'UserSkillBashEnemyFn',
-        DamageCalculation: Damage
+        DamageCalculation: Damage,
+        Target: Target,
     };
 };
-export const UserSkillBashBlockEnemyFn = (Damage) => {
-    return {
-        type: 'UserSkillBashBlockEnemyFn',
-        DamageCalculation: Damage
-    };
-};
+
 export const UserSkillBashMissedFn = () => {
     return {
         type: 'UserSkillBashMissedFn',
     };
 };
 
-export const UserSkillMagnumBreakEnemyFn = (Damage) => {
+export const UserSkillMagnumBreakEnemyFn = (Damage,Target) => {
     return {
         type: 'UserSkillMagnumBreakEnemyFn',
-        DamageCalculation: Damage
-    };
-};
-export const UserSkillMagnumBreakBlockEnemyFn = (Damage) => {
-    return {
-        type: 'UserSkillMagnumBreakBlockEnemyFn',
-        DamageCalculation: Damage
+        DamageCalculation: Damage,
+        Target: Target,
     };
 };
 export const UserSkillMagnumBreakMissedFn = () => {
@@ -59,10 +45,11 @@ export const UserSkillMagnumBreakMissedFn = () => {
         type: 'UserSkillMagnumBreakMissedFn',
     };
 };
-export const UserSkillBowlingBashEnemyFn = (Damage) => {
+export const UserSkillBowlingBashEnemyFn = (Damage,Target) => {
     return {
         type: 'UserSkillBowlingBashEnemyFn',
-        DamageCalculation: Damage
+        DamageCalculation: Damage,
+        Target: Target,
     };
 };
 export const UserSkillBowlingBashMissedFn = () => {
@@ -996,10 +983,13 @@ export const ReturnPoringIslandPathFn = () => {
 
 
 //Audio Interaction
-export const AudioVolumeBGMSaverFn = (Volume) => {
+export const AudioVolumeBGMSaverFn = (Volume,map,Place,Threshold) => {
     return {
         type: 'AudioVolumeBGMSaverFn',
         Volume: Volume,
+        Map: map,
+        Place: Place,
+        Threshold: Threshold
     };
 };
 

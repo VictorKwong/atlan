@@ -164,4 +164,37 @@ useEffect(() => {
     })
 }, [])
 
-Received `true` for a non-boolean attribute `img`
+Warning: Received `true` for a non-boolean attribute `w`.
+If you want to write it to the DOM, pass a string instead: w="true" or w={value.toString()}.
+Revise:
+There's a loose "w" floating around in one of your select options:
+<option value=""w>Selectionner un type</option>
+
+That's the culprit. It should be:
+<option value="">Selectionner un type</option>
+
+
+
+Battle:
+Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+
+
+ARRAY OBJECT:
+
+{
+ name: "some name",
+ subtitle: "some subtitle",
+ contents: [
+   {title: "some title", text: "some text"},
+   {title: "some other title", text: "some other text"}
+ ]
+}
+
+case 'SOME_ACTION':
+return { 
+    ...state, 
+    contents: state.contents.map(
+        (content, i) => i === 1 ? {...content, text: action.payload}
+                                : content
+    )
+}

@@ -12,7 +12,7 @@ import { ReturnCheckPointFn } from './actions'
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn} from './actions'
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserAttackBlockEnemyFn , UserSkillBashEnemyFn , UserSkillBashBlockEnemyFn, UserSkillMagnumBreakEnemyFn, UserSkillMagnumBreakBlockEnemyFn, UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -391,7 +391,6 @@ const AnimationBox =[
 ]
 
 function Main(){
-    console.log(i)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
@@ -401,19 +400,20 @@ function Main(){
     const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const enemyStats = useSelector(state => state.enemyStats)
+    const audioControlRoom = useSelector(state => state.audioControlRoom)
 
-    console.log('you are rerender')
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     useEffect(() => {
-      audioBGM.volume = 0.15;
+      audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
           audioBGM.loop = true;
           audioBGM.play()
-        }).catch(error => {
+        })
+        .catch(error => {
           // Auto-play was prevented
         });
       }
@@ -442,21 +442,22 @@ function Main(){
     }, [])
 
     const changeMapFadeAudio = () => {
-      let k = 0;
+      let i = 0;
       const fadeAudio = setInterval(() => {
-          if (audioBGM.volume === 0.15){
-            k = k + 1;
+          if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+            i = i + 1;
           }
           if (audioBGM.volume !== 0) {
-            audioBGM.volume -= 0.002
-            audioBGM.volume = audioBGM.volume.toFixed(4)
+            audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+            audioBGM.volume = audioBGM.volume.toFixed(5)
           }
-          if (audioBGM.volume < 0.002) {
+          if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+              audioBGM.volume = 0;
               audioBGM.pause();
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
-          }else if (k >= 2){
-            audioBGM.volume = 0.15
+          }else if (i >= 2){
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
             clearInterval(fadeAudio);
           }
         }, 10);
@@ -619,7 +620,7 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          // CRIT RATE
+          // CRIT RATE & BLOCKING
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
@@ -627,7 +628,7 @@ function Main(){
               // Text display
               $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserAttackBlockEnemyFn(Damage), 300));
+              return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
@@ -635,7 +636,7 @@ function Main(){
               // Text display
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserAttackBlockEnemyFn(Damage)), 300)
+              return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300)
           // ENEMY HIT
           // CRIT RATE
           case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate >= Math.random())):
@@ -645,7 +646,7 @@ function Main(){
               // Text display
               $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserAttackEnemyFn(Damage)), 300);
+              return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
@@ -653,7 +654,7 @@ function Main(){
               // Text display
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserAttackEnemyFn(Damage)), 300);
+              return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
           // ENEMY DODGE
           default:
             $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
@@ -701,21 +702,21 @@ function Main(){
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE
+            //CRIT RATE && BLOCKING
             switch (true) {
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
-                return setTimeout(() => dispatch(UserSkillBashBlockEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
@@ -728,13 +729,13 @@ function Main(){
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               }
           // ENEMY DODGE
           default:
@@ -766,20 +767,20 @@ function Main(){
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE
+            //CRIT RATE && BLOCKING
             switch(true){
               case(userStats.critRate >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Magnum Break! Enemy Received ${Damage} damage</p>`)
                 // Rerender
-                return setTimeout(() => dispatch(UserSkillMagnumBreakBlockEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
             }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
@@ -792,13 +793,13 @@ function Main(){
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defence)*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
-                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               }
           // ENEMY DODGE 
           default:
@@ -837,13 +838,13 @@ function Main(){
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bowling Bash! Enemy Received ${Damage} damage</p>`)
                 // Rerender
-                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
             }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
@@ -856,13 +857,13 @@ function Main(){
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
               default:
                 Math.sign((Damage - enemyStats[i].defence)*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Altan use Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
-                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage)), 300);
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
               }
           // ENEMY DODGE 
           default:
@@ -1057,7 +1058,7 @@ function Main(){
                   }
                 // USER DODGE
                 default:
-                  $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack!<Altan dodge the attack!</p>`)
+                  $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan dodge the attack!</p>`)
                   //Rerender
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
               }
@@ -1102,7 +1103,7 @@ function Main(){
               $('.storySpeech').append('<p>--------- Altan Turn ---------</p>')
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
-              console.log('UserTurn is good')
+              // console.log('UserTurn is good')
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
               dispatch(ResetEnemyTurnBlockFn());
@@ -1112,7 +1113,7 @@ function Main(){
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               enemyDecisionQFn();
-              console.log('EnemyTurn is good')
+              // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
               // console.log(`userClock: ${clockBarObject.userClockBar}`)
@@ -1124,7 +1125,7 @@ function Main(){
               }
           }
         })()
-        console.log('ticking')
+        // console.log('ticking')
         }, 100);
     }
   }
@@ -1237,7 +1238,7 @@ function Main(){
                       
                       { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
-                        {userStats.Level >= 1 ? 
+                        {userStats.Level >= 5 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillBashButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBash} alt="skillBash" /> Bash</p>
@@ -1245,7 +1246,7 @@ function Main(){
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 1 ? 
+                        {userStats.Level >= 20 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Mag<span className="goGoButtonHide">num</span> Break</p>
@@ -1253,11 +1254,11 @@ function Main(){
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 1 ? 
+                        {userStats.Level >= 70 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillBowlingBashButton()}>
                             <figcaption className="goGoButtonFig">
-                              <p className="goGoButtonName"><img img src={skillBowlingBash} alt="skillBowlingBash" /> Bowl<span className="goGoButtonHide">ing</span> Bash</p>
-                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img img src={skillBowlingBash} alt="skillBowlingBash"/> <span className="goGoButtonHide">SP</span>:250</span>
+                              <p className="goGoButtonName"><img src={skillBowlingBash} alt="skillBowlingBash" /> Bowl<span className="goGoButtonHide">ing</span> Bash</p>
+                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBowlingBash} alt="skillBowlingBash"/> <span className="goGoButtonHide">SP</span>:250</span>
                             </figcaption>
                           </button>
                         : null}
@@ -1358,9 +1359,16 @@ function Main(){
           <fieldset className="wordCenter storyChat">
             <legend className="storyCharacter"></legend>
             <p className="storySpeech">-------- The Battle begins ------</p>
-            <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button>
-            {enemyStats[i].currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
-            : userStats.currentHealth <= 0 ? <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button> : null}
+            {/* <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button> */}
+
+            {enemyStats[i].currentHealth <= 0 ? 
+            <div className="storyScreen">
+              <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
+            </div>
+            : userStats.currentHealth <= 0 ? 
+            <div className="storyScreen">
+              <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
+            </div> : null}
 
           </fieldset>
         </div>

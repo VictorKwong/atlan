@@ -85,7 +85,6 @@ function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
-    const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
@@ -129,7 +128,7 @@ function StartMenu(){
     ]
 
     useEffect(() => {
-      audioBGM.volume = 0.15;
+      audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
@@ -141,23 +140,26 @@ function StartMenu(){
           // Auto-play was prevented
         });
       }
+      //Not Depend on audioControlRoom
+      //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const changeMapFadeAudio = () => {
       let i = 0;
       const fadeAudio = setInterval(() => {
-          if (audioBGM.volume === 0.15){
+          if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
             i = i + 1;
           }
           if (audioBGM.volume !== 0) {
-            audioBGM.volume -= 0.002
-            audioBGM.volume = audioBGM.volume.toFixed(4)
+            audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+            audioBGM.volume = audioBGM.volume.toFixed(5)
           }
-          if (audioBGM.volume < 0.002) {
+          if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+              audioBGM.volume = 0;
               audioBGM.pause();
               audioBGM.currentTime = 0;
             clearInterval(fadeAudio);
           }else if (i >= 2){
-            audioBGM.volume = 0.15
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
             clearInterval(fadeAudio);
           }
         }, 10);
@@ -165,17 +167,52 @@ function StartMenu(){
 
     const changePlaceFadeAudio = () => {
       const fadeAudioOut = setInterval(() => {
-        if (audioBGM.volume > 0.01) {
-          audioBGM.volume -= 0.004
-          audioBGM.volume = audioBGM.volume.toFixed(4)
-          console.log(audioBGM.volume)
+        if (audioBGM.volume > parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
+          audioBGM.volume -= parseFloat(audioControlRoom.AudioChangePlaceVolume.toFixed(5))
+          audioBGM.volume = audioBGM.volume.toFixed(5)
         }
-          if (audioBGM.volume === 0.01) {
-            audioBGM.volume = 0.15;
+          if (audioBGM.volume <= parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
             clearInterval(fadeAudioOut);
           }
       }, 10);
   }
+
+//   const changeMapFadeAudio = () => {
+//     let i = 0;
+//     const fadeAudio = setInterval(() => {
+//         if (audioBGM.volume === 0.15){
+//           i = i + 1;
+//         }
+//         if (audioBGM.volume !== 0) {
+//           audioBGM.volume -= 0.002
+//           audioBGM.volume = audioBGM.volume.toFixed(4)
+//         }
+//         if (audioBGM.volume < 0.002) {
+//             audioBGM.pause();
+//             audioBGM.currentTime = 0;
+//           clearInterval(fadeAudio);
+//         }else if (i >= 2){
+//           audioBGM.volume = 0.15
+//           clearInterval(fadeAudio);
+//         }
+//       }, 10);
+//   }
+
+//   const changePlaceFadeAudio = () => {
+//     const fadeAudioOut = setInterval(() => {
+//       console.log(audioBGM.volume);
+//       if (audioBGM.volume > 0.01) {
+//         audioBGM.volume -= 0.004
+//         audioBGM.volume = audioBGM.volume.toFixed(4)
+//         console.log(audioBGM.volume);
+//       }
+//         if (audioBGM.volume === 0.01) {
+//           audioBGM.volume = 0.15;
+//           clearInterval(fadeAudioOut);
+//         }
+//     }, 10);
+// }
 
     // LEVEL FUNCTION
     useEffect(() => {
