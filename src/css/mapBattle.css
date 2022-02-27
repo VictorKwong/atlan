@@ -251,6 +251,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 160px;
 }
 
 .clockHUD{
@@ -266,6 +267,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
   background-color: #A6C1E4;
   color:#363f4b;
   transition: color 0.07s ease-in-out;
+  font-family: 'Balsamiq Sans', cursive;
 
 }
 .goGoButton:hover,
@@ -370,7 +372,9 @@ progress.BarBasicHUD::-webkit-progress-bar{
   .expBarBasicHUD{
     width: 80%;
   }
-
+  .goGoButtonName{
+    font-size:13px;
+  }
 }
 @media (max-width: 767px){
   .hptextHUD,
@@ -398,6 +402,16 @@ progress.BarBasicHUD::-webkit-progress-bar{
   .purpleHP{
     width: 85%;
   }
+  .enemyBox{
+    width:150px;
+  }
+  .zenytextHUD{
+    padding-top:10px;
+  }
+  .goGoButtonName,
+  .goGoButtonSkillBash{
+    font-size:12px;
+  }
 }
 @media (max-width: 467px){
   .BarBasicHUD{
@@ -410,6 +424,10 @@ progress.BarBasicHUD::-webkit-progress-bar{
   .zenytextHUD{
     margin: 0;
     text-align: center;
+    font-size: 12px;
+  }
+  .zenytextHUD{
+    padding: 0px;
   }
   .basicStatsHUD{
     font-size: 12px;
@@ -444,5 +462,11 @@ progress.BarBasicHUD::-webkit-progress-bar{
   }
   .leveltextHUD{
     text-align: center;
+  }
+  .enemyBox{
+    width:100px;
+  }
+  .goGoButtonHide{
+    display: none;
   }
 }

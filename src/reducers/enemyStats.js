@@ -30,7 +30,7 @@ const Fn = [
         hitRate: 0.8,
         dodgeRate: 0.05,
         critRate: 0.03,
-        Experience: 200,
+        Experience: 1,
         Zeny: (40 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },

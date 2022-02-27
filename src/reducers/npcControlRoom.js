@@ -18,6 +18,10 @@ const Fn = {
     //Heal & Rest Fn
     KafraEmployeeHealState: false,
     ResetStatsPoint: false,
+
+    //PoringIsland Dungeon
+    Chest1: false,
+    Chest1VisitRepeat: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -198,7 +202,19 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 KafraEmployeeHealState: false,
                 ResetStatsPoint: false,
             }
-
+        // DUNGEON
+        case 'OpenChest1Fn':
+            return {
+                ...state,
+                Chest1: true
+            }
+        case 'Chest1VisitRepeatFn':
+            return {
+                ...state,
+                Chest1VisitRepeat: true
+            }
+    
+            
         default:
             return state;
     }

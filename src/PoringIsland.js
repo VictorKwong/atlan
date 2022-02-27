@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn} from './actions';
+import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+//CHEST
+import { Chest1VisitRepeatFn } from './actions'
+//PATH
+import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn, GotoPoringIslandPath3Fn , ReturnPoringIslandPathFn} from './actions'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import WorldMap from './WorldMap'
@@ -50,6 +54,7 @@ function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
+    const npcControlRoom = useSelector(state => state.npcControlRoom)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -167,9 +172,11 @@ function StartMenu(){
             <div className="PoringIslandMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="PoringIslandMapTitle storyScreen">Poring Island</h3>
-              <button className="WorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
+              {/* World Map, Reset Path Fn */}
+              <button className="WorldMap" onClick={() =>{dispatch(GotoWorldMapFn());  dispatch(ReturnPoringIslandPathFn()); changeMapFadeAudio();}}>ToWorldMap</button>
               <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1": "SmallIsland"} onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
-              <button className="TreasureBoxPoringIsland"onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>treasure box</button>
+              {screenControlRoom.PoringIslandPath1 ? 
+              <button className="TreasureBoxPoringIsland"onClick={npcControlRoom.Chest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(Chest1VisitRepeatFn())} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>treasure chest</button> : null}
             </div>
             }
             <div className="StoryHUD">

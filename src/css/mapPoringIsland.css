@@ -31,7 +31,8 @@
 }
 
 .WorldMap::before,
-.SmallIsland::before{
+.SmallIsland::before,
+.TreasureBoxPoringIsland::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -48,27 +49,39 @@
   border: solid #7CAFFF 1px;
 }
 .WorldMap:hover::before,
-.SmallIsland:hover::before{
+.SmallIsland:hover::before,
+.TreasureBoxPoringIsland:hover::before{
   opacity: 1;
   background-image: url('../img/Background/WorldMap.jpg');
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   transition: opacity 0.3s ease-in-out;
   border: 1px solid rgb(23, 218, 23);
   cursor: pointer;
 }
-.SmallIsland::before{
-  background-image: url('../img/Background/SmallIlsland1.jpg');
-}
+.SmallIsland::before,
 .SmallIsland:hover::before{
   background-image: url('../img/Background/SmallIlsland1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-.SmallIsland1::before{
-  background-image: url('../img/Background/SmallIlsland2.jpg');
-}
+.SmallIsland1::before,
 .SmallIsland1:hover::before{
   background-image: url('../img/Background/SmallIlsland2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
+.TreasureBoxPoringIsland::before,
+.TreasureBoxPoringIsland:hover::before{
+  background-image: url('../img/Background/TreasureBoxPoringIsland1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 
 .WorldMap,
 .SmallIsland,
@@ -77,7 +90,7 @@
   font-family: 'Pangolin', cursive;
   font-size: 20px;
   color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(144, 166, 212) 100%);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
 }
@@ -85,7 +98,7 @@
 .ReturnPoringIsland{
   font-size: 20px;
   color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
   width:50%;

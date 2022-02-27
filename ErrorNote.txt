@@ -163,3 +163,5 @@ useEffect(() => {
         //KeyZ
     })
 }, [])
+
+Received `true` for a non-boolean attribute `img`

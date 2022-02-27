@@ -960,6 +960,41 @@ export const WinGrasshoppersLegFn = (Num) => {
 };
 
 
+//PORING ISLAND CHEST
+export const OpenChest1Fn = () => {
+    return {
+        type: 'OpenChest1Fn',
+    };
+};
+
+export const Chest1VisitRepeatFn = () => {
+    return {
+        type: 'Chest1VisitRepeatFn',
+    };
+};
+//PORING ISLAND PATH
+export const GotoPoringIslandPath1Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath1Fn',
+    };
+};
+export const GotoPoringIslandPath2Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath2Fn',
+    };
+};
+export const GotoPoringIslandPath3Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath3Fn',
+    };
+};
+export const ReturnPoringIslandPathFn = () => {
+    return {
+        type: 'ReturnPoringIslandPathFn',
+    };
+};
+
+
 //Audio Interaction
 export const AudioVolumeBGMSaverFn = (Volume) => {
     return {

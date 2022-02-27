@@ -83,6 +83,8 @@
 .StoryHUD{
   width:20%;
   border: 1px solid black;
+  overflow: auto;
+  overflow-x: hidden;
 }
 .Prontera{ grid-area: 2 / 2 / 3 / 3; }
 .SogratDesertPoringIsland{ grid-area: 3 / 2 / 4 / 3;}

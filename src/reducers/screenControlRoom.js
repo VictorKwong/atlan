@@ -11,6 +11,10 @@ const Fn = {
     AntHell: false,
     //Mini Screen (TreasurePoringIsland)
     TreasurePoringIslandMap: false,
+    //PORING ISLAND PATH
+    PoringIslandPath1: false,
+    PoringIslandPath2: false,
+    PoringIslandPath3: false,
     //Mini Screen (StoryMap)
     AltanEquipment: false,
     AltanStats: false,
@@ -251,6 +255,31 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     TreasurePoringIslandMap: !state.TreasurePoringIslandMap,
                 }
+            //Poring Island ALL Path
+            case 'GotoPoringIslandPath1Fn':
+                return {
+                    ...state,
+                    PoringIslandPath1: true,
+                }
+            case 'GotoPoringIslandPath2Fn':
+                return {
+                    ...state,
+                    PoringIslandPath2: true,
+                }
+            case 'GotoPoringIslandPath3Fn':
+                return {
+                    ...state,
+                    PoringIslandPath3: true,
+                }
+            case 'ReturnPoringIslandPathFn':
+                return {
+                    ...state,
+                    PoringIslandPath1: false,
+                    PoringIslandPath2: false,
+                    PoringIslandPath3: false,
+                }
+
+
         default:
             return state;
     }

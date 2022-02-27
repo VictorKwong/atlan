@@ -19,6 +19,9 @@ import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn,
 import { ProgressQuestDialogFn } from './actions'
 //Win ETC Items
 import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
+//PATH UNLOCK
+import { GotoPoringIslandPath1Fn } from './actions'
+
 
 import './css/mapBattle.css'
 import './index.css'
@@ -468,6 +471,8 @@ function Main(){
         
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
         $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
+        //PATH
+        dispatch(GotoPoringIslandPath1Fn());
         //ETC items
         EtcBox.map(EtcItems => {
           if((i === EtcItems.num) && (EtcItems.percent > Math.random())){
@@ -493,7 +498,7 @@ function Main(){
               return null;
           }
       }
-      // QuestBoard not depend
+      // QuestBoard, screen not depend
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [enemyStats, dispatch]);
     // DEFEAT FUNCTION
@@ -739,14 +744,14 @@ function Main(){
         }
         })()
         // End turn
-        listResult = document.getElementsByClassName('storyChat')[0];
-        listResult.scrollTop = listResult.scrollHeight;
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
-        $('.storySpeech').html(`<p>Not enough SP.</p>`)
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
       }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
     }
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 100){
@@ -803,14 +808,14 @@ function Main(){
         }
         })()
         // End turn
-        listResult = document.getElementsByClassName('storyChat')[0];
-        listResult.scrollTop = listResult.scrollHeight;
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
-        $('.storySpeech').html(`<p>Not enough SP.</p>`)
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
       }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
     }
     const userSkillBowlingBashButton = () => {
       if (userStats.currentSP >= 250){
@@ -866,15 +871,15 @@ function Main(){
               return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
         }
         })()
-        listResult = document.getElementsByClassName('storyChat')[0];
-        listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
-        $('.storySpeech').html(`<p>Not enough SP.</p>`)
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
       }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
     }
     //ITEMS
     const userItemRedPotionButton = () => {
@@ -1236,23 +1241,23 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillBashButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBash} alt="skillBash" /> Bash</p>
-                              <span className={userStats.currentSP >= 40 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> SP:40</span>
+                              <span className={userStats.currentSP >= 40 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> <span className="goGoButtonHide">SP</span>:40</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 2 ? 
+                        {userStats.Level >= 1 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
                             <figcaption className="goGoButtonFig">
-                              <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Magnum Break</p>
-                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> SP:100</span>
+                              <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Mag<span className="goGoButtonHide">num</span> Break</p>
+                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> <span className="goGoButtonHide">SP</span>:100</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 3 ? 
+                        {userStats.Level >= 1 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillBowlingBashButton()}>
                             <figcaption className="goGoButtonFig">
-                              <p className="goGoButtonName"><img img src={skillBowlingBash} alt="skillBowlingBash" /> Bowling Bash</p>
-                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash " : "goGoButtonSkillBash insufficentSP"}><img img src={skillBowlingBash} alt="skillBowlingBash"/> SP:250</span>
+                              <p className="goGoButtonName"><img img src={skillBowlingBash} alt="skillBowlingBash" /> Bowl<span className="goGoButtonHide">ing</span> Bash</p>
+                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img img src={skillBowlingBash} alt="skillBowlingBash"/> <span className="goGoButtonHide">SP</span>:250</span>
                             </figcaption>
                           </button>
                         : null}
@@ -1267,49 +1272,49 @@ function Main(){
                         {userGoldItem.RedPotion >= 1 ?
                             <button className="goGoButton" onClick={() => userItemRedPotionButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={RedPotion} alt="RedPotion"/> Red Potion x{userGoldItem.RedPotion}</p>
+                                <p className="goGoButtonName"><img src={RedPotion} alt="RedPotion"/> <span className="goGoButtonHide">Red Potion</span> x{userGoldItem.RedPotion}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.OrangePotion >= 1 ?
                             <button className="goGoButton" onClick={() => userItemOrangePotionButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={OrangePotion} alt="OrangePotion"/> Orange Potion x{userGoldItem.OrangePotion}</p>
+                                <p className="goGoButtonName"><img src={OrangePotion} alt="OrangePotion"/> <span className="goGoButtonHide">Orange Potion</span> x{userGoldItem.OrangePotion}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.YellowPotion >= 1 ?
                             <button className="goGoButton" onClick={() => userItemYellowPotionButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={YellowPotion} alt="YellowPotion"/> Yellow Potion x{userGoldItem.YellowPotion}</p>
+                                <p className="goGoButtonName"><img src={YellowPotion} alt="YellowPotion"/> <span className="goGoButtonHide">Yellow Potion</span> x{userGoldItem.YellowPotion}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.WhitePotion >= 1 ?
                             <button className="goGoButton" onClick={() => userItemWhitePotionButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={WhitePotion} alt="WhitePotion"/> White Potion x{userGoldItem.WhitePotion}</p>
+                                <p className="goGoButtonName"><img src={WhitePotion} alt="WhitePotion"/> <span className="goGoButtonHide">White Potion</span> x{userGoldItem.WhitePotion}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.AnniversaryCake >= 1 ?
                             <button className="goGoButton" onClick={() => userItemAnniversaryCakeButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={AnniversaryCake} alt="AnniversaryCake"/> Anniversary Cake x{userGoldItem.AnniversaryCake}</p>
+                                <p className="goGoButtonName"><img src={AnniversaryCake} alt="AnniversaryCake"/> <span className="goGoButtonHide">Anniversary Cake</span> x{userGoldItem.AnniversaryCake}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.MastelaFruit >= 1 ?
                             <button className="goGoButton" onClick={() => userItemMastelaFruitButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={MastelaFruit} alt="MastelaFruit"/> Mastela Fruit x{userGoldItem.MastelaFruit}</p>
+                                <p className="goGoButtonName"><img src={MastelaFruit} alt="MastelaFruit"/> <span className="goGoButtonHide">Mastela Fruit</span> x{userGoldItem.MastelaFruit}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.BluePotion >= 1 ?
                             <button className="goGoButton" onClick={() => userItemBluePotionButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={BluePotion} alt="BluePotion"/> Blue Potion x{userGoldItem.BluePotion}</p>
+                                <p className="goGoButtonName"><img src={BluePotion} alt="BluePotion"/> <span className="goGoButtonHide">Blue Potion</span> x{userGoldItem.BluePotion}</p>
                               </figcaption>
                             </button>: null}
                         {userGoldItem.YggdrasilBerry >= 1 ?
                             <button className="goGoButton" onClick={() => userItemYggdrasilBerryButton()}>
                               <figcaption className="goGoButtonFig">
-                                <p className="goGoButtonName"><img src={YggdrasilBerry} alt="YggdrasilBerry"/> Blue Potion x{userGoldItem.YggdrasilBerry}</p>
+                                <p className="goGoButtonName"><img src={YggdrasilBerry} alt="YggdrasilBerry"/> <span className="goGoButtonHide">Yggdrasil Berry</span> x{userGoldItem.YggdrasilBerry}</p>
                               </figcaption>
                             </button>: null}
                         <button className="goGoButton" onClick={() => dispatch(ReturnUserInSelectItemFn())}>

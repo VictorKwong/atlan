@@ -168,6 +168,7 @@ function StartMenu(){
         if (audioBGM.volume > 0.01) {
           audioBGM.volume -= 0.004
           audioBGM.volume = audioBGM.volume.toFixed(4)
+          console.log(audioBGM.volume)
         }
           if (audioBGM.volume === 0.01) {
             audioBGM.volume = 0.15;
