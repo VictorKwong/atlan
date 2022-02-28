@@ -9,6 +9,8 @@ const Fn = {
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
+    //BattleLoading Screen
+    BattleLoadingScreen: false,
     //Mini Screen (TreasurePoringIsland)
     TreasurePoringIslandMap: false,
     //PORING ISLAND PATH
@@ -278,7 +280,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIslandPath2: false,
                     PoringIslandPath3: false,
                 }
-
+            //BattleLoadingScreen
+            case 'BattleLoadingScreenFn':
+                return{
+                    ...state,
+                    BattleLoadingScreen: !state.BattleLoadingScreen
+                }
 
         default:
             return state;

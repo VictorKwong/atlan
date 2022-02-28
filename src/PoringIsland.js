@@ -4,6 +4,8 @@ import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandM
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //CHEST
 import { Chest1VisitRepeatFn } from './actions'
+//Battle Loading Screen
+import { BattleLoadingScreenFn } from './actions'
 //PATH
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn, GotoPoringIslandPath3Fn , ReturnPoringIslandPathFn} from './actions'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -173,9 +175,14 @@ function StartMenu(){
   //         }
   //     }, 10);
   // }
+  const LoadingScreen = () => {
+    dispatch(BattleLoadingScreenFn())
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn()), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
 
     return(
-      <div>
+      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
@@ -211,7 +218,7 @@ function StartMenu(){
               <h3 className="PoringIslandMapTitle storyScreen">Poring Island</h3>
               {/* World Map, Reset Path Fn */}
               <button className="WorldMap" onClick={() =>{dispatch(GotoWorldMapFn());  dispatch(ReturnPoringIslandPathFn()); changeMapFadeAudio();}}>ToWorldMap</button>
-              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1": "SmallIsland"} onClick={() =>{dispatch(GotoBattlePoringIslandMapFn()); changeMapFadeAudio();}}>small Island</button>
+              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1": "SmallIsland"} onClick={() =>{LoadingScreen(); changeMapFadeAudio();}}>small Island</button>
               {screenControlRoom.PoringIslandPath1 ? 
               <button className="TreasureBoxPoringIsland"onClick={npcControlRoom.Chest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(Chest1VisitRepeatFn())} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>treasure chest</button> : null}
 

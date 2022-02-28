@@ -993,3 +993,11 @@ export const AudioVolumeBGMSaverFn = (Volume,map,Place,Threshold) => {
     };
 };
 
+//Battle Loading Screen
+export const BattleLoadingScreenFn = () => {
+    return {
+        type: 'BattleLoadingScreenFn',
+    };
+};
+
+

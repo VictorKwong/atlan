@@ -198,3 +198,6 @@ return {
                                 : content
     )
 }
+
+// Between 1 and max
+Math.floor(Math.random() * max) + 1;
