@@ -46,11 +46,10 @@
   transform: scaleX(-1);
   height: 50px;
 }
-.imgFlipRocker{
-  height: 150px;
-  width: 80px;
+.imgFlipTwo{
+  transform: scaleX(-1);
+  height: auto;
 }
-
 .onHitAnimate{
   animation-name: OnHit;
   animation-duration: 1.0s;
@@ -494,10 +493,6 @@ progress.BarBasicHUD::-webkit-progress-bar{
   }
   .imgFlip{
     height: 35px;
-  }
-  .imgFlipRocker{
-    height: 100px;
-    width: 53px;
   }
   .leveltextHUD{
     text-align: center;

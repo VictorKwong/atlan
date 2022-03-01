@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
-import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn } from './actions';
+import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, PoringIslandMapFn } from './actions';
 
 import './css/mapPronteraToolDealer.css'
 import $ from 'jquery'
@@ -14,6 +14,7 @@ import AnniversaryCake from './img/Item/AnniversaryCake.gif'
 import MastelaFruit from './img/Item/MastelaFruit.gif'
 import BluePotion from './img/Item/BluePotion.gif'
 import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
+import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 // import useSound from 'use-sound';
 
 // AudioCurrentTimeSaverFn
@@ -40,8 +41,11 @@ function StartMenu(){
       {id:90005,cost: 2000, Get:MastelaFruitFn(-2000,1), Img: MastelaFruit, name: "Mastela Fruit"},
       {id:90006,cost: 400, Get:BluePotionFn(-400,1), Img: BluePotion, name: "Blue Potion"},
       {id:90007,cost: 4000, Get:YggdrasilBerryFn(-4000,1), Img: YggdrasilBerry, name: "Yggdrasil Berry"},
-
     ]
+    let MiscBuyUniqueBox = [ 
+      {id:91000,cost: 1, Get:PoringIslandMapFn(-1,1), Img: PoringIslandMap, name: "PoringIsland Map", Item: userGoldItem.PoringIslandMap}
+    ]
+  
     let MiscSellBox = [
       {id:100000,cost: 40, Get:RedPotionFn(40,-1), Img: RedPotion, name: "Red Potion", Item: userGoldItem.RedPotion},
       {id:100001,cost: 80, Get:OrangePotionFn(80,-1), Img: OrangePotion, name: "Orange Potion", Item: userGoldItem.OrangePotion},
@@ -67,6 +71,18 @@ function StartMenu(){
                               <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
                             </div>
                           </button>
+                        </span>
+                      )
+                  })}
+                  {MiscBuyUniqueBox.map(Buy => {
+                      return(
+                        <span key={Buy.id}>
+                          {Buy.Item === 0 ?
+                          <button className="buyToolDealerItemButton toolDealerGoodsButtonFix"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
+                            </div>
+                          </button> : null}
                         </span>
                       )
                   })}

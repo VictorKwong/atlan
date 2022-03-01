@@ -33,13 +33,22 @@ const Fn = {
     SantaPoringHat: 1,
 
     //Etc
+    PoringIslandMap: 0,
+    //PORING ISLAND
     Jellopy: 3,
     EmptyBottle: 5,
     StickyMucus: 5,
     Clover: 6,
     Feather: 1,
     GrasshoppersLeg: 1,
-
+    SnailsShell: 1,
+    Shell:1,
+    Garlet:1,
+    Emperium:1,
+    Fabric:1,
+    FourLeafClover:1,
+    GlassBead:1,
+    Opal:1
 }
 
 
@@ -95,6 +104,14 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 YggdrasilBerry: state.YggdrasilBerry + action.Item,
             }
+        //ETC important
+        case 'PoringIslandMapFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                PoringIslandMap: state.PoringIslandMap + action.Item,
+            }
+        
         //Weapons Shop
         case 'KatanaFn':
             return{
@@ -257,6 +274,7 @@ const userGoldItemReducer = (state = Fn, action) => {
 
 
         //WIN Etc Items
+        //PORING
         case 'WinJellopyFn':
             return{
                 ...state,
@@ -272,6 +290,7 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 StickyMucus: state.StickyMucus + action.Number
             }
+        //LUNATIC
         case 'WinCloverFn':
             return{
                 ...state,
@@ -282,16 +301,62 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Feather: state.Feather + action.Number
             }
+        //ROCKER
         case 'WinGrasshoppersLegFn':
             return{
                 ...state,
                 GrasshoppersLeg: state.GrasshoppersLeg + action.Number
+            }
+        //AMBERNITE
+        case 'WinSnailsShellFn':
+            return{
+                ...state,
+                SnailsShell: state.SnailsShell + action.Number
+            }
+        case 'WinShellFn':
+            return{
+                ...state,
+                Shell: state.Shell + action.Number
+            }
+        case 'WinGarletFn':
+            return{
+                ...state,
+                Garlet: state.Garlet + action.Number
+            }
+        //GHOSTRING
+        case 'WinEmperiumFn':
+            return{
+                ...state,
+                Emperium: state.Emperium + action.Number
+            }
+        case 'WinFabricFn':
+            return{
+                ...state,
+                Fabric: state.Fabric + action.Number
+            }
+        //ECLIPSE
+        case 'WinFourLeafCloverFn':
+            return{
+                ...state,
+                FourLeafClover: state.FourLeafClover + action.Number
+            }
+        case 'WinGlassBeadFn':
+            return{
+                ...state,
+                GlassBead: state.GlassBead + action.Number
+            }
+        case 'WinOpalFn':
+            return{
+                ...state,
+                Opal: state.Opal + action.Number
             }
         case 'WinResultFn':
             return{
                 ...state,
                 Zeny: state.Zeny + action.enemyZeny
             }
+
+
         default:
             return state;
     }

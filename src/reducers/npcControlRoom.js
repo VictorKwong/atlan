@@ -18,10 +18,16 @@ const Fn = {
     //Heal & Rest Fn
     KafraEmployeeHealState: false,
     ResetStatsPoint: false,
-
     //PoringIsland Dungeon
     Chest1: false,
     Chest1VisitRepeat: false,
+    Chest2: false,
+    Chest2VisitRepeat: false,
+    ChestBoss1: false,
+    ChestBoss1VisitRepeat: false,
+    PoringIslandBridgeNPC: false,
+
+    BossEclipseDefeat: false,
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -213,8 +219,41 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 Chest1VisitRepeat: true
             }
-    
-            
+        case 'OpenChest2Fn':
+            return {
+                ...state,
+                Chest2: true
+            }
+        case 'Chest2VisitRepeatFn':
+            return {
+                ...state,
+                Chest2VisitRepeat: true
+            }
+        case 'OpenChestBoss1Fn':
+            return {
+                ...state,
+                ChestBoss1: true
+            }
+        case 'ChestBoss1VisitRepeatFn':
+            return {
+                ...state,
+                ChestBoss1VisitRepeat: true
+            }
+        case 'BossEclipseDefeatFn':
+            return {
+                ...state,
+                BossEclipseDefeat: true
+            }
+        case 'PoringIslandBridgeNPCFn':
+            return {
+                ...state,
+                PoringIslandBridgeNPC: true,
+            }
+        case 'ResetPoringIslandNPCFn':
+            return {
+                ...state,
+                PoringIslandBridgeNPC: false,
+            }
         default:
             return state;
     }

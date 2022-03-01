@@ -43,6 +43,19 @@ import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
 import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
 import Clover from './img/Etc/Lunatic_Clover65.gif'
 import Feather from './img/Etc/Lunatic_Feather10.gif'
+import GrasshoppersLeg from './img/Etc/Rocker_GrasshoppersLeg95.gif'
+import SnailsShell from './img/Etc/Ambernite_SnailsShell90.gif'
+import Shell from './img/Etc/Ambernite_Shell30.gif'
+import Garlet from './img/Etc/Ambernite_Garlet12.gif'
+import Emperium from './img/Etc/Ghostring_Emperium.gif'
+import Fabric from './img/Etc/Ghostring_Fabric80.gif'
+import FourLeafClover from './img/Etc/Eclipse_FourLeafClover.gif'
+import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
+import Opal from './img/Etc/Eclipse_Opal50.gif'
+
+//IMPORTANT
+import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
+
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -95,7 +108,19 @@ function StartMenu(){
       {id:1001, Img:EmptyBottle, name:"EmptyBottle", itemCheck:userGoldItem.EmptyBottle},
       {id:1002, Img:StickyMucus, name:"StickyMucus", itemCheck:userGoldItem.StickyMucus},
       {id:1003, Img:Clover, name:"Clover", itemCheck:userGoldItem.Clover},
-      {id:1004, Img:Feather, name:"Feather", itemCheck:userGoldItem.Feather}
+      {id:1004, Img:Feather, name:"Feather", itemCheck:userGoldItem.Feather},
+
+      {id:1005, Img:GrasshoppersLeg, name:"Grasshopper`s Leg", itemCheck:userGoldItem.GrasshoppersLeg},
+      {id:1006, Img:SnailsShell, name:"Snail`s Shell", itemCheck:userGoldItem.SnailsShell},
+      {id:1007, Img:Shell, name:"Shell", itemCheck:userGoldItem.Shell},
+      {id:1008, Img:Garlet, name:"Garlet", itemCheck:userGoldItem.Garlet},
+      {id:1009, Img:Emperium, name:"Emperium", itemCheck:userGoldItem.Emperium},
+      {id:1010, Img:Fabric, name:"Fabric", itemCheck:userGoldItem.Fabric},
+      {id:1011, Img:FourLeafClover, name:"FourLeafClover", itemCheck:userGoldItem.FourLeafClover},
+      {id:1012, Img:GlassBead, name:"GlassBead", itemCheck:userGoldItem.GlassBead},
+      {id:1013, Img:Opal, name:"Opal", itemCheck:userGoldItem.Opal},
+
+      {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap}
     ]
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
 

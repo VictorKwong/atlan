@@ -227,18 +227,48 @@ export const GotoAntHellFn = () => {
     };
 };
 
-export const GotoBattlePoringIslandMapFn = () => {
+export const GotoBattlePoringIslandMapFn = (Path) => {
     return {
         type: 'GotoBattlePoringIslandMapFn',
+        Path:Path
     };
 };
+export const GotoBattlePoringIslandMapTwoFn = (Path) => {
+    return {
+        type: 'GotoBattlePoringIslandMapTwoFn',
+        Path:Path
+    };
+};
+export const GotoBattlePoringIslandMapTwoSecretFn = (Path) => {
+    return {
+        type: 'GotoBattlePoringIslandMapTwoSecretFn',
+        Path:Path
+    };
+};
+export const GotoBattlePoringIslandMapBossFn = (Path) => {
+    return {
+        type: 'GotoBattlePoringIslandMapBossFn',
+        Path:Path
+    };
+};
+
+
+
 export const GotoTreasurePoringIslandMapFn = () => {
     return {
         type: 'GotoTreasurePoringIslandMapFn',
     };
 };
-
-
+export const GotoTreasurePoringIslandMap2Fn = () => {
+    return {
+        type: 'GotoTreasurePoringIslandMap2Fn',
+    };
+};
+export const GotoTreasurePoringIslandMap3Fn = () => {
+    return {
+        type: 'GotoTreasurePoringIslandMap3Fn',
+    };
+};
 
 export const typeWritterEffectFn = () => {
     return {
@@ -622,6 +652,15 @@ export const YggdrasilBerryFn = (Zeny,Item) => {
     };
 };
 
+//ETC important
+export const PoringIslandMapFn = (Zeny,Item) => {
+    return {
+        type: 'PoringIslandMapFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+
 //WEAPON BUY SELL
 export const KatanaFn = (Zeny,Item) => {
     return {
@@ -945,6 +984,57 @@ export const WinGrasshoppersLegFn = (Num) => {
         Number: Num
     };
 };
+//AMBERNITE
+export const WinSnailsShellFn = (Num) => {
+    return {
+        type: 'WinSnailsShellFn',
+        Number: Num
+    };
+};
+export const WinShellFn = (Num) => {
+    return {
+        type: 'WinShellFn',
+        Number: Num
+    };
+};
+export const WinGarletFn = (Num) => {
+    return {
+        type: 'WinGarletFn',
+        Number: Num
+    };
+};
+//GHOSTRING
+export const WinEmperiumFn = (Num) => {
+    return {
+        type: 'WinEmperiumFn',
+        Number: Num
+    };
+};
+export const WinFabricFn = (Num) => {
+    return {
+        type: 'WinFabricFn',
+        Number: Num
+    };
+};
+//ECLIPSE
+export const WinFourLeafCloverFn = (Num) => {
+    return {
+        type: 'WinFourLeafCloverFn',
+        Number: Num
+    };
+};
+export const WinGlassBeadFn = (Num) => {
+    return {
+        type: 'WinGlassBeadFn',
+        Number: Num
+    };
+};
+export const WinOpalFn = (Num) => {
+    return {
+        type: 'WinOpalFn',
+        Number: Num
+    };
+};
 
 
 //PORING ISLAND CHEST
@@ -959,6 +1049,46 @@ export const Chest1VisitRepeatFn = () => {
         type: 'Chest1VisitRepeatFn',
     };
 };
+export const OpenChest2Fn = () => {
+    return {
+        type: 'OpenChest2Fn',
+    };
+};
+
+export const Chest2VisitRepeatFn = () => {
+    return {
+        type: 'Chest2VisitRepeatFn',
+    };
+};
+export const OpenChestBoss1Fn = () => {
+    return {
+        type: 'OpenChestBoss1Fn',
+    };
+};
+
+export const ChestBoss1VisitRepeatFn = () => {
+    return {
+        type: 'ChestBoss1VisitRepeatFn',
+    };
+};
+//PORING ISLAND BOSS
+export const BossEclipseDefeatFn = () => {
+    return {
+        type: 'BossEclipseDefeatFn',
+    };
+};
+export const PoringIslandBridgeNPCFn = () => {
+    return {
+        type: 'PoringIslandBridgeNPCFn',
+    };
+};
+export const ResetPoringIslandNPCFn = () => {
+    return {
+        type: 'ResetPoringIslandNPCFn',
+    };
+};
+
+
 //PORING ISLAND PATH
 export const GotoPoringIslandPath1Fn = () => {
     return {
@@ -973,6 +1103,11 @@ export const GotoPoringIslandPath2Fn = () => {
 export const GotoPoringIslandPath3Fn = () => {
     return {
         type: 'GotoPoringIslandPath3Fn',
+    };
+};
+export const GotoPoringIslandPath4Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath4Fn',
     };
 };
 export const ReturnPoringIslandPathFn = () => {

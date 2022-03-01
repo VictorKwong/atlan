@@ -1,12 +1,16 @@
 const Fn = [
-    //Poring
+    //1.Poring
+    //2.Lunatic
+    //3.Rocker
+    //4.Ambernite
+    //5.Ghostring (Secret)
+    //6.Eclipse (Boss)
     {
         name: 'Poring',
         level: 1,
         maxHealth: 100,
         currentHealth: 100,
         attack: 50,
-        power: 2,
         defence: 5,
         defencebuffer: 10, // 5+5
         speed: 5,
@@ -23,7 +27,6 @@ const Fn = [
         maxHealth: 200,
         currentHealth: 200,
         attack: 70,
-        power: 3,
         defence: 7,
         defencebuffer: 12, //7+5
         speed: 7,
@@ -40,7 +43,6 @@ const Fn = [
         maxHealth: 300,
         currentHealth: 300,
         attack: 80,
-        power: 4,
         defence: 9,
         defencebuffer: 14, //7+5
         speed: 5,
@@ -49,6 +51,54 @@ const Fn = [
         critRate: 0.03,
         Experience: 200,
         Zeny: (60 + Math.floor(Math.random() * 14)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Ambernite',
+        level: 4,
+        maxHealth: 400,
+        currentHealth: 400,
+        attack: 130,
+        defence: 22,
+        defencebuffer: 28, //+6
+        speed: 3,
+        hitRate: 0.8,
+        dodgeRate: 0.01,
+        critRate: 0.03,
+        Experience: 300,
+        Zeny: (70 + Math.floor(Math.random() * 22)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Ghostring',
+        level: 30,
+        maxHealth: 1, //4400
+        currentHealth: 1,
+        attack: 400,
+        defence: 50,
+        defencebuffer: 60, //+6
+        speed: 10,
+        hitRate: 0.85,
+        dodgeRate: 0.3,
+        critRate: 0.03,
+        Experience: 900,
+        Zeny: (4000 + Math.floor(Math.random() * 100)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Eclipse',
+        level: 10,
+        maxHealth: 1, //2000
+        currentHealth: 1,
+        attack: 100,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
         enemyClockDefend: false,
     },
 ]

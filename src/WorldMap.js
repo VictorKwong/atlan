@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
+import BattlePoringIslandMapTwo from './BattlePoringIslandMapTwo'
+import BattlePoringIslandMapTwoSecret from './BattlePoringIslandMapTwoSecret'
+import BattlePoringIslandMapBoss from './BattlePoringIslandMapBoss'
 import Prontera from './Prontera'
 import PoringIsland from './PoringIsland'
 import AntHell from './AntHell'
@@ -88,6 +91,9 @@ function StartMenu(){
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.AntHell ? <AntHell />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
+        screenControlRoom.BattlePoringIslandMapTwo ? <BattlePoringIslandMapTwo />: 
+        screenControlRoom.BattlePoringIslandMapTwoSecret ? <BattlePoringIslandMapTwoSecret />: 
+        screenControlRoom.BattlePoringIslandMapBoss ? <BattlePoringIslandMapBoss />:
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -163,7 +169,7 @@ function StartMenu(){
           <p className="storySpeech"></p>
             {/* WEAPONS */}
             {screenControlRoom.WeaponEquipmentChoice ? 
-              <div>
+              <div className="textCenter">
                 {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>
                     <p className="chatDescriptTitle">Weapon Bag</p>
@@ -184,7 +190,7 @@ function StartMenu(){
               </div> : null} 
             {/* ARMOR */}
             {screenControlRoom.ArmorEquipmentChoice ?
-              <div>
+              <div className="textCenter">
               {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
                 <div>
                   <p className="chatDescriptTitle">Armor Bag</p>
@@ -205,7 +211,7 @@ function StartMenu(){
               </div> : null}
             {/* HEADGEAR */}
             {screenControlRoom.HeadGearEquipmentChoice ?
-              <div>
+              <div className="textCenter">
                 <p className="chatDescriptTitle">Head Gear Bag</p>
               {userGoldItem.LordKahosHorn >= 1 || userGoldItem.TeddybearHat >= 1 || userGoldItem.Crown >= 1 || userGoldItem.Helm >= 1 || userGoldItem.PandaHat >= 1 || userGoldItem.ChefHat >= 1 || userGoldItem.SantaPoringHat >= 1 ?
                 <div>
