@@ -112,6 +112,8 @@ function StartMenu(){
           // Auto-play was prevented
         });
       }
+      $('.PoringIslandMapTitle').fadeIn(600);
+      $('.PoringIslandMapTitle').delay(2400).fadeOut(600);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -187,6 +189,10 @@ function StartMenu(){
 //NPC Speech
 useEffect(() => {
   switch(true){
+    case(npcControlRoom.PoringIslandBridgeNPC && screenControlRoom.PoringIslandPath6 && screenControlRoom.AltanItem):
+      $('.storySpeech').html('You found a hidden passage in PoringIsland...')  
+      $('.storyCharacter').html('')
+      break;
     //GEAR LIST
     case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
       $('.storySpeech').html('')  
@@ -278,7 +284,7 @@ useEffect(() => {
               </div>:
             <div className="PoringIslandMap">
               <button className="ReturnHUDBugFix"></button>
-              <h3 className="PoringIslandMapTitle storyScreen">Poring Island</h3>
+              <h3 className="PoringIslandMapTitle">Poring Island</h3>
               {/* World Map, Reset Path Fn Optional dispatch(ReturnPoringIslandPathFn());*/}
               <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn()); dispatch(ReturnPoringIslandPathFn());} }>ToWorldMap</button>
               {/* Path 0 */}
@@ -429,7 +435,7 @@ useEffect(() => {
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn());}}>Return</button>
               </div> : null}
-
+              
                 {/* <div>
                   {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
                   <div>

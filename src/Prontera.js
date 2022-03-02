@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDealerFn, GotoPronteraHeadGearDealerFn } from './actions';
+import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDealerFn, GotoPronteraHeadGearDealerFn, GotoPronteraCastleFn } from './actions';
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 
-import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, ResetTalktoFn} from './actions';
+import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, ResetTalktoFn} from './actions';
 
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
@@ -29,6 +29,7 @@ import AltanQuest from './AltanQuest'
 import PronteraToolDealer from './PronteraToolDealer'
 import PronteraWeaponArmorDealer from './PronteraWeaponArmorDealer'
 import PronteraHeadGearDealer from './PronteraHeadGearDealer'
+import PronteraCastle from './PronteraCastle'
 import './css/mapProntera.css'
 import $ from 'jquery'
 import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
@@ -139,8 +140,10 @@ function StartMenu(){
         })
         .catch(error => {
           // Auto-play was prevented
-        });
+        });  
       }
+      $('.PronteraMapTitle').fadeIn(600);
+      $('.PoringIslandMapTitle').delay(2400).fadeOut(600);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -437,6 +440,14 @@ function StartMenu(){
         case(npcControlRoom.Fountain && npcControlRoom.ResetStatsPoint):
           $('.fountainResetConfirm').html(`Reset all attribute point`);
           break;
+        case(npcControlRoom.SoldierGuard1):
+          $('.storySpeech').html(`<p>${npcSpeech['SoldierGuard1'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['SoldierGuard1'][0].name}</p>`)
+        break;
+        case(npcControlRoom.SoldierGuard2):
+          $('.storySpeech').html(`<p>${npcSpeech['SoldierGuard2'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['SoldierGuard2'][0].name}</p>`)
+        break;
         // reset
           default:
             $('.storySpeech').html('')  
@@ -455,6 +466,7 @@ function StartMenu(){
       <div>
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
+        screenControlRoom.PronteraCastle ? <PronteraCastle /> :
         <div className="PronteraMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -496,9 +508,9 @@ function StartMenu(){
             <div className="PronteraMap">
               <h3 className="PronteraMapTitle">Prontera</h3>
               <button className="ReturnHUDBugFix"></button>
-              <button className="soldier1"><img src={PronteraSoldierImg} alt="Prontera soldier1" /></button>
-              <button className="castleEnterence"><img src={Warp} alt="Warp Portal" /></button>
-              <button className="soldier2"><img src={PronteraSoldierImg} alt="Prontera soldier2" /></button>
+              <button className="soldier1" onClick={() => {dispatch(TalktoSoldierGuard1Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier1" /></button>
+              <button className="castleEnterence" onClick={() => {dispatch(GotoPronteraCastleFn()); dispatch(ResetTalktoFn()); changeMapFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
+              <button className="soldier2" onClick={() => {dispatch(TalktoSoldierGuard2Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier2" /></button>
               <button className="toolDealerNPC" onClick={() =>{dispatch(GotoPronteraToolDealerFn()); dispatch(TalktoToolDealerFn()); changePlaceFadeAudio();}}><img src={PronteraToolDealerImg} alt="Prontera Tool Dealer" /></button>
               <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img className="weaponArmorDealerNPCImg" src={Warp} alt="Warp Portal" /></button>
               <button className="kafraEmployee" onClick={() => dispatch(TalktoKafraEmployeeFn())}><img src={KafraEmployee} alt="Kafra Employee" /></button>

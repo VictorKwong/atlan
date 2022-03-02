@@ -33,9 +33,9 @@ const Fn = {
     SantaPoringHat: 1,
 
     //Etc
-    PoringIslandMap: 0,
+    PoringIslandMap: 1,
     //MISC
-    Lamp:0,
+    Lamp:1,
     //PORING ISLAND
     Jellopy: 3,
     EmptyBottle: 5,

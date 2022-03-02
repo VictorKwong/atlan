@@ -1,0 +1,178 @@
+.PronteraCastleMapBackground{
+  background-image: url('../img/Background/PronteraCastle.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.PronteraCastleMapTitle{
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  color: rgb(31, 173, 255);
+  -webkit-text-stroke: 0.8px rgb(48, 48, 48);
+  stroke: 0.8px rgb(48, 48, 48);
+  /* animation-name: fadeOutMapName;
+  animation-duration: 3s;
+  opacity: 0; */
+  display: none;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  z-index: 999;
+}
+
+.PronteraCastleMap{
+  width:80%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.PronteraWorldMap::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-image: url('../img/Background/WorldMap.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.3s ease-in-out;
+  border: solid #7CAFFF 1px;
+}
+.PronteraWorldMap:hover::before{
+  opacity: 1;
+  background-image: url('../img/Background/WorldMap.jpg');
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.3s ease-in-out;
+  border: 1px solid rgb(23, 218, 23);
+}
+
+
+
+.PronternaKing::before,
+.PronternaAssistant::before,
+.PronternaRoyalGuard1::before,
+.PronternaRoyalGuard2::before,
+.ExitPronteraCastle::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.PronternaKing:hover::before,
+.PronternaAssistant:hover::before,
+.PronternaRoyalGuard1:hover::before,
+.PronternaRoyalGuard2:hover::before,
+.ExitPronteraCastle:hover::before{
+  border: solid #3c70ff 1px;
+}
+
+.PronternaKing,
+.PronternaAssistant,
+.PronternaRoyalGuard1,
+.PronternaRoyalGuard2,
+.ExitPronteraCastle{
+  position: relative;
+  font-family: 'Pangolin', cursive;
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(144, 166, 212) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  cursor: pointer;
+}
+
+.ExitPronteraCastle{
+  position: relative;
+  font-family: 'Pangolin', cursive;
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(144, 166, 212) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  cursor: pointer;
+}
+
+.ExitPronteraCastle::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-image: url('../img/Background/Prontera.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.3s ease-in-out;
+  border: solid #7CAFFF 1px;
+}
+.ExitPronteraCastle:hover::before{
+  opacity: 1;
+  background-image: url('../img/Background/Prontera.jpg');
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.3s ease-in-out;
+  border: 1px solid rgb(23, 218, 23);
+}
+
+
+.PronternaKing { grid-area: 1 / 2 / 2 / 3; }
+.PronternaAssistant { grid-area: 2 / 3 / 3 / 4; }
+.PronternaRoyalGuard1 { grid-area: 1 / 3 / 2 / 4; }
+.PronternaRoyalGuard2 { grid-area: 1 / 1 / 2 / 2; }
+.ExitPronteraCastle { grid-area: 3 / 2 / 4 / 3; }
+
+.GuardDirection{
+  transform: scaleX(-1);
+}
+
+
+@media (max-width: 1199px){
+
+}
+
+@media (max-width: 1023px){
+
+}
+
+@media (max-width: 767px){
+  .PronteraCastleMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-top: 40px;
+  }
+  .PronternaKing,
+  .PronternaAssistant,
+  .PronternaRoyalGuard1,
+  .PronternaRoyalGuard2,
+  .ExitPronteraCastle{
+    width:100%;
+    min-height: 130px;
+  }
+}
+@media (max-width: 467px){
+
+}

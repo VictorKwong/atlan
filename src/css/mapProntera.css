@@ -24,13 +24,15 @@
   color: rgb(31, 173, 255);
   -webkit-text-stroke: 0.8px rgb(48, 48, 48);
   stroke: 0.8px rgb(48, 48, 48);
-  animation-name: fadeOutMapName;
+  /* animation-name: fadeOutMapName;
   animation-duration: 3s;
-  opacity: 0;
+  opacity: 0; */
+  display: none;
   position: absolute;
   top:0;
   left:50%;
   transform: translate3d(-50%,0,0);
+  z-index: 999;
 }
 
 .PronteraMap{
@@ -42,6 +44,8 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   position: relative;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .PronteraWorldMap::before{
@@ -199,7 +203,7 @@
   .soldier2,
   .castleEnterence{
     width:100%;
-    min-height: 100px;
+    min-height: 120px;
   }
   .pronteraFountainImg, 
   .weaponArmorDealerNPCImg{

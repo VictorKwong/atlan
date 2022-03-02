@@ -300,8 +300,8 @@ import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
 import Opal from './img/Etc/Eclipse_Opal50.gif'
 
 
-import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
-const audioBGM = new Audio(audioStrugardenNEOBattle1);
+import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
+const audioBGM = new Audio(audioRustyHeartsWings);
 
 let clockBarObject = {
   userClockBar: 0,

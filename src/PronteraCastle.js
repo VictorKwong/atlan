@@ -1,20 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
-import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
-import BattlePoringIslandMap from './BattlePoringIslandMap'
-import BattlePoringIslandMapTwo from './BattlePoringIslandMapTwo'
-import BattlePoringIslandMapTwoSecret from './BattlePoringIslandMapTwoSecret'
-import BattlePoringIslandMapBoss from './BattlePoringIslandMapBoss'
+import { GotoPronteraFn} from './actions';
+import { TalktoPronteraKingFn, TalktoRoyalGuard1Fn, TalktoRoyalGuard2Fn , TalktoPronteraAssistantFn } from './actions'
+import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions'
+
 import Prontera from './Prontera'
-import PronteraCastle from './PronteraCastle'
-import PoringIsland from './PoringIsland'
-import AntHell from './AntHell'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
-import './css/storyMainMap.css'
+import './css/mapPronteraCastle.css'
 import $ from 'jquery'
 
 // EQUIP ACTION
@@ -44,16 +39,28 @@ import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
 
+import PronteraKingImg from './img/NPC/PronteraKing.gif'
+import PronteraAssistantImg from './img/NPC/PronteraAssistant.gif'
+import PronteraRoyalSoldierImg from './img/NPC/RoyalSoldier.gif'
+
+
+import audioThemeOfJuno from './audio/310ThemeOfJuno.mp3'
+const audioBGM = new Audio(audioThemeOfJuno);
+
+//Chat reading
+let listResult = document.getElementsByClassName('storyChat')[0];
 
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 function StartMenu(){
 
     const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const userGoldItem = useSelector(state => state.userGoldItem)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
+    const npcControlRoom = useSelector(state => state.npcControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
-    const userGoldItem = useSelector(state => state.userGoldItem)
+    const npcSpeech = useSelector(state => state.npcSpeech)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -86,23 +93,89 @@ function StartMenu(){
     ]
 
     useEffect(() => {
-        $('.mapTitle').fadeIn(600);
-        $('.mapTitle').delay(2400).fadeOut(600);
+      audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+      let playPromise = audioBGM.play(); 
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          // Automatic playback started!
+          audioBGM.loop = true;
+          audioBGM.play()
+        })
+        .catch(error => {
+          // Auto-play was prevented
+        });  
+      }
+      $('.PronteraCastleMapTitle').fadeIn(600);
+      $('.PronteraCastleMapTitle').delay(2400).fadeOut(600);
+      //Not Depend on audioControlRoom
+      //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    const changeMapFadeAudio = () => {
+      let i = 0;
+      const fadeAudio = setInterval(() => {
+          if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+            i = i + 1;
+          }
+          if (audioBGM.volume !== 0) {
+            audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+            audioBGM.volume = audioBGM.volume.toFixed(5)
+          }
+          if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+              audioBGM.volume = 0;
+              audioBGM.pause();
+              audioBGM.currentTime = 0;
+            clearInterval(fadeAudio);
+          }else if (i >= 2){
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+            clearInterval(fadeAudio);
+          }
+        }, 10);
+    }
 
-    }, [screenControlRoom])
+
+    useEffect(() => {
+      switch(true){
+        //GEAR LIST
+        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+          $('.storySpeech').html('')
+          $('.storyCharacter').html('')
+          break;
+        //Talk message
+        case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][0].name}</p>`)
+          break;
+          case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraAssistant):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraAssistant'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraAssistant'][0].name}</p>`)
+        break;
+        case(screenControlRoom.PronteraCastle && npcControlRoom.RoyalGuard1):
+          $('.storySpeech').html(`<p>${npcSpeech['RoyalGuard1'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RoyalGuard1'][0].name}</p>`)
+        break;
+        case(screenControlRoom.PronteraCastle && npcControlRoom.RoyalGuard2):
+          $('.storySpeech').html(`<p>${npcSpeech['RoyalGuard2'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RoyalGuard2'][0].name}</p>`)
+        break;
+        // reset
+          default:
+            $('.storySpeech').html('')  
+            $('.storyCharacter').html('')
+            break;
+      }
+  //userState,screenControRoom not included
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [npcControlRoom, npcSpeech, screenControlRoom])
+
+
+
+
     return(
       <div>
         {
         screenControlRoom.Prontera ? <Prontera />:
-        screenControlRoom.PronteraCastle ? <PronteraCastle />:
-        screenControlRoom.PoringIsland ? <PoringIsland />:
-        screenControlRoom.AntHell ? <AntHell />:
-        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
-        screenControlRoom.BattlePoringIslandMapTwo ? <BattlePoringIslandMapTwo />: 
-        screenControlRoom.BattlePoringIslandMapTwoSecret ? <BattlePoringIslandMapTwoSecret />: 
-        screenControlRoom.BattlePoringIslandMapBoss ? <BattlePoringIslandMapBoss />:
-        screenControlRoom.WorldMap ?
-        <div className="StoryMapBackground">
+        screenControlRoom.PronteraCastle ?
+        <div className="PronteraCastleMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -125,14 +198,14 @@ function StartMenu(){
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
 
-              <div className="StoryMap">
-                <h3 className="mapTitle">World Map</h3>
+              <div className="PronteraCastleMap">
+                <h3 className="PronteraCastleMapTitle">Prontera Castle</h3>
                 {/* click x trigger hover */}
-                <button className="ReturnHUDBugFix"></button>
-                <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
-                <button className="AntHellTest" >Another</button>
-                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
-                <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
+                <button className="PronternaKing" onClick={() => {dispatch(TalktoPronteraKingFn())}}><img src={PronteraKingImg} alt="Prontera King" /></button>
+                <button className="PronternaAssistant" onClick={() => {dispatch(TalktoPronteraAssistantFn())}}><img src={PronteraAssistantImg} alt="Prontera Assistant" /></button>
+                <button className="PronternaRoyalGuard1" onClick={() => {dispatch(TalktoRoyalGuard1Fn())}}><img src={PronteraRoyalSoldierImg} alt="Prontera RoyalSoldier 1" /></button>
+                <button className="PronternaRoyalGuard2" onClick={() => {dispatch(TalktoRoyalGuard2Fn())}}><img className="GuardDirection" src={PronteraRoyalSoldierImg} alt="Prontera RoyalSoldier 2" /></button>
+                <button className="ExitPronteraCastle" onClick={() => {dispatch(GotoPronteraFn()); changeMapFadeAudio();}}>Exit</button>
               </div>
             }
             <div className="StoryHUD">

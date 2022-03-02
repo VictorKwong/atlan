@@ -106,8 +106,31 @@ const Fn = {
         },{
             name: 'HeadGearDealer',
             text: 'This item is not for sale =.='
-    }]
-
+    }],
+    SoldierGuard1:[{
+            name: 'SoldierGuard',
+            text: 'Welcome to Prontera!'
+        }],
+    SoldierGuard2:[{
+            name: 'SoldierGuard',
+            text: 'My duty is to protect Prontera.'
+        }],
+    PronteraKing:[{
+            name: 'Prontera King',
+            text: 'Altan, you need to collect all four important items to seal the chaos gate. Please hurry!'
+        }],
+    PronteraAssistant:[{
+            name: 'PronteraAssistant',
+            text: 'I`m doing a research now, please don`t distrub me.'
+        }],
+    RoyalGuard1:[{
+            name: 'RoyalGuard',
+            text: 'Royal guard is different than soldier guard, mainly we are more well trained to protect our king.'
+        }],
+    RoyalGuard2:[{
+            name: 'RoyalGuard',
+            text: 'I will serve my Prontera King.'
+        }],
 
 }
 

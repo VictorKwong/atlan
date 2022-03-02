@@ -69,6 +69,31 @@
   cursor: pointer;
 }
 
+.mapTitle{
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  color: black;
+  -webkit-text-stroke: 0.8px white;
+  stroke: 0.8px white;
+  /* animation-name: fadeOutMapName;
+  animation-duration: 3s;
+  opacity: 0; */
+  display: none;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  z-index: 999;
+}
+/* 
+@keyframes fadeOutMapName {
+  0%{opacity: 0; display:block;}
+  20%{opacity: 1;}
+  80%{opacity: 1;}
+  100%{opacity: 0; display: none;}
+} */
+
+
 .StoryMap{
   width:80%;
   border: 1px solid black;
@@ -78,6 +103,8 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   position: relative;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .StoryHUD{
@@ -108,27 +135,6 @@
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
 }
 
-.mapTitle{
-  font-size: 30px;
-  font-family: 'Chelsea Market', cursive;
-  color: black;
-  -webkit-text-stroke: 0.8px white;
-  stroke: 0.8px white;
-  animation-name: fadeOutMapName;
-  animation-duration: 3s;
-  opacity: 0;
-  position: absolute;
-  top:0;
-  left:50%;
-  transform: translate3d(-50%,0,0);
-}
-
-@keyframes fadeOutMapName {
-  0%{opacity: 0;}
-  20%{opacity: 1;}
-  80%{opacity: 1;}
-  100%{opacity: 0;}
-}
 
 .altanEquipment,
 .altanItems,
@@ -253,7 +259,8 @@
 .buyArmorDealerButton::before,
 .sellArmorDealerButton::before,
 .returnArmorDealerButton::before,
-.returnWeaponArmorDealerButton::before{
+.returnWeaponArmorDealerButton::before
+{
   position: absolute;
   top: 50%;
   left: 5px;

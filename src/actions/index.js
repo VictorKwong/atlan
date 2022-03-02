@@ -213,6 +213,11 @@ export const GotoPronteraHeadGearDealerFn = () => {
         type: 'GotoPronteraHeadGearDealerFn',
     };
 };
+export const GotoPronteraCastleFn = () => {
+    return {
+        type: 'GotoPronteraCastleFn',
+    };
+};
 
 
 
@@ -497,8 +502,36 @@ export const TalktoQuestBoardFn = () => {
         type: 'TalktoQuestBoardFn'
     };
 };
-
-
+export const TalktoSoldierGuard1Fn = () => {
+    return {
+        type: 'TalktoSoldierGuard1Fn'
+    };
+};
+export const TalktoSoldierGuard2Fn = () => {
+    return {
+        type: 'TalktoSoldierGuard2Fn'
+    };
+};
+export const TalktoPronteraKingFn = () => {
+    return {
+        type: 'TalktoPronteraKingFn'
+    };
+};
+export const TalktoRoyalGuard1Fn = () => {
+    return {
+        type: 'TalktoRoyalGuard1Fn'
+    };
+};
+export const TalktoRoyalGuard2Fn = () => {
+    return {
+        type: 'TalktoRoyalGuard2Fn'
+    };
+};
+export const TalktoPronteraAssistantFn = () => {
+    return {
+        type: 'TalktoPronteraAssistantFn'
+    };
+};
 
 export const TalktoWeaponDealerFn = () => {
     return {
