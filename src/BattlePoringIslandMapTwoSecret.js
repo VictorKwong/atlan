@@ -1349,11 +1349,11 @@ function Main(){
             <p className="storySpeech">-------- The Battle begins ------</p>
             {/* <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button> */}
 
-            {enemyStats[i].currentHealth <= 0 ? 
+            {enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
             <div className="storyScreen">
               <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             </div>
-            : userStats.currentHealth <= 0 ? 
+            : userStats.currentHealth <= 0 && clockCheck === 1? 
             <div className="storyScreen">
               <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
             </div> : null}

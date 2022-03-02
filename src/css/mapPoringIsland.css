@@ -273,3 +273,43 @@
 
 .TreasureBoxPoringIsland {grid-area: 3 / 2 / 4 / 3;}
 .TreasureBoxPoringIsland2 { grid-area: 6 / 3 / 7 / 4; }
+
+
+@media (max-width: 1199px){
+
+}
+
+@media (max-width: 1023px){
+
+}
+
+@media (max-width: 767px){
+  .PoringIslandMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-top: 40px;
+  }
+  .WorldMap,
+  .SmallIslandPath0,
+  .SmallIslandPath1,
+  .SmallIslandPath2,
+  .SmallIslandPath2Secret,
+  .SmallIslandPathBridge,
+  .SmallIslandPathBoss,
+  .BossTreasureBoxPoringIsland,
+  /* Hidden Passage */
+  .SmallIslandPathBridgeHidden1,
+  .SmallIslandPathBridgeHidden2,
+  .SmallIslandPathBridgeHiddenNPC,
+  .TreasureBoxPoringIsland,
+  .TreasureBoxPoringIsland2{
+    width:100%;
+    min-height: 50px;
+  }
+}
+@media (max-width: 467px){
+
+}

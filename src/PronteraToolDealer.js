@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
-import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, PoringIslandMapFn } from './actions';
+import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, LampFn , PoringIslandMapFn } from './actions';
 
 import './css/mapPronteraToolDealer.css'
 import $ from 'jquery'
@@ -14,6 +14,7 @@ import AnniversaryCake from './img/Item/AnniversaryCake.gif'
 import MastelaFruit from './img/Item/MastelaFruit.gif'
 import BluePotion from './img/Item/BluePotion.gif'
 import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
+import Lamp from './img/Item/Lamp.gif'
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 // import useSound from 'use-sound';
 
@@ -41,9 +42,10 @@ function StartMenu(){
       {id:90005,cost: 2000, Get:MastelaFruitFn(-2000,1), Img: MastelaFruit, name: "Mastela Fruit"},
       {id:90006,cost: 400, Get:BluePotionFn(-400,1), Img: BluePotion, name: "Blue Potion"},
       {id:90007,cost: 4000, Get:YggdrasilBerryFn(-4000,1), Img: YggdrasilBerry, name: "Yggdrasil Berry"},
+      {id:91001,cost: 10, Get:LampFn(-10,1), Img: Lamp, name: "Lamp"},
     ]
     let MiscBuyUniqueBox = [ 
-      {id:91000,cost: 1, Get:PoringIslandMapFn(-1,1), Img: PoringIslandMap, name: "PoringIsland Map", Item: userGoldItem.PoringIslandMap}
+      {id:93000,cost: 1, Get:PoringIslandMapFn(-1,1), Img: PoringIslandMap, name: "PoringIsland Map", Item: userGoldItem.PoringIslandMap}
     ]
   
     let MiscSellBox = [
@@ -55,6 +57,7 @@ function StartMenu(){
       {id:100005,cost: 1600, Get:MastelaFruitFn(1600,-1), Img: MastelaFruit, name: "Mastela Fruit", Item: userGoldItem.MastelaFruit},
       {id:100006,cost: 320, Get:BluePotionFn(320,-1), Img: BluePotion, name: "Blue Potion", Item: userGoldItem.BluePotion},
       {id:100007,cost: 3200, Get:YggdrasilBerryFn(3200,-1), Img: YggdrasilBerry, name: "Yggdrasil Berry", Item: userGoldItem.YggdrasilBerry},
+      {id:200001,cost: 8, Get:LampFn(8,-1), Img: Lamp, name: "Lamp", Item: userGoldItem.Lamp},
     ]
     return(
         <div className="toolDealerMap">
@@ -88,7 +91,7 @@ function StartMenu(){
                   })}
                 </div>
                 : npcControlRoom.DealerSell ?
-                <div div className="toolDealerGoodsBox">
+                <div className="toolDealerGoodsBox">
                   {MiscSellBox.map(Sell => {
                       return(
                         <span key={Sell.id}>

@@ -24,6 +24,10 @@ const Fn = {
     PoringIslandPath2: false,
     PoringIslandPath3: false,
     PoringIslandPath4: false,
+    PoringIslandPath5: false,
+    PoringIslandPath6: false,
+    PoringIslandPath7: false,
+    PoringIslandPath8: false,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -356,12 +360,37 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     PoringIslandPath4: true,
                 }
+            case 'GotoPoringIslandPath5Fn':
+                return {
+                    ...state,
+                    PoringIslandPath5: true,
+                }
+            case 'GotoPoringIslandPath6Fn':
+                return {
+                    ...state,
+                    PoringIslandPath6: true,
+                }
+            case 'GotoPoringIslandPath7Fn':
+                return {
+                    ...state,
+                    PoringIslandPath7: true,
+                }
+            case 'GotoPoringIslandPath8Fn':
+                return {
+                    ...state,
+                    PoringIslandPath8: true,
+                }
             case 'ReturnPoringIslandPathFn':
                 return {
                     ...state,
                     PoringIslandPath1: false,
                     PoringIslandPath2: false,
                     PoringIslandPath3: false,
+                    PoringIslandPath4: false,
+                    PoringIslandPath5: false,
+                    PoringIslandPath6: false,
+                    PoringIslandPath7: false,
+                    PoringIslandPath8: false,
                 }
             //BattleLoadingScreen
             case 'BattleLoadingScreenFn':

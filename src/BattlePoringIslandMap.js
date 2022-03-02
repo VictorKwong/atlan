@@ -20,7 +20,7 @@ import { ProgressQuestDialogFn } from './actions'
 //Win ETC Items
 import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
 //PATH UNLOCK
-import { GotoPoringIslandPath1Fn } from './actions'
+import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -467,13 +467,22 @@ function Main(){
     // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
       if (enemyStats[i].currentHealth <= 0){
+        
         dispatch(EnemyDeadAnimationFn(true))
         setTimeout(() => (clockCheck = 1), 300);
-        
         dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
         $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
         //PATH
-        dispatch(GotoPoringIslandPath1Fn());
+        switch (true) {
+          case (screenControlRoom.UserUnlockPath === "Path1"):
+            dispatch(GotoPoringIslandPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "Path2"):
+            dispatch(GotoPoringIslandPath2Fn());
+            break;
+          default:
+            break;
+        }
         //ETC items
         EtcBox.map(EtcItems => {
           if((i === EtcItems.num) && (EtcItems.percent > Math.random())){
@@ -593,7 +602,7 @@ function Main(){
         }
       }
       listResult = document.getElementsByClassName('storyChat')[0];
-      listResult.scrollTop = listResult.scrollHeight;
+      listResult.scrollTop = listResult.scrollHeight
     }, [enemyStats, dispatch, userStats, baseEXPChart]);
 
 
@@ -1361,11 +1370,11 @@ function Main(){
             <p className="storySpeech">-------- The Battle begins ------</p>
             {/* <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button> */}
 
-            {enemyStats[i].currentHealth <= 0 ? 
+            {enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
             <div className="storyScreen">
               <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             </div>
-            : userStats.currentHealth <= 0 ? 
+            : userStats.currentHealth <= 0 && clockCheck === 1? 
             <div className="storyScreen">
               <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
             </div> : null}

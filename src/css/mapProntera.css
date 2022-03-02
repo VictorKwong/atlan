@@ -177,6 +177,20 @@
     overflow-x: hidden;
     padding-top: 40px;
   }
+  .toolDealerNPC,
+  .weaponArmorDealerNPC,
+  .PronteraWorldMap,
+  .kafraEmployee,
+  .pronteraFountain,
+  .questBoard,
+  .headGearDealerNPC{
+    width:100%;
+    min-height: 100px;
+  }
+  .pronteraFountainImg, 
+  .weaponArmorDealerNPCImg{
+    width:auto;
+  }
 }
 @media (max-width: 467px){
 

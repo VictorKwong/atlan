@@ -239,10 +239,9 @@ export const GotoBattlePoringIslandMapTwoFn = (Path) => {
         Path:Path
     };
 };
-export const GotoBattlePoringIslandMapTwoSecretFn = (Path) => {
+export const GotoBattlePoringIslandMapTwoSecretFn = () => {
     return {
         type: 'GotoBattlePoringIslandMapTwoSecretFn',
-        Path:Path
     };
 };
 export const GotoBattlePoringIslandMapBossFn = (Path) => {
@@ -647,6 +646,14 @@ export const BluePotionFn = (Zeny,Item) => {
 export const YggdrasilBerryFn = (Zeny,Item) => {
     return {
         type: 'YggdrasilBerryFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+//MISC
+export const LampFn = (Zeny,Item) => {
+    return {
+        type: 'LampFn',
         Zeny: Zeny,
         Item: Item
     };
@@ -1110,6 +1117,28 @@ export const GotoPoringIslandPath4Fn = () => {
         type: 'GotoPoringIslandPath4Fn',
     };
 };
+
+export const GotoPoringIslandPath5Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath5Fn',
+    };
+};
+export const GotoPoringIslandPath6Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath6Fn',
+    }
+};
+export const GotoPoringIslandPath7Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath7Fn',
+    };
+};
+export const GotoPoringIslandPath8Fn = () => {
+    return {
+        type: 'GotoPoringIslandPath8Fn',
+    };
+};
+
 export const ReturnPoringIslandPathFn = () => {
     return {
         type: 'ReturnPoringIslandPathFn',

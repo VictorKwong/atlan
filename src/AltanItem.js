@@ -2,7 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn} from './actions';
 //ITEM
-import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
+import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn,LampFn } from './actions'
+
+//Result
+import { GotoPoringIslandPath6Fn } from './actions'
 
 import './css/mapAltanItem.css'
 // import useSound from 'use-sound';
@@ -37,6 +40,7 @@ import AnniversaryCake from './img/Item/AnniversaryCake.gif'
 import MastelaFruit from './img/Item/MastelaFruit.gif'
 import BluePotion from './img/Item/BluePotion.gif'
 import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
+import Lamp from './img/Item/Lamp.gif'
 //ETC
 import Jellopy from './img/Etc/Poring_Jellopy70.gif'
 import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
@@ -78,6 +82,9 @@ function StartMenu(){
       {id:20006, Img:MastelaFruit, name:"Mastela Fruit", itemCheck:userGoldItem.MastelaFruit, useItem:UseMastelaFruitFn()},
       {id:20007, Img:BluePotion, name:"Blue Potion", itemCheck:userGoldItem.BluePotion, useItem:UseBluePotionFn()},
       {id:20008, Img:YggdrasilBerry, name:"Yggdrasil Berry", itemCheck:userGoldItem.YggdrasilBerry, useItem:UseYggdrasilBerryFn()},
+    ]
+    let ItemSpecialBox = [
+      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit:npcControlRoom.PoringIslandBridgeNPC, result:GotoPoringIslandPath6Fn()},
     ]
     let EquipBox = [
       //WEAPON
@@ -137,6 +144,17 @@ function StartMenu(){
                 return( 
                   <span key={Item.id}>
                     {Item.itemCheck >= 1 ? <button className="altanItemButton altanItemButtonFix" onClick={() => dispatch((Item.useItem))}>
+                      <div className="adjImgCenterBox">
+                        <p className="adjImgCenter">{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</p>
+                      </div>
+                      </button> : null}
+                  </span>
+                )})}
+              {ItemSpecialBox.map(Item => {
+                return( 
+                  <span key={Item.id}>
+                    {/* if item use in specific spot, unlock result */}
+                    {Item.itemCheck >= 1 ? <button className="altanItemButton altanItemButtonFix" onClick={Item.condit ? () => {dispatch((Item.useItem)); dispatch((Item.result));} : () => dispatch((Item.useItem))}>
                       <div className="adjImgCenterBox">
                         <p className="adjImgCenter">{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</p>
                       </div>

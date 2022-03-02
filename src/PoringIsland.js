@@ -7,7 +7,11 @@ import { Chest1VisitRepeatFn , Chest2VisitRepeatFn, ChestBoss1VisitRepeatFn} fro
 //Battle Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //PATH
-import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn, GotoPoringIslandPath3Fn, GotoPoringIslandPath4Fn , ReturnPoringIslandPathFn , PoringIslandBridgeNPCFn, ResetPoringIslandNPCFn} from './actions'
+import { GotoPoringIslandPath4Fn ,GotoPoringIslandPath6Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
+//NPC
+import { PoringIslandBridgeNPCFn, ResetPoringIslandNPCFn } from './actions'
+
+
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import BattlePoringIslandMapTwo from './BattlePoringIslandMapTwo'
 import BattlePoringIslandMapTwoSecret from './BattlePoringIslandMapTwoSecret'
@@ -189,8 +193,8 @@ useEffect(() => {
       $('.storyCharacter').html('')
       break;
     case(npcControlRoom.PoringIslandBridgeNPC):
-      $('.storySpeech').html('Rumors said there is a hidden passage near here...hmm where is it?')
-      $('.storyCharacter').html('RestingGirl')
+      $('.storySpeech').html('Rumors saids there is a hidden passage near here...hmm where is it?')
+      $('.storyCharacter').html('<p class="storyCharacterBox">RestingGirl</p>')
       break;
     default:
       $('.storySpeech').html('')  
@@ -202,24 +206,29 @@ useEffect(() => {
 }, [npcControlRoom, screenControlRoom])
 
   
-  const LoadingScreen = () => {
+  const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1")), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
-  const LoadingScreenTwo = () => {
+  const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapTwoFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path2")), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
-  const LoadingScreenTwoSecret = () => {
+  const LoadingScreen2 = () => {
+    dispatch(BattleLoadingScreenFn())
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapTwoFn("Path3")), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
+  const LoadingScreen2Secret = () => {
     dispatch(BattleLoadingScreenFn())
     setTimeout(() => dispatch(GotoBattlePoringIslandMapTwoSecretFn()), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreenThreeBoss = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapBossFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapBossFn("Path5")), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
 
@@ -272,26 +281,38 @@ useEffect(() => {
               <h3 className="PoringIslandMapTitle storyScreen">Poring Island</h3>
               {/* World Map, Reset Path Fn Optional dispatch(ReturnPoringIslandPathFn());*/}
               <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn()); dispatch(ReturnPoringIslandPathFn());} }>ToWorldMap</button>
-              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath0": "SmallIsland SmallIslandPath0 "} onClick={() =>{LoadingScreen(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>small Island</button>
-               {/* Path 1 */}
-              <button className="TreasureBoxPoringIsland" onClick={npcControlRoom.Chest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(Chest1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button>
-              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath1": "SmallIsland SmallIslandPath1"} onClick={() =>{LoadingScreen(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>shallow path</button>
+              {/* Path 0 */}
+              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath0": "SmallIsland SmallIslandPath0 "} onClick={() =>{LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>small Island</button>
+              {/* Path 1 */}
+              {screenControlRoom.PoringIslandPath1 ?
+               <button className="TreasureBoxPoringIsland" onClick={npcControlRoom.Chest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(Chest1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button> : null}
+               {screenControlRoom.PoringIslandPath1 ?
+              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath1": "SmallIsland SmallIslandPath1"} onClick={() =>{LoadingScreen1(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>shallow path</button> :null}
               {/* Path 2 */}  
-              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland2 SmallIslandPath2 ": "SmallIsland SmallIsland3 SmallIslandPath2"} onClick={() =>{LoadingScreenTwo(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>walk path</button>
+              {screenControlRoom.PoringIslandPath2 ?
+              <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland2 SmallIslandPath2 ": "SmallIsland SmallIsland3 SmallIslandPath2"} onClick={() =>{LoadingScreen2(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>walk path</button> : null}
               {/* Path 3 */}
-              <button className="SmallIsland SmallIsland3Secret SmallIslandPath2Secret" onClick={() =>{LoadingScreenTwoSecret(); changeMapFadeAudio();}}>???</button>
-              <button className="TreasureBoxPoringIsland TreasureBoxPoringIsland2" onClick={npcControlRoom.Chest2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn()); dispatch(Chest2VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn()); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button>
-              <button className="SmallIsland SmallIsland4 SmallIslandPathBridge" onClick={() =>{dispatch(PoringIslandBridgeNPCFn()); changeMapFadeAudio();}}>Bridge</button>
+              {screenControlRoom.PoringIslandPath3 ?
+              <button className="SmallIsland SmallIsland3Secret SmallIslandPath2Secret" onClick={() =>{LoadingScreen2Secret(); changeMapFadeAudio();}}>???</button> :null}
+              {screenControlRoom.PoringIslandPath3 ?
+              <button className="TreasureBoxPoringIsland TreasureBoxPoringIsland2" onClick={npcControlRoom.Chest2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn()); dispatch(Chest2VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn()); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button> : null}
+              {screenControlRoom.PoringIslandPath3 ?
+              <button className="SmallIsland SmallIsland4 SmallIslandPathBridge" onClick={() =>{dispatch(PoringIslandBridgeNPCFn()); dispatch(GotoPoringIslandPath4Fn()); changeMapFadeAudio();}}>Bridge</button> : null}
               {/* Path 6 Hidden*/}
-              <button className="SmallIsland SmallIslandBridgeHidden1 SmallIslandPathBridgeHidden1" onClick={() =>{changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>secret path</button>
+              {screenControlRoom.PoringIslandPath6 ?
+              <button className="SmallIsland SmallIslandBridgeHidden1 SmallIslandPathBridgeHidden1" onClick={() =>{changeMapFadeAudio(); dispatch(GotoPoringIslandPath7Fn()); dispatch(ResetPoringIslandNPCFn());}}>secret path</button> :null}
                {/* Path 7 Hidden*/}
-              <button className="SmallIsland SmallIslandBridgeHidden2 SmallIslandPathBridgeHidden2" onClick={() =>{changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>secret path2</button>
+               {screenControlRoom.PoringIslandPath7 ?
+              <button className="SmallIsland SmallIslandBridgeHidden2 SmallIslandPathBridgeHidden2" onClick={() =>{changeMapFadeAudio(); dispatch(GotoPoringIslandPath8Fn()); dispatch(ResetPoringIslandNPCFn());}}>secret path2</button> :null}
                {/* Path 8 Hidden*/}
-              <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>House</button>
+               {screenControlRoom.PoringIslandPath8 ?
+              <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>House</button> :null}
               {/* Path 4 */}
-              <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={() =>{ LoadingScreenThreeBoss(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>Boss</button>
+              {screenControlRoom.PoringIslandPath4 ?
+              <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={() =>{ LoadingScreenThreeBoss(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>Boss</button> : null}
               {/* Path 5 Hidden */}
-              <button className="BossTreasureBoxPoringIsland" onClick={npcControlRoom.ChestBoss1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn()); dispatch(ChestBoss1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn()); dispatch(ResetPoringIslandNPCFn());}}>shiny chest</button>
+              {screenControlRoom.PoringIslandPath5 ?
+              <button className="BossTreasureBoxPoringIsland" onClick={npcControlRoom.ChestBoss1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn()); dispatch(ChestBoss1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn()); dispatch(ResetPoringIslandNPCFn());}}>shiny chest</button> : null}
             </div>
             }
             <div className="StoryHUD">
