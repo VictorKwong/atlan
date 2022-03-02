@@ -193,7 +193,7 @@ useEffect(() => {
       $('.storyCharacter').html('')
       break;
     case(npcControlRoom.PoringIslandBridgeNPC):
-      $('.storySpeech').html('Rumors saids there is a hidden passage near here...hmm where is it?')
+      $('.storySpeech').html('Rumors saids there is a hidden passage near by here...hmm where is it?')
       $('.storyCharacter').html('<p class="storyCharacterBox">RestingGirl</p>')
       break;
     default:

@@ -65,6 +65,7 @@ import Fountain from './img/NPC/Fountain.gif'
 import PronteraToolDealerImg from './img/NPC/PronteraToolDealer.gif'
 import Warp from './img/NPC/Warp.gif'
 import PronteraHeadGearDealerImg from './img/NPC/PronteraHeadGearDealer.gif'
+import PronteraSoldierImg from './img/NPC/Soldier.gif'
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
@@ -495,6 +496,9 @@ function StartMenu(){
             <div className="PronteraMap">
               <h3 className="PronteraMapTitle">Prontera</h3>
               <button className="ReturnHUDBugFix"></button>
+              <button className="soldier1"><img src={PronteraSoldierImg} alt="Prontera soldier1" /></button>
+              <button className="castleEnterence"><img src={Warp} alt="Warp Portal" /></button>
+              <button className="soldier2"><img src={PronteraSoldierImg} alt="Prontera soldier2" /></button>
               <button className="toolDealerNPC" onClick={() =>{dispatch(GotoPronteraToolDealerFn()); dispatch(TalktoToolDealerFn()); changePlaceFadeAudio();}}><img src={PronteraToolDealerImg} alt="Prontera Tool Dealer" /></button>
               <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img className="weaponArmorDealerNPCImg" src={Warp} alt="Warp Portal" /></button>
               <button className="kafraEmployee" onClick={() => dispatch(TalktoKafraEmployeeFn())}><img src={KafraEmployee} alt="Kafra Employee" /></button>

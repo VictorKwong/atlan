@@ -77,7 +77,10 @@
 .pronteraFountain::before,
 .toolDealerNPC::before,
 .weaponArmorDealerNPC::before,
-.headGearDealerNPC::before{
+.headGearDealerNPC::before,
+.soldier1::before,
+.soldier2::before,
+.castleEnterence::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -92,7 +95,10 @@
 .pronteraFountain:hover::before,
 .toolDealerNPC:hover::before,
 .weaponArmorDealerNPC:hover::before,
-.headGearDealerNPC:hover::before{
+.headGearDealerNPC:hover::before,
+.soldier1:hover::before,
+.soldier2:hover::before,
+.castleEnterence:hover::before{
   border: solid #3c70ff 1px;
 }
 
@@ -103,7 +109,10 @@
 .pronteraFountain,
 .toolDealerNPC,
 .weaponArmorDealerNPC,
-.headGearDealerNPC{
+.headGearDealerNPC,
+.soldier1,
+.soldier2,
+.castleEnterence{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -151,7 +160,9 @@
   right: 0px;
 }
 
-
+.soldier1 { grid-area: 1 / 3 / 2 / 4; }
+.soldier2 { grid-area: 1 / 5 / 2 / 6; }
+.castleEnterence { grid-area: 1 / 4 / 2 / 5; }
 .toolDealerNPC { grid-area: 3 / 3 / 4 / 4; }
 .weaponArmorDealerNPC { grid-area: 3 / 5 / 4 / 6; }
 .PronteraWorldMap { grid-area: 7 / 4 / 8 / 5; }
@@ -183,7 +194,10 @@
   .kafraEmployee,
   .pronteraFountain,
   .questBoard,
-  .headGearDealerNPC{
+  .headGearDealerNPC,
+  .soldier1,
+  .soldier2,
+  .castleEnterence{
     width:100%;
     min-height: 100px;
   }
