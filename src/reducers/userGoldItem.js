@@ -36,6 +36,8 @@ const Fn = {
     PoringIslandMap: 1,
     //MISC
     Lamp:1,
+    //Mission
+    SpiritOfEclipse: 0,
     //PORING ISLAND
     Jellopy: 3,
     EmptyBottle: 5,
@@ -120,7 +122,14 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 Lamp: state.Lamp + action.Item,
             }
-        
+        //MISSION
+        case 'SpiritOfEclipseFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SpiritOfEclipse: state.SpiritOfEclipse + action.Item,
+            }
+                
         //Weapons Shop
         case 'KatanaFn':
             return{

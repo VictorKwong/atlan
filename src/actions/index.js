@@ -366,6 +366,19 @@ export const ResetUserChannelAnimationFn = () => {
         type: 'ResetUserChannelAnimationFn'
     };
 };
+export const EnemyDodgeAnimationFn = (animation) => {
+    return {
+        type: 'EnemyDodgeAnimationFn',
+        animation: animation
+    };
+};
+export const UserIsDodgeAnimationFn = (animation) => {
+    return {
+        type: 'UserIsDodgeAnimationFn',
+        animation: animation
+    };
+};
+
 export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg,WeaponOnHitImg,WeaponDyingImg,WeaponDeadImg,WeaponChannelImg,WeaponPickUpImg) => {
     return {
         type: 'UserWeaponImgFn',
@@ -700,6 +713,16 @@ export const PoringIslandMapFn = (Zeny,Item) => {
         Item: Item
     };
 };
+//MISSION
+export const SpiritOfEclipseFn = (Zeny,Item) => {
+    return {
+        type: 'SpiritOfEclipseFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+
+
 
 //WEAPON BUY SELL
 export const KatanaFn = (Zeny,Item) => {

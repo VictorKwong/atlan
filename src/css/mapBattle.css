@@ -103,7 +103,8 @@
   margin: 10px 0 10px;
   padding: 3px 0 3px;
 }
-.UserImageBox{
+.UserImageBox,
+.EnemyImageBox{
   position: relative;
 }
 .greenHP,
@@ -393,6 +394,18 @@ progress.BarBasicHUD::-webkit-progress-bar{
   opacity: 1;
 }
 
+.DamageResultNumberHide{
+  display: none;
+}
+
+.DamageResultNumber{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0) scale3d(1,1,1);
+  color:red;
+  z-index: 999;
+}
 
 @media (max-width: 1199px){
   .BarBasicHUD{

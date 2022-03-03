@@ -143,7 +143,7 @@ function StartMenu(){
         });  
       }
       $('.PronteraMapTitle').fadeIn(600);
-      $('.PoringIslandMapTitle').delay(2400).fadeOut(600);
+      $('.PronteraMapTitle').delay(2400).fadeOut(600);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn } from './actions';
+import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -666,6 +666,8 @@ function Main(){
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
           // ENEMY DODGE
           default:
+            dispatch(EnemyDodgeAnimationFn(true));
+            setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
             //Rerender
             return setTimeout(() => dispatch(userClockDefendFn()), 300);
@@ -749,6 +751,8 @@ function Main(){
           // ENEMY DODGE
           default:
             $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
+            dispatch(EnemyDodgeAnimationFn(true));
+            setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
             return setTimeout(() => dispatch(UserSkillBashMissedFn()), 300);
         }
@@ -812,6 +816,8 @@ function Main(){
               }
           // ENEMY DODGE 
           default:
+              dispatch(EnemyDodgeAnimationFn(true));
+              setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
@@ -876,6 +882,8 @@ function Main(){
               }
           // ENEMY DODGE 
           default:
+              dispatch(EnemyDodgeAnimationFn(true));
+              setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
@@ -1067,6 +1075,8 @@ function Main(){
                   }
                 // USER DODGE
                 default:
+                  dispatch(UserIsDodgeAnimationFn(true));
+                  setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1000);
                   $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan dodge the attack!</p>`)
                   //Rerender
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
@@ -1175,10 +1185,17 @@ function Main(){
             <div className="storyMapScreen">
               <div className="battleScreen">
                 <div className="enemyBox"> 
-                    
                     {
-                      i === 0 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} /> :
-                      i === 1 ? <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} /> :
+                      i === 0 ? 
+                      <div className="EnemyImageBox">
+                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} />
+                        <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                      </div> :
+                      i === 1 ? 
+                      <div className="EnemyImageBox">
+                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} />
+                        <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                      </div> :
                       null
                     }                    
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>

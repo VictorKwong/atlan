@@ -15,7 +15,7 @@ const Fn = [
         defencebuffer: 10, // 5+5
         speed: 5,
         hitRate: 0.7,
-        dodgeRate: 0.05,
+        dodgeRate: 1,
         critRate: 0.03,
         Experience: 99999999,
         Zeny: (30 + Math.floor(Math.random() * 14)),

@@ -2,11 +2,13 @@ const Fn = {
     EnemyOnHit: false,
     EnemyAttack:false,
     EnemyDead: false,
+    EnemyDodge: false,
     UserAttack: false,
     UserOnHit: false,
     UserIsDying: false,
     UserIsDead: false,
     UserIsDefend: false,
+    UserIsDodge: false,
     UserChannel: false,
     UserPickUp: false,
     UserBattleImg: null,
@@ -61,6 +63,11 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 UserIsDead: false,
                 }
+        case 'UserIsDodgeAnimationFn':
+            return {
+                ...state,
+                UserIsDodge: action.animation,
+                }
         case 'EnemyOnHitAnimationFn':
             return {
                 ...state,
@@ -71,6 +78,11 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 EnemyOnHit: false,
             }
+        case 'EnemyDodgeAnimationFn':
+            return {
+                ...state,
+                EnemyDodge: action.animation,
+                }
         case 'EnemyAttackUserAnimationFn':
             return {
                 ...state,

@@ -109,7 +109,7 @@ const Fn = {
     }],
     SoldierGuard1:[{
             name: 'SoldierGuard',
-            text: 'Welcome to Prontera!'
+            text: 'Welcome to Prontera! This is the Porntera Castle Enterance.'
         }],
     SoldierGuard2:[{
             name: 'SoldierGuard',

@@ -59,7 +59,8 @@ import Opal from './img/Etc/Eclipse_Opal50.gif'
 
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
-
+//MISSION
+import SpiritOfEclipse from './img/Etc/SpiritOfEclipse.gif'
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -127,8 +128,10 @@ function StartMenu(){
       {id:1012, Img:GlassBead, name:"GlassBead", itemCheck:userGoldItem.GlassBead},
       {id:1013, Img:Opal, name:"Opal", itemCheck:userGoldItem.Opal},
 
-      {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap}
+      {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
+      {id:100001, Img:SpiritOfEclipse, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse}
     ]
+    
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
 
     const dispatch = useDispatch();
