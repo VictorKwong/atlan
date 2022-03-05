@@ -398,6 +398,14 @@ progress.BarBasicHUD::-webkit-progress-bar{
   display: none;
 }
 
+.DamageResultNumberBox{
+  animation: JumpingNumberY 2s linear;
+}
+@keyframes JumpingNumberX{
+  50%{transform: translateY(400px)}
+  100%{transform: translateY(0px)}
+}
+
 .DamageResultNumber{
   position: absolute;
   top: 50%;
@@ -405,6 +413,11 @@ progress.BarBasicHUD::-webkit-progress-bar{
   transform: translate3d(-50%,-50%,0) scale3d(1,1,1);
   color:red;
   z-index: 999;
+  animation: JumpingNumberX 2s linear;
+}
+
+@keyframes JumpingNumberX{
+   100%{transform: translateX(-100px); opacity: 0;}
 }
 
 @media (max-width: 1199px){

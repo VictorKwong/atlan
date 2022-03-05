@@ -1189,12 +1189,12 @@ function Main(){
                       i === 0 ? 
                       <div className="EnemyImageBox">
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} />
-                        <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                          <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
                       i === 1 ? 
                       <div className="EnemyImageBox">
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} />
-                        <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                          <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
                       null
                     }                    
