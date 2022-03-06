@@ -1162,6 +1162,8 @@ function Main(){
         (() => {
           switch (true) {
            case(clockCheck === 1 || userStats.currentHealth <= 0 || enemyStats[i].currentHealth <= 0):
+              listResult = document.getElementsByClassName('storyChat')[0];
+              listResult.scrollTop = listResult.scrollHeight;
               return clearInterval(ClockTurn);
            default:
               return dispatch(TickingClockFn());
