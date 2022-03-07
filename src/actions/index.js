@@ -57,8 +57,21 @@ export const UserSkillBowlingBashMissedFn = () => {
         type: 'UserSkillBowlingBashMissedFn',
     };
 };
-
-
+export const UserSkillQuickenFn = () => {
+    return {
+        type: 'UserSkillQuickenFn',
+    };
+};
+export const UserSkillQuickenClockTickFn = () => {
+    return {
+        type: 'UserSkillQuickenClockTickFn'
+    };
+};
+export const ResetUserSkillQuickenClockFn = () => {
+    return {
+        type: 'ResetUserSkillQuickenClockFn'
+    };
+};
 
 export const UserLevelUpFn = (Points) => {
     return {
@@ -378,6 +391,20 @@ export const UserIsDodgeAnimationFn = (animation) => {
         animation: animation
     };
 };
+export const UserIsCritAnimationFn = (animation) => {
+    return {
+        type: 'UserIsCritAnimationFn',
+        animation: animation
+    };
+};
+export const EnemyOnCritAnimationFn = (animation) => {
+    return {
+        type: 'EnemyOnCritAnimationFn',
+        animation: animation
+    };
+};
+
+
 
 export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg,WeaponOnHitImg,WeaponDyingImg,WeaponDeadImg,WeaponChannelImg,WeaponPickUpImg) => {
     return {

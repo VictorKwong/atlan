@@ -5,13 +5,13 @@ const Fn = {
     maxHealth: 150,
     currentHealth: 140,
     maxSP: 50,
-    currentSP: 1,
+    currentSP: 9999,
     attack: 25,
     defence: 18,
     defencebuffer: 38, // 18 + 20
     speed: 10,
     hitRate: 0.95, //0.95
-    dodgeRate: 0.1,
+    dodgeRate: 0.1, //0.1
     critRate: 0.05, // 0.05
     userClockDefend: false,
     userWeapon: 'Katana',
@@ -23,6 +23,8 @@ const Fn = {
     userHeadGear: null,
     userHeadGearImg: null,
     BaseHeadGearDef: 0,
+    //userClock
+    userClockQuicken: 0,
     //Reset
     BasemaxHealth: 150,
     BasemaxSP: 50,
@@ -71,16 +73,32 @@ const userStatsReducer = (state = Fn, action) => {
         case 'UserSkillMagnumBreakBlockEnemyFn':
         case 'UserSkillMagnumBreakEnemyFn':
         case 'UserSkillMagnumBreakMissedFn':
-        return{
-            ...state,
-            currentSP: state.currentSP - 100,
-        }
+            return{
+                ...state,
+                currentSP: state.currentSP - 100,
+            }
         case 'UserSkillBowlingBashEnemyFn':
         case 'UserSkillBowlingBashMissedFn':
-        return{
-            ...state,
-            currentSP: state.currentSP - 250,
-        }
+            return{
+                ...state,
+                currentSP: state.currentSP - 250,
+            }
+        case 'UserSkillQuickenFn':
+            return{
+                ...state,
+                currentSP: state.currentSP - 180,
+                userClockQuicken: 6
+            }
+        case 'UserSkillQuickenClockTickFn':
+            return{
+                ...state,
+                userClockQuicken: state.userClockQuicken - 1
+            }
+        case 'ResetUserSkillQuickenClockFn':
+            return{
+                ...state,
+                userClockQuicken: 0
+            }    
         case 'UserLevelUpFn':
             return {
                 ...state,
@@ -92,14 +110,14 @@ const userStatsReducer = (state = Fn, action) => {
                 attack: state.attack + 15,
                 defence: state.defence + 8,
                 defencebuffer: state.defencebuffer + 8, 
-                speed: state.speed + 0.1,
+                speed: state.speed + 0.03,
                 //Track
                 BasemaxHealth: state.BasemaxHealth + 40,
                 BasemaxSP: state.BasemaxSP + 25,
                 Baseattack: state.Baseattack + 15,
                 Basedefence: state.Basedefence + 8,
                 Basedefencebuffer: state.Basedefencebuffer + 8, 
-                Basespeed: state.Basespeed + 0.1,
+                Basespeed: state.Basespeed + 0.03,
             }
         //Stats Upgrade
         case 'STRPointsFn':

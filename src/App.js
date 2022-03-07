@@ -15,7 +15,7 @@ function App(){
 
     useEffect(() => {
       
-      audio.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+      audio.volume = 0.1;
       let playPromise = audio.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {

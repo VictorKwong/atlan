@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn} from './actions';
+import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -10,7 +10,7 @@ import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockD
 import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
 //Skills T/F
-import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn} from './actions'
+import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn} from './actions'
 //ITEMS
@@ -37,7 +37,9 @@ import LunaticDead from './img/Monster/LunaticDead.png'
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
 import OrangePotion from './img/Item/OrangePotion.gif'
@@ -536,6 +538,7 @@ function Main(){
                 dispatch(ResetUserTurnBlockFn());
                 dispatch(ReturnUserInSelectSkillFn());
                 dispatch(ReturnUserInSelectItemFn());
+                dispatch(ResetUserSkillQuickenClockFn());
     }
     // LEVEL FUNCTION
     useEffect(() => {
@@ -630,9 +633,11 @@ function Main(){
         switch (true) {
           // ENEMY BLOCK
           // CRIT RATE & BLOCKING
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate >= Math.random())):
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5) : Damage = 1;
               // Text display
               $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -641,6 +646,8 @@ function Main(){
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
               // Text display
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -648,9 +655,11 @@ function Main(){
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300)
           // ENEMY HIT
           // CRIT RATE
-          case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate >= Math.random())):
+          case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defence)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5) : Damage = 1;
               // Text display
               $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -659,6 +668,8 @@ function Main(){
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
               // Text display
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -715,7 +726,9 @@ function Main(){
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE && BLOCKING
             switch (true) {
-              case(userStats.critRate >= Math.random()):
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -735,7 +748,9 @@ function Main(){
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
             switch (true) {
-              case (userStats.critRate >= Math.random()):
+              case (userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
@@ -782,7 +797,9 @@ function Main(){
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE && BLOCKING
             switch(true){
-              case(userStats.critRate >= Math.random()):
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
@@ -801,7 +818,9 @@ function Main(){
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
             switch(true){
-              case(userStats.critRate >= Math.random()):
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
@@ -848,7 +867,9 @@ function Main(){
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
             switch(true){
-              case(userStats.critRate >= Math.random()):
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
@@ -867,7 +888,9 @@ function Main(){
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
             switch(true){
-              case(userStats.critRate >= Math.random()):
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
@@ -889,6 +912,25 @@ function Main(){
               return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
         }
         })()
+        // End turn
+        clockCheck = 0;
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
+      }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+    }
+
+    const userSkillQuickenButton = () => {
+      if (userStats.currentSP >= 180){
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      setTimeout(() => (Uclock = 0), 300);
+      //Rerender, Block or not block
+      dispatch(UserSkillQuickenFn(180));
+      $('.storySpeech').append(`<p>Altan use skill Quicken! Attack Speed has increase a period of time!</p>`)  
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -1027,7 +1069,7 @@ function Main(){
       (() => {
           switch (true) {
           //EnemyAttack & Hit
-            case(Math.random() <= 0.8):
+            case(Math.random() <= 0.9):
               //Rerender, Block or not block
               (() => {
               switch (true) {
@@ -1040,6 +1082,8 @@ function Main(){
                   //CRIT RATE
                   switch (true) {
                     case(enemyStats[i].critRate >= Math.random()):
+                      dispatch(UserIsCritAnimationFn(true));
+                      setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                       Math.sign((Damage * 1.5) - userStats.defencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer) : Damage = 1;
                       // Text display
                       $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Altan Received ${Damage} damage</p>`)
@@ -1061,6 +1105,8 @@ function Main(){
                   //CRIT RATE
                   switch (true) {
                   case(enemyStats[i].critRate >= Math.random()):
+                    dispatch(UserIsCritAnimationFn(true));
+                    setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                     Math.sign((Damage * 1.5) - userStats.defence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence) : Damage = 1;
                     // Text display
                     $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!!Altan Received ${Damage} damage</p>`)
@@ -1076,7 +1122,7 @@ function Main(){
                 // USER DODGE
                 default:
                   dispatch(UserIsDodgeAnimationFn(true));
-                  setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1000);
+                  setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1040);
                   $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan dodge the attack!</p>`)
                   //Rerender
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
@@ -1117,6 +1163,8 @@ function Main(){
               dispatch(ResetUserTurnBlockFn());
               dispatch(ReturnUserInSelectSkillFn());
               dispatch(ReturnUserInSelectItemFn());
+              //Skill Quicken count
+              dispatch(UserSkillQuickenClockTickFn());
               clockCheck = 1;
               dispatch(UserTurnFn());
               $('.storySpeech').append('<p>--------- Altan Turn ---------</p>')
@@ -1138,9 +1186,16 @@ function Main(){
               // console.log(`userClock: ${clockBarObject.userClockBar}`)
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               Uclock = 1
-              return clockBarObject = {
-                userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
-                enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+              if (userStats.userClockQuicken >= 1){
+                 clockBarObject = {
+                  userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                  enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                }
+              }else{
+                 clockBarObject = {
+                  userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                  enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                }
               }
           }
         })()
@@ -1183,7 +1238,7 @@ function Main(){
       <div>
         {
         screenControlRoom.PoringIsland ? <PoringIsland />:
-        <div>
+        <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
               <div className="battleScreen">
                 <div className="enemyBox"> 
@@ -1191,12 +1246,12 @@ function Main(){
                       i === 0 ? 
                       <div className="EnemyImageBox">
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? PoringHit : ImageControlRoom.EnemyAttack ? PoringAttack : ImageControlRoom.EnemyDead ? PoringDead : Poring } alt={enemyStats[i].name} />
-                          <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
                       i === 1 ? 
                       <div className="EnemyImageBox">
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} />
-                          <p className={ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
                       null
                     }                    
@@ -1213,16 +1268,17 @@ function Main(){
                 </div>
                 <div className="UserImageBox">
                   {/* User attack Post */}
-                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className="altanImg" /> :
-                  ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className="altanImg"/> : 
-                  ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className="altanImg"/> :
-                  ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className="altanImg"/> : 
+                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
+                  ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
                   // User Defend Post
-                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className="altanImg"/> :
-                  ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className="altanImg"/> :
-                  ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className="altanImg"/> :
+                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
                   // User Battle Post
-                  <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className="altanImg"/>}                  
+                  <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
+                  <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>  
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                   <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
                   <h2 className="wordCenter titleName userNamePosition">Altan</h2>
@@ -1260,7 +1316,7 @@ function Main(){
                       <p className="clockName">Altan: {clockBarObject.userClockBar}</p>
                       <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={"Altan: " + clockBarObject.userClockBar}/>
                       <p className="clockName">{enemyStats[i].name}: {clockBarObject.enemyClockBar}</p>
-                      <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name + ": " + clockBarObject.enemyClockBar }/>
+                      <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name + ": " + clockBarObject.enemyClockBar}/>
                 </div>
                 <div>
                       
@@ -1279,6 +1335,14 @@ function Main(){
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Mag<span className="goGoButtonHide">num</span> Break</p>
                               <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> <span className="goGoButtonHide">SP</span>:100</span>
+                            </figcaption>
+                          </button>
+                        : null}
+                        {userStats.Level >= 1 ? 
+                          <button className="goGoButtonSkills" onClick={() => userSkillQuickenButton()}>
+                            <figcaption className="goGoButtonFig">
+                              <p className="goGoButtonName"><img src={skillQuicken} alt="skillQuicken"/> Quick<span className="goGoButtonHide">en</span></p>
+                              <span className={userStats.currentSP >= 180 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillQuicken} alt="skillQuicken" /> <span className="goGoButtonHide">SP</span>:180</span>
                             </figcaption>
                           </button>
                         : null}
