@@ -1239,6 +1239,14 @@ export const AudioVolumeBGMSaverFn = (Volume,map,Place,Threshold) => {
         Threshold: Threshold
     };
 };
+export const AudioVolumeSoundEffectSaverFn = (Volume) => {
+    return {
+        type: 'AudioVolumeSoundEffectSaverFn',
+        Volume: Volume,
+    };
+};
+
+
 
 //Battle Loading Screen
 export const BattleLoadingScreenFn = () => {

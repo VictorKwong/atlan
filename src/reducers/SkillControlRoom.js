@@ -5,6 +5,8 @@ const Fn = {
         BattleItemScreen: false,
         UserTurn: false,
         UserBlock: false,
+        //userClock
+        userClockQuicken: 0,
     },
     Enemy:{
         EnemyTurn: false,
@@ -83,6 +85,30 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserBlock: false,
                 }
         }
+        case 'UserSkillQuickenFn':
+            return{
+                ...state,
+                User:{
+                    ...state['User'],
+                    userClockQuicken: 6
+            }
+        }
+        case 'UserSkillQuickenClockTickFn':
+            return{
+                ...state,
+                User:{
+                    ...state['User'],
+                    userClockQuicken: state['User'].userClockQuicken - 1
+                }
+            }
+        case 'ResetUserSkillQuickenClockFn':
+            return{
+                ...state,
+                User:{
+                    ...state['User'],
+                    userClockQuicken: 0
+                }
+            }
         case 'EnemyTurnFn':
             return {
                 ...state,

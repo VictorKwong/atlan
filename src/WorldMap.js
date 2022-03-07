@@ -45,8 +45,9 @@ import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
 
 
-// import useSound from 'use-sound';
+import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
+// const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
 function StartMenu(){
 
     const audioControlRoom = useSelector(state => state.audioControlRoom)
@@ -54,7 +55,7 @@ function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
+   
     const dispatch = useDispatch();
 
     let HeadGearBox = [

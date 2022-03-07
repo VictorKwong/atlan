@@ -3,13 +3,15 @@ import './css/gameOption.css'
 import { useDispatch , useSelector } from 'react-redux';
 import { returnToTitleScreenFn } from './actions';
 
-import { AudioVolumeBGMSaverFn } from './actions';
+import { AudioVolumeBGMSaverFn, AudioVolumeSoundEffectSaverFn } from './actions';
 
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 import OneStepCloser from './audio/205OneStepCloser.mp3'
-
+import LoginSound from './audio/SoundEffect/RoomChat.mp3'
 const audioBGM = new Audio(OneStepCloser);
+const audioSoundEffect = new Audio(LoginSound)
+
 
 function GameOption(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
@@ -18,7 +20,7 @@ function GameOption(){
 
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-      console.log(audioBGM.volume)
+      audioSoundEffect.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
@@ -31,10 +33,14 @@ function GameOption(){
         });
       }
     }, [audioControlRoom, dispatch])
+    const soundEffectAudio = () => {
+        audioSoundEffect.pause();
+        audioSoundEffect.currentTime = 0;
+        audioSoundEffect.play();
+    }
     const stopAudio = () => {
-        audioBGM.volume = 0;
-        audioBGM.pause();
-        audioBGM.currentTime = 0;
+      audioBGM.pause();
+      audioBGM.currentTime = 0;
     }
 
     return(
@@ -49,6 +55,12 @@ function GameOption(){
                 <button className="gameOptionButton" onClick={audioControlRoom.AudioVolumeBGMFixed < 0.99 ? () => {dispatch(AudioVolumeBGMSaverFn(0.1,0.00125,0.00225,0.01)); }: null}>+</button>
                 <p className="gameOptionWord gameOptionNumber">{Math.abs(audioControlRoom.AudioVolumeBGMFixed * 100).toFixed(0)}</p>
                 <button className="gameOptionButton" onClick={audioControlRoom.AudioVolumeBGMFixed > 0.01 ? () => {dispatch(AudioVolumeBGMSaverFn(-0.1,-0.00125,-0.00225,-0.01)); }: null}>-</button>
+            </div>
+            <div className="gameOptionBGMBox">
+              <p className="gameOptionWord">Sound:</p>
+                <button className="gameOptionButton" onClick={audioControlRoom.AudioVolumeSoundEffectFixed < 0.99 ? () => {dispatch(AudioVolumeSoundEffectSaverFn(0.1)); soundEffectAudio();}: null}>+</button>
+                <p className="gameOptionWord gameOptionNumber">{Math.abs(audioControlRoom.AudioVolumeSoundEffectFixed * 100).toFixed(0)}</p>
+                <button className="gameOptionButton" onClick={audioControlRoom.AudioVolumeSoundEffectFixed > 0.01 ? () => {dispatch(AudioVolumeSoundEffectSaverFn(-0.1)); soundEffectAudio();}: null}>-</button>
             </div>
             <div>
               <button className="menuButton" onClick={() => {dispatch(returnToTitleScreenFn()); stopAudio();}}>Return to title</button>

@@ -2,7 +2,8 @@ const Fn = {
     AudioVolumeBGMFixed: 0.1,
     AudioChangeMapVolume: 0.00125,
     AudioChangePlaceVolume: 0.00225,
-    AudioChangePlaceThreshold: 0.01
+    AudioChangePlaceThreshold: 0.01,
+    AudioVolumeSoundEffectFixed: 0.3
 }
 
 const audioControlRoomReducer = (state = Fn, action) => {
@@ -14,6 +15,11 @@ const audioControlRoomReducer = (state = Fn, action) => {
                 AudioChangeMapVolume: state.AudioChangeMapVolume + action.Map,
                 AudioChangePlaceVolume: state.AudioChangePlaceVolume + action.Place,
                 AudioChangePlaceThreshold: state.AudioChangePlaceThreshold + action.Threshold
+                }
+        case 'AudioVolumeSoundEffectSaverFn':
+            return {
+                ...state,
+                AudioVolumeSoundEffectFixed: state.AudioVolumeSoundEffectFixed + action.Volume,
                 }
         default:
             return {

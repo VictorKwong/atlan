@@ -23,6 +23,8 @@ import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinC
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 
 
+
+
 import './css/mapBattle.css'
 import './index.css'
 import PoringIsland from './PoringIsland'
@@ -307,7 +309,19 @@ import Clover from './img/Etc/Lunatic_Clover65.gif'
 import Feather from './img/Etc/Lunatic_Feather10.gif'
 
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
+import SwordHit from './audio/SoundEffect/SwordHit.wav'
+import EmptyHandHit from './audio/SoundEffect/EmptyHandHit.wav'
+import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
+import Heal from './audio/SoundEffect/HealSoundEffect.mp3'
+import UserHit from './audio/SoundEffect/UserHit.wav'
+import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
+const audioHit = new Audio(SwordHit);
+const audioEmptyHandHit = new Audio(EmptyHandHit);
+const audioMiss = new Audio(AttackMiss);
+const audioHeal = new Audio(Heal);
+const audioUserHit = new Audio(UserHit)
+const audioSkillQuicken = new Audio(SkillQuicken);
 
 let clockBarObject = {
   userClockBar: 0,
@@ -408,6 +422,11 @@ function Main(){
     const dispatch = useDispatch();
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+      audioHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioEmptyHandHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioMiss.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioHeal.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
@@ -634,6 +653,12 @@ function Main(){
           // ENEMY BLOCK
           // CRIT RATE & BLOCKING
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
+              //Audio SoundEffect
+              if (userStats.userWeapon === "Empty"){
+                audioEmptyHandHit.play();
+              }else{
+                audioHit.play();
+              }
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               dispatch(EnemyOnCritAnimationFn(true));
@@ -644,6 +669,12 @@ function Main(){
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
+              //Audio SoundEffect
+              if (userStats.userWeapon === "Empty"){
+                audioEmptyHandHit.play();
+              }else{
+                audioHit.play();
+              }
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               dispatch(EnemyOnCritAnimationFn(true));
@@ -656,6 +687,12 @@ function Main(){
           // ENEMY HIT
           // CRIT RATE
           case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
+              //Audio SoundEffect
+              if (userStats.userWeapon === "Empty"){
+                audioEmptyHandHit.play();
+              }else{
+                audioHit.play();
+              }
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               dispatch(EnemyOnCritAnimationFn(true));
@@ -666,6 +703,12 @@ function Main(){
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+              //Audio SoundEffect
+              if (userStats.userWeapon === "Empty"){
+                audioEmptyHandHit.play();
+              }else{
+                audioHit.play();
+              }
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               dispatch(EnemyOnCritAnimationFn(true));
@@ -677,6 +720,8 @@ function Main(){
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
           // ENEMY DODGE
           default:
+            //Audio Sound Effect
+            audioMiss.play();
             dispatch(EnemyDodgeAnimationFn(true));
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
@@ -925,6 +970,8 @@ function Main(){
 
     const userSkillQuickenButton = () => {
       if (userStats.currentSP >= 180){
+      //Audio SoundEffect
+      audioSkillQuicken.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       setTimeout(() => (Uclock = 0), 300);
@@ -943,6 +990,8 @@ function Main(){
     }
     //ITEMS
     const userItemRedPotionButton = () => {
+        //Audio Sound Effect
+        audioHeal.play();
         dispatch(UserChannelAnimationFn());
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
@@ -958,6 +1007,8 @@ function Main(){
         dispatch(ResetUserTurnFn());
     }
     const userItemOrangePotionButton = () => {
+      //Audio Sound Effect
+      audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
@@ -973,6 +1024,8 @@ function Main(){
       dispatch(ResetUserTurnFn());
     }
     const userItemYellowPotionButton = () => {
+        //Audio Sound Effect
+        audioHeal.play();
         dispatch(UserChannelAnimationFn());
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
@@ -988,6 +1041,8 @@ function Main(){
         dispatch(ResetUserTurnFn());
     }
     const userItemWhitePotionButton = () => {
+      //Audio Sound Effect
+      audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
@@ -1003,6 +1058,8 @@ function Main(){
       dispatch(ResetUserTurnFn());
     }
     const userItemAnniversaryCakeButton = () => {
+      //Audio Sound Effect
+      audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
@@ -1018,6 +1075,8 @@ function Main(){
       dispatch(ResetUserTurnFn());
     }
     const userItemMastelaFruitButton = () => {
+      //Audio Sound Effect
+      audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
@@ -1033,6 +1092,8 @@ function Main(){
       dispatch(ResetUserTurnFn());
     }
     const userItemBluePotionButton = () => {
+      //Audio Sound Effect
+      audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
@@ -1048,6 +1109,8 @@ function Main(){
       dispatch(ResetUserTurnFn());
     }
     const userItemYggdrasilBerryButton = () => {
+      //Audio Sound Effect
+      audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
@@ -1082,6 +1145,8 @@ function Main(){
                   //CRIT RATE
                   switch (true) {
                     case(enemyStats[i].critRate >= Math.random()):
+                      //Audio Sound Effect
+                       audioUserHit.play();
                       dispatch(UserIsCritAnimationFn(true));
                       setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                       Math.sign((Damage * 1.5) - userStats.defencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer) : Damage = 1;
@@ -1090,6 +1155,8 @@ function Main(){
                       //Rerender
                       return dispatch(EnemyAttackBlockUserFn(Damage));
                     default:
+                      //Audio Sound Effect
+                       audioUserHit.play();
                       Math.sign(Damage - userStats.defencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer : Damage = 1;
                       // Text display
                       $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan Received ${Damage} damage</p>`)
@@ -1105,6 +1172,8 @@ function Main(){
                   //CRIT RATE
                   switch (true) {
                   case(enemyStats[i].critRate >= Math.random()):
+                    //Audio Sound Effect
+                    audioUserHit.play();
                     dispatch(UserIsCritAnimationFn(true));
                     setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                     Math.sign((Damage * 1.5) - userStats.defence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence) : Damage = 1;
@@ -1113,6 +1182,8 @@ function Main(){
                     //Rerender
                     return dispatch(EnemyAttackUserFn(Damage));
                   default:
+                    //Audio Sound Effect
+                    audioUserHit.play();
                     Math.sign(Damage - userStats.defence) > 0 ? Damage = Damage - userStats.defence : Damage = 1;
                     // Text display
                     $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan Received ${Damage} damage</p>`)
@@ -1121,6 +1192,8 @@ function Main(){
                   }
                 // USER DODGE
                 default:
+                  //Audio Sound Effect
+                  audioMiss.play();
                   dispatch(UserIsDodgeAnimationFn(true));
                   setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1040);
                   $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan dodge the attack!</p>`)
@@ -1185,17 +1258,20 @@ function Main(){
             default:
               // console.log(`userClock: ${clockBarObject.userClockBar}`)
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
-              Uclock = 1
-              if (userStats.userClockQuicken >= 1){
-                 clockBarObject = {
-                  userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
-                  enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
-                }
-              }else{
-                 clockBarObject = {
-                  userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
-                  enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
-                }
+              
+              switch (true) {
+                case (SkillControlRoom['User'].userClockQuicken >= 1):
+                  Uclock = 1
+                  return clockBarObject = {
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                            enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                          }
+                default:
+                  Uclock = 1
+                  return clockBarObject = {
+                          userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                          enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                        }
               }
           }
         })()
@@ -1268,16 +1344,16 @@ function Main(){
                 </div>
                 <div className="UserImageBox">
                   {/* User attack Post */}
-                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
-                  ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
+                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
+                  ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
                   // User Defend Post
-                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                  ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
                   // User Battle Post
-                  <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={userStats.userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
+                  <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
                   <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>  
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                   <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>

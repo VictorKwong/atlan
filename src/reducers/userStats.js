@@ -23,8 +23,7 @@ const Fn = {
     userHeadGear: null,
     userHeadGearImg: null,
     BaseHeadGearDef: 0,
-    //userClock
-    userClockQuicken: 0,
+
     //Reset
     BasemaxHealth: 150,
     BasemaxSP: 50,
@@ -82,23 +81,12 @@ const userStatsReducer = (state = Fn, action) => {
             return{
                 ...state,
                 currentSP: state.currentSP - 250,
-            }
+            }    
         case 'UserSkillQuickenFn':
             return{
                 ...state,
                 currentSP: state.currentSP - 180,
-                userClockQuicken: 6
             }
-        case 'UserSkillQuickenClockTickFn':
-            return{
-                ...state,
-                userClockQuicken: state.userClockQuicken - 1
-            }
-        case 'ResetUserSkillQuickenClockFn':
-            return{
-                ...state,
-                userClockQuicken: 0
-            }    
         case 'UserLevelUpFn':
             return {
                 ...state,
