@@ -10,6 +10,7 @@ const Fn = {
     AntHell: false,
     //PORING ISLAND BATTLE
     BattlePoringIslandMap: false,
+    BattlePoringIslandMapMonsterID: 0,
     BattlePoringIslandMapTwo: false,
     BattlePoringIslandMapTwoSecret: false,
     BattlePoringIslandMapBoss: false,
@@ -286,6 +287,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     WorldMap: false,
                     BattlePoringIslandMap: !state.BattlePoringIslandMap,
+                    BattlePoringIslandMapMonsterID: action.num,
                     BattlePoringIslandMapTwo: false,
                     BattlePoringIslandMapTwoSecret: false,
                     BattlePoringIslandMapBoss: false,

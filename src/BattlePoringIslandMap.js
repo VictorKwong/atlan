@@ -19,9 +19,10 @@ import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn,
 import { ProgressQuestDialogFn } from './actions'
 //Win ETC Items
 import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
+import { WinFourLeafCloverFn, WinGlassBeadFn, WinOpalFn} from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
-
+import { GotoPoringIslandPath5Fn } from './actions'
 
 
 
@@ -36,6 +37,12 @@ import Lunatic from './img/Monster/Lunatic.gif'
 import LunaticHit from './img/Monster/LunaticHit.png'
 import LunaticAttack from './img/Monster/LunaticAttack.gif'
 import LunaticDead from './img/Monster/LunaticDead.png'
+
+import Eclipse from './img/Monster/Eclipse.gif'
+import EclipseHit from './img/Monster/EclipseHit.png'
+import EclipseAttack from './img/Monster/EclipseAttack.gif'
+import EclipseDead from './img/Monster/EclipseDead.png'
+
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
@@ -308,19 +315,29 @@ import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
 import Clover from './img/Etc/Lunatic_Clover65.gif'
 import Feather from './img/Etc/Lunatic_Feather10.gif'
 
+import FourLeafClover from './img/Etc/Eclipse_FourLeafClover.gif'
+import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
+import Opal from './img/Etc/Eclipse_Opal50.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
+import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
 import SwordHit from './audio/SoundEffect/SwordHit.wav'
 import EmptyHandHit from './audio/SoundEffect/EmptyHandHit.wav'
 import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
 import Heal from './audio/SoundEffect/HealSoundEffect.mp3'
 import UserHit from './audio/SoundEffect/UserHit.wav'
+import SkillBash from './audio/SoundEffect/BashSoundEffect.mp3'
+import SkillMagBreak from './audio/SoundEffect/MagnumBreakSoundEffect.mp3'
 import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
+const audioBGMBoss = new Audio(audioRustyHeartsWings);
 const audioHit = new Audio(SwordHit);
 const audioEmptyHandHit = new Audio(EmptyHandHit);
 const audioMiss = new Audio(AttackMiss);
 const audioHeal = new Audio(Heal);
-const audioUserHit = new Audio(UserHit)
+const audioUserHit = new Audio(UserHit);
+const audioSkillBash = new Audio(SkillBash);
+const audioSkillMagBreak = new Audio(SkillMagBreak);
 const audioSkillQuicken = new Audio(SkillQuicken);
 
 let clockBarObject = {
@@ -329,7 +346,7 @@ let clockBarObject = {
 }
 let Damage = 0;
 //Monster Random Number 0 1 
-let i = Math.round(Math.random())
+// let i = Math.round(Math.random())
 let Uclock = 0;
 let clockCheck = 0;
 
@@ -345,6 +362,9 @@ const EtcBox = [
   {id: 2, num: 0, name: "Sticky Mucus", img: StickyMucus , percent: 1, Gain: WinStickyMucusFn},
   {id: 3, num: 1, name: "Clover", img: Clover , percent: 0.65, Gain: WinCloverFn},
   {id: 4, num: 1, name: "Feather", img: Feather , percent: 0.1, Gain: WinFeatherFn},
+  {id: 100, num: 5, name: "Four Leaf Clover", img: FourLeafClover , percent: 1, Gain: WinFourLeafCloverFn},
+  {id: 101, num: 5, name: "Glass Bead", img: GlassBead , percent: 0.8, Gain: WinGlassBeadFn},
+  {id: 102, num: 5, name: "Opal", img: Opal , percent: 0.5, Gain: WinOpalFn},
 ]
 
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
@@ -417,27 +437,51 @@ function Main(){
     const userGoldItem = useSelector(state => state.userGoldItem)
     const enemyStats = useSelector(state => state.enemyStats)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
-
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
+    //Monster Random Number 0 1 
+    let i = screenControlRoom.BattlePoringIslandMapMonsterID
     useEffect(() => {
-      audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
       audioHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioEmptyHandHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioMiss.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioHeal.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
-
-      let playPromise = audioBGM.play(); 
-      if (playPromise !== undefined) {
-        playPromise.then(_ => {
-          // Automatic playback started!
-          audioBGM.loop = true;
-          audioBGM.play()
-        })
-        .catch(error => {
-          // Auto-play was prevented
-        });
+      audioUserHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioSkillBash.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioSkillMagBreak.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioSkillQuicken.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      (() => {
+        let playPromise;
+        switch (true) {
+          case(screenControlRoom.BattlePoringIslandMapMonsterID === 5):
+              audioBGMBoss.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+              playPromise = audioBGMBoss.play();
+              if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                  // Automatic playback started!
+                  audioBGMBoss.loop = true;
+                  audioBGMBoss.play()
+                })
+                .catch(error => {
+                  // Auto-play was prevented
+                });
+              }
+              break;
+          default:
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+            playPromise = audioBGM.play();
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                // Automatic playback started!
+                audioBGM.loop = true;
+                audioBGM.play()
+              })
+              .catch(error => {
+                // Auto-play was prevented
+              });
+            }
+            break;
       }
+      })()
       //ANIMATION PART
       AnimationBox.map(Animation => {
         if(userStats.userWeapon === Animation.weaponName && userStats.userHeadGear === Animation.headGearName){
@@ -464,24 +508,49 @@ function Main(){
 
     const changeMapFadeAudio = () => {
       let i = 0;
-      const fadeAudio = setInterval(() => {
-          if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-            i = i + 1;
+      let fadeAudio;
+          switch (true) {
+            case(screenControlRoom.BattlePoringIslandMapMonsterID === 5):
+                fadeAudio = setInterval(() => {
+                    if (audioBGMBoss.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+                      i = i + 1;
+                    }
+                    if (audioBGMBoss.volume !== 0) {
+                      audioBGMBoss.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+                      audioBGMBoss.volume = audioBGMBoss.volume.toFixed(5)
+                    }
+                    if (audioBGMBoss.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+                        audioBGMBoss.volume = 0;
+                        audioBGMBoss.pause();
+                        audioBGMBoss.currentTime = 0;
+                      clearInterval(fadeAudio);
+                    }else if (i >= 2){
+                      audioBGMBoss.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+                      clearInterval(fadeAudio);
+                    }
+                  }, 10);
+                  break;
+            default:
+                fadeAudio = setInterval(() => {
+                  if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+                    i = i + 1;
+                  }
+                  if (audioBGM.volume !== 0) {
+                    audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+                    audioBGM.volume = audioBGM.volume.toFixed(5)
+                  }
+                  if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+                      audioBGM.volume = 0;
+                      audioBGM.pause();
+                      audioBGM.currentTime = 0;
+                    clearInterval(fadeAudio);
+                  }else if (i >= 2){
+                    audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+                    clearInterval(fadeAudio);
+                  }
+                }, 10);
+                break;
           }
-          if (audioBGM.volume !== 0) {
-            audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-            audioBGM.volume = audioBGM.volume.toFixed(5)
-          }
-          if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-              audioBGM.volume = 0;
-              audioBGM.pause();
-              audioBGM.currentTime = 0;
-            clearInterval(fadeAudio);
-          }else if (i >= 2){
-            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-            clearInterval(fadeAudio);
-          }
-        }, 10);
     }
 
     // VICTORY FUCNTION
@@ -500,6 +569,9 @@ function Main(){
             break;
           case (screenControlRoom.UserUnlockPath === "Path2"):
             dispatch(GotoPoringIslandPath2Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "Path5"):
+            dispatch(GotoPoringIslandPath5Fn());
             break;
           default:
             break;
@@ -525,6 +597,8 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Poring"));
             case ((questControlRoom.QuestDialog).indexOf("Lunatic") > -1 && i === 1):
               return dispatch(ProgressQuestDialogFn("Lunatic"));
+            case ((questControlRoom.QuestDialog).indexOf("Eclipse") > -1 && i === 5):
+              return dispatch(ProgressQuestDialogFn("Eclipse"));
             default:
               return null;
           }
@@ -546,7 +620,7 @@ function Main(){
                 $('.storySpeech').html();
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
-                i = Math.round(Math.random());
+                // i = Math.round(Math.random());
                 Uclock = 0;
                 clockCheck = 0;
                 obtain = false;
@@ -616,6 +690,8 @@ function Main(){
                  return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
               case((userStats.Level + 1) === 20):
                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+              case((userStats.Level + 1) === 35):
+                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
               case((userStats.Level + 1) === 70):
                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:
@@ -758,6 +834,8 @@ function Main(){
     //COMBAT SKILLS
     const userSkillBashButton = () => {
       if (userStats.currentSP >= 40){
+      //Audio SoundEffect
+      audioSkillBash.play();
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -772,6 +850,12 @@ function Main(){
             //CRIT RATE && BLOCKING
             switch (true) {
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                //Audio SoundEffect
+                if (userStats.userWeapon === "Empty"){
+                  setTimeout(() => audioEmptyHandHit.play() , 100)
+                }else{
+                  setTimeout(() => audioHit.play(), 100)
+                }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
@@ -789,6 +873,12 @@ function Main(){
               }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+              //Audio SoundEffect
+              if (userStats.userWeapon === "Empty"){
+                setTimeout(() => audioEmptyHandHit.play() , 100)
+              }else{
+                setTimeout(() => audioHit.play(), 100)
+              }
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
@@ -810,6 +900,8 @@ function Main(){
               }
           // ENEMY DODGE
           default:
+            //Audio SoundEffect
+            setTimeout(() => audioMiss.play(), 250)
             $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
             dispatch(EnemyDodgeAnimationFn(true));
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
@@ -829,6 +921,8 @@ function Main(){
     }
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 100){
+      //Audio SoundEffect
+      audioSkillMagBreak.play();
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -879,7 +973,9 @@ function Main(){
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               }
           // ENEMY DODGE 
-          default:
+          default:  
+              //Audio SoundEffect
+              setTimeout(() => audioMiss.play(), 250)
               dispatch(EnemyDodgeAnimationFn(true));
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
@@ -899,6 +995,8 @@ function Main(){
     }
     const userSkillBowlingBashButton = () => {
       if (userStats.currentSP >= 250){
+        //Audio SoundEffect
+        audioSkillBash.play();
       Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*5 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -913,6 +1011,12 @@ function Main(){
             //CRIT RATE
             switch(true){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                  //Audio SoundEffect
+                  if (userStats.userWeapon === "Empty"){
+                    setTimeout(() => audioEmptyHandHit.play() , 100)
+                  }else{
+                    setTimeout(() => audioHit.play(), 100)
+                  }
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
@@ -929,6 +1033,12 @@ function Main(){
             }
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+              //Audio SoundEffect
+              if (userStats.userWeapon === "Empty"){
+                setTimeout(() => audioEmptyHandHit.play() , 100)
+              }else{
+                setTimeout(() => audioHit.play(), 100)
+              }
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
@@ -1329,6 +1439,11 @@ function Main(){
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} />
                           <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
+                      i === 5 ? 
+                      <div className="EnemyImageBox">
+                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? EclipseHit : ImageControlRoom.EnemyAttack ? EclipseAttack : ImageControlRoom.EnemyDead ? EclipseDead : Eclipse } alt={enemyStats[i].name} />
+                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                      </div> :
                       null
                     }                    
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
@@ -1414,7 +1529,7 @@ function Main(){
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 1 ? 
+                        {userStats.Level >= 35 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillQuickenButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillQuicken} alt="skillQuicken"/> Quick<span className="goGoButtonHide">en</span></p>

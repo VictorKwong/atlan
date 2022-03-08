@@ -214,7 +214,7 @@ useEffect(() => {
   
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1")), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1",Math.round(Math.random()))), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreen1 = () => {
@@ -234,7 +234,8 @@ useEffect(() => {
   }
   const LoadingScreenThreeBoss = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapBossFn("Path5")), 1000);
+    // setTimeout(() => dispatch(GotoBattlePoringIslandMapBossFn("Path5")), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path5",5)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
 

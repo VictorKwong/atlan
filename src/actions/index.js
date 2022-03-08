@@ -245,10 +245,11 @@ export const GotoAntHellFn = () => {
     };
 };
 
-export const GotoBattlePoringIslandMapFn = (Path) => {
+export const GotoBattlePoringIslandMapFn = (Path,MonsterID) => {
     return {
         type: 'GotoBattlePoringIslandMapFn',
-        Path:Path
+        Path:Path,
+        num:MonsterID
     };
 };
 export const GotoBattlePoringIslandMapTwoFn = (Path) => {
