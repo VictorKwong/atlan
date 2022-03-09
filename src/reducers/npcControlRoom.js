@@ -21,6 +21,10 @@ const Fn = {
     DealerBuyFailure: false,
     DealerSellSuccess: false,
     DealerSellFailure: false,
+    //Training Rate Fn
+    TrainingSuccess: false,
+    TrainingFailure: false,
+    TrainingMaterial: "",
     //Heal & Rest Fn
     KafraEmployeeHealState: false,
     ResetStatsPoint: false,
@@ -32,7 +36,6 @@ const Fn = {
     ChestBoss1: false,
     ChestBoss1VisitRepeat: false,
     PoringIslandBridgeNPC: false,
-
     BossEclipseDefeat: false,
 }
 
@@ -381,6 +384,27 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerSellFailure: false,
                 KafraEmployeeHealState: false,
                 ResetStatsPoint: false,
+            }
+        // Training Fn
+        case 'TrainingSuccesFn':
+            return {
+                ...state,
+                TrainingSuccess: true,
+                TrainingFailure: false,
+                TrainingMaterial: action.name
+            }
+        case 'TrainingFailureFn':
+            return {
+                ...state,
+                TrainingSuccess: false,
+                TrainingFailure: true,
+                TrainingMaterial: action.name
+            }
+        case 'ResetTrainingRateFn':
+            return {
+                ...state,
+                TrainingSuccess: false,
+                TrainingFailure: false,
             }
         // DUNGEON
         case 'OpenChest1Fn':

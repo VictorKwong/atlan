@@ -68,38 +68,13 @@
   opacity: 1;
 }
 /* sadasdsad */
-.statsBox{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
 
-.statsDescript{
-  width:50%;
-  display: grid;
-  grid-template-columns: 40px 20px 30px 20px;
-  grid-template-rows: repeat(6, 25px);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  justify-content: center;
-}
 .questBackPosition{
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
   position: fixed;  
   top:calc(75vh - 3rem - 29px);
-}
-
-
-.statsDescriptDetails{
-  display: grid;
-  grid-template-columns: 40px 100px 40px 100px;
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 5px;
-  padding-bottom: 35px;
-  justify-content: center;
 }
 
 

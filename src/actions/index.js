@@ -287,6 +287,12 @@ export const GotoTreasurePoringIslandMap3Fn = () => {
         type: 'GotoTreasurePoringIslandMap3Fn',
     };
 };
+export const GotoPoringIslandHouseMapFn = () => {
+    return {
+        type: 'GotoPoringIslandHouseMapFn',
+    };
+};
+
 
 export const typeWritterEffectFn = () => {
     return {
@@ -601,9 +607,11 @@ export const ResetTalktoFn = () => {
         type: 'ResetTalktoFn'
     };
 };
-export const ResetMyPointsFn = () => {
+export const ResetMyPointsFn = (BonusVit,BonusInt) => {
     return {
-        type: 'ResetMyPointsFn'
+        type: 'ResetMyPointsFn',
+        BonusVit:BonusVit,
+        BonusInt:BonusInt
     };
 };
 
@@ -665,6 +673,22 @@ export const ResetDealerBuySellHealFn = () => {
     };
 };
 
+//Training Fn
+export const TrainingSuccesFn = () => {
+    return {
+        type: 'TrainingSuccesFn'
+    };
+};
+export const TrainingFailureFn = () => {
+    return {
+        type: 'TrainingFailureFn'
+    };
+};
+export const ResetTrainingRateFn = () => {
+    return {
+        type: 'ResetTrainingRateFn'
+    };
+};
 // ITEM BUY SELL
 export const RedPotionFn = (Zeny,Item) => {
     return {
@@ -962,18 +986,20 @@ export const AGIPointsFn = (ReqPoints) => {
         ReqPoints: ReqPoints
     };
 };
-export const VITPointsFn = (ReqPoints,vit) => {
+export const VITPointsFn = (ReqPoints,vit,BonusVit) => {
     return {
         type: 'VITPointsFn',
         ReqPoints: ReqPoints,
-        Vit:vit
+        Vit:vit,
+        BonusVit:BonusVit
     };
 };
-export const INTPointsFn = (ReqPoints,int) => {
+export const INTPointsFn = (ReqPoints,int,BonusInt) => {
     return {
         type: 'INTPointsFn',
         ReqPoints: ReqPoints,
-        Int:int
+        Int:int,
+        BonusInt: BonusInt
     };
 };
 export const DEXPointsFn = (ReqPoints) => {
@@ -986,6 +1012,87 @@ export const LUKPointsFn = (ReqPoints) => {
     return {
         type: 'LUKPointsFn',
         ReqPoints: ReqPoints
+    };
+};
+//Bonus Attributes
+export const TrainingSTRFn = (num) => {
+    return {
+        type: 'TrainingSTRFn',
+        num: num 
+    };
+};
+export const TrainingAGIFn = (num) => {
+    return {
+        type: 'TrainingAGIFn',
+        num: num 
+    };
+};
+export const TrainingVITFn = (num) => {
+    return {
+        type: 'TrainingVITFn',
+        num: num 
+    };
+};
+export const TrainingINTFn = (num) => {
+    return {
+        type: 'TrainingINTFn',
+        num: num 
+    };
+};
+export const TrainingDEXFn = (num) => {
+    return {
+        type: 'TrainingDEXFn',
+        num: num 
+    };
+};
+export const TrainingLUKFn = (num) => {
+    return {
+        type: 'TrainingLUKFn',
+        num: num 
+    };
+};
+export const BonusSTRPointsFn = (BonusStr,BonusDex,BonusLuk) => {
+    return {
+        type: 'BonusSTRPointsFn',
+        BonusStr: BonusStr,
+        BonusDex: BonusDex,
+        BonusLuk: BonusLuk,
+    };
+};
+export const BonusAGIPointsFn = (BonusAgi) => {
+    return {
+        type: 'BonusAGIPointsFn',
+        BonusAgi: BonusAgi
+    };
+};
+export const BonusVITPointsFn = (BonusVit,Vit) => {
+    return {
+        type: 'BonusVITPointsFn',
+        Vit:Vit,
+        BonusVit: BonusVit
+    };
+};
+export const BonusINTPointsFn = (BonusInt,Int) => {
+    return {
+        type: 'BonusINTPointsFn',
+        Int:Int,
+        BonusInt: BonusInt
+    };
+};
+export const BonusDEXPointsFn = (BonusStr,BonusDex,BonusLuk) => {
+    return {
+        type: 'BonusDEXPointsFn',
+        BonusStr: BonusStr,
+        BonusDex: BonusDex,
+        BonusLuk: BonusLuk,
+    };
+};
+export const BonusLUKPointsFn = (BonusStr,BonusDex,BonusLuk) => {
+    return {
+        type: 'BonusLUKPointsFn',
+        BonusStr: BonusStr,
+        BonusDex: BonusDex,
+        BonusLuk: BonusLuk,
     };
 };
 //Clock Fixing

@@ -2,7 +2,7 @@
 const Fn = {    
     KafraEmployee:[{
             name: 'KafraEmployee',
-            text: 'Hi Altan, how can I help you today?'
+            text: 'Hi Atlan, how can I help you today?'
         },{
             name: 'KafraEmployee',
             text: 'Sure! You are fully recovered! :)'
@@ -63,7 +63,7 @@ const Fn = {
     }],
     ArmorDealer:[{
             name: 'ArmorDealer',
-            text: 'Hi Altan, how are you today? :)'
+            text: 'Hi Atlan, how are you today? :)'
         },{
             name: 'ArmorDealer',
             text: 'Here and take a look!'
@@ -87,7 +87,7 @@ const Fn = {
     //talk, buy, buy success, buy failure, sell, sell success, sell failure
     HeadGearDealer:[{
             name: 'HeadGearDealer',
-            text: 'Hi Altan! Nice to see you :)'
+            text: 'Hi Atlan! Nice to see you :)'
         },{
             name: 'HeadGearDealer',
             text: 'What do you want to buy?'
@@ -117,7 +117,7 @@ const Fn = {
         }],
     PronteraKing:[{
             name: 'Prontera King',
-            text: 'Altan, you need to collect all four important items to seal the chaos gate. Please hurry!'
+            text: 'Atlan, you need to collect all four important items to seal the chaos gate. Please hurry!'
         }],
     PronteraAssistant:[{
             name: 'PronteraAssistant',
@@ -131,7 +131,14 @@ const Fn = {
             name: 'RoyalGuard',
             text: 'I will serve my Prontera King.'
         }],
-
+    RestingGirl:[{
+            name: 'RestingGirl',
+            text: 'Rumors saids there is a hidden passage near by here...hmm where is it?'
+        }],
+    MightyGuy:[{
+            name: 'MightyGuy',
+            text: 'I`m here because I can train you to be a stronger knight. Select your training and I see if you can pass the test.'
+        }]
 }
 
 const npcSpeechReducer = (state = Fn, action) => {

@@ -19,9 +19,12 @@ import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn,
 import { ProgressQuestDialogFn } from './actions'
 //Win ETC Items
 import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
+import { WinGrasshoppersLegFn, WinSnailsShellFn, WinShellFn ,WinGarletFn } from './actions'
+import { WinEmperiumFn, WinFabricFn } from './actions'
 import { WinFourLeafCloverFn, WinGlassBeadFn, WinOpalFn} from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
+import { GotoPoringIslandPath3Fn } from './actions'
 import { GotoPoringIslandPath5Fn } from './actions'
 
 
@@ -37,6 +40,20 @@ import Lunatic from './img/Monster/Lunatic.gif'
 import LunaticHit from './img/Monster/LunaticHit.png'
 import LunaticAttack from './img/Monster/LunaticAttack.gif'
 import LunaticDead from './img/Monster/LunaticDead.png'
+
+import Rocker from './img/Monster/Rocker.gif'
+import RockerHit from './img/Monster/RockerHit.png'
+import RockerAttack from './img/Monster/RockerAttack.gif'
+import RockerDead from './img/Monster/RockerDead.png'
+import Ambernite from './img/Monster/Ambernite.gif'
+import AmberniteHit from './img/Monster/AmberniteHit.png'
+import AmberniteAttack from './img/Monster/AmberniteAttack.gif'
+import AmberniteDead from './img/Monster/AmberniteDead.png'
+
+import Ghostring from './img/Monster/Ghostring.gif'
+import GhostringHit from './img/Monster/GhostringHit.png'
+import GhostringAttack from './img/Monster/GhostringAttack.gif'
+import GhostringDead from './img/Monster/GhostringDead.png'
 
 import Eclipse from './img/Monster/Eclipse.gif'
 import EclipseHit from './img/Monster/EclipseHit.png'
@@ -315,6 +332,14 @@ import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
 import Clover from './img/Etc/Lunatic_Clover65.gif'
 import Feather from './img/Etc/Lunatic_Feather10.gif'
 
+import GrasshoppersLeg from './img/Etc/Rocker_GrasshoppersLeg95.gif'
+import SnailsShell from './img/Etc/Ambernite_SnailsShell90.gif'
+import Shell from './img/Etc/Ambernite_Shell30.gif'
+import Garlet from './img/Etc/Ambernite_Garlet12.gif'
+
+import Emperium from './img/Etc/Ghostring_Emperium.gif'
+import Fabric from './img/Etc/Ghostring_Fabric80.gif'
+
 import FourLeafClover from './img/Etc/Eclipse_FourLeafClover.gif'
 import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
 import Opal from './img/Etc/Eclipse_Opal50.gif'
@@ -329,6 +354,8 @@ import UserHit from './audio/SoundEffect/UserHit.wav'
 import SkillBash from './audio/SoundEffect/BashSoundEffect.mp3'
 import SkillMagBreak from './audio/SoundEffect/MagnumBreakSoundEffect.mp3'
 import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
+import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
+import UserBlock from './audio/SoundEffect/UserBlock.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
 const audioBGMBoss = new Audio(audioRustyHeartsWings);
 const audioHit = new Audio(SwordHit);
@@ -339,6 +366,8 @@ const audioUserHit = new Audio(UserHit);
 const audioSkillBash = new Audio(SkillBash);
 const audioSkillMagBreak = new Audio(SkillMagBreak);
 const audioSkillQuicken = new Audio(SkillQuicken);
+const audioLevelUp = new Audio(LevelUpSoundEffect);
+const audioUserBlock = new Audio(UserBlock)
 
 let clockBarObject = {
   userClockBar: 0,
@@ -362,6 +391,12 @@ const EtcBox = [
   {id: 2, num: 0, name: "Sticky Mucus", img: StickyMucus , percent: 1, Gain: WinStickyMucusFn},
   {id: 3, num: 1, name: "Clover", img: Clover , percent: 0.65, Gain: WinCloverFn},
   {id: 4, num: 1, name: "Feather", img: Feather , percent: 0.1, Gain: WinFeatherFn},
+  {id: 5, num: 2, name: "GrasshoppersLeg", img: GrasshoppersLeg , percent: 0.95, Gain: WinGrasshoppersLegFn},
+  {id: 6, num: 3, name: "Snail`s Shell", img: SnailsShell , percent: 0.9, Gain: WinSnailsShellFn},
+  {id: 7, num: 3, name: "Shell", img: Shell , percent: 0.3, Gain: WinShellFn},
+  {id: 8, num: 3, name: "Garlet", img: Garlet , percent: 0.12, Gain: WinGarletFn},
+  {id: 9, num: 4, name: "Emperium", img: Emperium , percent: 1, Gain: WinEmperiumFn},
+  {id: 10, num: 4, name: "Fabric", img: Fabric , percent: 0.8, Gain: WinFabricFn},
   {id: 100, num: 5, name: "Four Leaf Clover", img: FourLeafClover , percent: 1, Gain: WinFourLeafCloverFn},
   {id: 101, num: 5, name: "Glass Bead", img: GlassBead , percent: 0.8, Gain: WinGlassBeadFn},
   {id: 102, num: 5, name: "Opal", img: Opal , percent: 0.5, Gain: WinOpalFn},
@@ -449,6 +484,8 @@ function Main(){
       audioSkillBash.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioSkillMagBreak.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioSkillQuicken.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioLevelUp.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioUserBlock.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       (() => {
         let playPromise;
         switch (true) {
@@ -570,6 +607,9 @@ function Main(){
           case (screenControlRoom.UserUnlockPath === "Path2"):
             dispatch(GotoPoringIslandPath2Fn());
             break;
+          case (screenControlRoom.UserUnlockPath === "Path3"):
+            dispatch(GotoPoringIslandPath3Fn());
+            break;
           case (screenControlRoom.UserUnlockPath === "Path5"):
             dispatch(GotoPoringIslandPath5Fn());
             break;
@@ -597,6 +637,12 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Poring"));
             case ((questControlRoom.QuestDialog).indexOf("Lunatic") > -1 && i === 1):
               return dispatch(ProgressQuestDialogFn("Lunatic"));
+            case ((questControlRoom.QuestDialog).indexOf("Rocker") > -1 && i === 2):
+              return dispatch(ProgressQuestDialogFn("Rocker"));
+            case ((questControlRoom.QuestDialog).indexOf("Ambernite") > -1 && i === 3):
+              return dispatch(ProgressQuestDialogFn("Ambernite"));
+            case ((questControlRoom.QuestDialog).indexOf("Ghostring") > -1 && i === 4):
+              return dispatch(ProgressQuestDialogFn("Ghostring"));
             case ((questControlRoom.QuestDialog).indexOf("Eclipse") > -1 && i === 5):
               return dispatch(ProgressQuestDialogFn("Eclipse"));
             default:
@@ -610,7 +656,7 @@ function Main(){
       useEffect(() => {
         if (userStats.currentHealth <= 0){
           setTimeout(() => (clockCheck = 1), 300);
-          $('.storySpeech').html(`Defeat... Altan Fainted......`)
+          $('.storySpeech').html(`Defeat... Atlan Fainted......`)
           // $('.goGoAttack').prop("disabled", true);
         }
       }, [userStats.currentHealth , dispatch]);
@@ -629,6 +675,7 @@ function Main(){
                 dispatch(ResetUserTurnFn());
                 dispatch(ResetEnemyTurnBlockFn());
                 dispatch(ResetUserTurnBlockFn());
+                dispatch(ResetUserIsBlockAnimationFn());
                 dispatch(ReturnUserInSelectSkillFn());
                 dispatch(ReturnUserInSelectItemFn());
                 dispatch(ResetUserSkillQuickenClockFn());
@@ -684,16 +731,17 @@ function Main(){
                 return dispatch(UserLevelUpFn(23));
             }
             })()
-          $('.storySpeech').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
+          audioLevelUp.play();
+          $('.storySpeech').append(`\n <p>Atlan has Level Up to Lv${userStats.Level + 1}</p>`)
             switch (true) {
               case((userStats.Level + 1) === 5):
-                 return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
               case((userStats.Level + 1) === 20):
-                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === 35):
-                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
               case((userStats.Level + 1) === 70):
-                return $('.storySpeech').append(`\n <p>Altan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:
                 return 0;
             }
@@ -701,6 +749,8 @@ function Main(){
       }
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight
+      // dependance i
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [enemyStats, dispatch, userStats, baseEXPChart]);
 
 
@@ -717,18 +767,18 @@ function Main(){
   
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
-      Damage = Math.floor(userStats.attack +  userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
        
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       //Rerender, Block or not block
-      
+      let Khit = Math.random();
       (() => {
         switch (true) {
           // ENEMY BLOCK
           // CRIT RATE & BLOCKING
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
               //Audio SoundEffect
               if (userStats.userWeapon === "Empty"){
                 audioEmptyHandHit.play();
@@ -744,7 +794,7 @@ function Main(){
               $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
               //Audio SoundEffect
               if (userStats.userWeapon === "Empty"){
                 audioEmptyHandHit.play();
@@ -753,16 +803,14 @@ function Main(){
               }
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-              dispatch(EnemyOnCritAnimationFn(true));
-              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300)
           // ENEMY HIT
           // CRIT RATE
-          case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
+          case(((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit) && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
               //Audio SoundEffect
               if (userStats.userWeapon === "Empty"){
                 audioEmptyHandHit.play();
@@ -778,7 +826,7 @@ function Main(){
               $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
               //Audio SoundEffect
               if (userStats.userWeapon === "Empty"){
                 audioEmptyHandHit.play();
@@ -787,11 +835,9 @@ function Main(){
               }
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-              dispatch(EnemyOnCritAnimationFn(true));
-              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
               // Text display
-              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i)), 300);
           // ENEMY DODGE
@@ -800,7 +846,7 @@ function Main(){
             audioMiss.play();
             dispatch(EnemyDodgeAnimationFn(true));
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
-            $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
+            $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
             //Rerender
             return setTimeout(() => dispatch(userClockDefendFn()), 300);
         }
@@ -814,13 +860,15 @@ function Main(){
 
     }
     const userDefendButton = () => {
+      //Audio SoundEffect
+      audioUserBlock.play();
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(userClockDefendFn()), 300);
       dispatch(UserIsBlockAnimationFn());
       dispatch(UserTurnBlockFn());
       // Text display
-      $('.storySpeech').append('<p>Altan Defend himself!</p>')
+      $('.storySpeech').append('<p>Atlan Defend himself!</p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -836,15 +884,16 @@ function Main(){
       if (userStats.currentSP >= 40){
       //Audio SoundEffect
       audioSkillBash.play();
-      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
+      let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE && BLOCKING
@@ -858,21 +907,21 @@ function Main(){
                 }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               }
           // ENEMY HIT
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
               //Audio SoundEffect
               if (userStats.userWeapon === "Empty"){
                 setTimeout(() => audioEmptyHandHit.play() , 100)
@@ -886,15 +935,15 @@ function Main(){
               case (userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*userAttribute.int)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*userAttribute.int)) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bash! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${userStats.attack} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
               }
@@ -902,7 +951,7 @@ function Main(){
           default:
             //Audio SoundEffect
             setTimeout(() => audioMiss.play(), 250)
-            $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
+            $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} dodge the attack.</p>`)
             dispatch(EnemyDodgeAnimationFn(true));
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
@@ -923,15 +972,16 @@ function Main(){
       if (userStats.currentSP >= 100){
       //Audio SoundEffect
       audioSkillMagBreak.play();
-      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*3 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
+      let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE && BLOCKING
@@ -939,20 +989,20 @@ function Main(){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Magnum Break! Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan use Magnum Break! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
             }
           // ENEMY HIT
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
@@ -960,15 +1010,15 @@ function Main(){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defence)*3.5*(1+0.03*userAttribute.int) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5*(1+0.03*userAttribute.int) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Magnum Break!! Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan use Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               }
@@ -978,7 +1028,7 @@ function Main(){
               setTimeout(() => audioMiss.play(), 250)
               dispatch(EnemyDodgeAnimationFn(true));
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
-              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
+              $('.storySpeech').append(`<p>>Atlan use Magnum Break! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
         }
@@ -997,15 +1047,16 @@ function Main(){
       if (userStats.currentSP >= 250){
         //Audio SoundEffect
         audioSkillBash.play();
-      Damage = Math.floor(userStats.attack + userStats.Level + userAttribute.str*5 + userAttribute.dex/2 + userAttribute.luk + userStats.BaseWeaponDamage*( 1 + 0.05*userAttribute.str) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+        Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       setTimeout(() => (Uclock = 0), 300);
+      let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random())):
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
@@ -1019,20 +1070,20 @@ function Main(){
                   }
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bowling Bash! Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan use Bowling Bash! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
             }
           // ENEMY HIT
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
               //Audio SoundEffect
               if (userStats.userWeapon === "Empty"){
                 setTimeout(() => audioEmptyHandHit.play() , 100)
@@ -1046,15 +1097,15 @@ function Main(){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
               default:
-                Math.sign((Damage - enemyStats[i].defence)*5*(1+0.03*userAttribute.int) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5*(1+0.03*userAttribute.int) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                 // Text display
-                $('.storySpeech').append(`<p>Altan use Bowling Bash!! Enemy Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan use Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
               }
@@ -1062,7 +1113,7 @@ function Main(){
           default:
               dispatch(EnemyDodgeAnimationFn(true));
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
-              $('.storySpeech').append(`<p>Altan Attack! ${enemyStats[i].name} dodge the attack.</p>`)
+              $('.storySpeech').append(`<p>Atlan use Bowling Bash! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
         }
@@ -1087,7 +1138,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       dispatch(UserSkillQuickenFn(180));
-      $('.storySpeech').append(`<p>Altan use skill Quicken! Attack Speed has increase a period of time!</p>`)  
+      $('.storySpeech').append(`<p>Atlan use skill Quicken! Attack Speed has increase a period of time!</p>`)  
         // End turn
         clockCheck = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
@@ -1106,9 +1157,9 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
         setTimeout(() => (Uclock = 0), 300);
-        setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit)), 300);
+        setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
         // Text display
-        $('.storySpeech').append('<p style="color:#3fff00;">Altan use red potion! Recover ' + Math.floor(50*(1+userAttribute.vit*0.02)) + ' hp </p>')
+        $('.storySpeech').append('<p style="color:#3fff00;">Atlan use red potion! Recover ' + Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
         listResult = document.getElementsByClassName('storyChat')[0];
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
@@ -1123,9 +1174,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit)), 300);
+      setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use orange potion! Recover ' + Math.floor(150*(1+userAttribute.vit*0.02)) + ' hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use orange potion! Recover ' + Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1140,9 +1191,9 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         //Rerender
         setTimeout(() => (Uclock = 0), 300);
-        setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit)), 300);
+        setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
         // Text display
-        $('.storySpeech').append('<p style="color:#3fff00;">Altan use yellow potion! Recover ' + Math.floor(400*(1+userAttribute.vit*0.02)) + ' hp </p>')
+        $('.storySpeech').append('<p style="color:#3fff00;">Atlan use yellow potion! Recover ' + Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
         listResult = document.getElementsByClassName('storyChat')[0];
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
@@ -1157,9 +1208,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit)), 300);
+      setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use white potion!Recover ' + Math.floor(800*(1+userAttribute.vit*0.02)) + ' hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use white potion!Recover ' + Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1174,9 +1225,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit)), 300);
+      setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use anniversary cake! Recover ' + Math.floor(1200*(1+userAttribute.vit*0.02)) + ' hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use anniversary cake! Recover ' + Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1191,9 +1242,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit)), 300);
+      setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use mastela fruit! Recover ' + Math.floor(2000*(1+userAttribute.vit*0.02)) + ' hp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use mastela fruit! Recover ' + Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1208,9 +1259,9 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UseBluePotionFn(userAttribute.int)), 300);
+      setTimeout(() => dispatch(UseBluePotionFn(userAttribute.int + userAttribute.BonusInt)), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use blue potion! Recover ' + Math.floor(60*(1+userAttribute.int*0.02)) + ' sp </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use blue potion! Recover ' + Math.floor(60*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) + ' sp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1227,7 +1278,7 @@ function Main(){
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseYggdrasilBerryFn()), 300);
       // Text display
-      $('.storySpeech').append('<p style="color:#3fff00;">Altan use Yggdrasil Berry!! HP SP fully recover! </p>')
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use Yggdrasil Berry!! HP SP fully recover! </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1238,7 +1289,8 @@ function Main(){
     // Enemy AI
     const enemyDecisionQFn = () => {
       setTimeout(() => (Uclock = 0), 300);
-      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) * 10) + 2000)) - (userAttribute.vit*2 + userAttribute.agi/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
+      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
+      let Khit = Math.random();
       (() => {
           switch (true) {
           //EnemyAttack & Hit
@@ -1247,7 +1299,7 @@ function Main(){
               (() => {
               switch (true) {
                 // USER BLOCK
-                case (SkillControlRoom['User'].UserBlock && ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Math.random())):
+                case (SkillControlRoom['User'].UserBlock && ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Khit)):
                   dispatch(EnemyAttackAnimationFn(true));
                   setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserOnHitAnimationFn());
@@ -1256,25 +1308,25 @@ function Main(){
                   switch (true) {
                     case(enemyStats[i].critRate >= Math.random()):
                       //Audio Sound Effect
-                       audioUserHit.play();
+                      audioUserBlock.play();
                       dispatch(UserIsCritAnimationFn(true));
                       setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
-                      Math.sign((Damage * 1.5) - userStats.defencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer) : Damage = 1;
+                      Math.sign((Damage * 1.5) - userStats.defencebuffer - userStats.Bonusdefencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer - userStats.Bonusdefencebuffer) : Damage = 1;
                       // Text display
-                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Altan Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
                       //Rerender
                       return dispatch(EnemyAttackBlockUserFn(Damage));
                     default:
                       //Audio Sound Effect
-                       audioUserHit.play();
-                      Math.sign(Damage - userStats.defencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer : Damage = 1;
+                      audioUserBlock.play();
+                      Math.sign(Damage - userStats.defencebuffer - userStats.Bonusdefencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer - userStats.Bonusdefencebuffer : Damage = 1;
                       // Text display
-                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
                       //Rerender
                       return dispatch(EnemyAttackBlockUserFn(Damage));
                   }
                 // USER HIT
-                case ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Math.random()):
+                case ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Khit):
                   dispatch(EnemyAttackAnimationFn(true));
                   setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserOnHitAnimationFn());
@@ -1286,17 +1338,17 @@ function Main(){
                     audioUserHit.play();
                     dispatch(UserIsCritAnimationFn(true));
                     setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
-                    Math.sign((Damage * 1.5) - userStats.defence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence) : Damage = 1;
+                    Math.sign((Damage * 1.5) - userStats.defence - userStats.Bonusdefence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence - userStats.Bonusdefence) : Damage = 1;
                     // Text display
-                    $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!!Altan Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!!Atlan Received ${Damage} damage</p>`)
                     //Rerender
                     return dispatch(EnemyAttackUserFn(Damage));
                   default:
                     //Audio Sound Effect
                     audioUserHit.play();
-                    Math.sign(Damage - userStats.defence) > 0 ? Damage = Damage - userStats.defence : Damage = 1;
+                    Math.sign(Damage - userStats.defence - userStats.Bonusdefence) > 0 ? Damage = Damage - userStats.defence - userStats.Bonusdefence : Damage = 1;
                     // Text display
-                    $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
                     //Rerender
                     return dispatch(EnemyAttackUserFn(Damage));                     
                   }
@@ -1306,7 +1358,7 @@ function Main(){
                   audioMiss.play();
                   dispatch(UserIsDodgeAnimationFn(true));
                   setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1040);
-                  $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Altan dodge the attack!</p>`)
+                  $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan dodge the attack!</p>`)
                   //Rerender
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
               }
@@ -1350,7 +1402,7 @@ function Main(){
               dispatch(UserSkillQuickenClockTickFn());
               clockCheck = 1;
               dispatch(UserTurnFn());
-              $('.storySpeech').append('<p>--------- Altan Turn ---------</p>')
+              $('.storySpeech').append('<p>--------- Atlan Turn ---------</p>')
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
@@ -1424,7 +1476,7 @@ function Main(){
       <div>
         {
         screenControlRoom.PoringIsland ? <PoringIsland />:
-        <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShake" : null}>
+        <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShakeMore" : ImageControlRoom.EnemyOnHit || ImageControlRoom.UserOnHit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
               <div className="battleScreen">
                 <div className="enemyBox"> 
@@ -1437,6 +1489,21 @@ function Main(){
                       i === 1 ? 
                       <div className="EnemyImageBox">
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} />
+                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                      </div> :
+                      i === 2 ? 
+                      <div className="EnemyImageBox">
+                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlipTwo` : `imgFlipTwo`} src={ImageControlRoom.EnemyOnHit ? RockerHit : ImageControlRoom.EnemyAttack ? RockerAttack : ImageControlRoom.EnemyDead ? RockerDead : Rocker } alt={enemyStats[i].name} />
+                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                      </div> :
+                      i === 3 ? 
+                      <div className="EnemyImageBox">
+                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlipTwo` : `imgFlipTwo`} src={ImageControlRoom.EnemyOnHit ? AmberniteHit : ImageControlRoom.EnemyAttack ? AmberniteAttack : ImageControlRoom.EnemyDead ? AmberniteDead : Ambernite } alt={enemyStats[i].name} />
+                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                      </div> :
+                      i === 4 ? 
+                      <div className="EnemyImageBox">
+                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? GhostringHit : ImageControlRoom.EnemyAttack ? GhostringAttack : ImageControlRoom.EnemyDead ? GhostringDead : Ghostring } alt={enemyStats[i].name} />
                           <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
                       i === 5 ? 
@@ -1460,6 +1527,7 @@ function Main(){
                 <div className="UserImageBox">
                   {/* User attack Post */}
                   {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
+                  ImageControlRoom.UserIsDefend && ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg battleScreenShake" : "altanImg battleScreenShake"}/> :
                   ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
                   ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
                   ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
@@ -1472,12 +1540,12 @@ function Main(){
                   <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>  
                   <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                   <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
-                  <h2 className="wordCenter titleName userNamePosition">Altan</h2>
+                  <h2 className="wordCenter titleName userNamePosition">Atlan</h2>
                 </div>
               </div>  
               <div className="StoryHUD">
                 <p className="basicStatsHUD">Basic Info</p>
-                <p className="nameStatsHUD destextHUD">Altan</p>
+                <p className="nameStatsHUD destextHUD">Atlan</p>
                 <p className="destextHUD classTitle">Knight</p>
                 <div className="HUDBox">
                   <p className="hptextHUD">HP</p>
@@ -1504,8 +1572,8 @@ function Main(){
                 </div>
                 <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div className="zenytextHUD clockHUD">
-                      <p className="clockName">Altan: {clockBarObject.userClockBar}</p>
-                      <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={"Altan: " + clockBarObject.userClockBar}/>
+                      <p className="clockName">Atlan: {clockBarObject.userClockBar}</p>
+                      <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={"Atlan: " + clockBarObject.userClockBar}/>
                       <p className="clockName">{enemyStats[i].name}: {clockBarObject.enemyClockBar}</p>
                       <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name + ": " + clockBarObject.enemyClockBar}/>
                 </div>

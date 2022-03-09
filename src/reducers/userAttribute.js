@@ -5,12 +5,12 @@ const Fn = {
     int: 1,
     dex: 1,
     luk: 1,
-    BonusHeadGearStr: 0,
-    BonusHeadGearAgi: 0,
-    BonusHeadGearVit: 0,
-    BonusHeadGearInt: 0,
-    BonusHeadGearDex: 0,
-    BonusHeadGearLuk: 0,
+    BonusStr: 0,
+    BonusAgi: 0,
+    BonusVit: 0,
+    BonusInt: 0,
+    BonusDex: 0,
+    BonusLuk: 0,
     Points: 48, //48
     TotalPoints: 48
 }
@@ -89,6 +89,36 @@ const userAttributeReducer = (state = Fn, action) => {
                 ...state,
                 Points: state.Points + action.Points,
                 TotalPoints: state.Points + action.Points
+            }
+        case 'TrainingSTRFn':
+            return{
+                ...state,
+                BonusStr: state.BonusStr + action.num,
+            }
+        case 'TrainingAGIFn':
+            return{
+                ...state,
+                BonusAgi: state.BonusAgi + action.num,
+            }
+        case 'TrainingVITFn':
+            return{
+                ...state,
+                BonusVit: state.BonusVit + action.num,
+            }
+        case 'TrainingINTFn':
+            return{
+                ...state,
+                BonusInt: state.BonusInt + action.num,
+            }    
+        case 'TrainingDEXFn':
+            return{
+                ...state,
+                BonusDex: state.BonusDex + action.num,
+            }
+        case 'TrainingLUKFn':
+            return{
+                ...state,
+                BonusLuk: state.BonusLuk + action.num,
             }
         case 'ResetMyPointsFn':
             return {

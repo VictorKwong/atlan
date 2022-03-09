@@ -210,7 +210,7 @@ function StartMenu(){
             }
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
-              <p className="nameStatsHUD destextHUD">Altan</p>
+              <p className="nameStatsHUD destextHUD">Atlan</p>
               <p className="destextHUD classTitle">Knight</p>
                 <div className="HUDBox">
                   <p className="hptextHUD">HP</p>

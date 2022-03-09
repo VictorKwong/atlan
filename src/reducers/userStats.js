@@ -12,7 +12,7 @@ const Fn = {
     speed: 10,
     hitRate: 0.95, //0.95
     dodgeRate: 0.1, //0.1
-    critRate: 0.05, // 0.05
+    critRate: 1, // 0.05
     userClockDefend: false,
     userWeapon: 'Katana',
     userWeaponImg: 'initial',
@@ -24,13 +24,26 @@ const Fn = {
     userHeadGearImg: null,
     BaseHeadGearDef: 0,
 
+
+    //Bonus
+    Bonusattack: 0,
+    Bonusdefence: 0,
+    Bonusdefencebuffer: 0,
+    Bonusspeed: 0,
+    BonushitRate: 0,
+    BonusdodgeRate: 0,
+    BonuscritRate: 0,
+
     //Reset
     BasemaxHealth: 150,
     BasemaxSP: 50,
     Baseattack: 25,
     Basedefence: 18,
     Basedefencebuffer: 38,
-    Basespeed: 10
+    Basespeed: 10,
+    BasehitRate: 0.95, 
+    BasedodgeRate: 0.1, 
+    BasecritRate: 0.05, 
 
 }
 
@@ -122,14 +135,14 @@ const userStatsReducer = (state = Fn, action) => {
         case 'VITPointsFn':
             return {
                 ...state,
-                maxHealth: Math.floor(state.BasemaxHealth * (1 + action.Vit *0.01 + 0.01)),
+                maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01 + 0.01)),
                 defence: state.defence + 0.5,
                 defencebuffer: state.defencebuffer + 1,
             }
         case 'INTPointsFn':
             return {
                 ...state,
-                maxSP: Math.floor(state.BasemaxSP * (1 + action.Int *0.01 + 0.01)),
+                maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01 + 0.01)),
             }
         case 'DEXPointsFn':
             return {
@@ -143,21 +156,63 @@ const userStatsReducer = (state = Fn, action) => {
                 ...state,
                 critRate: state.critRate + 0.03,
                 attack: state.attack + 0.5
-            } 
+            }
+        case 'BonusSTRPointsFn':
+            return {
+                ...state,
+                //Recover
+                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + 1
+            }
+        case 'BonusAGIPointsFn':
+            return {
+                ...state,
+                //Recover
+                Bonusspeed: action.BonusAgi * 0.2 + 0.2,
+                BonusdodgeRate: action.BonusAgi * 0.01 + 0.01
+            }
+        case 'BonusVITPointsFn':
+            return {
+                ...state,
+                maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01 + 0.01)),
+                //Recover
+                Bonusdefence: action.BonusVit * 0.5 + 0.5,
+                Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + 1,
+            }
+        case 'BonusINTPointsFn':
+            return {
+                ...state,
+                maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01 + 0.01)),
+                //Recover
+            }
+        case 'BonusDEXPointsFn':
+            return {
+                ...state,
+                //Recover
+                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + 0.2,
+                Bonusspeed: action.BonusDex * 0.1 + 0.1,
+                BonushitRate: action.BonusDex * 0.01 + 0.01,
+            }
+        case 'BonusLUKPointsFn':
+            return {
+                ...state,
+                //Recover
+                BonuscritRate: action.BonusLuk * 0.03 + 0.03,
+                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + 0.5,
+            }
         case 'ResetMyPointsFn':
             return {
                 ...state,
-                maxHealth: state.BasemaxHealth,
-                currentHealth: state.BasemaxHealth,
-                maxSP: state.BasemaxSP,
-                currentSP: state.BasemaxSP,
+                maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.BonusVit) *0.01)),
+                currentHealth: Math.floor(state.BasemaxHealth * (1 + (action.BonusVit) *0.01)),
+                maxSP: Math.floor(state.BasemaxSP * (1 + (action.BonusInt) *0.01)),
+                currentSP: Math.floor(state.BasemaxSP * (1 + (action.BonusInt) *0.01)),
                 attack: state.Baseattack,
                 defence: state.Basedefence,
                 defencebuffer: state.Basedefencebuffer,
                 speed: state.Basespeed,
-                hitRate: 0.95,
-                dodgeRate: 0.1,
-                critRate: 0.05,
+                hitRate: state.BasehitRate,
+                dodgeRate: state.BasedodgeRate,
+                critRate: state.BasecritRate
                 //Track
             }
         //EQUIP STAGE

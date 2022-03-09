@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
-import BattlePoringIslandMapTwo from './BattlePoringIslandMapTwo'
-import BattlePoringIslandMapTwoSecret from './BattlePoringIslandMapTwoSecret'
-import BattlePoringIslandMapBoss from './BattlePoringIslandMapBoss'
 import Prontera from './Prontera'
 import PronteraCastle from './PronteraCastle'
 import PoringIsland from './PoringIsland'
@@ -99,9 +96,6 @@ function StartMenu(){
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.AntHell ? <AntHell />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
-        screenControlRoom.BattlePoringIslandMapTwo ? <BattlePoringIslandMapTwo />: 
-        screenControlRoom.BattlePoringIslandMapTwoSecret ? <BattlePoringIslandMapTwoSecret />: 
-        screenControlRoom.BattlePoringIslandMapBoss ? <BattlePoringIslandMapBoss />:
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -138,7 +132,7 @@ function StartMenu(){
             }
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
-              <p className="nameStatsHUD destextHUD">Altan</p>
+              <p className="nameStatsHUD destextHUD">Atlan</p>
               <p className="destextHUD classTitle">Knight</p>
                 <div className="HUDBox">
                   <p className="hptextHUD">HP</p>

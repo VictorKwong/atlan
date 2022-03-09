@@ -474,23 +474,39 @@ progress.BarBasicHUD::-webkit-progress-bar{
 @keyframes y1 {to {top:49.9%}}
 
 .battleScreenShake{
-  animation: shake 0.3s;
+  animation: shake 0.2s;
+}
+.battleScreenShakeMore{
+  animation: shakeMore 0.3s;
 }
 
 @keyframes shake {
   0% { transform: translate(1px, 1px) }
-  10% { transform: translate(-1px, -2px) }
-  20% { transform: translate(-3px, 0px) }
-  30% { transform: translate(3px, 2px) }
+  10% { transform: translate(-1px, 0px) }
+  20% { transform: translate(-1px, 0px) }
+  30% { transform: translate(1px, -1px) }
   40% { transform: translate(1px, -1px) }
-  50% { transform: translate(-1px, 2px) }
-  60% { transform: translate(-3px, 1px) }
-  70% { transform: translate(3px, 1px) }
-  80% { transform: translate(-1px, -1px) }
-  90% { transform: translate(1px, 2px) }
-  100% { transform: translate(1px, -2px) }
+  50% { transform: translate(-1px, 1px) }
+  60% { transform: translate(-1px, 1px) }
+  70% { transform: translate(1px, 0px) }
+  80% { transform: translate(-1px, 0px) }
+  90% { transform: translate(1px, -1px) }
+  100% { transform: translate(1px, 0px) }
 }
 
+@keyframes shakeMore {
+  0% { transform: translate(8px, 1px) }
+  10% { transform: translate(-7px, -2px) }
+  20% { transform: translate(-10px, 0px) }
+  30% { transform: translate(10px, 2px) }
+  40% { transform: translate(8px, -1px) }
+  50% { transform: translate(-8px, 2px) }
+  60% { transform: translate(-9px, 1px) }
+  70% { transform: translate(10px, 1px) }
+  80% { transform: translate(-8px, -1px) }
+  90% { transform: translate(8px, 2px) }
+  100% { transform: translate(8px, -1px) }
+}
 
 @media (max-width: 1199px){
   .BarBasicHUD{

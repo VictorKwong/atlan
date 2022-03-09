@@ -70,7 +70,13 @@ import PronteraSoldierImg from './img/NPC/Soldier.gif'
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+
+
+import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
+import userAttributeReducer from './reducers/userAttribute';
+const audioLevelUp = new Audio(LevelUpSoundEffect);
 
 const audioBGM = new Audio(audioThemeOfProntera);
 
@@ -80,6 +86,7 @@ let listResult = document.getElementsByClassName('storyChat')[0];
 
 function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const userAttribute = useSelector(state => state.userAttribute)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -131,6 +138,7 @@ function StartMenu(){
 
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+      audioLevelUp.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
@@ -268,14 +276,17 @@ function StartMenu(){
                 return dispatch(UserLevelUpFn(23));
             }
             })()
-          $('.questCompleteResult').append(`\n <p>Altan has Level Up to Lv${userStats.Level + 1}</p>`)
+            audioLevelUp.play();
+          $('.questCompleteResult').append(`\n <p>Atlan has Level Up to Lv${userStats.Level + 1}</p>`)
             switch (true) {
               case((userStats.Level + 1) === 5):
-                 return $('.questCompleteResult').append(`\n <p>Altan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
               case((userStats.Level + 1) === 20):
-                return $('.questCompleteResult').append(`\n <p>Altan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+              case((userStats.Level + 1) === 35):
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
               case((userStats.Level + 1) === 70):
-                return $('.questCompleteResult').append(`\n <p>Altan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:
                 return 0;
             }
@@ -521,7 +532,7 @@ function StartMenu(){
             </div>}
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
-              <p className="nameStatsHUD destextHUD">Altan</p>
+              <p className="nameStatsHUD destextHUD">Atlan</p>
               <p className="destextHUD classTitle">Knight</p>
                 <div className="HUDBox">
                   <p className="hptextHUD">HP</p>
@@ -625,7 +636,7 @@ function StartMenu(){
               npcControlRoom.Fountain && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="textCenter">
                 <p className="chatDescriptTitle">Fountain</p>
-                <button className="fountainResetPoint" onClick={() =>{dispatch(ResetMyPointsFn()); dispatch(ResetStatsPointFn());}}>Reset my Status Point</button>
+                <button className="fountainResetPoint" onClick={() =>{dispatch(ResetMyPointsFn(userAttribute.BonusVit,userAttribute.BonusInt)); dispatch(ResetStatsPointFn());}}>Reset my Status Point</button>
                 <p className="fountainResetConfirm"></p>
               </div>: 
               npcControlRoom.KafraEmployee && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
