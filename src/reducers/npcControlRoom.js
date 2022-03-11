@@ -391,14 +391,16 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 TrainingSuccess: true,
                 TrainingFailure: false,
-                TrainingMaterial: action.name
+                TrainingMaterial: action.name,
+                TrainingLevel: action.level
             }
         case 'TrainingFailureFn':
             return {
                 ...state,
                 TrainingSuccess: false,
                 TrainingFailure: true,
-                TrainingMaterial: action.name
+                TrainingMaterial: action.name,
+                TrainingLevel: action.level
             }
         case 'ResetTrainingRateFn':
             return {

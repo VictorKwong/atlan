@@ -30,7 +30,12 @@
 
 .loadingScreenBattle::before,
 .loadingScreenBattleTwo::before,
-.loadingScreenBattleThree::before{
+.loadingScreenBattleThree::before,
+.loadingTrainingScreen::before,
+.loadingTrainingSuccessScreen::before,
+.loadingTrainingFailureScreen::before,
+.loadingTrainingSuccessScreenImg::before,
+.loadingTrainingFailureScreenImg::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -39,10 +44,43 @@
   width: 100%;
   height: 100%;
   z-index: 99;
-  opacity: 0;
+  opacity: 1;
+}
+.loadingTrainingSuccessScreenImg::before{
+  background-image: url('../img/Emote/Success.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10%;
+  
+}
+.loadingTrainingFailureScreenImg::before{
+  background-image: url('../img/Emote/Failure.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10%;
 }
 
+.loadingTrainingSuccessScreen{
+  animation-name: loadingTrainingSuccess;
+  animation-duration: 1s;
+  transition: 3s ease-in background-image;
+}
+.loadingTrainingFailureScreen{
+  animation-name: loadingTrainingFailure;
+  animation-duration: 1s;
 
+}
+
+@keyframes loadingTrainingSuccess {
+  0%{ filter:none; }
+  50%{filter:brightness(130%);}
+  100%{ filter:none;}
+}
+@keyframes loadingTrainingFailure {
+  0%{ filter:none;}
+  50%{filter: brightness(130%);}
+  100%{ filter:none;}
+}
 
 .PoringIslandMapTitle{
   font-size: 30px;

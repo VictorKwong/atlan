@@ -138,6 +138,9 @@ const Fn = {
     MightyGuy:[{
             name: 'MightyGuy',
             text: 'I`m here because I can train you to be a stronger knight. Select your training and I see if you can pass the test.'
+        },{
+            name: 'MightyGuy',
+            text: 'Master yourself, master the enemy'
         }]
 }
 

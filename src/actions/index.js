@@ -674,14 +674,18 @@ export const ResetDealerBuySellHealFn = () => {
 };
 
 //Training Fn
-export const TrainingSuccesFn = () => {
+export const TrainingSuccesFn = (name,level) => {
     return {
-        type: 'TrainingSuccesFn'
+        type: 'TrainingSuccesFn',
+        name: name,
+        level:level
     };
 };
-export const TrainingFailureFn = () => {
+export const TrainingFailureFn = (name,level) => {
     return {
-        type: 'TrainingFailureFn'
+        type: 'TrainingFailureFn',
+        name: name,
+        level:level
     };
 };
 export const ResetTrainingRateFn = () => {
@@ -1401,4 +1405,14 @@ export const BattleLoadingScreenFn = () => {
     };
 };
 
+export const TrainingLoadingScreenFn = () => {
+    return {
+        type: 'TrainingLoadingScreenFn',
+    };
+};
+export const TrainingLoadingScreenDelayFn = () => {
+    return {
+        type: 'TrainingLoadingScreenDelayFn',
+    };
+};
 

@@ -9,8 +9,8 @@ import { ResetTrainingRateFn, ResetHouseTrainingFn } from './actions'
 import { TrainingSuccesFn, TrainingFailureFn } from './actions'
 import { TrainingSTRFn , TrainingAGIFn , TrainingVITFn , TrainingINTFn , TrainingDEXFn , TrainingLUKFn } from './actions'
 import { BonusSTRPointsFn , BonusAGIPointsFn , BonusVITPointsFn , BonusINTPointsFn , BonusDEXPointsFn , BonusLUKPointsFn } from './actions'
-//Battle Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+//Loading Screen
+import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreenDelayFn} from './actions'
 //PATH
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
@@ -108,12 +108,12 @@ function StartMenu(){
     ]
 
     let TrainingBox = [
-      {id:20001, Attr:TrainingSTRFn(1), Points:userAttribute.BonusStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20002, Attr:TrainingAGIFn(1), Points:userAttribute.BonusAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn(userAttribute.BonusAgi)},
-      {id:20003, Attr:TrainingVITFn(1), Points:userAttribute.BonusVit, select: screenControlRoom.HouseTrainingVIT, effect:BonusVITPointsFn(userAttribute.BonusVit,userAttribute.vit)},
-      {id:20004, Attr:TrainingINTFn(1), Points:userAttribute.BonusInt, select: screenControlRoom.HouseTrainingINT, effect:BonusINTPointsFn(userAttribute.BonusInt,userAttribute.int)},
-      {id:20005, Attr:TrainingDEXFn(1), Points:userAttribute.BonusDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20006, Attr:TrainingLUKFn(1), Points:userAttribute.BonusLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)}
+      {id:20001, Attr:TrainingSTRFn(1), name:"STR", Points:userAttribute.BonusStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
+      {id:20002, Attr:TrainingAGIFn(1), name:"AGI", Points:userAttribute.BonusAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn(userAttribute.BonusAgi)},
+      {id:20003, Attr:TrainingVITFn(1), name:"VIT", Points:userAttribute.BonusVit, select: screenControlRoom.HouseTrainingVIT, effect:BonusVITPointsFn(userAttribute.BonusVit,userAttribute.vit)},
+      {id:20004, Attr:TrainingINTFn(1), name:"INT", Points:userAttribute.BonusInt, select: screenControlRoom.HouseTrainingINT, effect:BonusINTPointsFn(userAttribute.BonusInt,userAttribute.int)},
+      {id:20005, Attr:TrainingDEXFn(1), name:"DEX", Points:userAttribute.BonusDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
+      {id:20006, Attr:TrainingLUKFn(1), name:"LUK", Points:userAttribute.BonusLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)}
     ]
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
@@ -232,12 +232,16 @@ useEffect(() => {
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][0].name}</p>`)
       break;
     case(screenControlRoom.PoringIslandHouseMap && npcControlRoom.TrainingSuccess):
-      $('.storySpeech').html('Training Success! Congratz!!!')
+      $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Success!!!`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][0].name}</p>`)
       break;
     case(screenControlRoom.PoringIslandHouseMap && npcControlRoom.TrainingFailure):
-      $('.storySpeech').html('Training Failure...')
+      $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Failure... `)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][0].name}</p>`)
+      break;
+    case(screenControlRoom.PoringIslandHouseMap && !npcControlRoom.TrainingFailure && !npcControlRoom.TrainingFailure && userAttribute.BonusStr >= 10 && userAttribute.BonusAgi >= 10 && userAttribute.BonusVit >= 10 && userAttribute.BonusInt >= 10 && userAttribute.BonusDex >= 10 && userAttribute.BonusLuk >= 10):
+      $('.storySpeech').html(`${npcSpeech['MightyGuy'][1].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][1].name}</p>`)
       break;
     case(screenControlRoom.PoringIslandHouseMap && !npcControlRoom.TrainingFailure && !npcControlRoom.TrainingFailure):
       $('.storySpeech').html(`${npcSpeech['MightyGuy'][0].text}`)
@@ -252,7 +256,26 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [npcControlRoom, screenControlRoom])
 
-  
+  const HouseTrainingSuccessButton = (Attr,effect,name,points) => {
+    dispatch(Attr); 
+    dispatch(effect); 
+    dispatch(TrainingSuccesFn(name,points)); 
+    setTimeout(() => SuccessAudio(), 500)
+    dispatch(TrainingLoadingScreenFn())
+    setTimeout(() => dispatch(TrainingLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(TrainingLoadingScreenDelayFn()), 500);
+    setTimeout(() => dispatch(TrainingLoadingScreenDelayFn()), 1000);
+    
+  }
+  const HouseTrainingFailureButton = (name,points) => {
+    dispatch(TrainingFailureFn(name,points)); 
+    setTimeout(() => FailureAudio(), 500) 
+    dispatch(TrainingLoadingScreenFn())
+    setTimeout(() => dispatch(TrainingLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(TrainingLoadingScreenDelayFn()), 500);
+    setTimeout(() => dispatch(TrainingLoadingScreenDelayFn()), 1000);
+  }
+
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1",Math.round(Math.random()))), 1000);
@@ -284,7 +307,9 @@ useEffect(() => {
 
 
     return(
-      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
+      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" :
+      screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingSuccess && screenControlRoom.TrainingLoadingScreenDelay ? "loadingTrainingSuccessScreen loadingTrainingSuccessScreenImg" : screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingSuccess ? "loadingTrainingSuccessScreen" : 
+      screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingFailure && screenControlRoom.TrainingLoadingScreenDelay ? "loadingTrainingFailureScreen loadingTrainingFailureScreenImg" : screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingFailure ? "loadingTrainingFailureScreen" : null}>
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
@@ -477,7 +502,7 @@ useEffect(() => {
                         {Train.select && Train.Points < 10?
                         <div className="storyScreen">
                           <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
-                            () => {dispatch(Train.Attr); dispatch(Train.effect); dispatch(TrainingSuccesFn()); SuccessAudio();} : () => {dispatch(TrainingFailureFn()); FailureAudio();}}>YES</button>
+                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points);} : () => {HouseTrainingFailureButton(Train.name,Train.Points);}}>YES</button>
                           <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
                         </div> : null}
                       </span>
@@ -497,7 +522,7 @@ useEffect(() => {
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn());}}>Return</button>
               </div> : 
-              screenControlRoom.PoringIslandHouseMap && !( screenControlRoom.HouseTrainingSTR || screenControlRoom.HouseTrainingAGI || screenControlRoom.HouseTrainingVIT || screenControlRoom.HouseTrainingINT || screenControlRoom.HouseTrainingDEX || screenControlRoom.HouseTrainingLUK ) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              screenControlRoom.PoringIslandHouseMap && !( (screenControlRoom.HouseTrainingSTR && userAttribute.BonusStr < 10) || (screenControlRoom.HouseTrainingAGI && userAttribute.BonusAgi < 10) || (screenControlRoom.HouseTrainingVIT && userAttribute.BonusVit < 10) || (screenControlRoom.HouseTrainingINT && userAttribute.BonusInt < 10) || (screenControlRoom.HouseTrainingDEX && userAttribute.BonusDex < 10) || (screenControlRoom.HouseTrainingLUK && userAttribute.BonusLuk < 10) ) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}

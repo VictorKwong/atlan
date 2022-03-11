@@ -11,8 +11,10 @@ const Fn = {
     //PORING ISLAND BATTLE
     BattlePoringIslandMap: false,
     BattlePoringIslandMapMonsterID: 0,
-    //BattleLoading Screen
+    //Loading Screen
     BattleLoadingScreen: false,
+    TrainingLoadingScreen: false,
+    TrainingLoadingScreenDelay: false,
     //Mini Screen (TreasurePoringIsland)
     TreasurePoringIslandMap: false,
     TreasurePoringIslandMap2: false,
@@ -460,7 +462,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     BattleLoadingScreen: !state.BattleLoadingScreen
                 }
-
+            case 'TrainingLoadingScreenFn':
+                return{
+                    ...state,
+                    TrainingLoadingScreen: !state.TrainingLoadingScreen
+                }
+            case 'TrainingLoadingScreenDelayFn':
+                return{
+                    ...state,
+                    TrainingLoadingScreenDelay: !state.TrainingLoadingScreenDelay
+                }
         default:
             return state;
     }
