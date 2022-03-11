@@ -223,7 +223,8 @@
   text-shadow: 2px 2px 4px #536481;
 }
 
-.ReturnPoringIsland{
+.ReturnPoringIsland,
+.HouseSelectButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
@@ -236,12 +237,18 @@
   width: 80%;
   margin: 10px 0 10px;
 }
+.HouseSelectButton{
+  width: 40%;
+  margin: 10px;
+}
 
-.ReturnPoringIsland:hover{
+.ReturnPoringIsland:hover,
+.HouseSelectButton:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
-.ReturnPoringIsland::before{
+.ReturnPoringIsland::before,
+.HouseSelectButton::before{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -257,7 +264,8 @@
   opacity: 0;
 }
 
-.ReturnPoringIsland:hover::before{
+.ReturnPoringIsland:hover::before,
+.HouseSelectButton:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
 }

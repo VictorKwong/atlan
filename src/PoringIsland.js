@@ -5,7 +5,10 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 //CHEST
 import { Chest1VisitRepeatFn , Chest2VisitRepeatFn, ChestBoss1VisitRepeatFn} from './actions'
 //HOUSE
-import { ResetTrainingRateFn } from './actions'
+import { ResetTrainingRateFn, ResetHouseTrainingFn } from './actions'
+import { TrainingSuccesFn, TrainingFailureFn } from './actions'
+import { TrainingSTRFn , TrainingAGIFn , TrainingVITFn , TrainingINTFn , TrainingDEXFn , TrainingLUKFn } from './actions'
+import { BonusSTRPointsFn , BonusAGIPointsFn , BonusVITPointsFn , BonusINTPointsFn , BonusDEXPointsFn , BonusLUKPointsFn } from './actions'
 //Battle Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //PATH
@@ -55,7 +58,10 @@ import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
-
+import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
+import TrainingFailure from './audio/SoundEffect/TrainingFailure.mp3'
+const audioTrainingSuccess = new Audio (TrainingSuccess)
+const audioTrainingFailure = new Audio (TrainingFailure)
 
 const audioBGM = new Audio(audioStreamside);
 
@@ -68,6 +74,8 @@ function StartMenu(){
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
+    const userAttribute = useSelector(state => state.userAttribute)
+    const trainingSuccessRate = useSelector(state => state.trainingSuccessRate)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -99,7 +107,14 @@ function StartMenu(){
       {id:9006, num:userGoldItem.FullPlate, EquipItem:ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90), Img:FullPlate, name:"Full Plate"},
     ]
 
-
+    let TrainingBox = [
+      {id:20001, Attr:TrainingSTRFn(1), Points:userAttribute.BonusStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
+      {id:20002, Attr:TrainingAGIFn(1), Points:userAttribute.BonusAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn(userAttribute.BonusAgi)},
+      {id:20003, Attr:TrainingVITFn(1), Points:userAttribute.BonusVit, select: screenControlRoom.HouseTrainingVIT, effect:BonusVITPointsFn(userAttribute.BonusVit,userAttribute.vit)},
+      {id:20004, Attr:TrainingINTFn(1), Points:userAttribute.BonusInt, select: screenControlRoom.HouseTrainingINT, effect:BonusINTPointsFn(userAttribute.BonusInt,userAttribute.int)},
+      {id:20005, Attr:TrainingDEXFn(1), Points:userAttribute.BonusDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
+      {id:20006, Attr:TrainingLUKFn(1), Points:userAttribute.BonusLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)}
+    ]
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
       let playPromise = audioBGM.play(); 
@@ -188,6 +203,19 @@ function StartMenu(){
   //     }, 10);
   // }
 //NPC Speech
+
+const SuccessAudio = () => {
+  audioTrainingSuccess.pause();
+  audioTrainingSuccess.currentTime = 0;
+  audioTrainingSuccess.play();
+}
+const FailureAudio = () => {
+  audioTrainingFailure.pause();
+  audioTrainingFailure.currentTime = 0;
+  audioTrainingFailure.play();
+}
+
+
 useEffect(() => {
   switch(true){
     case(npcControlRoom.PoringIslandBridgeNPC && screenControlRoom.PoringIslandPath6 && screenControlRoom.AltanItem):
@@ -440,6 +468,23 @@ useEffect(() => {
                 </div>
               : <p>Empty HeadGear Storage T^T</p>}
               </div> : null}
+              {screenControlRoom.PoringIslandHouseMap && ( screenControlRoom.HouseTrainingSTR || screenControlRoom.HouseTrainingAGI || screenControlRoom.HouseTrainingVIT || screenControlRoom.HouseTrainingINT || screenControlRoom.HouseTrainingDEX || screenControlRoom.HouseTrainingLUK ) && 
+              !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+                <div>
+                  {TrainingBox.map(Train => {
+                    return(
+                      <span key={Train.id}>
+                        {Train.select && Train.Points < 10?
+                        <div className="storyScreen">
+                          <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
+                            () => {dispatch(Train.Attr); dispatch(Train.effect); dispatch(TrainingSuccesFn()); SuccessAudio();} : () => {dispatch(TrainingFailureFn()); FailureAudio();}}>YES</button>
+                          <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
+                        </div> : null}
+                      </span>
+                    )
+                  })}
+                </div> : null}
+
               {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
@@ -452,7 +497,7 @@ useEffect(() => {
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn());}}>Return</button>
               </div> : 
-              screenControlRoom.PoringIslandHouseMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              screenControlRoom.PoringIslandHouseMap && !( screenControlRoom.HouseTrainingSTR || screenControlRoom.HouseTrainingAGI || screenControlRoom.HouseTrainingVIT || screenControlRoom.HouseTrainingINT || screenControlRoom.HouseTrainingDEX || screenControlRoom.HouseTrainingLUK ) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}

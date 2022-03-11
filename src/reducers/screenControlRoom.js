@@ -18,6 +18,13 @@ const Fn = {
     TreasurePoringIslandMap2: false,
     TreasurePoringIslandMap3: false,
     PoringIslandHouseMap: false,
+    //House Training Fn
+    HouseTrainingSTR:false,
+    HouseTrainingAGI:false,
+    HouseTrainingVIT:false,
+    HouseTrainingINT:false,
+    HouseTrainingDEX:false,
+    HouseTrainingLUK:false,
     //PORING ISLAND PATH
     // PoringIslandPath1: false,
     // PoringIslandPath2: false,
@@ -316,6 +323,83 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 return {
                     ...state,
                     PoringIslandHouseMap: !state.PoringIslandHouseMap,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:false,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:false,
+                }
+            //House Training Fn
+            case 'GotoHouseTrainingSTRFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:true,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:false,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:false,
+                }
+            case 'GotoHouseTrainingAGIFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:true,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:false,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:false,
+                }
+            case 'GotoHouseTrainingVITFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:true,
+                    HouseTrainingINT:false,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:false,
+                }
+            case 'GotoHouseTrainingINTFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:true,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:false,
+                }
+            case 'GotoHouseTrainingDEXFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:false, 
+                    HouseTrainingDEX:true,
+                    HouseTrainingLUK:false,
+                }
+            case 'GotoHouseTrainingLUKFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:false,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:true,
+                }
+            case 'ResetHouseTrainingFn':
+                return{
+                    ...state,
+                    HouseTrainingSTR:false,
+                    HouseTrainingAGI:false,
+                    HouseTrainingVIT:false,
+                    HouseTrainingINT:false,
+                    HouseTrainingDEX:false,
+                    HouseTrainingLUK:false,
                 }
             //Poring Island ALL Path
             case 'GotoPoringIslandPath1Fn':

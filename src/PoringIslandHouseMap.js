@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {TrainingSuccesFn, TrainingFailureFn} from './actions'
+import {GotoHouseTrainingSTRFn, GotoHouseTrainingAGIFn, GotoHouseTrainingVITFn, GotoHouseTrainingINTFn , GotoHouseTrainingDEXFn, GotoHouseTrainingLUKFn} from './actions'
 
-import { TrainingSTRFn , TrainingAGIFn , TrainingVITFn , TrainingINTFn , TrainingDEXFn , TrainingLUKFn } from './actions'
-import { BonusSTRPointsFn , BonusAGIPointsFn , BonusVITPointsFn , BonusINTPointsFn , BonusDEXPointsFn , BonusLUKPointsFn } from './actions'
+//Training Success Failure Reset
+import {ResetTrainingRateFn} from './actions'
+
 import './css/mapHousePoringIsland.css'
 // import useSound from 'use-sound';
 import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
@@ -27,26 +28,17 @@ function StartMenu(){
     
     let TrainingBox = [
       //WEAPON
-      {id:20001, Img:"", name:"STR Training", result:"Complete + 10 STR Training", Points:userAttribute.BonusStr, Attr:TrainingSTRFn(1), effect:BonusSTRPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20002, Img:"", name:"AGI Training", result:"Complete + 10 AGI Training", Points:userAttribute.BonusAgi, Attr:TrainingAGIFn(1), effect:BonusAGIPointsFn(userAttribute.BonusAgi)},
-      {id:20003, Img:"", name:"VIT Training", result:"Complete + 10 VIT Training", Points:userAttribute.BonusVit, Attr:TrainingVITFn(1), effect:BonusVITPointsFn(userAttribute.BonusVit,userAttribute.vit)},
-      {id:20004, Img:"", name:"INT Training", result:"Complete + 10 INT Training", Points:userAttribute.BonusInt, Attr:TrainingINTFn(1), effect:BonusINTPointsFn(userAttribute.BonusInt,userAttribute.int)},
-      {id:20005, Img:"", name:"DEX Training", result:"Complete + 10 DEX Training", Points:userAttribute.BonusDex, Attr:TrainingDEXFn(1), effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20006, Img:"", name:"LUK Training", result:"Complete + 10 LUK Training", Points:userAttribute.BonusLuk, Attr:TrainingLUKFn(1), effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)}
+      {id:20001, Img:"", name:"STR Training", result:"Complete + 10 STR Training", Points:userAttribute.BonusStr, Confirm:GotoHouseTrainingSTRFn()},
+      {id:20002, Img:"", name:"AGI Training", result:"Complete + 10 AGI Training", Points:userAttribute.BonusAgi, Confirm:GotoHouseTrainingAGIFn()},
+      {id:20003, Img:"", name:"VIT Training", result:"Complete + 10 VIT Training", Points:userAttribute.BonusVit, Confirm:GotoHouseTrainingVITFn()},
+      {id:20004, Img:"", name:"INT Training", result:"Complete + 10 INT Training", Points:userAttribute.BonusInt, Confirm:GotoHouseTrainingINTFn()},
+      {id:20005, Img:"", name:"DEX Training", result:"Complete + 10 DEX Training", Points:userAttribute.BonusDex, Confirm:GotoHouseTrainingDEXFn()},
+      {id:20006, Img:"", name:"LUK Training", result:"Complete + 10 LUK Training", Points:userAttribute.BonusLuk, Confirm:GotoHouseTrainingLUKFn()}
     ]
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
-    const SuccessAudio = () => {
-      audioTrainingSuccess.pause();
-      audioTrainingSuccess.currentTime = 0;
-      audioTrainingSuccess.play();
-    }
-    const FailureAudio = () => {
-      audioTrainingFailure.pause();
-      audioTrainingFailure.currentTime = 0;
-      audioTrainingFailure.play();
-    }
+
 
     return(
       <div className="HousePoringIslandMap">
@@ -55,8 +47,7 @@ function StartMenu(){
                   <span key={Train.id}>
                       {Train.Points < 10 ? 
                       <button className="housePoringIslandTrainingButton housePoringIslandTrainingButtonFix" 
-                      onClick={trainingSuccessRate[Train.Points] >= Math.random() ?
-                        () => {dispatch(Train.Attr); dispatch(Train.effect); dispatch(TrainingSuccesFn()); SuccessAudio();} : () => {dispatch(TrainingFailureFn()); FailureAudio();}}>
+                      onClick={() => {dispatch(Train.Confirm); dispatch(ResetTrainingRateFn());}}>
                         <div className="houseImgCenterBox">
                           <p className="houseImgCenter">{Train.name} Lv.{Train.Points + 1} - {trainingSuccessRate[Train.Points]*100}%</p>
                         </div>
@@ -73,3 +64,11 @@ function StartMenu(){
 }
 
 export default StartMenu;
+
+{/* <button className="housePoringIslandTrainingButton housePoringIslandTrainingButtonFix" 
+onClick={trainingSuccessRate[Train.Points] >= Math.random() ?
+  () => {dispatch(Train.Attr); dispatch(Train.effect); dispatch(TrainingSuccesFn()); SuccessAudio();} : () => {dispatch(TrainingFailureFn()); FailureAudio();}}>
+  <div className="houseImgCenterBox">
+    <p className="houseImgCenter">{Train.name} Lv.{Train.Points + 1} - {trainingSuccessRate[Train.Points]*100}%</p>
+  </div>
+</button>:  */}

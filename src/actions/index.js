@@ -689,6 +689,44 @@ export const ResetTrainingRateFn = () => {
         type: 'ResetTrainingRateFn'
     };
 };
+
+export const GotoHouseTrainingSTRFn = () => {
+    return {
+        type: 'GotoHouseTrainingSTRFn'
+    };
+};
+export const GotoHouseTrainingAGIFn = () => {
+    return {
+        type: 'GotoHouseTrainingAGIFn'
+    };
+};
+export const GotoHouseTrainingVITFn = () => {
+    return {
+        type: 'GotoHouseTrainingVITFn'
+    };
+};
+export const GotoHouseTrainingINTFn = () => {
+    return {
+        type: 'GotoHouseTrainingINTFn'
+    };
+};
+export const GotoHouseTrainingDEXFn = () => {
+    return {
+        type: 'GotoHouseTrainingDEXFn'
+    };
+};
+export const GotoHouseTrainingLUKFn = () => {
+    return {
+        type: 'GotoHouseTrainingLUKFn'
+    };
+};
+export const ResetHouseTrainingFn = () => {
+    return {
+        type: 'ResetHouseTrainingFn'
+    };
+};
+
+
 // ITEM BUY SELL
 export const RedPotionFn = (Zeny,Item) => {
     return {
