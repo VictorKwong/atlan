@@ -8,8 +8,8 @@ const Fn = [
     {
         name: 'Poring',
         level: 1,
-        maxHealth: 100,
-        currentHealth: 100,
+        maxHealth: 2000,
+        currentHealth: 2000,
         attack: 50,
         defence: 5,
         defencebuffer: 10, // 5+5

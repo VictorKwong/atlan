@@ -5,8 +5,10 @@ const Fn = {
         BattleItemScreen: false,
         UserTurn: false,
         UserBlock: false,
-        //userClock
+        //userClock Status
         userClockQuicken: 0,
+        //Stable Skills
+        UserLearnDoubleAttack: true,
     },
     Enemy:{
         EnemyTurn: false,
@@ -141,6 +143,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 Enemy:{
                     ...state['Enemy'],
                     EnemyBlock: false,
+                }
+            }
+        case 'UserLearnDoubleAttackFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserLearnDoubleAttack: action.learn
                 }
             }
         default:

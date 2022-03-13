@@ -4,6 +4,7 @@ const Fn = {
     EnemyDead: false,
     EnemyDodge: false,
     EnemyOnCrit: false,
+    EnemyOnHitDouble:false,
     UserAttack: false,
     UserOnHit: false,
     UserIsDying: false,
@@ -95,6 +96,11 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 EnemyOnCrit: action.animation,
                 }
+        case 'EnemyOnHitDoubleAnimationFn':
+            return {
+                ...state,
+                EnemyOnHitDouble: action.animation,
+            }
         case 'EnemyAttackUserAnimationFn':
             return {
                 ...state,

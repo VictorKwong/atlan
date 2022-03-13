@@ -72,6 +72,13 @@ export const ResetUserSkillQuickenClockFn = () => {
         type: 'ResetUserSkillQuickenClockFn'
     };
 };
+export const UserDoubleAttackFn = (learn) => {
+    return {
+        type: 'UserDoubleAttackFn',
+        learn:learn
+    };
+};
+
 
 export const UserLevelUpFn = (Points) => {
     return {
@@ -425,6 +432,13 @@ export const EnemyOnCritAnimationFn = (animation) => {
         animation: animation
     };
 };
+export const EnemyOnHitDoubleAnimationFn = (animation) => {
+    return {
+        type: 'EnemyOnHitDoubleAnimationFn',
+        animation: animation
+    };
+};
+
 
 
 
@@ -1169,7 +1183,6 @@ export const TickingClockFn = () => {
         type: 'TickingClockFn'
     };
 };
-
 //QUEST
 export const AcceptClearPoringQuestFn = () => {
     return {
