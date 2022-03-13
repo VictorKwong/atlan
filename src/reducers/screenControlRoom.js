@@ -64,6 +64,9 @@ const Fn = {
     ItemChoice: false,
     EquipChoice: false,
     ETCChoice: false,
+    StatsChoice: false,
+    SkillChoice: false,
+    GuildChoice: false,
 
 }
 
@@ -119,6 +122,9 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                StatsChoice: true,
+                SkillChoice: false,
+                GuildChoice: false,
             }
         case 'GotoAltanItemFn':
             return {
@@ -144,9 +150,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
-                ItemChoice: true,
-                EquipChoice: false,
-                ETCChoice: false,
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
@@ -154,9 +157,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: !state.WeaponEquipmentChoice,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
-                ItemChoice: false,
-                EquipChoice: false,
-                ETCChoice: false,
             }
         case 'GotoArmorEquipmentChoiceFn':
             return {
@@ -164,9 +164,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: !state.ArmorEquipmentChoice,
                 HeadGearEquipmentChoice: false,
-                ItemChoice: false,
-                EquipChoice: false,
-                ETCChoice: false,
             }
         case 'GotoHeadGearEquipmentChoiceFn':
             return {
@@ -174,9 +171,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: !state.HeadGearEquipmentChoice,
-                ItemChoice: false,
-                EquipChoice: false,
-                ETCChoice: false,
             }
         case 'GotoItemChoiceFn':
             return {
@@ -199,6 +193,27 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ItemChoice: false,
                 EquipChoice: false,
                 ETCChoice: true,
+            }
+        case 'GotoStatsChoiceFn':
+            return {
+                ...state,
+                StatsChoice: true,
+                SkillChoice: false,
+                GuildChoice: false,
+            }
+        case 'GotoSkillChoiceFn':
+            return {
+                ...state,
+                StatsChoice: false,
+                SkillChoice: true,
+                GuildChoice: false,
+            }
+        case 'GotoGuildChoiceFn':
+            return {
+                ...state,
+                StatsChoice: false,
+                SkillChoice: false,
+                GuildChoice: true,
             }
         case 'ReturnWeaponEquipmentChoiceFn':
             return {

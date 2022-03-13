@@ -58,6 +58,9 @@ import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
+import Success from './img/Emote/Success.gif'
+import Failure from './img/Emote/Failure.gif'
+
 import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
 import TrainingFailure from './audio/SoundEffect/TrainingFailure.mp3'
 const audioTrainingSuccess = new Audio (TrainingSuccess)
@@ -232,11 +235,11 @@ useEffect(() => {
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][0].name}</p>`)
       break;
     case(screenControlRoom.PoringIslandHouseMap && npcControlRoom.TrainingSuccess):
-      $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Success!!!`)
+      $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Success!!! <img src=${Success} alt="Success" />`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][0].name}</p>`)
       break;
     case(screenControlRoom.PoringIslandHouseMap && npcControlRoom.TrainingFailure):
-      $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Failure... `)
+      $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Failure... <img src=${Failure} alt="Success" />`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][0].name}</p>`)
       break;
     case(screenControlRoom.PoringIslandHouseMap && !npcControlRoom.TrainingFailure && !npcControlRoom.TrainingFailure && userAttribute.BonusStr >= 10 && userAttribute.BonusAgi >= 10 && userAttribute.BonusVit >= 10 && userAttribute.BonusInt >= 10 && userAttribute.BonusDex >= 10 && userAttribute.BonusLuk >= 10):

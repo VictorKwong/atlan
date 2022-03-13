@@ -169,6 +169,21 @@ export const GotoETCChoiceFn = () => {
         type: 'GotoETCChoiceFn',
     };
 };
+export const GotoStatsChoiceFn = () => {
+    return {
+        type: 'GotoStatsChoiceFn',
+    };
+};
+export const GotoSkillChoiceFn = () => {
+    return {
+        type: 'GotoSkillChoiceFn',
+    };
+};
+export const GotoGuildChoiceFn = () => {
+    return {
+        type: 'GotoGuildChoiceFn',
+    };
+};
 
 
 //EQUIPMENT SCREEN
