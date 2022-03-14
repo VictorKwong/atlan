@@ -147,6 +147,10 @@ const enemyStatsReducer = (state = Fn, action) => {
         case 'UserSkillBowlingBashEnemyFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content) 
+        case 'UserLifeStealEnemyFn':
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content)
+        case 'EnemyAttackReflectUserFn':
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.Reflecting} : content)
         case 'ResetEnemyCurrentHealthFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => true ? {...content, currentHealth: state[i].maxHealth} : content) 

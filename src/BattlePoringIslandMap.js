@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn} from './actions';
+import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealNumberFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -12,7 +12,7 @@ import { ReturnCheckPointFn } from './actions'
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -602,7 +602,7 @@ function Main(){
     // VICTORY FUCNTION
     // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
-      if (enemyStats[i].currentHealth <= 0){
+      if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
         
         dispatch(EnemyDeadAnimationFn(true))
         setTimeout(() => (clockCheck = 1), 300);
@@ -691,7 +691,7 @@ function Main(){
     }
     // LEVEL FUNCTION
     useEffect(() => {
-      if (enemyStats[i].currentHealth <= 0){
+      if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
         //MAX Lv10
         if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
           (() => {
@@ -799,16 +799,33 @@ function Main(){
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5) : Damage = 1;
-              //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              if( SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+              if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                // Text display
+                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage+Damage,i,Math.floor(Damage*0.15)), 300));
+              }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn((Damage+Damage),i), 300));
+              }else if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                 // Text display
+                 dispatch(UserOnLifeStealNumberFn(true))
+                 setTimeout(() => dispatch(UserOnLifeStealNumberFn(false)), 1000);
+                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,i,Math.floor(Damage*0.15)), 300));
               }else{
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
               }
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
@@ -821,16 +838,34 @@ function Main(){
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
-              //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              if( SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+              
+              if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage+Damage,i,Math.floor(Damage*0.15)), 300));
+              }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+                // Text display
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn((Damage+Damage),i), 300));
+              }else if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                 // Text display
+                 dispatch(UserOnLifeStealNumberFn(true))
+                 setTimeout(() => dispatch(UserOnLifeStealNumberFn(false)), 1000);
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,i,Math.floor(Damage*0.15)), 300));
               }else{
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
               }
           // ENEMY HIT
@@ -847,16 +882,33 @@ function Main(){
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defence)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5) : Damage = 1;
-              //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              if( SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+              if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                // Text display
+                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage+Damage,i,Math.floor(Damage*0.15)), 300));
+              }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn((Damage+Damage),i), 300));
+              }else if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                 // Text display
+                 dispatch(UserOnLifeStealNumberFn(true))
+                 setTimeout(() => dispatch(UserOnLifeStealNumberFn(false)), 1000);
+                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,i,Math.floor(Damage*0.15)), 300));
               }else{
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
               }
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
@@ -869,16 +921,33 @@ function Main(){
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
-              //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              if( SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+              if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage+Damage,i,Math.floor(Damage*0.15)), 300));
+              }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+                // Text display
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage + Damage} damage</p>`)
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
+                setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn((Damage+Damage),i), 300));
+              }else if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                 // Text display
+                 dispatch(UserOnLifeStealNumberFn(true))
+                 setTimeout(() => dispatch(UserOnLifeStealNumberFn(false)), 1000);
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*0.15)} hp</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,i,Math.floor(Damage*0.15)), 300));
               }else{
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
               }
           // ENEMY DODGE
@@ -1357,18 +1426,40 @@ function Main(){
                       dispatch(UserIsCritAnimationFn(true));
                       setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                       Math.sign((Damage * 1.5) - userStats.defencebuffer - userStats.Bonusdefencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer - userStats.Bonusdefencebuffer) : Damage = 1;
-                      // Text display
-                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
-                      //Rerender
-                      return dispatch(EnemyAttackBlockUserFn(Damage));
+                      //ReflectSkill
+                      if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                        // Text display
+                        $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
+                        $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                        dispatch(EnemyOnReflectNumberFn(true));
+                        setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
+                        //Rerender
+                        return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                      }else{
+                        // Text display
+                        $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
+                        //Rerender
+                        return dispatch(EnemyAttackBlockUserFn(Damage));
+                      }
                     default:
                       //Audio Sound Effect
                       audioUserBlock.play();
                       Math.sign(Damage - userStats.defencebuffer - userStats.Bonusdefencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer - userStats.Bonusdefencebuffer : Damage = 1;
+                      //ReflectSkill
+                      if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                        // Text display
+                        $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
+                        $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                        dispatch(EnemyOnReflectNumberFn(true));
+                        setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
+                        //Rerender
+                        return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                      }else{
                       // Text display
                       $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
                       //Rerender
                       return dispatch(EnemyAttackBlockUserFn(Damage));
+                      }
                   }
                 // USER HIT
                 case ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Khit):
@@ -1384,18 +1475,43 @@ function Main(){
                     dispatch(UserIsCritAnimationFn(true));
                     setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                     Math.sign((Damage * 1.5) - userStats.defence - userStats.Bonusdefence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence - userStats.Bonusdefence) : Damage = 1;
+                    //ReflectSkill
+                    if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                      // Text display
+                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                      dispatch(EnemyOnReflectNumberFn(true));
+                      setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
+                      //Rerender
+                      return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                    }else{
                     // Text display
                     $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!!Atlan Received ${Damage} damage</p>`)
                     //Rerender
                     return dispatch(EnemyAttackUserFn(Damage));
+                    }
+
+
                   default:
                     //Audio Sound Effect
                     audioUserHit.play();
                     Math.sign(Damage - userStats.defence - userStats.Bonusdefence) > 0 ? Damage = Damage - userStats.defence - userStats.Bonusdefence : Damage = 1;
+
+                    //ReflectSkill
+                    if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                      // Text display
+                      $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                      dispatch(EnemyOnReflectNumberFn(true));
+                      setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
+                      //Rerender
+                      return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                    }else{
                     // Text display
                     $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
                     //Rerender
-                    return dispatch(EnemyAttackUserFn(Damage));                     
+                    return dispatch(EnemyAttackUserFn(Damage));      
+                    }
                   }
                 // USER DODGE
                 default:
@@ -1533,6 +1649,7 @@ function Main(){
                               <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate ${Enemy.FlipCSS}` : `${Enemy.FlipCSS}`} src={ImageControlRoom.EnemyOnHit ? Enemy.GetHit : ImageControlRoom.EnemyAttack ? Enemy.GetAttack : ImageControlRoom.EnemyDead ? Enemy.GetDead : Enemy.GetStand } alt={enemyStats[i].name} />
                               <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                               <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit && ImageControlRoom.EnemyOnHitDouble) || (ImageControlRoom.EnemyDodge && ImageControlRoom.EnemyOnHitDouble) ? `DamageResultNumberCrit` : (ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnHitDouble) || (ImageControlRoom.EnemyDodge && ImageControlRoom.EnemyOnHitDouble) ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
+                              <p className={ImageControlRoom.EnemyOnReflectNumber ? `DamageResultNumber` : `DamageResultNumberHide`}>{Damage}</p>
                             </div> : null}
                           </div>
                       )})}
@@ -1769,13 +1886,13 @@ function Main(){
             <p className="storySpeech">-------- The Battle begins ------</p>
             {/* <button onClick={() =>{changeMapFadeAudio()}}>Stop Music</button> */}
 
-            {enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
-            <div className="storyScreen">
-              <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
-            </div>
-            : userStats.currentHealth <= 0 && clockCheck === 1? 
+            {((userStats.currentHealth <= 0 && enemyStats[i].currentHealth <= 0) || userStats.currentHealth <= 0) && clockCheck === 1? 
             <div className="storyScreen">
               <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
+            </div> 
+            : enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
+            <div className="storyScreen">
+              <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             </div> : null}
 
           </fieldset>

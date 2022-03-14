@@ -59,6 +59,24 @@ const userStatsReducer = (state = Fn, action) => {
                 ...state,
                 currentHealth: state.currentHealth - action.DamageCalculation,
         }
+        case 'EnemyAttackReflectUserFn':
+            return {
+                ...state,
+                currentHealth: state.currentHealth - action.DamageCalculation,
+            }
+        case 'UserLifeStealEnemyFn':
+            switch(true){
+                case ((state.currentHealth + action.LifeSteal) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + action.LifeSteal
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth
+                    }
+            }
         case 'WinResultFn':
             return{
                 ...state,

@@ -9,6 +9,8 @@ const Fn = {
         userClockQuicken: 0,
         //Stable Skills
         UserLearnDoubleAttack: true,
+        UserLearnReflectAttack: true,
+        UserLearnLifeStealAttack: true,
     },
     Enemy:{
         EnemyTurn: false,
@@ -153,6 +155,23 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserLearnDoubleAttack: action.learn
                 }
             }
+        case 'UserLearnReflectAttackFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserLearnReflectAttack: action.learn
+                }
+            }
+        case 'UserLearnLifeStealAttackFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserLearnLifeStealAttack: action.learn
+                }
+            }
+            
         default:
             return {
                     ...state

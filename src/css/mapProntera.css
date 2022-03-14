@@ -39,8 +39,8 @@
   width:80%;
   border: 1px solid black;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   position: relative;
@@ -84,7 +84,10 @@
 .headGearDealerNPC::before,
 .soldier1::before,
 .soldier2::before,
-.castleEnterence::before{
+.castleEnterence::before,
+.kiwiGuild::before,
+.chocolateGuild::before,
+.lemonGuild::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -102,7 +105,10 @@
 .headGearDealerNPC:hover::before,
 .soldier1:hover::before,
 .soldier2:hover::before,
-.castleEnterence:hover::before{
+.castleEnterence:hover::before,
+.kiwiGuild:hover::before,
+.chocolateGuild:hover::before,
+.lemonGuild:hover::before{
   border: solid #3c70ff 1px;
 }
 
@@ -116,7 +122,10 @@
 .headGearDealerNPC,
 .soldier1,
 .soldier2,
-.castleEnterence{
+.castleEnterence,
+.kiwiGuild,
+.chocolateGuild,
+.lemonGuild{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -164,16 +173,24 @@
   right: 0px;
 }
 
-.soldier1 { grid-area: 1 / 3 / 2 / 4; }
-.soldier2 { grid-area: 1 / 5 / 2 / 6; }
-.castleEnterence { grid-area: 1 / 4 / 2 / 5; }
-.toolDealerNPC { grid-area: 3 / 3 / 4 / 4; }
-.weaponArmorDealerNPC { grid-area: 3 / 5 / 4 / 6; }
-.PronteraWorldMap { grid-area: 7 / 4 / 8 / 5; }
-.kafraEmployee { grid-area: 6 / 3 / 7 / 4; }
-.pronteraFountain { grid-area: 4 / 4 / 5 / 5; }
-.questBoard { grid-area: 6 / 5 / 7 / 6; }
-.headGearDealerNPC { grid-area: 3 / 6 / 4 / 7; }
+.soldier1 { grid-area: 1 / 2 / 2 / 3; }
+.castleEnterence { grid-area: 1 / 3 / 2 / 4; }
+.soldier2 { grid-area: 1 / 4 / 2 / 5; }
+.kiwiGuild { grid-area: 2 / 1 / 3 / 2; }
+.toolDealerNPC { grid-area: 2 / 2 / 3 / 3; }
+.weaponArmorDealerNPC { grid-area: 2 / 4 / 3 / 5; }
+.headGearDealerNPC { grid-area: 2 / 5 / 3 / 6; }
+.pronteraFountain { grid-area: 3 / 3 / 4 / 4; }
+.chocolateGuild { grid-area: 4 / 1 / 5 / 2; }
+.kafraEmployee { grid-area: 4 / 2 / 5 / 3; }
+.questBoard { grid-area: 4 / 4 / 5 / 5; }
+.lemonGuild { grid-area: 4 / 5 / 5 / 6; }
+.PronteraWorldMap { grid-area: 5 / 3 / 6 / 4; }
+
+
+
+
+
 
 @media (max-width: 1199px){
 
@@ -201,7 +218,10 @@
   .headGearDealerNPC,
   .soldier1,
   .soldier2,
-  .castleEnterence{
+  .castleEnterence,
+  .kiwiGuild,
+  .chocolateGuild,
+  .lemonGuild{
     width:100%;
     min-height: 120px;
   }

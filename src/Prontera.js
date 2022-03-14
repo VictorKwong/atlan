@@ -67,6 +67,9 @@ import PronteraToolDealerImg from './img/NPC/PronteraToolDealer.gif'
 import Warp from './img/NPC/Warp.gif'
 import PronteraHeadGearDealerImg from './img/NPC/PronteraHeadGearDealer.gif'
 import PronteraSoldierImg from './img/NPC/Soldier.gif'
+import Kiwi from './img/NPC/Kiwi.gif'
+import Lemon from './img/NPC/Lemon.gif'
+import Chocolate from './img/NPC/Chocolate.png'
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
@@ -522,11 +525,14 @@ function StartMenu(){
               <button className="soldier1" onClick={() => {dispatch(TalktoSoldierGuard1Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier1" /></button>
               <button className="castleEnterence" onClick={() => {dispatch(GotoPronteraCastleFn()); dispatch(ResetTalktoFn()); changeMapFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
               <button className="soldier2" onClick={() => {dispatch(TalktoSoldierGuard2Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier2" /></button>
+              <button className="kiwiGuild"><img src={Kiwi} alt="NPC Kiwi" /></button>
               <button className="toolDealerNPC" onClick={() =>{dispatch(GotoPronteraToolDealerFn()); dispatch(TalktoToolDealerFn()); changePlaceFadeAudio();}}><img src={PronteraToolDealerImg} alt="Prontera Tool Dealer" /></button>
               <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img className="weaponArmorDealerNPCImg" src={Warp} alt="Warp Portal" /></button>
+              <button className="chocolateGuild"><img src={Chocolate} alt="NPC Chocolate" /></button>
               <button className="kafraEmployee" onClick={() => dispatch(TalktoKafraEmployeeFn())}><img src={KafraEmployee} alt="Kafra Employee" /></button>
               <button className="pronteraFountain" onClick={() => {dispatch(TalktoFountainFn());}}><img className="pronteraFountainImg" src={Fountain} alt="Fountain" /></button>
-              <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}><img src={QuestBoard} alt="Quest Board" /></button> 
+              <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}><img src={QuestBoard} alt="Quest Board" /></button>
+              <button className="lemonGuild"><img src={Lemon} alt="NPC Lemon" /></button>
               <button className="headGearDealerNPC" onClick={() => {dispatch(GotoPronteraHeadGearDealerFn()); dispatch(TalktoHeadGearDealerFn()); changePlaceFadeAudio();}}><img src={PronteraHeadGearDealerImg} alt="Prontera Head Gear Dealer" /></button> 
               <button className="PronteraWorldMap" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
             </div>}

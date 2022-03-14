@@ -11,6 +11,26 @@ export const EnemyAttackBlockUserFn = (Damage) => {
         DamageCalculation: Damage
     };
 };
+export const EnemyAttackReflectUserFn = (Damage,Target,Reflecting) => {
+    return {
+        type: 'EnemyAttackReflectUserFn',
+        DamageCalculation: Damage,
+        Target: Target,
+        Reflecting: Reflecting
+    }
+};
+export const UserLifeStealEnemyFn = (Damage,Target,LifeSteal) => {
+    return {
+        type: 'UserLifeStealEnemyFn',
+        DamageCalculation: Damage,
+        Target: Target,
+        LifeSteal: LifeSteal
+    }
+};
+
+
+
+
 export const UserAttackEnemyFn = (Damage,Target) => {
     return {
         type: 'UserAttackEnemyFn',
@@ -75,6 +95,18 @@ export const ResetUserSkillQuickenClockFn = () => {
 export const UserDoubleAttackFn = (learn) => {
     return {
         type: 'UserDoubleAttackFn',
+        learn:learn
+    };
+};
+export const UserLearnReflectAttackFn = (learn) => {
+    return {
+        type: 'UserLearnReflectAttackFn',
+        learn:learn
+    };
+};
+export const UserLearnLifeStealAttackFn = (learn) => {
+    return {
+        type: 'UserLearnLifeStealAttackFn',
         learn:learn
     };
 };
@@ -438,7 +470,18 @@ export const EnemyOnHitDoubleAnimationFn = (animation) => {
         animation: animation
     };
 };
-
+export const EnemyOnReflectNumberFn = (animation) => {
+    return {
+        type: 'EnemyOnReflectNumberFn',
+        animation: animation
+    };
+};
+export const UserOnLifeStealNumberFn = (animation) => {
+    return {
+        type: 'UserOnLifeStealNumberFn',
+        animation: animation
+    };
+};
 
 
 
