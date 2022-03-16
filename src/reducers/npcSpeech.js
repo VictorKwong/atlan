@@ -115,6 +115,27 @@ const Fn = {
             name: 'SoldierGuard',
             text: 'My duty is to protect Prontera.'
         }],
+    Kiwi:[{
+            name: 'Kiwi',
+            text: 'If you want to join my Assassin Guild, I will teach you my "Double Attack" skill.'
+        },{
+            name: 'Kiwi',
+            text: 'Proof me that you want to join, I need ++++'
+        }],
+    Lemon:[{
+            name: 'Lemon',
+            text: 'Lemonekko Guild recruiting some tanky class, Our best strategy is defence and reflect &bsol; . /'
+        },{
+            name: 'Lemon',
+            text: 'Hehehe I wounder if you can defeat boss - Lunatic, then I will let you be join.'
+        }],
+    Chocolate:[{
+            name: 'Chocolate',
+            text: 'I am a Summoner and love my little dog - Kobi Guild, Stay alive during the battle is our best bet! :)'
+        },{
+            name: 'Chocolate',
+            text: 'I wonder if you could help me to find item - SoulItem, I will be appricate and let you join in ^^.'
+        }],
     PronteraKing:[{
             name: 'Prontera King',
             text: 'Atlan, you need to collect all four important items to seal the chaos gate. Please hurry!'

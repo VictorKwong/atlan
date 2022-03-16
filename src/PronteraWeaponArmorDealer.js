@@ -497,7 +497,7 @@ function StartMenu(){
                     {ArmorBuyBox.map(Buy => {
                         return(
                           <span key={Buy.id}>
-                            <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                            <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix buyArmorDealerItemButton"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
                               <div className="adjImgCenterBox">
                                 <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
                               </div>

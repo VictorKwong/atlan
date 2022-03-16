@@ -93,7 +93,6 @@
   100%{opacity: 0; display: none;}
 } */
 
-
 .StoryMap{
   width:80%;
   border: 1px solid black;
@@ -155,7 +154,8 @@
 .buyArmorDealerButton,
 .sellArmorDealerButton,
 .returnArmorDealerButton,
-.returnWeaponArmorDealerButton{
+.returnWeaponArmorDealerButton,
+.guildInterest{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
@@ -170,10 +170,10 @@
 .buyToolDealerButton,
 .sellToolDealerButton,
 .returnToolDealerButton{
-  background: rgb(222,210,198);
-  background: -moz-linear-gradient(357deg, rgba(222,210,198,1) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgba(223,189,152,1) 100%);
-  background: -webkit-linear-gradient(357deg, rgba(222,210,198,1) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgba(223,189,152,1) 100%);
-  background: linear-gradient(357deg, rgba(222,210,198,1) 0%, rgba(222,203,183,1) 42%, rgba(223,196,167,1) 71%, rgba(223,189,152,1) 100%);
+  background: rgb(221,220,224);
+  background: -moz-linear-gradient(59deg, rgba(221,220,224,1) 0%, rgba(157,212,182,1) 41%, rgba(123,235,168,1) 75%, rgba(99,252,160,1) 100%);
+  background: -webkit-linear-gradient(59deg, rgba(221,220,224,1) 0%, rgba(157,212,182,1) 41%, rgba(123,235,168,1) 75%, rgba(99,252,160,1) 100%);
+  background: linear-gradient(59deg, rgba(221,220,224,1) 0%, rgba(157,212,182,1) 41%, rgba(123,235,168,1) 75%, rgba(99,252,160,1) 100%);
   width:40%;
   margin: 10px;
 }   
@@ -212,6 +212,7 @@
 .questBoardItems,
 .kafraEmployeeHeal,
 .fountainResetPoint,
+.guildInterest,
 .returnWeaponArmorDealerButton{
   width: 80%;
   margin: 10px 0 10px;
@@ -236,7 +237,8 @@
 .buyArmorDealerButton:hover,
 .sellArmorDealerButton:hover,
 .returnArmorDealerButton:hover,
-.returnWeaponArmorDealerButton:hover{
+.returnWeaponArmorDealerButton:hover,
+.guildInterest:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
@@ -259,7 +261,8 @@
 .buyArmorDealerButton::before,
 .sellArmorDealerButton::before,
 .returnArmorDealerButton::before,
-.returnWeaponArmorDealerButton::before
+.returnWeaponArmorDealerButton::before,
+.guildInterest::before
 {
   position: absolute;
   top: 50%;
@@ -295,7 +298,8 @@
 .buyArmorDealerButton:hover::before,
 .sellArmorDealerButton:hover::before,
 .returnArmorDealerButton:hover::before,
-.returnWeaponArmorDealerButton:hover::before{
+.returnWeaponArmorDealerButton:hover::before,
+.guildInterest:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
 }

@@ -36,7 +36,10 @@
 .buyToolDealerItemButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
+  background: rgb(221,220,224);
+  background: -moz-linear-gradient(59deg, rgba(221,220,224,1) 0%, rgba(157,212,182,1) 41%, rgba(123,235,168,1) 75%, rgba(99,252,160,1) 100%);
+  background: -webkit-linear-gradient(59deg, rgba(221,220,224,1) 0%, rgba(157,212,182,1) 41%, rgba(123,235,168,1) 75%, rgba(99,252,160,1) 100%);
+  background: linear-gradient(59deg, rgba(221,220,224,1) 0%, rgba(157,212,182,1) 41%, rgba(123,235,168,1) 75%, rgba(99,252,160,1) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
   width:calc(50% - 4px);

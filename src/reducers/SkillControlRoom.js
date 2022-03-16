@@ -8,9 +8,13 @@ const Fn = {
         //userClock Status
         userClockQuicken: 0,
         //Stable Skills
-        UserLearnDoubleAttack: true,
+        UserLearnDoubleAttack: false,
         UserLearnReflectAttack: true,
         UserLearnLifeStealAttack: true,
+        //Stable Skills Scale
+        UserDoubleAttackScale: 0.2,
+        UserReflectAttackScale: 0.5,
+        UserLifeStealAttack: 0.3,
     },
     Enemy:{
         EnemyTurn: false,

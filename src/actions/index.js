@@ -27,7 +27,15 @@ export const UserLifeStealEnemyFn = (Damage,Target,LifeSteal) => {
         LifeSteal: LifeSteal
     }
 };
-
+export const UserSkillLifeStealEnemyFn = (Damage,Target,LifeSteal,Consume) => {
+    return {
+        type: 'UserSkillLifeStealEnemyFn',
+        DamageCalculation: Damage,
+        Target: Target,
+        LifeSteal: LifeSteal,
+        Consume: Consume
+    }
+};
 
 
 
@@ -476,13 +484,18 @@ export const EnemyOnReflectNumberFn = (animation) => {
         animation: animation
     };
 };
-export const UserOnLifeStealNumberFn = (animation) => {
+export const UserOnLifeStealAnimationFn = (animation) => {
     return {
-        type: 'UserOnLifeStealNumberFn',
+        type: 'UserOnLifeStealAnimationFn',
         animation: animation
     };
 };
-
+export const UserOnSPHealAnimationFn = (animation) => {
+    return {
+        type: 'UserOnSPHealAnimationFn',
+        animation: animation
+    };
+};
 
 
 export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg,WeaponOnHitImg,WeaponDyingImg,WeaponDeadImg,WeaponChannelImg,WeaponPickUpImg) => {
@@ -651,6 +664,28 @@ export const TalktoPronteraAssistantFn = () => {
         type: 'TalktoPronteraAssistantFn'
     };
 };
+export const TalktoKiwiFn = () => {
+    return {
+        type: 'TalktoKiwiFn'
+    };
+};
+export const TalktoLemonFn = () => {
+    return {
+        type: 'TalktoLemonFn'
+    };
+};
+export const TalktoChocolateFn = () => {
+    return {
+        type: 'TalktoChocolateFn'
+    };
+};
+export const TalktoIWantToJoinGuildFn = () => {
+    return {
+        type: 'TalktoIWantToJoinGuildFn'
+    };
+};
+
+
 
 export const TalktoWeaponDealerFn = () => {
     return {

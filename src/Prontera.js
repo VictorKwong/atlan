@@ -5,7 +5,7 @@ import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDeale
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 
-import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, ResetTalktoFn} from './actions';
+import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, ResetTalktoFn} from './actions';
 
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
@@ -78,7 +78,6 @@ import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
-import userAttributeReducer from './reducers/userAttribute';
 const audioLevelUp = new Audio(LevelUpSoundEffect);
 
 const audioBGM = new Audio(audioThemeOfProntera);
@@ -454,14 +453,38 @@ function StartMenu(){
         case(npcControlRoom.Fountain && npcControlRoom.ResetStatsPoint):
           $('.fountainResetConfirm').html(`Reset all attribute point`);
           break;
+        case(npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][1].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][1].name}</p>`)
+          break;
+        case(npcControlRoom.Kiwi):
+            $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][0].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][0].name}</p>`)
+          break;
+        case(npcControlRoom.Lemon && npcControlRoom.IWantToJoinGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Lemon'][1].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][1].name}</p>`)
+          break;
+        case(npcControlRoom.Lemon):
+            $('.storySpeech').html(`<p>${npcSpeech['Lemon'][0].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][0].name}</p>`)
+          break;
+        case(npcControlRoom.Chocolate && npcControlRoom.IWantToJoinGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Chocolate'][1].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Chocolate'][1].name}</p>`)
+          break;
+        case(npcControlRoom.Chocolate):
+            $('.storySpeech').html(`<p>${npcSpeech['Chocolate'][0].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Chocolate'][0].name}</p>`)
+          break;
         case(npcControlRoom.SoldierGuard1):
-          $('.storySpeech').html(`<p>${npcSpeech['SoldierGuard1'][0].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['SoldierGuard1'][0].name}</p>`)
-        break;
+            $('.storySpeech').html(`<p>${npcSpeech['SoldierGuard1'][0].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['SoldierGuard1'][0].name}</p>`)
+          break;
         case(npcControlRoom.SoldierGuard2):
-          $('.storySpeech').html(`<p>${npcSpeech['SoldierGuard2'][0].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['SoldierGuard2'][0].name}</p>`)
-        break;
+            $('.storySpeech').html(`<p>${npcSpeech['SoldierGuard2'][0].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['SoldierGuard2'][0].name}</p>`)
+          break;
         // reset
           default:
             $('.storySpeech').html('')  
@@ -525,15 +548,15 @@ function StartMenu(){
               <button className="soldier1" onClick={() => {dispatch(TalktoSoldierGuard1Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier1" /></button>
               <button className="castleEnterence" onClick={() => {dispatch(GotoPronteraCastleFn()); dispatch(ResetTalktoFn()); changeMapFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
               <button className="soldier2" onClick={() => {dispatch(TalktoSoldierGuard2Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier2" /></button>
-              <button className="kiwiGuild"><img src={Kiwi} alt="NPC Kiwi" /></button>
+              <button className="kiwiGuild" onClick={() => dispatch(TalktoKiwiFn())}><img src={Kiwi} alt="NPC Kiwi" /></button>
               <button className="toolDealerNPC" onClick={() =>{dispatch(GotoPronteraToolDealerFn()); dispatch(TalktoToolDealerFn()); changePlaceFadeAudio();}}><img src={PronteraToolDealerImg} alt="Prontera Tool Dealer" /></button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img className="weaponArmorDealerNPCImg" src={Warp} alt="Warp Portal" /></button>
-              <button className="chocolateGuild"><img src={Chocolate} alt="NPC Chocolate" /></button>
+              <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
+              <button className="chocolateGuild" onClick={() => dispatch(TalktoChocolateFn())}><img src={Chocolate} alt="NPC Chocolate" /></button>
               <button className="kafraEmployee" onClick={() => dispatch(TalktoKafraEmployeeFn())}><img src={KafraEmployee} alt="Kafra Employee" /></button>
               <button className="pronteraFountain" onClick={() => {dispatch(TalktoFountainFn());}}><img className="pronteraFountainImg" src={Fountain} alt="Fountain" /></button>
               <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}><img src={QuestBoard} alt="Quest Board" /></button>
-              <button className="lemonGuild"><img src={Lemon} alt="NPC Lemon" /></button>
-              <button className="headGearDealerNPC" onClick={() => {dispatch(GotoPronteraHeadGearDealerFn()); dispatch(TalktoHeadGearDealerFn()); changePlaceFadeAudio();}}><img src={PronteraHeadGearDealerImg} alt="Prontera Head Gear Dealer" /></button> 
+              <button className="lemonGuild" onClick={() => dispatch(TalktoLemonFn())}><img src={Lemon} alt="NPC Lemon" /></button>
+              <button className="headGearDealerNPC" onClick={() => {dispatch(GotoPronteraHeadGearDealerFn()); dispatch(TalktoHeadGearDealerFn()); changePlaceFadeAudio();}}><img src={PronteraHeadGearDealerImg} alt="Prontera Head Gear Dealer" /></button>
               <button className="PronteraWorldMap" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
             </div>}
             <div className="StoryHUD">
@@ -648,6 +671,10 @@ function StartMenu(){
               npcControlRoom.KafraEmployee && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="textCenter">
                 <button className="kafraEmployeeHeal" onClick={() => dispatch(KafraEmployeeHealStateFn())}>Heal</button> 
+              </div> : 
+              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !npcControlRoom.IWantToJoinGuild ?
+              <div className="textCenter">
+                <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> 
               </div> : 
               // {/* QUEST */}
               npcControlRoom.QuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 

@@ -404,7 +404,11 @@ progress.BarBasicHUD::-webkit-progress-bar{
 }
 
 .DamageResultNumber,
-.DamageResultNumberUser{
+.DamageResultNumberUser,
+.DamageResultNumberCrit,
+.DamageResultNumberCritUser,
+.HealResultNumberUser,
+.HealSPResultNumberUser{
   position: absolute;
   top: 50%;
   left: 0;
@@ -420,15 +424,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
 }
 .DamageResultNumberCrit,
 .DamageResultNumberCritUser{
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate3d(0,-50%,0) scale3d(1,1,1);
   color:yellow;
-  -webkit-text-stroke: 0.5px black;
-  stroke: 0.5px black;
-  font-size:20px;
-  z-index: 999;
   animation:
   x2 1s linear,
   y1 1s cubic-bezier(0,1000,1,1000) ;
@@ -440,7 +436,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
   transform: translate3d(-50%,-50%,0) scale3d(1,1,1);
   animation:
   x3 1.05s linear,
-  y1 1.05s cubic-bezier(0,1000,1,1000);
+  y1 1.05s cubic-bezier(0,700,1,700);
 }
 .DamageResultNumberCritUser{
   top: 50%;
@@ -448,7 +444,21 @@ progress.BarBasicHUD::-webkit-progress-bar{
   transform: translate3d(-50%,-50%,0) scale3d(1,1,1);
   animation:
   x4 1.05s linear,
-  y1 1.05s cubic-bezier(0,1000,1,1000);
+  y1 1.05s cubic-bezier(0,700,1,700);
+}
+
+.HealResultNumberUser,
+.HealSPResultNumberUser{
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0) scale3d(1,1,1);
+  color:#3fff00;
+  animation:
+  y1 1.05s cubic-bezier(0,400,1,400);
+}
+
+.HealSPResultNumberUser{
+  color:#1D5DE7;
 }
 
 @keyframes x1 { 

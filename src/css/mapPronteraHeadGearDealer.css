@@ -43,7 +43,10 @@
 .buyHeadGearDealerItemButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
+  background: rgb(184,198,177);
+  background: -moz-linear-gradient(278deg, rgba(184,198,177,1) 0%, rgba(168,211,147,1) 41%, rgba(153,223,117,1) 71%, rgba(141,233,93,1) 100%);
+  background: -webkit-linear-gradient(278deg, rgba(184,198,177,1) 0%, rgba(168,211,147,1) 41%, rgba(153,223,117,1) 71%, rgba(141,233,93,1) 100%);
+  background: linear-gradient(278deg, rgba(184,198,177,1) 0%, rgba(168,211,147,1) 41%, rgba(153,223,117,1) 71%, rgba(141,233,93,1) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
   width:calc(50% - 4px);

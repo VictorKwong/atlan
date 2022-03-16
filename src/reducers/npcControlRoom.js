@@ -9,6 +9,10 @@ const Fn = {
     RoyalGuard1: false,
     RoyalGuard2: false,
     PronteraAssistant: false,
+    Kiwi:false,
+    Lemon:false,
+    Chocolate:false,
+    IWantToJoinGuild:false,
     //Shop Talk
     WeaponDealer: false,
     ArmorDealer: false,
@@ -59,6 +63,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ToolDealer: false,
                 KafraEmployeeHealState: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
 
             }
         case 'TalktoFountainFn':
@@ -78,6 +86,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 HeadGearDealer: false,
                 ToolDealer: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoQuestBoardFn':
             return {
@@ -96,6 +108,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 HeadGearDealer: false,
                 ToolDealer: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoSoldierGuard1Fn':
             return {
@@ -116,6 +132,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoSoldierGuard2Fn':
             return {
@@ -136,6 +156,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoPronteraKingFn':
             return {
@@ -156,6 +180,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoRoyalGuard1Fn':
             return {
@@ -176,6 +204,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoRoyalGuard2Fn':
             return {
@@ -196,6 +228,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoPronteraAssistantFn':
             return {
@@ -216,7 +252,89 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
+        case 'TalktoKiwiFn':
+            return {
+                ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
+                SoldierGuard1: false,
+                SoldierGuard2: false,
+                PronteraKing: false,
+                RoyalGuard1: false,
+                RoyalGuard2: false,
+                PronteraAssistant: false,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: false,
+                DealerBuy: false,
+                DealerSell: false,
+                ResetStatsPoint: false,
+                Kiwi:true,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
+            }
+        case 'TalktoLemonFn':
+            return {
+                ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
+                SoldierGuard1: false,
+                SoldierGuard2: false,
+                PronteraKing: false,
+                RoyalGuard1: false,
+                RoyalGuard2: false,
+                PronteraAssistant: false,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: false,
+                DealerBuy: false,
+                DealerSell: false,
+                ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:true,
+                Chocolate:false,
+                IWantToJoinGuild:false,
+            }
+        case 'TalktoChocolateFn':
+            return {
+                ...state,
+                Fountain: false,
+                KafraEmployee: false,
+                QuestBoard: false,
+                SoldierGuard1: false,
+                SoldierGuard2: false,
+                PronteraKing: false,
+                RoyalGuard1: false,
+                RoyalGuard2: false,
+                PronteraAssistant: false,
+                WeaponDealer: false,
+                ArmorDealer: false,
+                HeadGearDealer: false,
+                ToolDealer: false,
+                DealerBuy: false,
+                DealerSell: false,
+                ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:true,
+                IWantToJoinGuild:false,
+            }
+        case 'TalktoIWantToJoinGuildFn':
+            return {
+                ...state,
+                IWantToJoinGuild:true,
+            }
+        
         case 'ResetTalktoFn':
             return {
                 ...state,
@@ -234,6 +352,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 HeadGearDealer: false,
                 ToolDealer: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoWeaponDealerFn':
             return {
@@ -254,6 +376,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoArmorDealerFn':
             return {
@@ -274,6 +400,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoHeadGearDealerFn':
             return {
@@ -294,6 +424,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'TalktoToolDealerFn':
             return {
@@ -314,6 +448,10 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerBuy: false,
                 DealerSell: false,
                 ResetStatsPoint: false,
+                Kiwi:false,
+                Lemon:false,
+                Chocolate:false,
+                IWantToJoinGuild:false,
             }
         case 'DealerBuyFn':
             return {
