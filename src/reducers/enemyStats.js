@@ -5,6 +5,8 @@ const Fn = [
     //4.Ambernite
     //5.Ghostring (Secret)
     //6.Eclipse (Boss)
+    //PayonCave
+    //7.Zombie
     {
         name: 'Poring',
         level: 1,
@@ -95,6 +97,41 @@ const Fn = [
         level: 10,
         maxHealth: 1, //2000
         currentHealth: 1,
+        attack: 100,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        critResist: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
+        enemyClockDefend: false,
+    },
+    //PayonCave
+    {
+        name: 'Zombie',
+        level: 10,
+        maxHealth: 2000, //2000
+        currentHealth: 2000,
+        attack: 100,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        critResist: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Skeleton',
+        level: 10,
+        maxHealth: 2000, //2000
+        currentHealth: 2000,
         attack: 100,
         defence: 19,
         defencebuffer: 25, //+6

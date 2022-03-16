@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+import { GotoPoringIslandFn, GotoPayonCave1FFn , EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -22,6 +22,8 @@ import { WinJellopyFn , WinEmptyBottleFn , WinStickyMucusFn, WinFeatherFn , WinC
 import { WinGrasshoppersLegFn, WinSnailsShellFn, WinShellFn ,WinGarletFn } from './actions'
 import { WinEmperiumFn, WinFabricFn } from './actions'
 import { WinFourLeafCloverFn, WinGlassBeadFn, WinOpalFn} from './actions'
+import { WinDecayedNailFn } from './actions'
+import { WinSkelBoneFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -32,6 +34,8 @@ import { GotoPoringIslandPath5Fn } from './actions'
 import './css/mapBattle.css'
 import './index.css'
 import PoringIsland from './PoringIsland'
+import PayonCave1F from './PayonCave1F'
+//PoringIsland
 import Poring from './img/Monster/Poring.gif'
 import PoringHit from './img/Monster/PoringHit.png'
 import PoringAttack from './img/Monster/PoringAttack.gif'
@@ -59,6 +63,16 @@ import Eclipse from './img/Monster/Eclipse.gif'
 import EclipseHit from './img/Monster/EclipseHit.png'
 import EclipseAttack from './img/Monster/EclipseAttack.gif'
 import EclipseDead from './img/Monster/EclipseDead.png'
+//PayonCave
+import Zombie from './img/Monster/Zombie.gif'
+import ZombieHit from './img/Monster/ZombieHit.png'
+import ZombieAttack from './img/Monster/ZombieAttack.gif'
+import ZombieDead from './img/Monster/ZombieDead.png'
+
+import Skeleton from './img/Monster/Skeleton.gif'
+import SkeletonHit from './img/Monster/SkeletonHit.png'
+import SkeletonAttack from './img/Monster/SkeletonAttack.gif'
+import SkeletonDead from './img/Monster/SkeletonDead.png'
 
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
@@ -344,8 +358,13 @@ import FourLeafClover from './img/Etc/Eclipse_FourLeafClover.gif'
 import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
 import Opal from './img/Etc/Eclipse_Opal50.gif'
 
+import DecayedNail from './img/Etc/Zombie_DecayedNail90.gif'
+
+import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
+import audioPayonCave from './audio/Tobu-Infectious.mp3'
 import SwordHit from './audio/SoundEffect/SwordHit.wav'
 import EmptyHandHit from './audio/SoundEffect/EmptyHandHit.wav'
 import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
@@ -357,6 +376,7 @@ import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
 import UserBlock from './audio/SoundEffect/UserBlock.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
+const audioPayonCaveBGM = new Audio(audioPayonCave);
 const audioBGMBoss = new Audio(audioRustyHeartsWings);
 const audioHit = new Audio(SwordHit);
 const audioEmptyHandHit = new Audio(EmptyHandHit);
@@ -398,9 +418,13 @@ const EtcBox = [
   {id: 8, num: 3, name: "Garlet", img: Garlet , percent: 0.12, Gain: WinGarletFn},
   {id: 9, num: 4, name: "Emperium", img: Emperium , percent: 1, Gain: WinEmperiumFn},
   {id: 10, num: 4, name: "Fabric", img: Fabric , percent: 0.8, Gain: WinFabricFn},
-  {id: 100, num: 5, name: "Four Leaf Clover", img: FourLeafClover , percent: 1, Gain: WinFourLeafCloverFn},
-  {id: 101, num: 5, name: "Glass Bead", img: GlassBead , percent: 0.8, Gain: WinGlassBeadFn},
-  {id: 102, num: 5, name: "Opal", img: Opal , percent: 0.5, Gain: WinOpalFn},
+  {id: 1000, num: 5, name: "Four Leaf Clover", img: FourLeafClover , percent: 1, Gain: WinFourLeafCloverFn},
+  {id: 1001, num: 5, name: "Glass Bead", img: GlassBead , percent: 0.8, Gain: WinGlassBeadFn},
+  {id: 1002, num: 5, name: "Opal", img: Opal , percent: 0.5, Gain: WinOpalFn},
+  {id: 11, num: 6, name: "Decayed Nail", img: DecayedNail , percent: 0.9, Gain: WinDecayedNailFn},
+  {id: 12, num: 6, name: "Sticky Mucus", img: StickyMucus , percent: 0.1, Gain: WinStickyMucusFn},
+  {id: 13, num: 7, name: "Skel-Bone", img: SkelBone , percent: 0.08, Gain: WinDecayedNailFn},
+  {id: 14, num: 7, name: "Jellopy", img: Jellopy , percent: 0.3, Gain: WinJellopyFn},
 ]
 
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
@@ -469,6 +493,8 @@ const EnemyBox = [
   {id:3, number:3, FlipCSS: 'imgFlipTwo', GetHit:AmberniteHit, GetAttack:AmberniteAttack, GetDead: AmberniteDead, GetStand: Ambernite},
   {id:4, number:4, FlipCSS: 'imgFlip', GetHit:GhostringHit, GetAttack:GhostringAttack, GetDead: GhostringDead, GetStand: Ghostring},
   {id:5, number:5, FlipCSS: 'imgFlip', GetHit:EclipseHit, GetAttack:EclipseAttack, GetDead: EclipseDead, GetStand: Eclipse},
+  {id:6, number:6, FlipCSS: 'imgFlipTwo', GetHit:ZombieHit, GetAttack:ZombieAttack, GetDead: ZombieDead, GetStand: Zombie},
+  {id:7, number:7, FlipCSS: 'imgFlipTwo', GetHit:SkeletonHit, GetAttack:SkeletonAttack, GetDead: SkeletonDead, GetStand: Skeleton},
 ]
 
 function Main(){
@@ -513,6 +539,21 @@ function Main(){
                 });
               }
               break;
+          case(screenControlRoom.BattlePoringIslandMapMonsterID > 5):
+            audioPayonCaveBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+              playPromise = audioPayonCaveBGM.play();
+              if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                  // Automatic playback started!
+                  audioPayonCaveBGM.loop = true;
+                  audioPayonCaveBGM.play()
+                })
+                .catch(error => {
+                  // Auto-play was prevented
+                });
+              }
+              break;
+              
           default:
             audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
             playPromise = audioBGM.play();
@@ -577,6 +618,26 @@ function Main(){
                     }
                   }, 10);
                   break;
+            case(screenControlRoom.BattlePoringIslandMapMonsterID > 5):
+                  fadeAudio = setInterval(() => {
+                      if (audioPayonCaveBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+                        i = i + 1;
+                      }
+                      if (audioPayonCaveBGM.volume !== 0) {
+                        audioPayonCaveBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+                        audioPayonCaveBGM.volume = audioPayonCaveBGM.volume.toFixed(5)
+                      }
+                      if (audioPayonCaveBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+                        audioPayonCaveBGM.volume = 0;
+                        audioPayonCaveBGM.pause();
+                        audioPayonCaveBGM.currentTime = 0;
+                        clearInterval(fadeAudio);
+                      }else if (i >= 2){
+                        audioPayonCaveBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+                        clearInterval(fadeAudio);
+                      }
+                    }, 10);
+                    break;
             default:
                 fadeAudio = setInterval(() => {
                   if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
@@ -635,7 +696,8 @@ function Main(){
               $('.storySpeech').append(`<span>Obtained: </span>`)
               obtain = true;
             }
-            dispatch((EtcItems.Gain)(1));
+            //Zeny,Item
+            dispatch((EtcItems.Gain)(0,1));
             $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
           }
           return null;
@@ -1689,6 +1751,8 @@ function Main(){
                 default:
                   //Audio Sound Effect
                   audioMiss.play();
+                  dispatch(EnemyAttackAnimationFn(true));
+                  setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserIsDodgeAnimationFn(true));
                   setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1040);
                   $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan dodge the attack!</p>`)
@@ -1809,6 +1873,7 @@ function Main(){
       <div>
         {
         screenControlRoom.PoringIsland ? <PoringIsland />:
+        screenControlRoom.PayonCave1F ? <PayonCave1F />:
         <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShakeMore" : ImageControlRoom.EnemyOnHit || ImageControlRoom.UserOnHit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
               <div className="battleScreen">
@@ -2046,7 +2111,10 @@ function Main(){
                             <p className="goGoButtonName">Item</p>
                           </figcaption>
                         </button>
-                        <button className="goGoButton" onClick={() => {dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>
+                        <button className="goGoButton" onClick={
+                          i <= 5 ?
+                          () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
+                          () =>{dispatch(GotoPayonCave1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>
                           <figcaption className="goGoButtonFig">
                             <p className="goGoButtonName">Run</p>
                           </figcaption>
@@ -2063,11 +2131,17 @@ function Main(){
 
             {((userStats.currentHealth <= 0 && enemyStats[i].currentHealth <= 0) || userStats.currentHealth <= 0) && clockCheck === 1? 
             <div className="storyScreen">
-              <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
+              <button className={ i <= 5 ? "ReturnCheckPoint" : "ReturnCheckPoint ReturnCheckPointPayonCave"} onClick={
+                i <= 5 ?
+                () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
+                () =>{dispatch(GotoPayonCave1FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
             </div> 
             : enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
             <div className="storyScreen">
-              <button className="ReturnCheckPoint" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
+              <button className={ i <= 5 ? "ReturnCheckPoint" : "ReturnCheckPoint ReturnCheckPointPayonCave"} onClick={
+                i <= 5 ?
+                () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
+                () =>{dispatch(GotoPayonCave1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             </div> : null}
 
           </fieldset>

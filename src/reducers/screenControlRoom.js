@@ -8,6 +8,7 @@ const Fn = {
     PronteraSouth: false,
     PoringIsland: false,
     AntHell: false,
+    PayonCave1F: false,
     //PORING ISLAND BATTLE
     BattlePoringIslandMap: false,
     BattlePoringIslandMapMonsterID: 0,
@@ -61,6 +62,7 @@ const Fn = {
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
     HeadGearEquipmentChoice: false,
+    ImageEquipment:false,
     ItemChoice: false,
     EquipChoice: false,
     ETCChoice: false,
@@ -157,6 +159,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: !state.WeaponEquipmentChoice,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                ImageEquipment:false,
             }
         case 'GotoArmorEquipmentChoiceFn':
             return {
@@ -164,6 +167,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: !state.ArmorEquipmentChoice,
                 HeadGearEquipmentChoice: false,
+                ImageEquipment:false,
             }
         case 'GotoHeadGearEquipmentChoiceFn':
             return {
@@ -171,6 +175,22 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: !state.HeadGearEquipmentChoice,
+                ImageEquipment:false,
+            }
+        case 'GotoImageEquipmentFn':
+            return{
+                ...state,
+                ImageEquipment:true
+            }
+        case 'STRPointsFn':
+        case 'AGIPointsFn':
+        case 'VITPointsFn':
+        case 'INTPointsFn':
+        case 'DEXPointsFn':
+        case 'LUKPointsFn':
+            return{
+                ...state,
+                ImageEquipment:false,
             }
         case 'GotoItemChoiceFn':
             return {
@@ -252,42 +272,36 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 WorldMap: false,
                 BattlePoringIslandMap: false,
-                BattlePoringIslandMapTwo: false,
-                BattlePoringIslandMapTwoSecret: false,
-                BattlePoringIslandMapBoss: false,
                 Prontera: !state.Prontera,
                 PronteraCastle: false,
                 PronteraSouth: false,
                 PoringIsland: false,
                 AntHell: false,
+                PayonCave1F: false,
             }
             case 'GotoPronteraCastleFn':
                 return {
                     ...state,
                     WorldMap: false,
                     BattlePoringIslandMap: false,
-                    BattlePoringIslandMapTwo: false,
-                    BattlePoringIslandMapTwoSecret: false,
-                    BattlePoringIslandMapBoss: false,
                     Prontera: false,
                     PronteraCastle: !state.PronteraCastle,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
+                    PayonCave1F: false,
                 }
             case 'GotoPoringIslandFn':
                 return {
                     ...state,
                     WorldMap: false,
                     BattlePoringIslandMap: false,
-                    BattlePoringIslandMapTwo: false,
-                    BattlePoringIslandMapTwoSecret: false,
-                    BattlePoringIslandMapBoss: false,
                     Prontera: false,
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: !state.PoringIsland,
                     AntHell: false,
+                    PayonCave1F: false,
                     UserLocation: "Path0"
                 }
             case 'GotoWorldMapFn':
@@ -295,14 +309,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     WorldMap: !state.WorldMap,
                     BattlePoringIslandMap: false,
-                    BattlePoringIslandMapTwo: false,
-                    BattlePoringIslandMapTwoSecret: false,
-                    BattlePoringIslandMapBoss: false,
                     Prontera: false,
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
+                    PayonCave1F: false,
                 }
             case 'GotoBattlePoringIslandMapFn':
                 return {
@@ -310,15 +322,26 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     WorldMap: false,
                     BattlePoringIslandMap: !state.BattlePoringIslandMap,
                     BattlePoringIslandMapMonsterID: action.num,
-                    BattlePoringIslandMapTwo: false,
-                    BattlePoringIslandMapTwoSecret: false,
-                    BattlePoringIslandMapBoss: false,
                     Prontera: false,
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: false,
                     AntHell: false,
+                    PayonCave1F: false,
                     UserUnlockPath: action.Path
+                }
+            case 'GotoPayonCave1FFn':
+                return {
+                    ...state,
+                    WorldMap: false,
+                    BattlePoringIslandMap: false,
+                    Prontera: false,
+                    PronteraCastle: false,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    AntHell: false,
+                    PayonCave1F: true,
+                    UserLocation: "Path0"
                 }
             //Poring Island Mini Map
             case 'GotoTreasurePoringIslandMapFn':

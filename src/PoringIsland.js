@@ -15,7 +15,8 @@ import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreen
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
 import { PoringIslandBridgeNPCFn, ResetPoringIslandNPCFn } from './actions'
-
+// EQUIP ACTION
+import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
@@ -30,9 +31,6 @@ import AltanQuest from './AltanQuest'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
-
-// EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'

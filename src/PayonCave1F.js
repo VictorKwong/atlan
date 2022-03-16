@@ -1,22 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn, GotoPayonCave1FFn} from './actions';
+import { GotoWorldMapFn , GotoBattlePoringIslandMapFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+//Loading Screen
+import { BattleLoadingScreenFn } from './actions'
+// EQUIP ACTION
+import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
+
+import WorldMap from './WorldMap'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
-import Prontera from './Prontera'
-import PronteraCastle from './PronteraCastle'
-import PoringIsland from './PoringIsland'
-import AntHell from './AntHell'
-import PayonCave1F from './PayonCave1F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
-import './css/storyMainMap.css'
+import './css/mapPayonCave.css'
 import $ from 'jquery'
-
-// EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -41,16 +39,21 @@ import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
-function StartMenu(){
+import audioAncientGroover from './audio/AncientGroover.mp3'
+const audioBGM = new Audio(audioAncientGroover);
 
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
+
+function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
-   
+    const npcControlRoom = useSelector(state => state.npcControlRoom)
+    const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const npcSpeech = useSelector(state => state.npcSpeech)
+    const userAttribute = useSelector(state => state.userAttribute)
+    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
-
     let HeadGearBox = [
       {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty"},
       {id:7001, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn"},
@@ -80,21 +83,68 @@ function StartMenu(){
     ]
 
     useEffect(() => {
-        $('.mapTitle').fadeIn(600);
-        $('.mapTitle').delay(2400).fadeOut(600);
+      audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+      let playPromise = audioBGM.play(); 
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          // Automatic playback started!
+          audioBGM.loop = true;
+          audioBGM.play()
+        })
+        .catch(error => {
+          // Auto-play was prevented
+        });
+      }
+      $('.PayonCaveMapTitle').fadeIn(600);
+      $('.PayonCaveMapTitle').delay(2400).fadeOut(600);
+      //Not Depend on audioControlRoom
+      //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    const changeMapFadeAudio = () => {
+      let i = 0;
+      const fadeAudio = setInterval(() => {
+          if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+            i = i + 1;
+          }
+          if (audioBGM.volume !== 0) {
+            audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+            audioBGM.volume = audioBGM.volume.toFixed(5)
+          }
+          if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+              audioBGM.volume = 0;
+              audioBGM.pause();
+              audioBGM.currentTime = 0;
+            clearInterval(fadeAudio);
+          }else if (i >= 2){
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+            clearInterval(fadeAudio);
+          }
+        }, 10);
+    }
+    const changePlaceFadeAudio = () => {
+      const fadeAudioOut = setInterval(() => {
+        if (audioBGM.volume > parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
+          audioBGM.volume -= parseFloat(audioControlRoom.AudioChangePlaceVolume.toFixed(5))
+          audioBGM.volume = audioBGM.volume.toFixed(5)
+        }
+          if (audioBGM.volume <= parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+            clearInterval(fadeAudioOut);
+          }
+      }, 10);
+  }
+  const LoadingScreen0 = () => {
+    dispatch(BattleLoadingScreenFn())
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCavePath1",Math.floor(Math.random() * 2) + 6)), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
 
-    }, [screenControlRoom])
     return(
-      <div>
+      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
-        screenControlRoom.Prontera ? <Prontera />:
-        screenControlRoom.PronteraCastle ? <PronteraCastle />:
-        screenControlRoom.PoringIsland ? <PoringIsland />:
-        screenControlRoom.AntHell ? <AntHell />:
-        screenControlRoom.PayonCave1F ? <PayonCave1F />:
-        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
-        screenControlRoom.WorldMap ?
-        <div className="StoryMapBackground">
+        screenControlRoom.WorldMap ? <WorldMap/> :
+        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        <div className="PayonCave1FMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -116,16 +166,13 @@ function StartMenu(){
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
-
-              <div className="StoryMap">
-                <h3 className="mapTitle">World Map</h3>
-                {/* click x trigger hover */}
-                <button className="ReturnHUDBugFix"></button>
-                <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
-                <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>Payon Cave</button>
-                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
-                <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
-              </div>
+            <div className="PayonCave1FMap">
+              <button className="ReturnHUDBugFix"></button>
+              <h3 className="PayonCave1FMapTitle">Payon Cave 1F</h3>
+              <button className="PayonCave1FToWorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} }>ToWorldMap</button>
+              {/* Path 0 */}
+              <button className={Math.random() <= 0.5 ? "PayonCave1FPath0": "PayonCave1FPath0 PayonCave1FPath1"} onClick={() =>{LoadingScreen0(); changeMapFadeAudio();}}>Cave1</button>
+            </div>
             }
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
@@ -154,7 +201,7 @@ function StartMenu(){
                     {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
-                <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
+                  <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div>
                   <button className="altanEquipment" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>Equip</button>
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
@@ -231,7 +278,7 @@ function StartMenu(){
               </div> : null}
           </fieldset>
         </div>
-        : null }
+        }
       </div>
     );
 }

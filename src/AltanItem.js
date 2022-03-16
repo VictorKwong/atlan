@@ -56,7 +56,8 @@ import Fabric from './img/Etc/Ghostring_Fabric80.gif'
 import FourLeafClover from './img/Etc/Eclipse_FourLeafClover.gif'
 import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
 import Opal from './img/Etc/Eclipse_Opal50.gif'
-
+import DecayedNail from './img/Etc/Zombie_DecayedNail90.gif'
+import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 //MISSION
@@ -127,6 +128,8 @@ function StartMenu(){
       {id:1011, Img:FourLeafClover, name:"FourLeafClover", itemCheck:userGoldItem.FourLeafClover},
       {id:1012, Img:GlassBead, name:"GlassBead", itemCheck:userGoldItem.GlassBead},
       {id:1013, Img:Opal, name:"Opal", itemCheck:userGoldItem.Opal},
+      {id:1014, Img:DecayedNail, name:"Decayed Nail", itemCheck:userGoldItem.DecayedNail},
+      {id:1015, Img:SkelBone, name:"Skel-Bone", itemCheck:userGoldItem.SkelBone},
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
       {id:100001, Img:SpiritOfEclipse, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse}

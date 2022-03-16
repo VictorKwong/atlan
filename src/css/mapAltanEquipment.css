@@ -43,6 +43,7 @@
 
 .ImgStandEquip{
   width:300px;
+  cursor: pointer;
 }
 
 .equipDescript{
@@ -122,6 +123,10 @@
 .altanEquipmentGearButton:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
+}
+
+.displayNone{
+  display:none;
 }
 
 @media (max-width: 1199px){

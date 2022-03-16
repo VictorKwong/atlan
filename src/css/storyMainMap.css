@@ -18,7 +18,9 @@
   background-size: cover;
 }
 
-.Prontera::before{
+.Prontera::before,
+.SogratDesertPoringIsland::before,
+.PayonCave::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -34,7 +36,9 @@
   transition: opacity 0.3s ease-in-out;
   border: solid #7CAFFF 1px;
 }
-.Prontera:hover::before{
+.Prontera:hover::before,
+.SogratDesertPoringIsland:hover::before,
+.PayonCave:hover::before{
   opacity: 1;
   background-image: url('../img/Background/Prontera.jpg');
   background-position: center;
@@ -43,31 +47,16 @@
   border: 1px solid rgba(186,219,225,1);
   cursor: pointer;
 }
-.SogratDesertPoringIsland::before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  background-image: url('../img/Background/PoringIsland.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transition: opacity 0.3s ease-in-out;
-  border: solid #7CAFFF 1px;
-}
+.SogratDesertPoringIsland::before,
 .SogratDesertPoringIsland:hover::before{
-  opacity: 1;
   background-image: url('../img/Background/PoringIsland.jpg');
-  background-position: center;
-  background-size: cover;
-  transition: opacity 0.3s ease-in-out;
-  border: 1px solid rgba(186,219,225,1);
-  cursor: pointer;
 }
+
+.PayonCave::before,
+.PayonCave:hover::before{
+  background-image: url('../img/Background/PayonCave.jpg');
+}
+
 
 .mapTitle{
   font-size: 30px;
@@ -115,12 +104,12 @@
 .Prontera{ grid-area: 2 / 2 / 3 / 3; }
 .SogratDesertPoringIsland{ grid-area: 3 / 2 / 4 / 3;}
 .AntHell { grid-area: 2 / 1 / 3 / 2;}
-.AntHellTest { grid-area: 2 / 3 / 3 / 4; } 
+.PayonCave { grid-area: 2 / 3 / 3 / 4; } 
 
 .Prontera,
 .SogratDesertPoringIsland,
 .AntHell,
-.AntHellTest{
+.PayonCave{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -132,6 +121,9 @@
 
 .SogratDesertPoringIsland{
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
+}
+.PayonCave{
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(202, 144, 216) 100%);
 }
 
 

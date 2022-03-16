@@ -201,6 +201,11 @@ export const GotoHeadGearEquipmentChoiceFn = () => {
         type: 'GotoHeadGearEquipmentChoiceFn',
     };
 };
+export const GotoImageEquipmentFn = () => {
+    return {
+        type: 'GotoImageEquipmentFn',
+    };
+};
 export const GotoItemChoiceFn = () => {
     return {
         type: 'GotoItemChoiceFn',
@@ -306,6 +311,12 @@ export const GotoAntHellFn = () => {
         type: 'GotoAntHellFn',
     };
 };
+export const GotoPayonCave1FFn = () => {
+    return {
+        type: 'GotoPayonCave1FFn',
+    };
+};
+
 
 export const GotoBattlePoringIslandMapFn = (Path,MonsterID) => {
     return {
@@ -1292,93 +1303,123 @@ export const ProgressQuestDialogFn = (Num) => {
 };
 //WIN Etc Items
 //PORING
-export const WinJellopyFn = (Num) => {
+export const WinJellopyFn = (Zeny,Num) => {
     return {
         type: 'WinJellopyFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinEmptyBottleFn = (Num) => {
+export const WinEmptyBottleFn = (Zeny,Num) => {
     return {
         type: 'WinEmptyBottleFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinStickyMucusFn = (Num) => {
+export const WinStickyMucusFn = (Zeny,Num) => {
     return {
         type: 'WinStickyMucusFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
 //LUNATIC
-export const WinCloverFn = (Num) => {
+export const WinCloverFn = (Zeny,Num) => {
     return {
         type: 'WinCloverFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinFeatherFn = (Num) => {
+export const WinFeatherFn = (Zeny,Num) => {
     return {
         type: 'WinFeatherFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
 //ROCKER
-export const WinGrasshoppersLegFn = (Num) => {
+export const WinGrasshoppersLegFn = (Zeny,Num) => {
     return {
         type: 'WinGrasshoppersLegFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
 //AMBERNITE
-export const WinSnailsShellFn = (Num) => {
+export const WinSnailsShellFn = (Zeny,Num) => {
     return {
         type: 'WinSnailsShellFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinShellFn = (Num) => {
+export const WinShellFn = (Zeny,Num) => {
     return {
         type: 'WinShellFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinGarletFn = (Num) => {
+export const WinGarletFn = (Zeny,Num) => {
     return {
         type: 'WinGarletFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
 //GHOSTRING
-export const WinEmperiumFn = (Num) => {
+export const WinEmperiumFn = (Zeny,Num) => {
     return {
         type: 'WinEmperiumFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinFabricFn = (Num) => {
+export const WinFabricFn = (Zeny,Num) => {
     return {
         type: 'WinFabricFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
 //ECLIPSE
-export const WinFourLeafCloverFn = (Num) => {
+export const WinFourLeafCloverFn = (Zeny,Num) => {
     return {
         type: 'WinFourLeafCloverFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinGlassBeadFn = (Num) => {
+export const WinGlassBeadFn = (Zeny,Num) => {
     return {
         type: 'WinGlassBeadFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
     };
 };
-export const WinOpalFn = (Num) => {
+export const WinOpalFn = (Zeny,Num) => {
     return {
         type: 'WinOpalFn',
-        Number: Num
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//ZOMBIE
+export const WinDecayedNailFn = (Zeny,Num) => {
+    return {
+        type: 'WinDecayedNailFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//SKELETON
+export const WinSkelBoneFn = (Zeny,Num) => {
+    return {
+        type: 'WinSkelBoneFn',
+        Number: Num,
+        Zeny: Zeny
     };
 };
 
