@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoTreasurePoringIslandMapFn, GotoTreasurePoringIslandMap2Fn, GotoTreasurePoringIslandMap3Fn, GotoPoringIslandHouseMapFn} from './actions';
+import { GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoTreasurePoringIslandMapFn, GotoPoringIslandHouseMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //CHEST
 import { Chest1VisitRepeatFn , Chest2VisitRepeatFn, ChestBoss1VisitRepeatFn} from './actions'
@@ -20,8 +20,6 @@ import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadG
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
-import TreasurePoringIslandMap2 from './TreasurePoringIslandMap2'
-import TreasurePoringIslandMap3 from './TreasurePoringIslandMap3'
 import PoringIslandHouseMap from './PoringIslandHouseMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
@@ -341,14 +339,6 @@ useEffect(() => {
               <div className="ReturnParent">
                 <TreasurePoringIslandMap />
               </div>:
-            screenControlRoom.TreasurePoringIslandMap2 ?
-              <div className="ReturnParent">
-                <TreasurePoringIslandMap2 />
-              </div>:
-            screenControlRoom.TreasurePoringIslandMap3 ?
-              <div className="ReturnParent">
-                <TreasurePoringIslandMap3 />
-              </div>:
             screenControlRoom.PoringIslandHouseMap ?
               <div className="ReturnParent">
                 <PoringIslandHouseMap />
@@ -362,7 +352,7 @@ useEffect(() => {
               <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath0": "SmallIsland SmallIslandPath0 "} onClick={() =>{LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>small Island</button>
               {/* Path 1 */}
               {screenControlRoom.PoringIslandPath1 ?
-               <button className="TreasureBoxPoringIsland" onClick={npcControlRoom.Chest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(Chest1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn()); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button> : null}
+               <button className="TreasureBoxPoringIsland" onClick={npcControlRoom.Chest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("Chest1")); dispatch(Chest1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("Chest1")); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button> : null}
                {screenControlRoom.PoringIslandPath1 ?
               <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath1": "SmallIsland SmallIslandPath1"} onClick={() =>{LoadingScreen1(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>shallow path</button> :null}
               {/* Path 2 */}  
@@ -372,7 +362,7 @@ useEffect(() => {
               {screenControlRoom.PoringIslandPath3 ?
               <button className="SmallIsland SmallIsland3Secret SmallIslandPath2Secret" onClick={() =>{LoadingScreen2Secret(); changeMapFadeAudio();}}>???</button> :null}
               {screenControlRoom.PoringIslandPath3 ?
-              <button className="TreasureBoxPoringIsland TreasureBoxPoringIsland2" onClick={npcControlRoom.Chest2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn()); dispatch(Chest2VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn()); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button> : null}
+              <button className="TreasureBoxPoringIsland TreasureBoxPoringIsland2" onClick={npcControlRoom.Chest2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("Chest2")); dispatch(Chest2VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("Chest2")); dispatch(ResetPoringIslandNPCFn());}}>treasure chest</button> : null}
               {screenControlRoom.PoringIslandPath3 ?
               <button className="SmallIsland SmallIsland4 SmallIslandPathBridge" onClick={() =>{dispatch(PoringIslandBridgeNPCFn()); dispatch(GotoPoringIslandPath4Fn()); changePlaceFadeAudio();}}>Bridge</button> : null}
               {/* Path 6 Hidden*/}
@@ -389,7 +379,7 @@ useEffect(() => {
               <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={() =>{ LoadingScreenThreeBoss(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>Boss</button> : null}
               {/* Path 5 Hidden */}
               {screenControlRoom.PoringIslandPath5 ?
-              <button className="BossTreasureBoxPoringIsland" onClick={npcControlRoom.ChestBoss1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn()); dispatch(ChestBoss1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn()); dispatch(ResetPoringIslandNPCFn());}}>shiny chest</button> : null}
+              <button className="BossTreasureBoxPoringIsland" onClick={npcControlRoom.ChestBoss1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest1")); dispatch(ChestBoss1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest1")); dispatch(ResetPoringIslandNPCFn());}}>shiny chest</button> : null}
             </div>
             }
             <div className="StoryHUD">
@@ -514,14 +504,6 @@ useEffect(() => {
               {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
-              </div> :
-              screenControlRoom.TreasurePoringIslandMap2 && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
-              <div className="storyScreen">
-                <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap2Fn());}}>Return</button>
-              </div> : 
-              screenControlRoom.TreasurePoringIslandMap3 && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
-              <div className="storyScreen">
-                <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMap3Fn());}}>Return</button>
               </div> : 
               screenControlRoom.PoringIslandHouseMap && !( (screenControlRoom.HouseTrainingSTR && userAttribute.BonusStr < 10) || (screenControlRoom.HouseTrainingAGI && userAttribute.BonusAgi < 10) || (screenControlRoom.HouseTrainingVIT && userAttribute.BonusVit < 10) || (screenControlRoom.HouseTrainingINT && userAttribute.BonusInt < 10) || (screenControlRoom.HouseTrainingDEX && userAttribute.BonusDex < 10) || (screenControlRoom.HouseTrainingLUK && userAttribute.BonusLuk < 10) ) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="storyScreen">

@@ -35,7 +35,9 @@
 }
 
 .PayonCave1FToWorldMap::before,
-.PayonCave1FPath0::before{
+.PayonCave1FPath0::before,
+.TreasureBoxPayonCave1F::before,
+.PayonCave1FTo2F::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -49,10 +51,12 @@
   background-position: center;
   background-size: cover;
   transition: opacity 0.3s ease-in-out;
-  border: solid #7CAFFF 1px;
+  border: solid rgb(132, 23, 221) 1px;
 }
 .PayonCave1FToWorldMap:hover::before,
-.PayonCave1FPath0:hover::before{
+.PayonCave1FPath0:hover::before,
+.TreasureBoxPayonCave1F:hover::before,
+.PayonCave1FTo2F:hover::before{
   opacity: 1;
   background-image: url('../img/Background/WorldMap.jpg');
   background-repeat: no-repeat;
@@ -78,10 +82,26 @@
   background-position: center top;
   background-size: cover;
 }
+.TreasureBoxPayonCave1F::before,
+.TreasureBoxPayonCave1F:hover::before{
+  background-image: url('../img/Background/TreasureBoxPayonCave1F.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
 
+.PayonCave1FTo2F::before,
+.PayonCave1FTo2F:hover::before{
+  background-image: url('../img/Background/PayonCave2F.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 .PayonCave1FToWorldMap,
-.PayonCave1FPath0{
+.PayonCave1FPath0,
+.TreasureBoxPayonCave1F,
+.PayonCave1FTo2F{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -91,7 +111,43 @@
   text-shadow: 2px 2px 4px #536481;
 }
 
+.ReturnPayonCave{
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(202, 144, 216) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  width:50%;
+  cursor: pointer;
+  position: relative;
+  font-family: 'Balsamiq Sans', cursive;
+  width: 80%;
+  margin: 10px 0 10px;
+}
+.ReturnPoringIsland:hover{
+  text-shadow: 1px 1px 1px #657c9c;
+}
+.ReturnPoringIsland::before{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  /* Change 0px */
+  width: 100%;
+  height: 0px;
+  border-top: 7px solid transparent;  
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid #764abc;
+  content: '';
+  transition: all 0.1s;
+  transform: translate3d(0,-50%,0) scale3d(0,0,1);
+  opacity: 0;
+}
+.ReturnPoringIsland:hover::before{
+  transform: translate3d(0,-50%,0) scale3d(1,1,1);
+  opacity: 1;
+}
 
 .PayonCave1FToWorldMap { grid-area: 3 / 2 / 4 / 3; }
 .PayonCave1FPath0 { grid-area: 2 / 2 / 3 / 3; }
-.div3 { grid-area: 1 / 2 / 2 / 3; }
+.TreasureBoxPayonCave1F { grid-area: 2 / 1 / 3 / 2; }
+.PayonCave1FTo2F { grid-area: 1 / 2 / 2 / 3; }

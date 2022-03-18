@@ -358,6 +358,9 @@
     border-bottom: 5px solid transparent;
     border-left: 7px solid #764abc;
   }
+  .mapTitle{
+    font-size: 23px;
+  }
 }
 @media (max-width: 467px){
   .Prontera,
@@ -384,5 +387,8 @@
   .ReturnHUD{
     width:29px;
     height:29px;
+  }
+  .mapTitle{
+    font-size: 18px;
   }
 }

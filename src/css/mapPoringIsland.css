@@ -357,10 +357,10 @@
     width:100%;
     min-height: 50px;
   }
-}
   .PoringIslandMapTitle{
     font-size: 23px;
   }
+}
 @media (max-width: 467px){
   .PoringIslandMapTitle{
     font-size: 16px;

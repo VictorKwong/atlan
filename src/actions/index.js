@@ -316,7 +316,11 @@ export const GotoPayonCave1FFn = () => {
         type: 'GotoPayonCave1FFn',
     };
 };
-
+export const GotoPayonCave2FFn = () => {
+    return {
+        type: 'GotoPayonCave2FFn',
+    };
+};
 
 export const GotoBattlePoringIslandMapFn = (Path,MonsterID) => {
     return {
@@ -345,19 +349,10 @@ export const GotoBattlePoringIslandMapBossFn = (Path) => {
 
 
 
-export const GotoTreasurePoringIslandMapFn = () => {
+export const GotoTreasurePoringIslandMapFn = (Path) => {
     return {
         type: 'GotoTreasurePoringIslandMapFn',
-    };
-};
-export const GotoTreasurePoringIslandMap2Fn = () => {
-    return {
-        type: 'GotoTreasurePoringIslandMap2Fn',
-    };
-};
-export const GotoTreasurePoringIslandMap3Fn = () => {
-    return {
-        type: 'GotoTreasurePoringIslandMap3Fn',
+        Path:Path
     };
 };
 export const GotoPoringIslandHouseMapFn = () => {
@@ -1452,6 +1447,18 @@ export const OpenChestBoss1Fn = () => {
         type: 'OpenChestBoss1Fn',
     };
 };
+//PAYONCAVE1F CHEST
+export const OpenPayonCaveChest3Fn = () => {
+    return {
+        type: 'OpenPayonCaveChest3Fn',
+    };
+};
+
+export const PayonCaveChest3VisitRepeatFn = () => {
+    return {
+        type: 'PayonCaveChest3VisitRepeatFn',
+    };
+};
 
 export const ChestBoss1VisitRepeatFn = () => {
     return {
@@ -1522,6 +1529,12 @@ export const GotoPoringIslandPath8Fn = () => {
 export const ReturnPoringIslandPathFn = () => {
     return {
         type: 'ReturnPoringIslandPathFn',
+    };
+};
+//PayonCave Path
+export const GotoPayonCave1FPath1Fn = () => {
+    return {
+        type: 'GotoPayonCave1FPath1Fn',
     };
 };
 

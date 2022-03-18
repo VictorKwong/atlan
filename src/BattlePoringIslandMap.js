@@ -28,7 +28,7 @@ import { WinSkelBoneFn } from './actions'
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
 import { GotoPoringIslandPath5Fn } from './actions'
-
+import { GotoPayonCave1FPath1Fn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -395,6 +395,7 @@ let clockBarObject = {
 }
 let Damage = 0;
 let SPHeal = 0;
+let Reflecting = 0;
 //Monster Random Number 0 1 
 // let i = Math.round(Math.random())
 let Uclock = 0;
@@ -683,6 +684,10 @@ function Main(){
             break;
           case (screenControlRoom.UserUnlockPath === "Path5"):
             dispatch(GotoPoringIslandPath5Fn());
+            break;
+          //PayonCave1F
+          case (screenControlRoom.UserUnlockPath === "PayonCave1FPath1"):
+            dispatch(GotoPayonCave1FPath1Fn());
             break;
           default:
             break;
@@ -1660,15 +1665,17 @@ function Main(){
                       dispatch(UserIsCritAnimationFn(true));
                       setTimeout(() => dispatch(UserIsCritAnimationFn(false)), 1050);
                       Math.sign((Damage * 1.5) - userStats.defencebuffer - userStats.Bonusdefencebuffer) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defencebuffer - userStats.Bonusdefencebuffer) : Damage = 1;
+
                       //ReflectSkill
                       if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                        Math.sign(Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)) > 0 ? Reflecting = Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale) : Reflecting = 1;
                         // Text display
                         $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
-                        $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)} damage</p>`)
+                        $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Reflecting} damage</p>`)
                         dispatch(EnemyOnReflectNumberFn(true));
                         setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
                         //Rerender
-                        return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)), 300));
+                        return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Reflecting), 300));
                       }else{
                         // Text display
                         $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
@@ -1681,13 +1688,14 @@ function Main(){
                       Math.sign(Damage - userStats.defencebuffer - userStats.Bonusdefencebuffer) > 0 ? Damage = Damage - userStats.defencebuffer - userStats.Bonusdefencebuffer : Damage = 1;
                       //ReflectSkill
                       if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                        Math.sign(Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)) > 0 ? Reflecting = Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale) : Reflecting = 1;
                         // Text display
                         $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
-                        $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)} damage</p>`)
+                        $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Reflecting} damage</p>`)
                         dispatch(EnemyOnReflectNumberFn(true));
                         setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
                         //Rerender
-                        return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                        return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Reflecting), 300));
                       }else{
                       // Text display
                       $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
@@ -1711,13 +1719,14 @@ function Main(){
                     Math.sign((Damage * 1.5) - userStats.defence - userStats.Bonusdefence) > 0 ? Damage = Math.floor((Damage * 1.5) - userStats.defence - userStats.Bonusdefence) : Damage = 1;
                     //ReflectSkill
                     if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                      Math.sign(Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)) > 0 ? Reflecting = Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale) : Reflecting = 1;
                       // Text display
                       $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!! Atlan Received ${Damage} damage</p>`)
-                      $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)} damage</p>`)
+                      $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Reflecting} damage</p>`)
                       dispatch(EnemyOnReflectNumberFn(true));
                       setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
                       //Rerender
-                      return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                      return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Reflecting), 300));
                     }else{
                     // Text display
                     $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Critical Hit Attack!!Atlan Received ${Damage} damage</p>`)
@@ -1733,13 +1742,14 @@ function Main(){
 
                     //ReflectSkill
                     if( SkillControlRoom['User'].UserLearnReflectAttack === true ){
+                      Math.sign(Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)) > 0 ? Reflecting = Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale) : Reflecting = 1;
                       // Text display
                       $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
-                      $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)} damage</p>`)
+                      $('.storySpeech').append(`<p>Atlan Reflects ${enemyStats[i].name}!! ${enemyStats[i].name} Received ${Reflecting} damage</p>`)
                       dispatch(EnemyOnReflectNumberFn(true));
-                      setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);
+                      setTimeout(() => dispatch(EnemyOnReflectNumberFn(false)), 1000);  
                       //Rerender
-                      return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Damage), 300));
+                      return setTimeout(() => dispatch(EnemyAttackReflectUserFn(Damage,i,Reflecting), 300));
                     }else{
                     // Text display
                     $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan Received ${Damage} damage</p>`)
@@ -1886,7 +1896,7 @@ function Main(){
                               <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate ${Enemy.FlipCSS}` : `${Enemy.FlipCSS}`} src={ImageControlRoom.EnemyOnHit ? Enemy.GetHit : ImageControlRoom.EnemyAttack ? Enemy.GetAttack : ImageControlRoom.EnemyDead ? Enemy.GetDead : Enemy.GetStand } alt={enemyStats[i].name} />
                               <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                               <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit && ImageControlRoom.EnemyOnHitDouble) || (ImageControlRoom.EnemyDodge && ImageControlRoom.EnemyOnHitDouble) ? `DamageResultNumberCrit` : (ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnHitDouble) || (ImageControlRoom.EnemyDodge && ImageControlRoom.EnemyOnHitDouble) ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)}</p>
-                              <p className={ImageControlRoom.EnemyOnReflectNumber ? `DamageResultNumber` : `DamageResultNumberHide`}>{Damage === 1 ? Damage : Math.floor(Damage*SkillControlRoom['User'].UserReflectAttackScale)}</p>
+                              <p className={ImageControlRoom.EnemyOnReflectNumber ? `DamageResultNumber` : `DamageResultNumberHide`}>{Reflecting}</p>
                             </div> : null}
                           </div>
                       )})}

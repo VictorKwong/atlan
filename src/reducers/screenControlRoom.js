@@ -9,6 +9,7 @@ const Fn = {
     PoringIsland: false,
     AntHell: false,
     PayonCave1F: false,
+    PayonCave2F: false,
     //PORING ISLAND BATTLE
     BattlePoringIslandMap: false,
     BattlePoringIslandMapMonsterID: 0,
@@ -18,8 +19,8 @@ const Fn = {
     TrainingLoadingScreenDelay: false,
     //Mini Screen (TreasurePoringIsland)
     TreasurePoringIslandMap: false,
-    TreasurePoringIslandMap2: false,
-    TreasurePoringIslandMap3: false,
+    //TreasureUnlockPath
+    TreasurePath:"Path",
     PoringIslandHouseMap: false,
     //House Training Fn
     HouseTrainingSTR:false,
@@ -45,6 +46,8 @@ const Fn = {
     PoringIslandPath6: true,
     PoringIslandPath7: true,
     PoringIslandPath8: true,
+    //Payon Cave PATH
+    PayonCave1FPath1: true,
 
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
@@ -278,6 +281,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 PoringIsland: false,
                 AntHell: false,
                 PayonCave1F: false,
+                PayonCave2F: false,
             }
             case 'GotoPronteraCastleFn':
                 return {
@@ -290,6 +294,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: false,
                     AntHell: false,
                     PayonCave1F: false,
+                    PayonCave2F: false,
                 }
             case 'GotoPoringIslandFn':
                 return {
@@ -302,6 +307,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: !state.PoringIsland,
                     AntHell: false,
                     PayonCave1F: false,
+                    PayonCave2F: false,
                     UserLocation: "Path0"
                 }
             case 'GotoWorldMapFn':
@@ -315,6 +321,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: false,
                     AntHell: false,
                     PayonCave1F: false,
+                    PayonCave2F: false,
                 }
             case 'GotoBattlePoringIslandMapFn':
                 return {
@@ -328,6 +335,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: false,
                     AntHell: false,
                     PayonCave1F: false,
+                    PayonCave2F: false,
                     UserUnlockPath: action.Path
                 }
             case 'GotoPayonCave1FFn':
@@ -341,23 +349,22 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIsland: false,
                     AntHell: false,
                     PayonCave1F: true,
-                    UserLocation: "Path0"
+                    PayonCave2F: false,
+                    UserLocation: "PayonCavePath0"
+                }
+            case 'GotoPayonCave2FFn':
+                return {
+                    ...state,
+                    PayonCave1F: false,
+                    PayonCave2F: true,
+                    UserLocation: "PayonCavePath0"
                 }
             //Poring Island Mini Map
             case 'GotoTreasurePoringIslandMapFn':
                 return {
                     ...state,
                     TreasurePoringIslandMap: !state.TreasurePoringIslandMap,
-                }
-            case 'GotoTreasurePoringIslandMap2Fn':
-                return {
-                    ...state,
-                    TreasurePoringIslandMap2: !state.TreasurePoringIslandMap2,
-                }
-            case 'GotoTreasurePoringIslandMap3Fn':
-                return {
-                    ...state,
-                    TreasurePoringIslandMap3: !state.TreasurePoringIslandMap3,
+                    TreasurePath:action.Path,
                 }
             case 'GotoPoringIslandHouseMapFn':
                 return {
@@ -493,6 +500,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIslandPath6: false,
                     PoringIslandPath7: false,
                     PoringIslandPath8: false,
+                }
+            //PayonCave PATH
+            case 'GotoPayonCave1FPath1Fn':
+                return{
+                    ...state,
+                    PayonCave1FPath1: true,
                 }
             //BattleLoadingScreen
             case 'BattleLoadingScreenFn':

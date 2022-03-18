@@ -41,6 +41,10 @@ const Fn = {
     ChestBoss1VisitRepeat: false,
     PoringIslandBridgeNPC: false,
     BossEclipseDefeat: false,
+    //PayonCave1F Dungeon
+    PayonCaveChest3: false,
+    PayonCaveChest3VisitRepeat: false,
+    
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
@@ -591,6 +595,17 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 PoringIslandBridgeNPC: false,
+            }
+        //PayonCave
+        case 'OpenPayonCaveChest3Fn':
+            return {
+                ...state,
+                PayonCaveChest3: true
+            }
+        case 'PayonCaveChest3VisitRepeatFn':
+            return {
+                ...state,
+                PayonCaveChest3VisitRepeat: true
             }
         default:
             return state;

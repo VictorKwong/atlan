@@ -8,6 +8,7 @@ import PronteraCastle from './PronteraCastle'
 import PoringIsland from './PoringIsland'
 import AntHell from './AntHell'
 import PayonCave1F from './PayonCave1F'
+import PayonCave2F from './PayonCave2F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -92,6 +93,7 @@ function StartMenu(){
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.AntHell ? <AntHell />:
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
+        screenControlRoom.PayonCave2F ? <PayonCave2F />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">

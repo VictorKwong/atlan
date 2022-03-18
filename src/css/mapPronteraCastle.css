@@ -172,7 +172,13 @@
     width:100%;
     min-height: 130px;
   }
+  .PronteraCastleMapTitle{
+    font-size: 20px;
+  }
 }
 @media (max-width: 467px){
-
+  .PronteraCastleMapTitle{
+    font-size: 18px;
+    text-align: center;
+  }
 }
