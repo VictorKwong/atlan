@@ -13,6 +13,7 @@ import { PayonCaveChest3VisitRepeatFn } from './actions'
 import WorldMap from './WorldMap'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
+import PayonCave2F from './PayonCave2F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -148,8 +149,7 @@ function StartMenu(){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        screenControlRoom.PayonCave2F ? <PayonCave2F />:
-        <div className="PayonCave1FMapBackground">
+        <div className={screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : null}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -174,6 +174,10 @@ function StartMenu(){
             screenControlRoom.TreasurePoringIslandMap ?
               <div className="ReturnParent">
                 <TreasurePoringIslandMap />
+              </div>:
+            screenControlRoom.PayonCave2F ?
+              <div className="ReturnParent">
+                <PayonCave2F />
               </div>:
             <div className="PayonCave1FMap">
               <button className="ReturnHUDBugFix"></button>

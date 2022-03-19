@@ -9,7 +9,7 @@ const Fn = {
     PoringIsland: false,
     AntHell: false,
     PayonCave1F: false,
-    PayonCave2F: false,
+    
     //PORING ISLAND BATTLE
     BattlePoringIslandMap: false,
     BattlePoringIslandMapMonsterID: 0,
@@ -19,6 +19,8 @@ const Fn = {
     TrainingLoadingScreenDelay: false,
     //Mini Screen (TreasurePoringIsland)
     TreasurePoringIslandMap: false,
+    //Mini Screen (PayonCave 2F)
+    PayonCave2F: false,
     //TreasureUnlockPath
     TreasurePath:"Path",
     PoringIslandHouseMap: false,
@@ -357,7 +359,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     PayonCave1F: false,
                     PayonCave2F: true,
-                    UserLocation: "PayonCavePath0"
+                    UserLocation: "PayonCave2FPath0"
                 }
             //Poring Island Mini Map
             case 'GotoTreasurePoringIslandMapFn':

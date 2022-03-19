@@ -3,6 +3,11 @@
   background-position: center;
   background-size: cover;
 }
+.PayonCave2FMapBackground{
+  background-image: url('../img/Background/PayonCave2F.jpg');
+  background-position: center;
+  background-size: cover;
+}
 
 .PayonCave1FMapTitle{
   font-size: 30px;
