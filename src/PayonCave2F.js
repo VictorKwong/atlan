@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave2FFn } from './actions';
-import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
-// EQUIP ACTION
-import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //CHEST
 import { PayonCaveChest3VisitRepeatFn } from './actions'
 
@@ -16,7 +13,7 @@ import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import './css/mapPayonCave2F.css'
 import $ from 'jquery'
 
-function StartMenu(){
+const PayonCave2F = (data) =>{
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
@@ -29,44 +26,45 @@ function StartMenu(){
     const dispatch = useDispatch();
 
     useEffect(() => {
+      data.audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
       $('.PayonCave2FMapTitle').fadeIn(600);
       $('.PayonCave2FMapTitle').delay(2400).fadeOut(600);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-  //   const changeMapFadeAudio = () => {
-  //     let i = 0;
-  //     const fadeAudio = setInterval(() => {
-  //         if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-  //           i = i + 1;
-  //         }
-  //         if (audioBGM.volume !== 0) {
-  //           audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-  //           audioBGM.volume = audioBGM.volume.toFixed(5)
-  //         }
-  //         if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-  //             audioBGM.volume = 0;
-  //             audioBGM.pause();
-  //             audioBGM.currentTime = 0;
-  //           clearInterval(fadeAudio);
-  //         }else if (i >= 2){
-  //           audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-  //           clearInterval(fadeAudio);
-  //         }
-  //       }, 10);
-  //   }
-  //   const changePlaceFadeAudio = () => {
-  //     const fadeAudioOut = setInterval(() => {
-  //       if (audioBGM.volume > parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
-  //         audioBGM.volume -= parseFloat(audioControlRoom.AudioChangePlaceVolume.toFixed(5))
-  //         audioBGM.volume = audioBGM.volume.toFixed(5)
-  //       }
-  //         if (audioBGM.volume <= parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
-  //           audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-  //           clearInterval(fadeAudioOut);
-  //         }
-  //     }, 10);
-  // }
+    const changeMapFadeAudio = () => {
+      let i = 0;
+      const fadeAudio = setInterval(() => {
+          if (data.audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+            i = i + 1;
+          }
+          if (data.audioBGM.volume !== 0) {
+            data.audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+            data.audioBGM.volume = data.audioBGM.volume.toFixed(5)
+          }
+          if (data.audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+              data.audioBGM.volume = 0;
+              data.audioBGM.pause();
+              data.audioBGM.currentTime = 0;
+            clearInterval(fadeAudio);
+          }else if (i >= 2){
+            data.audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+            clearInterval(fadeAudio);
+          }
+        }, 10);
+    }
+    const changePlaceFadeAudio = () => {
+      const fadeAudioOut = setInterval(() => {
+        if (data.audioBGM.volume > parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
+          data.audioBGM.volume -= parseFloat(audioControlRoom.AudioChangePlaceVolume.toFixed(5))
+          data.audioBGM.volume = data.audioBGM.volume.toFixed(5)
+        }
+          if (data.audioBGM.volume <= parseFloat(audioControlRoom.AudioChangePlaceThreshold.toFixed(5))) {
+            data.audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+            clearInterval(fadeAudioOut);
+          }
+      }, 10);
+  }
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCavePath1",Math.floor(Math.random() * 2) + 6)), 1000);
@@ -74,17 +72,12 @@ function StartMenu(){
   }
 
     return(
-      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
-        {
-        screenControlRoom.WorldMap ? <WorldMap/> :
-        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div className="PayonCave2FMap">
+        <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle PayonCave2FMap" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo PayonCave2FMap" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree PayonCave2FMap" : "PayonCave2FMap"}>
           <button className="ReturnHUDBugFix"></button>
           <h3 className="PayonCave2FMapTitle">Payon Cave 2F</h3>
+          <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>PayonCave2F</button>
         </div>
-        }
-      </div>
     );
 }
 
-export default StartMenu;
+export default PayonCave2F;

@@ -354,10 +354,10 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PayonCave2F: false,
                     UserLocation: "PayonCavePath0"
                 }
+            //careful PayonCave1F is base = true
             case 'GotoPayonCave2FFn':
                 return {
                     ...state,
-                    PayonCave1F: false,
                     PayonCave2F: true,
                     UserLocation: "PayonCave2FPath0"
                 }

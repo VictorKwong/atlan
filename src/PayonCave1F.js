@@ -149,7 +149,7 @@ function StartMenu(){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div className={screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : null}>
+        <div className={screenControlRoom.PayonCave1F && screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : null}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -177,7 +177,7 @@ function StartMenu(){
               </div>:
             screenControlRoom.PayonCave2F ?
               <div className="ReturnParent">
-                <PayonCave2F />
+                <PayonCave2F audioBGM={audioBGM}/>
               </div>:
             <div className="PayonCave1FMap">
               <button className="ReturnHUDBugFix"></button>
@@ -189,7 +189,7 @@ function StartMenu(){
               {screenControlRoom.PayonCave1FPath1 ?
                <button className="TreasureBoxPayonCave1F" onClick={npcControlRoom.PayonCaveChest3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(PayonCaveChest3VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3"));}}>treasure chest</button> : null}
               {screenControlRoom.PayonCave1FPath1 ?
-                <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoPayonCave2FFn()); changeMapFadeAudio();}}>PayonCave2F</button> : null}
+                <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio();}}>PayonCave2F</button> : null}
             </div>
             }
             <div className="StoryHUD">
