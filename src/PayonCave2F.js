@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave2FFn } from './actions';
+import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave1FFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //CHEST
@@ -66,16 +66,43 @@ const PayonCave2F = (data) =>{
       }, 10);
   }
   const LoadingScreen0 = () => {
-    dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCavePath1",Math.floor(Math.random() * 2) + 6)), 1000);
+    dispatch(BattleLoadingScreenFn());
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCavePath1",Math.floor(Math.random() * 2) + 8)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
-
+  const LoadingScreen1 = () => {
+    dispatch(BattleLoadingScreenFn());
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCavePath1",Math.floor(Math.random() * 2) + 10)), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
     return(
-        <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle PayonCave2FMap" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo PayonCave2FMap" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree PayonCave2FMap" : "PayonCave2FMap"}>
+        <div className="PayonCave2FMap">
           <button className="ReturnHUDBugFix"></button>
           <h3 className="PayonCave2FMapTitle">Payon Cave 2F</h3>
-          <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>PayonCave2F</button>
+          {/* Path 0 */}
+          <button className="PayonCave2FBase PayonCave2FToPayonCave1F" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>PayonCave1F</button>
+          {/* Path 1 */}
+          <button className={Math.random() <= 0.5 ? "PayonCave2FBase PayonCave2FPath1 PayonCave2FPath1Pic2" : "PayonCave2FBase PayonCave2FPath1"} onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Road1</button>
+          {/* Path 2 */}
+          <button className={Math.random() <= 0.5 ? "PayonCave2FBase PayonCave2FPath2 PayonCave2FPath1Pic2" : "PayonCave2FBase PayonCave2FPath2"} onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Road2</button>
+          {/* Path 3 */}
+          <button className="PayonCave2FBase PayonCave2FPath3" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>Cross Path</button>
+          {/* Path 4 */}
+          <button className="PayonCave2FBase PayonCave2FPath4" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>Road3</button>
+          {/* Path 5 */}
+          <button className="PayonCave2FBase PayonCave2FPath5" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>Road4</button>
+          {/* Path 6 */}
+          <button className="PayonCave2FBase PayonCave2FPath6" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>Road5</button>
+          {/* Path 7 */}
+          <button className={Math.random() <= 0.5 ? "PayonCave2FBase PayonCave2FPath7 PayonCave2FPath1Pic2" : "PayonCave2FBase PayonCave2FPath7"} onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Road6</button>
+          {/* Path 8 */}
+          <button className="PayonCave2FBase PayonCave2FPath8" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>Road7</button>
+          {/* Path 9 */}
+          <button className="PayonCave2FBase PayonCave2FPath9" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>???</button>
+          {/* Path 10 */}
+          <button className="PayonCave2FBase PayonCave2FPath10" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>treasure chest</button>
+
+          <button className="PayonCave2FBase PayonCave2FToPayonCave3F" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>PayonCave3F</button>
         </div>
     );
 }

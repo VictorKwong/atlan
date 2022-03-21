@@ -9,7 +9,7 @@
   filter:grayscale(0.9);
 }
 .storyScreenStoryLineBackground{
-  background-image: linear-gradient(black, black),url('../img/Background/Grass6.png');
+  background-image: linear-gradient(black, black),url('../img/Background/Grass7.png');
   background-position: center;
   background-size: 75% 100%;
   background-blend-mode: saturation;

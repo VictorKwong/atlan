@@ -56,6 +56,9 @@ const Fn = {
     //PayonCave
     DecayedNail:1,
     SkelBone:1,
+    Daenggie:1,
+    ShortDaenggie:1,
+    OldPortrait:1,
 }
 
 
@@ -396,6 +399,24 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 SkelBone: state.SkelBone + action.Number,
+            }
+        case 'WinDaenggieFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Daenggie: state.Daenggie + action.Number,
+            }
+        case 'WinShortDaenggieFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                ShortDaenggie: state.ShortDaenggie + action.Number,
+            }
+        case 'WinOldPortraitFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                OldPortrait: state.OldPortrait + action.Number,
             }
         case 'WinResultFn':
             return{

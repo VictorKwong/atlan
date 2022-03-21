@@ -58,6 +58,9 @@ import GlassBead from './img/Etc/Eclipse_GlassBead80.gif'
 import Opal from './img/Etc/Eclipse_Opal50.gif'
 import DecayedNail from './img/Etc/Zombie_DecayedNail90.gif'
 import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
+import Daenggie from './img/Etc/Munak_Daenggie90.gif'
+import ShortDaenggie from './img/Etc/Bongun_ShortDaenggie55.gif'
+import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 //MISSION
@@ -130,6 +133,12 @@ function StartMenu(){
       {id:1013, Img:Opal, name:"Opal", itemCheck:userGoldItem.Opal},
       {id:1014, Img:DecayedNail, name:"Decayed Nail", itemCheck:userGoldItem.DecayedNail},
       {id:1015, Img:SkelBone, name:"Skel-Bone", itemCheck:userGoldItem.SkelBone},
+      {id:1016, Img:Daenggie, name:"Daenggie", itemCheck:userGoldItem.Daenggie},
+      {id:1017, Img:ShortDaenggie, name:"Short Daenggie", itemCheck:userGoldItem.ShortDaenggie},
+      {id:1018, Img:OldPortrait, name:"Old Portrait", itemCheck:userGoldItem.OldPortrait},
+
+
+      
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
       {id:100001, Img:SpiritOfEclipse, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse}

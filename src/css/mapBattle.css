@@ -21,8 +21,10 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url('../img/Background/Grass5.png');
-  background-repeat: round;
+  background-image: url('../img/Background/Grass7.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .titleName{

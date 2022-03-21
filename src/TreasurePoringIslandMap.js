@@ -69,10 +69,10 @@ function StartMenu(){
     }
 
     return(
-      <div className="TreasurePoringIslandMap">
+      <div className={screenControlRoom.PoringIsland ? "TreasurePoringIslandMap" : screenControlRoom.PayonCave1F ? "TreasurePoringIslandMap TreasurePayonCaveMap" : null}>
           {RewardBox.map(Reward => {
             return (
-              <span key={Reward.id} className={screenControlRoom.TreasurePath === Reward.Path ? null : 'displayNoneTreasure'}>
+              <span key={Reward.id} className={screenControlRoom.TreasurePath === Reward.Path ? null : "displayNoneTreasure"}>
                 {Reward.Condition1 && !Reward.Condition2 ?  
                 <div className="chest1Background">
                   <div className="chest1BoxCenter">
@@ -88,7 +88,7 @@ function StartMenu(){
                   </div>
                 </div> :
                 <div className="chest1Background">
-                 <button className="chest1Box" onClick={() => {ChestRewardFn(Reward.Get1Fn,Reward.ZenyQuantity,Reward.itemQuantity1,Reward.Get2Fn,Reward.itemQuantity2,Reward.Get3Fn,Reward.itemQuantity3); dispatch(Reward.OpenFn());}}><img src={treasureBox} alt="Treasure Box" /></button>
+                 <button className={Reward.id <= 3 ? "chest1Box" : "chest1Box chest2Box"} onClick={() => {ChestRewardFn(Reward.Get1Fn,Reward.ZenyQuantity,Reward.itemQuantity1,Reward.Get2Fn,Reward.itemQuantity2,Reward.Get3Fn,Reward.itemQuantity3); dispatch(Reward.OpenFn());}}><img src={treasureBox} alt="Treasure Box" /></button>
                 </div>}
               </span>
             )

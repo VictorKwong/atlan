@@ -1417,6 +1417,30 @@ export const WinSkelBoneFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//MUNAK
+export const WinDaenggieFn = (Zeny,Num) => {
+    return {
+        type: 'WinDaenggieFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//BONGUN
+export const WinShortDaenggieFn = (Zeny,Num) => {
+    return {
+        type: 'WinShortDaenggieFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinOldPortraitFn = (Zeny,Num) => {
+    return {
+        type: 'WinOldPortraitFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+
 
 
 //PORING ISLAND CHEST
