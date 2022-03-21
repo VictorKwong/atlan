@@ -1440,6 +1440,21 @@ export const WinOldPortraitFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//SOHEE
+export const WinBlackHairFn = (Zeny,Num) => {
+    return {
+        type: 'WinBlackHairFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinAuthoritativeBadgeFn = (Zeny,Num) => {
+    return {
+        type: 'WinAuthoritativeBadgeFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 
 
 

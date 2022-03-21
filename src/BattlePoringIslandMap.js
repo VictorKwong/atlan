@@ -25,6 +25,7 @@ import { WinFourLeafCloverFn, WinGlassBeadFn, WinOpalFn} from './actions'
 import { WinDecayedNailFn } from './actions'
 import { WinSkelBoneFn } from './actions'
 import { WinDaenggieFn , WinShortDaenggieFn , WinOldPortraitFn} from './actions'
+import { WinBlackHairFn , WinAuthoritativeBadgeFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -95,6 +96,10 @@ import BongunHit from './img/Monster/BongunHit.png'
 import BongunAttack from './img/Monster/BongunAttack.gif'
 import BongunDead from './img/Monster/BongunDead.png'
 
+import Sohee from './img/Monster/Sohee.gif'
+import SoheeHit from './img/Monster/SoheeHit.png'
+import SoheeAttack from './img/Monster/SoheeAttack.gif'
+import SoheeDead from './img/Monster/SoheeDead.png'
 
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
@@ -388,6 +393,9 @@ import Daenggie from './img/Etc/Munak_Daenggie90.gif'
 import ShortDaenggie from './img/Etc/Bongun_ShortDaenggie55.gif'
 import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
 
+import BlackHair from './img/Etc/Sohee_BlackHair90.gif'
+import AuthoritativeBadge from './img/Etc/Sohee_AuthoritativeBadge10.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -457,7 +465,8 @@ const EtcBox = [
   {id: 17, num: 10, name: "Daenggie", img: Daenggie , percent: 0.9, Gain: WinDaenggieFn },
   {id: 18, num: 11, name: "Short Daenggie", img: ShortDaenggie , percent: 0.55, Gain: WinShortDaenggieFn },
   {id: 19, num: 11, name: "Old Portrait", img: OldPortrait , percent: 0.45, Gain: WinOldPortraitFn },
-
+  {id: 20, num: 12, name: "Black Hair", img: BlackHair , percent: 0.9, Gain: WinBlackHairFn },
+  {id: 21, num: 12, name: "Authoritative Badge", img: AuthoritativeBadge , percent: 0.1, Gain: WinAuthoritativeBadgeFn },
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -531,6 +540,7 @@ const EnemyBox = [
   {id:9, number:9, FlipCSS: 'imgFlipTwo', GetHit:ArcherSkeletonHit, GetAttack:ArcherSkeletonAttack, GetDead: ArcherSkeletonDead, GetStand: ArcherSkeleton},
   {id:10, number:10, FlipCSS: 'imgFlipTwo', GetHit:MunakHit, GetAttack:MunakAttack, GetDead: MunakDead, GetStand: Munak},
   {id:11, number:11, FlipCSS: 'imgFlipTwo', GetHit:BongunHit, GetAttack:BongunAttack, GetDead: BongunDead, GetStand: Bongun},
+  {id:12, number:12, FlipCSS: 'imgFlipTwo', GetHit:SoheeHit, GetAttack:SoheeAttack, GetDead: SoheeDead, GetStand: Sohee},
 ]
 
 function Main(){
@@ -769,6 +779,8 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Munak"));
             case ((questControlRoom.QuestDialog).indexOf("Bogun") > -1 && i === 11):
               return dispatch(ProgressQuestDialogFn("Bogun"));
+            case ((questControlRoom.QuestDialog).indexOf("Sohee") > -1 && i === 12):
+              return dispatch(ProgressQuestDialogFn("Sohee"));
             default:
               return null;
           }

@@ -59,6 +59,9 @@ const Fn = {
     Daenggie:1,
     ShortDaenggie:1,
     OldPortrait:1,
+    BlackHair:1,
+    AuthoritativeBadge:1,
+
 }
 
 
@@ -417,6 +420,18 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 OldPortrait: state.OldPortrait + action.Number,
+            }
+        case 'WinBlackHairFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                BlackHair: state.BlackHair + action.Number,
+            }
+        case 'WinAuthoritativeBadgeFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                AuthoritativeBadge: state.AuthoritativeBadge + action.Number,
             }
         case 'WinResultFn':
             return{
