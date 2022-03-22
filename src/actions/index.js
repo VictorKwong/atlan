@@ -1460,6 +1460,13 @@ export const WinAuthoritativeBadgeFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+export const WinNineTailsFn = (Zeny,Num) => {
+    return {
+        type: 'WinNineTailsFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 
 
 
@@ -1579,6 +1586,13 @@ export const ReturnPoringIslandPathFn = () => {
 export const GotoPayonCave1FPath1Fn = () => {
     return {
         type: 'GotoPayonCave1FPath1Fn',
+    };
+};
+
+//PayonCave Boss
+export const BossWolyafaDefeatFn = () => {
+    return {
+        type: 'BossWolyafaDefeatFn',
     };
 };
 

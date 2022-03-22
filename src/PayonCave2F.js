@@ -102,7 +102,7 @@ const PayonCave2F = (data) =>{
           {/* Path 5 */}
           <button className="PayonCaveBase PayonCave2FPath5" onClick={() => {LoadingScreen1(); changePlaceFadeAudio();}}>Road4</button>
           {/* Path 6 */}
-          <button className="PayonCaveBase PayonCave2FPath6" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>Road5</button>
+          <button className="PayonCaveBase PayonCave2FPath6" onClick={() => {dispatch(GotoPayonCave1FFn()); changePlaceFadeAudio();}}>CaveNPC</button>
           {/* Path 7 */}
           <button className={Math.random() <= 0.5 ? "PayonCaveBase PayonCave2FPath7 PayonCave2FPath1Pic2" : "PayonCaveBase PayonCave2FPath7"} onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Road6</button>
           {/* Path 8 */}

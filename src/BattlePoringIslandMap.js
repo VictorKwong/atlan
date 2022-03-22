@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn , EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+import { GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -9,6 +9,8 @@ import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockD
 //Game Result (Victory/Defeat)
 import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
+//BOSS Defeat
+import { BossEclipseDefeatFn, BossWolyafaDefeatFn } from './actions'
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
@@ -26,6 +28,7 @@ import { WinDecayedNailFn } from './actions'
 import { WinSkelBoneFn } from './actions'
 import { WinDaenggieFn , WinShortDaenggieFn , WinOldPortraitFn} from './actions'
 import { WinBlackHairFn , WinAuthoritativeBadgeFn } from './actions'
+import { WinNineTailsFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -100,6 +103,16 @@ import Sohee from './img/Monster/Sohee.gif'
 import SoheeHit from './img/Monster/SoheeHit.png'
 import SoheeAttack from './img/Monster/SoheeAttack.gif'
 import SoheeDead from './img/Monster/SoheeDead.png'
+
+import Whisper from './img/Monster/Whisper.gif'
+import WhisperHit from './img/Monster/WhisperHit.png'
+import WhisperAttack from './img/Monster/WhisperAttack.gif'
+import WhisperDead from './img/Monster/WhisperDead.png'
+
+import Wolyafa from './img/Monster/Wolyafa.gif'
+import WolyafaHit from './img/Monster/WolyafaHit.png'
+import WolyafaAttack from './img/Monster/WolyafaAttack.gif'
+import WolyafaDead from './img/Monster/WolyafaDead.png'
 
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
@@ -396,6 +409,8 @@ import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
 import BlackHair from './img/Etc/Sohee_BlackHair90.gif'
 import AuthoritativeBadge from './img/Etc/Sohee_AuthoritativeBadge10.gif'
 
+import NineTails from './img/Etc/Wolyafa_NineTails55.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -467,6 +482,9 @@ const EtcBox = [
   {id: 19, num: 11, name: "Old Portrait", img: OldPortrait , percent: 0.45, Gain: WinOldPortraitFn },
   {id: 20, num: 12, name: "Black Hair", img: BlackHair , percent: 0.9, Gain: WinBlackHairFn },
   {id: 21, num: 12, name: "Authoritative Badge", img: AuthoritativeBadge , percent: 0.1, Gain: WinAuthoritativeBadgeFn },
+  {id: 22, num: 13, name: "Fabric", img: Fabric , percent: 0.55, Gain: WinFabricFn},
+  {id: 23, num: 14, name: "Nine Tails", img: NineTails , percent: 0.55, Gain: WinNineTailsFn},
+
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -541,6 +559,8 @@ const EnemyBox = [
   {id:10, number:10, FlipCSS: 'imgFlipTwo', GetHit:MunakHit, GetAttack:MunakAttack, GetDead: MunakDead, GetStand: Munak},
   {id:11, number:11, FlipCSS: 'imgFlipTwo', GetHit:BongunHit, GetAttack:BongunAttack, GetDead: BongunDead, GetStand: Bongun},
   {id:12, number:12, FlipCSS: 'imgFlipTwo', GetHit:SoheeHit, GetAttack:SoheeAttack, GetDead: SoheeDead, GetStand: Sohee},
+  {id:13, number:13, FlipCSS: 'imgFlip', GetHit:WhisperHit, GetAttack:WhisperAttack, GetDead: WhisperDead, GetStand: Whisper},
+  {id:14, number:14, FlipCSS: 'imgFlipTwo', GetHit:WolyafaHit, GetAttack:WolyafaAttack, GetDead: WolyafaDead, GetStand: Wolyafa},
 ]
 
 function Main(){
@@ -752,6 +772,16 @@ function Main(){
           }
           return null;
         })
+        switch (true) {
+          case (i === 5):
+            dispatch(BossEclipseDefeatFn());
+            break;
+          case (i === 14):
+            dispatch(BossWolyafaDefeatFn());
+            break;
+          default:
+            break;
+        }
         //QUEST
           switch (true) {
             //accept QUEST & Correct Event monster
@@ -781,6 +811,10 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Bogun"));
             case ((questControlRoom.QuestDialog).indexOf("Sohee") > -1 && i === 12):
               return dispatch(ProgressQuestDialogFn("Sohee"));
+            case ((questControlRoom.QuestDialog).indexOf("Whisper") > -1 && i === 13):
+              return dispatch(ProgressQuestDialogFn("Whisper"));
+            case ((questControlRoom.QuestDialog).indexOf("Wolyafa") > -1 && i === 14):
+              return dispatch(ProgressQuestDialogFn("Wolyafa"));
             default:
               return null;
           }
@@ -2185,7 +2219,9 @@ function Main(){
                           () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
                           i <= 7 ?
                           () =>{dispatch(GotoPayonCave1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
-                          () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>
+                          i <= 12 ?
+                          () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
+                          () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>
                           <figcaption className="goGoButtonFig">
                             <p className="goGoButtonName">Run</p>
                           </figcaption>
@@ -2207,7 +2243,9 @@ function Main(){
                 () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
                 i <= 7 ?
                 () =>{dispatch(GotoPayonCave1FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
-                () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
+                i <= 12 ?
+                () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : 
+                () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave3FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();}}>Goto CheckPoint</button>
             </div> 
             : enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
             <div className="storyScreen">
@@ -2216,7 +2254,9 @@ function Main(){
                 () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
                 i <= 7 ?
                 () =>{dispatch(GotoPayonCave1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
-                () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
+                i <= 12 ?
+                () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
+                () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button>
             </div> : null}
 
           </fieldset>

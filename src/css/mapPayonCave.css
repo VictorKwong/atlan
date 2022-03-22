@@ -139,6 +139,21 @@
   background-size: cover;
 }
 
+.PayonCave2FPath3::before,
+.PayonCave2FPath3:hover::before{
+  background-image: url('../img/Background/PayonCave2FCrossPath.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.PayonCave2FPath4::before,
+.PayonCave2FPath4:hover::before{
+  background-image: url('../img/Background/PayonCave2FCave1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 .PayonCave2FPath1Pic2::before,
 .PayonCave2FPath1Pic2:hover::before{
@@ -156,6 +171,14 @@
   background-size: cover;
 }
 
+.PayonCave2FPath6::before,
+.PayonCave2FPath6:hover::before{
+  background-image: url('../img/Background/PayonCave2FCave2.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
 .PayonCave2FPath8::before,
 .PayonCave2FPath8:hover::before{
   background-image: url('../img/Background/PayonCave2F4.jpg');
@@ -168,6 +191,45 @@
   background-image: url('../img/Background/PayonCave2F5Secret.jpg');
   background-repeat: no-repeat;
   background-position: center top;
+  background-size: cover;
+}
+
+.PayonCave2FPath10::before,
+.PayonCave2FPath10:hover::before{
+  background-image: url('../img/Background/TreasureBoxPayonCave2F.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.PayonCave3FPath1::before,
+.PayonCave3FPath1:hover::before{
+  background-image: url('../img/Background/PayonCave3F1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.PayonCave3FPath2::before,
+.PayonCave3FPath2:hover::before{
+  background-image: url('../img/Background/PayonCave3F2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.PayonCave3FPath2Pic2::before,
+.PayonCave3FPath2Pic2:hover::before{
+  background-image: url('../img/Background/PayonCave3F3.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.PayonCave3FPath3::before,
+.PayonCave3FPath3:hover::before{
+  background-image: url('../img/Background/BossTreasureBoxPayonCave.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
 
