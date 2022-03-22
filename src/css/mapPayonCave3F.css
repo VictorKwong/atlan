@@ -1,0 +1,43 @@
+.PayonCave3FMapTitle{
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  color: rgb(132, 23, 221);
+  -webkit-text-stroke: 0.8px rgb(48, 48, 48);
+  stroke: 0.8px rgb(48, 48, 48);
+  /* animation-name: fadeOutMapName;
+  animation-duration: 3s;
+  opacity: 0; */
+  display: none;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  z-index: 999;
+}
+
+.PayonCave3FMap{
+  width: 100%;
+  height: 100%;
+  /* background-image: url('../img/Background/PoringIslandChest1.png');
+  background-position: center;
+  background-size: cover; */
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  border: 1px solid black;
+}
+
+.PayonCave3FToPayonCave2F { grid-area: 2 / 2 / 3 / 3; }
+.PayonCave3FPath1 { grid-area: 1 / 2 / 2 / 3; }
+.PayonCave3FPath2 { grid-area: 1 / 3 / 2 / 4; }
+.PayonCave3FPath3 { grid-area: 2 / 3 / 3 / 4; }
+.PayonCave3FPath4 { grid-area: 1 / 1 / 2 / 2; }
+.PayonCave3FPath5 { grid-area: 2 / 1 / 3 / 2; }

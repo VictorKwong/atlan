@@ -14,6 +14,7 @@ import WorldMap from './WorldMap'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import PayonCave2F from './PayonCave2F'
+import PayonCave3F from './PayonCave3F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -149,7 +150,7 @@ function StartMenu(){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div className={screenControlRoom.PayonCave1F && screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : null}>
+        <div className={screenControlRoom.PayonCave1F && screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : screenControlRoom.PayonCave1F && screenControlRoom.PayonCave3F ? "PayonCave3FMapBackground" : screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : null}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -178,6 +179,10 @@ function StartMenu(){
             screenControlRoom.PayonCave2F ?
               <div className="ReturnParent">
                 <PayonCave2F audioBGM={audioBGM}/>
+              </div>:
+            screenControlRoom.PayonCave3F ?
+              <div className="ReturnParent">
+                <PayonCave3F audioBGM={audioBGM}/>
               </div>:
             <div className="PayonCave1FMap">
               <button className="ReturnHUDBugFix"></button>

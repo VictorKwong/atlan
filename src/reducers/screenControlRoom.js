@@ -21,6 +21,7 @@ const Fn = {
     TreasurePoringIslandMap: false,
     //Mini Screen (PayonCave 2F)
     PayonCave2F: false,
+    PayonCave3F: false,
     //TreasureUnlockPath
     TreasurePath:"Path",
     PoringIslandHouseMap: false,
@@ -359,7 +360,15 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 return {
                     ...state,
                     PayonCave2F: true,
+                    PayonCave3F: false,
                     UserLocation: "PayonCave2FPath0"
+                }
+            case 'GotoPayonCave3FFn':
+                return {
+                    ...state,
+                    PayonCave2F: false,
+                    PayonCave3F: true,
+                    UserLocation: "PayonCave3FPath0"
                 }
             //Poring Island Mini Map
             case 'GotoTreasurePoringIslandMapFn':

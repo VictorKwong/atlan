@@ -12,6 +12,7 @@ const Fn = [
     //10.ArcherSkeleton
     //11.Munak
     //12.Bongun
+    //13.Sohee
     {
         name: 'Poring',
         level: 1,

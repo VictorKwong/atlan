@@ -61,6 +61,8 @@ import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
 import Daenggie from './img/Etc/Munak_Daenggie90.gif'
 import ShortDaenggie from './img/Etc/Bongun_ShortDaenggie55.gif'
 import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
+import BlackHair from './img/Etc/Sohee_BlackHair90.gif'
+import AuthoritativeBadge from './img/Etc/Sohee_AuthoritativeBadge10.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 //MISSION
@@ -136,9 +138,8 @@ function StartMenu(){
       {id:1016, Img:Daenggie, name:"Daenggie", itemCheck:userGoldItem.Daenggie},
       {id:1017, Img:ShortDaenggie, name:"Short Daenggie", itemCheck:userGoldItem.ShortDaenggie},
       {id:1018, Img:OldPortrait, name:"Old Portrait", itemCheck:userGoldItem.OldPortrait},
-
-
-      
+      {id:1019, Img:BlackHair, name:"Black Hair", itemCheck:userGoldItem.BlackHair},
+      {id:1020, Img:AuthoritativeBadge, name:"Authoritative Badge", itemCheck:userGoldItem.AuthoritativeBadge},
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
       {id:100001, Img:SpiritOfEclipse, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse}

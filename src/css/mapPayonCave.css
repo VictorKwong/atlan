@@ -8,7 +8,11 @@
   background-position: center;
   background-size: cover;
 }
-
+.PayonCave3FMapBackground{
+  background-image: url('../img/Background/PayonCave3F.jpg');
+  background-position: center;
+  background-size: cover;
+}
 .PayonCave1FMapTitle{
   font-size: 30px;
   font-family: 'Chelsea Market', cursive;
@@ -43,7 +47,7 @@
 .PayonCave1FPath0::before,
 .TreasureBoxPayonCave1F::before,
 .PayonCave1FTo2F::before,
-.PayonCave2FBase::before{
+.PayonCaveBase::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -63,7 +67,7 @@
 .PayonCave1FPath0:hover::before,
 .TreasureBoxPayonCave1F:hover::before,
 .PayonCave1FTo2F:hover::before,
-.PayonCave2FBase:hover::before{
+.PayonCaveBase:hover::before{
   opacity: 1;
   background-image: url('../img/Background/WorldMap.jpg');
   background-repeat: no-repeat;
@@ -98,7 +102,9 @@
 }
 
 .PayonCave1FTo2F::before,
-.PayonCave1FTo2F:hover::before{
+.PayonCave1FTo2F:hover::before,
+.PayonCave3FToPayonCave2F::before,
+.PayonCave3FToPayonCave2F:hover::before{
   background-image: url('../img/Background/PayonCave2F.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -115,7 +121,7 @@
 
 .PayonCave2FToPayonCave3F::before,
 .PayonCave2FToPayonCave3F:hover::before{
-  background-image: url('../img/Background/PayonCave.jpg');
+  background-image: url('../img/Background/PayonCave3F.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -124,7 +130,9 @@
 .PayonCave2FPath1::before,
 .PayonCave2FPath1:hover::before,
 .PayonCave2FPath7::before,
-.PayonCave2FPath7:hover::before{
+.PayonCave2FPath7:hover::before,
+.PayonCave2FPath2::before,
+.PayonCave2FPath2:hover::before{
   background-image: url('../img/Background/PayonCave2F1.jpg');
   background-repeat: no-repeat;
   background-position: center top;
@@ -167,7 +175,7 @@
 .PayonCave1FPath0,
 .TreasureBoxPayonCave1F,
 .PayonCave1FTo2F,
-.PayonCave2FBase{
+.PayonCaveBase{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;

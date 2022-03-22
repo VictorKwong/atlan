@@ -321,6 +321,11 @@ export const GotoPayonCave2FFn = () => {
         type: 'GotoPayonCave2FFn',
     };
 };
+export const GotoPayonCave3FFn = () => {
+    return {
+        type: 'GotoPayonCave3FFn',
+    };
+};
 
 export const GotoBattlePoringIslandMapFn = (Path,MonsterID) => {
     return {
