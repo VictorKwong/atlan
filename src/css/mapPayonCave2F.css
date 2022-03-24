@@ -46,6 +46,8 @@
 .PayonCave2FPath5 { grid-area: 2 / 4 / 3 / 5; }
 .PayonCave2FPath6 { grid-area: 3 / 4 / 4 / 5; }
 .PayonCave2FPath7 { grid-area: 4 / 4 / 5 / 5; }
-.PayonCave2FPath9 { grid-area: 5 / 3 / 6 / 4; }
-.PayonCave2FPath10{ grid-area: 1 / 4 / 2 / 5; }
+.PayonCave2FPath8 { grid-area: 5 / 3 / 6 / 4; }
+.PayonCave2FPath9 { grid-area: 1 / 4 / 2 / 5; }
+.PayonCave2FPathHidden1 { grid-area: 3 / 2 / 4 / 3; }
+.PayonCave2FPathHidden2 { grid-area: 3 / 1 / 4 / 2; }
 .PayonCave2FToPayonCave3F { grid-area: 5 / 4 / 6 / 5; }

@@ -146,6 +146,30 @@ function StartMenu(){
         $('.storySpeech').html('You found a hidden passage in PayonCave1F...')  
         $('.storyCharacter').html('')
         break;
+      case(npcControlRoom.PayonCave2FSelfNPC && screenControlRoom.PayonCave2FPath9Hidden && screenControlRoom.AltanItem):
+        $('.storySpeech').html('You found a hidden passage in PayonCave2F...')  
+        $('.storyCharacter').html('')
+        break;
+      case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+        $('.storySpeech').html('')  
+        $('.storyCharacter').html('')
+        break;
+      case(npcControlRoom.PayonCave2FSelfNPC && screenControlRoom.PayonCave2FPath9Hidden):
+        $('.storySpeech').html(`${npcSpeech['Atlan'][1].text}`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][1].name}</p>`)
+        break;
+      case(npcControlRoom.PayonCave2FSelfNPC):
+        $('.storySpeech').html(`${npcSpeech['Atlan'][0].text}`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][0].name}</p>`)
+        break;
+      case(npcControlRoom.PayonCave2FCaveNPC):
+        $('.storySpeech').html(`${npcSpeech['Adventure'][0].text}`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Adventure'][0].name}</p>`)
+        break;
+      case(npcControlRoom.PayonCave3FCaveNPC):
+        $('.storySpeech').html(`${npcSpeech['ScaredAcolyte'][0].text}`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ScaredAcolyte'][0].name}</p>`)
+        break;
       default:
         $('.storySpeech').html('')  
         $('.storyCharacter').html('')
@@ -155,6 +179,7 @@ function StartMenu(){
       //userState,screenControRoom not included
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [npcControlRoom, screenControlRoom])
+
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())

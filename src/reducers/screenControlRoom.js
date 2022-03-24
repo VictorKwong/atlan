@@ -50,25 +50,32 @@ const Fn = {
     PoringIslandPath7: true,
     PoringIslandPath8: true,
     //Payon Cave PATH
-    PayonCave1FPath1: false,
-    PayonCave1FPath2Hidden: false,
-    PayonCave2FPath1: false,
-    PayonCave2FPath2: false,
-    PayonCave2FPath3: false,
-    PayonCave2FPath4: false,
-    PayonCave2FPath5: false,
-    PayonCave2FPath6: false,
-    PayonCave2FPath7: false,
-    // PayonCave1FPath1: true,
+    // PayonCave1FPath1: false,
     // PayonCave1FPath2Hidden: false,
-    // PayonCave2FPath1: true,
-    // PayonCave2FPath2: true,
-    // PayonCave2FPath3: true,
-    // PayonCave2FPath4: true,
-    // PayonCave2FPath5: true,
-    // PayonCave2FPath6: true,
-    // PayonCave2FPath7: true,
-    // PayonCave2FPath8: true,
+    // PayonCave2FPath1: false,
+    // PayonCave2FPath2: false,
+    // PayonCave2FPath3: false,
+    // PayonCave2FPath4: false,
+    // PayonCave2FPath5: false,
+    // PayonCave2FPath6: false,
+    // PayonCave2FPath7: false,
+    // PayonCave2FPath8: false,
+    PayonCave1FPath1: true,
+    PayonCave1FPath2Hidden: false,
+    PayonCave2FPath1: true,
+    PayonCave2FPath2: true,
+    PayonCave2FPath3: true,
+    PayonCave2FPath4: true,
+    PayonCave2FPath5: true,
+    PayonCave2FPath6: true,
+    PayonCave2FPath7: true,
+    PayonCave2FPath8: true,
+    PayonCave2FPath9Hidden: false,
+    PayonCave2FPath10Hidden: false,
+    PayonCave3FPath1: true,
+    PayonCave3FPath2: true,
+    PayonCave3FPath3: true,
+    PayonCave3FPath4: true,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -584,6 +591,36 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 return{
                     ...state,
                     PayonCave2FPath8: true,
+                }
+            case 'GotoPayonCave2FPath9HiddenFn':
+                return{
+                    ...state,
+                    PayonCave2FPath9Hidden: true,
+                }
+            case 'GotoPayonCave2FPath10HiddenFn':
+                return{
+                    ...state,
+                    PayonCave2FPath10Hidden: true,
+                }
+            case 'GotoPayonCave3FPath1Fn':
+                return{
+                    ...state,
+                    PayonCave3FPath1: true,
+                }
+            case 'GotoPayonCave3FPath2Fn':
+                return{
+                    ...state,
+                    PayonCave3FPath2: true,
+                }
+            case 'GotoPayonCave3FPath3Fn':
+                return{
+                    ...state,
+                    PayonCave3FPath3: true,
+                }
+            case 'GotoPayonCave3FPath4Fn':
+                return{
+                    ...state,
+                    PayonCave3FPath4: true,
                 }
             //BattleLoadingScreen
             case 'BattleLoadingScreenFn':

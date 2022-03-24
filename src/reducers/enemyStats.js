@@ -14,7 +14,8 @@ const Fn = [
     //12.Bongun
     //13.Sohee
     //14.Whisper
-    //15.Wolyafa
+    //15.GiantWhisper
+    //16.Wolyafa
     {
         name: 'Poring',
         level: 1,
@@ -239,6 +240,23 @@ const Fn = [
     },
     {
         name: 'Whisper',
+        level: 10,
+        maxHealth: 1000, //2000
+        currentHealth: 1000,
+        attack: 60,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        critResist: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Giant Whisper',
         level: 10,
         maxHealth: 1000, //2000
         currentHealth: 1000,

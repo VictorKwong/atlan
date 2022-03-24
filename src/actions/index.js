@@ -1677,12 +1677,68 @@ export const GotoPayonCave2FPath8Fn = () => {
         type: 'GotoPayonCave2FPath8Fn',
     };
 };
+export const GotoPayonCave2FPath9HiddenFn = () => {
+    return {
+        type: 'GotoPayonCave2FPath9HiddenFn',
+    };
+};
+export const GotoPayonCave2FPath10HiddenFn = () => {
+    return {
+        type: 'GotoPayonCave2FPath10HiddenFn',
+    };
+};
+export const GotoPayonCave3FPath1Fn = () => {
+    return {
+        type: 'GotoPayonCave3FPath1Fn',
+    };
+};
+export const GotoPayonCave3FPath2Fn = () => {
+    return {
+        type: 'GotoPayonCave3FPath2Fn',
+    };
+};
+export const GotoPayonCave3FPath3Fn = () => {
+    return {
+        type: 'GotoPayonCave3FPath3Fn',
+    };
+};
+export const GotoPayonCave3FPath4Fn = () => {
+    return {
+        type: 'GotoPayonCave3FPath4Fn',
+    };
+};
+
+
 //PayonCave Boss
 export const BossWolyafaDefeatFn = () => {
     return {
         type: 'BossWolyafaDefeatFn',
     };
 };
+export const PayonCave2FSelfNPCFn = () => {
+    return {
+        type: 'PayonCave2FSelfNPCFn',
+    };
+};
+export const PayonCave2FCaveNPCFn = () => {
+    return {
+        type: 'PayonCave2FCaveNPCFn',
+    };
+};
+export const PayonCave3FCaveNPCFn = () => {
+    return {
+        type: 'PayonCave3FCaveNPCFn',
+    };
+};
+export const ResetPayonCaveNPCFn = () => {
+    return {
+        type: 'ResetPayonCaveNPCFn',
+    };
+};
+
+
+
+
 
 
 //Audio Interaction

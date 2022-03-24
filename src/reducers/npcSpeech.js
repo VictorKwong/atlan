@@ -162,7 +162,23 @@ const Fn = {
         },{
             name: 'MightyGuy',
             text: 'Master yourself, master the enemy'
-        }]
+        }],
+    Atlan:[{
+        //PayonCave2F self
+            name: 'Atlan',
+            text: 'This place is dark.'
+        },{
+            name: 'Atlan',
+            text: 'Wow! I can see another path!'
+        }],
+    Adventure:[{
+            name: 'Adventure',
+            text: 'Bongun & Munak are lovers even when they are turn into zombie, how tragedy it is..'
+        }],
+    ScaredAcolyte:[{
+            name: 'ScaredAcolyte',
+            text: 'OMG! This place is freaking me out, I wanna leave now T^T...'
+    }],
 }
 
 const npcSpeechReducer = (state = Fn, action) => {

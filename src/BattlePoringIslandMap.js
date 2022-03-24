@@ -34,7 +34,7 @@ import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
 import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
-import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn } from './actions'
+import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn, GotoPayonCave3FPath1Fn, GotoPayonCave3FPath2Fn, GotoPayonCave3FPath4Fn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -109,6 +109,11 @@ import Whisper from './img/Monster/Whisper.gif'
 import WhisperHit from './img/Monster/WhisperHit.png'
 import WhisperAttack from './img/Monster/WhisperAttack.gif'
 import WhisperDead from './img/Monster/WhisperDead.png'
+
+import GiantWhisper from './img/Monster/GiantWhisper.gif'
+import GiantWhisperHit from './img/Monster/GiantWhisperHit.png'
+import GiantWhisperAttack from './img/Monster/GiantWhisperAttack.gif'
+import GiantWhisperDead from './img/Monster/GiantWhisperDead.png'
 
 import Wolyafa from './img/Monster/Wolyafa.gif'
 import WolyafaHit from './img/Monster/WolyafaHit.png'
@@ -484,7 +489,8 @@ const EtcBox = [
   {id: 20, num: 12, name: "Black Hair", img: BlackHair , percent: 0.9, Gain: WinBlackHairFn },
   {id: 21, num: 12, name: "Authoritative Badge", img: AuthoritativeBadge , percent: 0.1, Gain: WinAuthoritativeBadgeFn },
   {id: 22, num: 13, name: "Fabric", img: Fabric , percent: 0.55, Gain: WinFabricFn},
-  {id: 23, num: 14, name: "Nine Tails", img: NineTails , percent: 0.55, Gain: WinNineTailsFn},
+  {id: 22, num: 14, name: "Fabric", img: Fabric , percent: 0.8, Gain: WinFabricFn},
+  {id: 23, num: 15, name: "Nine Tails", img: NineTails , percent: 0.55, Gain: WinNineTailsFn},
 
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
@@ -561,7 +567,8 @@ const EnemyBox = [
   {id:11, number:11, FlipCSS: 'imgFlipTwo', GetHit:BongunHit, GetAttack:BongunAttack, GetDead: BongunDead, GetStand: Bongun},
   {id:12, number:12, FlipCSS: 'imgFlipTwo', GetHit:SoheeHit, GetAttack:SoheeAttack, GetDead: SoheeDead, GetStand: Sohee},
   {id:13, number:13, FlipCSS: 'imgFlip', GetHit:WhisperHit, GetAttack:WhisperAttack, GetDead: WhisperDead, GetStand: Whisper},
-  {id:14, number:14, FlipCSS: 'imgFlipTwo', GetHit:WolyafaHit, GetAttack:WolyafaAttack, GetDead: WolyafaDead, GetStand: Wolyafa},
+  {id:14, number:14, FlipCSS: 'imgFlipTwo', GetHit:GiantWhisperHit, GetAttack:GiantWhisperAttack, GetDead: GiantWhisperDead, GetStand: GiantWhisper},
+  {id:15, number:15, FlipCSS: 'imgFlipTwo', GetHit:WolyafaHit, GetAttack:WolyafaAttack, GetDead: WolyafaDead, GetStand: Wolyafa},
 ]
 
 function Main(){
@@ -771,6 +778,15 @@ function Main(){
           case (screenControlRoom.UserUnlockPath === "PayonCave2FPath8"):
             dispatch(GotoPayonCave2FPath8Fn());
             break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave3FPath1"):
+            dispatch(GotoPayonCave3FPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave3FPath2"):
+            dispatch(GotoPayonCave3FPath2Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave3FPath4"):
+            dispatch(GotoPayonCave3FPath4Fn());
+            break;
           default:
             break;
         }
@@ -830,7 +846,9 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Sohee"));
             case ((questControlRoom.QuestDialog).indexOf("Whisper") > -1 && i === 13):
               return dispatch(ProgressQuestDialogFn("Whisper"));
-            case ((questControlRoom.QuestDialog).indexOf("Wolyafa") > -1 && i === 14):
+            case ((questControlRoom.QuestDialog).indexOf("Giantwhisper") > -1 && i === 14):
+              return dispatch(ProgressQuestDialogFn("Giantwhisper"));
+            case ((questControlRoom.QuestDialog).indexOf("Wolyafa") > -1 && i === 15):
               return dispatch(ProgressQuestDialogFn("Wolyafa"));
             default:
               return null;

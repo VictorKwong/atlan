@@ -5,7 +5,7 @@ import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn}
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn,LampFn } from './actions'
 
 //Result
-import { GotoPoringIslandPath6Fn , GotoPayonCave1FPath2HiddenFn } from './actions'
+import { GotoPoringIslandPath6Fn , GotoPayonCave1FPath2HiddenFn , GotoPayonCave2FPath9HiddenFn } from './actions'
 
 import './css/mapAltanItem.css'
 // import useSound from 'use-sound';
@@ -92,7 +92,7 @@ function StartMenu(){
       {id:20008, Img:YggdrasilBerry, name:"Yggdrasil Berry", itemCheck:userGoldItem.YggdrasilBerry, useItem:UseYggdrasilBerryFn()},
     ]
     let ItemSpecialBox = [
-      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit1:npcControlRoom.PoringIslandBridgeNPC, result1:GotoPoringIslandPath6Fn(), condit2:screenControlRoom.UserUnlockPath, result2:GotoPayonCave1FPath2HiddenFn() },
+      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit1:npcControlRoom.PoringIslandBridgeNPC, result1:GotoPoringIslandPath6Fn(), condit2:screenControlRoom.UserUnlockPath, result2:GotoPayonCave1FPath2HiddenFn(), condit3:npcControlRoom.PayonCave2FSelfNPC , result3: GotoPayonCave2FPath9HiddenFn()},
     ]
     let EquipBox = [
       //WEAPON
@@ -176,7 +176,9 @@ function StartMenu(){
                     {/* if item use in specific spot, unlock result */}
                     {Item.itemCheck >= 1 ? <button className="altanItemButton altanItemButtonFix" onClick={
                       Item.condit1 ? () => {dispatch((Item.useItem)); dispatch((Item.result1));} : 
-                      Item.condit2 === "PayonCave1FPath1" ? () => {dispatch((Item.useItem)); dispatch((Item.result2));} : () => dispatch((Item.useItem))}>
+                      Item.condit2 === "PayonCave1FPath1" ? () => {dispatch((Item.useItem)); dispatch((Item.result2));} : 
+                      Item.condit3 ? () => {dispatch((Item.useItem)); dispatch((Item.result3));} : 
+                      () => dispatch((Item.useItem))}>
                       <div className="adjImgCenterBox">
                         <p className="adjImgCenter">{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</p>
                       </div>

@@ -49,6 +49,9 @@ const Fn = {
     ChestBoss2: false,
     ChestBoss2VisitRepeat: false,
     BossWolyafaDefeat: false,
+    PayonCave2FSelfNPC: false,
+    PayonCave2FCaveNPC: false,
+    PayonCave3FCaveNPC: false,
     
 }
 
@@ -636,6 +639,34 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 BossWolyafaDefeat: true
+            }
+        case 'PayonCave2FSelfNPCFn':
+            return {
+                ...state,
+                PayonCave2FSelfNPC: true,
+                PayonCave2FCaveNPC: false,
+                PayonCave3FCaveNPC: false,
+            }
+        case 'PayonCave2FCaveNPCFn':
+            return {
+                ...state,
+                PayonCave2FSelfNPC: false,
+                PayonCave2FCaveNPC: true,
+                PayonCave3FCaveNPC: false,
+            }
+        case 'PayonCave3FCaveNPCFn':
+            return {
+                ...state,
+                PayonCave2FSelfNPC: false,
+                PayonCave2FCaveNPC: false,
+                PayonCave3FCaveNPC: true,
+            }   
+        case 'ResetPayonCaveNPCFn':
+            return {
+                ...state,
+                PayonCave2FSelfNPC: false,
+                PayonCave2FCaveNPC: false,
+                PayonCave3FCaveNPC: false,
             }
         default:
             return state;
