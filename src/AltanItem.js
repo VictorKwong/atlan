@@ -5,7 +5,7 @@ import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn}
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn,LampFn } from './actions'
 
 //Result
-import { GotoPoringIslandPath6Fn } from './actions'
+import { GotoPoringIslandPath6Fn , GotoPayonCave1FPath2HiddenFn } from './actions'
 
 import './css/mapAltanItem.css'
 // import useSound from 'use-sound';
@@ -67,7 +67,7 @@ import NineTails from './img/Etc/Wolyafa_NineTails55.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 //MISSION
-import SpiritOfEclipse from './img/Etc/SpiritOfEclipse.gif'
+import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -92,7 +92,7 @@ function StartMenu(){
       {id:20008, Img:YggdrasilBerry, name:"Yggdrasil Berry", itemCheck:userGoldItem.YggdrasilBerry, useItem:UseYggdrasilBerryFn()},
     ]
     let ItemSpecialBox = [
-      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit:npcControlRoom.PoringIslandBridgeNPC, result:GotoPoringIslandPath6Fn()},
+      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit1:npcControlRoom.PoringIslandBridgeNPC, result1:GotoPoringIslandPath6Fn(), condit2:screenControlRoom.UserUnlockPath, result2:GotoPayonCave1FPath2HiddenFn() },
     ]
     let EquipBox = [
       //WEAPON
@@ -145,7 +145,8 @@ function StartMenu(){
       
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
-      {id:100001, Img:SpiritOfEclipse, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse}
+      {id:100001, Img:SpiritOfBoss, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse},
+      {id:100002, Img:SpiritOfBoss, name:"Spirit Of Wolyafa", itemCheck:userGoldItem.SpiritOfWolyafa}
     ]
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
@@ -173,7 +174,9 @@ function StartMenu(){
                 return( 
                   <span key={Item.id}>
                     {/* if item use in specific spot, unlock result */}
-                    {Item.itemCheck >= 1 ? <button className="altanItemButton altanItemButtonFix" onClick={Item.condit ? () => {dispatch((Item.useItem)); dispatch((Item.result));} : () => dispatch((Item.useItem))}>
+                    {Item.itemCheck >= 1 ? <button className="altanItemButton altanItemButtonFix" onClick={
+                      Item.condit1 ? () => {dispatch((Item.useItem)); dispatch((Item.result1));} : 
+                      Item.condit2 === "PayonCave1FPath1" ? () => {dispatch((Item.useItem)); dispatch((Item.result2));} : () => dispatch((Item.useItem))}>
                       <div className="adjImgCenterBox">
                         <p className="adjImgCenter">{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</p>
                       </div>

@@ -34,6 +34,7 @@ import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
 import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
+import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -753,6 +754,22 @@ function Main(){
           //PayonCave1F
           case (screenControlRoom.UserUnlockPath === "PayonCave1FPath1"):
             dispatch(GotoPayonCave1FPath1Fn());
+            break;
+          //PayonCave2F
+          case (screenControlRoom.UserUnlockPath === "PayonCave2FPath1"):
+            dispatch(GotoPayonCave2FPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave2FPath2"):
+            dispatch(GotoPayonCave2FPath2Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave2FPath5"):
+            dispatch(GotoPayonCave2FPath5Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave2FPath7"):
+            dispatch(GotoPayonCave2FPath7Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "PayonCave2FPath8"):
+            dispatch(GotoPayonCave2FPath8Fn());
             break;
           default:
             break;

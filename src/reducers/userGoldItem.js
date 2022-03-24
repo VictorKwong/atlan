@@ -34,10 +34,12 @@ const Fn = {
 
     //Etc
     PoringIslandMap: 1,
+    PayonCaveMap:1,
     //MISC
     Lamp:1,
     //Mission
     SpiritOfEclipse: 0,
+    SpiritOfWolyafa: 0,
     //PORING ISLAND
     Jellopy: 3,
     EmptyBottle: 5,
@@ -125,6 +127,13 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 PoringIslandMap: state.PoringIslandMap + action.Item,
             }
+        case 'PayonCaveMapFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                PayonCaveMap: state.PayonCaveMap + action.Item,
+            }
+
         //MISC
         case 'LampFn':
             return{
@@ -139,7 +148,12 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 SpiritOfEclipse: state.SpiritOfEclipse + action.Item,
             }
-                
+        case 'SpiritOfWolyafaFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SpiritOfWolyafa: state.SpiritOfWolyafa + action.Item,
+            }        
         //Weapons Shop
         case 'KatanaFn':
             return{

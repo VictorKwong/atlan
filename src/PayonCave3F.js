@@ -4,7 +4,7 @@ import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandM
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //CHEST
-import { PayonCaveChest3VisitRepeatFn } from './actions'
+import { ChestBoss2VisitRepeatFn } from './actions'
 
 
 import WorldMap from './WorldMap'
@@ -82,11 +82,11 @@ const PayonCave3F = (data) =>{
           {/* Path 0 */}
           <button className="PayonCaveBase PayonCave3FToPayonCave2F" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio();}}>PayonCave2F</button>
           {/* Path 1 */}
-          <button className="PayonCaveBase PayonCave3FPath1" onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Cave1</button>
+          <button className="PayonCaveBase PayonCave3FPath1" onClick={() => {LoadingScreen0(); changeMapFadeAudio();}}>Cave1</button>
           {/* Path 2 */}
-          <button className={Math.random() <= 0.5 && npcControlRoom.BossWolyafaDefeat ? "PayonCaveBase PayonCave3FPath2 PayonCave3FPath2Pic2" : "PayonCaveBase PayonCave3FPath2"} onClick={() => {LoadingScreen1(); changePlaceFadeAudio();}}>Boss</button>
+          <button className={Math.random() <= 0.5 && npcControlRoom.BossWolyafaDefeat ? "PayonCaveBase PayonCave3FPath2 PayonCave3FPath2Pic2" : "PayonCaveBase PayonCave3FPath2"} onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>Boss</button>
           {/* Path 3 */}
-          <button className="PayonCaveBase PayonCave3FPath3" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio();}}>shiny chest</button>
+          <button className="PayonCaveBase PayonCave3FPath3" onClick={npcControlRoom.ChestBoss2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest2")); dispatch(ChestBoss2VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest2"));}}>shiny chest</button>
           {/* Path 4 */}
           <button className="PayonCaveBase PayonCave3FPath4" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio();}}>Hidden1</button>
           {/* Path 5 */}

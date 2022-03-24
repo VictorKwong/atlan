@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
-import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, LampFn , PoringIslandMapFn } from './actions';
+import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, LampFn , PoringIslandMapFn , PayonCaveMapFn} from './actions';
 
 import './css/mapPronteraToolDealer.css'
 import $ from 'jquery'
@@ -16,11 +16,11 @@ import BluePotion from './img/Item/BluePotion.gif'
 import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 import Lamp from './img/Item/Lamp.gif'
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
+import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
 // import useSound from 'use-sound';
 
 // AudioCurrentTimeSaverFn
 function StartMenu(){
-    console.log('rerender')
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
@@ -45,7 +45,8 @@ function StartMenu(){
       {id:91001,cost: 10, Get:LampFn(-10,1), Img: Lamp, name: "Lamp"},
     ]
     let MiscBuyUniqueBox = [ 
-      {id:93000,cost: 1, Get:PoringIslandMapFn(-1,1), Img: PoringIslandMap, name: "PoringIsland Map", Item: userGoldItem.PoringIslandMap}
+      {id:93000,cost: 1, Get:PoringIslandMapFn(-1,1), Img: PoringIslandMap, name: "PoringIsland Map", Item: userGoldItem.PoringIslandMap},
+      {id:93001,cost: 1, Get:PayonCaveMapFn(-1,1), Img: PayonCaveMap, name: "PayonCave Map", Item: userGoldItem.PayonCaveMap}
     ]
   
     let MiscSellBox = [

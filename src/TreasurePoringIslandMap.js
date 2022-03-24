@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { OpenChest1Fn, GetStatsPointFn } from './actions'
 import { OpenChest2Fn, RedPotionFn , AdventureSuitFn } from './actions'
 import { OpenChestBoss1Fn, SpiritOfEclipseFn } from './actions'
-import { OpenPayonCaveChest3Fn } from './actions'
+import { OpenChestBoss2Fn, SpiritOfWolyafaFn} from './actions'
+import { OpenPayonCaveChest3Fn, OpenPayonCaveChest4Fn } from './actions'
 import './css/mapTreasurePoringIsland.css'
 // import useSound from 'use-sound';
 
 import treasureBox from './img/NPC/TreasureBox.gif'
 import treasureBoxOpen from './img/NPC/TreasureBoxOpen.gif'
-import SpiritOfEclipse from './img/Etc/SpiritOfEclipse.gif'
+import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
@@ -26,8 +27,10 @@ function StartMenu(){
     const RewardBox = [
       {id: 1, Path:"Chest1", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChest1Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:10,ZenyQuantity:0,Condition1:npcControlRoom.Chest1, Condition2:npcControlRoom.Chest1VisitRepeat, RewardDisplay:"Received 10 Stats Point!"},
       {id: 2, Path:"Chest2", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChest2Fn,itemQuantity1:10,itemQuantity2:1,itemQuantity3:0,ZenyQuantity:0,Condition1:npcControlRoom.Chest2, Condition2:npcControlRoom.Chest2VisitRepeat, RewardDisplay:"Received 10 Red Health Potion & 1 Adventure Suit!"},
-      {id: 3, Path:"BossChest1", Get1Fn:SpiritOfEclipseFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss1Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:3000, Condition1:npcControlRoom.ChestBoss1,Condition2:npcControlRoom.ChestBoss1VisitRepeat, RewardDisplay:`Received 3000z & Spirit Of Eclipse(Important)!`, img1:SpiritOfEclipse, img1alt:"SpiritOfEclipse"},
+      {id: 3, Path:"BossChest1", Get1Fn:SpiritOfEclipseFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss1Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:3000, Condition1:npcControlRoom.ChestBoss1,Condition2:npcControlRoom.ChestBoss1VisitRepeat, RewardDisplay:`Received 3000z & Spirit Of Eclipse(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfEclipse"},
       {id: 4, Path:"PayonCaveChest3", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest3Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:15,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest3, Condition2:npcControlRoom.PayonCaveChest3VisitRepeat, RewardDisplay:"Received 15 Stats Point!"},
+      {id: 5, Path:"PayonCaveChest4", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest4Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:10,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest4, Condition2:npcControlRoom.PayonCaveChest4VisitRepeat, RewardDisplay:"Received 10 Stats Point!"},
+      {id: 6, Path:"BossChest2", Get1Fn:SpiritOfWolyafaFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss2Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:4000, Condition1:npcControlRoom.ChestBoss2,Condition2:npcControlRoom.ChestBoss2VisitRepeat, RewardDisplay:`Received 4000z & Spirit Of Wolyafa(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfWolyafa"},
     ]
     const dispatch = useDispatch();
 

@@ -86,8 +86,8 @@
   background-size: cover;
 }
 
-.PayonCave1FPath1::before,
-.PayonCave1FPath1:hover::before{
+.PayonCave1FPath0Pic2::before,
+.PayonCave1FPath0Pic2:hover::before{
   background-image: url('../img/Background/PayonCave1F2.jpg');
   background-repeat: no-repeat;
   background-position: center top;
@@ -100,6 +100,9 @@
   background-position: center top;
   background-size: cover;
 }
+
+
+
 
 .PayonCave1FTo2F::before,
 .PayonCave1FTo2F:hover::before,
@@ -127,37 +130,45 @@
   background-size: cover;
 }
 
+.PayonCave2FPath0::before,
+.PayonCave2FPath0:hover::before,
+.PayonCave2FPath6::before,
+.PayonCave2FPath6:hover::before,
 .PayonCave2FPath1::before,
-.PayonCave2FPath1:hover::before,
-.PayonCave2FPath7::before,
-.PayonCave2FPath7:hover::before,
-.PayonCave2FPath2::before,
-.PayonCave2FPath2:hover::before{
+.PayonCave2FPath1:hover::before{
   background-image: url('../img/Background/PayonCave2F1.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
 }
 
-.PayonCave2FPath3::before,
-.PayonCave2FPath3:hover::before{
+.PayonCave2FPath2::before,
+.PayonCave2FPath2:hover::before{
   background-image: url('../img/Background/PayonCave2FCrossPath.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.PayonCave2FPath4::before,
-.PayonCave2FPath4:hover::before{
+.PayonCave2FPath3::before,
+.PayonCave2FPath3:hover::before{
   background-image: url('../img/Background/PayonCave2FCave1.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.PayonCave2FPath1Pic2::before,
-.PayonCave2FPath1Pic2:hover::before{
+.PayonCave2FPath0Pic2::before,
+.PayonCave2FPath0Pic2:hover::before{
   background-image: url('../img/Background/PayonCave2F2.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.PayonCave2FPath4::before,
+.PayonCave2FPath4:hover::before{
+  background-image: url('../img/Background/PayonCave2F3.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -165,22 +176,14 @@
 
 .PayonCave2FPath5::before,
 .PayonCave2FPath5:hover::before{
-  background-image: url('../img/Background/PayonCave2F3.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-
-.PayonCave2FPath6::before,
-.PayonCave2FPath6:hover::before{
   background-image: url('../img/Background/PayonCave2FCave2.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
 }
 
-.PayonCave2FPath8::before,
-.PayonCave2FPath8:hover::before{
+.PayonCave2FPath7::before,
+.PayonCave2FPath7:hover::before{
   background-image: url('../img/Background/PayonCave2F4.jpg');
   background-repeat: no-repeat;
   background-position: center top;
@@ -287,3 +290,5 @@
 .PayonCave1FPath0 { grid-area: 2 / 2 / 3 / 3; }
 .TreasureBoxPayonCave1F { grid-area: 2 / 1 / 3 / 2; }
 .PayonCave1FTo2F { grid-area: 1 / 2 / 2 / 3; }
+.PayonCave1FPathHidden1 { grid-area: 2 / 3 / 3 / 4; }
+.PayonCave1FPathHidden2 { grid-area: 1 / 3 / 2 / 4; }

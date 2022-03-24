@@ -44,6 +44,10 @@ const Fn = {
     //PayonCave1F Dungeon
     PayonCaveChest3: false,
     PayonCaveChest3VisitRepeat: false,
+    PayonCaveChest4: false,
+    PayonCaveChest4VisitRepeat: false,
+    ChestBoss2: false,
+    ChestBoss2VisitRepeat: false,
     BossWolyafaDefeat: false,
     
 }
@@ -607,6 +611,26 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 PayonCaveChest3VisitRepeat: true
+            }
+        case 'OpenPayonCaveChest4Fn':
+            return {
+                ...state,
+                PayonCaveChest4: true
+            }
+        case 'PayonCaveChest4VisitRepeatFn':
+            return {
+                ...state,
+                PayonCaveChest4VisitRepeat: true
+            }
+        case 'OpenChestBoss2Fn':
+            return {
+                ...state,
+                ChestBoss2: true
+            }
+        case 'ChestBoss2VisitRepeatFn':
+            return {
+                ...state,
+                ChestBoss2VisitRepeat: true
             }
         case 'BossWolyafaDefeatFn':
             return {

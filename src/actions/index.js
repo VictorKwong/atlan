@@ -925,10 +925,25 @@ export const PoringIslandMapFn = (Zeny,Item) => {
         Item: Item
     };
 };
+export const PayonCaveMapFn = (Zeny,Item) => {
+    return {
+        type: 'PayonCaveMapFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+
 //MISSION
 export const SpiritOfEclipseFn = (Zeny,Item) => {
     return {
         type: 'SpiritOfEclipseFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const SpiritOfWolyafaFn = (Zeny,Item) => {
+    return {
+        type: 'SpiritOfWolyafaFn',
         Zeny: Zeny,
         Item: Item
     };
@@ -1498,6 +1513,11 @@ export const OpenChestBoss1Fn = () => {
         type: 'OpenChestBoss1Fn',
     };
 };
+export const ChestBoss1VisitRepeatFn = () => {
+    return {
+        type: 'ChestBoss1VisitRepeatFn',
+    };
+};
 //PAYONCAVE1F CHEST
 export const OpenPayonCaveChest3Fn = () => {
     return {
@@ -1510,12 +1530,30 @@ export const PayonCaveChest3VisitRepeatFn = () => {
         type: 'PayonCaveChest3VisitRepeatFn',
     };
 };
-
-export const ChestBoss1VisitRepeatFn = () => {
+//PAYONCAVE2F CHEST
+export const OpenPayonCaveChest4Fn = () => {
     return {
-        type: 'ChestBoss1VisitRepeatFn',
+        type: 'OpenPayonCaveChest4Fn',
     };
 };
+
+export const PayonCaveChest4VisitRepeatFn = () => {
+    return {
+        type: 'PayonCaveChest4VisitRepeatFn',
+    };
+};
+export const OpenChestBoss2Fn = () => {
+    return {
+        type: 'OpenChestBoss2Fn',
+    };
+};
+export const ChestBoss2VisitRepeatFn = () => {
+    return {
+        type: 'ChestBoss2VisitRepeatFn',
+    };
+};
+
+
 //PORING ISLAND BOSS
 export const BossEclipseDefeatFn = () => {
     return {
@@ -1582,13 +1620,63 @@ export const ReturnPoringIslandPathFn = () => {
         type: 'ReturnPoringIslandPathFn',
     };
 };
-//PayonCave Path
+//PayonCave1F Path
 export const GotoPayonCave1FPath1Fn = () => {
     return {
         type: 'GotoPayonCave1FPath1Fn',
     };
 };
-
+export const GotoPayonCave1FPath2HiddenFn = () => {
+    return {
+        type: 'GotoPayonCave1FPath2HiddenFn',
+    };
+};
+export const GotoPayonCave1FPath3HiddenFn = () => {
+    return {
+        type: 'GotoPayonCave1FPath3HiddenFn',
+    };
+};
+//2F
+export const GotoPayonCave2FPath1Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath1Fn',
+    };
+};
+export const GotoPayonCave2FPath2Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath2Fn',
+    };
+};
+export const GotoPayonCave2FPath3Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath3Fn',
+    };
+};
+export const GotoPayonCave2FPath4Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath4Fn',
+    };
+};
+export const GotoPayonCave2FPath5Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath5Fn',
+    };
+};
+export const GotoPayonCave2FPath6Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath6Fn',
+    };
+};
+export const GotoPayonCave2FPath7Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath7Fn',
+    };
+};
+export const GotoPayonCave2FPath8Fn = () => {
+    return {
+        type: 'GotoPayonCave2FPath8Fn',
+    };
+};
 //PayonCave Boss
 export const BossWolyafaDefeatFn = () => {
     return {
