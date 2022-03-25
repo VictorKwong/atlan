@@ -23,7 +23,9 @@ function StartMenu(){
       {id: 3, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
       {id: 4, num: "EmptyBottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle}
     ]
-    
+    const QuestSpecialBox = [
+      {id: 3, num: "Lemon", acceptDescription1: "Find out all hidden story from Lemon in PayonCave (1/2)", acceptDescription2: "Find out all hidden story from Lemon in PayonCave (2/2) - Talk to Lemon in Prontera"}
+    ]
 
 
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});

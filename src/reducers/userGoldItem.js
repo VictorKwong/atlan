@@ -36,7 +36,7 @@ const Fn = {
     PoringIslandMap: 1,
     PayonCaveMap:1,
     //MISC
-    Lamp:1,
+    Lamp:88,
     //Mission
     SpiritOfEclipse: 0,
     SpiritOfWolyafa: 0,

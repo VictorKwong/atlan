@@ -170,6 +170,15 @@ const Fn = {
         },{
             name: 'Atlan',
             text: 'Wow! I can see another path!'
+        },{
+            name: 'Atlan',
+            text: 'A story from Lemon: "Warcraft 3 Illidan, and I have draw his picture because he is so cool!! - Lemon 2015" (Hidden Story 1/2)'
+        },{
+            name: 'Atlan',
+            text: 'A story from Lemon: "Back into the days where we watch "Spirited Away" in 2001 - Lemon 2016" (Hidden Story 2/2)'
+        },{
+            name: 'Atlan',
+            text: 'Hmm.. what is this?'
         }],
     Adventure:[{
             name: 'Adventure',

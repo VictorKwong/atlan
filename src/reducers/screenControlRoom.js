@@ -622,6 +622,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     PayonCave3FPath4: true,
                 }
+            //debug
+            case 'PayonCave2FSelfNPCFn':
+                return{
+                    ...state,
+                    UserUnlockPath:"",
+                }
             //BattleLoadingScreen
             case 'BattleLoadingScreenFn':
                 return{

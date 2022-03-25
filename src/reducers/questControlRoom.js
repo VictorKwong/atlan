@@ -2,10 +2,8 @@ const Fn = {
     //Kill 3 Poring 500z +20exp
     //1. Kill 3 Poring 500z +20exp
     //2. Kill 3 Lunatic +1000z +60xp
-    //{ num: "123456" }
+    //{ QuestDialog: "PoringLunaticJellopyEmptybottle" }
     // -1 reuturns nothing, >= 0 good returns
-    ClearPoringQuest: false,
-    CompleteClearPoringQuest: false,
     QuestDialog: "",
     CompleteQuestDialog: "",
     ProgressQuestDialog: "",
@@ -13,17 +11,6 @@ const Fn = {
 
 const questControlRoomReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'AcceptClearPoringQuestFn':
-            return{
-                ...state,
-                ClearPoringQuest: true
-            }
-        case 'ReturnClearPoringQuestFn':
-            return{
-                ...state,
-                ClearPoringQuest: false,
-                CompleteClearPoringQuest: true
-            }
         case 'AcceptQuestDialogFn':
             return{
                 ...state,

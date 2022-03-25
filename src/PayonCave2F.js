@@ -4,17 +4,19 @@ import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCa
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //CHEST
-import { PayonCaveChest4VisitRepeatFn } from './actions'
+import { PayonCaveChest5VisitRepeatFn , PayonCaveChest6VisitRepeatFn} from './actions'
 //PATH
 import { GotoPayonCave2FPath3Fn , GotoPayonCave2FPath4Fn , GotoPayonCave2FPath6Fn, GotoPayonCave2FPath10HiddenFn } from './actions'
 //NPC
-import { PayonCave2FSelfNPCFn , PayonCave2FCaveNPCFn, ResetPayonCaveNPCFn } from './actions'
-
+import { PayonCave2FSelfNPCFn , PayonCave2FCaveNPCFn, PayonCave2FSelfNPCHiddenFn, ResetPayonCaveNPCFn } from './actions'
+//QUEST
+import { ProgressQuestDialogFn } from './actions'
 import './css/mapPayonCave2F.css'
 import $ from 'jquery'
 
 const PayonCave2F = (data) =>{
     const screenControlRoom = useSelector(state => state.screenControlRoom)
+    const questControlRoom = useSelector(state => state.questControlRoom)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
@@ -119,9 +121,12 @@ const PayonCave2F = (data) =>{
           <button className="PayonCaveBase PayonCave2FPath8" onClick={() => {LoadingScreenMiniBoss(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>???</button> : null}
           {/* Path 3 Hidden */}
           {screenControlRoom.PayonCave2FPath9Hidden ?
-          <button className="PayonCaveBase PayonCave2FPathHidden1" onClick={() => {dispatch(GotoPayonCave2FPath10HiddenFn()); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>Hidden23</button> : null}
+          <button className="PayonCaveBase PayonCave2FPathHidden1" onClick={npcControlRoom.PayonCaveChest6 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest6")); dispatch(PayonCaveChest6VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn()); dispatch(GotoPayonCave2FPath10HiddenFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest6")); dispatch(ResetPayonCaveNPCFn()); dispatch(GotoPayonCave2FPath10HiddenFn());}}>Hidden treasure chest</button> : null }
           {screenControlRoom.PayonCave2FPath10Hidden ?
-          <button className="PayonCaveBase PayonCave2FPathHidden2" onClick={() => {dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>Hidden1</button> : null}
+          <button className="PayonCaveBase PayonCave2FPathHidden2" onClick={
+            ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") === -1 ?
+            () => {changePlaceFadeAudio(); dispatch(PayonCave2FSelfNPCHiddenFn()); dispatch(ProgressQuestDialogFn("Lemonstorytwo")); } :
+            () => {dispatch(PayonCave2FSelfNPCHiddenFn()); changePlaceFadeAudio();}}>Hidden1</button> : null}
           {/* Path 4 */}
           {screenControlRoom.PayonCave2FPath4 ?
           <button className="PayonCaveBase PayonCave2FPath4" onClick={() => {LoadingScreen2(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Road4</button> : null}
@@ -133,7 +138,7 @@ const PayonCave2F = (data) =>{
           {screenControlRoom.PayonCave2FPath6 ?
           <button className={Math.random() <= 0.5 ? "PayonCaveBase PayonCave2FPath6 PayonCave2FPath1Pic2" : "PayonCaveBase PayonCave2FPath6"} onClick={() => {LoadingScreen3(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Road6</button> : null }
           {screenControlRoom.PayonCave2FPath6 ?
-          <button className="PayonCaveBase PayonCave2FPath9" onClick={npcControlRoom.PayonCaveChest4 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest4")); dispatch(PayonCaveChest4VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest4")); dispatch(ResetPayonCaveNPCFn());}}>treasure chest</button> : null }
+          <button className="PayonCaveBase PayonCave2FPath9" onClick={npcControlRoom.PayonCaveChest5 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest5")); dispatch(PayonCaveChest5VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest5")); dispatch(ResetPayonCaveNPCFn());}}>treasure chest</button> : null }
           {/* Path 7 */}
           {screenControlRoom.PayonCave2FPath7 ?
           <button className="PayonCaveBase PayonCave2FPath7" onClick={() => {LoadingScreen4(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Road7</button> : null}

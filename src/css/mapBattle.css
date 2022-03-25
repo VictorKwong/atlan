@@ -15,13 +15,20 @@
 }
 
 
-.battleScreen{
+.battleScreenBase{
   width:80%;
   border: 1px solid black;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   background-image: url('../img/Background/Grass7.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.battleScreenPayonCave{
+  background-image: url('../img/Background/Cave8.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

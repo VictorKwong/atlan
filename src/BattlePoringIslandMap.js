@@ -1979,7 +1979,7 @@ function Main(){
 
     // Longest Animation 1.2 = 0.3 onhit + 0.9 delay
     useEffect(() => {
-      setTimeout(() => clockBaseQtn(), 900);
+        setTimeout(() => clockBaseQtn(), 900);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
@@ -2003,7 +2003,7 @@ function Main(){
     //Rerender Clock FN
     //Uclock, clockCheck = 0;
     useEffect(() => {
-      setTimeout(() => clockRenderQtn(), 900);
+        setTimeout(() => clockRenderQtn(), 900);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
@@ -2014,7 +2014,7 @@ function Main(){
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
         <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShakeMore" : ImageControlRoom.EnemyOnHit || ImageControlRoom.UserOnHit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
-              <div className="battleScreen">
+              <div className={i <= 5 ? "battleScreenBase" : " battleScreenBase battleScreenPayonCave"}>
                 <div className="enemyBox"> 
                       {EnemyBox.map(Enemy => {
                         return( 

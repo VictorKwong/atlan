@@ -87,8 +87,8 @@ const Fn = [
     {
         name: 'Ghostring',
         level: 30,
-        maxHealth: 1, //4400
-        currentHealth: 1,
+        maxHealth: 2000, //4400
+        currentHealth: 2000,
         attack: 400,
         defence: 50,
         defencebuffer: 60, //+6

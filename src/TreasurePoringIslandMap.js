@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 import { OpenChest1Fn, GetStatsPointFn } from './actions'
-import { OpenChest2Fn, RedPotionFn , AdventureSuitFn } from './actions'
+import { OpenChest2Fn, RedPotionFn , AdventureSuitFn, OrangePotionFn, YellowPotionFn } from './actions'
 import { OpenChestBoss1Fn, SpiritOfEclipseFn } from './actions'
 import { OpenChestBoss2Fn, SpiritOfWolyafaFn} from './actions'
-import { OpenPayonCaveChest3Fn, OpenPayonCaveChest4Fn } from './actions'
+import { OpenPayonCaveChest3Fn, OpenPayonCaveChest4Fn , OpenPayonCaveChest5Fn, OpenPayonCaveChest6Fn} from './actions'
 import './css/mapTreasurePoringIsland.css'
 // import useSound from 'use-sound';
 
@@ -29,8 +29,10 @@ function StartMenu(){
       {id: 2, Path:"Chest2", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChest2Fn,itemQuantity1:10,itemQuantity2:1,itemQuantity3:0,ZenyQuantity:0,Condition1:npcControlRoom.Chest2, Condition2:npcControlRoom.Chest2VisitRepeat, RewardDisplay:"Received 10 Red Health Potion & 1 Adventure Suit!"},
       {id: 3, Path:"BossChest1", Get1Fn:SpiritOfEclipseFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss1Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:3000, Condition1:npcControlRoom.ChestBoss1,Condition2:npcControlRoom.ChestBoss1VisitRepeat, RewardDisplay:`Received 3000z & Spirit Of Eclipse(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfEclipse"},
       {id: 4, Path:"PayonCaveChest3", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest3Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:15,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest3, Condition2:npcControlRoom.PayonCaveChest3VisitRepeat, RewardDisplay:"Received 15 Stats Point!"},
-      {id: 5, Path:"PayonCaveChest4", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest4Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:10,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest4, Condition2:npcControlRoom.PayonCaveChest4VisitRepeat, RewardDisplay:"Received 10 Stats Point!"},
-      {id: 6, Path:"BossChest2", Get1Fn:SpiritOfWolyafaFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss2Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:4000, Condition1:npcControlRoom.ChestBoss2,Condition2:npcControlRoom.ChestBoss2VisitRepeat, RewardDisplay:`Received 4000z & Spirit Of Wolyafa(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfWolyafa"},
+      {id: 5, Path:"PayonCaveChest4", Get1Fn:OrangePotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest4Fn,itemQuantity1:5, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest4, Condition2:npcControlRoom.PayonCaveChest4VisitRepeat, RewardDisplay:"Received 5 Orange Potion!"},
+      {id: 6, Path:"PayonCaveChest5", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest5Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:10,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest5, Condition2:npcControlRoom.PayonCaveChest5VisitRepeat, RewardDisplay:"Received 10 Stats Point!"},
+      {id: 7, Path:"PayonCaveChest6", Get1Fn:YellowPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest6Fn,itemQuantity1:3, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest6, Condition2:npcControlRoom.PayonCaveChest6VisitRepeat, RewardDisplay:"Received 3 Yellow Potion!"},
+      {id: 8, Path:"BossChest2", Get1Fn:SpiritOfWolyafaFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss2Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:4000, Condition1:npcControlRoom.ChestBoss2,Condition2:npcControlRoom.ChestBoss2VisitRepeat, RewardDisplay:`Received 4000z & Spirit Of Wolyafa(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfWolyafa"},
     ]
     const dispatch = useDispatch();
 

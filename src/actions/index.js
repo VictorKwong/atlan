@@ -1288,16 +1288,6 @@ export const TickingClockFn = () => {
     };
 };
 //QUEST
-export const AcceptClearPoringQuestFn = () => {
-    return {
-        type: 'AcceptClearPoringQuestFn'
-    };
-};
-export const ReturnClearPoringQuestFn = () => {
-    return {
-        type: 'ReturnClearPoringQuestFn'
-    };
-};
 export const AcceptQuestDialogFn = (Num) => {
     return {
         type: 'AcceptQuestDialogFn',
@@ -1530,7 +1520,6 @@ export const PayonCaveChest3VisitRepeatFn = () => {
         type: 'PayonCaveChest3VisitRepeatFn',
     };
 };
-//PAYONCAVE2F CHEST
 export const OpenPayonCaveChest4Fn = () => {
     return {
         type: 'OpenPayonCaveChest4Fn',
@@ -1540,6 +1529,29 @@ export const OpenPayonCaveChest4Fn = () => {
 export const PayonCaveChest4VisitRepeatFn = () => {
     return {
         type: 'PayonCaveChest4VisitRepeatFn',
+    };
+};
+//PAYONCAVE2F CHEST
+export const OpenPayonCaveChest5Fn = () => {
+    return {
+        type: 'OpenPayonCaveChest5Fn',
+    };
+};
+
+export const PayonCaveChest5VisitRepeatFn = () => {
+    return {
+        type: 'PayonCaveChest5VisitRepeatFn',
+    };
+};
+export const OpenPayonCaveChest6Fn = () => {
+    return {
+        type: 'OpenPayonCaveChest6Fn',
+    };
+};
+
+export const PayonCaveChest6VisitRepeatFn = () => {
+    return {
+        type: 'PayonCaveChest6VisitRepeatFn',
     };
 };
 export const OpenChestBoss2Fn = () => {
@@ -1715,9 +1727,20 @@ export const BossWolyafaDefeatFn = () => {
         type: 'BossWolyafaDefeatFn',
     };
 };
+
+export const PayonCave1FSelfNPCHiddenFn = () => {
+    return {
+        type: 'PayonCave1FSelfNPCHiddenFn',
+    };
+};
 export const PayonCave2FSelfNPCFn = () => {
     return {
         type: 'PayonCave2FSelfNPCFn',
+    };
+};
+export const PayonCave2FSelfNPCHiddenFn = () => {
+    return {
+        type: 'PayonCave2FSelfNPCHiddenFn',
     };
 };
 export const PayonCave2FCaveNPCFn = () => {

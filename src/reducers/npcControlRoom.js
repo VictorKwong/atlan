@@ -46,10 +46,16 @@ const Fn = {
     PayonCaveChest3VisitRepeat: false,
     PayonCaveChest4: false,
     PayonCaveChest4VisitRepeat: false,
+    PayonCaveChest5: false,
+    PayonCaveChest5VisitRepeat: false,
+    PayonCaveChest6: false,
+    PayonCaveChest6VisitRepeat: false,
     ChestBoss2: false,
     ChestBoss2VisitRepeat: false,
     BossWolyafaDefeat: false,
+    PayonCave1FSelfNPCHidden: false,
     PayonCave2FSelfNPC: false,
+    PayonCave2FSelfNPCHidden: false,
     PayonCave2FCaveNPC: false,
     PayonCave3FCaveNPC: false,
     
@@ -625,6 +631,26 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCaveChest4VisitRepeat: true
             }
+        case 'OpenPayonCaveChest5Fn':
+            return {
+                ...state,
+                PayonCaveChest5: true
+            }
+        case 'PayonCaveChest5VisitRepeatFn':
+            return {
+                ...state,
+                PayonCaveChest5VisitRepeat: true
+            }
+        case 'OpenPayonCaveChest6Fn':
+            return {
+                ...state,
+                PayonCaveChest6: true
+            }
+        case 'PayonCaveChest6VisitRepeatFn':
+            return {
+                ...state,
+                PayonCaveChest6VisitRepeat: true
+            }
         case 'OpenChestBoss2Fn':
             return {
                 ...state,
@@ -640,31 +666,57 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 BossWolyafaDefeat: true
             }
+        case 'PayonCave1FSelfNPCHiddenFn':
+            return {
+                ...state,
+                PayonCave1FSelfNPCHidden: true,
+                PayonCave2FSelfNPC: false,
+                PayonCave2FSelfNPCHidden: false,
+                PayonCave2FCaveNPC: false,
+                PayonCave3FCaveNPC: false,
+            }
         case 'PayonCave2FSelfNPCFn':
             return {
                 ...state,
+                PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: true,
+                PayonCave2FSelfNPCHidden: false,
+                PayonCave2FCaveNPC: false,
+                PayonCave3FCaveNPC: false,
+            }
+        case 'PayonCave2FSelfNPCHiddenFn':
+            return {
+                ...state,
+                PayonCave1FSelfNPCHidden: false,
+                PayonCave2FSelfNPC: false,
+                PayonCave2FSelfNPCHidden: true,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
             }
         case 'PayonCave2FCaveNPCFn':
             return {
                 ...state,
+                PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: true,
                 PayonCave3FCaveNPC: false,
             }
         case 'PayonCave3FCaveNPCFn':
             return {
                 ...state,
+                PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: true,
             }   
         case 'ResetPayonCaveNPCFn':
             return {
                 ...state,
+                PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
             }
