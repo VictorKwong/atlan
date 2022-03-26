@@ -128,6 +128,12 @@ const Fn = {
         },{
             name: 'Lemon',
             text: 'Hehehe I wounder if you can defeat boss - Lunatic, then I will let you be join.'
+        },{
+            name: 'Lemon',
+            text: 'Sigh.. Yeah I draw some of them but how dare you can find the other drawings?'
+        },{
+            name: 'Lemon',
+            text: 'This will be a part of my memory...(tears) Thanks for bring all back to me Atlan..'
         }],
     Chocolate:[{
             name: 'Chocolate',

@@ -126,7 +126,7 @@ const PayonCave2F = (data) =>{
           <button className="PayonCaveBase PayonCave2FPathHidden2" onClick={
             ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") === -1 ?
             () => {changePlaceFadeAudio(); dispatch(PayonCave2FSelfNPCHiddenFn()); dispatch(ProgressQuestDialogFn("Lemonstorytwo")); } :
-            () => {dispatch(PayonCave2FSelfNPCHiddenFn()); changePlaceFadeAudio();}}>Hidden1</button> : null}
+            () => {dispatch(PayonCave2FSelfNPCHiddenFn()); changePlaceFadeAudio();}}>Hidden Story</button> : null}
           {/* Path 4 */}
           {screenControlRoom.PayonCave2FPath4 ?
           <button className="PayonCaveBase PayonCave2FPath4" onClick={() => {LoadingScreen2(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Road4</button> : null}

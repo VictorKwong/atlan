@@ -27,6 +27,17 @@ const questControlRoomReducer = (state = Fn, action) => {
                 //Poring & Poringking should be avoid
                 ProgressQuestDialog: (state.ProgressQuestDialog).replaceAll(action.Number, "")
             }
+        case 'ReturnSpecialQuestDialogFn':
+            return{
+                ...state,
+                QuestDialog: (state.QuestDialog).replace(action.Story, ""),
+                CompleteQuestDialog: state.CompleteQuestDialog + action.Story,
+                //case sensetive
+                //First letter has to be Uppercase
+                //Poring, Santaporing
+                //Poring & Poringking should be avoid
+                ProgressQuestDialog: ((state.ProgressQuestDialog).replaceAll(action.Number1, "")).replaceAll(action.Number2, "")
+            }
         case 'ProgressQuestDialogFn':
             return{
                 ...state,

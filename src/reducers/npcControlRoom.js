@@ -13,6 +13,8 @@ const Fn = {
     Lemon:false,
     Chocolate:false,
     IWantToJoinGuild:false,
+    LemonResponse:false,
+    LemonComplete:false,
     //Shop Talk
     WeaponDealer: false,
     ArmorDealer: false,
@@ -85,6 +87,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
 
             }
         case 'TalktoFountainFn':
@@ -108,6 +112,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoQuestBoardFn':
             return {
@@ -130,6 +136,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoSoldierGuard1Fn':
             return {
@@ -154,6 +162,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoSoldierGuard2Fn':
             return {
@@ -178,6 +188,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoPronteraKingFn':
             return {
@@ -202,6 +214,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoRoyalGuard1Fn':
             return {
@@ -226,6 +240,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoRoyalGuard2Fn':
             return {
@@ -250,6 +266,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoPronteraAssistantFn':
             return {
@@ -274,6 +292,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoKiwiFn':
             return {
@@ -298,6 +318,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoLemonFn':
             return {
@@ -322,6 +344,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:true,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoChocolateFn':
             return {
@@ -346,13 +370,26 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:true,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoIWantToJoinGuildFn':
             return {
                 ...state,
                 IWantToJoinGuild:true,
             }
-        
+        case 'TalktoLemonResponseFn':
+            return {
+                ...state,
+                LemonResponse:true,
+                LemonComplete:false,
+            }
+        case 'TalktoLemonCompleteFn':
+            return {
+                ...state,
+                LemonResponse:false,
+                LemonComplete:true,
+            }
         case 'ResetTalktoFn':
             return {
                 ...state,
@@ -374,6 +411,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoWeaponDealerFn':
             return {
@@ -398,6 +437,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoArmorDealerFn':
             return {
@@ -422,6 +463,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoHeadGearDealerFn':
             return {
@@ -446,6 +489,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'TalktoToolDealerFn':
             return {
@@ -470,6 +515,8 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 Lemon:false,
                 Chocolate:false,
                 IWantToJoinGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
             }
         case 'DealerBuyFn':
             return {

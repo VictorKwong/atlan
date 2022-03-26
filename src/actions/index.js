@@ -695,6 +695,17 @@ export const TalktoIWantToJoinGuildFn = () => {
         type: 'TalktoIWantToJoinGuildFn'
     };
 };
+export const TalktoLemonResponseFn = () => {
+    return {
+        type: 'TalktoLemonResponseFn'
+    };
+};
+
+export const TalktoLemonCompleteFn = () => {
+    return {
+        type: 'TalktoLemonCompleteFn'
+    };
+};
 
 
 
@@ -1300,6 +1311,15 @@ export const ReturnQuestDialogFn = (Num) => {
         Number: Num
     };
 };
+export const ReturnSpecialQuestDialogFn = (Story, Num1, Num2) => {
+    return {
+        type: 'ReturnSpecialQuestDialogFn',
+        Story: Story,
+        Number1: Num1,
+        Number2: Num2,
+    };
+};
+
 export const ProgressQuestDialogFn = (Num) => {
     return {
         type: 'ProgressQuestDialogFn',

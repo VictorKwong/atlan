@@ -24,7 +24,7 @@ function StartMenu(){
       {id: 4, num: "EmptyBottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle}
     ]
     const QuestSpecialBox = [
-      {id: 3, num: "Lemon", acceptDescription1: "Find out all hidden story from Lemon in PayonCave (1/2)", acceptDescription2: "Find out all hidden story from Lemon in PayonCave (2/2) - Talk to Lemon in Prontera"}
+      {id: 5, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out all hidden story from Lemon in PayonCave (1/2)", acceptDescription2: "Find out all hidden story from Lemon in PayonCave (2/2) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo"}
     ]
 
 
@@ -40,11 +40,11 @@ function StartMenu(){
                         {/* Quest Accept, Not Repeat / track*/}
                         {((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? 
                         <div>
-                          <p>{Quest.id}. {Quest.acceptName} + {Quest.acceptDescription}: {(questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length} / {Quest.totalNum}</p>
+                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription}: {(questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length} / {Quest.totalNum}</p>
                         </div> : 
                         questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0 ?
                         <div>
-                          <p>- Complete Quest {Quest.id} -</p>
+                          <p>- Complete Quest {Quest.id} {Quest.acceptName} -</p>
                         </div> :
                         null}
                       </li>
@@ -56,11 +56,31 @@ function StartMenu(){
                         {/* Quest Accept, Not Repeat / track*/}
                         {((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? 
                         <div>
-                          <p>{Quest.id}. {Quest.acceptName} + {Quest.acceptDescription} <img src={Quest.Img} alt={Quest.num} />: {Quest.currentNum} / {Quest.totalNum}</p>
+                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription} <img src={Quest.Img} alt={Quest.num} />: {Quest.currentNum} / {Quest.totalNum}</p>
                         </div> : 
                         questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0 ?
                         <div>
-                          <p>- Complete Quest {Quest.id} -</p>
+                          <p>- Complete Quest {Quest.id} {Quest.acceptName} -</p>
+                        </div> :
+                        null}
+                      </li>
+                    )
+                  })}
+                  {QuestSpecialBox.map(Quest => {
+                    return (
+                      <li key={Quest.id} className="questList">
+                        {/* Quest Accept, Not Repeat / track*/}
+                        {((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1 && (questControlRoom.ProgressQuestDialog).indexOf(Quest.condition1)) > -1 && !(questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0) ? 
+                        <div>
+                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription2}</p>
+                        </div> : 
+                        ((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) && !(questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0) ? 
+                        <div>
+                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription1}</p>
+                        </div> : 
+                        questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0 ?
+                        <div>
+                          <p>- Complete Quest {Quest.id} {Quest.acceptName} -</p>
                         </div> :
                         null}
                       </li>
