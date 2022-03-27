@@ -34,7 +34,7 @@ const Fn = {
 
     //Etc
     PoringIslandMap: 1,
-    PayonCaveMap:1,
+    PayonCaveMap:0,
     //MISC
     Lamp:88,
     //Mission

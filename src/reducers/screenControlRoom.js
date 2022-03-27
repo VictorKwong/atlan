@@ -622,6 +622,26 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     PayonCave3FPath4: true,
                 }
+            case 'ReturnPayonCavePathFn':
+                return {
+                    ...state,
+                    PayonCave1FPath1: false,
+                    PayonCave1FPath2Hidden: false,
+                    PayonCave2FPath1: false,
+                    PayonCave2FPath2: false,
+                    PayonCave2FPath3: false,
+                    PayonCave2FPath4: false,
+                    PayonCave2FPath5: false,
+                    PayonCave2FPath6: false,
+                    PayonCave2FPath7: false,
+                    PayonCave2FPath8: false,
+                    PayonCave2FPath9Hidden: false,
+                    PayonCave2FPath10Hidden: false,
+                    PayonCave3FPath1: false,
+                    PayonCave3FPath2: false,
+                    PayonCave3FPath3: false,
+                    PayonCave3FPath4: false,
+                }
             //debug
             case 'PayonCave2FSelfNPCFn':
                 return{

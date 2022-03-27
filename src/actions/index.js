@@ -1739,7 +1739,11 @@ export const GotoPayonCave3FPath4Fn = () => {
         type: 'GotoPayonCave3FPath4Fn',
     };
 };
-
+export const ReturnPayonCavePathFn = () => {
+    return {
+        type: 'ReturnPayonCavePathFn',
+    };
+}
 
 //PayonCave Boss
 export const BossWolyafaDefeatFn = () => {

@@ -680,7 +680,7 @@ function StartMenu(){
               <div className="textCenter">
                 <button className="kafraEmployeeHeal" onClick={() => dispatch(KafraEmployeeHealStateFn())}>Heal</button> 
               </div> : 
-              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !npcControlRoom.IWantToJoinGuild ?
+              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !npcControlRoom.IWantToJoinGuild && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
               <div className="textCenter">
                 {!npcControlRoom.LemonResponse ?
                 <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> : null}

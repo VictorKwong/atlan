@@ -9,7 +9,7 @@ import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHead
 //CHEST
 import { PayonCaveChest3VisitRepeatFn, PayonCaveChest4VisitRepeatFn } from './actions'
 //PATH
-import { GotoPayonCave1FPath3HiddenFn } from './actions'
+import { GotoPayonCave1FPath3HiddenFn, ReturnPayonCavePathFn } from './actions'
 //NPC
 import { PayonCave1FSelfNPCHiddenFn, ResetPayonCaveNPCFn } from './actions'
 //QUEST
@@ -246,7 +246,7 @@ function StartMenu(){
             <div className="PayonCave1FMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="PayonCave1FMapTitle">Payon Cave 1F</h3>
-              <button className="PayonCave1FToWorldMap" onClick={ userGoldItem.PayonCaveMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());} }>ToWorldMap</button>
+              <button className="PayonCave1FToWorldMap" onClick={ userGoldItem.PayonCaveMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn()); dispatch(ReturnPayonCavePathFn());} }>ToWorldMap</button>
               {/* Path 0 */}
               <button className={Math.random() <= 0.5 ? "PayonCave1FPath0": "PayonCave1FPath0 PayonCave1FPath0Pic2"} onClick={() =>{LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>Cave1</button>
               {/* Path 1 */}
