@@ -103,12 +103,12 @@
 }
 .Prontera{ grid-area: 2 / 2 / 3 / 3; }
 .SogratDesertPoringIsland{ grid-area: 3 / 2 / 4 / 3;}
-.AntHell { grid-area: 2 / 1 / 3 / 2;}
+.GeffenTower { grid-area: 2 / 1 / 3 / 2;}
 .PayonCave { grid-area: 2 / 3 / 3 / 4; } 
 
 .Prontera,
 .SogratDesertPoringIsland,
-.AntHell,
+.GeffenTower,
 .PayonCave{
   position: relative;
   font-family: 'Pangolin', cursive;

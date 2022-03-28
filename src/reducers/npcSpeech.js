@@ -144,7 +144,7 @@ const Fn = {
         }],
     PronteraKing:[{
             name: 'Prontera King',
-            text: 'Atlan, you need to collect all four important items to seal the chaos gate. Please hurry!'
+            text: 'Atlan, you need to collect all three important items to seal the chaos gate. Please hurry!'
         }],
     PronteraAssistant:[{
             name: 'PronteraAssistant',

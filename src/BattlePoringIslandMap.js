@@ -120,6 +120,7 @@ import WolyafaHit from './img/Monster/WolyafaHit.png'
 import WolyafaAttack from './img/Monster/WolyafaAttack.gif'
 import WolyafaDead from './img/Monster/WolyafaDead.png'
 
+
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'

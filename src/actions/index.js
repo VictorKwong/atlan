@@ -306,9 +306,9 @@ export const GotoPoringIslandFn = () => {
         type: 'GotoPoringIslandFn',
     };
 };
-export const GotoAntHellFn = () => {
+export const GotoGeffenTower1FFn = () => {
     return {
-        type: 'GotoAntHellFn',
+        type: 'GotoGeffenTower1FFn',
     };
 };
 export const GotoPayonCave1FFn = () => {

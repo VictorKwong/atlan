@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn, GotoPoringIslandFn, GotoAntHellFn, GotoPayonCave1FFn} from './actions';
+import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenTower1FFn, GotoPayonCave1FFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PronteraCastle from './PronteraCastle'
 import PoringIsland from './PoringIsland'
-import AntHell from './AntHell'
+import GeffenTower1F from './GeffenTower1F'
 import PayonCave1F from './PayonCave1F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -90,9 +90,9 @@ function StartMenu(){
         screenControlRoom.Prontera ? <Prontera />:
         screenControlRoom.PronteraCastle ? <PronteraCastle />:
         screenControlRoom.PoringIsland ? <PoringIsland />:
-        screenControlRoom.AntHell ? <AntHell />:
+        screenControlRoom.GeffenTower1F ? <GeffenTower1F />:
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
-        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />: 
+        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -124,7 +124,7 @@ function StartMenu(){
                 <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
                 <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>Payon Cave</button>
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
-                <button className="AntHell" onClick={() => {dispatch(GotoAntHellFn())}}>AntHell</button>
+                <button className="GeffenTower" onClick={() => {dispatch(GotoGeffenTower1FFn())}}>Geffen Tower</button>
               </div>
             }
             <div className="StoryHUD">
