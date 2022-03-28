@@ -7,7 +7,7 @@ const Fn = {
     Prontera: false,
     PronteraSouth: false,
     PoringIsland: false,
-    GeffenTower: false,
+    Geffen: false,
     PayonCave1F: false,
     
     //PORING ISLAND BATTLE
@@ -61,7 +61,8 @@ const Fn = {
     // PayonCave2FPath7: false,
     // PayonCave2FPath8: false,
     PayonCave1FPath1: true,
-    PayonCave1FPath2Hidden: false,
+    PayonCave1FPath2Hidden: true,
+    PayonCave1FPath3Hidden: true,
     PayonCave2FPath1: true,
     PayonCave2FPath2: true,
     PayonCave2FPath3: true,
@@ -70,8 +71,8 @@ const Fn = {
     PayonCave2FPath6: true,
     PayonCave2FPath7: true,
     PayonCave2FPath8: true,
-    PayonCave2FPath9Hidden: false,
-    PayonCave2FPath10Hidden: false,
+    PayonCave2FPath9Hidden: true,
+    PayonCave2FPath10Hidden: true,
     PayonCave3FPath1: true,
     PayonCave3FPath2: true,
     PayonCave3FPath3: true,
@@ -306,7 +307,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 PronteraCastle: false,
                 PronteraSouth: false,
                 PoringIsland: false,
-                GeffenTower1F: false,
+                Geffen: false,
                 PayonCave1F: false,
                 PayonCave2F: false,
             }
@@ -319,7 +320,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PronteraCastle: !state.PronteraCastle,
                     PronteraSouth: false,
                     PoringIsland: false,
-                    GeffenTower1F: false,
+                    Geffen: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                 }
@@ -332,7 +333,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: !state.PoringIsland,
-                    GeffenTower1F: false,
+                    Geffen: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                     UserLocation: "Path0"
@@ -346,7 +347,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: false,
-                    GeffenTower1F: false,
+                    Geffen: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                 }
@@ -360,12 +361,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: false,
-                    GeffenTower1F: false,
+                    Geffen: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                     UserUnlockPath: action.Path
                 }
-            case 'GotoGeffenTower1FFn':
+            case 'GotoGeffenFn':
                 return {
                     ...state,
                     WorldMap: false,
@@ -374,10 +375,10 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: false,
-                    GeffenTower1F: true,
+                    Geffen: true,
                     PayonCave1F: false,
                     PayonCave2F: false,
-                    UserLocation: "GeffenTower1FPath0"
+                    UserLocation: ""
                 }
             case 'GotoPayonCave1FFn':
                 return {
@@ -388,7 +389,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PronteraCastle: false,
                     PronteraSouth: false,
                     PoringIsland: false,
-                    GeffenTower1F: false,
+                    Geffen: false,
                     PayonCave1F: true,
                     PayonCave2F: false,
                     UserLocation: "PayonCavePath0"
@@ -655,6 +656,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PayonCave3FPath2: false,
                     PayonCave3FPath3: false,
                     PayonCave3FPath4: false,
+                }
+
+            //GEFFEN TOWER
+            case 'ReturnGeffenTowerPathFn':
+                return {
+                    ...state
                 }
             //debug
             case 'PayonCave2FSelfNPCFn':

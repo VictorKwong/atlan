@@ -306,9 +306,9 @@ export const GotoPoringIslandFn = () => {
         type: 'GotoPoringIslandFn',
     };
 };
-export const GotoGeffenTower1FFn = () => {
+export const GotoGeffenFn = () => {
     return {
-        type: 'GotoGeffenTower1FFn',
+        type: 'GotoGeffenFn',
     };
 };
 export const GotoPayonCave1FFn = () => {
@@ -1783,6 +1783,12 @@ export const ResetPayonCaveNPCFn = () => {
     };
 };
 
+//GEFFEN TOWER
+export const ReturnGeffenTowerPathFn = () => {
+    return {
+        type: 'ReturnGeffenTowerPathFn',
+    };
+};
 
 
 

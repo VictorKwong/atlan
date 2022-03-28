@@ -20,7 +20,8 @@
 
 .Prontera::before,
 .SogratDesertPoringIsland::before,
-.PayonCave::before{
+.PayonCave::before,
+.Geffen::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -38,7 +39,8 @@
 }
 .Prontera:hover::before,
 .SogratDesertPoringIsland:hover::before,
-.PayonCave:hover::before{
+.PayonCave:hover::before,
+.Geffen:hover::before{
   opacity: 1;
   background-image: url('../img/Background/Prontera.jpg');
   background-position: center;
@@ -50,13 +52,25 @@
 .SogratDesertPoringIsland::before,
 .SogratDesertPoringIsland:hover::before{
   background-image: url('../img/Background/PoringIsland.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .PayonCave::before,
 .PayonCave:hover::before{
   background-image: url('../img/Background/PayonCave.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-
+.Geffen::before,
+.Geffen:hover::before{
+  background-image: url('../img/Background/Geffen.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 .mapTitle{
   font-size: 30px;
@@ -103,12 +117,12 @@
 }
 .Prontera{ grid-area: 2 / 2 / 3 / 3; }
 .SogratDesertPoringIsland{ grid-area: 3 / 2 / 4 / 3;}
-.GeffenTower { grid-area: 2 / 1 / 3 / 2;}
+.Geffen { grid-area: 2 / 1 / 3 / 2;}
 .PayonCave { grid-area: 2 / 3 / 3 / 4; } 
 
 .Prontera,
 .SogratDesertPoringIsland,
-.GeffenTower,
+.Geffen,
 .PayonCave{
   position: relative;
   font-family: 'Pangolin', cursive;
@@ -125,7 +139,9 @@
 .PayonCave{
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(202, 144, 216) 100%);
 }
-
+.Geffen{
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(216, 211, 144) 100%);
+}
 
 .altanEquipment,
 .altanItems,
@@ -365,8 +381,8 @@
 @media (max-width: 467px){
   .Prontera,
   .SogratDesertPoringIsland,
-  .AntHell,
-  .AntHellTest{
+  .PayonCave,
+  .Geffen{
     font-size: 15px;
   }
   .altanEquipment,

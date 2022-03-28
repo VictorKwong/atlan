@@ -338,3 +338,49 @@
 .PayonCave1FTo2F { grid-area: 1 / 2 / 2 / 3; }
 .PayonCave1FPathHidden1 { grid-area: 2 / 3 / 3 / 4; }
 .PayonCave1FPathHidden2 { grid-area: 1 / 3 / 2 / 4; }
+
+@media (max-width: 1199px){
+
+}
+
+@media (max-width: 1023px){
+
+}
+
+@media (max-width: 767px){
+  .PayonCave1FMap,
+  .PayonCave2FMap,
+  .PayonCave3FMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .PayonCave1FToWorldMap,
+  .PayonCave1FPath0,
+  .TreasureBoxPayonCave1F,
+  .PayonCave1FTo2F,
+  .PayonCaveBase{
+    width:100%;
+    min-height: 50px;
+  }
+  .PayonCave1FMapTitle,
+  .PayonCave2FMapTitle,
+  .PayonCave3FMapTitle{
+    font-size: 23px;
+  }
+}
+@media (max-width: 467px){
+  .PayonCave1FMapTitle,
+  .PayonCave2FMapTitle,
+  .PayonCave3FMapTitle{
+    font-size: 14px;
+  }
+  .PayonCave1FMap,
+  .PayonCave2FMap,
+  .PayonCave3FMap{
+    padding-top: 20px;
+  }
+}

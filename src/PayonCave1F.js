@@ -107,11 +107,13 @@ function StartMenu(){
           // Auto-play was prevented
         });
       }
-      $('.PayonCave1FMapTitle').fadeIn(600);
-      $('.PayonCave1FMapTitle').delay(2400).fadeOut(600);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    useEffect(() => {
+      $('.PayonCave1FMapTitle').fadeIn(600);
+      $('.PayonCave1FMapTitle').delay(2400).fadeOut(600);
+    }, [screenControlRoom])
     const changeMapFadeAudio = () => {
       let i = 0;
       const fadeAudio = setInterval(() => {
@@ -249,11 +251,6 @@ function StartMenu(){
               <button className="PayonCave1FToWorldMap" onClick={ userGoldItem.PayonCaveMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn()); dispatch(ReturnPayonCavePathFn());} }>ToWorldMap</button>
               {/* Path 0 */}
               <button className={Math.random() <= 0.5 ? "PayonCave1FPath0": "PayonCave1FPath0 PayonCave1FPath0Pic2"} onClick={() =>{LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>Cave1</button>
-              {/* Path 1 */}
-              {screenControlRoom.PayonCave1FPath1 ?
-               <button className="TreasureBoxPayonCave1F" onClick={npcControlRoom.PayonCaveChest3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(PayonCaveChest3VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(ResetPayonCaveNPCFn());}}>treasure chest</button> : null}
-              {screenControlRoom.PayonCave1FPath1 ?
-                <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>PayonCave2F</button> : null}
               {/* Path 2 Hidden*/}
               {screenControlRoom.PayonCave1FPath2Hidden ?
                 <button className="PayonCaveBase PayonCave1FPathHidden1" onClick={npcControlRoom.PayonCaveChest4 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest4")); dispatch(PayonCaveChest4VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn()); dispatch(GotoPayonCave1FPath3HiddenFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest4")); dispatch(ResetPayonCaveNPCFn()); dispatch(GotoPayonCave1FPath3HiddenFn());}}>Hidden treasure chest</button> : null }
@@ -263,6 +260,12 @@ function StartMenu(){
                 ((questControlRoom.QuestDialog).indexOf("Lemonstory") === -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) ?
                 () => {changePlaceFadeAudio(); dispatch(PayonCave1FSelfNPCHiddenFn()); dispatch(AcceptQuestDialogFn("Lemonstory")); dispatch(ProgressQuestDialogFn("Lemonstoryone")); } :
                 () => {changePlaceFadeAudio(); dispatch(PayonCave1FSelfNPCHiddenFn());}}>Hidden Story</button> : null}
+              {/* Path 1 */}
+              {screenControlRoom.PayonCave1FPath1 ?
+               <button className="TreasureBoxPayonCave1F" onClick={npcControlRoom.PayonCaveChest3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(PayonCaveChest3VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(ResetPayonCaveNPCFn());}}>treasure chest</button> : null}
+              {screenControlRoom.PayonCave1FPath1 ?
+                <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>PayonCave2F</button> : null}
+
             </div>
             }
             <div className="StoryHUD">
