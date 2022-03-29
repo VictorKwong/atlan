@@ -311,6 +311,12 @@ export const GotoGeffenFn = () => {
         type: 'GotoGeffenFn',
     };
 };
+export const GotoGeffenDungeon1Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon1Fn',
+    };
+};
+
 export const GotoPayonCave1FFn = () => {
     return {
         type: 'GotoPayonCave1FFn',

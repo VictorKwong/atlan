@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn } from './actions';
+import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1Fn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 
-import WorldMap from './WorldMap'
 
+import WorldMap from './WorldMap'
+import GeffenDungeon1F from './GeffenDungeon1F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -136,10 +137,11 @@ function StartMenu(){
       }, 10);
   }
   return(
-    <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
+    <div>
       {
       screenControlRoom.WorldMap ? <WorldMap/> :
-      <div className={screenControlRoom.PayonCave1F && screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : screenControlRoom.PayonCave1F && screenControlRoom.PayonCave3F ? "PayonCave3FMapBackground" : screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : null}>
+      screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
+      <div className="GeffenMapBackground">
         <div className="storyMapScreen">
           {screenControlRoom.AltanEquipment ? 
             <div className="ReturnParent">
@@ -164,7 +166,8 @@ function StartMenu(){
           <div className="GeffenMap">
             <button className="ReturnHUDBugFix"></button>
             <h3 className="GeffenMapTitle">Geffen</h3>
-            <button className="GeffenTowerBase GeffenTower1FToWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
+            <button className="GeffenWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
+            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1Fn()); changeMapFadeAudio();}}>Geffen Dungeon Entrance</button>
           </div>
           }
           <div className="StoryHUD">
