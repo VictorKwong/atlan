@@ -183,11 +183,16 @@ function StartMenu(){
             <div className="GeffenDungeon1FMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
+              {/* Path 0*/}
               <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio();}}>ToGeffen</button>
               <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0();}}>Path1</button>
+              {/* Path 1*/}
               <button className="GeffenDungeonBase GeffenDungeon1FPath1" onClick={() =>{changePlaceFadeAudio();}}>Narrow Road</button>
+              {/* Path 2*/}
               <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath2" : "GeffenDungeonBase GeffenDungeon1FPath2 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen1();}}>Path2</button>
+              {/* Path 3*/}
               <button className="GeffenDungeonBase GeffenDungeon1FPath3" onClick={() =>{changePlaceFadeAudio();}}>Nia</button>
+              {/* Path 4*/}
               <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{changeMapFadeAudio();}}>Geffen Dungeon 2F</button>
             </div>
             }

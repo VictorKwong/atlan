@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
-import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, LampFn , PoringIslandMapFn , PayonCaveMapFn} from './actions';
+import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, LampFn , PoringIslandMapFn , PayonCaveMapFn, GeffenDungeonMapFn} from './actions';
 
 import './css/mapPronteraToolDealer.css'
 import $ from 'jquery'
@@ -17,6 +17,7 @@ import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 import Lamp from './img/Item/Lamp.gif'
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
+import GeffenDungeonMap from './img/Etc/GeffenDungeonMap.gif'
 // import useSound from 'use-sound';
 
 // AudioCurrentTimeSaverFn
@@ -46,7 +47,8 @@ function StartMenu(){
     ]
     let MiscBuyUniqueBox = [ 
       {id:93000,cost: 1, Get:PoringIslandMapFn(-1,1), Img: PoringIslandMap, name: "PoringIsland Map", Item: userGoldItem.PoringIslandMap},
-      {id:93001,cost: 1, Get:PayonCaveMapFn(-1,1), Img: PayonCaveMap, name: "PayonCave Map", Item: userGoldItem.PayonCaveMap}
+      {id:93001,cost: 1, Get:PayonCaveMapFn(-1,1), Img: PayonCaveMap, name: "PayonCave Map", Item: userGoldItem.PayonCaveMap},
+      {id:93002,cost: 1, Get:GeffenDungeonMapFn(-1,1), Img: GeffenDungeonMap, name: "GeffenDungeon Map", Item: userGoldItem.GeffenDungeonMap}
     ]
   
     let MiscSellBox = [

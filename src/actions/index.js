@@ -949,6 +949,13 @@ export const PayonCaveMapFn = (Zeny,Item) => {
         Item: Item
     };
 };
+export const GeffenDungeonMapFn = (Zeny,Item) => {
+    return {
+        type: 'GeffenDungeonMapFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
 
 //MISSION
 export const SpiritOfEclipseFn = (Zeny,Item) => {
@@ -1811,16 +1818,33 @@ export const ResetPayonCaveNPCFn = () => {
         type: 'ResetPayonCaveNPCFn',
     };
 };
-
 //GEFFEN TOWER
-export const ReturnGeffenTowerPathFn = () => {
+export const GotoGeffenDungeon1FPath1Fn = () => {
     return {
-        type: 'ReturnGeffenTowerPathFn',
+        type: 'GotoGeffenDungeon1FPath1Fn',
+    };
+};
+export const GotoGeffenDungeon1FPath2 = () => {
+    return {
+        type: 'GotoGeffenDungeon1FPath2',
+    };
+};
+export const GotoGeffenDungeon1FPath3 = () => {
+    return {
+        type: 'GotoGeffenDungeon1FPath3',
+    };
+};
+export const GotoGeffenDungeon1FPath4 = () => {
+    return {
+        type: 'GotoGeffenDungeon1FPath4',
     };
 };
 
-
-
+export const ReturnGeffenDungeonPathFn = () => {
+    return {
+        type: 'ReturnGeffenDungeonPathFn',
+    };
+};
 
 
 //Audio Interaction

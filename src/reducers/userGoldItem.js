@@ -35,6 +35,7 @@ const Fn = {
     //Etc
     PoringIslandMap: 1,
     PayonCaveMap:1,
+    GeffenDungeonMap:1,
     //MISC
     Lamp:88,
     //Mission
@@ -137,6 +138,12 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 PayonCaveMap: state.PayonCaveMap + action.Item,
+            }
+        case 'GeffenDungeonMapFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                GeffenDungeonMap: state.GeffenDungeonMap + action.Item,
             }
 
         //MISC

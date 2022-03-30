@@ -37,7 +37,7 @@
 .titleName{
   -webkit-text-stroke: 0.2px black;
   stroke: 0.2px black;
-  color: white;
+  color: white; 
 }
 
 
@@ -233,6 +233,10 @@ progress.BarBasicHUD::-webkit-progress-bar{
   box-shadow: none;
 }
 
+.clockName{
+  font-size: 14px;
+}
+
 .nameStatsHUD{
   font-size: 20px;
 }
@@ -287,7 +291,6 @@ progress.BarBasicHUD::-webkit-progress-bar{
   color:#363f4b;
   transition: color 0.07s ease-in-out;
   font-family: 'Balsamiq Sans', cursive;
-
 }
 .goGoButton:hover,
 .goGoButtonSkills:hover{
@@ -561,6 +564,11 @@ progress.BarBasicHUD::-webkit-progress-bar{
   }
 }
 @media (max-width: 767px){
+  .battleScreenBase{
+    flex-direction: column;
+    align-items: initial;
+    justify-content: center;
+  }
   .hptextHUD,
   .sptextHUD,
   .hpPerHUD,
@@ -577,7 +585,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
     justify-content: center;
   }
   .leveltext{
-    font-size: 14px;
+    font-size: 11px;
   }
   .greenHP,
   .redHP,
@@ -591,11 +599,20 @@ progress.BarBasicHUD::-webkit-progress-bar{
   }
   .zenytextHUD{
     padding-top:10px;
+    text-align: center;
   }
   .goGoButtonName,
   .goGoButtonSkillBash{
     font-size:12px;
   }
+  .titleName{
+    font-size:18px;
+  }
+  .UserBox{
+    display: flex;
+    justify-content: flex-end;
+  }
+
 }
 @media (max-width: 467px){
   .BarBasicHUD{
@@ -623,19 +640,18 @@ progress.BarBasicHUD::-webkit-progress-bar{
     font-size: 14px;
   }
   .altanImg{
-    height: 120px;
+    height: 150px;
   }
   .greenHP,
   .redHP,
   .yellowHP{
-    top:100px;
-
+    top:120px;
   }
   .blueSP{
-    top:106px;
+    top:126px;
   }
   .userNamePosition{
-    top:112px;
+    top:132px;
   }
   .imgFlip{
     height: 35px;
@@ -643,10 +659,16 @@ progress.BarBasicHUD::-webkit-progress-bar{
   .leveltextHUD{
     text-align: center;
   }
+  .leveltext{
+    font-size: 13px;
+  }
   .enemyBox{
-    width:100px;
+    width:120px;
   }
   .goGoButtonHide{
     display: none;
+  }
+  .titleName{
+    font-size:15px;
   }
 }

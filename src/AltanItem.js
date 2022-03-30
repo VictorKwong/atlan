@@ -69,6 +69,8 @@ import MushroomSpore from './img/Etc/PoisonSpore_MushroomSpore12.gif'
 import Karvodailnirol from './img/Etc/PoisonSpore_Karvodailnirol5.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
+import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
+import GeffenDungeonMap from './img/Etc/GeffenDungeonMap.gif'
 //MISSION
 import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 
@@ -151,6 +153,8 @@ function StartMenu(){
       
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
+      {id:91001, Img:PayonCaveMap, name:"PayonCave Map", itemCheck:userGoldItem.PayonCaveMap},
+      {id:91002, Img:GeffenDungeonMap, name:"GeffenDungeon Map", itemCheck:userGoldItem.GeffenDungeonMap},
       {id:100001, Img:SpiritOfBoss, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse},
       {id:100002, Img:SpiritOfBoss, name:"Spirit Of Wolyafa", itemCheck:userGoldItem.SpiritOfWolyafa}
     ]
@@ -161,9 +165,9 @@ function StartMenu(){
     return(
       <div className="AltanItemMap">
         <h2 className="altanItemTitle">Inventory</h2>
-        <button className={screenControlRoom.ItemChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoItemChoiceFn())}>item</button>
-        <button className={screenControlRoom.EquipChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoEquipChoiceFn())}>equip</button>
-        <button className={screenControlRoom.ETCChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoETCChoiceFn())}>etc</button>
+        <button className={screenControlRoom.ItemChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoItemChoiceFn())}>Item</button>
+        <button className={screenControlRoom.EquipChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoEquipChoiceFn())}>Equip</button>
+        <button className={screenControlRoom.ETCChoice ? "ItemSelectionButton ItemSelctionButtonBeingSelect" : "ItemSelectionButton"} onClick={() => dispatch(GotoETCChoiceFn())}>Etc</button>
         {screenControlRoom.ItemChoice ?
           <div className="itemBoxDisplay">
               {ItemBox.map(Item => {

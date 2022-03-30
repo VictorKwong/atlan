@@ -1708,7 +1708,7 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         dispatch(UserOnLifeStealAnimationFn(true));
         setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-        Damage = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+        Damage = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
         //Rerender
         setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1728,7 +1728,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnLifeStealAnimationFn(true));
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02))
+      Damage = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack)
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1748,7 +1748,7 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         dispatch(UserOnLifeStealAnimationFn(true));
         setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-        Damage = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+        Damage = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
         //Rerender
         setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1768,7 +1768,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnLifeStealAnimationFn(true));
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      Damage = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1788,7 +1788,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnLifeStealAnimationFn(true));
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      Damage = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1808,7 +1808,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnLifeStealAnimationFn(true));
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      Damage = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
       //Rerender
       setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -2170,26 +2170,28 @@ function Main(){
                     <p>Enemy Dodge Rate {enemyStats[i].dodgeRate}</p>
                     <p>Enemy Crit Rate {enemyStats[i].critRate}</p> */}
                 </div>
-                <div className="UserImageBox">
-                  {/* User attack Post */}
-                  {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
-                  ImageControlRoom.UserIsDefend && ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg battleScreenShake" : "altanImg battleScreenShake"}/> :
-                  ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
-                  // User Defend Post
-                  ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                  // User Battle Post
-                  <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
-                  <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>
-                  <p className={ ImageControlRoom.UserOnLifeStealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}</p>
-                  <p className={ ImageControlRoom.UserOnLifeStealAnimation && ImageControlRoom.EnemyOnHitDouble ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale)}</p>
-                  <p className={ ImageControlRoom.UserOnSPHealAnimation ? `HealSPResultNumberUser` : `DamageResultNumberHide`}>{SPHeal}</p>
-                  <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
-                  <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
-                  <h2 className="wordCenter titleName userNamePosition">Atlan</h2>
+                <div className="UserBox">
+                  <div className="UserImageBox">
+                    {/* User attack Post */}
+                    {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
+                    ImageControlRoom.UserIsDefend && ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg battleScreenShake" : "altanImg battleScreenShake"}/> :
+                    ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
+                    // User Defend Post
+                    ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    // User Battle Post
+                    <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
+                    <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>
+                    <p className={ ImageControlRoom.UserOnLifeStealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}</p>
+                    <p className={ ImageControlRoom.UserOnLifeStealAnimation && ImageControlRoom.EnemyOnHitDouble ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale)}</p>
+                    <p className={ ImageControlRoom.UserOnSPHealAnimation ? `HealSPResultNumberUser` : `DamageResultNumberHide`}>{SPHeal}</p>
+                    <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
+                    <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
+                    <h2 className="wordCenter titleName userNamePosition">Atlan</h2>
+                  </div>
                 </div>
               </div>  
               <div className="StoryHUD">

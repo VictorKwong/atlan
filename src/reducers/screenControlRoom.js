@@ -79,6 +79,11 @@ const Fn = {
     PayonCave3FPath2: true,
     PayonCave3FPath3: true,
     PayonCave3FPath4: true,
+    //Geffen Dungeon PATH
+    GeffenDungeon1FPath1: true,
+    GeffenDungeon1FPath2: true,
+    GeffenDungeon1FPath3: true,
+    GeffenDungeon1FPath4: true,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -689,11 +694,35 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PayonCave3FPath3: false,
                     PayonCave3FPath4: false,
                 }
+            case 'GotoGeffenDungeon1FPath1Fn':
+                return{
+                    ...state,
+                    GeffenDungeon1FPath1: true,
+                }
+            case 'GotoGeffenDungeon1FPath2Fn':
+                return{
+                    ...state,
+                    GeffenDungeon1FPath2: true,
+                }
+            case 'GotoGeffenDungeon1FPath3Fn':
+                return{
+                    ...state,
+                    GeffenDungeon1FPath3: true,
+                }
+            case 'GotoGeffenDungeon1FPath4Fn':
+                return{
+                    ...state,
+                    GeffenDungeon1FPath4: true,
+                }
 
             //GEFFEN TOWER
-            case 'ReturnGeffenTowerPathFn':
+            case 'ReturnGeffenDungeonPathFn':
                 return {
-                    ...state
+                    ...state,
+                    GeffenDungeon1FPath1: false,
+                    GeffenDungeon1FPath2: false,
+                    GeffenDungeon1FPath3: false,
+                    GeffenDungeon1FPath4: false,
                 }
             //debug
             case 'PayonCave2FSelfNPCFn':
