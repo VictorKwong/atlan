@@ -94,12 +94,12 @@ const Fn = [
         level: 30,
         maxHealth: 2000, //4400
         currentHealth: 2000,
-        attack: 400,
+        attack: 1,
         defence: 50,
         defencebuffer: 60, //+6
         speed: 10,
         hitRate: 0.85,
-        dodgeRate: 0.3,
+        dodgeRate: 1,
         critRate: 0.03,
         critResist: 0.05,
         Experience: 900,

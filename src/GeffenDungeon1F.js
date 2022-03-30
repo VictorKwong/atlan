@@ -10,6 +10,7 @@ import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHead
 import Geffen from './Geffen'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
+import GeffenDungeon2F from './GeffenDungeon2F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -154,7 +155,7 @@ function StartMenu(){
         {
         screenControlRoom.Geffen ? <Geffen/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div className="GeffenDungeon1FMapBackground">
+        <div className={screenControlRoom.GeffenDungeon1F && screenControlRoom.GeffenDungeon2F ? "GeffenDungeon2FMapBackground" : "GeffenDungeon1FMapBackground"}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -180,6 +181,10 @@ function StartMenu(){
               <div className="ReturnParent">
                 <TreasurePoringIslandMap />
               </div>:
+            screenControlRoom.GeffenDungeon2F ?
+              <div className="ReturnParent">
+                <GeffenDungeon2F audioBGM={audioBGM}/>
+              </div>:
             <div className="GeffenDungeon1FMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
@@ -193,7 +198,7 @@ function StartMenu(){
               {/* Path 3*/}
               <button className="GeffenDungeonBase GeffenDungeon1FPath3" onClick={() =>{changePlaceFadeAudio();}}>Nia</button>
               {/* Path 4*/}
-              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{changeMapFadeAudio();}}>Geffen Dungeon 2F</button>
+              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen Dungeon 2F</button>
             </div>
             }
             <div className="StoryHUD">

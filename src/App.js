@@ -6,7 +6,7 @@ import Footer from './Footer'
 // import useSound from 'use-sound';
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
-const audio = new Audio(audioStartUpGame);
+const audioBGM = new Audio(audioStartUpGame);
 function App(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
@@ -15,13 +15,13 @@ function App(){
 
     useEffect(() => {
       
-      audio.volume = 0.1;
-      let playPromise = audio.play(); 
+      audioBGM.volume = 0.1;
+      let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
           // Automatic playback started!
           // audio.loop = true;
-          audio.play()
+          audioBGM.play()
         })
         .catch(error => {
           // Auto-play was prevented
@@ -31,7 +31,7 @@ function App(){
       //happens
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch]);
+    }, []);
     
     return(
       <div className="logoBackground">

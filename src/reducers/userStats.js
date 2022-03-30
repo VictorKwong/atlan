@@ -11,7 +11,7 @@ const Fn = {
     defencebuffer: 38, // 18 + 20
     speed: 10,
     hitRate: 0.95, //0.95
-    dodgeRate: 0.1, //0.1
+    dodgeRate: 1, //0.1
     critRate: 1, // 0.05
     userClockDefend: false,
     userWeapon: 'Katana',

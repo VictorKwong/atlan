@@ -1989,7 +1989,7 @@ function Main(){
                   dispatch(EnemyAttackAnimationFn(true));
                   setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserIsDodgeAnimationFn(true));
-                  setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1040);
+                  setTimeout(() => dispatch(UserIsDodgeAnimationFn(false)), 1050);
                   $('.storySpeech').append(`<p style="color:red">${enemyStats[i].name} Attack! Atlan dodge the attack!</p>`)
                   //Rerender
                   return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
