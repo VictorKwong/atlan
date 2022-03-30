@@ -394,7 +394,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PayonCave2F: false,
                     UserLocation: ""
                 }
-            case 'GotoGeffenDungeon1Fn':
+            case 'GotoGeffenDungeon1FFn':
                 return {
                     ...state,
                     WorldMap: false,

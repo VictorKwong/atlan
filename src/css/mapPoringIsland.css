@@ -103,8 +103,8 @@
   width:80%;
   border: 1px solid black;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   position: relative;
@@ -308,21 +308,21 @@
   opacity: 1;
 }
 
-.WorldMap { grid-area: 4 / 1 / 5 / 2; }
-.SmallIslandPath0  { grid-area: 4 / 2 / 5 / 3; }
-.SmallIslandPath1 { grid-area: 5 / 2 / 6 / 3; }
-.SmallIslandPath2 { grid-area: 5 / 3 / 6 / 4; }
-.SmallIslandPath2Secret { grid-area: 4 / 3 / 5 / 4;}
-.SmallIslandPathBridge { grid-area: 5 / 4 / 6 / 5;}
-.SmallIslandPathBoss { grid-area: 5 / 5 / 6 / 6; } 
-.BossTreasureBoxPoringIsland { grid-area: 5 / 6 / 6 / 7; }
+.WorldMap { grid-area: 2 / 1 / 3 / 2; }
+.SmallIslandPath0 { grid-area: 2 / 2 / 3 / 3; }
+.SmallIslandPath1 { grid-area: 3 / 2 / 4 / 3; }
+.SmallIslandPath2 { grid-area: 3 / 3 / 4 / 4; }
+.SmallIslandPath2Secret { grid-area: 2 / 3 / 3 / 4; }
+.SmallIslandPathBridge { grid-area: 3 / 4 / 4 / 5; }
+.SmallIslandPathBoss { grid-area: 3 / 5 / 4 / 6; }
+.BossTreasureBoxPoringIsland { grid-area: 3 / 6 / 4 / 7; }
 /* Hidden Passage */
-.SmallIslandPathBridgeHidden1 { grid-area: 6 / 4 / 7 / 5; }
-.SmallIslandPathBridgeHidden2 { grid-area: 7 / 4 / 8 / 5; }
-.SmallIslandPathBridgeHiddenNPC { grid-area: 7 / 5 / 8 / 6; }
+.SmallIslandPathBridgeHidden1 { grid-area: 4 / 4 / 5 / 5; }
+.SmallIslandPathBridgeHidden2 { grid-area: 5 / 4 / 6 / 5; }
+.SmallIslandPathBridgeHiddenNPC { grid-area: 5 / 5 / 6 / 6; }
 
-.TreasureBoxPoringIsland {grid-area: 3 / 2 / 4 / 3;}
-.TreasureBoxPoringIsland2 { grid-area: 6 / 3 / 7 / 4; }
+.TreasureBoxPoringIsland { grid-area: 1 / 2 / 2 / 3; }
+.TreasureBoxPoringIsland2 { grid-area: 4 / 3 / 5 / 4; }
 
 
 @media (max-width: 1199px){

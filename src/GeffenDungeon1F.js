@@ -140,7 +140,12 @@ function StartMenu(){
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave1FPath1",Math.floor(Math.random() * 2) + 6)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",Math.floor(Math.random() * 2) + 16)), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
+  const LoadingScreen1 = () => {
+    dispatch(BattleLoadingScreenFn())
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",Math.floor(Math.random() * 2) + 16)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
 
@@ -178,7 +183,12 @@ function StartMenu(){
             <div className="GeffenDungeon1FMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
-              <button className="" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio();}}>ToGeffen</button>
+              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio();}}>ToGeffen</button>
+              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0();}}>Path1</button>
+              <button className="GeffenDungeonBase GeffenDungeon1FPath1" onClick={() =>{changePlaceFadeAudio();}}>Narrow Road</button>
+              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath2" : "GeffenDungeonBase GeffenDungeon1FPath2 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen1();}}>Path2</button>
+              <button className="GeffenDungeonBase GeffenDungeon1FPath3" onClick={() =>{changePlaceFadeAudio();}}>Nia</button>
+              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{changeMapFadeAudio();}}>Geffen Dungeon 2F</button>
             </div>
             }
             <div className="StoryHUD">

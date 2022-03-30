@@ -392,6 +392,10 @@ progress.BarBasicHUD::-webkit-progress-bar{
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(202, 144, 216) 100%);
 }
 
+.ReturnCheckGeffenDungeon{
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(216, 211, 144) 100%);
+}
+
 .ReturnCheckPoint:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }

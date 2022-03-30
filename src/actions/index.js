@@ -311,9 +311,9 @@ export const GotoGeffenFn = () => {
         type: 'GotoGeffenFn',
     };
 };
-export const GotoGeffenDungeon1Fn = () => {
+export const GotoGeffenDungeon1FFn = () => {
     return {
-        type: 'GotoGeffenDungeon1Fn',
+        type: 'GotoGeffenDungeon1FFn',
     };
 };
 
@@ -1491,9 +1491,32 @@ export const WinAuthoritativeBadgeFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//WOLYAFA
 export const WinNineTailsFn = (Zeny,Num) => {
     return {
         type: 'WinNineTailsFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//POISON SPORE
+export const WinPoisonSporeFn = (Zeny,Num) => {
+    return {
+        type: 'WinPoisonSporeFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinMushroomSporeFn = (Zeny,Num) => {
+    return {
+        type: 'WinMushroomSporeFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinKarvodailnirolFn = (Zeny,Num) => {
+    return {
+        type: 'WinKarvodailnirolFn',
         Number: Num,
         Zeny: Zeny
     };

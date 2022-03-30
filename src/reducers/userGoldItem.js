@@ -64,6 +64,11 @@ const Fn = {
     BlackHair:1,
     AuthoritativeBadge:1,
     NineTails:1,
+    //GeffenDungeon
+    PoisonSpore:1,
+    MushroomSpore:1,
+    Karvodailnirol:1,
+
 
 }
 
@@ -453,6 +458,24 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 NineTails: state.NineTails + action.Number,
+            }
+        case 'WinPoisonSporeFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                PoisonSpore: state.PoisonSpore + action.Number,
+            }
+        case 'WinMushroomSporeFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                MushroomSpore: state.MushroomSpore + action.Number,
+            }
+        case 'WinKarvodailnirolFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Karvodailnirol: state.Karvodailnirol + action.Number,
             }
         case 'WinResultFn':
             return{

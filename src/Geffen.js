@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1Fn } from './actions';
+import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
@@ -167,7 +167,7 @@ function StartMenu(){
             <button className="ReturnHUDBugFix"></button>
             <h3 className="GeffenMapTitle">Geffen</h3>
             <button className="GeffenWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
-            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1Fn()); changeMapFadeAudio();}}>Geffen Dungeon Entrance</button>
+            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio();}}>Geffen Dungeon Entrance</button>
           </div>
           }
           <div className="StoryHUD">

@@ -64,6 +64,9 @@ import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
 import BlackHair from './img/Etc/Sohee_BlackHair90.gif'
 import AuthoritativeBadge from './img/Etc/Sohee_AuthoritativeBadge10.gif'
 import NineTails from './img/Etc/Wolyafa_NineTails55.gif'
+import PoisonSporeItem from './img/Etc/PoisonSpore_PoisonSpore90.gif'
+import MushroomSpore from './img/Etc/PoisonSpore_MushroomSpore12.gif'
+import Karvodailnirol from './img/Etc/PoisonSpore_Karvodailnirol5.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 //MISSION
@@ -142,6 +145,9 @@ function StartMenu(){
       {id:1019, Img:BlackHair, name:"Black Hair", itemCheck:userGoldItem.BlackHair},
       {id:1020, Img:AuthoritativeBadge, name:"Authoritative Badge", itemCheck:userGoldItem.AuthoritativeBadge},
       {id:1021, Img:NineTails, name:"Nine Tails", itemCheck:userGoldItem.NineTails},
+      {id:1022, Img:PoisonSporeItem, name:"Poison Spore", itemCheck:userGoldItem.PoisonSpore},
+      {id:1023, Img:MushroomSpore, name:"Mushroom Spore", itemCheck:userGoldItem.MushroomSpore},
+      {id:1024, Img:Karvodailnirol, name:"Karvodailnirol", itemCheck:userGoldItem.Karvodailnirol},
       
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
