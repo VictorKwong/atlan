@@ -60,6 +60,9 @@ const Fn = {
     PayonCave2FSelfNPCHidden: false,
     PayonCave2FCaveNPC: false,
     PayonCave3FCaveNPC: false,
+    //GeffenDungeon
+    GeffenDungeonChest1: false,
+    GeffenDungeonChest1VisitRepeat: false,
     
 }
 
@@ -767,6 +770,18 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
             }
+        case 'OpenGeffenDungeonChest1Fn':
+            return {
+                ...state,
+                GeffenDungeonChest1: true
+            }
+        case 'GeffenDungeonChest1VisitRepeatFn':
+            return {
+                ...state,
+                GeffenDungeonChest1VisitRepeat: true
+            }
+            
+    
         default:
             return state;
     }

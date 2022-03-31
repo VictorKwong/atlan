@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 import { OpenChest1Fn, GetStatsPointFn } from './actions'
-import { OpenChest2Fn, RedPotionFn , AdventureSuitFn, OrangePotionFn, YellowPotionFn } from './actions'
+import { OpenChest2Fn, RedPotionFn , AdventureSuitFn, OrangePotionFn, YellowPotionFn , AnniversaryCakeFn } from './actions'
 import { OpenChestBoss1Fn, SpiritOfEclipseFn } from './actions'
 import { OpenChestBoss2Fn, SpiritOfWolyafaFn} from './actions'
 import { OpenPayonCaveChest3Fn, OpenPayonCaveChest4Fn , OpenPayonCaveChest5Fn, OpenPayonCaveChest6Fn} from './actions'
+import { OpenGeffenDungeonChest1Fn } from './actions'
 import './css/mapTreasurePoringIsland.css'
 // import useSound from 'use-sound';
 
@@ -33,6 +34,7 @@ function StartMenu(){
       {id: 6, Path:"PayonCaveChest5", Get1Fn:RedPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest5Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:10,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest5, Condition2:npcControlRoom.PayonCaveChest5VisitRepeat, RewardDisplay:"Received 10 Stats Point!"},
       {id: 7, Path:"PayonCaveChest6", Get1Fn:YellowPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest6Fn,itemQuantity1:3, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest6, Condition2:npcControlRoom.PayonCaveChest6VisitRepeat, RewardDisplay:"Received 3 Yellow Potion!"},
       {id: 8, Path:"BossChest2", Get1Fn:SpiritOfWolyafaFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss2Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:4000, Condition1:npcControlRoom.ChestBoss2,Condition2:npcControlRoom.ChestBoss2VisitRepeat, RewardDisplay:`Received 4000z & Spirit Of Wolyafa(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfWolyafa"},
+      {id: 9, Path:"GeffenDungeonChest1", Get1Fn:AnniversaryCakeFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenGeffenDungeonChest1Fn,itemQuantity1:5, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:500,Condition1:npcControlRoom.GeffenDungeonChest1, Condition2:npcControlRoom.GeffenDungeonChest1VisitRepeat, RewardDisplay:"Received 3 Anniversary Cake & 500z!"},
     ]
     const dispatch = useDispatch();
 
@@ -74,7 +76,7 @@ function StartMenu(){
     }
 
     return(
-      <div className={screenControlRoom.PoringIsland ? "TreasurePoringIslandMap" : screenControlRoom.PayonCave1F ? "TreasurePoringIslandMap TreasurePayonCaveMap" : null}>
+      <div className={screenControlRoom.PoringIsland ? "TreasurePoringIslandMap" : screenControlRoom.PayonCave1F ? "TreasurePoringIslandMap TreasurePayonCaveMap" : screenControlRoom.GeffenDungeon1F ? "TreasurePoringIslandMap TreasureGeffenDungeonMap" : null}>
           {RewardBox.map(Reward => {
             return (
               <span key={Reward.id} className={screenControlRoom.TreasurePath === Reward.Path ? null : "displayNoneTreasure"}>
@@ -93,7 +95,7 @@ function StartMenu(){
                   </div>
                 </div> :
                 <div className="chest1Background">
-                 <button className={Reward.id <= 3 ? "chest1Box" : "chest1Box chest2Box"} onClick={() => {ChestRewardFn(Reward.Get1Fn,Reward.ZenyQuantity,Reward.itemQuantity1,Reward.Get2Fn,Reward.itemQuantity2,Reward.Get3Fn,Reward.itemQuantity3); dispatch(Reward.OpenFn());}}><img src={treasureBox} alt="Treasure Box" /></button>
+                 <button className={Reward.id <= 3 ? "chest1Box" : Reward.id <= 8 ? "chest1Box chest2Box" : "chest1Box chest3Box"} onClick={() => {ChestRewardFn(Reward.Get1Fn,Reward.ZenyQuantity,Reward.itemQuantity1,Reward.Get2Fn,Reward.itemQuantity2,Reward.Get3Fn,Reward.itemQuantity3); dispatch(Reward.OpenFn());}}><img src={treasureBox} alt="Treasure Box" /></button>
                 </div>}
               </span>
             )

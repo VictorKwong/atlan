@@ -1625,6 +1625,17 @@ export const ChestBoss2VisitRepeatFn = () => {
         type: 'ChestBoss2VisitRepeatFn',
     };
 };
+//GEFFEN DUNGEON
+export const OpenGeffenDungeonChest1Fn = () => {
+    return {
+        type: 'OpenGeffenDungeonChest1Fn',
+    };
+};
+export const GeffenDungeonChest1VisitRepeatFn = () => {
+    return {
+        type: 'GeffenDungeonChest1VisitRepeatFn',
+    };
+};
 
 
 //PORING ISLAND BOSS

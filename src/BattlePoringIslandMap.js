@@ -2111,7 +2111,7 @@ function Main(){
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
         <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShakeMore" : ImageControlRoom.EnemyOnHit || ImageControlRoom.UserOnHit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
-              <div className={i <= 5 ? "battleScreenBase" : " battleScreenBase battleScreenPayonCave"}>
+              <div className={i <= 5 ? "battleScreenBase" : i <= 15 ? "battleScreenBase battleScreenPayonCave" : "battleScreenBase battleScreenGeffenDungeon"}>
                 <div className="enemyBox"> 
                       {EnemyBox.map(Enemy => {
                         return( 
@@ -2376,7 +2376,10 @@ function Main(){
 
             {((userStats.currentHealth <= 0 && enemyStats[i].currentHealth <= 0) || userStats.currentHealth <= 0) && clockCheck === 1? 
             <div className="storyScreen">
-              <button className={ i <= 5 ? "ReturnCheckPoint" : "ReturnCheckPoint ReturnCheckPointPayonCave"} onClick={
+              <button className={ 
+                i <= 5 ? "ReturnCheckPoint" : 
+                i <= 15 ? "ReturnCheckPoint ReturnCheckPointPayonCave" : 
+                i <= 33 ? "ReturnCheckPoint ReturnCheckGeffenDungeon" : null} onClick={
                 i <= 5 ?
                 () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
                 i <= 7 ?

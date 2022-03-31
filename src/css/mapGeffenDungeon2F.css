@@ -22,7 +22,7 @@
   height: 100%;
   border: 1px solid black;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -31,10 +31,16 @@
   overflow-x: hidden;
 }
 
-.GeffenDungeonBase2FToGeffenDungeonBase1F::before,
-.GeffenDungeonBase2FToGeffenDungeonBase1F:hover::before{
-  background-image: url('../img/Background/GeffenDungeon1FBackground.png');
-  background-repeat: no-repeat;
-  background-position: center;
-}
+.GeffenDungeon2FToGeffenDungeon1F { grid-area: 3 / 4 / 4 / 5; }
+.GeffenDungeon2FPath0Split0 { grid-area: 3 / 3 / 4 / 4; }
+.GeffenDungeon2FPath1Split0 { grid-area: 3 / 2 / 4 / 3; }
+.GeffenDungeon2FPath2Split0 { grid-area: 2 / 2 / 3 / 3; }
+.TreasureBoxGeffenDungeon2F1 { grid-area: 2 / 1 / 3 / 2; }
 
+.GeffenDungeon2FPath0Split1 { grid-area: 2 / 4 / 3 / 5; }
+.GeffenDungeon2FPath1Split1 { grid-area: 1 / 4 / 2 / 5; }
+.GeffenDungeon2FPath2Split1 { grid-area: 1 / 3 / 2 / 4; }
+.TreasureBoxGeffenDungeon2F2 { grid-area: 2 / 5 / 3 / 6; }
+
+.GeffenDungeon2FPathHidden1 { grid-area: 2 / 3 / 3 / 4; }
+.GeffenDungeon2FToGeffenDungeon3F { grid-area: 1 / 2 / 2 / 3; }
