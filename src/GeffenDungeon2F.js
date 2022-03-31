@@ -3,6 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoPayonCave3FFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
+//CHEST
+import { GeffenDungeonChest2VisitRepeatFn , GeffenDungeonChest3VisitRepeatFn } from './actions'
+//PATH
+import { GotoGeffenDungeon2FPath3Fn, GotoGeffenDungeon2FPath5Fn, GotoGeffenDungeon2FPath6Fn} from './actions'
+//NPC
+import { GeffenDungeon2FSelfNPCFn, GeffenDungeon2FRekiNPCFn, ResetGeffenDungeonNPCFn } from './actions'
+
 import './css/mapGeffenDungeon2F.css'
 import $ from 'jquery'
 
@@ -85,27 +92,35 @@ const PayonCave2F = (data) =>{
         <div className="GeffenDungeon2FMap">
           <button className="ReturnHUDBugFix"></button>
           <h3 className="GeffenDungeon2FMapTitle">Geffen Dungeon 2F</h3>
-          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon1F" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio();}}>GeffenDungeon 1F</button>
+          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon1F" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 1F</button>
           {/* Path 0 Split 0 */}
-          <button className="GeffenDungeonBase GeffenDungeon2FPath0Split0" onClick={() => {LoadingScreen0(); changeMapFadeAudio();}}>Split0</button>
+          <button className="GeffenDungeonBase GeffenDungeon2FPath0Split0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Split0</button>
           {/* Path 1 Split 0 */}
-          <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon2FPath1Split0" : "GeffenDungeonBase GeffenDungeon2FPath1Split0 GeffenDungeon2FPath1Split0Pic2"} onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>Road1</button>
+          {screenControlRoom.GeffenDungeon2FPath1 ?
+          <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon2FPath1Split0" : "GeffenDungeonBase GeffenDungeon2FPath1Split0 GeffenDungeon2FPath1Split0Pic2"} onClick={() => {LoadingScreen1(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Road1</button> : null}
           {/* Path 2 Split 0 */}
-          <button className="GeffenDungeonBase GeffenDungeon2FPath2Split0" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio();}}>Road2</button>
+          {screenControlRoom.GeffenDungeon2FPath2 ?
+          <button className="GeffenDungeonBase GeffenDungeon2FPath2Split0" onClick={() => {dispatch(GotoGeffenDungeon2FPath3Fn()); dispatch(GotoGeffenDungeon2FPath6Fn()); changePlaceFadeAudio(); dispatch(GeffenDungeon2FSelfNPCFn());}}>Road2</button> : null}
           {/* Path 2 Split 0 Hidden*/}
-          <button className="GeffenDungeonBase GeffenDungeon2FPathHidden1" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio();}}>Hidden Story</button>
+          {screenControlRoom.GeffenDungeon2FPath7Hidden ?
+          <button className="GeffenDungeonBase GeffenDungeon2FPathHidden1" onClick={() => {changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Hidden Story</button> : null}
           {/* Path 3 Split 0 */}
-          <button className="GeffenDungeonBase TreasureBoxGeffenDungeon2F1" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio();}}>Treasure box</button>
+          {screenControlRoom.GeffenDungeon2FPath3 ?
+          <button className="GeffenDungeonBase TreasureBoxGeffenDungeon2F1" onClick={npcControlRoom.GeffenDungeonChest2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest2")); dispatch(GeffenDungeonChest2VisitRepeatFn()); dispatch(ResetGeffenDungeonNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest2")); dispatch(ResetGeffenDungeonNPCFn());}}>Treasure chest</button> : null}
           
           {/* Path 0 Split 1 */}
-          <button className="GeffenDungeonBase GeffenDungeon2FPath0Split1" onClick={() => {LoadingScreen2(); changeMapFadeAudio();}}>Split1</button>
+          <button className="GeffenDungeonBase GeffenDungeon2FPath0Split1" onClick={() => {LoadingScreen2(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Split1</button>
           {/* Path 1 Split 1 */}
-          <button className="GeffenDungeonBase TreasureBoxGeffenDungeon2F2" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio();}}>Treasure box</button>
-          <button className="GeffenDungeonBase GeffenDungeon2FPath1Split1" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio();}}>Road2B</button>
+          {screenControlRoom.GeffenDungeon2FPath4 ?
+          <button className="GeffenDungeonBase TreasureBoxGeffenDungeon2F2" onClick={npcControlRoom.GeffenDungeonChest3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest3")); dispatch(GeffenDungeonChest3VisitRepeatFn()); dispatch(ResetGeffenDungeonNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest3")); dispatch(ResetGeffenDungeonNPCFn());}}>Treasure chest</button> : null}
+          {screenControlRoom.GeffenDungeon2FPath4 ?
+          <button className="GeffenDungeonBase GeffenDungeon2FPath1Split1" onClick={() => {dispatch(GotoGeffenDungeon2FPath5Fn()); changePlaceFadeAudio(); dispatch(GeffenDungeon2FRekiNPCFn());}}>Road2B</button> : null}
           {/* Path 2 Split 1 */}
-          <button className="GeffenDungeonBase GeffenDungeon2FPath2Split1" onClick={() => {LoadingScreen3(); changeMapFadeAudio();}}>Road2B2</button>
+          {screenControlRoom.GeffenDungeon2FPath5 ?
+          <button className="GeffenDungeonBase GeffenDungeon2FPath2Split1" onClick={() => {LoadingScreen3(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Road2B2</button> : null}
           {/* Path 4 */}
-          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio();}}>GeffenDungeon 3F</button>
+          {screenControlRoom.GeffenDungeon2FPath6 ?
+          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button> : null}
         </div>
     );
 }

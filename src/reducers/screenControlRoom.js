@@ -84,6 +84,13 @@ const Fn = {
     GeffenDungeon1FPath2: true,
     GeffenDungeon1FPath3: true,
     GeffenDungeon1FPath4: true,
+    GeffenDungeon2FPath1: true,
+    GeffenDungeon2FPath2: true,
+    GeffenDungeon2FPath3: true,
+    GeffenDungeon2FPath4: true,
+    GeffenDungeon2FPath5: true,
+    GeffenDungeon2FPath6: true,
+    GeffenDungeon2FPath7Hidden: true,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -700,6 +707,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PayonCave3FPath3: false,
                     PayonCave3FPath4: false,
                 }
+            //GEFFEN TOWER
             case 'GotoGeffenDungeon1FPath1Fn':
                 return{
                     ...state,
@@ -720,8 +728,43 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     GeffenDungeon1FPath4: true,
                 }
-
-            //GEFFEN TOWER
+            //Split 0
+            case 'GotoGeffenDungeon2FPath1Fn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath1: true,
+                }
+            case 'GotoGeffenDungeon2FPath2Fn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath2: true,
+                }
+            case 'GotoGeffenDungeon2FPath3Fn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath3: true,
+                }
+            //Split 1
+            case 'GotoGeffenDungeon2FPath4Fn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath4: true,
+                }
+            case 'GotoGeffenDungeon2FPath5Fn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath5: true,
+                }
+            case 'GotoGeffenDungeon2FPath6Fn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath6: true,
+                }
+            case 'GotoGeffenDungeon2FPath7HiddenFn':
+                return{
+                    ...state,
+                    GeffenDungeon2FPath7Hidden: true,
+                }
             case 'ReturnGeffenDungeonPathFn':
                 return {
                     ...state,

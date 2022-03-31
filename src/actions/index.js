@@ -1533,8 +1533,36 @@ export const WinKarvodailnirolFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
-
-
+//JAKK
+export const WinJackPumpkinFn = (Zeny,Num) => {
+    return {
+        type: 'WinJackPumpkinFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinZargonFn = (Zeny,Num) => {
+    return {
+        type: 'WinZargonFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//GHOUL
+export const WinHorrendousMouthFn = (Zeny,Num) => {
+    return {
+        type: 'WinHorrendousMouthFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinMementoFn = (Zeny,Num) => {
+    return {
+        type: 'WinMementoFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 
 //PORING ISLAND CHEST
 export const OpenChest1Fn = () => {
@@ -1636,7 +1664,26 @@ export const GeffenDungeonChest1VisitRepeatFn = () => {
         type: 'GeffenDungeonChest1VisitRepeatFn',
     };
 };
-
+export const OpenGeffenDungeonChest2Fn = () => {
+    return {
+        type: 'OpenGeffenDungeonChest2Fn',
+    };
+};
+export const GeffenDungeonChest2VisitRepeatFn = () => {
+    return {
+        type: 'GeffenDungeonChest2VisitRepeatFn',
+    };
+};
+export const OpenGeffenDungeonChest3Fn = () => {
+    return {
+        type: 'OpenGeffenDungeonChest3Fn',
+    };
+};
+export const GeffenDungeonChest3VisitRepeatFn = () => {
+    return {
+        type: 'GeffenDungeonChest3VisitRepeatFn',
+    };
+};
 
 //PORING ISLAND BOSS
 export const BossEclipseDefeatFn = () => {
@@ -1834,34 +1881,97 @@ export const ResetPayonCaveNPCFn = () => {
         type: 'ResetPayonCaveNPCFn',
     };
 };
-//GEFFEN TOWER
+//GEFFEN DUNGEON 1F
 export const GotoGeffenDungeon1FPath1Fn = () => {
     return {
         type: 'GotoGeffenDungeon1FPath1Fn',
     };
 };
-export const GotoGeffenDungeon1FPath2 = () => {
+export const GotoGeffenDungeon1FPath2Fn = () => {
     return {
-        type: 'GotoGeffenDungeon1FPath2',
+        type: 'GotoGeffenDungeon1FPath2Fn',
     };
 };
-export const GotoGeffenDungeon1FPath3 = () => {
+export const GotoGeffenDungeon1FPath3Fn = () => {
     return {
-        type: 'GotoGeffenDungeon1FPath3',
+        type: 'GotoGeffenDungeon1FPath3Fn',
     };
 };
-export const GotoGeffenDungeon1FPath4 = () => {
+export const GotoGeffenDungeon1FPath4Fn = () => {
     return {
-        type: 'GotoGeffenDungeon1FPath4',
+        type: 'GotoGeffenDungeon1FPath4Fn',
     };
 };
-
+//GEFFEN DUNGEON 2F
+export const GotoGeffenDungeon2FPath1Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath1Fn',
+    };
+};
+export const GotoGeffenDungeon2FPath2Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath2Fn',
+    };
+};
+export const GotoGeffenDungeon2FPath3Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath3Fn',
+    };
+};
+export const GotoGeffenDungeon2FPath4Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath4Fn',
+    };
+};
+export const GotoGeffenDungeon2FPath5Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath5Fn',
+    };
+};
+export const GotoGeffenDungeon2FPath6Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath6Fn',
+    };
+};
+export const GotoGeffenDungeon2FPath7HiddenFn = () => {
+    return {
+        type: 'GotoGeffenDungeon2FPath7HiddenFn',
+    };
+};
 export const ReturnGeffenDungeonPathFn = () => {
     return {
         type: 'ReturnGeffenDungeonPathFn',
     };
 };
+//GEFFEN DUNGEON BOSS & NPC
+export const GeffenDungeon1FSelfNPCFn = () => {
+    return {
+        type: 'GeffenDungeon1FSelfNPCFn',
+    };
+};
+export const GeffenDungeon1FNiaNPCFn = () => {
+    return {
+        type: 'GeffenDungeon1FNiaNPCFn',
+    };
+};
+export const GeffenDungeon2FSelfNPCFn = () => {
+    return {
+        type: 'GeffenDungeon2FSelfNPCFn',
+    };
+};
 
+export const GeffenDungeon2FRekiNPCFn = () => {
+    return {
+        type: 'GeffenDungeon2FRekiNPCFn',
+    };
+};
+
+
+export const ResetGeffenDungeonNPCFn = () => {
+    return {
+        type: 'ResetGeffenDungeonNPCFn',
+    };
+};
 
 //Audio Interaction
 export const AudioVolumeBGMSaverFn = (Volume,map,Place,Threshold) => {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+import { GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -30,12 +30,15 @@ import { WinDaenggieFn , WinShortDaenggieFn , WinOldPortraitFn} from './actions'
 import { WinBlackHairFn , WinAuthoritativeBadgeFn } from './actions'
 import { WinNineTailsFn } from './actions'
 import { WinPoisonSporeFn, WinMushroomSporeFn, WinKarvodailnirolFn} from './actions'
+import { WinJackPumpkinFn, WinZargonFn} from './actions'
+import { WinHorrendousMouthFn, WinMementoFn} from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
 import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
 import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn, GotoPayonCave3FPath1Fn, GotoPayonCave3FPath2Fn, GotoPayonCave3FPath4Fn } from './actions'
+import { GotoGeffenDungeon1FPath1Fn, GotoGeffenDungeon1FPath3Fn, GotoGeffenDungeon2FPath1Fn, GotoGeffenDungeon2FPath2Fn, GotoGeffenDungeon2FPath4Fn, GotoGeffenDungeon2FPath6Fn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -130,6 +133,17 @@ import PoisonSpore from './img/Monster/Poisonspore.gif'
 import PoisonSporeHit from './img/Monster/PoisonsporeHit.png'
 import PoisonSporeAttack from './img/Monster/PoisonsporeAttack.gif'
 import PoisonSporeDead from './img/Monster/PoisonsporeDead.png'
+
+import Jakk from './img/Monster/Jakk.gif'
+import JakkHit from './img/Monster/JakkHit.png'
+import JakkAttack from './img/Monster/JakkAttack.gif'
+import JakkDead from './img/Monster/JakkDead.png'
+
+import Ghoul from './img/Monster/Ghoul.gif'
+import GhoulHit from './img/Monster/GhoulHit.png'
+import GhoulAttack from './img/Monster/GhoulAttack.gif'
+import GhoulDead from './img/Monster/GhoulDead.png'
+
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
@@ -431,6 +445,12 @@ import PoisonSporeItem from './img/Etc/PoisonSpore_PoisonSpore90.gif'
 import MushroomSpore from './img/Etc/PoisonSpore_MushroomSpore12.gif'
 import Karvodailnirol from './img/Etc/PoisonSpore_Karvodailnirol5.gif'
 
+import JackPumpkin from './img/Etc/Jakk_JackPumpkin90.gif'
+import Zargon from './img/Etc/Jakk_Zargon9.gif'
+
+import HorrendousMouth from './img/Etc/Ghoul_HorrendousMouth65.gif'
+import Memento from './img/Etc/Ghoul_Memento20.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioLittleFighter2ThemeSong from './audio/LittleFighter2ThemeSong.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -514,8 +534,10 @@ const EtcBox = [
   {id: 26, num: 17, name: "Poison Spore", img: PoisonSporeItem , percent: 0.9, Gain: WinPoisonSporeFn},
   {id: 27, num: 17, name: "Mushroom Spore", img: MushroomSpore , percent: 0.3, Gain: WinMushroomSporeFn},
   {id: 28, num: 17, name: "Karvodailnirol", img: Karvodailnirol , percent: 0.05, Gain: WinKarvodailnirolFn},
-
-  
+  {id: 29, num: 18, name: "JackPumpkin", img: JackPumpkin , percent: 0.9, Gain: WinJackPumpkinFn},
+  {id: 30, num: 18, name: "Zargon", img: Zargon , percent: 0.09, Gain: WinZargonFn},
+  {id: 31, num: 19, name: "HorrendousMouth", img: HorrendousMouth , percent: 0.9, Gain: WinHorrendousMouthFn},
+  {id: 32, num: 19, name: "Memento", img: Memento , percent: 0.2, Gain: WinMementoFn},
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -595,6 +617,8 @@ const EnemyBox = [
   {id:15, number:15, FlipCSS: 'imgFlipTwo', GetHit:WolyafaHit, GetAttack:WolyafaAttack, GetDead: WolyafaDead, GetStand: Wolyafa},
   {id:16, number:16, FlipCSS: 'imgFlip', GetHit:PoporingHit, GetAttack:PoporingAttack, GetDead: PoporingDead, GetStand: Poporing},
   {id:17, number:17, FlipCSS: 'imgFlipTwo', GetHit:PoisonSporeHit, GetAttack:PoisonSporeAttack, GetDead: PoisonSporeDead, GetStand: PoisonSpore},
+  {id:18, number:18, FlipCSS: 'imgFlipTwo', GetHit:JakkHit, GetAttack:JakkAttack, GetDead: JakkDead, GetStand: Jakk},
+  {id:19, number:19, FlipCSS: 'imgFlipTwo', GetHit:GhoulHit, GetAttack:GhoulAttack, GetDead: GhoulDead, GetStand: Ghoul},
 ]
 
 function Main(){
@@ -880,6 +904,25 @@ function Main(){
           case (screenControlRoom.UserUnlockPath === "PayonCave3FPath4"):
             dispatch(GotoPayonCave3FPath4Fn());
             break;
+          //Geffen Dungeon
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon1FPath1"):
+            dispatch(GotoGeffenDungeon1FPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon1FPath3"):
+            dispatch(GotoGeffenDungeon1FPath3Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon2FPath1"):
+            dispatch(GotoGeffenDungeon2FPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon2FPath2"):
+            dispatch(GotoGeffenDungeon2FPath2Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon2FPath4"):
+            dispatch(GotoGeffenDungeon2FPath4Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon2FPath6"):
+            dispatch(GotoGeffenDungeon2FPath6Fn());
+            break;
           default:
             break;
         }
@@ -947,6 +990,10 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Poporing"));
             case ((questControlRoom.QuestDialog).indexOf("Poisonspore") > -1 && i === 17):
               return dispatch(ProgressQuestDialogFn("Poisonspore"));
+            case ((questControlRoom.QuestDialog).indexOf("Jakk") > -1 && i === 18):
+              return dispatch(ProgressQuestDialogFn("Jakk"));
+            case ((questControlRoom.QuestDialog).indexOf("Ghoul") > -1 && i === 19):
+              return dispatch(ProgressQuestDialogFn("Ghoul"));
             default:
               return null;
           }
@@ -2358,7 +2405,9 @@ function Main(){
                           i <= 15 ?
                           () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
                           i <= 17 ?
-                          () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
+                          () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
+                          i <= 19 ?
+                          () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(GotoGeffenDungeon2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
                         }>
                           <figcaption className="goGoButtonFig">
                             <p className="goGoButtonName">Run</p>
@@ -2389,7 +2438,9 @@ function Main(){
                 i <= 15 ?
                 () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave3FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
                 i <= 17 ?
-                () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
+                () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
+                i <= 19 ?
+                () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(GotoGeffenDungeon2FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
               }>Goto CheckPoint</button>
             </div> 
             : enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
@@ -2406,8 +2457,10 @@ function Main(){
                 () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
                 i <= 15 ?
                 () =>{dispatch(GotoPayonCave1FFn()); dispatch(GotoPayonCave3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
-                1 <= 17 ?
-                () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} : null
+                i <= 17 ?
+                () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
+                i <= 19 ?
+                () =>{dispatch(GotoGeffenDungeon1FFn()); dispatch(GotoGeffenDungeon2FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} : null
                 }>Press to Continue</button>
             </div> : null}
 

@@ -8,7 +8,7 @@ import { OpenChest2Fn, RedPotionFn , AdventureSuitFn, OrangePotionFn, YellowPoti
 import { OpenChestBoss1Fn, SpiritOfEclipseFn } from './actions'
 import { OpenChestBoss2Fn, SpiritOfWolyafaFn} from './actions'
 import { OpenPayonCaveChest3Fn, OpenPayonCaveChest4Fn , OpenPayonCaveChest5Fn, OpenPayonCaveChest6Fn} from './actions'
-import { OpenGeffenDungeonChest1Fn } from './actions'
+import { OpenGeffenDungeonChest1Fn , OpenGeffenDungeonChest2Fn , OpenGeffenDungeonChest3Fn} from './actions'
 import './css/mapTreasurePoringIsland.css'
 // import useSound from 'use-sound';
 
@@ -35,6 +35,8 @@ function StartMenu(){
       {id: 7, Path:"PayonCaveChest6", Get1Fn:YellowPotionFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenPayonCaveChest6Fn,itemQuantity1:3, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:0,Condition1:npcControlRoom.PayonCaveChest6, Condition2:npcControlRoom.PayonCaveChest6VisitRepeat, RewardDisplay:"Received 3 Yellow Potion!"},
       {id: 8, Path:"BossChest2", Get1Fn:SpiritOfWolyafaFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenChestBoss2Fn,itemQuantity1:1,itemQuantity2:0,itemQuantity3:0, ZenyQuantity:4000, Condition1:npcControlRoom.ChestBoss2,Condition2:npcControlRoom.ChestBoss2VisitRepeat, RewardDisplay:`Received 4000z & Spirit Of Wolyafa(Important)!`, img1:SpiritOfBoss, img1alt:"SpiritOfWolyafa"},
       {id: 9, Path:"GeffenDungeonChest1", Get1Fn:AnniversaryCakeFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenGeffenDungeonChest1Fn,itemQuantity1:5, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:500,Condition1:npcControlRoom.GeffenDungeonChest1, Condition2:npcControlRoom.GeffenDungeonChest1VisitRepeat, RewardDisplay:"Received 3 Anniversary Cake & 500z!"},
+      {id: 10, Path:"GeffenDungeonChest2", Get1Fn:AnniversaryCakeFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenGeffenDungeonChest2Fn,itemQuantity1:0, itemQuantity2:0,itemQuantity3:10,ZenyQuantity:0,Condition1:npcControlRoom.GeffenDungeonChest2, Condition2:npcControlRoom.GeffenDungeonChest2VisitRepeat, RewardDisplay:"Received 10 Stats Point!"},
+      {id: 11, Path:"GeffenDungeonChest3", Get1Fn:AnniversaryCakeFn, Get2Fn: AdventureSuitFn, Get3Fn:GetStatsPointFn, OpenFn:OpenGeffenDungeonChest3Fn,itemQuantity1:5, itemQuantity2:0,itemQuantity3:0,ZenyQuantity:3000,Condition1:npcControlRoom.GeffenDungeonChest3, Condition2:npcControlRoom.GeffenDungeonChest3VisitRepeat, RewardDisplay:"Received 3 Anniversary Cake & 3000z!"},
     ]
     const dispatch = useDispatch();
 

@@ -63,6 +63,14 @@ const Fn = {
     //GeffenDungeon
     GeffenDungeonChest1: false,
     GeffenDungeonChest1VisitRepeat: false,
+    GeffenDungeonChest2: false,
+    GeffenDungeonChest2VisitRepeat: false,
+    GeffenDungeonChest3: false,
+    GeffenDungeonChest3VisitRepeat: false,
+    GeffenDungeon1FSelfNPC: false,
+    GeffenDungeon1FNiaNPC: false,
+    GeffenDungeon2FSelfNPC: false,
+    GeffenDungeon2FRekiNPC: false,
     
 }
 
@@ -770,6 +778,47 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
             }
+        case 'GeffenDungeon1FSelfNPCFn':
+            return {
+                ...state,
+                GeffenDungeon1FSelfNPC: true,
+                GeffenDungeon1FNiaNPC: false,
+                GeffenDungeon2FSelfNPC: false,
+                GeffenDungeon2FRekiNPC: false,
+            }
+        case 'GeffenDungeon1FNiaNPCFn':
+            return {
+                ...state,
+                GeffenDungeon1FSelfNPC: false,
+                GeffenDungeon1FNiaNPC: true,
+                GeffenDungeon2FSelfNPC: false,
+                GeffenDungeon2FRekiNPC: false,
+            }
+        case 'GeffenDungeon2FSelfNPCFn':
+            return {
+                ...state,
+                GeffenDungeon1FSelfNPC: false,
+                GeffenDungeon1FNiaNPC: false,
+                GeffenDungeon2FSelfNPC: true,
+                GeffenDungeon2FRekiNPC: false,
+            }
+        case 'GeffenDungeon2FRekiNPCFn':
+            return {
+                ...state,
+                GeffenDungeon1FSelfNPC: false,
+                GeffenDungeon1FNiaNPC: false,
+                GeffenDungeon2FSelfNPC: false,
+                GeffenDungeon2FRekiNPC: true,
+
+            }
+        case 'ResetGeffenDungeonNPCFn':
+            return {
+                ...state,
+                GeffenDungeon1FSelfNPC: false,
+                GeffenDungeon1FNiaNPC: false,
+                GeffenDungeon2FSelfNPC: false,
+                GeffenDungeon2FRekiNPC: false,
+            }
         case 'OpenGeffenDungeonChest1Fn':
             return {
                 ...state,
@@ -780,7 +829,26 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 GeffenDungeonChest1VisitRepeat: true
             }
-            
+        case 'OpenGeffenDungeonChest2Fn':
+            return {
+                ...state,
+                GeffenDungeonChest2: true
+            }
+        case 'GeffenDungeonChest2VisitRepeatFn':
+            return {
+                ...state,
+                GeffenDungeonChest2VisitRepeat: true
+            }
+        case 'OpenGeffenDungeonChest3Fn':
+            return {
+                ...state,
+                GeffenDungeonChest3: true
+            }
+        case 'GeffenDungeonChest3VisitRepeatFn':
+            return {
+                ...state,
+                GeffenDungeonChest3VisitRepeat: true
+            }
     
         default:
             return state;

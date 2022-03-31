@@ -69,6 +69,11 @@ const Fn = {
     PoisonSpore:1,
     MushroomSpore:1,
     Karvodailnirol:1,
+    JackPumpkin:1,
+    Zargon:1,
+    HorrendousMouth:1,
+    Memento:1,
+
 
 
 }
@@ -483,6 +488,30 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 Karvodailnirol: state.Karvodailnirol + action.Number,
+            }
+        case 'WinJackPumpkinFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                JackPumpkin: state.JackPumpkin + action.Number,
+            }
+        case 'WinZargonFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Zargon: state.Zargon + action.Number,
+            }
+        case 'WinHorrendousMouthFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                HorrendousMouth: state.HorrendousMouth + action.Number,
+            }
+        case 'WinMementoFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Memento: state.Memento + action.Number,
             }
         case 'WinResultFn':
             return{

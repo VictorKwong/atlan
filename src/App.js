@@ -10,11 +10,9 @@ const audioBGM = new Audio(audioStartUpGame);
 function App(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
     useEffect(() => {
-      
       audioBGM.volume = 0.1;
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {

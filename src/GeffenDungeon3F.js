@@ -8,10 +8,7 @@ import { BattleLoadingScreenFn } from './actions'
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //CHEST
 import { GeffenDungeonChest1VisitRepeatFn } from './actions'
-//PATH
-import { GotoGeffenDungeon1FPath4Fn } from './actions'
-//NPC
-import { GeffenDungeon1FSelfNPCFn , GeffenDungeon1FNiaNPCFn, ResetGeffenDungeonNPCFn } from './actions'
+
 
 import Geffen from './Geffen'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -111,38 +108,6 @@ function StartMenu(){
       $('.GeffenDungeon1FMapTitle').fadeIn(600);
       $('.GeffenDungeon1FMapTitle').delay(2400).fadeOut(600);
     }, [screenControlRoom])
-
-    useEffect(() => {
-      switch(true){
-        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
-          $('.storySpeech').html('')  
-          $('.storyCharacter').html('')
-          break;
-        case(npcControlRoom.GeffenDungeon1FSelfNPC):
-          $('.storySpeech').html(`${npcSpeech['Atlan'][6].text}`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][6].name}</p>`)
-          break;
-        case(npcControlRoom.GeffenDungeon1FNiaNPC):
-          $('.storySpeech').html(`${npcSpeech['Nia'][0].text}`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Nia'][0].name}</p>`)
-          break;
-        case(npcControlRoom.GeffenDungeon2FSelfNPC):
-          $('.storySpeech').html(`${npcSpeech['Atlan'][7].text}`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][7].name}</p>`)
-          break;
-        case(npcControlRoom.GeffenDungeon2FRekiNPC):
-          $('.storySpeech').html(`${npcSpeech['Reki'][0].text}`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Reki'][0].name}</p>`)
-          break;
-        default:
-          $('.storySpeech').html('')  
-          $('.storyCharacter').html('')
-          break;
-        }
-      //userState,screenControRoom not included
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [npcControlRoom, screenControlRoom])
-
     const changeMapFadeAudio = () => {
       let i = 0;
       const fadeAudio = setInterval(() => {
@@ -227,23 +192,18 @@ function StartMenu(){
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
               {/* Path 0*/}
-              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());} : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>ToGeffen</button>
-              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0(); dispatch(ResetGeffenDungeonNPCFn());}}>Path1</button>
+              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio();}}>ToGeffen</button>
+              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0();}}>Path1</button>
               {/* Path 1*/}
-              {screenControlRoom.GeffenDungeon1FPath1 ?
-              <button className="GeffenDungeonBase GeffenDungeon1FPath1" onClick={() =>{dispatch(GeffenDungeon1FSelfNPCFn()); changePlaceFadeAudio();}}>Narrow Road</button> : null}
+              <button className="GeffenDungeonBase GeffenDungeon1FPath1" onClick={() =>{changePlaceFadeAudio();}}>Narrow Road</button>
               {/* Path 2*/}
-              {screenControlRoom.GeffenDungeon1FPath2 ?
-              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath2" : "GeffenDungeonBase GeffenDungeon1FPath2 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen1(); dispatch(ResetGeffenDungeonNPCFn());}}>Path2</button> : null}
+              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath2" : "GeffenDungeonBase GeffenDungeon1FPath2 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen1();}}>Path2</button>
               {/* Path 3*/}
-              {screenControlRoom.GeffenDungeon1FPath3 ?
-              <button className="GeffenDungeonBase GeffenDungeon1FPath3" onClick={() =>{dispatch(GotoGeffenDungeon1FPath4Fn()); changePlaceFadeAudio(); dispatch(GeffenDungeon1FNiaNPCFn());}}>Nia</button> :null}
+              <button className="GeffenDungeonBase GeffenDungeon1FPath3" onClick={() =>{changePlaceFadeAudio();}}>Nia</button>
               {/* Path 4*/}
-              {screenControlRoom.GeffenDungeon1FPath4 ?
-              <button className="GeffenDungeonBase TreasureBoxGeffenDungeon1F" onClick={npcControlRoom.GeffenDungeonChest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(GeffenDungeonChest1VisitRepeatFn()); dispatch(ResetGeffenDungeonNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(ResetGeffenDungeonNPCFn());}}>Treasure chest</button> : null}
+              <button className="GeffenDungeonBase TreasureBoxGeffenDungeon1F" onClick={npcControlRoom.GeffenDungeonChest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(GeffenDungeonChest1VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); }}>Treasure chest</button>
               {/* Path 5*/}
-              {screenControlRoom.GeffenDungeon1FPath4 ?
-              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Geffen Dungeon 2F</button> : null}
+              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen Dungeon 2F</button>
             </div>
             }
             <div className="StoryHUD">

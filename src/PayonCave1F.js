@@ -182,8 +182,8 @@ function StartMenu(){
         $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][2].name}</p>`)
         break;
       case(npcControlRoom.PayonCave2FSelfNPCHidden && (questControlRoom.QuestDialog).indexOf("Lemonstory") === -1):
-        $('.storySpeech').html(`${npcSpeech['Atlan'][4].text}`)
-        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][4].name}</p>`)
+        $('.storySpeech').html(`${npcSpeech['Atlan'][5].text}`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][5].name}</p>`)
         break;
       case(npcControlRoom.PayonCave2FSelfNPCHidden):
         $('.storySpeech').html(`${npcSpeech['Atlan'][3].text}`)

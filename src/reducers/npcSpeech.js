@@ -184,7 +184,18 @@ const Fn = {
             text: 'A story from Lemon: "Back into the days where we watch "Spirited Away" in 2001 - Lemon 2016" (Hidden Story 2/2)'
         },{
             name: 'Atlan',
-            text: 'Hmm.. what is this?'
+            text: 'A story from Lemon: "Toradora! - Taiga & Ryuji funny couple ^^" (Hidden Story 3/3)'
+        },{
+            name: 'Atlan',
+            text: 'Hmm.. I have to better find the other pieces before I come back here.'
+        },{
+        //GeffenDungeon
+            name: 'Atlan',
+            text: 'This dungeon has been forfeit for a long time, surrounded by all evil demons...'
+        },{
+            name: 'Atlan',
+            text: 'Who is standing there? And he is suddenly disappear..?'
+        },{
         }],
     Adventure:[{
             name: 'Adventure',
@@ -193,7 +204,15 @@ const Fn = {
     ScaredAcolyte:[{
             name: 'ScaredAcolyte',
             text: 'OMG! This place is freaking me out, I wanna leave now T^T...'
-    }],
+        }],
+    Nia:[{
+            name: 'Nia',
+            text: 'I wish I could get a Doppelganger card, because of the attack speed buff and he is charming >﹏<'
+        }],
+    Reki:[{
+            name: 'Reki',
+            text: '-(Wish you luck)-'
+        }],
 }
 
 const npcSpeechReducer = (state = Fn, action) => {
