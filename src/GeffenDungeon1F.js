@@ -243,7 +243,7 @@ function StartMenu(){
               <button className="GeffenDungeonBase TreasureBoxGeffenDungeon1F" onClick={npcControlRoom.GeffenDungeonChest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(GeffenDungeonChest1VisitRepeatFn()); dispatch(ResetGeffenDungeonNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(ResetGeffenDungeonNPCFn());}}>Treasure chest</button> : null}
               {/* Path 5*/}
               {screenControlRoom.GeffenDungeon1FPath4 ?
-              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Geffen Dungeon 2F</button> : null}
+              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Geffen Dungeon 2F</button> : null}
             </div>
             }
             <div className="StoryHUD">
