@@ -8,6 +8,7 @@ import PronteraCastle from './PronteraCastle'
 import PoringIsland from './PoringIsland'
 import Geffen from './Geffen'
 import GeffenDungeon1F from './GeffenDungeon1F'
+import GeffenDungeon3F from './GeffenDungeon3F'
 import PayonCave1F from './PayonCave1F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -93,6 +94,7 @@ function StartMenu(){
         screenControlRoom.PoringIsland ? <PoringIsland />:
         screenControlRoom.Geffen ? <Geffen />:
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
+        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F /> :
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.WorldMap ?

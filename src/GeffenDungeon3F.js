@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoGeffenFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon2FFn } from './actions';
+import { GotoGeffenDungeon2FFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
@@ -10,15 +10,14 @@ import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHead
 import { GeffenDungeonChest1VisitRepeatFn } from './actions'
 
 
-import Geffen from './Geffen'
+import GeffenDungeon1F from './GeffenDungeon1F'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
-import GeffenDungeon2F from './GeffenDungeon2F'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
-import './css/mapGeffenDungeon1F.css'
+import './css/mapGeffenDungeon3F.css'
 import $ from 'jquery'
 
 // WEAPON IMAGE
@@ -44,8 +43,8 @@ import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
-import audioThroughTheTower from './audio/21ThroughTheTower.mp3'
-const audioBGM = new Audio(audioThroughTheTower);
+import audioOutOfCuriosity from './audio/50OutOfCuriosity.mp3'
+const audioBGM = new Audio(audioOutOfCuriosity);
 
 
 function StartMenu(){
@@ -105,8 +104,8 @@ function StartMenu(){
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(() => {
-      $('.GeffenDungeon1FMapTitle').fadeIn(600);
-      $('.GeffenDungeon1FMapTitle').delay(2400).fadeOut(600);
+      $('.GeffenDungeon3FMapTitle').fadeIn(600);
+      $('.GeffenDungeon3FMapTitle').delay(2400).fadeOut(600);
     }, [screenControlRoom])
     const changeMapFadeAudio = () => {
       let i = 0;
@@ -156,9 +155,9 @@ function StartMenu(){
     return(
       <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
-        screenControlRoom.Geffen ? <Geffen/> :
+        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div className={screenControlRoom.GeffenDungeon1F && screenControlRoom.GeffenDungeon2F ? "GeffenDungeon2FMapBackground" : "GeffenDungeon1FMapBackground"}>
+        <div className={screenControlRoom.GeffenDungeon3F ? "GeffenDungeon3FMapBackground" : null}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -184,26 +183,11 @@ function StartMenu(){
               <div className="ReturnParent">
                 <TreasurePoringIslandMap />
               </div>:
-            screenControlRoom.GeffenDungeon2F ?
-              <div className="ReturnParent">
-                <GeffenDungeon2F audioBGM={audioBGM}/>
-              </div>:
-            <div className="GeffenDungeon1FMap">
+            <div className="GeffenDungeon3FMap">
               <button className="ReturnHUDBugFix"></button>
-              <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
+              <h3 className="GeffenDungeon3FMapTitle">Geffen Dungeon 3F</h3>
               {/* Path 0*/}
-              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio();}}>ToGeffen</button>
-              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0();}}>Path1</button>
-              {/* Path 1*/}
-              <button className="GeffenDungeonBase GeffenDungeon1FPath1" onClick={() =>{changePlaceFadeAudio();}}>Narrow Road</button>
-              {/* Path 2*/}
-              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath2" : "GeffenDungeonBase GeffenDungeon1FPath2 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen1();}}>Path2</button>
-              {/* Path 3*/}
-              <button className="GeffenDungeonBase GeffenDungeon1FPath3" onClick={() =>{changePlaceFadeAudio();}}>Nia</button>
-              {/* Path 4*/}
-              <button className="GeffenDungeonBase TreasureBoxGeffenDungeon1F" onClick={npcControlRoom.GeffenDungeonChest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(GeffenDungeonChest1VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); }}>Treasure chest</button>
-              {/* Path 5*/}
-              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen Dungeon 2F</button>
+              <button className="GeffenDungeon3FToGeffenDungeon2F" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>ToGeffen2F</button>
             </div>
             }
             <div className="StoryHUD">

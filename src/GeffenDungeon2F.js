@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoPayonCave3FFn } from './actions';
+import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoGeffenDungeon3FFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //CHEST
@@ -120,7 +120,7 @@ const PayonCave2F = (data) =>{
           <button className="GeffenDungeonBase GeffenDungeon2FPath2Split1" onClick={() => {LoadingScreen3(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Road2B2</button> : null}
           {/* Path 4 */}
           {screenControlRoom.GeffenDungeon2FPath6 ?
-          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button> : null}
+          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon3FFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button> : null}
         </div>
     );
 }
