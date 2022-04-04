@@ -3,6 +3,11 @@
   background-position: center;
   background-size: cover;
 }
+.GeffenDungeon4FMapBackground{
+  background-image: url('../img/Background/GeffenDungeon4F1.jpg');
+  background-position: center;
+  background-size: cover;
+}
 
 .GeffenDungeon3FMapTitle{
   font-size: 30px;
@@ -25,8 +30,8 @@
   width:80%;
   border: 1px solid black;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   position: relative;
@@ -71,6 +76,37 @@
   text-shadow: 2px 2px 4px #536481;
 }
 
+.GeffenDungeon3FPath0::before,
+.GeffenDungeon3FPath0:hover::before{
+  background-image: url('../img/Background/GeffenDungeon3F2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.GeffenDungeon3FPath1::before,
+.GeffenDungeon3FPath1:hover::before{
+  background-image: url('../img/Background/GeffenDungeon3F3.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.GeffenDungeon3FPath3::before,
+.GeffenDungeon3FPath3:hover::before,
+.GeffenDungeon4FToGeffenDungeon3F::before,
+.GeffenDungeon4FToGeffenDungeon3F:hover::before{
+  background-image: url('../img/Background/GeffenDungeon4F1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.GeffenDungeon3FToGeffenDungeon2F { grid-area: 5 / 3 / 6 / 4; }
+.GeffenDungeon3FPath0 { grid-area: 4 / 3 / 5 / 4; }
+.GeffenDungeon3FPath1 { grid-area: 3 / 3 / 4 / 4; }
+.GeffenDungeon3FPath2 { grid-area: 2 / 3 / 3 / 4; }
+.GeffenDungeon3FPath3 { grid-area: 1 / 3 / 2 / 4; }
+.GeffenDungeon3FPath4 { grid-area: 2 / 2 / 3 / 3; }
+.GeffenDungeon3FPath5 { grid-area: 3 / 1 / 4 / 2; }
+.GeffenDungeon3FPath6 { grid-area: 2 / 4 / 3 / 5; }
+.GeffenDungeon3FPath7 { grid-area: 3 / 5 / 4 / 6; }
 
 
 @media (max-width: 1199px){

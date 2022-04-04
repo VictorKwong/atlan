@@ -326,6 +326,11 @@ export const GotoGeffenDungeon3FFn = () => {
         type: 'GotoGeffenDungeon3FFn',
     };
 };
+export const GotoGeffenDungeon4FFn = () => {
+    return {
+        type: 'GotoGeffenDungeon4FFn',
+    };
+};
 
 
 export const GotoPayonCave1FFn = () => {
@@ -1569,7 +1574,22 @@ export const WinMementoFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
-
+//MARIONETTE
+export const WinGoldenHairFn = (Zeny,Num) => {
+    return {
+        type: 'WinGoldenHairFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//WRAITH
+export const WinRedGemstoneFn = (Zeny,Num) => {
+    return {
+        type: 'WinRedGemstoneFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 //PORING ISLAND CHEST
 export const OpenChest1Fn = () => {
     return {

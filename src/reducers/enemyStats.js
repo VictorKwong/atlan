@@ -24,6 +24,9 @@ const Fn = [
 
     //19.Jakk
     //20.Ghoul
+
+    //21.Marionette
+    //22.Wraith
     {
         name: 'Poring',
         level: 1,
@@ -350,6 +353,40 @@ const Fn = [
     },
     {
         name: 'Ghoul',
+        level: 10,
+        maxHealth: 1000, //2000
+        currentHealth: 1000,
+        attack: 60,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        critResist: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Marionette',
+        level: 10,
+        maxHealth: 1000, //2000
+        currentHealth: 1000,
+        attack: 60,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        critResist: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
+        enemyClockDefend: false,
+    },
+    {
+        name: 'Wraith',
         level: 10,
         maxHealth: 1000, //2000
         currentHealth: 1000,

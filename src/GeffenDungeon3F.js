@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoGeffenDungeon2FFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn } from './actions';
+import { GotoGeffenDungeon2FFn , GotoGeffenDungeon4FFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //CHEST
-import { GeffenDungeonChest1VisitRepeatFn } from './actions'
 
 
 import GeffenDungeon1F from './GeffenDungeon1F'
+import GeffenDungeon4F from './GeffenDungeon4F'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import AltanEquipment from './AltanEquipment'
@@ -143,12 +143,12 @@ function StartMenu(){
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",Math.floor(Math.random() * 2) + 16)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",20)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",Math.floor(Math.random() * 2) + 16)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",21)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
 
@@ -157,7 +157,7 @@ function StartMenu(){
         {
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        <div className={screenControlRoom.GeffenDungeon3F ? "GeffenDungeon3FMapBackground" : null}>
+        <div className={screenControlRoom.GeffenDungeon3F && screenControlRoom.GeffenDungeon4F ? "GeffenDungeon4FMapBackground" : "GeffenDungeon3FMapBackground"}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
               <div className="ReturnParent">
@@ -183,11 +183,22 @@ function StartMenu(){
               <div className="ReturnParent">
                 <TreasurePoringIslandMap />
               </div>:
+            screenControlRoom.GeffenDungeon4F ?
+              <div className="ReturnParent">
+                <GeffenDungeon4F audioBGM={audioBGM}/>
+              </div>:
             <div className="GeffenDungeon3FMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon3FMapTitle">Geffen Dungeon 3F</h3>
               {/* Path 0*/}
-              <button className="GeffenDungeon3FToGeffenDungeon2F" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>ToGeffen2F</button>
+              <button className="GeffenDungeon3FToGeffenDungeon2F" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen2F</button>
+              <button className="GeffenDungeonBase GeffenDungeon3FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); }}>Doll</button>
+              {/* Path 1*/}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>Demon</button>
+              {/* Path 2*/}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath2" onClick={() => { changePlaceFadeAudio();}}>NPC</button>
+              {/* Path 3*/}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath3" onClick={() =>{dispatch(GotoGeffenDungeon4FFn()); changeMapFadeAudio(); }}>Geffen4F</button>
             </div>
             }
             <div className="StoryHUD">

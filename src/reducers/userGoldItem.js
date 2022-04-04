@@ -73,6 +73,9 @@ const Fn = {
     Zargon:1,
     HorrendousMouth:1,
     Memento:1,
+    GoldenHair:1,
+    RedGemstone:1,
+
 
 
 
@@ -512,6 +515,18 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 Memento: state.Memento + action.Number,
+            }
+        case 'WinGoldenHairFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                GoldenHair: state.GoldenHair + action.Number,
+            }
+        case 'WinRedGemstoneFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                RedGemstone: state.RedGemstone + action.Number,
             }
         case 'WinResultFn':
             return{

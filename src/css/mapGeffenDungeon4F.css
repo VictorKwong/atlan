@@ -1,0 +1,31 @@
+.GeffenDungeon4FMapTitle{
+  font-size: 30px;
+  font-family: 'Chelsea Market', cursive;
+  color: rgb(216, 211, 144);
+  -webkit-text-stroke: 0.8px rgb(48, 48, 48);
+  stroke: 0.8px rgb(48, 48, 48);
+  /* animation-name: fadeOutMapName;
+  animation-duration: 3s;
+  opacity: 0; */
+  display: none;
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  z-index: 999;
+}
+
+.GeffenDungeon4FMap{
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+}
+

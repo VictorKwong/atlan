@@ -67,6 +67,12 @@ import NineTails from './img/Etc/Wolyafa_NineTails55.gif'
 import PoisonSporeItem from './img/Etc/PoisonSpore_PoisonSpore90.gif'
 import MushroomSpore from './img/Etc/PoisonSpore_MushroomSpore12.gif'
 import Karvodailnirol from './img/Etc/PoisonSpore_Karvodailnirol5.gif'
+import JackPumpkin from './img/Etc/Jakk_JackPumpkin90.gif'
+import Zargon from './img/Etc/Jakk_Zargon9.gif'
+import HorrendousMouth from './img/Etc/Ghoul_HorrendousMouth65.gif'
+import Memento from './img/Etc/Ghoul_Memento20.gif'
+import GoldenHair from './img/Etc/Marionette_GoldenHair90.gif'
+import RedGemstone from './img/Etc/Wraith_RedGemstone10.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
@@ -150,6 +156,12 @@ function StartMenu(){
       {id:1022, Img:PoisonSporeItem, name:"Poison Spore", itemCheck:userGoldItem.PoisonSpore},
       {id:1023, Img:MushroomSpore, name:"Mushroom Spore", itemCheck:userGoldItem.MushroomSpore},
       {id:1024, Img:Karvodailnirol, name:"Karvodailnirol", itemCheck:userGoldItem.Karvodailnirol},
+      {id:1025, Img:JackPumpkin, name:"Jack Pumpkin", itemCheck:userGoldItem.JackPumpkin},
+      {id:1026, Img:Zargon, name:"Zargon", itemCheck:userGoldItem.Zargon},
+      {id:1027, Img:HorrendousMouth, name:"Horrendous Mouth", itemCheck:userGoldItem.HorrendousMouth},
+      {id:1028, Img:Memento, name:"Memento", itemCheck:userGoldItem.Memento},
+      {id:1029, Img:GoldenHair, name:"Golden Hair", itemCheck:userGoldItem.GoldenHair},
+      {id:1030, Img:RedGemstone, name:"Red Gemstone", itemCheck:userGoldItem.RedGemstone},
       
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},

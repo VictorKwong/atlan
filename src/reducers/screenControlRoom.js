@@ -12,6 +12,7 @@ const Fn = {
     GeffenDungeon1F: false,
     GeffenDungeon2F: false,
     GeffenDungeon3F: false,
+    GeffenDungeon4F: false,
     
     //PORING ISLAND BATTLE
     BattlePoringIslandMap: false,
@@ -326,6 +327,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1F: false,
                 GeffenDungeon2F: false,
                 GeffenDungeon3F: false,
+                GeffenDungeon4F: false,
                 PayonCave1F: false,
                 PayonCave2F: false,
             }
@@ -342,6 +344,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: false,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                 }
@@ -358,6 +361,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: false,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                     UserLocation: "Path0"
@@ -375,6 +379,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: false,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                 }
@@ -392,6 +397,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: false,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                     UserUnlockPath: action.Path
@@ -409,6 +415,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: false,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                     UserLocation: ""
@@ -426,6 +433,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: true,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
                     UserLocation: ""
@@ -436,6 +444,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: true,
                     GeffenDungeon2F: true,
                     GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
+                    BattlePoringIslandMap: false,
                     UserLocation: ""
                 }
             case 'GotoGeffenDungeon3FFn':
@@ -444,8 +454,21 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1F: false,
                     GeffenDungeon2F: false,
                     GeffenDungeon3F: true,
+                    GeffenDungeon4F: false,
+                    BattlePoringIslandMap: false,
                     UserLocation: ""
                 }
+            case 'GotoGeffenDungeon4FFn':
+                return {
+                    ...state,
+                    GeffenDungeon1F: false,
+                    GeffenDungeon2F: false,
+                    GeffenDungeon3F: true,
+                    GeffenDungeon4F: true,
+                    BattlePoringIslandMap: false,
+                    UserLocation: ""
+                }
+                
             case 'GotoPayonCave1FFn':
                 return {
                     ...state,
