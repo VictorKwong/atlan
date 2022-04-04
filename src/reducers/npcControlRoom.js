@@ -67,6 +67,11 @@ const Fn = {
     GeffenDungeonChest2VisitRepeat: false,
     GeffenDungeonChest3: false,
     GeffenDungeonChest3VisitRepeat: false,
+    GeffenDungeonChest4: false,
+    GeffenDungeonChest4VisitRepeat: false,
+    ChestBoss3: false,
+    ChestBoss3VisitRepeat: false,
+    BossDoppelgangerDefeat: false,
     GeffenDungeon1FSelfNPC: false,
     GeffenDungeon1FNiaNPC: false,
     GeffenDungeon2FSelfNPC: false,
@@ -849,7 +854,31 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 GeffenDungeonChest3VisitRepeat: true
             }
-    
+        case 'OpenGeffenDungeonChest4Fn':
+            return {
+                ...state,
+                GeffenDungeonChest4: true
+            }
+        case 'GeffenDungeonChest4VisitRepeatFn':
+            return {
+                ...state,
+                GeffenDungeonChest4VisitRepeat: true
+            }
+        case 'OpenChestBoss3Fn':
+            return {
+                ...state,
+                ChestBoss3: true
+            }
+        case 'ChestBoss3VisitRepeatFn':
+            return {
+                ...state,
+                ChestBoss3VisitRepeat: true
+            }
+        case 'BossDoppelgangerDefeatFn':
+            return {
+                ...state,
+                BossDoppelgangerDefeat: true
+            }
         default:
             return state;
     }

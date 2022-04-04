@@ -41,6 +41,7 @@ const Fn = {
     //Mission
     SpiritOfEclipse: 0,
     SpiritOfWolyafa: 0,
+    SpiritOfDoppelganger: 0,
     //PORING ISLAND
     Jellopy: 3,
     EmptyBottle: 5,
@@ -75,6 +76,9 @@ const Fn = {
     Memento:1,
     GoldenHair:1,
     RedGemstone:1,
+    CursedRuby:1,
+    Diamond:1,
+    EyeOfHellion:1,
 
 
 
@@ -174,6 +178,12 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 SpiritOfWolyafa: state.SpiritOfWolyafa + action.Item,
             }        
+        case 'SpiritOfDoppelgangerFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SpiritOfDoppelganger: state.SpiritOfDoppelganger + action.Item,
+            }       
         //Weapons Shop
         case 'KatanaFn':
             return{
@@ -527,6 +537,24 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 RedGemstone: state.RedGemstone + action.Number,
+            }
+        case 'WinCursedRubyFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                CursedRuby: state.CursedRuby + action.Number,
+            }
+        case 'WinDiamondFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Diamond: state.Diamond + action.Number,
+            }
+        case 'WinEyeOfHellionFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                EyeOfHellion: state.EyeOfHellion + action.Number,
             }
         case 'WinResultFn':
             return{

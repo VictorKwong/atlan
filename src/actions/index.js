@@ -988,8 +988,13 @@ export const SpiritOfWolyafaFn = (Zeny,Item) => {
         Item: Item
     };
 };
-
-
+export const SpiritOfDoppelgangerFn = (Zeny,Item) => {
+    return {
+        type: 'SpiritOfDoppelgangerFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
 
 //WEAPON BUY SELL
 export const KatanaFn = (Zeny,Item) => {
@@ -1590,6 +1595,30 @@ export const WinRedGemstoneFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//DOPPELGANGER
+export const WinCursedRubyFn = (Zeny,Num) => {
+    return {
+        type: 'WinCursedRubyFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//WRAITH DEAD
+export const WinDiamondFn = (Zeny,Num) => {
+    return {
+        type: 'WinDiamondFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+//HELLIONREVENANT
+export const WinEyeOfHellionFn = (Zeny,Num) => {
+    return {
+        type: 'WinEyeOfHellionFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 //PORING ISLAND CHEST
 export const OpenChest1Fn = () => {
     return {
@@ -1710,7 +1739,27 @@ export const GeffenDungeonChest3VisitRepeatFn = () => {
         type: 'GeffenDungeonChest3VisitRepeatFn',
     };
 };
+export const OpenGeffenDungeonChest4Fn = () => {
+    return {
+        type: 'OpenGeffenDungeonChest4Fn',
+    };
+};
+export const GeffenDungeonChest4VisitRepeatFn = () => {
+    return {
+        type: 'GeffenDungeonChest4VisitRepeatFn',
+    };
+};
 
+export const OpenChestBoss3Fn = () => {
+    return {
+        type: 'OpenChestBoss3Fn',
+    };
+};
+export const ChestBoss3VisitRepeatFn = () => {
+    return {
+        type: 'ChestBoss3VisitRepeatFn',
+    };
+};
 //PORING ISLAND BOSS
 export const BossEclipseDefeatFn = () => {
     return {
@@ -1970,6 +2019,11 @@ export const ReturnGeffenDungeonPathFn = () => {
     };
 };
 //GEFFEN DUNGEON BOSS & NPC
+export const BossDoppelgangerDefeatFn = () => {
+    return {
+        type: 'BossDoppelgangerDefeatFn',
+    };
+};
 export const GeffenDungeon1FSelfNPCFn = () => {
     return {
         type: 'GeffenDungeon1FSelfNPCFn',

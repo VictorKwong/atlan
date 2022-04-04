@@ -77,13 +77,17 @@
 }
 
 .GeffenDungeon3FPath0::before,
-.GeffenDungeon3FPath0:hover::before{
+.GeffenDungeon3FPath0:hover::before,
+.GeffenDungeon3FPath6::before,
+.GeffenDungeon3FPath6:hover::before{
   background-image: url('../img/Background/GeffenDungeon3F2.jpg');
   background-repeat: no-repeat;
   background-position: center;
 }
 .GeffenDungeon3FPath1::before,
-.GeffenDungeon3FPath1:hover::before{
+.GeffenDungeon3FPath1:hover::before,
+.GeffenDungeon3FPath6Pic2::before,
+.GeffenDungeon3FPath6Pic2:hover::before{
   background-image: url('../img/Background/GeffenDungeon3F3.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -96,6 +100,41 @@
   background-image: url('../img/Background/GeffenDungeon4F1.jpg');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.GeffenDungeon3FPath4::before,
+.GeffenDungeon3FPath4:hover::before{
+  background-image: url('../img/Background/GeffenDungeon3F4.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.GeffenDungeon3FPath5::before,
+.GeffenDungeon3FPath5:hover::before{
+  background-image: url('../img/Background/BossTreasureBoxGeffenDungeon.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.GeffenDungeon3FPath7::before,
+.GeffenDungeon3FPath7:hover::before{
+  background-image: url('../img/Background/GeffenDungeon3F5.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.GeffenDungeon4FPath0::before,
+.GeffenDungeon4FPath0:hover::before{
+  background-image: url('../img/Background/GeffenDungeon4F2.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.GeffenDungeon4FPath1::before,
+.GeffenDungeon4FPath1:hover::before{
+  background-image: url('../img/Background/GeffenDungeon4F3.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
 }
 
 .GeffenDungeon3FToGeffenDungeon2F { grid-area: 5 / 3 / 6 / 4; }

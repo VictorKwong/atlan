@@ -7,7 +7,7 @@ import { BattleLoadingScreenFn } from './actions'
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //CHEST
-
+import { ChestBoss3VisitRepeatFn, GeffenDungeonChest4VisitRepeatFn } from './actions'
 
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon4F from './GeffenDungeon4F'
@@ -151,7 +151,16 @@ function StartMenu(){
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",21)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
-
+  const LoadingScreen2 = () => {
+    dispatch(BattleLoadingScreenFn())
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath4",22)), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
+  const LoadingScreen3 = () => {
+    dispatch(BattleLoadingScreenFn())
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath7",Math.floor(Math.random() * 2) + 20)), 1000);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+  }
     return(
       <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
@@ -198,7 +207,15 @@ function StartMenu(){
               {/* Path 2*/}
               <button className="GeffenDungeonBase GeffenDungeon3FPath2" onClick={() => { changePlaceFadeAudio();}}>NPC</button>
               {/* Path 3*/}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath4" onClick={() => {LoadingScreen2(); changeMapFadeAudio();}}>Boss</button>
+              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon3FPath6" : "GeffenDungeonBase GeffenDungeon3FPath6 GeffenDungeon3FPath6Pic2" } onClick={() => {LoadingScreen3(); changeMapFadeAudio();}}>Wrath</button>
+              {/* Path 4 Split 1*/}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath5" onClick={npcControlRoom.ChestBoss3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest3")); dispatch(ChestBoss3VisitRepeatFn()); } : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest3"));}}>Shiny chest</button>
+              {/* Path 4 Split 2*/}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath7" onClick={npcControlRoom.GeffenDungeonChest4 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4")); dispatch(GeffenDungeonChest4VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4"));}}>Treasure chest</button>
+              {/* Path 3 Final*/}
               <button className="GeffenDungeonBase GeffenDungeon3FPath3" onClick={() =>{dispatch(GotoGeffenDungeon4FFn()); changeMapFadeAudio(); }}>Geffen4F</button>
+              
             </div>
             }
             <div className="StoryHUD">

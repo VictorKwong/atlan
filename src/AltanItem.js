@@ -73,6 +73,9 @@ import HorrendousMouth from './img/Etc/Ghoul_HorrendousMouth65.gif'
 import Memento from './img/Etc/Ghoul_Memento20.gif'
 import GoldenHair from './img/Etc/Marionette_GoldenHair90.gif'
 import RedGemstone from './img/Etc/Wraith_RedGemstone10.gif'
+import CursedRuby from './img/Etc/Doppelganger_CursedRuby80.gif'
+import Diamond from './img/Etc/WraithDead_Diamond10.gif'
+import EyeOfHellion from './img/Etc/HellionRevenant_EyeOfHellion80.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
@@ -162,13 +165,18 @@ function StartMenu(){
       {id:1028, Img:Memento, name:"Memento", itemCheck:userGoldItem.Memento},
       {id:1029, Img:GoldenHair, name:"Golden Hair", itemCheck:userGoldItem.GoldenHair},
       {id:1030, Img:RedGemstone, name:"Red Gemstone", itemCheck:userGoldItem.RedGemstone},
+      {id:1031, Img:CursedRuby, name:"Cursed Ruby", itemCheck:userGoldItem.CursedRuby},
+      {id:1032, Img:Diamond, name:"Diamond", itemCheck:userGoldItem.Diamond},
+      {id:1033, Img:EyeOfHellion, name:"Eye Of Hellion", itemCheck:userGoldItem.EyeOfHellion},
+      
       
 
       {id:91000, Img:PoringIslandMap, name:"PoringIsland Map", itemCheck:userGoldItem.PoringIslandMap},
       {id:91001, Img:PayonCaveMap, name:"PayonCave Map", itemCheck:userGoldItem.PayonCaveMap},
       {id:91002, Img:GeffenDungeonMap, name:"GeffenDungeon Map", itemCheck:userGoldItem.GeffenDungeonMap},
       {id:100001, Img:SpiritOfBoss, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse},
-      {id:100002, Img:SpiritOfBoss, name:"Spirit Of Wolyafa", itemCheck:userGoldItem.SpiritOfWolyafa}
+      {id:100002, Img:SpiritOfBoss, name:"Spirit Of Wolyafa", itemCheck:userGoldItem.SpiritOfWolyafa},
+      {id:100002, Img:SpiritOfBoss, name:"Spirit Of Doppelganger", itemCheck:userGoldItem.SpiritOfDoppelganger}
     ]
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
