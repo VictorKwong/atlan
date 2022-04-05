@@ -195,7 +195,6 @@ const Fn = {
         },{
             name: 'Atlan',
             text: 'Who is standing there? And he is suddenly disappear..?'
-        },{
         }],
     Adventure:[{
             name: 'Adventure',
@@ -208,6 +207,9 @@ const Fn = {
     Nia:[{
             name: 'Nia',
             text: 'I wish I could get a Doppelganger card, because of the attack speed buff and he is charming >﹏<'
+        },{
+            name: 'Nia',
+            text: 'Careful there is a big monster ahead!! I`m better get going!'
         }],
     Reki:[{
             name: 'Reki',

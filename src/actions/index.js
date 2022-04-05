@@ -2045,6 +2045,13 @@ export const GeffenDungeon2FRekiNPCFn = () => {
         type: 'GeffenDungeon2FRekiNPCFn',
     };
 };
+export const GeffenDungeon3FNiaNPCFn = () => {
+    return {
+        type: 'GeffenDungeon3FNiaNPCFn',
+    };
+};
+
+
 
 
 export const ResetGeffenDungeonNPCFn = () => {

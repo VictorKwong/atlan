@@ -76,6 +76,7 @@ const Fn = {
     GeffenDungeon1FNiaNPC: false,
     GeffenDungeon2FSelfNPC: false,
     GeffenDungeon2FRekiNPC: false,
+    GeffenDungeon3FNiaNPC: false,
     
 }
 
@@ -814,8 +815,14 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: false,
                 GeffenDungeon2FSelfNPC: false,
                 GeffenDungeon2FRekiNPC: true,
-
             }
+        case 'GeffenDungeon3FNiaNPCFn':
+            return {
+                ...state,
+                GeffenDungeon3FNiaNPC: false,
+            }
+
+
         case 'ResetGeffenDungeonNPCFn':
             return {
                 ...state,
@@ -823,6 +830,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: false,
                 GeffenDungeon2FSelfNPC: false,
                 GeffenDungeon2FRekiNPC: false,
+                GeffenDungeon3FNiaNPC: false,
             }
         case 'OpenGeffenDungeonChest1Fn':
             return {

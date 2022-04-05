@@ -8,6 +8,8 @@ import { BattleLoadingScreenFn } from './actions'
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //CHEST
 import { ChestBoss3VisitRepeatFn, GeffenDungeonChest4VisitRepeatFn } from './actions'
+//NPC
+import { GeffenDungeon3FNiaNPCFn } from './actions'
 
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon4F from './GeffenDungeon4F'
@@ -141,6 +143,24 @@ function StartMenu(){
       }, 10);
   }
 
+  useEffect(() => {
+    switch(true){
+      case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+        $('.storySpeech').html('')  
+        $('.storyCharacter').html('')
+        break;
+      case(npcControlRoom.GeffenDungeon3FNiaNPC):
+        $('.storySpeech').html(`${npcSpeech['Nia'][1].text}`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Nia'][1].name}</p>`)
+        break;
+      default:
+        $('.storySpeech').html('')  
+        $('.storyCharacter').html('')
+        break;
+      }
+    //userState,screenControRoom not included
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [npcControlRoom, screenControlRoom])
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",20)), 1000);
@@ -205,7 +225,7 @@ function StartMenu(){
               {/* Path 1*/}
               <button className="GeffenDungeonBase GeffenDungeon3FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>Demon</button>
               {/* Path 2*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath2" onClick={() => { changePlaceFadeAudio();}}>NPC</button>
+              <button className="GeffenDungeonBase GeffenDungeon3FPath2" onClick={() => {dispatch(GeffenDungeon3FNiaNPCFn()); changePlaceFadeAudio();}}>NPC</button>
               {/* Path 3*/}
               <button className="GeffenDungeonBase GeffenDungeon3FPath4" onClick={() => {LoadingScreen2(); changeMapFadeAudio();}}>Boss</button>
               <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon3FPath6" : "GeffenDungeonBase GeffenDungeon3FPath6 GeffenDungeon3FPath6Pic2" } onClick={() => {LoadingScreen3(); changeMapFadeAudio();}}>Wrath</button>
