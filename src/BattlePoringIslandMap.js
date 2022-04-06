@@ -43,7 +43,7 @@ import { GotoPoringIslandPath3Fn } from './actions'
 import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
 import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn, GotoPayonCave3FPath1Fn, GotoPayonCave3FPath2Fn, GotoPayonCave3FPath4Fn } from './actions'
-import { GotoGeffenDungeon1FPath1Fn, GotoGeffenDungeon1FPath3Fn, GotoGeffenDungeon2FPath1Fn, GotoGeffenDungeon2FPath2Fn, GotoGeffenDungeon2FPath4Fn, GotoGeffenDungeon2FPath6Fn } from './actions'
+import { GotoGeffenDungeon1FPath1Fn, GotoGeffenDungeon1FPath3Fn, GotoGeffenDungeon2FPath1Fn, GotoGeffenDungeon2FPath2Fn, GotoGeffenDungeon2FPath4Fn, GotoGeffenDungeon2FPath6Fn, GotoGeffenDungeon3FPath1Fn , GotoGeffenDungeon3FPath2Fn , GotoGeffenDungeon3FPath4Fn , GotoGeffenDungeon4FPath1Fn } from './actions'
 
 
 import './css/mapBattle.css'
@@ -976,6 +976,18 @@ function Main(){
             break;
           case (screenControlRoom.UserUnlockPath === "GeffenDungeon2FPath6"):
             dispatch(GotoGeffenDungeon2FPath6Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon3FPath1"):
+            dispatch(GotoGeffenDungeon3FPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon3FPath2"):
+            dispatch(GotoGeffenDungeon3FPath2Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon3FPath4"):
+            dispatch(GotoGeffenDungeon3FPath4Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "GeffenDungeon4FPath1"):
+            dispatch(GotoGeffenDungeon4FPath1Fn());
             break;
           default:
             break;

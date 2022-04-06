@@ -93,6 +93,12 @@ const Fn = {
     GeffenDungeon2FPath5: true,
     GeffenDungeon2FPath6: true,
     GeffenDungeon2FPath7Hidden: true,
+    GeffenDungeon3FPath1: false,
+    GeffenDungeon3FPath2: false,
+    GeffenDungeon3FPath3: false,
+    GeffenDungeon3FPath4: false,
+    GeffenDungeon3FPath5Hidden: false,
+    GeffenDungeon4FPath1: false,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -807,6 +813,36 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     GeffenDungeon2FPath7Hidden: true,
                 }
+            case 'GotoGeffenDungeon3FPath1Fn':
+                return{
+                    ...state,
+                    GeffenDungeon3FPath1: true,
+                }
+            case 'GotoGeffenDungeon3FPath2Fn':
+                return{
+                    ...state,
+                    GeffenDungeon3FPath2: true,
+                }
+            case 'GotoGeffenDungeon3FPath3Fn':
+                return{
+                    ...state,
+                    GeffenDungeon3FPath3: true,
+                }
+            case 'GotoGeffenDungeon3FPath4Fn':
+                return{
+                    ...state,
+                    GeffenDungeon3FPath4: true,
+                }
+            case 'GotoGeffenDungeon3FPath5HiddenFn':
+                return{
+                    ...state,
+                    GeffenDungeon3FPath5Hidden: true,
+                }
+            case 'GotoGeffenDungeon4FPath1Fn':
+                return{
+                    ...state,
+                    GeffenDungeon4FPath1: true,
+                }
             case 'ReturnGeffenDungeonPathFn':
                 return {
                     ...state,
@@ -814,6 +850,19 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon1FPath2: false,
                     GeffenDungeon1FPath3: false,
                     GeffenDungeon1FPath4: false,
+                    GeffenDungeon2FPath1: false,
+                    GeffenDungeon2FPath2: false,
+                    GeffenDungeon2FPath3: false,
+                    GeffenDungeon2FPath4: false,
+                    GeffenDungeon2FPath5: false,
+                    GeffenDungeon2FPath6: false,
+                    GeffenDungeon2FPath7Hidden: false,
+                    GeffenDungeon3FPath1: false,
+                    GeffenDungeon3FPath2: false,
+                    GeffenDungeon3FPath3: false,
+                    GeffenDungeon3FPath4: false,
+                    GeffenDungeon3FPath5Hidden: false,
+                    GeffenDungeon4FPath1: false,
                 }
             //debug
             case 'PayonCave2FSelfNPCFn':

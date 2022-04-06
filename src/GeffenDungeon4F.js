@@ -70,12 +70,12 @@ const PayonCave2F = (data) =>{
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath1",23)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon4FPath1",23)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath2",24)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",24)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
 
@@ -87,7 +87,8 @@ const PayonCave2F = (data) =>{
           <button className="GeffenDungeonBase GeffenDungeon4FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon3FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button>
           <button className="GeffenDungeonBase GeffenDungeon4FPath0" onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Wrath</button>
           {/* Path 1 */}
-          <button className="GeffenDungeonBase GeffenDungeon4FPath1" onClick={() => {LoadingScreen1(); changePlaceFadeAudio();}}>???</button>
+          {screenControlRoom.GeffenDungeon4FPath1 ?
+          <button className="GeffenDungeonBase GeffenDungeon4FPath1" onClick={() => {LoadingScreen1(); changePlaceFadeAudio();}}>???</button> : null}
         </div>
     );
 }

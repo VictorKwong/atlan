@@ -10,7 +10,8 @@ import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHead
 import { ChestBoss3VisitRepeatFn, GeffenDungeonChest4VisitRepeatFn } from './actions'
 //NPC
 import { GeffenDungeon3FNiaNPCFn } from './actions'
-
+//PATH
+import { GotoGeffenDungeon3FPath3Fn } from '/.actions'
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon4F from './GeffenDungeon4F'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -145,6 +146,10 @@ function StartMenu(){
 
   useEffect(() => {
     switch(true){
+      case(screenControlRoom.UserUnlockPath === "GeffenDungeon3FPath5Hidden" && screenControlRoom.GeffenDungeon3FPath5Hidden && screenControlRoom.AltanItem):
+        $('.storySpeech').html('You found a hidden passage in GeffenDungeon3F...')  
+        $('.storyCharacter').html('')
+        break;
       case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
         $('.storySpeech').html('')  
         $('.storyCharacter').html('')
@@ -163,22 +168,22 @@ function StartMenu(){
   }, [npcControlRoom, screenControlRoom])
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",20)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath1",20)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",21)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath2",21)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreen2 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath4",22)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath4",22)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const LoadingScreen3 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath7",Math.floor(Math.random() * 2) + 20)), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath5Hidden",Math.floor(Math.random() * 2) + 20)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
     return(
@@ -221,20 +226,27 @@ function StartMenu(){
               <h3 className="GeffenDungeon3FMapTitle">Geffen Dungeon 3F</h3>
               {/* Path 0*/}
               <button className="GeffenDungeon3FToGeffenDungeon2F" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen2F</button>
-              <button className="GeffenDungeonBase GeffenDungeon3FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); }}>Doll</button>
+              <button className="GeffenDungeonBase GeffenDungeon3FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio();}}>Doll</button>
               {/* Path 1*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>Demon</button>
+              {screenControlRoom.GeffenDungeon3FPath1 ?
+              <button className="GeffenDungeonBase GeffenDungeon3FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>Demon</button> : null}
               {/* Path 2*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath2" onClick={() => {dispatch(GeffenDungeon3FNiaNPCFn()); changePlaceFadeAudio();}}>NPC</button>
+              {screenControlRoom.GeffenDungeon3FPath2 ?
+              <button className="GeffenDungeonBase GeffenDungeon3FPath2" onClick={() => {dispatch(GeffenDungeon3FNiaNPCFn()); dispatch(GotoGeffenDungeon3FPath3Fn()); changePlaceFadeAudio();}}>NPC</button> : null}
               {/* Path 3*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath4" onClick={() => {LoadingScreen2(); changeMapFadeAudio();}}>Boss</button>
-              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon3FPath6" : "GeffenDungeonBase GeffenDungeon3FPath6 GeffenDungeon3FPath6Pic2" } onClick={() => {LoadingScreen3(); changeMapFadeAudio();}}>Wrath</button>
+              {screenControlRoom.GeffenDungeon3FPath3 ?
+              <button className="GeffenDungeonBase GeffenDungeon3FPath4" onClick={() => {LoadingScreen2(); changeMapFadeAudio();}}>Boss</button> : null}
+              {screenControlRoom.GeffenDungeon3FPath3 ?
+              <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon3FPath6" : "GeffenDungeonBase GeffenDungeon3FPath6 GeffenDungeon3FPath6Pic2" } onClick={() => {LoadingScreen3(); changeMapFadeAudio();}}>Wrath</button> : null}
               {/* Path 4 Split 1*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath5" onClick={npcControlRoom.ChestBoss3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest3")); dispatch(ChestBoss3VisitRepeatFn()); } : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest3"));}}>Shiny chest</button>
+              {screenControlRoom.GeffenDungeon3FPath4 ?
+              <button className="GeffenDungeonBase GeffenDungeon3FPath5" onClick={npcControlRoom.ChestBoss3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest3")); dispatch(ChestBoss3VisitRepeatFn()); } : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest3"));}}>Shiny chest</button> : null}
               {/* Path 4 Split 2*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath7" onClick={npcControlRoom.GeffenDungeonChest4 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4")); dispatch(GeffenDungeonChest4VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4"));}}>Treasure chest</button>
+              {screenControlRoom.GeffenDungeon3FPath5Hidden ?
+              <button className="GeffenDungeonBase GeffenDungeon3FPath7" onClick={npcControlRoom.GeffenDungeonChest4 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4")); dispatch(GeffenDungeonChest4VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4"));}}>Treasure chest</button> : null}
               {/* Path 3 Final*/}
-              <button className="GeffenDungeonBase GeffenDungeon3FPath3" onClick={() =>{dispatch(GotoGeffenDungeon4FFn()); changeMapFadeAudio(); }}>Geffen4F</button>
+              {screenControlRoom.GeffenDungeon3FPath3 ?
+              <button className="GeffenDungeonBase GeffenDungeon3FPath3" onClick={() =>{dispatch(GotoGeffenDungeon4FFn()); changeMapFadeAudio(); }}>Geffen4F</button> : null}
               
             </div>
             }

@@ -5,7 +5,7 @@ import { GotoAltanItemFn, GotoItemChoiceFn , GotoEquipChoiceFn, GotoETCChoiceFn}
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn,LampFn } from './actions'
 
 //Result
-import { GotoPoringIslandPath6Fn , GotoPayonCave1FPath2HiddenFn , GotoPayonCave2FPath9HiddenFn } from './actions'
+import { GotoPoringIslandPath6Fn , GotoPayonCave1FPath2HiddenFn , GotoPayonCave2FPath9HiddenFn , GotoGeffenDungeon3FPath5HiddenFn } from './actions'
 
 import './css/mapAltanItem.css'
 // import useSound from 'use-sound';
@@ -106,7 +106,7 @@ function StartMenu(){
       {id:20008, Img:YggdrasilBerry, name:"Yggdrasil Berry", itemCheck:userGoldItem.YggdrasilBerry, useItem:UseYggdrasilBerryFn()},
     ]
     let ItemSpecialBox = [
-      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit1:npcControlRoom.PoringIslandBridgeNPC, result1:GotoPoringIslandPath6Fn(), condit2:screenControlRoom.UserUnlockPath, result2:GotoPayonCave1FPath2HiddenFn(), condit3:npcControlRoom.PayonCave2FSelfNPC , result3: GotoPayonCave2FPath9HiddenFn()},
+      {id:30000, Img:Lamp, name:"Lamp", itemCheck:userGoldItem.Lamp, useItem:LampFn(0,-1), condit1:npcControlRoom.PoringIslandBridgeNPC, result1:GotoPoringIslandPath6Fn(), condit2:screenControlRoom.UserUnlockPath, result2:GotoPayonCave1FPath2HiddenFn(), condit3:npcControlRoom.PayonCave2FSelfNPC , result3: GotoPayonCave2FPath9HiddenFn(), condit4:screenControlRoom.UserUnlockPath, result4:GotoGeffenDungeon3FPath5HiddenFn()}
     ]
     let EquipBox = [
       //WEAPON
@@ -208,6 +208,7 @@ function StartMenu(){
                       Item.condit1 ? () => {dispatch((Item.useItem)); dispatch((Item.result1));} : 
                       Item.condit2 === "PayonCave1FPath1" ? () => {dispatch((Item.useItem)); dispatch((Item.result2));} : 
                       Item.condit3 ? () => {dispatch((Item.useItem)); dispatch((Item.result3));} : 
+                      Item.condit4 === "GeffenDungeon3FPath5Hidden" ? () => {dispatch((Item.useItem)); dispatch((Item.result4));} :
                       () => dispatch((Item.useItem))}>
                       <div className="adjImgCenterBox">
                         <p className="adjImgCenter">{Item.itemCheck}x <img src={Item.Img} alt={Item.name} /> {Item.name}</p>

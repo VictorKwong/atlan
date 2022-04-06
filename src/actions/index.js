@@ -2013,6 +2013,39 @@ export const GotoGeffenDungeon2FPath7HiddenFn = () => {
         type: 'GotoGeffenDungeon2FPath7HiddenFn',
     };
 };
+
+export const GotoGeffenDungeon3FPath1Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon3FPath1Fn',
+    };
+};
+export const GotoGeffenDungeon3FPath2Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon3FPath2Fn',
+    };
+};
+export const GotoGeffenDungeon3FPath3Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon3FPath3Fn',
+    };
+};
+export const GotoGeffenDungeon3FPath4Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon3FPath4Fn',
+    };
+};
+export const GotoGeffenDungeon3FPath5HiddenFn = () => {
+    return {
+        type: 'GotoGeffenDungeon3FPath5HiddenFn',
+    };
+};
+export const GotoGeffenDungeon4FPath1Fn = () => {
+    return {
+        type: 'GotoGeffenDungeon4FPath1Fn',
+    };
+};
+
+
 export const ReturnGeffenDungeonPathFn = () => {
     return {
         type: 'ReturnGeffenDungeonPathFn',
