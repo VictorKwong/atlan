@@ -85,10 +85,10 @@ const PayonCave2F = (data) =>{
           <h3 className="GeffenDungeon4FMapTitle">Geffen Dungeon 4F</h3>
           {/* Path 0 */}
           <button className="GeffenDungeonBase GeffenDungeon4FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon3FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button>
-          <button className="GeffenDungeonBase GeffenDungeon4FPath0" onClick={() => {LoadingScreen0(); changePlaceFadeAudio();}}>Wrath</button>
+          <button className="GeffenDungeonBase GeffenDungeon4FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio();}}>Wrath</button>
           {/* Path 1 */}
           {screenControlRoom.GeffenDungeon4FPath1 ?
-          <button className="GeffenDungeonBase GeffenDungeon4FPath1" onClick={() => {LoadingScreen1(); changePlaceFadeAudio();}}>???</button> : null}
+          <button className="GeffenDungeonBase GeffenDungeon4FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>???</button> : null}
         </div>
     );
 }

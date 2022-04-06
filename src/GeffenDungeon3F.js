@@ -3,15 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoGeffenDungeon2FFn , GotoGeffenDungeon4FFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn } from './actions';
 // EQUIP ACTION
-import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
+import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions';
 //CHEST
-import { ChestBoss3VisitRepeatFn, GeffenDungeonChest4VisitRepeatFn } from './actions'
+import { ChestBoss3VisitRepeatFn, GeffenDungeonChest4VisitRepeatFn } from './actions';
 //NPC
-import { GeffenDungeon3FNiaNPCFn } from './actions'
+import { GeffenDungeon3FNiaNPCFn } from './actions';
 //PATH
-import { GotoGeffenDungeon3FPath3Fn } from '/.actions'
+import { GotoGeffenDungeon3FPath3Fn } from './actions';
+
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon4F from './GeffenDungeon4F'
 import BattlePoringIslandMap from './BattlePoringIslandMap'

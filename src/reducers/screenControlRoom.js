@@ -93,12 +93,12 @@ const Fn = {
     GeffenDungeon2FPath5: true,
     GeffenDungeon2FPath6: true,
     GeffenDungeon2FPath7Hidden: true,
-    GeffenDungeon3FPath1: false,
-    GeffenDungeon3FPath2: false,
-    GeffenDungeon3FPath3: false,
-    GeffenDungeon3FPath4: false,
-    GeffenDungeon3FPath5Hidden: false,
-    GeffenDungeon4FPath1: false,
+    GeffenDungeon3FPath1: true,
+    GeffenDungeon3FPath2: true,
+    GeffenDungeon3FPath3: true,
+    GeffenDungeon3FPath4: true,
+    GeffenDungeon3FPath5Hidden: true,
+    GeffenDungeon4FPath1: true,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
