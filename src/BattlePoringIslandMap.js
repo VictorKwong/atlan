@@ -507,6 +507,7 @@ import audioPayonCave from './audio/Tobu-Infectious.mp3'
 import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
 import audioGeffenDungeon from './audio/AriaTheScarletAmmoSoundtrackHysteriaMode.mp3'
 import audioImaginaryFriends from './audio/Laszlo-ImaginaryFriends.mp3'
+import audioRustyHeartsHeartbroken from './audio/RustyHeartsHeartbroken.mp3'
 import SwordHit from './audio/SoundEffect/SwordHit.wav'
 import EmptyHandHit from './audio/SoundEffect/EmptyHandHit.wav'
 import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
@@ -523,6 +524,7 @@ const audioPayonCaveBGM = new Audio(audioPayonCave);
 const audioPayonCaveBossBGM = new Audio(audioRustyHeartsWings);
 const audioGeffenDungeonBGM = new Audio(audioGeffenDungeon);
 const audioGeffenDungeonBossBGM = new Audio(audioImaginaryFriends);
+const audioFinalBossBGM = new Audio(audioRustyHeartsHeartbroken);
 const audioHit = new Audio(SwordHit);
 const audioEmptyHandHit = new Audio(EmptyHandHit);
 const audioMiss = new Audio(AttackMiss);
@@ -757,6 +759,20 @@ function Main(){
                 });
               }
               break;
+            case(screenControlRoom.BattlePoringIslandMapMonsterID === 25):
+              audioFinalBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+              playPromise = audioFinalBossBGM.play();
+              if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                  // Automatic playback started!
+                  audioFinalBossBGM.loop = true;
+                  audioFinalBossBGM.play()
+                })
+                .catch(error => {
+                  // Auto-play was prevented
+                });
+              }
+              break;
           case(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14):
             audioPayonCaveBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
               playPromise = audioPayonCaveBGM.play();
@@ -885,6 +901,26 @@ function Main(){
                       clearInterval(fadeAudio);
                     }else if (i >= 2){
                       audioGeffenDungeonBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+                      clearInterval(fadeAudio);
+                    }
+                  }, 10);
+                  break;
+                case(screenControlRoom.BattlePoringIslandMapMonsterID === 25):
+                  fadeAudio = setInterval(() => {
+                    if (audioFinalBossBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+                      i = i + 1;
+                    }
+                    if (audioFinalBossBGM.volume !== 0) {
+                      audioFinalBossBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+                      audioFinalBossBGM.volume = audioFinalBossBGM.volume.toFixed(5)
+                    }
+                    if (audioFinalBossBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+                        audioFinalBossBGM.volume = 0;
+                        audioFinalBossBGM.pause();
+                        audioFinalBossBGM.currentTime = 0;
+                      clearInterval(fadeAudio);
+                    }else if (i >= 2){
+                      audioFinalBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
                       clearInterval(fadeAudio);
                     }
                   }, 10);
