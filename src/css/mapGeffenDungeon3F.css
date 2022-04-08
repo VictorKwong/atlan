@@ -93,6 +93,14 @@
   background-position: center;
 }
 
+.GeffenDungeon3FPath2::before,
+.GeffenDungeon3FPath2:hover::before{
+  background-image: url('../img/Background/GeffenDungeon3F6.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+
 .GeffenDungeon3FPath3::before,
 .GeffenDungeon3FPath3:hover::before,
 .GeffenDungeon4FToGeffenDungeon3F::before,

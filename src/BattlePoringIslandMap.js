@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -37,6 +37,7 @@ import { WinRedGemstoneFn } from './actions'
 import { WinCursedRubyFn } from './actions'
 import { WinDiamondFn } from './actions'
 import { WinEyeOfHellionFn } from './actions'
+import { LordKahosHornFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -175,6 +176,11 @@ import HellionRevenant from './img/Monster/HellionRevenant.gif'
 import HellionRevenantHit from './img/Monster/HellionRevenantHit.png'
 import HellionRevenantAttack from './img/Monster/HellionRevenantAttack.gif'
 import HellionRevenantDead from './img/Monster/HellionRevenantDead.png'
+
+import Baphomet from './img/Monster/Baphomet.gif'
+import BaphometHit from './img/Monster/BaphometHit.png'
+import BaphometAttack from './img/Monster/BaphometAttack.gif'
+import BaphometDead from './img/Monster/BaphometDead.png'
 
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
@@ -493,6 +499,8 @@ import Diamond from './img/Etc/WraithDead_Diamond10.gif'
 
 import EyeOfHellion from './img/Etc/HellionRevenant_EyeOfHellion80.gif'
 
+import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioLittleFighter2ThemeSong from './audio/LittleFighter2ThemeSong.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -589,6 +597,7 @@ const EtcBox = [
   {id: 37, num: 23, name: "Fabric", img: Fabric , percent: 0.8, Gain: WinFabricFn},
   {id: 38, num: 23, name: "Diamond", img: Diamond , percent: 0.1, Gain: WinDiamondFn},
   {id: 39, num: 24, name: "Eye Of Hellion", img: EyeOfHellion , percent: 0.8, Gain: WinEyeOfHellionFn},
+  {id: 40, num: 25, name: "Lord Kaho`s Horn", img: LordKahosHorn , percent: 1, Gain: LordKahosHornFn},
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -675,6 +684,7 @@ const EnemyBox = [
   {id:22, number:22, FlipCSS: 'imgFlipThree', GetHit:DoppelgangerHit, GetAttack:DoppelgangerAttack, GetDead: DoppelgangerDead, GetStand: Doppelganger},
   {id:23, number:23, FlipCSS: 'imgFlipTwo', GetHit:WraithdeadHit, GetAttack:WraithdeadAttack, GetDead: WraithdeadDead, GetStand: Wraithdead},
   {id:24, number:24, FlipCSS: 'imgFlipTwo', GetHit:HellionRevenantHit, GetAttack:HellionRevenantAttack, GetDead: HellionRevenantDead, GetStand: HellionRevenant},
+  {id:25, number:25, FlipCSS: 'imgFlipTwo', GetHit:BaphometHit, GetAttack:BaphometAttack, GetDead: BaphometDead, GetStand: Baphomet},
 ]
 
 function Main(){
@@ -1106,6 +1116,8 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Wraithdead"));
             case ((questControlRoom.QuestDialog).indexOf("Hellionrevenant") > -1 && i === 24):
               return dispatch(ProgressQuestDialogFn("Hellionrevenant"));
+            case ((questControlRoom.QuestDialog).indexOf("Baphomet") > -1 && i === 25):
+              return dispatch(ProgressQuestDialogFn("Baphomet"));
             default:
               return null;
           }
@@ -2525,7 +2537,8 @@ function Main(){
                           i <= 22 ?
                           () =>{dispatch(GotoGeffenDungeon3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
                           i <= 24 ?
-                          () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
+                          () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:                           i <= 25 ?
+                          () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
                         }>
                           <figcaption className="goGoButtonFig">
                             <p className="goGoButtonName">Run</p>
@@ -2562,7 +2575,9 @@ function Main(){
                 i <= 22 ?
                 () =>{dispatch(GotoGeffenDungeon3FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
                 i <= 24 ?
-                () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
+                () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : 
+                i <= 25 ?
+                () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
               }>Goto CheckPoint</button>
             </div> 
             : enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
@@ -2586,7 +2601,9 @@ function Main(){
                 i <= 22 ?
                 () =>{dispatch(GotoGeffenDungeon3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
                 i <= 24 ?
-                () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :  null
+                () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} : 
+                i <= 25 ?
+                () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :  null
                 }>Press to Continue</button>
             </div> : null}
 

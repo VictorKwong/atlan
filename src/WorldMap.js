@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn} from './actions'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PronteraCastle from './PronteraCastle'
@@ -84,10 +85,17 @@ function StartMenu(){
     useEffect(() => {
         $('.mapTitle').fadeIn(600);
         $('.mapTitle').delay(2400).fadeOut(600);
-
     }, [screenControlRoom])
+
+    const LoadingScreen0 = () => {
+      dispatch(BattleLoadingScreenFn());
+      setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), 1000);
+      setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    }
+
+
     return(
-      <div>
+      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
         screenControlRoom.Prontera ? <Prontera />:
         screenControlRoom.PronteraCastle ? <PronteraCastle />:
@@ -129,6 +137,7 @@ function StartMenu(){
                 <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>Payon Cave</button>
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
                 <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn())}}>Geffen</button>
+                <button className="FinalBoss" onClick={() => {LoadingScreen0();}}>Baphomet Gate</button>
               </div>
             }
             <div className="StoryHUD">

@@ -247,7 +247,7 @@ function StartMenu(){
               <button className="GeffenDungeonBase GeffenDungeon3FPath7" onClick={npcControlRoom.GeffenDungeonChest4 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4")); dispatch(GeffenDungeonChest4VisitRepeatFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest4"));}}>Treasure chest</button> : null}
               {/* Path 3 Final*/}
               {screenControlRoom.GeffenDungeon3FPath3 ?
-              <button className="GeffenDungeonBase GeffenDungeon3FPath3" onClick={() =>{dispatch(GotoGeffenDungeon4FFn()); changeMapFadeAudio(); }}>Geffen4F</button> : null}
+              <button className="GeffenDungeonBase GeffenDungeon3FPath3" onClick={() =>{dispatch(GotoGeffenDungeon4FFn()); changePlaceFadeAudio(); }}>Geffen4F</button> : null}
               
             </div>
             }

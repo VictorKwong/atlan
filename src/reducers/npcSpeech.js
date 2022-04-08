@@ -160,7 +160,10 @@ const Fn = {
         }],
     RestingGirl:[{
             name: 'RestingGirl',
-            text: 'Rumors saids there is a hidden passage near by here...hmm where is it?'
+            text: 'Rumors saids there is a hidden passage near by here...hmm where is it?',
+        },{
+            name: 'RestingGirl',
+            text: 'He`s fast and very aggressive, I better get going becaues I`m definitely not hanging around here!!'
         }],
     MightyGuy:[{
             name: 'MightyGuy',
