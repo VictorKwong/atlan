@@ -1345,12 +1345,13 @@ export const ReturnQuestDialogFn = (Num) => {
         Number: Num
     };
 };
-export const ReturnSpecialQuestDialogFn = (Story, Num1, Num2) => {
+export const ReturnSpecialQuestDialogFn = (Story, Num1, Num2, Num3) => {
     return {
         type: 'ReturnSpecialQuestDialogFn',
         Story: Story,
         Number1: Num1,
         Number2: Num2,
+        Number3: Num3,
     };
 };
 
@@ -2078,6 +2079,14 @@ export const GeffenDungeon2FRekiNPCFn = () => {
         type: 'GeffenDungeon2FRekiNPCFn',
     };
 };
+export const GeffenDungeon2FSelfNPCHiddenFn = () => {
+    return {
+        type: 'GeffenDungeon2FSelfNPCHiddenFn',
+    };
+};
+
+
+
 export const GeffenDungeon3FNiaNPCFn = () => {
     return {
         type: 'GeffenDungeon3FNiaNPCFn',

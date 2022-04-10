@@ -24,7 +24,7 @@ function StartMenu(){
       {id: 4, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle}
     ]
     const QuestSpecialBox = [
-      {id: 5, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out all hidden story from Lemon in PayonCave (1/2)", acceptDescription2: "Find out all hidden story from Lemon in PayonCave (2/2) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo"}
+      {id: 5, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
     ]
 
 
@@ -70,7 +70,11 @@ function StartMenu(){
                     return (
                       <li key={Quest.id} className="questList">
                         {/* Quest Accept, Not Repeat / track*/}
-                        {((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1 && (questControlRoom.ProgressQuestDialog).indexOf(Quest.condition1)) > -1 && !(questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0) ? 
+                        {((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1 && (questControlRoom.ProgressQuestDialog).indexOf(Quest.condition1) > -1 && (questControlRoom.ProgressQuestDialog).indexOf(Quest.condition2) > -1) && !(questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0) ? 
+                        <div>
+                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription3}</p>
+                        </div> : 
+                        ((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1 && (questControlRoom.ProgressQuestDialog).indexOf(Quest.condition1) > -1 ) && !(questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0) ? 
                         <div>
                           <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription2}</p>
                         </div> : 

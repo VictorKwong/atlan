@@ -181,7 +181,8 @@ function StartMenu(){
         $('.storySpeech').html(`${npcSpeech['Atlan'][2].text}`)
         $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][2].name}</p>`)
         break;
-      case(npcControlRoom.PayonCave2FSelfNPCHidden && (questControlRoom.QuestDialog).indexOf("Lemonstory") === -1):
+      case(npcControlRoom.PayonCave2FSelfNPCHidden && ((questControlRoom.QuestDialog).indexOf("Lemonstory") === -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1)):
+      //Reject
         $('.storySpeech').html(`${npcSpeech['Atlan'][5].text}`)
         $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][5].name}</p>`)
         break;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoGeffenDungeon3FFn } from './actions';
+import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoGeffenDungeon3FFn , ProgressQuestDialogFn} from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //CHEST
@@ -8,7 +8,7 @@ import { GeffenDungeonChest2VisitRepeatFn , GeffenDungeonChest3VisitRepeatFn } f
 //PATH
 import { GotoGeffenDungeon2FPath3Fn, GotoGeffenDungeon2FPath5Fn, GotoGeffenDungeon2FPath6Fn} from './actions'
 //NPC
-import { GeffenDungeon2FSelfNPCFn, GeffenDungeon2FRekiNPCFn, ResetGeffenDungeonNPCFn } from './actions'
+import { GeffenDungeon2FSelfNPCFn, GeffenDungeon2FRekiNPCFn, ResetGeffenDungeonNPCFn , GeffenDungeon2FSelfNPCHiddenFn} from './actions'
 
 import './css/mapGeffenDungeon2F.css'
 import $ from 'jquery'
@@ -103,7 +103,10 @@ const PayonCave2F = (data) =>{
           <button className="GeffenDungeonBase GeffenDungeon2FPath2Split0" onClick={() => {dispatch(GotoGeffenDungeon2FPath3Fn()); dispatch(GotoGeffenDungeon2FPath6Fn()); changePlaceFadeAudio(); dispatch(GeffenDungeon2FSelfNPCFn());}}>Road2</button> : null}
           {/* Path 2 Split 0 Hidden*/}
           {screenControlRoom.GeffenDungeon2FPath7Hidden ?
-          <button className="GeffenDungeonBase GeffenDungeon2FPathHidden1" onClick={() => {changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Hidden Story</button> : null}
+          <button className="GeffenDungeonBase GeffenDungeon2FPathHidden1" onClick={
+            ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") === -1  && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 ?
+            () => {changePlaceFadeAudio(); dispatch(GeffenDungeon2FSelfNPCHiddenFn()); dispatch(ProgressQuestDialogFn("Lemonstorythree")); } :
+            () => {changePlaceFadeAudio(); dispatch(GeffenDungeon2FSelfNPCHiddenFn()); }}>Hidden Story</button> : null}
           {/* Path 3 Split 0 */}
           {screenControlRoom.GeffenDungeon2FPath3 ?
           <button className="GeffenDungeonBase TreasureBoxGeffenDungeon2F1" onClick={npcControlRoom.GeffenDungeonChest2 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest2")); dispatch(GeffenDungeonChest2VisitRepeatFn()); dispatch(ResetGeffenDungeonNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest2")); dispatch(ResetGeffenDungeonNPCFn());}}>Treasure chest</button> : null}

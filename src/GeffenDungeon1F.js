@@ -134,6 +134,15 @@ function StartMenu(){
           $('.storySpeech').html(`${npcSpeech['Reki'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Reki'][0].name}</p>`)
           break;
+        case(npcControlRoom.GeffenDungeon2FSelfNPCHidden && ((questControlRoom.QuestDialog).indexOf("Lemonstory") === -1 || (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") === -1)) && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1 :
+        //Reject
+          $('.storySpeech').html(`${npcSpeech['Atlan'][5].text}`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][5].name}</p>`)
+          break;
+        case(npcControlRoom.GeffenDungeon2FSelfNPCHidden):
+          $('.storySpeech').html(`${npcSpeech['Atlan'][4].text}`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Atlan'][4].name}</p>`)
+          break;
         default:
           $('.storySpeech').html('')  
           $('.storyCharacter').html('')

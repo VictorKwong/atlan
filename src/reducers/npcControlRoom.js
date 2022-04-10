@@ -76,7 +76,9 @@ const Fn = {
     GeffenDungeon1FNiaNPC: false,
     GeffenDungeon2FSelfNPC: false,
     GeffenDungeon2FRekiNPC: false,
+    GeffenDungeon2FSelfNPCHidden: false,
     GeffenDungeon3FNiaNPC: false,
+    
     
 }
 
@@ -791,6 +793,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: false,
                 GeffenDungeon2FSelfNPC: false,
                 GeffenDungeon2FRekiNPC: false,
+                GeffenDungeon2FSelfNPCHidden: false,
             }
         case 'GeffenDungeon1FNiaNPCFn':
             return {
@@ -799,6 +802,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: true,
                 GeffenDungeon2FSelfNPC: false,
                 GeffenDungeon2FRekiNPC: false,
+                GeffenDungeon2FSelfNPCHidden: false,
             }
         case 'GeffenDungeon2FSelfNPCFn':
             return {
@@ -807,6 +811,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: false,
                 GeffenDungeon2FSelfNPC: true,
                 GeffenDungeon2FRekiNPC: false,
+                GeffenDungeon2FSelfNPCHidden: false,
             }
         case 'GeffenDungeon2FRekiNPCFn':
             return {
@@ -815,6 +820,16 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: false,
                 GeffenDungeon2FSelfNPC: false,
                 GeffenDungeon2FRekiNPC: true,
+                GeffenDungeon2FSelfNPCHidden: false,
+            }
+        case 'GeffenDungeon2FSelfNPCHiddenFn':
+            return {
+                ...state,
+                GeffenDungeon1FSelfNPC: false,
+                GeffenDungeon1FNiaNPC: false,
+                GeffenDungeon2FSelfNPC: false,
+                GeffenDungeon2FRekiNPC: false,
+                GeffenDungeon2FSelfNPCHidden: true,
             }
         case 'GeffenDungeon3FNiaNPCFn':
             return {
@@ -830,6 +845,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon1FNiaNPC: false,
                 GeffenDungeon2FSelfNPC: false,
                 GeffenDungeon2FRekiNPC: false,
+                GeffenDungeon2FSelfNPCHidden: false,
                 GeffenDungeon3FNiaNPC: false,
             }
         case 'OpenGeffenDungeonChest1Fn':

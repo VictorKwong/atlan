@@ -685,9 +685,17 @@ function StartMenu(){
                 {!npcControlRoom.LemonResponse ?
                 <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> : null}
                 {
-                ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstoryone") > -1 && npcControlRoom.Lemon && npcControlRoom.LemonResponse ? 
-                <button className="guildInterest" onClick={() => {dispatch(TalktoLemonCompleteFn()); dispatch(ReturnSpecialQuestDialogFn("Lemonstory","Lemonstoryone","Lemonstorytwo"));}}>(Hand over the evidence - Complete Story)</button> : 
-                ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 && (questControlRoom.ProgressQuestDialog).indexOf("Lemonstoryone") > -1 && npcControlRoom.Lemon ? 
+                ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && 
+                ((questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") > -1 &&
+                  (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 && 
+                  (questControlRoom.ProgressQuestDialog).indexOf("Lemonstoryone") > -1) && 
+                  npcControlRoom.Lemon && npcControlRoom.LemonResponse ? 
+                <button className="guildInterest" onClick={() => {dispatch(TalktoLemonCompleteFn()); dispatch(ReturnSpecialQuestDialogFn("Lemonstory","Lemonstoryone","Lemonstorytwo","Lemonstorythree"));}}>(Hand over the evidence - Complete Story)</button> : 
+                ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && 
+                ((questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") > -1 && 
+                (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 && 
+                (questControlRoom.ProgressQuestDialog).indexOf("Lemonstoryone") > -1) && 
+                npcControlRoom.Lemon ? 
                 <button className="guildInterest" onClick={() => dispatch(TalktoLemonResponseFn())}>Hidden Story...</button> : null }
               </div> : 
               // {/* QUEST */}
