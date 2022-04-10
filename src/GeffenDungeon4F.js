@@ -3,12 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon3FFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
-//CHEST
-import { GeffenDungeonChest2VisitRepeatFn , GeffenDungeonChest3VisitRepeatFn } from './actions'
-//PATH
-import { GotoGeffenDungeon2FPath3Fn, GotoGeffenDungeon2FPath5Fn, GotoGeffenDungeon2FPath6Fn} from './actions'
 //NPC
-import { GeffenDungeon2FSelfNPCFn, GeffenDungeon2FRekiNPCFn, ResetGeffenDungeonNPCFn } from './actions'
+import { ResetGeffenDungeonNPCFn } from './actions'
 
 import './css/mapGeffenDungeon4F.css'
 import $ from 'jquery'
@@ -85,10 +81,10 @@ const PayonCave2F = (data) =>{
           <h3 className="GeffenDungeon4FMapTitle">Geffen Dungeon 4F</h3>
           {/* Path 0 */}
           <button className="GeffenDungeonBase GeffenDungeon4FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon3FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button>
-          <button className="GeffenDungeonBase GeffenDungeon4FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio();}}>Wrath</button>
+          <button className="GeffenDungeonBase GeffenDungeon4FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Wrath</button>
           {/* Path 1 */}
           {screenControlRoom.GeffenDungeon4FPath1 ?
-          <button className="GeffenDungeonBase GeffenDungeon4FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio();}}>???</button> : null}
+          <button className="GeffenDungeonBase GeffenDungeon4FPath1" onClick={() => {LoadingScreen1(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>???</button> : null}
         </div>
     );
 }
