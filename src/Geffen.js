@@ -4,7 +4,8 @@ import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn }
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
-
+// NPC
+import { GeffenGoblinYulaNPCFn, ResetGeffenNPCFn } from './actions'
 
 import WorldMap from './WorldMap'
 import GeffenDungeon1F from './GeffenDungeon1F'
@@ -37,6 +38,8 @@ import Helm from './img/Equipment/HeadGear/Helm.gif'
 import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
+
+import GoblinYula from './img/NPC/GoblinYula.gif'
 
 import audio13ThemeOfGeffen from './audio/13ThemeOfGeffen.mp3'
 const audioBGM = new Audio(audio13ThemeOfGeffen);
@@ -102,6 +105,25 @@ function StartMenu(){
       $('.GeffenMapTitle').fadeIn(600);
       $('.GeffenMapTitle').delay(2400).fadeOut(600);
     }, [screenControlRoom])
+
+    useEffect(() => {
+      switch(true){
+        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+          $('.storySpeech').html('')  
+          $('.storyCharacter').html('')
+          break;
+        case(npcControlRoom.GeffenGoblinYulaNPC):
+          $('.storySpeech').html(`${npcSpeech['GoblinYula'][0].text}`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GoblinYula'][0].name}</p>`)
+          break;
+        default:
+          $('.storySpeech').html('')  
+          $('.storyCharacter').html('')
+          break;
+        }
+      //userState,screenControRoom not included
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [npcControlRoom, screenControlRoom])
     const changeMapFadeAudio = () => {
       let i = 0;
       const fadeAudio = setInterval(() => {
@@ -166,8 +188,9 @@ function StartMenu(){
           <div className="GeffenMap">
             <button className="ReturnHUDBugFix"></button>
             <h3 className="GeffenMapTitle">Geffen</h3>
-            <button className="GeffenWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();}}>ToWorldMap</button>
-            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio();}}>Geffen Dungeon Entrance</button>
+            <button className="GeffenWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>ToWorldMap</button>
+            <button className="GeffenBase GeffenGoblinYula" onClick={() =>{dispatch(GeffenGoblinYulaNPCFn()); changePlaceFadeAudio();}}><img src={GoblinYula} alt="Goblin Yula" /></button>
+            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>Geffen Dungeon Entrance</button>
           </div>
           }
           <div className="StoryHUD">

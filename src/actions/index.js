@@ -824,6 +824,19 @@ export const ResetDealerBuySellHealFn = () => {
     };
 };
 
+
+//Geffen
+export const GeffenGoblinYulaNPCFn = () => {
+    return {
+        type: 'GeffenGoblinYulaNPCFn'
+    };
+};
+export const ResetGeffenNPCFn = () => {
+    return {
+        type: 'ResetGeffenNPCFn'
+    };
+};
+
 //Training Fn
 export const TrainingSuccesFn = (name,level) => {
     return {

@@ -557,6 +557,17 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 DealerSellSuccess: false,
                 DealerSellFailure: false,
             }
+        //Geffen
+        case 'GeffenGoblinYulaNPCFn':
+            return{
+                ...state,
+                GeffenGoblinYulaNPC: true,
+            }
+        case 'ResetGeffenNPCFn':
+            return{
+                ...state,
+                GeffenGoblinYulaNPC: false,
+            }   
         //Inside BuySell Fn
         case 'DealerBuySuccessFn':
             return {
@@ -836,8 +847,6 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 GeffenDungeon3FNiaNPC: true,
             }
-
-
         case 'ResetGeffenDungeonNPCFn':
             return {
                 ...state,

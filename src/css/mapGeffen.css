@@ -69,7 +69,15 @@
   background-size: cover;
 }
 
+.GeffenGoblinYula::before,
+.GeffenGoblinYula:hover::before{
+  background-image: url('../img/Background/Geffen1.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
 .GeffenWorldMap { grid-area: 2 / 5 / 3 / 6; }
+.GeffenGoblinYula { grid-area: 2 / 2 / 3 / 3; }
 .GeffenDungeon1F { grid-area: 2 / 3 / 3 / 4; }
 
 .GeffenWorldMap,

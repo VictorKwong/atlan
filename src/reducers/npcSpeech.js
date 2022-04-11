@@ -218,6 +218,10 @@ const Fn = {
             name: 'Reki',
             text: '-(Wish you luck)-'
         }],
+    GoblinYula:[{
+        name: 'Goblin Yula',
+        text: 'Once before Geffen is a Wizard city, trained to be a Magician first :)'
+    }],
 }
 
 const npcSpeechReducer = (state = Fn, action) => {
