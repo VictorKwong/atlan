@@ -19,7 +19,7 @@ function App(){
         playPromise.then(_ => {
           // Automatic playback started!
           // audio.loop = true;
-          audioBGM.play()
+          audioBGM.play();
         })
         .catch(error => {
           // Auto-play was prevented

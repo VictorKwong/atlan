@@ -54,8 +54,6 @@ function StartMenu(){
   const npcControlRoom = useSelector(state => state.npcControlRoom)
   const audioControlRoom = useSelector(state => state.audioControlRoom)
   const npcSpeech = useSelector(state => state.npcSpeech)
-  const userAttribute = useSelector(state => state.userAttribute)
-  // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
   const dispatch = useDispatch();
   let HeadGearBox = [
     {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty"},
