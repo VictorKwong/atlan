@@ -4,6 +4,12 @@ import { GotoPronteraFn} from './actions';
 import { TalktoPronteraKingFn, TalktoRoyalGuard1Fn, TalktoRoyalGuard2Fn , TalktoPronteraAssistantFn } from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions'
 
+//PATH
+import { FinalBossPathFn } from './actions'
+//ITEM
+import { SpiritOfDoppelgangerFn, SpiritOfWolyafaFn, SpiritOfEclipseFn} from './actions'
+
+
 import Prontera from './Prontera'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -141,6 +147,14 @@ function StartMenu(){
           $('.storyCharacter').html('')
           break;
         //Talk message
+        case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && screenControlRoom.FinalBossPath && npcControlRoom.BossBaphometDefeat):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][2].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][2].name}</p>`)
+          break;
+        case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && screenControlRoom.FinalBossPath):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][1].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][1].name}</p>`)
+          break;
         case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing):
           $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][0].name}</p>`)
@@ -309,6 +323,10 @@ function StartMenu(){
                 })}
                 </div>
               : <p>Empty HeadGear Storage T^T</p>}
+              </div> : null}
+              {userGoldItem.SpiritOfEclipse >= 1 && userGoldItem.SpiritOfWolyafa >= 1 && userGoldItem.SpiritOfDoppelganger >= 1 && screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && !screenControlRoom.FinalBossPath ?
+              <div className="textCenter">
+                <button className="kafraEmployeeHeal" onClick={() => {dispatch(FinalBossPathFn()); dispatch(SpiritOfDoppelgangerFn(0,-1)); dispatch(SpiritOfWolyafaFn(0,-1)); dispatch(SpiritOfEclipseFn(0,-1));}}>Hang over the 3 souls</button> 
               </div> : null}
           </fieldset>
         </div>

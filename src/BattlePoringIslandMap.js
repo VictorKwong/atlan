@@ -10,7 +10,7 @@ import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockD
 import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
 //BOSS Defeat
-import { BossEclipseDefeatFn, BossWolyafaDefeatFn } from './actions'
+import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,BossBaphometDefeatFn } from './actions'
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
@@ -1096,6 +1096,13 @@ function Main(){
           case (i === 14):
             dispatch(BossWolyafaDefeatFn());
             break;
+          case (i === 22):
+            dispatch(BossDoppelgangerDefeatFn());
+            break;
+          case (i === 25):
+            dispatch(BossBaphometDefeatFn());
+            break;
+            
           default:
             break;
         }

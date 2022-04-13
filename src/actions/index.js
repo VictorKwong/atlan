@@ -2115,6 +2115,20 @@ export const ResetGeffenDungeonNPCFn = () => {
     };
 };
 
+//Final Boss
+export const FinalBossPathFn = () => {
+    return {
+        type: 'FinalBossPathFn',
+    };
+};
+
+export const BossBaphometDefeatFn = () => {
+    return {
+        type: 'BossBaphometDefeatFn',
+    };
+};
+
+
 //Audio Interaction
 export const AudioVolumeBGMSaverFn = (Volume,map,Place,Threshold) => {
     return {

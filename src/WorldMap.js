@@ -137,7 +137,8 @@ function StartMenu(){
                 <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>Payon Cave</button>
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
                 <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn())}}>Geffen</button>
-                <button className="FinalBoss" onClick={() => {LoadingScreen0();}}>Baphomet Gate</button>
+                {screenControlRoom.FinalBossPath ?
+                <button className="FinalBoss" onClick={() => {LoadingScreen0();}}>Baphomet Gate</button> : null}
               </div>
             }
             <div className="StoryHUD">

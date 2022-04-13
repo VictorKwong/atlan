@@ -145,6 +145,12 @@ const Fn = {
     PronteraKing:[{
             name: 'Prontera King',
             text: 'Atlan, you need to collect all three important items to seal the chaos gate. Please hurry!'
+        },{
+            name: 'Prontera King',
+            text: 'The Chaos gate is already opened.. Atlan you take down the Baphomet and save our city!!'
+        },{
+            name: 'Prontera King',
+            text: 'The Gate is sealed, our country will live in a peaceful generations without evil monsters, thanks Atlan!'
         }],
     PronteraAssistant:[{
             name: 'PronteraAssistant',

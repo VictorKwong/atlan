@@ -99,6 +99,8 @@ const Fn = {
     GeffenDungeon3FPath4: true,
     GeffenDungeon3FPath5Hidden: true,
     GeffenDungeon4FPath1: true,
+    //Final Boss
+    FinalBossPath: false,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -863,6 +865,11 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon3FPath4: false,
                     GeffenDungeon3FPath5Hidden: false,
                     GeffenDungeon4FPath1: false,
+                }
+            case 'FinalBossPathFn':
+                return{
+                    ...state,
+                    FinalBossPath: true,
                 }
             //debug
             case 'PayonCave2FSelfNPCFn':

@@ -188,7 +188,7 @@ function StartMenu(){
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
     return(
-      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
+      <div>
         {
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :

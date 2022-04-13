@@ -39,9 +39,9 @@ const Fn = {
     //MISC
     Lamp:88,
     //Mission
-    SpiritOfEclipse: 0,
-    SpiritOfWolyafa: 0,
-    SpiritOfDoppelganger: 0,
+    SpiritOfEclipse: 1,
+    SpiritOfWolyafa: 1,
+    SpiritOfDoppelganger: 1,
     //PORING ISLAND
     Jellopy: 3,
     EmptyBottle: 5,
