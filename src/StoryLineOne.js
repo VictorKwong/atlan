@@ -27,17 +27,17 @@ function StartMenu(){
     const typeWrite = () => {
       switch(true){
         // Read text
-        case(i < (storyLineOne[textReadAndSpeed.count].text).length):
-          $('.storySpeech').append(`${(storyLineOne[textReadAndSpeed.count].text).charAt(i)}`);
-          console.log((storyLineOne[textReadAndSpeed.count].text).charAt(i))
+        case(i < (storyLineOne['storyLineOne'][textReadAndSpeed.count].text).length):
+          $('.storySpeech').append(`${(storyLineOne['storyLineOne'][textReadAndSpeed.count].text).charAt(i)}`);
+          console.log((storyLineOne['storyLineOne'][textReadAndSpeed.count].text).charAt(i))
           console.log(i)
-          console.log(storyLineOne[textReadAndSpeed.count].text.length)
+          console.log(storyLineOne['storyLineOne'][textReadAndSpeed.count].text.length)
           i++;
           setTimeout(() => {typeWrite()}, textReadAndSpeed.speed);
           return ;
         // Finish Reading, Not ending, Able to click Next
-        case(i === (storyLineOne[textReadAndSpeed.count].text).length):
-          console.log(storyLineOne.length);
+        case(i === (storyLineOne['storyLineOne'][textReadAndSpeed.count].text).length):
+          console.log(storyLineOne['storyLineOne'].length);
           $('.nextLine').prop("disabled", false);
           return null;
         default:
@@ -51,7 +51,7 @@ function StartMenu(){
       const nextLine = () => {
         $('.nextLine').prop("disabled", true);
         $('.storySpeech').html('');
-        $('.storyCharacterOne').html(`${storyLineOne[textReadAndSpeed.count].name}`)
+        $('.storyCharacterOne').html(`${storyLineOne['storyLineOne'][textReadAndSpeed.count].name}`)
         setTimeout(() => {typeWrite()}, 0);
         dispatch(typeWritterEffectFn());
         Story = Story + 1;
@@ -72,7 +72,7 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacterOne">???</legend>
           <p className="storySpeech">......</p>
-            { (storyLineOne.length === textReadAndSpeed.count) ?
+            { (storyLineOne['storyLineOne'].length === textReadAndSpeed.count) ?
               <div>
                 <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(finishStoryLineOneFn()); dispatch(GotoWorldMapFn());}}>Continue</button>
               </div>

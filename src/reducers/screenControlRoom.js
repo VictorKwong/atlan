@@ -2,7 +2,11 @@ const Fn = {
     authorLogo: false,
     startGame: false,
     gameTitleOptionScreen: false,
+    //Open
     storyLineOne: false,
+    //EclipseBoss
+    storyLineTwo: false,
+    cutsceneTwo: false,
     WorldMap: false,
     Prontera: false,
     PronteraSouth: false,
@@ -155,8 +159,21 @@ const screenControlRoomReducer = (state = Fn, action) => {
         case 'finishStoryLineOneFn':
             return {
                 ...state,
-                storyLineOne: !state.storyLineOne,
+                storyLineOne: true,
             }
+        case 'cutsceneTwoFn':
+            return {
+                ...state,
+                cutsceneTwo: !state.cutsceneTwo,
+                PoringIsland: false,
+            }
+        case 'finishStoryLineTwoFn':
+            return {
+                ...state,
+                cutsceneTwo: false,
+                storyLineTwo: true,
+            }
+        
         // Mini Screen
         case 'GotoAltanEquipmentFn':
             return {

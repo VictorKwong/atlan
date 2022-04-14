@@ -162,6 +162,16 @@ export const finishStoryLineOneFn = () => {
         type: 'finishStoryLineOneFn',
     };
 };
+export const cutsceneTwoFn = () => {
+    return {
+        type: 'cutsceneTwoFn',
+    };
+};
+export const finishStoryLineTwoFn = () => {
+    return {
+        type: 'finishStoryLineTwoFn',
+    };
+};
 //Mini Screen
 export const GotoAltanEquipmentFn = () => {
     return {

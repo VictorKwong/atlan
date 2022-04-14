@@ -17,10 +17,13 @@ import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8
 import { PoringIslandBridgeNPCFn, ResetPoringIslandNPCFn } from './actions'
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
+//cutscene
+import {cutsceneTwoFn} from './actions'
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import PoringIslandHouseMap from './PoringIslandHouseMap'
+import StoryLineTwo from './StoryLineTwo'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -299,7 +302,6 @@ useEffect(() => {
   }
   const LoadingScreenThreeBoss = () => {
     dispatch(BattleLoadingScreenFn())
-    // setTimeout(() => dispatch(GotoBattlePoringIslandMapBossFn("Path5")), 1000);
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path5",5)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
@@ -312,6 +314,7 @@ useEffect(() => {
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         <div className="PoringIslandMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -376,7 +379,10 @@ useEffect(() => {
               <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetPoringIslandNPCFn());}}>House</button> :null}
               {/* Path 4 */}
               {screenControlRoom.PoringIslandPath4 ?
-              <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={() =>{ LoadingScreenThreeBoss(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>Boss</button> : null}
+              <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={
+                screenControlRoom.storyLineTwo ? 
+                () =>{ LoadingScreenThreeBoss(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());} : 
+                () =>{ dispatch(cutsceneTwoFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>Boss</button> : null}
               {/* Path 5 Hidden */}
               {screenControlRoom.PoringIslandPath5 ?
               <button className="BossTreasureBoxPoringIsland" onClick={npcControlRoom.ChestBoss1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest1")); dispatch(ChestBoss1VisitRepeatFn()); dispatch(ResetPoringIslandNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("BossChest1")); dispatch(ResetPoringIslandNPCFn());}}>shiny chest</button> : null}

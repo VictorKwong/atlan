@@ -1,18 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { finishStoryLineOneFn, typeWritterEffectFn, GotoWorldMapFn } from './actions';
-import WorldMap from './WorldMap'
+import { finishStoryLineTwoFn, typeWritterEffectFn, BattleLoadingScreenFn , GotoBattlePoringIslandMapFn} from './actions';
+import PoringIsland from './PoringIsland'
+import BattlePoringIslandMap from './BattlePoringIslandMap'
 import './css/storyLine.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
-import Baphomet from './img/Monster/Baphomet.gif'
-import BaphometAttack from './img/Monster/BaphometAttack.gif'
-import MaiyaDead from './img/Character/Movie/Maiya/MaiyaDead1.png'
-import MaiyaDying from './img/Character/Movie/Maiya/MaiyaDying.png'
-import AtlanWalk2 from './img/Character/Movie/Altan/AltanWalk2.gif'
-import AtlanFight2 from './img/Character/Movie/Altan/AltanFight2.gif'
+import Lunatic from './img/Monster/Lunatic.gif'
+import Eclipse from './img/Monster/Eclipse.gif'
+import EclipseAttack from './img/Monster/EclipseAttack.gif'
 
 let Story = 0;
 function StartMenu(){
@@ -27,17 +25,17 @@ function StartMenu(){
     const typeWrite = () => {
       switch(true){
         // Read text
-        case(i < (storyLineOne[textReadAndSpeed.count].text).length):
-          $('.storySpeech').append(`${(storyLineOne[textReadAndSpeed.count].text).charAt(i)}`);
-          console.log((storyLineOne[textReadAndSpeed.count].text).charAt(i))
+        case(i < (storyLineOne['storyLineTwo'][textReadAndSpeed.count].text).length):
+          $('.storySpeech').append(`${(storyLineOne['storyLineTwo'][textReadAndSpeed.count].text).charAt(i)}`);
+          console.log((storyLineOne['storyLineTwo'][textReadAndSpeed.count].text).charAt(i))
           console.log(i)
-          console.log(storyLineOne[textReadAndSpeed.count].text.length)
+          console.log(storyLineOne['storyLineTwo'][textReadAndSpeed.count].text.length)
           i++;
           setTimeout(() => {typeWrite()}, textReadAndSpeed.speed);
           return ;
         // Finish Reading, Not ending, Able to click Next
-        case(i === (storyLineOne[textReadAndSpeed.count].text).length):
-          console.log(storyLineOne.length);
+        case(i === (storyLineOne['storyLineTwo'][textReadAndSpeed.count].text).length):
+          console.log(storyLineOne['storyLineTwo'].length);
           $('.nextLine').prop("disabled", false);
           return null;
         default:
@@ -51,30 +49,34 @@ function StartMenu(){
       const nextLine = () => {
         $('.nextLine').prop("disabled", true);
         $('.storySpeech').html('');
-        $('.storyCharacterOne').html(`${storyLineOne[textReadAndSpeed.count].name}`)
+        $('.storyCharacterOne').html(`${storyLineOne['storyLineTwo'][textReadAndSpeed.count].name}`)
         setTimeout(() => {typeWrite()}, 0);
         dispatch(typeWritterEffectFn());
         Story = Story + 1;
       }
-
-
-
+      const LoadingScreenThreeBoss = () => {
+        dispatch(GotoBattlePoringIslandMapFn("Path5",5));
+      }
 
     return(
       <div>
-        {screenControlRoom.storyLineOne ? <WorldMap  /> :
-        <div className={Story >= 7 ? "storyScreenStoryfadeOut storyScreenStoryLineBackground" : "storyScreenStoryLineBackground"}>
-          <div className="storyScreenStoryLineOne">
-            { Story === 0 ? <img src={BaphometAttack} alt="BaphometAttack" className="StoryImgFlip StoryImgMonster" /> : Story >= 6 ? null : <img src={Baphomet} alt="Baphomet" className="StoryImgFlip StoryImgMonster"/>}
-            { Story === 0 ? <img src={MaiyaDying} alt="MaiyaDying" className="StoryImgChar"/> : <img src={MaiyaDead} alt="MaiyaDead" className={ Story === 8 ? "StoryImgCharDead StoryImgCharfadeOne" : Story === 9 ? "StoryImgCharDead StoryImgCharfadeTwo" : "StoryImgCharDead"} />}
-            { Story === 7 || Story === 8 || Story ===  9 ? <img src={AtlanWalk2} alt="AtlanWalk" className={ Story === 8 ? "StoryImgChar StoryImgCharfadeOne" : Story === 9 ? "StoryImgChar StoryImgCharfadeTwo" : "StoryImgChar"}/> : <img src={AtlanFight2} alt="AtlanFight" className="StoryImgChar" />}
+        {
+        screenControlRoom.PoringIsland ? <PoringIsland />:
+        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        <div className="storyScreenStoryLineTwoBackground">
+          <div className="storyScreenStoryLineTwo">
+            { Story >= 0 ? <img src={Lunatic} alt="Lunatic" className="StoryImgFlip StoryImgTwoMonster" /> : null}
+            { Story >= 2 ? <img src={Lunatic} alt="Lunatic" className="StoryImgFlip StoryImgTwoMonster" /> : <img src={Lunatic} alt="Lunatic" className="StoryImgTwoMonster" /> }
+            { Story === 4 ? <img src={EclipseAttack} alt="EclipseAttack" className="StoryImgFlip StoryImgTwoBossMonster" /> : Story >= 2 ? <img src={Eclipse} alt="Eclipse" className="StoryImgFlip StoryImgTwoBossMonster" /> : <img src={Eclipse} alt="Eclipse" className="StoryImgTwoBossMonster" />}
+            { Story >= 2 ? <img src={Lunatic} alt="Lunatic" className="StoryImgFlip StoryImgTwoMonster" /> : <img src={Lunatic} alt="Lunatic" className="StoryImgTwoMonster" /> }
+            { Story >= 0 ? <img src={Lunatic} alt="Lunatic" className="StoryImgFlip StoryImgTwoMonster" /> : null}
           </div>
           <fieldset className="storyChat">
-          <legend className="storyCharacterOne">???</legend>
-          <p className="storySpeech">......</p>
-            { (storyLineOne.length === textReadAndSpeed.count) ?
+          <legend className="storyCharacterOne">Lunatic</legend>
+          <p className="storySpeech">♪♪♪♪~</p>
+            { (storyLineOne['storyLineTwo'].length === textReadAndSpeed.count) ?
               <div>
-                <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(finishStoryLineOneFn()); dispatch(GotoWorldMapFn());}}>Continue</button>
+                <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(finishStoryLineTwoFn()); LoadingScreenThreeBoss();}}>Continue</button>
               </div>
             : <div>
                 <button className="nextLine StoryButton StoryButtonPositon" onClick={() => nextLine()}>Next</button>

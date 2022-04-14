@@ -8,12 +8,33 @@
   line-height: 75vh;
   filter:grayscale(0.9);
 }
+
 .storyScreenStoryLineBackground{
   background-image: linear-gradient(black, black),url('../img/Background/Grass7.png');
   background-position: center;
   background-size: 75% 100%;
   background-blend-mode: saturation;
   background-size: cover;
+}
+/* StoryLineTwo */
+.storyScreenStoryLineTwo{
+  height: calc(75vh - 3rem);
+  line-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.storyScreenStoryLineTwoBackground{
+  background-image: url('../img/Background/Grass7.png');
+  background-position: center;
+  background-size: 75% 100%;
+  background-size: cover;
+}
+.StoryImgTwoMonster{
+  width: 40px;
+}
+.StoryImgTwoBossMonster{
+  width: 60px;
 }
 
 .storyScreenStoryfadeOut{
