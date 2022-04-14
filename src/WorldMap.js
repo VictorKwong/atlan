@@ -12,6 +12,7 @@ import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon3F from './GeffenDungeon3F'
 import PayonCave1F from './PayonCave1F'
 import StoryLineTwo from './StoryLineTwo'
+import StoryLineThree from './StoryLineThree'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -107,6 +108,7 @@ function StartMenu(){
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
+        screenControlRoom.cutsceneThree ? <StoryLineThree /> :
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">

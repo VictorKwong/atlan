@@ -17,7 +17,8 @@
   background-size: cover;
 }
 /* StoryLineTwo */
-.storyScreenStoryLineTwo{
+.storyScreenStoryLineTwo,
+.storyScreenStoryLineThree{
   height: calc(75vh - 3rem);
   line-height: 75vh;
   display: flex;
@@ -35,6 +36,16 @@
 }
 .StoryImgTwoBossMonster{
   width: 60px;
+}
+/* StorylineThree */
+.storyScreenStoryLineThreeBackground{
+  background-image: url('../img/Background/Cave8.png');
+  background-position: center;
+  background-size: 75% 100%;
+  background-size: cover;
+}
+.StoryImgThreeBossMonster{
+  width: 80px;
 }
 
 .storyScreenStoryfadeOut{

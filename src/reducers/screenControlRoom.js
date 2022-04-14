@@ -7,6 +7,9 @@ const Fn = {
     //EclipseBoss
     storyLineTwo: false,
     cutsceneTwo: false,
+    //Wolyafa
+    storyLineThree: false,
+    cutsceneThree: false,
     WorldMap: false,
     Prontera: false,
     PronteraSouth: false,
@@ -173,7 +176,21 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 cutsceneTwo: false,
                 storyLineTwo: true,
             }
-        
+        case 'cutsceneThreeFn':
+            return {
+                ...state,
+                cutsceneThree: !state.cutsceneThree,
+                PayonCave1F: false,
+                PayonCave2F: false,
+                PayonCave3F: false,
+            }
+        case 'finishStoryLineThreeFn':
+            return {
+                ...state,
+                cutsceneThree: false,
+                storyLineThree: true,
+            }
+            
         // Mini Screen
         case 'GotoAltanEquipmentFn':
             return {

@@ -14,7 +14,7 @@ import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreen
 //PATH
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
-import { PoringIslandBridgeNPCFn, ResetPoringIslandNPCFn } from './actions'
+import { PoringIslandBridgeNPCFn, PoringIslandFairyNPC1Fn, PoringIslandFairyNPC2Fn, ResetPoringIslandNPCFn } from './actions'
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //cutscene
@@ -233,6 +233,14 @@ useEffect(() => {
       $('.storySpeech').html(`${npcSpeech['RestingGirl'][0].text}`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][0].name}</p>`)
       break;
+    case(npcControlRoom.PoringIslandFairyNPC1):
+      $('.storySpeech').html(`${npcSpeech['Fairy'][0].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Fairy'][0].name}</p>`)
+      break;
+    case(npcControlRoom.PoringIslandFairyNPC2):
+      $('.storySpeech').html(`${npcSpeech['Fairy'][1].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Fairy'][1].name}</p>`)
+      break;
     case(screenControlRoom.PoringIslandHouseMap && npcControlRoom.TrainingSuccess):
       $('.storySpeech').html(`${npcControlRoom.TrainingMaterial} Lv.${npcControlRoom.TrainingLevel + 1} - Training Success!!! <img src=${Success} alt="Success" />`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][0].name}</p>`)
@@ -370,10 +378,10 @@ useEffect(() => {
               <button className="SmallIsland SmallIsland4 SmallIslandPathBridge" onClick={() =>{dispatch(PoringIslandBridgeNPCFn()); dispatch(GotoPoringIslandPath4Fn()); changePlaceFadeAudio();}}>Bridge</button> : null}
               {/* Path 6 Hidden*/}
               {screenControlRoom.PoringIslandPath6 ?
-              <button className="SmallIsland SmallIslandBridgeHidden1 SmallIslandPathBridgeHidden1" onClick={() =>{changePlaceFadeAudio();  dispatch(GotoPoringIslandPath7Fn()); dispatch(ResetPoringIslandNPCFn());}}>Secret path</button> :null}
+              <button className="SmallIsland SmallIslandBridgeHidden1 SmallIslandPathBridgeHidden1" onClick={() =>{changePlaceFadeAudio();  dispatch(GotoPoringIslandPath7Fn()); dispatch(PoringIslandFairyNPC1Fn());}}>Secret path</button> :null}
                {/* Path 7 Hidden*/}
                {screenControlRoom.PoringIslandPath7 ?
-              <button className="SmallIsland SmallIslandBridgeHidden2 SmallIslandPathBridgeHidden2" onClick={() =>{changePlaceFadeAudio();  dispatch(GotoPoringIslandPath8Fn()); dispatch(ResetPoringIslandNPCFn());}}>Hidden road</button> :null}
+              <button className="SmallIsland SmallIslandBridgeHidden2 SmallIslandPathBridgeHidden2" onClick={() =>{changePlaceFadeAudio();  dispatch(GotoPoringIslandPath8Fn()); dispatch(PoringIslandFairyNPC2Fn());}}>Hidden road</button> :null}
                {/* Path 8 Hidden*/}
                {screenControlRoom.PoringIslandPath8 ?
               <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetPoringIslandNPCFn());}}>Smith house</button> :null}

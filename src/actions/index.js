@@ -172,6 +172,17 @@ export const finishStoryLineTwoFn = () => {
         type: 'finishStoryLineTwoFn',
     };
 };
+export const cutsceneThreeFn = () => {
+    return {
+        type: 'cutsceneThreeFn',
+    };
+};
+export const finishStoryLineThreeFn = () => {
+    return {
+        type: 'finishStoryLineThreeFn',
+    };
+};
+
 //Mini Screen
 export const GotoAltanEquipmentFn = () => {
     return {
@@ -1795,6 +1806,18 @@ export const PoringIslandBridgeNPCFn = () => {
         type: 'PoringIslandBridgeNPCFn',
     };
 };
+export const PoringIslandFairyNPC1Fn = () => {
+    return {
+        type: 'PoringIslandFairyNPC1Fn',
+    };
+};
+export const PoringIslandFairyNPC2Fn = () => {
+    return {
+        type: 'PoringIslandFairyNPC2Fn',
+    };
+};
+
+
 export const ResetPoringIslandNPCFn = () => {
     return {
         type: 'ResetPoringIslandNPCFn',
@@ -1958,6 +1981,11 @@ export const PayonCave1FSelfNPCHiddenFn = () => {
 export const PayonCave2FSelfNPCFn = () => {
     return {
         type: 'PayonCave2FSelfNPCFn',
+    };
+};
+export const PayonCave2FFairyNPC1Fn = () => {
+    return {
+        type: 'PayonCave2FFairyNPC1Fn',
     };
 };
 export const PayonCave2FSelfNPCHiddenFn = () => {

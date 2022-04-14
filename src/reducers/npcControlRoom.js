@@ -42,6 +42,8 @@ const Fn = {
     ChestBoss1: false,
     ChestBoss1VisitRepeat: false,
     PoringIslandBridgeNPC: false,
+    PoringIslandFairyNPC1:false,
+    PoringIslandFairyNPC2:false,
     BossEclipseDefeat: false,
     //PayonCave1F Dungeon
     PayonCaveChest3: false,
@@ -682,11 +684,29 @@ const npcControlRoomReducer = (state = Fn, action) => {
         case 'PoringIslandBridgeNPCFn':
             return {
                 ...state,
+                PoringIslandFairyNPC1: false,
+                PoringIslandFairyNPC2: false,
                 PoringIslandBridgeNPC: true,
+            }
+        case 'PoringIslandFairyNPC1Fn':
+            return {
+                ...state,
+                PoringIslandFairyNPC1: true,
+                PoringIslandFairyNPC2: false,
+                PoringIslandBridgeNPC: false,
+            }
+        case 'PoringIslandFairyNPC2Fn':
+            return {
+                ...state,
+                PoringIslandFairyNPC1: false,
+                PoringIslandFairyNPC2: true,
+                PoringIslandBridgeNPC: false,
             }
         case 'ResetPoringIslandNPCFn':
             return {
                 ...state,
+                PoringIslandFairyNPC1: false,
+                PoringIslandFairyNPC2: false,
                 PoringIslandBridgeNPC: false,
             }
         //PayonCave
@@ -750,6 +770,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCave1FSelfNPCHidden: true,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FFairyNPC1: false,
                 PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
@@ -759,6 +780,17 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: true,
+                PayonCave2FFairyNPC1: false,
+                PayonCave2FSelfNPCHidden: false,
+                PayonCave2FCaveNPC: false,
+                PayonCave3FCaveNPC: false,
+            }
+        case 'PayonCave2FFairyNPC1Fn':
+            return {
+                ...state,
+                PayonCave1FSelfNPCHidden: false,
+                PayonCave2FSelfNPC: false,
+                PayonCave2FFairyNPC1: true,
                 PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
@@ -768,6 +800,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FFairyNPC1: false,
                 PayonCave2FSelfNPCHidden: true,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,
@@ -777,6 +810,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FFairyNPC1: false,
                 PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: true,
                 PayonCave3FCaveNPC: false,
@@ -786,6 +820,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FFairyNPC1: false,
                 PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: true,
@@ -795,6 +830,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PayonCave1FSelfNPCHidden: false,
                 PayonCave2FSelfNPC: false,
+                PayonCave2FFairyNPC1: false,
                 PayonCave2FSelfNPCHidden: false,
                 PayonCave2FCaveNPC: false,
                 PayonCave3FCaveNPC: false,

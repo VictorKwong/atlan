@@ -228,6 +228,18 @@ const Fn = {
         name: 'Goblin Yula',
         text: 'Once before Geffen is a Wizard city, trained to be a Magician first :)'
     }],
+    Fairy:[{
+    //PoringIsland
+        name: 'Fairy',
+        text: 'Hi Atlan, I`m Fairy :). follow me! there is a shop there might help your journey Atlan!'
+    },{
+        name: 'Fairy',
+        text: 'This way!'
+    },{
+    //PayonCave
+        name: 'Fairy',
+        text: 'Atlan, look at the lake, it seems like this place might have some hidden path!'
+    }],
 }
 
 const npcSpeechReducer = (state = Fn, action) => {
