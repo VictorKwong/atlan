@@ -62,7 +62,17 @@
   width:300px;
   height:200px;
 }
-
+.treasureTextDisplay1{
+  position: relative;
+  font-family: 'Pangolin', cursive;
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  border: 1px solid black;
+  padding: 10px;
+}
 .chest2Box{
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(202, 144, 216) 100%);
 }
@@ -73,3 +83,4 @@
 .displayNoneTreasure{
   display: none;
 }
+

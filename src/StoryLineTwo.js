@@ -55,7 +55,10 @@ function StartMenu(){
         Story = Story + 1;
       }
       const LoadingScreenThreeBoss = () => {
-        dispatch(GotoBattlePoringIslandMapFn("Path5",5));
+        dispatch(BattleLoadingScreenFn())
+        setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path5",5)), 1000);
+        setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+        setTimeout(() => dispatch(finishStoryLineTwoFn()), 1000);
       }
 
     return(
@@ -76,7 +79,7 @@ function StartMenu(){
           <p className="storySpeech">♪♪♪♪~</p>
             { (storyLineOne['storyLineTwo'].length === textReadAndSpeed.count) ?
               <div>
-                <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(finishStoryLineTwoFn()); LoadingScreenThreeBoss();}}>Continue</button>
+                <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {LoadingScreenThreeBoss();}}>Continue</button>
               </div>
             : <div>
                 <button className="nextLine StoryButton StoryButtonPositon" onClick={() => nextLine()}>Next</button>

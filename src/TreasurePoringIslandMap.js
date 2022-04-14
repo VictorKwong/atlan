@@ -89,14 +89,14 @@ function StartMenu(){
                 <div className="chest1Background">
                   <div className="chest1BoxCenter">
                     <img src={treasureBoxOpen} alt="Treasure Box Open" /> 
-                    <p>{Reward.RewardDisplay} <img src={Reward.img1} alt={Reward.img1alt}/> </p>
+                    <p className={Reward.id <= 3 ? "treasureTextDisplay1" : Reward.id <= 8 ? "treasureTextDisplay1 chest2Box" : "treasureTextDisplay1 chest3Box"}>{Reward.RewardDisplay} <img src={Reward.img1} alt={Reward.img1alt}/> </p>
                   </div>
                 </div> :
                 Reward.Condition1 && Reward.Condition2 ? 
                 <div className="chest1Background">
                   <div className="chest1BoxCenter">
                     <img src={treasureBoxOpen} alt="Treasure Box Open" /> 
-                    <p>Empty Chest</p>
+                    <p className={Reward.id <= 3 ? "treasureTextDisplay1" : Reward.id <= 8 ? "treasureTextDisplay1 chest2Box" : "treasureTextDisplay1 chest3Box"}>Empty Chest</p>
                   </div>
                 </div> :
                 <div className="chest1Background">
