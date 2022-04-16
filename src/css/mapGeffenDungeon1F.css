@@ -234,8 +234,49 @@
 }
 
 @media (max-width: 767px){
-
+  .GeffenDungeon1FMap,
+  .GeffenDungeon2FMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .GeffenDungeon1FToGeffen,
+  .GeffenDungeon1FPath0,
+  .GeffenDungeon1FPath1,
+  .GeffenDungeon1FPath2,
+  .GeffenDungeon1FPath3,
+  .TreasureBoxGeffenDungeon1F,
+  .GeffenDungeon1FTo2F,
+  .GeffenDungeon2FToGeffenDungeon1F,
+  .GeffenDungeon2FPath0Split0,
+  .GeffenDungeon2FPath1Split0,
+  .GeffenDungeon2FPath2Split0,
+  .TreasureBoxGeffenDungeon2F1,
+  .GeffenDungeon2FPath0Split1,
+  .GeffenDungeon2FPath1Split1,
+  .GeffenDungeon2FPath2Split1,
+  .TreasureBoxGeffenDungeon2F2,
+  .GeffenDungeon2FPathHidden1,
+  .GeffenDungeon2FToGeffenDungeon3F,
+  .GeffenDungeonBase{
+    width:100%;
+    min-height: 50px;
+  }
+  .GeffenDungeon1FMapTitle,
+  .GeffenDungeon2FMapTitle{
+    font-size: 20px;
+  }
 }
 @media (max-width: 467px){
-
+  .GeffenDungeon1FMapTitle,
+  .GeffenDungeon2FMapTitle{
+    font-size: 14px;
+  }
+  .GeffenDungeon1FMap,
+  .GeffenDungeon2FMap{
+    padding-top: 20px;
+  }
 }

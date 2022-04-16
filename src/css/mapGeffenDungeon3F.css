@@ -165,8 +165,42 @@
 }
 
 @media (max-width: 767px){
-
+  .GeffenDungeon3FMap,
+  .GeffenDungeon4FMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .GeffenDungeon3FToGeffenDungeon2F,
+  .GeffenDungeon3FPath0,
+  .GeffenDungeon3FPath1,
+  .GeffenDungeon3FPath2,
+  .GeffenDungeon3FPath3,
+  .GeffenDungeon3FPath4,
+  .GeffenDungeon3FPath5,
+  .GeffenDungeon3FPath6,
+  .GeffenDungeon3FPath7,
+  .GeffenDungeon4FToGeffenDungeon3F,
+  .GeffenDungeon4FPath0,
+  .GeffenDungeon4FPath1{
+    width:100%;
+    min-height: 50px;
+  }
+  .GeffenDungeon3FMapTitle,
+  .GeffenDungeon4FMapTitle{
+    font-size: 20px;
+  }
 }
 @media (max-width: 467px){
-
+  .GeffenDungeon3FMapTitle,
+  .GeffenDungeon4FMapTitle{
+    font-size: 14px;
+  }
+  .GeffenDungeon3FMap,
+  .GeffenDungeon4FMap{
+    padding-top: 20px;
+  }
 }
