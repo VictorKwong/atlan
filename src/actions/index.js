@@ -182,7 +182,26 @@ export const finishStoryLineThreeFn = () => {
         type: 'finishStoryLineThreeFn',
     };
 };
-
+export const cutsceneFourFn = () => {
+    return {
+        type: 'cutsceneFourFn',
+    };
+};
+export const finishStoryLineFourFn = () => {
+    return {
+        type: 'finishStoryLineFourFn',
+    };
+};
+export const cutsceneFiveFn = () => {
+    return {
+        type: 'cutsceneFiveFn',
+    };
+};
+export const finishStoryLineFiveFn = () => {
+    return {
+        type: 'finishStoryLineFiveFn',
+    };
+};
 //Mini Screen
 export const GotoAltanEquipmentFn = () => {
     return {

@@ -18,7 +18,6 @@ import { AcceptQuestDialogFn, ProgressQuestDialogFn } from './actions'
 import WorldMap from './WorldMap'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
-import StoryLineThree from './StoryLineThree'
 import PayonCave2F from './PayonCave2F'
 import PayonCave3F from './PayonCave3F'
 import AltanEquipment from './AltanEquipment'
@@ -217,7 +216,6 @@ function StartMenu(){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        screenControlRoom.cutsceneThree ? <StoryLineThree /> :
         <div className={screenControlRoom.PayonCave1F && screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : screenControlRoom.PayonCave1F && screenControlRoom.PayonCave3F ? "PayonCave3FMapBackground" : screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : null}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 

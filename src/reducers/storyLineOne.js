@@ -57,6 +57,41 @@ const Fn = {
         name:'Wolyafa',
         text:'Prepare to DIE..!!'
     }],
+    storyLineFour:[{
+        name:'Doppelganger',
+        text:'Once apon a time, we study together and become friends.'
+    },{
+        name:'Doppelganger',
+        text:'Friends, close friends, and we always do our mission together.'
+    },{
+        name:'Doppelganger',
+        text:'One day, when Baphomet offers a gifts to us, you decline his gracious kindness..'
+    },{
+        name:'Doppelganger',
+        text:'I was right to chose HIS side, the dark power is stronger than you thought.'
+    },{
+        name:'Doppelganger',
+        text:'Sorry Atlan, but  your story ENDS today..'
+    },{
+        name:'Doppelganger',
+        text:'Consume by my darkness and join our side!!'
+    }],
+    storyLineFive:[{
+        name:'Doppelganger',
+        text:'I was wrong Atlan..'
+    },{
+        name:'Doppelganger',
+        text:'I hope you can stop Baphomet, he controls the chaos gate'
+    },{
+        name:'Doppelganger',
+        text:'You need to stop him before the gates are open..'
+    },{
+        name:'Doppelganger',
+        text:'I hope we could see each other again..'
+    },{
+        name:'Doppelganger',
+        text:'when we are close friends, just like... old days.....'
+    }],
 }
 
 const storyLineOneReducer = (state = Fn, action) => {

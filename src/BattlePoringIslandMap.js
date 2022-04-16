@@ -45,7 +45,8 @@ import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
 import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn, GotoPayonCave3FPath1Fn, GotoPayonCave3FPath2Fn, GotoPayonCave3FPath4Fn } from './actions'
 import { GotoGeffenDungeon1FPath1Fn, GotoGeffenDungeon1FPath3Fn, GotoGeffenDungeon2FPath1Fn, GotoGeffenDungeon2FPath2Fn, GotoGeffenDungeon2FPath4Fn, GotoGeffenDungeon2FPath6Fn, GotoGeffenDungeon3FPath1Fn , GotoGeffenDungeon3FPath2Fn , GotoGeffenDungeon3FPath4Fn , GotoGeffenDungeon4FPath1Fn } from './actions'
-
+//cutsence
+import {cutsceneFiveFn} from './actions'
 
 import './css/mapBattle.css'
 import './index.css'
@@ -2629,6 +2630,8 @@ function Main(){
                 i <= 5 ? "ReturnCheckPoint" : 
                 i <= 15 ? "ReturnCheckPoint ReturnCheckPointPayonCave" : 
                 i <= 33 ? "ReturnCheckPoint ReturnCheckGeffenDungeon" : null} onClick={
+                i === 22 && !screenControlRoom.storyLineFive ?
+                () =>{dispatch(cutsceneFiveFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
                 i <= 5 ?
                 () =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
                 i <= 7 ?

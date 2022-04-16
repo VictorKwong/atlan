@@ -13,6 +13,8 @@ import GeffenDungeon3F from './GeffenDungeon3F'
 import PayonCave1F from './PayonCave1F'
 import StoryLineTwo from './StoryLineTwo'
 import StoryLineThree from './StoryLineThree'
+import StoryLineFour from './StoryLineFour'
+import StoryLineFive from './StoryLineFive'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -109,6 +111,8 @@ function StartMenu(){
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         screenControlRoom.cutsceneThree ? <StoryLineThree /> :
+        screenControlRoom.cutsceneFour ? <StoryLineFour /> :
+        screenControlRoom.cutsceneFive ? <StoryLineFive /> :
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -142,7 +146,7 @@ function StartMenu(){
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
                 <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn())}}>Geffen</button>
                 {screenControlRoom.FinalBossPath ?
-                <button className="FinalBoss" onClick={() => {LoadingScreen0();}}>Baphomet Gate</button> : null}
+                <button className="FinalBoss" onClick={() => {LoadingScreen0();}}>Baphomet Gate💢</button> : null}
               </div>
             }
             <div className="StoryHUD">

@@ -10,6 +10,11 @@ const Fn = {
     //Wolyafa
     storyLineThree: false,
     cutsceneThree: false,
+    //Doppelganger
+    storyLineFour: false,
+    cutsceneFour: false,
+    storyLineFive: false,
+    cutsceneFive: false,
     WorldMap: false,
     Prontera: false,
     PronteraSouth: false,
@@ -190,7 +195,30 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 cutsceneThree: false,
                 storyLineThree: true,
             }
-            
+        case 'cutsceneFourFn':
+            return {
+                ...state,
+                cutsceneFour: !state.cutsceneFour,
+                GeffenDungeon3F: false,
+            }
+        case 'finishStoryLineFourFn':
+            return {
+                ...state,
+                cutsceneFour: false,
+                storyLineFour: true,
+            }
+        case 'cutsceneFiveFn':
+            return {
+                ...state,
+                cutsceneFive: !state.cutsceneFive,
+                BattlePoringIslandMap: false,
+            }
+        case 'finishStoryLineFiveFn':
+            return {
+                ...state,
+                cutsceneFive: false,
+                storyLineFive: true,
+            }
         // Mini Screen
         case 'GotoAltanEquipmentFn':
             return {

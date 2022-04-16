@@ -23,7 +23,6 @@ import {cutsceneTwoFn} from './actions'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import PoringIslandHouseMap from './PoringIslandHouseMap'
-import StoryLineTwo from './StoryLineTwo'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -322,7 +321,6 @@ useEffect(() => {
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
-        screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         <div className="PoringIslandMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
