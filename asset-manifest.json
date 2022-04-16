@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.ab367772.css",
-    "main.js": "/atlan/static/js/main.693ecd74.js",
+    "main.css": "/atlan/static/css/main.7042401b.css",
+    "main.js": "/atlan/static/js/main.50d9d2c9.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -214,16 +214,17 @@
     "static/media/UserBattlePostTwinEdgeofNaghtSieger1_PandaHat.gif": "/atlan/static/media/UserBattlePostTwinEdgeofNaghtSieger1_PandaHat.b68d104461affe0e4661.gif",
     "static/media/Lemon.gif": "/atlan/static/media/Lemon.9193bc055c87944d2087.gif",
     "static/media/UserBattlePostBastardSword1_LordKahosHorn.gif": "/atlan/static/media/UserBattlePostBastardSword1_LordKahosHorn.8e209c45c1ad670b3d31.gif",
+    "static/media/DoppelgangerBattle.gif": "/atlan/static/media/DoppelgangerBattle.bbc246dda6792eca1b4d.gif",
     "static/media/AltanWalk2.gif": "/atlan/static/media/AltanWalk2.a548e7ce18f30a35c30a.gif",
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.ab367772.css.map": "/atlan/static/css/main.ab367772.css.map",
-    "main.693ecd74.js.map": "/atlan/static/js/main.693ecd74.js.map",
+    "main.7042401b.css.map": "/atlan/static/css/main.7042401b.css.map",
+    "main.50d9d2c9.js.map": "/atlan/static/js/main.50d9d2c9.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab367772.css",
-    "static/js/main.693ecd74.js"
+    "static/css/main.7042401b.css",
+    "static/js/main.50d9d2c9.js"
   ]
 }
