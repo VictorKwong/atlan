@@ -69,7 +69,7 @@ import PronteraHeadGearDealerImg from './img/NPC/PronteraHeadGearDealer.gif'
 import PronteraSoldierImg from './img/NPC/Soldier.gif'
 import Kiwi from './img/NPC/Kiwi.gif'
 import Lemon from './img/NPC/Lemon.gif'
-import Chocolate from './img/NPC/Chocolate.png'
+import Chocolate from './img/NPC/Chocolate.gif'
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
