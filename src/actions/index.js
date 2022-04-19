@@ -447,6 +447,12 @@ export const easterEggFn = () => {
     };
 };
 
+export const supportOnceFn = () => {
+    return {
+        type: 'supportOnceFn',
+    };
+};
+
 
 // Animation
 export const UserAttackAnimationFn = () => {
