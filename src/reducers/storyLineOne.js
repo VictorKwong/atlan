@@ -108,6 +108,22 @@ const Fn = {
         name:'Baphomet',
         text:'Let`s end this battle, shall we ... Atlan?'
     }],
+    storyLineSeven:[{
+        name:'Baphomet',
+        text:'No....'
+    },{
+        name:'Baphomet',
+        text:'The Chaos Gate, it just need a bit of time to complete there....'
+    },{
+        name:'Baphomet',
+        text:'So far..'
+    },{
+        name:'Baphomet',
+        text:'Yet so close....'
+    },{
+        name:'Baphomet',
+        text:'May we Rest and Peace.... Find in a better place..'
+    }],
 }
 
 const storyLineOneReducer = (state = Fn, action) => {

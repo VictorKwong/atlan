@@ -22,6 +22,7 @@ const textReadAndSpeedReducer = (state = Fn, action) => {
         case 'finishStoryLineFourFn':
         case 'finishStoryLineFiveFn':
         case 'finishStoryLineSixFn':
+        case 'finishStoryLineSevenFn':
             return{
                 ...state,
                 count: 0

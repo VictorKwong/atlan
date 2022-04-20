@@ -64,14 +64,16 @@
 }
 /* StorylineFive */
 /* StorylineSix */
-
-.storyScreenStoryLineSixBackground{
+/* StorylineSeven */
+.storyScreenStoryLineSixBackground,
+.storyScreenStoryLineSevenBackground{
   background-image: url('../img/Background/FinalBoss10.png');
   background-position: center;
   background-size: 75% 100%;
   background-size: cover;
 }
-.StoryImgSixBossMonster{
+.StoryImgSixBossMonster,
+.StoryImgSevenBossMonster{
   width: 100px;
 }
 
