@@ -77,6 +77,10 @@
   right: 5px;
 }
 
+.footerClick{
+  cursor: pointer;
+}
+
 @media (max-width: 1199px){
 
 }

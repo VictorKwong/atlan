@@ -54,7 +54,7 @@ function StartMenu(){
         dispatch(BattleLoadingScreenFn());
         setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), 1000);
         setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
-        dispatch(finishStoryLineSixFn());
+        setTimeout(() => dispatch(finishStoryLineSixFn()), 1000);
       }
     return(
       <div>
