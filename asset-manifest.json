@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.7042401b.css",
-    "main.js": "/atlan/static/js/main.02f4fd6f.js",
+    "main.css": "/atlan/static/css/main.c0b36358.css",
+    "main.js": "/atlan/static/js/main.fd1f89ba.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -33,6 +33,7 @@
     "static/media/GeffenDungeon2F4.jpg": "/atlan/static/media/GeffenDungeon2F4.4974bfa7c63f37c7f59e.jpg",
     "static/media/GeffenDungeon4F1.jpg": "/atlan/static/media/GeffenDungeon4F1.7b51683f2a1e3e0d8a79.jpg",
     "static/media/PoringIslandChest1.png": "/atlan/static/media/PoringIslandChest1.292ed3e8ee72bd4a5596.png",
+    "static/media/FinalBoss10.png": "/atlan/static/media/FinalBoss10.d87df199764656b07acb.png",
     "static/media/PayonCave2FCave1.jpg": "/atlan/static/media/PayonCave2FCave1.ab1cb38a557cd4bad840.jpg",
     "static/media/GeffenDungeon1F4.jpg": "/atlan/static/media/GeffenDungeon1F4.f5e8522bfbddf7dd41c6.jpg",
     "static/media/PoringIsland.jpg": "/atlan/static/media/PoringIsland.cde8b3ad71b8d3bac6bd.jpg",
@@ -219,12 +220,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.7042401b.css.map": "/atlan/static/css/main.7042401b.css.map",
-    "main.02f4fd6f.js.map": "/atlan/static/js/main.02f4fd6f.js.map",
+    "main.c0b36358.css.map": "/atlan/static/css/main.c0b36358.css.map",
+    "main.fd1f89ba.js.map": "/atlan/static/js/main.fd1f89ba.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7042401b.css",
-    "static/js/main.02f4fd6f.js"
+    "static/css/main.c0b36358.css",
+    "static/js/main.fd1f89ba.js"
   ]
 }
