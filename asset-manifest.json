@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.c0b36358.css",
-    "main.js": "/atlan/static/js/main.fd1f89ba.js",
+    "main.css": "/atlan/static/css/main.45425e36.css",
+    "main.js": "/atlan/static/js/main.393f4f5e.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -54,6 +54,7 @@
     "static/media/ToolDealer.jpg": "/atlan/static/media/ToolDealer.9524d386cd829a348d60.jpg",
     "static/media/Special2.jpg": "/atlan/static/media/Special2.f9b496139f6cf6b009d3.jpg",
     "static/media/Geffen.jpg": "/atlan/static/media/Geffen.699a606af12da3648fb2.jpg",
+    "static/media/StoryEnds.jpg": "/atlan/static/media/StoryEnds.a5cae6e0f1efbeacbcd4.jpg",
     "static/media/audioStartUpGame.mp3": "/atlan/static/media/audioStartUpGame.a9512e708473cd329cf2.mp3",
     "static/media/GeffenDungeon2F5.jpg": "/atlan/static/media/GeffenDungeon2F5.ad717397157e5ded05c5.jpg",
     "static/media/Sound.jpg": "/atlan/static/media/Sound.fed266924496da9437f4.jpg",
@@ -220,12 +221,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.c0b36358.css.map": "/atlan/static/css/main.c0b36358.css.map",
-    "main.fd1f89ba.js.map": "/atlan/static/js/main.fd1f89ba.js.map",
+    "main.45425e36.css.map": "/atlan/static/css/main.45425e36.css.map",
+    "main.393f4f5e.js.map": "/atlan/static/js/main.393f4f5e.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0b36358.css",
-    "static/js/main.fd1f89ba.js"
+    "static/css/main.45425e36.css",
+    "static/js/main.393f4f5e.js"
   ]
 }
