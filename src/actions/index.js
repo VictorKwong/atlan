@@ -212,6 +212,26 @@ export const finishStoryLineSixFn = () => {
         type: 'finishStoryLineSixFn',
     };
 };
+export const cutsceneSevenFn = () => {
+    return {
+        type: 'cutsceneSevenFn',
+    };
+};
+export const finishStoryLineSevenFn = () => {
+    return {
+        type: 'finishStoryLineSevenFn',
+    };
+};
+export const cutsceneEndFn = () => {
+    return {
+        type: 'cutsceneEndFn',
+    };
+};
+export const finishStoryLineEndFn = () => {
+    return {
+        type: 'finishStoryLineEndFn',
+    };
+};
 //Mini Screen
 export const GotoAltanEquipmentFn = () => {
     return {

@@ -17,6 +17,8 @@ import StoryLineThree from './StoryLineThree'
 import StoryLineFour from './StoryLineFour'
 import StoryLineFive from './StoryLineFive'
 import StoryLineSix from './StoryLineSix'
+import StoryLineSeven from './StoryLineSeven'
+import StoryLineEnd from './StoryLineEnd'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -116,6 +118,8 @@ function StartMenu(){
         screenControlRoom.cutsceneFour ? <StoryLineFour /> :
         screenControlRoom.cutsceneFive ? <StoryLineFive /> :
         screenControlRoom.cutsceneSix ? <StoryLineSix /> :
+        screenControlRoom.cutsceneSeven ? <StoryLineSeven /> :
+        screenControlRoom.cutsceneEnd ? <StoryLineEnd /> :
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">

@@ -20,6 +20,9 @@ const Fn = {
     cutsceneSix: false,
     storyLineSeven: false,
     cutsceneSeven: false,
+    //End
+    storyLineEnd: false,
+    cutsceneEnd: false,
     WorldMap: false,
     Prontera: false,
     PronteraSouth: false,
@@ -239,7 +242,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
         case 'cutsceneSevenFn':
             return {
                 ...state,
-                cutsceneSeven: !state.cutsceneSix,
+                cutsceneSeven: !state.cutsceneSeven,
                 BattlePoringIslandMap: false,
             }
         case 'finishStoryLineSevenFn':
@@ -247,6 +250,17 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 cutsceneSeven: false,
                 storyLineSeven: true,
+            }
+        case 'cutsceneEndFn':
+            return {
+                ...state,
+                cutsceneEnd: !state.cutsceneEnd,
+            }
+        case 'finishStoryLineEndFn':
+            return {
+                ...state,
+                cutsceneEnd: false,
+                storyLineEnd: true,
             }
         // Mini Screen
         case 'GotoAltanEquipmentFn':

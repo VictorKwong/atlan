@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { finishStoryLineSevenFn, typeWritterEffectFn, BattleLoadingScreenFn , GotoBattlePoringIslandMapFn} from './actions';
-import BattlePoringIslandMap from './BattlePoringIslandMap'
+import { finishStoryLineSevenFn, typeWritterEffectFn, cutsceneEndFn} from './actions';
+import StoryLineEnd from './StoryLineEnd'
 import './css/storyLine.css'
 import $ from 'jquery'
 // import useSound from 'use-sound';
@@ -51,15 +51,13 @@ function StartMenu(){
         Story = Story + 1;
       }
       const LoadingScreen2 = () => {
-        dispatch(BattleLoadingScreenFn());
-        setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), 1000);
-        setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
-        setTimeout(() => dispatch(finishStoryLineSevenFn()), 1000);
+        dispatch(cutsceneEndFn());
+        dispatch(finishStoryLineSevenFn());
       }
     return(
       <div>
         {
-        screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.cutsceneEnd ? <StoryLineEnd /> :
         <div className="storyScreenStoryLineSevenBackground">
           <div className="storyScreenStoryLineSeven">
           { Story >= 0 ? <img src={BaphometDead} alt="BaphometDead" className="StoryImgFlip StoryImgSevenBossMonster" /> : null}
