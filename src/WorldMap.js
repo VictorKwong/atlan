@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn} from './actions'
+import { cutsceneSixFn } from './actions'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PronteraCastle from './PronteraCastle'
@@ -15,6 +16,7 @@ import StoryLineTwo from './StoryLineTwo'
 import StoryLineThree from './StoryLineThree'
 import StoryLineFour from './StoryLineFour'
 import StoryLineFive from './StoryLineFive'
+import StoryLineSix from './StoryLineSix'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -113,6 +115,7 @@ function StartMenu(){
         screenControlRoom.cutsceneThree ? <StoryLineThree /> :
         screenControlRoom.cutsceneFour ? <StoryLineFour /> :
         screenControlRoom.cutsceneFive ? <StoryLineFive /> :
+        screenControlRoom.cutsceneSix ? <StoryLineSix /> :
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -146,7 +149,10 @@ function StartMenu(){
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
                 <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn())}}>Geffen</button>
                 {screenControlRoom.FinalBossPath ?
-                <button className="FinalBoss" onClick={() => {LoadingScreen0();}}>Baphomet Gate💢</button> : null}
+                <button className="FinalBoss" onClick={
+                  screenControlRoom.storyLineSix ? 
+                  () => {LoadingScreen0();}:
+                  () => {dispatch(cutsceneSixFn());}}>Baphomet Gate💢</button> : null}
               </div>
             }
             <div className="StoryHUD">

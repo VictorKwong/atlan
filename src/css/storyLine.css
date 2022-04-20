@@ -20,7 +20,8 @@
 .storyScreenStoryLineTwo,
 .storyScreenStoryLineThree,
 .storyScreenStoryLineFour,
-.storyScreenStoryLineFive{
+.storyScreenStoryLineFive,
+.storyScreenStoryLineSix{
   height: calc(75vh - 3rem);
   line-height: 75vh;
   display: flex;
@@ -62,6 +63,17 @@
   filter: invert(0%) sepia(13%) saturate(341%) hue-rotate(243deg) brightness(82%) contrast(87%);
 }
 /* StorylineFive */
+/* StorylineSix */
+
+.storyScreenStoryLineSixBackground{
+  background-image: url('../img/Background/FinalBoss10.png');
+  background-position: center;
+  background-size: 75% 100%;
+  background-size: cover;
+}
+.StoryImgSixBossMonster{
+  width: 100px;
+}
 
 .storyScreenStoryfadeOut{
   background-color: black;

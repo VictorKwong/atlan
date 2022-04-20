@@ -41,6 +41,13 @@
   background-size: cover;
 }
 
+.battleScreenFinalBoss{
+  background-image: url('../img/Background/FinalBoss10.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .titleName{
   -webkit-text-stroke: 0.2px black;
   stroke: 0.2px black;

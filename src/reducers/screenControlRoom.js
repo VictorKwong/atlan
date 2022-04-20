@@ -15,6 +15,9 @@ const Fn = {
     cutsceneFour: false,
     storyLineFive: false,
     cutsceneFive: false,
+    //Baphomet
+    storyLineSix: false,
+    cutsceneSix: false,
     WorldMap: false,
     Prontera: false,
     PronteraSouth: false,
@@ -218,6 +221,18 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 cutsceneFive: false,
                 storyLineFive: true,
+            }
+        case 'cutsceneSixFn':
+            return {
+                ...state,
+                cutsceneSix: !state.cutsceneSix,
+                WorldMap: false,
+            }
+        case 'finishStoryLineSixFn':
+            return {
+                ...state,
+                cutsceneSix: false,
+                storyLineSix: true,
             }
         // Mini Screen
         case 'GotoAltanEquipmentFn':

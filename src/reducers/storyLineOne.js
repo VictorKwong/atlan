@@ -92,6 +92,22 @@ const Fn = {
         name:'Doppelganger',
         text:'when we are close friends, just like... old days.....'
     }],
+    storyLineSix:[{
+        name:'Baphomet',
+        text:'The time that we sacrifice, to create OUR world!'
+    },{
+        name:'Baphomet',
+        text:'Now the chaos gate is almost complete...'
+    },{
+        name:'Baphomet',
+        text:'Foolish Human won`t be able to resist our forces anymore.'
+    },{
+        name:'Baphomet',
+        text:'All of my units, Eclipse - Wolyafa - Doppelganger will reborn once again.'
+    },{
+        name:'Baphomet',
+        text:'Let`s end this battle, shall we ... Atlan?'
+    }],
 }
 
 const storyLineOneReducer = (state = Fn, action) => {

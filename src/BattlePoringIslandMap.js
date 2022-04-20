@@ -54,6 +54,7 @@ import PoringIsland from './PoringIsland'
 import PayonCave1F from './PayonCave1F'
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon3F from './GeffenDungeon3F'
+import WorldMap from './WorldMap'
 //PoringIsland
 import Poring from './img/Monster/Poring.gif'
 import PoringHit from './img/Monster/PoringHit.png'
@@ -2326,9 +2327,10 @@ function Main(){
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F />:
         screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F />:
+        screenControlRoom.WorldMap ? <WorldMap /> :
         <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShakeMore" : ImageControlRoom.EnemyOnHit || ImageControlRoom.UserOnHit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
-              <div className={i <= 5 ? "battleScreenBase" : i <= 15 ? "battleScreenBase battleScreenPayonCave" : "battleScreenBase battleScreenGeffenDungeon"}>
+              <div className={i <= 5 ? "battleScreenBase" : i <= 15 ? "battleScreenBase battleScreenPayonCave" : i <= 24 ? "battleScreenBase battleScreenGeffenDungeon" : "battleScreenBase battleScreenFinalBoss"}>
                 <div className="enemyBox"> 
                       {EnemyBox.map(Enemy => {
                         return( 

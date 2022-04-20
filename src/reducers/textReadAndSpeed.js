@@ -1,7 +1,7 @@
 
 const Fn = {
     count: 0,
-    speed: 30,
+    speed: 15,
 }
 
 const textReadAndSpeedReducer = (state = Fn, action) => {
@@ -21,6 +21,7 @@ const textReadAndSpeedReducer = (state = Fn, action) => {
         case 'finishStoryLineThreeFn':
         case 'finishStoryLineFourFn':
         case 'finishStoryLineFiveFn':
+        case 'finishStoryLineSixFn':
             return{
                 ...state,
                 count: 0
