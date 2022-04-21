@@ -22,7 +22,29 @@ function StartMenu(){
         screenControlRoom.WorldMap ? <WorldMap /> :
         <div className="storyScreenStoryLineEndBackground">
           <div className="storyScreenStoryLineEnd">
-          <p>Thanks for Playing!</p>
+            <div className='endingDivision'>
+              <h2>AUDIO</h2>
+              <p>Ragnarok BGM - PeacefulForest, ThemeOfGeffen, ThroughTheTower, OutOfCuriosity, ThemeOfProntera, Streamside, OneStepCloser, ThemeOfJuno, AncientGroover</p>
+              <p>AriaTheScarletAmmo - Soundtrack</p>
+              <p>Gameboy Advance turn-on sound</p>
+              <p>Laszlo - ImaginaryFriends</p>
+              <p>LittleFighter2 - ThemeSong</p>
+              <p>RustyHearts - Wings, Heartbroken</p>
+              <p>StrugardenNEOBattle BGM</p>
+              <p>Tobu - Infectious</p>
+            </div>
+            <div className='endingDivision'>
+              <h2>GRAPHICS</h2>
+              <p>Ragnarok Online</p>
+              <p>Drawing pictures from Lemonekko</p>
+            </div>
+            <div className='endingDivision'>
+              <h2>STORY LINE</h2>
+              <p>Present by Lemonekko</p>
+            </div>
+            <div className='endingDivision'>
+              <h2>~THANKS~</h2>
+            </div>
           <div>
             <button className="nextLine StoryButton" onClick={() => LoadingScreen2()}>You're welcome :)</button>
           </div>

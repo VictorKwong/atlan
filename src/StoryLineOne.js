@@ -57,9 +57,7 @@ function StartMenu(){
         Story = Story + 1;
       }
 
-
-
-
+      
     return(
       <div>
         {screenControlRoom.storyLineOne ? <WorldMap  /> :

@@ -86,10 +86,17 @@
 }
 .storyScreenStoryLineEnd{
   height: calc(100vh - 3rem);
-  line-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.endingDivision{
+  width: 100%;
+  padding: 20px;
+  line-height: 30px;
 }
 
 .storyScreenStoryfadeOut{
