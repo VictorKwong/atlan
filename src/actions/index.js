@@ -793,6 +793,14 @@ export const TalktoIWantToJoinGuildFn = () => {
         type: 'TalktoIWantToJoinGuildFn'
     };
 };
+export const TalktoKiwiGuildFn = () => {
+    return {
+        type: 'TalktoKiwiGuildFn'
+    };
+};
+
+
+
 export const TalktoLemonResponseFn = () => {
     return {
         type: 'TalktoLemonResponseFn'
@@ -2256,6 +2264,13 @@ export const TrainingLoadingScreenFn = () => {
 export const TrainingLoadingScreenDelayFn = () => {
     return {
         type: 'TrainingLoadingScreenDelayFn',
+    };
+};
+
+//Learn
+export const UserLearnDoubleAttackFn = () => {
+    return {
+        type: 'UserLearnDoubleAttackFn',
     };
 };
 

@@ -13,6 +13,9 @@ const Fn = {
     Lemon:false,
     Chocolate:false,
     IWantToJoinGuild:false,
+    KiwiGuild:false,
+    LemonGuild:false,
+    ChocolateGuild:false,
     LemonResponse:false,
     LemonComplete:false,
     //Shop Talk
@@ -400,6 +403,12 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 IWantToJoinGuild:true,
+            }
+        case 'TalktoKiwiGuildFn':
+            return {
+                ...state,
+                IWantToJoinGuild:true,
+                KiwiGuild:true,
             }
         case 'TalktoLemonResponseFn':
             return {

@@ -5,7 +5,10 @@ import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDeale
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 
-import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn , ResetTalktoFn} from './actions';
+import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, ResetTalktoFn} from './actions';
+
+//Guild
+import { UserLearnDoubleAttackFn } from './actions'
 
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
@@ -453,6 +456,14 @@ function StartMenu(){
         case(npcControlRoom.Fountain && npcControlRoom.ResetStatsPoint):
           $('.fountainResetConfirm').html(`Reset all attribute point`);
           break;
+        case(npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild && npcControlRoom.KiwiGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][2].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][2].name}</p>`)
+          break;
+        case(npcControlRoom.Kiwi && npcControlRoom.KiwiGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][3].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][3].name}</p>`)
+          break;
         case(npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild):
             $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][1].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][1].name}</p>`)
@@ -672,22 +683,27 @@ function StartMenu(){
               <div className="textCenter">
                 <button className="kafraEmployeeHeal" onClick={() => dispatch(KafraEmployeeHealStateFn())}>Heal</button> 
               </div> : 
-              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !npcControlRoom.IWantToJoinGuild && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
               <div className="textCenter">
-                {!npcControlRoom.LemonResponse ?
+                {/* KiwiGuild */}
+                {!npcControlRoom.LemonResponse && npcControlRoom.Kiwi && !npcControlRoom.IWantToJoinGuild && !npcControlRoom.KiwiGuild?
                 <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> : null}
+                {npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild && npcControlRoom.BossEclipseDefeat && !npcControlRoom.KiwiGuild?
+                <button className="guildInterest" onClick={() => {dispatch(TalktoKiwiGuildFn()); dispatch(UserLearnDoubleAttackFn());}}>Hang over the evidence</button> : null}
+
+
                 {
                 ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && 
                 ((questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") > -1 &&
                   (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 && 
                   (questControlRoom.ProgressQuestDialog).indexOf("Lemonstoryone") > -1) && 
-                  npcControlRoom.Lemon && npcControlRoom.LemonResponse ? 
+                  npcControlRoom.Lemon && npcControlRoom.LemonResponse && !npcControlRoom.IWantToJoinGuild ? 
                 <button className="guildInterest" onClick={() => {dispatch(TalktoLemonCompleteFn()); dispatch(ReturnSpecialQuestDialogFn("Lemonstory","Lemonstoryone","Lemonstorytwo","Lemonstorythree"));}}>(Hand over the evidence - Complete Story)</button> : 
                 ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && 
                 ((questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") > -1 && 
                 (questControlRoom.ProgressQuestDialog).indexOf("Lemonstorytwo") > -1 && 
                 (questControlRoom.ProgressQuestDialog).indexOf("Lemonstoryone") > -1) && 
-                npcControlRoom.Lemon ? 
+                npcControlRoom.Lemon && !npcControlRoom.IWantToJoinGuild ? 
                 <button className="guildInterest" onClick={() => dispatch(TalktoLemonResponseFn())}>Hidden Story...</button> : null }
               </div> : 
               // {/* QUEST */}

@@ -120,7 +120,13 @@ const Fn = {
             text: 'If you want to join my Assassin Guild, I will teach you my "Double Attack" skill.'
         },{
             name: 'Kiwi',
-            text: 'Proof me that you want to join, I need ++++'
+            text: 'Proof me that you want to join, If you can defeat the Blue rabbit - Eclipse in PoringIsland'
+        },{
+            name: 'Kiwi',
+            text: 'You have learn "Double Attack"!!'
+        },{
+            name: 'Kiwi',
+            text: 'Welcome to Our Assassin Guild - "Double Attack" will never fails you xD'
         }],
     Lemon:[{
             name: 'Lemon',
