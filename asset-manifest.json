@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/atlan/static/css/main.2e30341d.css",
-    "main.js": "/atlan/static/js/main.ddf009bf.js",
+    "main.js": "/atlan/static/js/main.999006d8.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -222,11 +222,11 @@
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
     "main.2e30341d.css.map": "/atlan/static/css/main.2e30341d.css.map",
-    "main.ddf009bf.js.map": "/atlan/static/js/main.ddf009bf.js.map",
+    "main.999006d8.js.map": "/atlan/static/js/main.999006d8.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2e30341d.css",
-    "static/js/main.ddf009bf.js"
+    "static/js/main.999006d8.js"
   ]
 }
