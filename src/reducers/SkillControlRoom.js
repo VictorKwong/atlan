@@ -10,7 +10,7 @@ const Fn = {
         //Stable Skills
         UserLearnDoubleAttack: false,
         UserLearnReflectAttack: true,
-        UserLearnLifeStealAttack: true,
+        UserLearnLifeStealAttack: false,
         //Stable Skills Scale
         UserDoubleAttackScale: 0.2,
         UserReflectAttackScale: 0.5,

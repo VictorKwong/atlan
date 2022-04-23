@@ -146,7 +146,13 @@ const Fn = {
             text: 'I am a Summoner and love my little dog - Kobi Guild, Stay alive during the battle is our best bet! :)'
         },{
             name: 'Chocolate',
-            text: 'I wonder if you could help me to find item - SoulItem, I will be appricate and let you join in ^^.'
+            text: 'I wonder if you could help me to find the items - 7 of Skel-Bone and a Old Portrait, I will be appricate and let you join in ^^.'
+        },{
+            name: 'Chocolate',
+            text: 'You have learn "LifeSteal Attack"!!'
+        },{
+            name: 'Chocolate',
+            text: 'Kobi Guild - My little Dog Kobi loves to meet you ^^~. #corgi.kobi'
         }],
     PronteraKing:[{
             name: 'Prontera King',

@@ -59,7 +59,7 @@ const Fn = {
     Opal:1,
     //PayonCave
     DecayedNail:1,
-    SkelBone:1,
+    SkelBone:7,
     Daenggie:1,
     ShortDaenggie:1,
     OldPortrait:1,

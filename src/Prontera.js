@@ -5,10 +5,10 @@ import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDeale
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 
-import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, ResetTalktoFn} from './actions';
+import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, TalktoChocolateGuildFn, ResetTalktoFn} from './actions';
 
 //Guild
-import { UserLearnDoubleAttackFn } from './actions'
+import { UserLearnDoubleAttackFn, UserLearnLifeStealAttackFn, WinOldPortraitFn, WinSkelBoneFn } from './actions'
 
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
@@ -78,6 +78,9 @@ import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+
+import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
+import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
 
 
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
@@ -488,6 +491,14 @@ function StartMenu(){
             $('.storySpeech').html(`<p>${npcSpeech['Lemon'][0].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][0].name}</p>`)
           break;
+        case(npcControlRoom.Chocolate && npcControlRoom.IWantToJoinGuild && npcControlRoom.ChocolateGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Chocolate'][2].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Chocolate'][2].name}</p>`)
+          break;
+        case(npcControlRoom.Chocolate && npcControlRoom.ChocolateGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Chocolate'][3].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Chocolate'][3].name}</p>`)
+          break;
         case(npcControlRoom.Chocolate && npcControlRoom.IWantToJoinGuild):
             $('.storySpeech').html(`<p>${npcSpeech['Chocolate'][1].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Chocolate'][1].name}</p>`)
@@ -685,13 +696,16 @@ function StartMenu(){
               </div> : 
               (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
               <div className="textCenter">
-                {/* KiwiGuild */}
-                {!npcControlRoom.LemonResponse && npcControlRoom.Kiwi && !npcControlRoom.IWantToJoinGuild && !npcControlRoom.KiwiGuild?
+                
+                {!npcControlRoom.LemonResponse && 
+                ((npcControlRoom.Kiwi && !npcControlRoom.KiwiGuild) || npcControlRoom.Lemon || (npcControlRoom.Chocolate && !npcControlRoom.ChocolateGuild)) && !npcControlRoom.IWantToJoinGuild ?
                 <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> : null}
+                {/* KiwiGuild */}
                 {npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild && npcControlRoom.BossEclipseDefeat && !npcControlRoom.KiwiGuild?
-                <button className="guildInterest" onClick={() => {dispatch(TalktoKiwiGuildFn()); dispatch(UserLearnDoubleAttackFn());}}>Hang over the evidence</button> : null}
-
-
+                <button className="guildInterest" onClick={() => {dispatch(TalktoKiwiGuildFn()); dispatch(UserLearnDoubleAttackFn(true));}}>Hang over the evidence</button> : null}
+                {/* ChocolateGuild */}
+                {npcControlRoom.Chocolate && npcControlRoom.IWantToJoinGuild && (userGoldItem.SkelBone >= 7 && userGoldItem.OldPortrait >= 1) && !npcControlRoom.ChocolateGuild?
+                <button className="guildInterest" onClick={() => {dispatch(UserLearnLifeStealAttackFn(true)); dispatch(WinOldPortraitFn(0,-1)); dispatch(WinSkelBoneFn(0,-7)); dispatch(TalktoChocolateGuildFn());}}>Hang over the Item - x7<img src={SkelBone} alt="Skeletion Bone"/> x1<img src={OldPortrait} alt="Old Portrait"/></button> : null}
                 {
                 ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && 
                 ((questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") > -1 &&

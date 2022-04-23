@@ -100,10 +100,10 @@ export const ResetUserSkillQuickenClockFn = () => {
         type: 'ResetUserSkillQuickenClockFn'
     };
 };
-export const UserDoubleAttackFn = (learn) => {
+export const UserLearnDoubleAttackFn = (learn) => {
     return {
-        type: 'UserDoubleAttackFn',
-        learn:learn
+        type: 'UserLearnDoubleAttackFn',
+        learn: learn,
     };
 };
 export const UserLearnReflectAttackFn = (learn) => {
@@ -796,6 +796,11 @@ export const TalktoIWantToJoinGuildFn = () => {
 export const TalktoKiwiGuildFn = () => {
     return {
         type: 'TalktoKiwiGuildFn'
+    };
+};
+export const TalktoChocolateGuildFn = () => {
+    return {
+        type: 'TalktoChocolateGuildFn'
     };
 };
 
@@ -2266,11 +2271,3 @@ export const TrainingLoadingScreenDelayFn = () => {
         type: 'TrainingLoadingScreenDelayFn',
     };
 };
-
-//Learn
-export const UserLearnDoubleAttackFn = () => {
-    return {
-        type: 'UserLearnDoubleAttackFn',
-    };
-};
-
