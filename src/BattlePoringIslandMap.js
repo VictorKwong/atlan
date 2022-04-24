@@ -1288,7 +1288,6 @@ function Main(){
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
-       
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       //Rerender, Block or not block
       let Khit = Math.random();

@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { authorLogoFn } from './actions';
 import StartMenu from './StartMenu';
 import Footer from './Footer'
-// import useSound from 'use-sound';
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
-
 const audioBGM = new Audio(audioStartUpGame);
+
 function App(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
@@ -14,23 +13,12 @@ function App(){
 
     useEffect(() => {
       audioBGM.volume = 0.1;
-      let playPromise = audioBGM.play(); 
-      if (playPromise !== undefined) {
-        playPromise.then(_ => {
-          // Automatic playback started!
-          // audio.loop = true;
-          audioBGM.play();
-        })
-        .catch(error => {
-          // Auto-play was prevented
-        });
-      }
+      audioBGM.play();
       setTimeout(() => {dispatch(authorLogoFn())}, 6400);
       //happens
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
     return(
       <div className="logoBackground">
         <div className="wrapper pageFix">
