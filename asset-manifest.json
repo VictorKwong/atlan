@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/atlan/static/css/main.2e30341d.css",
-    "main.js": "/atlan/static/js/main.999006d8.js",
+    "main.js": "/atlan/static/js/main.4f5bddc1.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -163,6 +163,7 @@
     "static/media/UserAttackPostBastardSword1_PandaHat.gif": "/atlan/static/media/UserAttackPostBastardSword1_PandaHat.d4161ae7885becb1019b.gif",
     "static/media/UserAttackPostGaiaSword1_Helm.gif": "/atlan/static/media/UserAttackPostGaiaSword1_Helm.c2e2d68de4126b20bca3.gif",
     "static/media/UserAttackPostKatana1_Helm.gif": "/atlan/static/media/UserAttackPostKatana1_Helm.953743e9bc00a6c03da3.gif",
+    "static/media/UserAttackPostEmptyHand1.gif": "/atlan/static/media/UserAttackPostEmptyHand1.20e470ad47dffbde7f01.gif",
     "static/media/UserAttackPostBastardSword1_Helm.gif": "/atlan/static/media/UserAttackPostBastardSword1_Helm.8f4f95836f61f01a27e1.gif",
     "static/media/KafraEmployee.gif": "/atlan/static/media/KafraEmployee.26ee92490de3ab46a495.gif",
     "static/media/ArcherskeletonAttack.gif": "/atlan/static/media/ArcherskeletonAttack.50d40389ac55a6f6ebfd.gif",
@@ -222,11 +223,11 @@
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
     "main.2e30341d.css.map": "/atlan/static/css/main.2e30341d.css.map",
-    "main.999006d8.js.map": "/atlan/static/js/main.999006d8.js.map",
+    "main.4f5bddc1.js.map": "/atlan/static/js/main.4f5bddc1.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2e30341d.css",
-    "static/js/main.999006d8.js"
+    "static/js/main.4f5bddc1.js"
   ]
 }
