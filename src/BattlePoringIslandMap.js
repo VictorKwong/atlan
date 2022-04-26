@@ -1095,7 +1095,7 @@ function Main(){
           case (i === 5):
             dispatch(BossEclipseDefeatFn());
             break;
-          case (i === 14):
+          case (i === 15):
             dispatch(BossWolyafaDefeatFn());
             break;
           case (i === 22):

@@ -133,7 +133,7 @@ const Fn = {
             text: 'Lemonekko Guild recruiting some tanky class, Our best strategy is defence and reflect &bsol; . /'
         },{
             name: 'Lemon',
-            text: 'Hehehe I wounder if you can defeat boss - Lunatic, then I will let you be join.'
+            text: 'Hehehe I wounder if you can defeat boss - Wolyafa first, She kept summoning her monsters in PayonCave, then you will be granted to join us.'
         },{
             name: 'Lemon',
             text: 'You have learn "Reflect Attack"!!'

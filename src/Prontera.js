@@ -706,7 +706,7 @@ function StartMenu(){
               <div className="textCenter">
                 
                 {!npcControlRoom.LemonResponse && 
-                ((npcControlRoom.Kiwi && !npcControlRoom.KiwiGuild) || npcControlRoom.Lemon || (npcControlRoom.Chocolate && !npcControlRoom.ChocolateGuild)) && !npcControlRoom.IWantToJoinGuild ?
+                ((npcControlRoom.Kiwi && !npcControlRoom.KiwiGuild) || (npcControlRoom.Lemon && !npcControlRoom.LemonGuild) || (npcControlRoom.Chocolate && !npcControlRoom.ChocolateGuild)) && !npcControlRoom.IWantToJoinGuild ?
                 <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> : null}
                 {/* KiwiGuild */}
                 {npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild && npcControlRoom.BossEclipseDefeat && !npcControlRoom.KiwiGuild?
