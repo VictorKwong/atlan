@@ -5,10 +5,10 @@ import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDeale
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 
-import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, TalktoChocolateGuildFn, ResetTalktoFn} from './actions';
+import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, TalktoChocolateGuildFn, TalktoLemonGuildFn, ResetTalktoFn} from './actions';
 
 //Guild
-import { UserLearnDoubleAttackFn, UserLearnLifeStealAttackFn, WinOldPortraitFn, WinSkelBoneFn } from './actions'
+import { UserLearnDoubleAttackFn, UserLearnLifeStealAttackFn, UserLearnReflectAttackFn, WinOldPortraitFn, WinSkelBoneFn } from './actions'
 
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
@@ -475,17 +475,25 @@ function StartMenu(){
             $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][0].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][0].name}</p>`)
           break;
-        case(npcControlRoom.Lemon && npcControlRoom.IWantToJoinGuild):
-          $('.storySpeech').html(`<p>${npcSpeech['Lemon'][1].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][1].name}</p>`)
+        case(npcControlRoom.Lemon && npcControlRoom.IWantToJoinGuild && npcControlRoom.LemonGuild):
+          $('.storySpeech').html(`<p>${npcSpeech['Lemon'][2].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][2].name}</p>`)
         break;
+        case(npcControlRoom.Lemon && npcControlRoom.LemonGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Lemon'][3].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][3].name}</p>`)
+          break;
+        case(npcControlRoom.Lemon && npcControlRoom.IWantToJoinGuild):
+            $('.storySpeech').html(`<p>${npcSpeech['Lemon'][1].text}</p>`)
+            $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][1].name}</p>`)
+          break;
         case(npcControlRoom.Lemon && npcControlRoom.LemonComplete):
           $('.storySpeech').html(`<p>${npcSpeech['Lemon'][3].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][3].name}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][5].name}</p>`)
         break;
         case(npcControlRoom.Lemon && npcControlRoom.LemonResponse):
           $('.storySpeech').html(`<p>${npcSpeech['Lemon'][2].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][2].name}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][4].name}</p>`)
         break;
         case(npcControlRoom.Lemon):
             $('.storySpeech').html(`<p>${npcSpeech['Lemon'][0].text}</p>`)
@@ -706,6 +714,9 @@ function StartMenu(){
                 {/* ChocolateGuild */}
                 {npcControlRoom.Chocolate && npcControlRoom.IWantToJoinGuild && (userGoldItem.SkelBone >= 7 && userGoldItem.OldPortrait >= 1) && !npcControlRoom.ChocolateGuild?
                 <button className="guildInterest" onClick={() => {dispatch(UserLearnLifeStealAttackFn(true)); dispatch(WinOldPortraitFn(0,-1)); dispatch(WinSkelBoneFn(0,-7)); dispatch(TalktoChocolateGuildFn());}}>Hang over the Item - x7<img src={SkelBone} alt="Skeletion Bone"/> x1<img src={OldPortrait} alt="Old Portrait"/></button> : null}
+                {/* LemonGuild */}
+                {npcControlRoom.Lemon && npcControlRoom.IWantToJoinGuild && npcControlRoom.BossWolyafaDefeat && !npcControlRoom.LemonGuild?
+                <button className="guildInterest" onClick={() => {dispatch(TalktoLemonGuildFn()); dispatch(UserLearnReflectAttackFn(true));}}>Hang over the evidence</button> : null}
                 {
                 ((questControlRoom.QuestDialog).indexOf("Lemonstory") > -1 && (questControlRoom.CompleteQuestDialog).indexOf("Lemonstory") === -1) && 
                 ((questControlRoom.ProgressQuestDialog).indexOf("Lemonstorythree") > -1 &&

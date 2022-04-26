@@ -126,7 +126,7 @@ const Fn = {
             text: 'You have learn "Double Attack"!!'
         },{
             name: 'Kiwi',
-            text: 'Welcome to Our Assassin Guild - "Double Attack" will never fails you xD'
+            text: 'Welcome to Our Assassin Guild - "Double Attack" will never fails you'
         }],
     Lemon:[{
             name: 'Lemon',
@@ -134,6 +134,12 @@ const Fn = {
         },{
             name: 'Lemon',
             text: 'Hehehe I wounder if you can defeat boss - Lunatic, then I will let you be join.'
+        },{
+            name: 'Lemon',
+            text: 'You have learn "Reflect Attack"!!'
+        },{
+            name: 'Lemon',
+            text: 'The monster will get to pay their price if they hit me hard - That`s how I teach my Lemonekko Guild'
         },{
             name: 'Lemon',
             text: 'Sigh.. Yeah I draw some of them but how dare you can find the other drawings?'

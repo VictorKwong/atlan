@@ -414,6 +414,11 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 ChocolateGuild:true,
             }
+        case 'TalktoLemonGuildFn':
+            return {
+                ...state,
+                LemonGuild:true,
+            }
         case 'TalktoLemonResponseFn':
             return {
                 ...state,

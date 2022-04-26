@@ -803,6 +803,11 @@ export const TalktoChocolateGuildFn = () => {
         type: 'TalktoChocolateGuildFn'
     };
 };
+export const TalktoLemonGuildFn = () => {
+    return {
+        type: 'TalktoLemonGuildFn'
+    };
+};
 
 
 
