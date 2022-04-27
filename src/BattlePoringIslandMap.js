@@ -1933,7 +1933,11 @@ function Main(){
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        if(SkillControlRoom['User'].UserLearnMasterItem === true){
+          clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+        }else{
+          clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        }
         dispatch(ResetUserTurnFn());
     }
     const userItemOrangePotionButton = () => {
@@ -1953,7 +1957,11 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
-      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true){
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      }else{
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      }
       dispatch(ResetUserTurnFn());
     }
     const userItemYellowPotionButton = () => {
@@ -1973,7 +1981,11 @@ function Main(){
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        if(SkillControlRoom['User'].UserLearnMasterItem === true){
+          clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+        }else{
+          clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        }
         dispatch(ResetUserTurnFn());
     }
     const userItemWhitePotionButton = () => {
@@ -1993,7 +2005,11 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
-      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true){
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      }else{
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      }
       dispatch(ResetUserTurnFn());
     }
     const userItemAnniversaryCakeButton = () => {
@@ -2013,7 +2029,11 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
-      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true){
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      }else{
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      }
       dispatch(ResetUserTurnFn());
     }
     const userItemMastelaFruitButton = () => {
@@ -2033,7 +2053,11 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
-      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true){
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      }else{
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      }
       dispatch(ResetUserTurnFn());
     }
     const userItemBluePotionButton = () => {
@@ -2053,7 +2077,11 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
-      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true){
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      }else{
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      }
       dispatch(ResetUserTurnFn());
     }
     const userItemYggdrasilBerryButton = () => {
@@ -2076,7 +2104,11 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
-      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true){
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      }else{
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      }
       dispatch(ResetUserTurnFn());
     }
     // Enemy AI

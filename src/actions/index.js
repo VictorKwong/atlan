@@ -118,6 +118,12 @@ export const UserLearnLifeStealAttackFn = (learn) => {
         learn:learn
     };
 };
+export const UserLearnMasterItemFn = (learn) => {
+    return {
+        type: 'UserLearnMasterItemFn',
+        learn:learn
+    };
+};
 
 
 export const UserLevelUpFn = (Points) => {

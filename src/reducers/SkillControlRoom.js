@@ -11,6 +11,7 @@ const Fn = {
         UserLearnDoubleAttack: false,
         UserLearnReflectAttack: true,
         UserLearnLifeStealAttack: false,
+        UserLearnMasterItem: true,
         //Stable Skills Scale
         UserDoubleAttackScale: 0.2,
         UserReflectAttackScale: 0.5,
@@ -175,7 +176,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserLearnLifeStealAttack: action.learn
                 }
             }
-            
+        case 'UserLearnMasterItemFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserLearnMasterItem: action.learn
+                }
+            }
         default:
             return {
                     ...state
