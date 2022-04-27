@@ -6,6 +6,8 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
 import { GeffenGoblinYulaNPCFn, ResetGeffenNPCFn } from './actions'
+//Learn
+import {UserLearnMasterItemFn} from './actions'
 
 import WorldMap from './WorldMap'
 import GeffenDungeon1F from './GeffenDungeon1F'
@@ -296,6 +298,10 @@ function StartMenu(){
             {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
+            </div> : null}
+            {npcControlRoom.GeffenGoblinYulaNPC && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            <div className="storyScreen">
+              <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnMasterItemFn());}}>Teach me Master Item Ablility</button>
             </div> : null}
         </fieldset>
       </div>
