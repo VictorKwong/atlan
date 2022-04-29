@@ -931,12 +931,16 @@ export const GeffenGoblinYulaNPCFn = () => {
         type: 'GeffenGoblinYulaNPCFn'
     };
 };
+export const GeffenGoblinYulaNPCInterestFn = () => {
+    return {
+        type: 'GeffenGoblinYulaNPCInterestFn'
+    };
+};
 export const GeffenGoblinYulaNPCLearnedFn = () => {
     return {
         type: 'GeffenGoblinYulaNPCLearnedFn'
     };
 };
-
 
 export const ResetGeffenNPCFn = () => {
     return {

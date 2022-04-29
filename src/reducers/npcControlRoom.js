@@ -603,6 +603,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return{
                 ...state,
                 GeffenGoblinYulaNPC: false,
+                GeffenGoblinYulaNPCInterest: false,
             }   
         //Inside BuySell Fn
         case 'DealerBuySuccessFn':

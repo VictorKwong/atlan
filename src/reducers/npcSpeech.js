@@ -245,6 +245,15 @@ const Fn = {
     GoblinYula:[{
         name: 'Goblin Yula',
         text: 'Once before Geffen is a Wizard city, trained to be a Magician first :)'
+    },{
+        name: 'Goblin Yula',
+        text: 'If you finish my Challenge and give me the stone, you can learn how to use item faster during the battle...'
+    },{
+        name: 'Goblin Yula',
+        text: 'You have learn "Master Item"!!'
+    },{
+        name: 'Goblin Yula',
+        text: 'Let`s Celerbrate our Master Item skills :D!'
     }],
     Fairy:[{
     //PoringIsland
