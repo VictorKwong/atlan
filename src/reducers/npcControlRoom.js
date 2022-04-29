@@ -37,6 +37,10 @@ const Fn = {
     //Heal & Rest Fn
     KafraEmployeeHealState: false,
     ResetStatsPoint: false,
+    //Geffen
+    GeffenGoblinYulaNPC:false,
+    GeffenGoblinYulaNPCInterest:false,
+    GeffenGoblinYulaNPCLearned:false,
     //PoringIsland Dungeon
     Chest1: false,
     Chest1VisitRepeat: false,
@@ -584,6 +588,16 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return{
                 ...state,
                 GeffenGoblinYulaNPC: true,
+            }
+        case 'GeffenGoblinYulaNPCInterestFn':
+            return{
+                ...state,
+                GeffenGoblinYulaNPCInterest: true,
+            }
+        case 'GeffenGoblinYulaNPCLearnedFn':
+            return{
+                ...state,
+                GeffenGoblinYulaNPCLearned: true,
             }
         case 'ResetGeffenNPCFn':
             return{

@@ -5,9 +5,9 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
-import { GeffenGoblinYulaNPCFn, ResetGeffenNPCFn } from './actions'
+import { GeffenGoblinYulaNPCFn, GeffenGoblinYulaNPCLearnFn, ResetGeffenNPCFn } from './actions'
 //Learn
-import {UserLearnMasterItemFn} from './actions'
+import { UserLearnMasterItemFn } from './actions'
 
 import WorldMap from './WorldMap'
 import GeffenDungeon1F from './GeffenDungeon1F'
