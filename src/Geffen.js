@@ -112,15 +112,15 @@ function StartMenu(){
           $('.storySpeech').html('')  
           $('.storyCharacter').html('')
           break;
-        case(npcControlRoom.GoblinYula && npcControlRoom.GeffenGoblinYulaNPCInterest && npcControlRoom.GeffenGoblinYulaNPCLearned):
+        case(npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest && npcControlRoom.GeffenGoblinYulaNPCLearned):
             $('.storySpeech').html(`<p>${npcSpeech['GoblinYula'][2].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GoblinYula'][2].name}</p>`)
           break;
-        case(npcControlRoom.GoblinYula && npcControlRoom.GeffenGoblinYulaNPCLearned):
+        case(npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCLearned):
             $('.storySpeech').html(`<p>${npcSpeech['GoblinYula'][3].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GoblinYula'][3].name}</p>`)
           break;
-        case(npcControlRoom.GoblinYula && npcControlRoom.GeffenGoblinYulaNPCInterest):
+        case(npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest):
             $('.storySpeech').html(`<p>${npcSpeech['GoblinYula'][1].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GoblinYula'][1].name}</p>`)
           break;
@@ -311,13 +311,13 @@ function StartMenu(){
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
             </div> : null}
-            {npcControlRoom.GeffenGoblinYulaNPC && !(npcControlRoom.GeffenGoblinYulaNPCInterest && npcControlRoom.GeffenGoblinYulaNPCLearned) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
-            <div className="storyScreen">
-              <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenGoblinYulaNPCInterestFn());}}>I want to learn Master Item</button>
-            </div> :
-            npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            {npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnMasterItemFn()); dispatch(GeffenGoblinYulaNPCLearnedFn());}}>Hang Over the Items</button>
+            </div> :
+            npcControlRoom.GeffenGoblinYulaNPC && !npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            <div className="storyScreen">
+              <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenGoblinYulaNPCInterestFn());}}>I want to learn Master Item</button>
             </div> : null}
         </fieldset>
       </div>

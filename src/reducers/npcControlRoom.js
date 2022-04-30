@@ -588,6 +588,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return{
                 ...state,
                 GeffenGoblinYulaNPC: true,
+                GeffenGoblinYulaNPCInterest: false,
             }
         case 'GeffenGoblinYulaNPCInterestFn':
             return{
