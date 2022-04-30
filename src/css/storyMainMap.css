@@ -422,4 +422,29 @@
   .mapTitle{
     font-size: 18px;
   }
+  .Prontera,
+  .SogratDesertPoringIsland,
+  .Geffen,
+  .PayonCave,
+  .FinalBoss{
+    width:100%;
+    min-height:50px;
+  }
+  .Prontera:hover,
+  .SogratDesertPoringIsland:hover,
+  .PayonCave:hover,
+  .Geffen:hover,
+  .FinalBoss:hover{
+    height:100%;
+    min-height: 250px;
+    transition: 0.3s ease-in-out;
+}
+  .StoryMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-top: 40px;
+  }
 }

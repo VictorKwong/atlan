@@ -645,6 +645,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
   }
   .basicStatsHUD{
     font-size: 12px;
+    text-align: center;
   }
   .clockBarBasicHUD{
     margin: 5px 0 0;

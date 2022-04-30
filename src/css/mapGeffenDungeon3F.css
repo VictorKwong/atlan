@@ -170,7 +170,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 60px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
   }
@@ -191,16 +191,17 @@
   }
   .GeffenDungeon3FMapTitle,
   .GeffenDungeon4FMapTitle{
-    font-size: 20px;
+    font-size: 24px;
+    text-align: center;
   }
 }
 @media (max-width: 467px){
   .GeffenDungeon3FMapTitle,
   .GeffenDungeon4FMapTitle{
-    font-size: 14px;
+    font-size: 18px;
   }
   .GeffenDungeon3FMap,
   .GeffenDungeon4FMap{
-    padding-top: 20px;
+    padding-top: 50px;
   }
 }
