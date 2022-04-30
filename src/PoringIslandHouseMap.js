@@ -10,6 +10,7 @@ import './css/mapHousePoringIsland.css'
 // import useSound from 'use-sound';
 import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
 import TrainingFailure from './audio/SoundEffect/TrainingFailure.mp3'
+import userGoldItemReducer from './reducers/userGoldItem';
 const audioTrainingSuccess = new Audio (TrainingSuccess)
 const audioTrainingFailure = new Audio (TrainingFailure)
 
@@ -20,6 +21,8 @@ function StartMenu(){
     const userAttribute = useSelector(state => state.userAttribute)
     const trainingSuccessRate = useSelector(state => state.trainingSuccessRate)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const trainingSuccessRequire = useSelector(state => state.trainingSuccessRequire)
+    const userGoldItem = useSelector(state => state.userGoldItem)
     useEffect(() => {
       audioTrainingSuccess.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioTrainingFailure.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
@@ -45,13 +48,19 @@ function StartMenu(){
               {TrainingBox.map(Train => {
                 return( 
                   <span key={Train.id}>
-                      {Train.Points < 10 ? 
+                      {Train.Points < 10 && userGoldItem.Zeny >= trainingSuccessRequire[Train.Points] ? 
                       <button className="housePoringIslandTrainingButton housePoringIslandTrainingButtonFix" 
                       onClick={() => {dispatch(Train.Confirm); dispatch(ResetTrainingRateFn());}}>
                         <div className="houseImgCenterBox">
-                          <p className="houseImgCenter">{Train.name} Lv.{Train.Points + 1} - {trainingSuccessRate[Train.Points]*100}%</p>
+                          <p className="houseImgCenter">{Train.name} Lv.{Train.Points + 1} - {trainingSuccessRequire[Train.Points]}Z - @{trainingSuccessRate[Train.Points]*100}% </p>
                         </div>
                       </button>: 
+                      Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ? 
+                      <button className="housePoringIslandTrainingButton housePoringIslandTrainingButtonFix housePoringIslandTrainingButtonRequirement" disabled>
+                        <div className="houseImgCenterBox">
+                          <p className="houseImgCenter">{Train.name} Lv.{Train.Points + 1} - Require {trainingSuccessRequire[Train.Points]}z</p>
+                        </div>
+                      </button>:
                       <button className="housePoringIslandTrainingButtonFix houseButtonDisable" disabled>
                         <div className="houseImgCenterBox">
                           <p className="houseImgCenter">{Train.result}</p>

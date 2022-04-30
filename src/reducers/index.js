@@ -14,6 +14,7 @@ import npcSpeechReducer from "./npcSpeech";
 import baseEXPChartReducer from "./baseEXPChart";
 import clockControlRoomReducer from './clockControlRoom'
 import trainingSuccessRateReducer from './trainingSuccessRate'
+import trainingSuccessRequireReducer from './trainingSuccessRequire'
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
@@ -37,6 +38,7 @@ const allReducers = combineReducers({
     enemyStats: enemyStatsReducer,
     footerEasterEgg: footerEasterEggReducer,
     trainingSuccessRate: trainingSuccessRateReducer,
+    trainingSuccessRequire: trainingSuccessRequireReducer,
 
 });
 

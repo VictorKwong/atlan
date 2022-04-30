@@ -20,7 +20,10 @@
   font-family: 'Balsamiq Sans', cursive;
   width: calc(100% - 20px);
   margin: 5px 10px 5px;
+}
 
+.housePoringIslandTrainingButtonRequirement{
+  background: linear-gradient(142deg, rgba(220,220,220,1) 0%, rgb(54, 56, 56) 75%, rgb(75, 81, 82) 87%, rgb(70, 81, 83) 96%, rgb(72, 103, 109) 100%);
 }
 
 .housePoringIslandTrainingButton:hover{

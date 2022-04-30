@@ -1,5 +1,5 @@
 const Fn = {
-    Zeny: 9000000,
+    Zeny: 0,
     //Items
     RedPotion: 10,
     OrangePotion: 5,
