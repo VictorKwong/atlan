@@ -36,8 +36,6 @@ import PronteraCastle from './PronteraCastle'
 import './css/mapProntera.css'
 import $ from 'jquery'
 import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
-// import useSound from 'use-sound';
-// import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -103,7 +101,6 @@ function StartMenu(){
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
     let HeadGearBox = [

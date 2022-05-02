@@ -5,8 +5,6 @@ import { returnToTitleScreenFn } from './actions';
 
 import { AudioVolumeBGMSaverFn, AudioVolumeSoundEffectSaverFn } from './actions';
 
-// import useSound from 'use-sound';
-// import audioStartUpGame from './audio/audioStartUpGame.mp3'
 import OneStepCloser from './audio/205OneStepCloser.mp3'
 import LoginSound from './audio/SoundEffect/RoomChat.mp3'
 const audioBGM = new Audio(OneStepCloser);
@@ -14,7 +12,6 @@ const audioSoundEffect = new Audio(LoginSound)
 
 
 function GameOption(){
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const dispatch = useDispatch();
 
@@ -24,12 +21,10 @@ function GameOption(){
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {
         playPromise.then(_ => {
-          // Automatic playback started!
           audioBGM.loop = true;
           audioBGM.play()
         })
         .catch(error => {
-          // Auto-play was prevented
         });
       }
     }, [audioControlRoom, dispatch])

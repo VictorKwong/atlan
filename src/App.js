@@ -8,14 +8,12 @@ const audioBGM = new Audio(audioStartUpGame);
 
 function App(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const dispatch = useDispatch();
 
     useEffect(() => {
       audioBGM.volume = 0.1;
       audioBGM.play();
       setTimeout(() => {dispatch(authorLogoFn())}, 6400);
-      //happens
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

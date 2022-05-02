@@ -4,8 +4,6 @@ import { finishStoryLineOneFn, typeWritterEffectFn, GotoWorldMapFn } from './act
 import WorldMap from './WorldMap'
 import './css/storyLine.css'
 import $ from 'jquery'
-// import useSound from 'use-sound';
-// import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 import Baphomet from './img/Monster/Baphomet.gif'
 import BaphometAttack from './img/Monster/BaphometAttack.gif'
@@ -19,8 +17,6 @@ function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const storyLineOne = useSelector(state => state.storyLineOne)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
-    
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     let i = 0;
 
@@ -45,8 +41,6 @@ function StartMenu(){
         }
 
       }
-      // End StoryLineOne
-      // if(storyLineOne.length < textReadAndSpeed.count)
 
       const nextLine = () => {
         $('.nextLine').prop("disabled", true);
