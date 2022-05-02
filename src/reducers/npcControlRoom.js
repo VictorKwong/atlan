@@ -87,7 +87,6 @@ const Fn = {
     GeffenDungeon2FRekiNPC: false,
     GeffenDungeon2FSelfNPCHidden: false,
     GeffenDungeon3FNiaNPC: false,
-
     BossBaphometDefeat:false,
     
     
@@ -988,6 +987,48 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 BossBaphometDefeat: true
+            }
+        case 'ResetGameFn':
+            return{
+                ...state,
+                KiwiGuild:false,
+                LemonGuild:false,
+                ChocolateGuild:false,
+                LemonResponse:false,
+                LemonComplete:false,
+                //PoringIsland Dungeon
+                Chest1: false,
+                Chest1VisitRepeat: false,
+                Chest2: false,
+                Chest2VisitRepeat: false,
+                ChestBoss1: false,
+                ChestBoss1VisitRepeat: false,
+                BossEclipseDefeat: false,
+                //PayonCave1F Dungeon
+                PayonCaveChest3: false,
+                PayonCaveChest3VisitRepeat: false,
+                PayonCaveChest4: false,
+                PayonCaveChest4VisitRepeat: false,
+                PayonCaveChest5: false,
+                PayonCaveChest5VisitRepeat: false,
+                PayonCaveChest6: false,
+                PayonCaveChest6VisitRepeat: false,
+                ChestBoss2: false,
+                ChestBoss2VisitRepeat: false,
+                BossWolyafaDefeat: false,
+                //GeffenDungeon
+                GeffenDungeonChest1: false,
+                GeffenDungeonChest1VisitRepeat: false,
+                GeffenDungeonChest2: false,
+                GeffenDungeonChest2VisitRepeat: false,
+                GeffenDungeonChest3: false,
+                GeffenDungeonChest3VisitRepeat: false,
+                GeffenDungeonChest4: false,
+                GeffenDungeonChest4VisitRepeat: false,
+                ChestBoss3: false,
+                ChestBoss3VisitRepeat: false,
+                BossDoppelgangerDefeat: false,
+                BossBaphometDefeat:false,
             }
         default:
             return state;

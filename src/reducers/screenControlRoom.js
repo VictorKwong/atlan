@@ -998,6 +998,59 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     ...state,
                     TrainingLoadingScreenDelay: !state.TrainingLoadingScreenDelay
                 }
+            case 'ResetGameFn':
+                return{
+                    ...state,
+                    authorLogo: true,
+                    startGame: false,
+                    gameTitleOptionScreen: false,
+                    //Open
+                    storyLineOne: false,
+                    //EclipseBoss
+                    storyLineTwo: false,
+                    cutsceneTwo: false,
+                    //Wolyafa
+                    storyLineThree: false,
+                    cutsceneThree: false,
+                    //Doppelganger
+                    storyLineFour: false,
+                    cutsceneFour: false,
+                    storyLineFive: false,
+                    cutsceneFive: false,
+                    //Baphomet
+                    storyLineSix: false,
+                    cutsceneSix: false,
+                    storyLineSeven: false,
+                    cutsceneSeven: false,
+                    //End
+                    storyLineEnd: false,
+                    cutsceneEnd: false,
+                    WorldMap: false,
+                    Prontera: false,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    Geffen: false,
+                    PayonCave1F: false,
+                    GeffenDungeon1F: false,
+                    GeffenDungeon2F: false,
+                    GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
+                    //PORING ISLAND BATTLE
+                    BattlePoringIslandMap: false,
+                    BattlePoringIslandMapMonsterID: 0,
+                    //Loading Screen
+                    BattleLoadingScreen: false,
+                    TrainingLoadingScreen: false,
+                    TrainingLoadingScreenDelay: false,
+                    //Mini Screen (TreasurePoringIsland)
+                    TreasurePoringIslandMap: false,
+                    //Mini Screen (PayonCave 2F)
+                    PayonCave2F: false,
+                    PayonCave3F: false,
+                    //TreasureUnlockPath
+                    TreasurePath:"Path",
+                    PoringIslandHouseMap: false,
+                }
         default:
             return state;
     }

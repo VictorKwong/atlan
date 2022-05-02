@@ -43,6 +43,13 @@ const questControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 ProgressQuestDialog: state.ProgressQuestDialog + action.Number
             }
+        case 'ResetGameFn':
+            return{
+                ...state,
+                QuestDialog: "",
+                CompleteQuestDialog: "",
+                ProgressQuestDialog: "",
+            }
         default:
             return state;
     }

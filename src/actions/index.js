@@ -2293,3 +2293,9 @@ export const TrainingLoadingScreenDelayFn = () => {
         type: 'TrainingLoadingScreenDelayFn',
     };
 };
+
+export const ResetGameFn = () => {
+    return {
+        type: 'ResetGameFn',
+    };
+};

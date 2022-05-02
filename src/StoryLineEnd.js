@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { finishStoryLineEndFn, GotoWorldMapFn} from './actions';
+import { finishStoryLineEndFn, ResetGameFn} from './actions';
 import WorldMap from './WorldMap'
 import './css/storyLine.css'
 
@@ -13,8 +13,8 @@ function StartMenu(){
       // if(storyLineOne.length < textReadAndSpeed.count)
 
       const LoadingScreen2 = () => {
-        dispatch(GotoWorldMapFn());
-        dispatch(finishStoryLineEndFn());
+        dispatch(ResetGameFn());
+        // dispatch(finishStoryLineEndFn());
       }
     return(
       <div>
