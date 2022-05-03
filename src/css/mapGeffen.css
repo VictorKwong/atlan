@@ -115,10 +115,10 @@
     width:100%;
     min-height: 50px;
   }
-  .GeffenWorldMap:hover,
-  .GeffenGoblinYula:hover,
-  .GeffenDungeon1F:hover,
-  .GeffenBase:hover{
+  .GeffenWorldMap:active,
+  .GeffenGoblinYula:active,
+  .GeffenDungeon1F:active,
+  .GeffenBase:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;

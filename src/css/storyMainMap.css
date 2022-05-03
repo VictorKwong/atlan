@@ -430,11 +430,11 @@
     width:100%;
     min-height:50px;
   }
-  .Prontera:hover,
-  .SogratDesertPoringIsland:hover,
-  .PayonCave:hover,
-  .Geffen:hover,
-  .FinalBoss:hover{
+  .Prontera:active,
+  .SogratDesertPoringIsland:active,
+  .PayonCave:active,
+  .Geffen:active,
+  .FinalBoss:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;

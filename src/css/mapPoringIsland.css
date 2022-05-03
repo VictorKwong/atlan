@@ -358,22 +358,22 @@
     width:100%;
     min-height:50px;
   }
-  .WorldMap:hover,
-  .SmallIslandPath0:hover,
-  .SmallIslandPath1:hover,
-  .SmallIslandPath2:hover,
-  .SmallIslandPath2Secret:hover,
-  .SmallIslandPathBridge:hover,
-  .SmallIslandPathBoss:hover,
-  .BossTreasureBoxPoringIsland:hover,
+  .WorldMap:active,
+  .SmallIslandPath0:active,
+  .SmallIslandPath1:active,
+  .SmallIslandPath2:active,
+  .SmallIslandPath2Secret:active,
+  .SmallIslandPathBridge:active,
+  .SmallIslandPathBoss:active,
+  .BossTreasureBoxPoringIsland:active,
   /* Hidden Passage */
-  .SmallIslandPathBridgeHidden1:hover,
-  .SmallIslandPathBridgeHidden2:hover,
-  .SmallIslandPathBridgeHiddenNPC:hover,
-  .TreasureBoxPoringIsland:hover,
-  .TreasureBoxPoringIsland2:hover
-  .PoringIslandMapTitle:hover,
-  .SmallIsland:hover{
+  .SmallIslandPathBridgeHidden1:active,
+  .SmallIslandPathBridgeHidden2:active,
+  .SmallIslandPathBridgeHiddenNPC:active,
+  .TreasureBoxPoringIsland:active,
+  .TreasureBoxPoringIsland2:active
+  .PoringIslandMapTitle:active,
+  .SmallIsland:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;

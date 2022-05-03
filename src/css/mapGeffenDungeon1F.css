@@ -265,12 +265,12 @@
     width:100%;
     min-height: 50px;
   }
-  .GeffenDungeonBase:hover,
-  .GeffenDungeon1FToGeffen:hover,
-  .GeffenDungeon2FToGeffenDungeon1F:hover,
-  .GeffenDungeon2FToGeffenDungeon3F:hover,
-  .GeffenDungeon3FToGeffenDungeon2F:hover,
-  .GeffenDungeon4FToGeffenDungeon3F:hover{
+  .GeffenDungeonBase:active,
+  .GeffenDungeon1FToGeffen:active,
+  .GeffenDungeon2FToGeffenDungeon1F:active,
+  .GeffenDungeon2FToGeffenDungeon3F:active,
+  .GeffenDungeon3FToGeffenDungeon2F:active,
+  .GeffenDungeon4FToGeffenDungeon3F:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;

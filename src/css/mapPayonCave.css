@@ -366,11 +366,11 @@
     width:100%;
     min-height: 50px;
   }
-  .PayonCave1FToWorldMap:hover,
-  .PayonCave1FPath0:hover,
-  .TreasureBoxPayonCave1F:hover,
-  .PayonCave1FTo2F:hover,
-  .PayonCaveBase:hover{
+  .PayonCave1FToWorldMap:active,
+  .PayonCave1FPath0:active,
+  .TreasureBoxPayonCave1F:active,
+  .PayonCave1FTo2F:active,
+  .PayonCaveBase:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;
