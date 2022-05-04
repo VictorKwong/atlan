@@ -23,7 +23,6 @@ const PayonCave2F = (data) =>{
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const userAttribute = useSelector(state => state.userAttribute)
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
     useEffect(() => {
