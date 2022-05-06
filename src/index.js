@@ -10,35 +10,6 @@ import { Provider } from 'react-redux'
 const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
-// const increment = () => {
-//   return{
-//     type: 'increment'
-//   }
-// }
-
-// const decrement = () => {
-//   return{
-//     type: 'decrement'
-//   }
-// }
-
-// const counter = (state = 0, action) => {
-//   switch(action.type){
-//     case 'increment':
-//       return state + 1;
-//     case 'decrement':
-//       return state - 1;
-//   }
-// };
-
-// let store = createStore(counter);
-
-// //display console
-// store.subscribe(() => console.log(store.getState()));
-// console.log(store.getState());
-// //dispatch
-// store.dispatch(increment());
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
