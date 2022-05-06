@@ -7,6 +7,8 @@ import './css/mapAltanStats.css'
 import { STRPointsFn , AGIPointsFn , VITPointsFn , INTPointsFn , DEXPointsFn , LUKPointsFn } from './actions'
 import { GotoStatsChoiceFn , GotoSkillChoiceFn , GotoGuildChoiceFn } from './actions'
 
+//Skills
+import { UserSkillFirstAidFn } from './actions'
 
 import UserStandPost from './img/Character/UserStand.png'
 import UserStand_LordKahosHorn from './img/Character/UserStand_LordKahosHorn.png'
@@ -44,6 +46,7 @@ import UserStand3_PandaHat from './img/Character/UserStand3_PandaHat.png'
 import UserStand3_ChefHat from './img/Character/UserStand3_ChefHat.png'
 import UserStand3_SantaPoringHat from './img/Character/UserStand3_SantaPoringHat.png'
 //SKILLS
+import skillFirstAid from './img/Skill/nv_firstaid.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
@@ -58,17 +61,18 @@ function StartMenu(){
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     let SkillBox = [
-      //5,20,35,70
-      {id:20001, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal Damage to enemy"},
-      {id:20002, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      //1,5,20,35,70
+      {id:20000, Img:skillFirstAid, name:"First Aid", skillLevelCheck:1, title:"SP:30, Heal small amount of health", Activate:UserSkillFirstAidFn()},
+      {id:20001, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal damage to enemy"},
+      {id:20002, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal damage to enemy"},
       {id:20003, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
-      {id:20004, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:20004, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
     ]
     let GuildBox = [
-      {id:20001, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal Damage to enemy"},
-      {id:20002, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal Damage to enemy"},
-      {id:20003, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
-      {id:20004, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:100, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:101, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:102, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
+      {id:103, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal Damage to enemy"},
     ]
     let UserDisplay = [
       {id:0, name:"Lord Kaho`s Horn", img0:UserStand_LordKahosHorn , img1:UserSit_LordKahosHorn, img2:UserStand2_LordKahosHorn, img3:UserStand3_LordKahosHorn, explain:"User_LordKahosHorn" },
@@ -280,7 +284,13 @@ function StartMenu(){
             {SkillBox.map(Skill => {
               return( 
                 <span key={Skill.id}>
-                  {userStats.Level >= Skill.skillLevelCheck ? <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} disabled>
+                  {Skill.name === "First Aid" ?
+                  <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} onClick={() => dispatch(Skill.Activate)}>
+                    <div className="adjImgCenterBox">
+                      <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
+                    </div>
+                    </button> :
+                  userStats.Level >= Skill.skillLevelCheck ? <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} disabled>
                     <div className="adjImgCenterBox">
                       <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
                     </div>

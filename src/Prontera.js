@@ -4,21 +4,15 @@ import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDeale
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
-
 import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, TalktoChocolateGuildFn, TalktoLemonGuildFn, ResetTalktoFn} from './actions';
-
 //Guild
 import { UserLearnDoubleAttackFn, UserLearnLifeStealAttackFn, UserLearnReflectAttackFn, WinOldPortraitFn, WinSkelBoneFn } from './actions'
-
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
-
 //Npc Function
 import { KafraEmployeeHealStateFn, ResetStatsPointFn } from'./actions';
-
 //Function
 import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn } from './actions'
-
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Win ETC Items
@@ -231,9 +225,9 @@ function StartMenu(){
 //     }, 10);
 // }
 
-    // LEVEL FUNCTION
+    //LEVEL FUNCTION
     useEffect(() => {
-        //MAX Lv10
+        //MAX Lv99
         if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
           (() => {
             switch (true) {
@@ -731,8 +725,6 @@ function StartMenu(){
               // {/* QUEST */}
               npcControlRoom.QuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="textCenter">
-                {/* {((questControlRoom.QuestDialog).indexOf("0") === -1 && questControlRoom.CompleteQuestDialog.indexOf("0") === -1) ? <button className="questBoard" onClick={() => {dispatch(AcceptQuestDialogFn("1"));}}>Killing Poring</button> : 
-                (questControlRoom.QuestDialog).indexOf("0") > -1  && ((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll("0","").length) >= 3 ? <button className="questBoard" onClick={() => {dispatch(ReturnQuestDialogFn("0"));}}>Finish Killing Poring</button> : null } */}
                   <p className="chatDescriptTitle">Quest Board</p>
                 <ul>
                   {QuestBox.map(Quest => {

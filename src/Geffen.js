@@ -313,7 +313,7 @@ function StartMenu(){
             </div> : null}
             {npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
             <div className="storyScreen">
-              <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnMasterItemFn()); dispatch(GeffenGoblinYulaNPCLearnedFn());}}>Hang Over the Items</button>
+              <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnMasterItemFn(true)); dispatch(GeffenGoblinYulaNPCLearnedFn());}}>Hang Over the Items</button>
             </div> :
             npcControlRoom.GeffenGoblinYulaNPC && !npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
             <div className="storyScreen">

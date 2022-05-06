@@ -46,6 +46,11 @@ export const UserAttackEnemyFn = (Damage,Target) => {
         Target: Target,
     };
 };
+export const UserSkillFirstAidFn = () => {
+    return {
+        type: 'UserSkillFirstAidFn',
+    };
+};
 
 export const UserSkillBashEnemyFn = (Damage,Target) => {
     return {

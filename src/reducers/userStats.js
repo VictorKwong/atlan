@@ -108,6 +108,21 @@ const userStatsReducer = (state = Fn, action) => {
                 currentHealth: state.maxHealth,
                 currentSP: state.maxSP,
             }
+        case 'UserSkillFirstAidFn':
+            switch(true){
+                case ((state.currentHealth + 150) <= state.maxHealth):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + 150,
+                        currentSP: state.currentSP - 30,
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth,
+                        currentSP: state.currentSP - 30
+                    }
+            }
         case 'UserSkillBashBlockEnemyFn':
         case 'UserSkillBashEnemyFn':
         case 'UserSkillBashMissedFn':

@@ -5,6 +5,7 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 //CHEST
 import { Chest1VisitRepeatFn , Chest2VisitRepeatFn, ChestBoss1VisitRepeatFn} from './actions'
 //HOUSE
+import { RedPotionFn } from './actions'
 import { ResetTrainingRateFn, ResetHouseTrainingFn } from './actions'
 import { TrainingSuccesFn, TrainingFailureFn } from './actions'
 import { TrainingSTRFn , TrainingAGIFn , TrainingVITFn , TrainingINTFn , TrainingDEXFn , TrainingLUKFn } from './actions'
@@ -77,7 +78,7 @@ function StartMenu(){
     const npcSpeech = useSelector(state => state.npcSpeech)
     const userAttribute = useSelector(state => state.userAttribute)
     const trainingSuccessRate = useSelector(state => state.trainingSuccessRate)
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
+    const trainingSuccessRequire = useSelector(state => state.trainingSuccessRequire)
     const dispatch = useDispatch();
 
     let HeadGearBox = [
@@ -411,13 +412,6 @@ useEffect(() => {
 
                 <div className="leveltextHUD">
                     <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
-                    {/* <p>Player Attack {userStats.attack}</p>
-                    <p>Player Defence {userStats.defence}</p>
-                    <p>Player Speed {userStats.speed}</p>
-                    <p>Player Hit Rate {userStats.hitRate}</p>
-                    <p>Player Dodge Rate {userStats.dodgeRate}</p>
-                    <p>Player Crit Rate {userStats.critRate}</p>
-                    <p>Player Exp {userStats.Experience}</p> */}
                     {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
@@ -502,11 +496,15 @@ useEffect(() => {
                   {TrainingBox.map(Train => {
                     return(
                       <span key={Train.id}>
-                        {Train.select && Train.Points < 10?
+                        {Train.select && Train.Points < 10 && userGoldItem.Zeny >= trainingSuccessRequire[Train.Points] ?
                         <div className="storyScreen">
                           <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
-                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points);} : () => {HouseTrainingFailureButton(Train.name,Train.Points);}}>YES</button>
+                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);} : () => {HouseTrainingFailureButton(Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);}}>YES</button>
                           <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
+                        </div> : 
+                        Train.select && Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ?
+                        <div className="storyScreen">
+                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
                         </div> : null}
                       </span>
                     )
@@ -521,34 +519,6 @@ useEffect(() => {
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}
-              
-                {/* <div>
-                  {userGoldItem.Katana >= 1 || userGoldItem.BastardSword >= 1 || userGoldItem.GaiaSword >= 1 || userGoldItem.TwinEdgeofNaghtSieger >= 1 || userGoldItem.VioletFear >= 1 ?
-                  <div>
-                    <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>
-                    {userGoldItem.Katana >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Katana",Katana, 60));}}><img src={Katana} alt="Katana" />Katana</button> : null}
-                    {userGoldItem.BastardSword >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Bastard Sword",BastardSword, 115));}}><img src={BastardSword} alt="BastardSword" />Bastard Sword</button> : null}
-                    {userGoldItem.GaiaSword >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Gaia Sword",GaiaSword, 140));}}><img src={GaiaSword} alt="GaiaSword" />GaiaSword</button> : null }
-                    {userGoldItem.TwinEdgeofNaghtSieger >= 1 ?<button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160));}}><img src={TwinEdgeofNaghtSieger} alt="TwinEdgeofNaghtSieger" />Twin Edge of Naght Sieger</button> : null}
-                    {userGoldItem.VioletFear >= 1 ? <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275));}}><img src={VioletFear} alt="VioletFear"/>Violet Fear</button>: null}
-                  </div> 
-                  : <button onClick={() => {dispatch(ReturnWeaponEquipmentChoiceFn("Empty",null, 1));}}>Empty</button>}
-                </div> 
-            : null} */}
-                 {/* <div>
-                 {userGoldItem.CottonShirt >= 1 || userGoldItem.AdventureSuit >= 1 || userGoldItem.WoodenMail >= 1 || userGoldItem.Coat >= 1 || userGoldItem.PaddedArmor >= 1 || userGoldItem.ChainMail >= 1 || userGoldItem.FullPlate >= 1 ?
-                 <div>
-                   {userGoldItem.CottonShirt >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Cotton Shirt",CottonShirt, 10));}}><img src={CottonShirt} alt="CottonShirt" />CottonShirt</button> : null}
-                   {userGoldItem.AdventureSuit >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Adventure Suit",AdventureSuit, 30));}}><img src={AdventureSuit} alt="AdventureSuit" />AdventureSuit</button> : null}
-                   {userGoldItem.WoodenMail >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Wooden Mail",WoodenMail, 40));}}><img src={WoodenMail} alt="WoodenMail" />WoodenMail</button> : null }
-                   {userGoldItem.Coat >= 1 ?<button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Coat",Coat, 50));}}><img src={Coat} alt="Coat" />Coat</button> : null}
-                   {userGoldItem.PaddedArmor >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Padded Armor",PaddedArmor, 70));}}><img src={PaddedArmor} alt="PaddedArmor"/>Padded Armor</button>: null}
-                   {userGoldItem.ChainMail >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80));}}><img src={ChainMail} alt="ChainMail"/>ChainMail</button>: null}
-                   {userGoldItem.FullPlate >= 1 ? <button onClick={() => {dispatch(ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90));}}><img src={FullPlate} alt="FullPlate"/>Full Plate</button>: null}
-                 </div> 
-                 : <p>Empty Armor Storage T^T</p>}
-               </div> 
-           : null} */}
           </fieldset>
         </div>
         }

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {GotoHouseTrainingSTRFn, GotoHouseTrainingAGIFn, GotoHouseTrainingVITFn, GotoHouseTrainingINTFn , GotoHouseTrainingDEXFn, GotoHouseTrainingLUKFn} from './actions'
+import { GotoHouseTrainingSTRFn, GotoHouseTrainingAGIFn, GotoHouseTrainingVITFn, GotoHouseTrainingINTFn , GotoHouseTrainingDEXFn, GotoHouseTrainingLUKFn } from './actions'
+
+import { RedPotionFn } from './actions'
 
 //Training Success Failure Reset
 import {ResetTrainingRateFn} from './actions'
@@ -10,14 +12,11 @@ import './css/mapHousePoringIsland.css'
 // import useSound from 'use-sound';
 import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
 import TrainingFailure from './audio/SoundEffect/TrainingFailure.mp3'
-import userGoldItemReducer from './reducers/userGoldItem';
 const audioTrainingSuccess = new Audio (TrainingSuccess)
 const audioTrainingFailure = new Audio (TrainingFailure)
 
 
 function StartMenu(){
-    const npcControlRoom = useSelector(state => state.npcControlRoom)
-    const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
     const trainingSuccessRate = useSelector(state => state.trainingSuccessRate)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
@@ -73,11 +72,3 @@ function StartMenu(){
 }
 
 export default StartMenu;
-
-{/* <button className="housePoringIslandTrainingButton housePoringIslandTrainingButtonFix" 
-onClick={trainingSuccessRate[Train.Points] >= Math.random() ?
-  () => {dispatch(Train.Attr); dispatch(Train.effect); dispatch(TrainingSuccesFn()); SuccessAudio();} : () => {dispatch(TrainingFailureFn()); FailureAudio();}}>
-  <div className="houseImgCenterBox">
-    <p className="houseImgCenter">{Train.name} Lv.{Train.Points + 1} - {trainingSuccessRate[Train.Points]*100}%</p>
-  </div>
-</button>:  */}
