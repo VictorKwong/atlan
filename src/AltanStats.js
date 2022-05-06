@@ -285,7 +285,9 @@ function StartMenu(){
               return( 
                 <span key={Skill.id}>
                   {Skill.name === "First Aid" ?
-                  <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} onClick={() => dispatch(Skill.Activate)}>
+                  <button className={userStats.currentSP >= 30 ? "atlanSkillButton atlanSkillButtonFix" : "atlanSkillButton atlanSkillButtonFix atlanSkillButtonNeedMoreSP"} title={Skill.title} onClick={
+                    userStats.currentSP >= 30 && userStats.currentHealth !== userStats.maxHealth?
+                    () => dispatch(Skill.Activate) : null}>
                     <div className="adjImgCenterBox">
                       <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
                     </div>

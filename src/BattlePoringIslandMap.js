@@ -12,7 +12,7 @@ import { ReturnCheckPointFn } from './actions'
 //BOSS Defeat
 import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,BossBaphometDefeatFn } from './actions'
 //Skills T/F
-import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
+import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillFirstAidFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
 //ITEMS
@@ -185,6 +185,7 @@ import BaphometAttack from './img/Monster/BaphometAttack.gif'
 import BaphometDead from './img/Monster/BaphometDead.png'
 
 //SKILLS
+import skillFirstAid from './img/Skill/nv_firstaid.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
@@ -1522,6 +1523,31 @@ function Main(){
     }
 
     //COMBAT SKILLS
+    const userSkillFirstAidButton = () => {
+      if (userStats.currentSP >= 30){
+      //Audio Sound Effect
+      audioHeal.play();
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      dispatch(UserOnLifeStealAnimationFn(true));
+      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+      Damage = 150;
+      //Rerender
+      setTimeout(() => (Uclock = 0), 300);
+      setTimeout(() => dispatch(UserSkillFirstAidFn()), 300);
+      // Text display
+      $('.storySpeech').append('<p style="color:#3fff00;">Atlan use First Aid!Recover ' + Damage + ' hp </p>')
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+      // End turn
+      clockCheck = 0;
+      clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+      dispatch(ResetUserTurnFn());
+      }
+    }
+
+
+
     const userSkillBashButton = () => {
       if (userStats.currentSP >= 40){
       //Audio SoundEffect
@@ -2482,6 +2508,12 @@ function Main(){
                       
                       { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
                       <div className="userSkillBox">
+                          <button className="goGoButtonSkills" onClick={() => userSkillFirstAidButton()}>
+                            <figcaption className="goGoButtonFig">
+                              <p className="goGoButtonName"><img src={skillFirstAid} alt="skillFirstAid" /> First Aid</p>
+                              <span className={userStats.currentSP >= 30 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillFirstAid} alt="skillFirstAid"/> <span className="goGoButtonHide">SP</span>:30</span>
+                            </figcaption>
+                          </button>
                         {userStats.Level >= 5 ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillBashButton()}>
                             <figcaption className="goGoButtonFig">

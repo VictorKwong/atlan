@@ -5,7 +5,7 @@ const Fn = {
     maxHealth: 150,
     currentHealth: 140,
     maxSP: 50,
-    currentSP: 50,
+    currentSP: 0,
     attack: 25,
     defence: 18,
     defencebuffer: 38, // 18 + 20
