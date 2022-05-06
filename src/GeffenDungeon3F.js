@@ -228,7 +228,7 @@ function StartMenu(){
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon3FMapTitle">Geffen Dungeon 3F</h3>
               {/* Path 0*/}
-              <button className="GeffenDungeon3FToGeffenDungeon2F" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio(); } : () =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen2F</button>
+              <button className="GeffenDungeon3FToGeffenDungeon2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changeMapFadeAudio();}}>Geffen2F</button>
               <button className="GeffenDungeonBase GeffenDungeon3FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Doll</button>
               {/* Path 1*/}
               {screenControlRoom.GeffenDungeon3FPath1 ?

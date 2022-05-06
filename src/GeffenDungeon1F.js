@@ -9,7 +9,7 @@ import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHead
 //CHEST
 import { GeffenDungeonChest1VisitRepeatFn } from './actions'
 //PATH
-import { GotoGeffenDungeon1FPath4Fn } from './actions'
+import { GotoGeffenDungeon1FPath4Fn , ReturnGeffenDungeonPathFn} from './actions'
 //NPC
 import { GeffenDungeon1FSelfNPCFn , GeffenDungeon1FNiaNPCFn, ResetGeffenDungeonNPCFn } from './actions'
 
@@ -236,7 +236,7 @@ function StartMenu(){
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
               {/* Path 0*/}
-              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());} : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>ToGeffen</button>
+              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());} : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn()); dispatch(ReturnGeffenDungeonPathFn());}}>ToGeffen</button>
               <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0(); dispatch(ResetGeffenDungeonNPCFn());}}>Path1</button>
               {/* Path 1*/}
               {screenControlRoom.GeffenDungeon1FPath1 ?
