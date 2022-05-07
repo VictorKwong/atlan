@@ -14,7 +14,7 @@ import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,Bos
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillFirstAidFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -188,6 +188,7 @@ import BaphometDead from './img/Monster/BaphometDead.png'
 import skillFirstAid from './img/Skill/nv_firstaid.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
@@ -1255,6 +1256,8 @@ function Main(){
             switch (true) {
               case((userStats.Level + 1) === 5):
                  return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+              case((userStats.Level + 1) === 10):
+                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
               case((userStats.Level + 1) === 20):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === 35):
@@ -1677,6 +1680,126 @@ function Main(){
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
     }
+
+    const userSkillMammoniteButton = () => {
+      if (userStats.currentSP >= 50){
+      //Audio SoundEffect
+      audioSkillMagBreak.play();
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      dispatch(UserAttackAnimationFn());
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
+      setTimeout(() => (Uclock = 0), 300);
+      let Khit = Math.random();
+      //Rerender, Block or not block
+      (() => {
+        switch (true) {
+          // ENEMY BLOCK
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE && BLOCKING
+            switch(true){
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
+                }
+              default:
+                Math.sign((Damage - enemyStats[i].defencebuffer)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Atlan use Mammonite! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  // Rerender
+                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
+                }
+
+            }
+          // ENEMY HIT
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE
+            switch(true){
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+                Math.sign((Damage - enemyStats[i].defence)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
+                }
+              default:
+                Math.sign((Damage - enemyStats[i].defence)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Atlan use Mammonite! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+                  // Rerender
+                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
+                }
+              }
+          // ENEMY DODGE 
+          default:  
+              //Audio SoundEffect
+              setTimeout(() => audioMiss.play(), 250)
+              dispatch(EnemyDodgeAnimationFn(true));
+              setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
+              $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} dodge the attack.</p>`)
+              //Rerender
+              return setTimeout(() => dispatch(UserSkillMammoniteMissFn()), 300);
+        }
+        })()
+        // End turn
+        clockCheck = 0;
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
+      }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+    }
+
+
+
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 100){
       //Audio SoundEffect
@@ -2519,6 +2642,14 @@ function Main(){
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBash} alt="skillBash" /> Bash</p>
                               <span className={userStats.currentSP >= 40 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> <span className="goGoButtonHide">SP</span>:40</span>
+                            </figcaption>
+                          </button>
+                        : null}
+                        {userStats.Level >= 10 ? 
+                          <button className="goGoButtonSkills" onClick={() => userSkillMammoniteButton()}>
+                            <figcaption className="goGoButtonFig">
+                              <p className="goGoButtonName"><img src={skillMammonite} alt="skillMammonite"/> Mam<span className="goGoButtonHide">monite</span></p>
+                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMammonite} alt="skillMammonite" /> <span className="goGoButtonHide">SP</span>:50</span>
                             </figcaption>
                           </button>
                         : null}

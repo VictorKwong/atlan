@@ -36,7 +36,7 @@ function App(){
         {!footerEasterEgg.trigger ? <p className="footerClick" onClick={
             footerEasterEgg.Support ?
             () => {dispatch(easterEggFn());} : 
-            () => {dispatch(easterEggFn()); EasterEgg(); dispatch(supportOnceFn());} }>Copyright ⓒ 2022 Victor Wong - Support👆</p>
+            () => {dispatch(easterEggFn()); EasterEgg(); dispatch(supportOnceFn());} }>Copyright ⓒ 2022 Victor Wong - Support</p>
         : <p className="footerClick" onClick={() => dispatch(easterEggFn())}>Thanks for your support <img src={banana} alt="banana" />{Update - 1}<img src={banana} alt="banana" />!^^ <a href="https://github.com/VictorKwong/atlan" target="_blank" rel="noopener noreferrer">MyGitHub</a></p>}
         </footer>
     );

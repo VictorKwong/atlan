@@ -510,6 +510,8 @@ const enemyStatsReducer = (state = Fn, action) => {
             //     ...state[2],
             //     currentHealth: state[2].currentHealth - action.DamageCalculation
             // }]
+        case 'UserSkillMammoniteEnemyFn':
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content) 
         case 'UserSkillMagnumBreakEnemyFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content) 
@@ -524,18 +526,6 @@ const enemyStatsReducer = (state = Fn, action) => {
         case 'ResetEnemyCurrentHealthFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => true ? {...content, currentHealth: state[i].maxHealth} : content) 
-            // return [{
-            //     ...state[0],
-            //     currentHealth: 100,
-            // },
-            // {
-            //     ...state[1],
-            //     currentHealth: 200,
-            // },
-            // {
-            //     ...state[2],
-            //     currentHealth: 300,
-            // }]
         case 'enemyClockDefendFn':
             //Rerender Fn
             // If i is the monster, update it's current health

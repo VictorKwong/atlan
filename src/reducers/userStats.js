@@ -130,6 +130,13 @@ const userStatsReducer = (state = Fn, action) => {
                 ...state,
                 currentSP: state.currentSP - 40,
             }
+        case 'UserSkillMammoniteBlockEnemyFn':
+        case 'UserSkillMammoniteEnemyFn':
+        case 'UserSkillMammoniteMissedFn':
+                return{
+                    ...state,
+                    currentSP: state.currentSP - 50,
+                }
         case 'UserSkillMagnumBreakBlockEnemyFn':
         case 'UserSkillMagnumBreakEnemyFn':
         case 'UserSkillMagnumBreakMissedFn':

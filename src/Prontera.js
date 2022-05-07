@@ -280,6 +280,8 @@ function StartMenu(){
             switch (true) {
               case((userStats.Level + 1) === 5):
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+              case((userStats.Level + 1) === 10):
+                return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
               case((userStats.Level + 1) === 20):
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === 35):

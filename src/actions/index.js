@@ -66,6 +66,18 @@ export const UserSkillBashMissedFn = () => {
     };
 };
 
+export const UserSkillMammoniteEnemyFn = (Damage,Target) => {
+    return {
+        type: 'UserSkillMammoniteEnemyFn',
+        DamageCalculation: Damage,
+        Target: Target,
+    };
+};
+export const UserSkillMammoniteMissedFn = () => {
+    return {
+        type: 'UserSkillMammoniteMissedFn',
+    };
+};
 export const UserSkillMagnumBreakEnemyFn = (Damage,Target) => {
     return {
         type: 'UserSkillMagnumBreakEnemyFn',
