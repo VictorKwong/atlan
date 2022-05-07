@@ -67,6 +67,7 @@ import Lemon from './img/NPC/Lemon.gif'
 import Chocolate from './img/NPC/Chocolate.gif'
 //SKILLS
 import skillBash from './img/Skill/sm_bash.gif'
+import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
