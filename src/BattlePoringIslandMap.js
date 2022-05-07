@@ -14,7 +14,7 @@ import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,Bos
 //Skills T/F
 import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillFirstAidFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -1784,7 +1784,7 @@ function Main(){
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
-              return setTimeout(() => dispatch(UserSkillMammoniteMissFn()), 300);
+              return setTimeout(() => dispatch(UserSkillMammoniteMissedFn()), 300);
         }
         })()
         // End turn
