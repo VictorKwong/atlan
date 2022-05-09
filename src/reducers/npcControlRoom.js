@@ -41,6 +41,7 @@ const Fn = {
     GeffenGoblinYulaNPC:false,
     GeffenGoblinYulaNPCInterest:false,
     GeffenGoblinYulaNPCLearned:false,
+    GeffenCitizenNPC:false,
     //PoringIsland Dungeon
     Chest1: false,
     Chest1VisitRepeat: false,
@@ -588,6 +589,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 GeffenGoblinYulaNPC: true,
                 GeffenGoblinYulaNPCInterest: false,
+                GeffenCitizenNPC: false,
             }
         case 'GeffenGoblinYulaNPCInterestFn':
             return{
@@ -599,11 +601,19 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 GeffenGoblinYulaNPCLearned: true,
             }
+        case "GeffenCitizenNPCFn":
+            return {
+                ...state,
+                GeffenGoblinYulaNPC: false,
+                GeffenGoblinYulaNPCInterest: false,
+                GeffenCitizenNPC: true,
+            }
         case 'ResetGeffenNPCFn':
             return{
                 ...state,
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
+                GeffenCitizenNPC: false,
             }   
         //Inside BuySell Fn
         case 'DealerBuySuccessFn':

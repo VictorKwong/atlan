@@ -255,6 +255,10 @@ const Fn = {
         name: 'Goblin Yula',
         text: 'Let`s Celerbrate our Master Item skills :D!'
     }],
+    GeffenCitizen:[{
+        name: 'Citizen',
+        text: 'Being a mage is hard, Passing the test to be wizard is almost impossible.'
+    }],
     Fairy:[{
     //PoringIsland
         name: 'Fairy',

@@ -958,7 +958,11 @@ export const GeffenGoblinYulaNPCLearnedFn = () => {
         type: 'GeffenGoblinYulaNPCLearnedFn'
     };
 };
-
+export const GeffenCitizenNPCFn = () => {
+    return {
+        type: 'GeffenCitizenNPCFn'
+    };
+};
 export const ResetGeffenNPCFn = () => {
     return {
         type: 'ResetGeffenNPCFn'

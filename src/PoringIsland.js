@@ -59,6 +59,7 @@ import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
 import Success from './img/Emote/Success.gif'
 import Failure from './img/Emote/Failure.gif'
+import BlackSmith from './img/NPC/BlackSmith.gif'
 
 import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
 import TrainingFailure from './audio/SoundEffect/TrainingFailure.mp3'
@@ -383,7 +384,7 @@ useEffect(() => {
               <button className="SmallIsland SmallIslandBridgeHidden2 SmallIslandPathBridgeHidden2" onClick={() =>{changePlaceFadeAudio();  dispatch(GotoPoringIslandPath8Fn()); dispatch(PoringIslandFairyNPC2Fn());}}>Hidden road</button> :null}
                {/* Path 8 Hidden*/}
                {screenControlRoom.PoringIslandPath8 ?
-              <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetPoringIslandNPCFn());}}>Smith house</button> :null}
+              <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetPoringIslandNPCFn());}}><img src={BlackSmith} alt="BlackSmith"/></button> :null}
               {/* Path 4 */}
               {screenControlRoom.PoringIslandPath4 ?
               <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={

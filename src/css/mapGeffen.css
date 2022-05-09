@@ -71,14 +71,15 @@
 
 .GeffenGoblinYula::before,
 .GeffenGoblinYula:hover::before{
-  background-image: url('../img/Background/Geffen1.jpg');
-  background-position: center;
-  background-size: cover;
+  background-image: none;
+  border: solid rgb(227, 245, 148);
 }
 
-.GeffenWorldMap { grid-area: 2 / 5 / 3 / 6; }
-.GeffenGoblinYula { grid-area: 2 / 2 / 3 / 3; }
-.GeffenDungeon1F { grid-area: 2 / 3 / 3 / 4; }
+.GeffenCitizen::before,
+.GeffenCitizen:hover::before{
+  background-image: none;
+  border: solid rgb(227, 245, 148);
+}
 
 .GeffenWorldMap,
 .GeffenBase{
@@ -90,6 +91,12 @@
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
 }
+
+.GeffenWorldMap { grid-area: 2 / 5 / 3 / 6; }
+.GeffenGoblinYula { grid-area: 2 / 2 / 3 / 3; }
+.GeffenDungeon1F { grid-area: 2 / 3 / 3 / 4; }
+.GeffenCitizen { grid-area: 1 / 5 / 2 / 6; }
+
 
 @media (max-width: 1199px){
 
@@ -105,20 +112,17 @@
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
   }
   .GeffenWorldMap,
   .GeffenGoblinYula,
   .GeffenDungeon1F,
+  .GeffenCitizen,
   .GeffenBase{
     width:100%;
     min-height: 50px;
   }
   .GeffenWorldMap:active,
-  .GeffenGoblinYula:active,
-  .GeffenDungeon1F:active,
-  .GeffenBase:active{
+  .GeffenDungeon1F:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;

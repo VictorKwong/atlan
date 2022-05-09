@@ -351,13 +351,17 @@
   /* Hidden Passage */
   .SmallIslandPathBridgeHidden1,
   .SmallIslandPathBridgeHidden2,
-  .SmallIslandPathBridgeHiddenNPC,
   .TreasureBoxPoringIsland,
   .TreasureBoxPoringIsland2,
   .SmallIsland{
     width:100%;
     min-height:50px;
   }
+  .SmallIslandPathBridgeHiddenNPC{
+    width:100%;
+    min-height:120px;
+  }
+
   .WorldMap:active,
   .SmallIslandPath0:active,
   .SmallIslandPath1:active,
