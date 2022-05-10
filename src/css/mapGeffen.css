@@ -49,7 +49,7 @@
   background-position: center;
   background-size: cover;
   transition: opacity 0.3s ease-in-out;
-  border: solid rgb(216, 211, 144) 1px;
+  border: 1px solid #e2ff3c
 }
 .GeffenWorldMap:hover::before,
 .GeffenBase:hover::before{
@@ -58,7 +58,7 @@
   background-position: center;
   background-size: cover;
   transition: opacity 0.3s ease-in-out;
-  border: 1px solid rgba(216, 211, 144,1);
+  border: 1px solid #e2ff3c;
   cursor: pointer;
 }
 
@@ -72,13 +72,11 @@
 .GeffenGoblinYula::before,
 .GeffenGoblinYula:hover::before{
   background-image: none;
-  border: solid rgb(227, 245, 148);
 }
 
 .GeffenCitizen::before,
 .GeffenCitizen:hover::before{
   background-image: none;
-  border: solid rgb(227, 245, 148);
 }
 
 .GeffenWorldMap,

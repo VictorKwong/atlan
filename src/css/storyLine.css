@@ -99,6 +99,10 @@
   line-height: 30px;
 }
 
+.endingDivisionButton{
+  margin: 20px;
+}
+
 .storyScreenStoryfadeOut{
   background-color: black;
   background-image:none;

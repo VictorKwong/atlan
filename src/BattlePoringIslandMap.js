@@ -518,6 +518,7 @@ import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
 import Heal from './audio/SoundEffect/HealSoundEffect.mp3'
 import UserHit from './audio/SoundEffect/UserHit.wav'
 import SkillBash from './audio/SoundEffect/BashSoundEffect.mp3'
+import SkillMammonite from './audio/SoundEffect/MammoniteSoundEffect.mp3'
 import SkillMagBreak from './audio/SoundEffect/MagnumBreakSoundEffect.mp3'
 import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
@@ -535,6 +536,7 @@ const audioMiss = new Audio(AttackMiss);
 const audioHeal = new Audio(Heal);
 const audioUserHit = new Audio(UserHit);
 const audioSkillBash = new Audio(SkillBash);
+const audioSkillMammonite = new Audio(SkillMammonite);
 const audioSkillMagBreak = new Audio(SkillMagBreak);
 const audioSkillQuicken = new Audio(SkillQuicken);
 const audioLevelUp = new Audio(LevelUpSoundEffect);
@@ -1597,6 +1599,12 @@ function Main(){
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
+                  //Audio SoundEffect
+                  if (userStats.userWeapon === "Empty"){
+                    setTimeout(() => audioEmptyHandHit.play() , 100)
+                  }else{
+                    setTimeout(() => audioHit.play(), 100)
+                  }
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1644,6 +1652,12 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                //Audio SoundEffect
+                if (userStats.userWeapon === "Empty"){
+                  setTimeout(() => audioEmptyHandHit.play() , 100)
+                }else{
+                  setTimeout(() => audioHit.play(), 100)
+                }
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1684,7 +1698,7 @@ function Main(){
     const userSkillMammoniteButton = () => {
       if (userStats.currentSP >= 50){
       //Audio SoundEffect
-      audioSkillMagBreak.play();
+      audioSkillMammonite.play();
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -1700,6 +1714,12 @@ function Main(){
             //CRIT RATE && BLOCKING
             switch(true){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                //Audio SoundEffect
+                if (userStats.userWeapon === "Empty"){
+                  setTimeout(() => audioEmptyHandHit.play() , 100)
+                }else{
+                  setTimeout(() => audioHit.play(), 100)
+                }
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
@@ -1719,6 +1739,12 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                  //Audio SoundEffect
+                  if (userStats.userWeapon === "Empty"){
+                    setTimeout(() => audioEmptyHandHit.play() , 100)
+                  }else{
+                    setTimeout(() => audioHit.play(), 100)
+                  }
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1742,6 +1768,12 @@ function Main(){
             //CRIT RATE
             switch(true){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                  //Audio SoundEffect
+                  if (userStats.userWeapon === "Empty"){
+                    setTimeout(() => audioEmptyHandHit.play() , 100)
+                  }else{
+                    setTimeout(() => audioHit.play(), 100)
+                  }
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
@@ -1761,6 +1793,12 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defence)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                  //Audio SoundEffect
+                  if (userStats.userWeapon === "Empty"){
+                    setTimeout(() => audioEmptyHandHit.play() , 100)
+                  }else{
+                    setTimeout(() => audioHit.play(), 100)
+                  }
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1961,6 +1999,12 @@ function Main(){
 
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                  //Audio SoundEffect
+                  if (userStats.userWeapon === "Empty"){
+                    setTimeout(() => audioEmptyHandHit.play() , 100)
+                  }else{
+                    setTimeout(() => audioHit.play(), 100)
+                  }
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));

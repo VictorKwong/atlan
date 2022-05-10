@@ -46,7 +46,7 @@ function StartMenu(){
               <h2>~THANKS~</h2>
             </div>
           <div>
-            <button className="nextLine StoryButton" onClick={() => LoadingScreen2()}>You're welcome :)</button>
+            <button className="nextLine StoryButton endingDivisionButton" onClick={() => LoadingScreen2()}>You're welcome :)</button>
           </div>
           </div>
         </div>
