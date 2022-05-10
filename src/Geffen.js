@@ -130,6 +130,10 @@ function StartMenu(){
           $('.storySpeech').html(`${npcSpeech['GoblinYula'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GoblinYula'][0].name}</p>`)
           break;
+        case(npcControlRoom.GeffenTimerNPC):
+          $('.storySpeech').html(`${npcSpeech['GeffenTimer'][0].text}`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenTimer'][0].name}</p>`)
+          break;
         case(npcControlRoom.GeffenCitizenNPC):
           $('.storySpeech').html(`${npcSpeech['GeffenCitizen'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenCitizen'][0].name}</p>`)
