@@ -5,7 +5,7 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
-import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, ResetGeffenNPCFn } from './actions'
+import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, ResetGeffenNPCFn } from './actions'
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 
@@ -43,6 +43,7 @@ import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
 import GoblinYula from './img/NPC/GoblinYula.gif'
 import GeffenCitizen from './img/NPC/GeffenCitizen.gif'
+import GeffenTimer from './img/NPC/GeffenTimer.gif'
 
 import audio13ThemeOfGeffen from './audio/13ThemeOfGeffen.mp3'
 const audioBGM = new Audio(audio13ThemeOfGeffen);
@@ -208,6 +209,7 @@ function StartMenu(){
             <button className="GeffenWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>ToWorldMap</button>
             <button className="GeffenBase GeffenGoblinYula" onClick={() =>{dispatch(GeffenGoblinYulaNPCFn()); changePlaceFadeAudio();}}><img src={GoblinYula} alt="Goblin Yula" /></button>
             <button className="GeffenBase GeffenCitizen" onClick={() =>{dispatch(GeffenCitizenNPCFn()); changePlaceFadeAudio();}}><img src={GeffenCitizen} alt="GeffenCitizen"/></button>
+            <button className="GeffenBase GeffenTimer" onClick={() =>{dispatch(GeffenTimerNPCFn()); changePlaceFadeAudio();}}><img src={GeffenTimer} alt="GeffenTimer"/></button>
             <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>Geffen Dungeon Entrance</button>
           </div>
           }

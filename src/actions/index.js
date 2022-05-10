@@ -963,6 +963,12 @@ export const GeffenCitizenNPCFn = () => {
         type: 'GeffenCitizenNPCFn'
     };
 };
+
+export const GeffenTimerNPCFn = () => {
+    return {
+        type: 'GeffenTimerNPCFn'
+    };
+};
 export const ResetGeffenNPCFn = () => {
     return {
         type: 'ResetGeffenNPCFn'

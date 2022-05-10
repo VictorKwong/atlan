@@ -79,6 +79,12 @@
   background-image: none;
 }
 
+.GeffenTimer::before,
+.GeffenTimer:hover::before{
+  background-image: none;
+}
+
+
 .GeffenWorldMap,
 .GeffenBase{
   position: relative;
@@ -94,7 +100,7 @@
 .GeffenGoblinYula { grid-area: 2 / 2 / 3 / 3; }
 .GeffenDungeon1F { grid-area: 2 / 3 / 3 / 4; }
 .GeffenCitizen { grid-area: 1 / 5 / 2 / 6; }
-
+.GeffenTimer { grid-area: 1 / 2 / 2 / 3; }
 
 @media (max-width: 1199px){
 
@@ -115,6 +121,7 @@
   .GeffenGoblinYula,
   .GeffenDungeon1F,
   .GeffenCitizen,
+  .GeffenTimer,
   .GeffenBase{
     width:100%;
     min-height: 50px;

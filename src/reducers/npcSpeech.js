@@ -259,6 +259,10 @@ const Fn = {
         name: 'Citizen',
         text: 'Being a mage is hard, Passing the test to be wizard is almost impossible.'
     }],
+    GeffenTimer:[{
+        name: 'GeffenTimer',
+        text: 'You need to be always prepared, because the chance can be pop up in anytime.'
+    }],
     Fairy:[{
     //PoringIsland
         name: 'Fairy',
