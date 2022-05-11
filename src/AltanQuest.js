@@ -17,14 +17,15 @@ function StartMenu(){
     //QUEST
     const QuestBox = [
       {id: 1, num: "Poring", acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", totalNum: "3"},
-      {id: 2, num: "Lunatic", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", totalNum: "3"}
+      {id: 2, num: "Lunatic", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", totalNum: "3"},
+      {id: 3, num: "Rocker", acceptName: "Clear Rocker", acceptDescription: "Kill 3 Rocker in PoringIsland", totalNum: "3"}
     ]
     const QuestItemBox = [
-      {id: 3, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
-      {id: 4, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle}
+      {id: 4, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
+      {id: 5, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle}
     ]
     const QuestSpecialBox = [
-      {id: 5, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
+      {id: 6, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
     ]
 
 
@@ -40,7 +41,7 @@ function StartMenu(){
                         {/* Quest Accept, Not Repeat / track*/}
                         {((questControlRoom.QuestDialog).indexOf(Quest.num) > -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? 
                         <div>
-                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription}: {(questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length} / {Quest.totalNum}</p>
+                          <p>{Quest.id}. {Quest.acceptName} - {Quest.acceptDescription}: {Math.floor((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length)/Quest.num.length} / {Quest.totalNum}</p>
                         </div> : 
                         questControlRoom.CompleteQuestDialog.indexOf(Quest.num) >= 0 ?
                         <div>

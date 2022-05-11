@@ -127,8 +127,9 @@ function StartMenu(){
     ]
     //QUEST
     const QuestBox = [
-      {id: 0, num: "Poring", CompleteNum: 3, acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z", exp:100, zeny:1000},
-      {id: 1, num: "Lunatic", CompleteNum: 3, acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z", exp:200, zeny:2000}
+      {id: 0, num: "Poring", CompleteNum: 3, acceptName: "Clear Poring", acceptDescription: "Hunt 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z", exp:100, zeny:1000},
+      {id: 1, num: "Lunatic", CompleteNum: 3, acceptName: "Clear Lunatic", acceptDescription: "Hunt 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z", exp:200, zeny:2000},
+      {id: 2, num: "Rocker", CompleteNum: 3, acceptName: "Clear Rocker", acceptDescription: "Hunt 3 Rocker in PoringIsland", finishName: "Clear Rocter xD", finishText: "Received +400Exp +4000z", exp:400, zeny:4000}
     ]
     //QUEST
     const QuestItemBox = [

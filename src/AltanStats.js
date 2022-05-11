@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanStatsFn, GotoImageEquipmentFn } from './actions';
 import './css/mapAltanStats.css'
-// import useSound from 'use-sound';
 
 import { STRPointsFn , AGIPointsFn , VITPointsFn , INTPointsFn , DEXPointsFn , LUKPointsFn } from './actions'
 import { GotoStatsChoiceFn , GotoSkillChoiceFn , GotoGuildChoiceFn } from './actions'
@@ -59,7 +58,6 @@ function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     let SkillBox = [
       //1,5,20,35,70
