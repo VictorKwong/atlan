@@ -7,6 +7,7 @@ import './css/mapAltanQuest.css'
 //Quest Item
 import Jellopy from './img/Etc/Poring_Jellopy70.gif'
 import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
+import RedPotion from './img/Item/RedPotion.gif'
 
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
@@ -22,10 +23,11 @@ function StartMenu(){
     ]
     const QuestItemBox = [
       {id: 4, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
-      {id: 5, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle}
+      {id: 5, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle},
+      {id: 6, num: "RedPotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion}
     ]
     const QuestSpecialBox = [
-      {id: 6, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
+      {id: 7, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
     ]
 
 
