@@ -84,6 +84,10 @@
   background-image: none;
 }
 
+.GeffenGrandma::before,
+.GeffenGrandma:hover::before{
+  background-image: none;
+}
 
 .GeffenWorldMap,
 .GeffenBase{
@@ -101,7 +105,7 @@
 .GeffenDungeon1F { grid-area: 2 / 3 / 3 / 4; }
 .GeffenCitizen { grid-area: 1 / 5 / 2 / 6; }
 .GeffenTimer { grid-area: 1 / 2 / 2 / 3; }
-
+.GeffenGrandma { grid-area: 3 / 4 / 4 / 5; }
 @media (max-width: 1199px){
 
 }
@@ -122,6 +126,7 @@
   .GeffenDungeon1F,
   .GeffenCitizen,
   .GeffenTimer,
+  .GeffenGrandma,
   .GeffenBase{
     width:100%;
     min-height: 50px;

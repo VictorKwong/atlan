@@ -969,6 +969,11 @@ export const GeffenTimerNPCFn = () => {
         type: 'GeffenTimerNPCFn'
     };
 };
+export const GeffenGrandmaNPCFn = () => {
+    return {
+        type: 'GeffenGrandmaNPCFn'
+    };
+};
 export const ResetGeffenNPCFn = () => {
     return {
         type: 'ResetGeffenNPCFn'

@@ -263,6 +263,10 @@ const Fn = {
         name: 'GeffenTimer',
         text: 'You need to be always prepared, because the chance can be pop up in anytime.'
     }],
+    GeffenGrandma:[{
+        name: 'GeffenGrandma',
+        text: 'Atlan, I hope you notice to give it out all your best when there is a chance. Just give it all out with no regrets like me'
+    }],
     Fairy:[{
     //PoringIsland
         name: 'Fairy',
