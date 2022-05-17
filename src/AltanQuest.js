@@ -19,16 +19,17 @@ function StartMenu(){
     const QuestBox = [
       {id: 1, num: "Poring", acceptName: "Clear Poring", acceptDescription: "Kill 3 Poring in PoringIsland", totalNum: "3"},
       {id: 2, num: "Lunatic", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", totalNum: "3"},
-      {id: 3, num: "Rocker", acceptName: "Clear Rocker", acceptDescription: "Kill 3 Rocker in PoringIsland", totalNum: "3"}
-      {id: 3, num: "Ambernite", acceptName: "Clear Ambernite", acceptDescription: "Kill 1 Ambernite in PoringIsland", totalNum: "1"}
+      {id: 3, num: "Rocker", acceptName: "Clear Rocker", acceptDescription: "Kill 3 Rocker in PoringIsland", totalNum: "3"},
+      {id: 4, num: "Ambernite", acceptName: "Clear Ambernite", acceptDescription: "Kill 1 Ambernite in PoringIsland", totalNum: "1"},
+      {id: 5, num: "Ghostring", acceptName: "Clear Ghostring", acceptDescription: "Kill 1 Ghostring in PoringIsland", totalNum: "1"}
     ]
     const QuestItemBox = [
-      {id: 4, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
-      {id: 5, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle},
-      {id: 6, num: "RedPotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion}
+      {id: 1001, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
+      {id: 1002, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle},
+      {id: 1003, num: "RedPotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion}
     ]
     const QuestSpecialBox = [
-      {id: 7, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
+      {id: 10000, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
     ]
 
 

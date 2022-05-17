@@ -130,7 +130,8 @@ function StartMenu(){
       {id: 0, num: "Poring", CompleteNum: 3, acceptName: "Clear Poring", acceptDescription: "Hunt 3 Poring in PoringIsland", finishName: "Clear Poring xD",  finishText: "Received +100Exp +1000z", exp:100, zeny:1000},
       {id: 1, num: "Lunatic", CompleteNum: 3, acceptName: "Clear Lunatic", acceptDescription: "Hunt 3 Lunatic in PoringIsland", finishName: "Clear Lunatic xD", finishText: "Received +200Exp +2000z", exp:200, zeny:2000},
       {id: 2, num: "Rocker", CompleteNum: 3, acceptName: "Clear Rocker", acceptDescription: "Hunt 3 Rocker in PoringIsland", finishName: "Clear Rocter xD", finishText: "Received +400Exp +4000z", exp:400, zeny:4000},
-      {id: 3, num: "Ambernite", CompleteNum: 1, acceptName: "Clear Ambernite", acceptDescription: "Hunt 1 Ambernite in PoringIsland", finishName: "Clear Ambernite xD", finishText: "Received +50Exp +300z", exp:50, zeny:300}
+      {id: 3, num: "Ambernite", CompleteNum: 1, acceptName: "Clear Ambernite", acceptDescription: "Hunt 1 Ambernite in PoringIsland", finishName: "Clear Ambernite xD", finishText: "Received +50Exp +300z", exp:50, zeny:300},
+      {id: 4, num: "Ghostring", CompleteNum: 1, acceptName: "Clear Ghostring", acceptDescription: "Hunt 1 Ghostring in PoringIsland", finishName: "Clear Ghostring xD", finishText: "Received +300Exp +3300z", exp:300, zeny:3300}
     ]
     //QUEST
     const QuestItemBox = [
