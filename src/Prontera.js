@@ -16,7 +16,7 @@ import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn ,
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Win ETC Items
-import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn, WinFeatherFn , WinCloverFn } from './actions'
+import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn, WinStickyMucusFn , WinFeatherFn , WinCloverFn } from './actions'
 
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
@@ -137,7 +137,9 @@ function StartMenu(){
     const QuestItemBox = [
       {id: 1001, num: "Jellopy", CompleteNum: 3, ItemTarget: userGoldItem.Jellopy, ReturnItem: WinJellopyFn , acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", finishName: "Submit 3 Jellopy",  finishText: "Received +150Exp +1500z", exp:150, zeny:1500},
       {id: 1002, num: "Emptybottle", CompleteNum: 5, ItemTarget: userGoldItem.EmptyBottle, ReturnItem: WinEmptyBottleFn , acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", finishName: "Submit 5 Empty Bottle",  finishText: "Received +200Exp +200z", exp:200, zeny:200},
-      {id: 1003, num: "RedPotion", CompleteNum: 5, ItemTarget: userGoldItem.RedPotion, ReturnItem: RedPotionFn , acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", finishName: "Submit 5 Red Potion",  finishText: "Received +100Exp +50z", exp:50, zeny:100}
+      {id: 1003, num: "StickyMucus", CompleteNum: 2, ItemTarget: userGoldItem.StickyMucus, ReturnItem: WinStickyMucusFn , acceptName: "Request Item", acceptDescription: "Need 2 StickyMucus", finishName: "Submit 2 Sticky Mucus",  finishText: "Received +100Exp +300z", exp:100, zeny:300},
+      
+      {id: 1004, num: "RedPotion", CompleteNum: 5, ItemTarget: userGoldItem.RedPotion, ReturnItem: RedPotionFn , acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", finishName: "Submit 5 Red Potion",  finishText: "Received +100Exp +50z", exp:50, zeny:100}
     ]
 
     useEffect(() => {
