@@ -21,7 +21,8 @@ function StartMenu(){
       {id: 2, num: "Lunatic", acceptName: "Clear Lunatic", acceptDescription: "Kill 3 Lunatic in PoringIsland", totalNum: "3"},
       {id: 3, num: "Rocker", acceptName: "Clear Rocker", acceptDescription: "Kill 3 Rocker in PoringIsland", totalNum: "3"},
       {id: 4, num: "Ambernite", acceptName: "Clear Ambernite", acceptDescription: "Kill 1 Ambernite in PoringIsland", totalNum: "1"},
-      {id: 5, num: "Ghostring", acceptName: "Clear Ghostring", acceptDescription: "Kill 1 Ghostring in PoringIsland", totalNum: "1"}
+      {id: 5, num: "Ghostring", acceptName: "Clear Ghostring", acceptDescription: "Kill 1 Ghostring in PoringIsland", totalNum: "1"},
+      {id: 6, num: "Zombie", acceptName: "Clear Zombie", acceptDescription: "Kill 3 Zombie in PayonCave", totalNum: "3"}
     ]
     const QuestItemBox = [
       {id: 1001, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
