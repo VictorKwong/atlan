@@ -594,6 +594,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenCitizenNPC: false,
                 GeffenTimerNPC: true,
                 GeffenGrandmaNPC: false,
+                GeffenQuestBoard: false,
             }
         case 'GeffenGoblinYulaNPCFn':
             return{
@@ -603,6 +604,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenCitizenNPC: false,
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
+                GeffenQuestBoard: false,
             }
         case 'GeffenGoblinYulaNPCInterestFn':
             return{
@@ -622,6 +624,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenCitizenNPC: true,
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: false,
+                GeffenQuestBoard: false,
             }
         case "GeffenGrandmaNPCFn":
             return {
@@ -631,6 +634,17 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenCitizenNPC: false,
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: true,
+                GeffenQuestBoard: false,
+            }
+        case "GeffenQuestBoardFn":
+            return {
+                ...state,
+                GeffenGoblinYulaNPC: false,
+                GeffenGoblinYulaNPCInterest: false,
+                GeffenCitizenNPC: false,
+                GeffenTimerNPC: false,
+                GeffenGrandmaNPC: false,
+                GeffenQuestBoard: true,
             }
         case 'ResetGeffenNPCFn':
             return{
@@ -640,6 +654,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenCitizenNPC: false,
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
+                GeffenQuestBoard: false,
             }   
         //Inside BuySell Fn
         case 'DealerBuySuccessFn':

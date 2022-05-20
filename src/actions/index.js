@@ -963,6 +963,11 @@ export const GeffenCitizenNPCFn = () => {
         type: 'GeffenCitizenNPCFn'
     };
 };
+export const GeffenQuestBoardFn = () => {
+    return {
+        type: 'GeffenQuestBoardFn'
+    };
+};
 
 export const GeffenTimerNPCFn = () => {
     return {

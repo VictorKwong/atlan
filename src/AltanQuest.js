@@ -9,6 +9,7 @@ import Jellopy from './img/Etc/Poring_Jellopy70.gif'
 import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
 import RedPotion from './img/Item/RedPotion.gif'
 import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
+import PoisonSpore from './img/Etc/PoisonSpore_PoisonSpore90.gif'
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
     const userStats = useSelector(state => state.userStats)
@@ -22,12 +23,14 @@ function StartMenu(){
       {id: 3, num: "Rocker", acceptName: "Clear Rocker", acceptDescription: "Kill 3 Rocker in PoringIsland", totalNum: "3"},
       {id: 4, num: "Ambernite", acceptName: "Clear Ambernite", acceptDescription: "Kill 1 Ambernite in PoringIsland", totalNum: "1"},
       {id: 5, num: "Ghostring", acceptName: "Clear Ghostring", acceptDescription: "Kill 1 Ghostring in PoringIsland", totalNum: "1"},
-      {id: 6, num: "Zombie", acceptName: "Clear Zombie", acceptDescription: "Kill 3 Zombie in PayonCave", totalNum: "3"}
+      {id: 6, num: "Zombie", acceptName: "Clear Zombie", acceptDescription: "Kill 3 Zombie in PayonCave", totalNum: "3"},
+      {id: 101, num: "Poporing", acceptName: "Clear Poporing", acceptDescription: "Kill 4 Poporing in GeffenDungeon", totalNum: "4"},
     ]
     const QuestItemBox = [
       {id: 1001, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},
       {id: 1002, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle},
-      {id: 1003, num: "StickyMucus", acceptName: "Request Item", acceptDescription: "Need 5 StickyMucus", totalNum: "3", currentNum:userGoldItem.StickyMucus, Img:StickyMucus},{id: 1004, num: "RedPotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion}
+      {id: 1003, num: "Stickymucus", acceptName: "Request Item", acceptDescription: "Need 2 StickyMucus", totalNum: "2", currentNum:userGoldItem.StickyMucus, Img:StickyMucus},{id: 1004, num: "Redpotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion},
+      {id: 1005, num: "Poisonspore", acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", totalNum: "4", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
     ]
     const QuestSpecialBox = [
       {id: 10000, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}

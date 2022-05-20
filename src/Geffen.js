@@ -5,9 +5,15 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
-import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, ResetGeffenNPCFn } from './actions'
+import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, ResetGeffenNPCFn } from './actions'
 //Learn
 import { UserLearnMasterItemFn } from './actions'
+//Quest
+import { WinPoisonSporeFn } from './actions'
+//Quest Result
+import { WinResultFn, UserLevelUpFn } from './actions';
+//Function
+import { AcceptQuestDialogFn, ReturnQuestDialogFn} from './actions'
 
 import WorldMap from './WorldMap'
 import GeffenDungeon1F from './GeffenDungeon1F'
@@ -40,15 +46,26 @@ import Helm from './img/Equipment/HeadGear/Helm.gif'
 import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
+//SKILLS
+import skillBash from './img/Skill/sm_bash.gif'
+import skillMammonite from './img/Skill/mc_mammonite.gif'
+import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillQuicken from './img/Skill/sm_quicken.gif'
+import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 import GoblinYula from './img/NPC/GoblinYula.gif'
 import GeffenCitizen from './img/NPC/GeffenCitizen.gif'
 import GeffenTimer from './img/NPC/GeffenTimer.gif'
 import GeffenGrandma from './img/NPC/GeffenGrandma.gif'
+import QuestBoard from './img/NPC/QuestBoard.gif'
 
 import audio13ThemeOfGeffen from './audio/13ThemeOfGeffen.mp3'
+import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
 const audioBGM = new Audio(audio13ThemeOfGeffen);
+const audioLevelUp = new Audio(LevelUpSoundEffect);
 
+//Chat reading
+let listResult = document.getElementsByClassName('storyChat')[0];
 
 function StartMenu(){
   const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -87,6 +104,15 @@ function StartMenu(){
     {id:9005, num:userGoldItem.ChainMail, EquipItem:ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80), Img:ChainMail, name:"Chain Mail"},
     {id:9006, num:userGoldItem.FullPlate, EquipItem:ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90), Img:FullPlate, name:"Full Plate"},
   ]
+    //QUEST
+    const QuestBox = [
+      {id: 0, num: "Poporing", CompleteNum: 4, acceptName: "Clear Poporing", acceptDescription: "Hunt 4 Poporing in GeffenDungeon", finishName: "Clear Poporing xD",  finishText: "Received +500Exp +500z", exp:500, zeny:500},
+
+    ]
+    //QUEST
+    const QuestItemBox = [
+      {id: 1001, num: "Poisonspore", CompleteNum: 4, ItemTarget: userGoldItem.PoisonSpore, ReturnItem: WinPoisonSporeFn , acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", finishName: "Submit 4 Poison Spore",  finishText: "Received +250Exp +4500z", exp:250, zeny:4500},
+    ]
 
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
@@ -108,6 +134,78 @@ function StartMenu(){
       $('.GeffenMapTitle').fadeIn(600);
       $('.GeffenMapTitle').delay(2400).fadeOut(600);
     }, [screenControlRoom])
+
+    //LEVEL FUNCTION
+    useEffect(() => {
+      //MAX Lv99
+      if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
+        (() => {
+          switch (true) {
+            case((userStats.Level + 1) <= 4):
+              return dispatch(UserLevelUpFn(3));
+            case((userStats.Level + 1) <= 9):
+              return dispatch(UserLevelUpFn(4));
+            case((userStats.Level + 1) <= 14):
+              return dispatch(UserLevelUpFn(5));           
+            case((userStats.Level + 1) <= 19):
+              return dispatch(UserLevelUpFn(6));
+            case((userStats.Level + 1) <= 24):
+              return dispatch(UserLevelUpFn(7));
+            case((userStats.Level + 1) <= 29):
+              return dispatch(UserLevelUpFn(8));
+            case((userStats.Level + 1) <= 34):
+              return dispatch(UserLevelUpFn(9));
+            case((userStats.Level + 1) <= 39):
+              return dispatch(UserLevelUpFn(10));     
+            case((userStats.Level + 1) <= 44):
+              return dispatch(UserLevelUpFn(11));
+            case((userStats.Level + 1) <= 49):
+              return dispatch(UserLevelUpFn(12));
+            case((userStats.Level + 1) <= 54):
+              return dispatch(UserLevelUpFn(13));
+            case((userStats.Level + 1) <= 59):
+              return dispatch(UserLevelUpFn(14));
+            case((userStats.Level + 1) <= 64):
+              return dispatch(UserLevelUpFn(15));
+            case((userStats.Level + 1) <= 69):
+              return dispatch(UserLevelUpFn(16));
+            case((userStats.Level + 1) <= 74):
+              return dispatch(UserLevelUpFn(17));
+            case((userStats.Level + 1) <= 79):
+              return dispatch(UserLevelUpFn(18));
+            case((userStats.Level + 1) <= 84):
+              return dispatch(UserLevelUpFn(19));
+            case((userStats.Level + 1) <= 89):
+              return dispatch(UserLevelUpFn(20));
+            case((userStats.Level + 1) <= 94):
+              return dispatch(UserLevelUpFn(21));
+            case((userStats.Level + 1) <= 98):
+              return dispatch(UserLevelUpFn(22));
+            default:
+              return dispatch(UserLevelUpFn(23));
+          }
+          })()
+          audioLevelUp.play();
+        $('.questCompleteResult').append(`\n <p>Atlan has Level Up to Lv${userStats.Level + 1}</p>`)
+          switch (true) {
+            case((userStats.Level + 1) === 5):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+            case((userStats.Level + 1) === 10):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
+            case((userStats.Level + 1) === 20):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+            case((userStats.Level + 1) === 35):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
+            case((userStats.Level + 1) === 70):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
+            default:
+              return 0;
+          }
+      }
+    listResult = document.getElementsByClassName('storyChat')[0];
+    listResult.scrollTop = listResult.scrollHeight;
+  }, [questControlRoom, dispatch, userStats, baseEXPChart]);
+
 
     useEffect(() => {
       switch(true){
@@ -220,7 +318,10 @@ function StartMenu(){
             <button className="GeffenBase GeffenCitizen" onClick={() =>{dispatch(GeffenCitizenNPCFn()); changePlaceFadeAudio();}}><img src={GeffenCitizen} alt="GeffenCitizen"/></button>
             <button className="GeffenBase GeffenTimer" onClick={() =>{dispatch(GeffenTimerNPCFn()); changePlaceFadeAudio();}}><img src={GeffenTimer} alt="GeffenTimer"/></button>
             <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
+            <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
             <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>Geffen Dungeon Entrance</button>
+
+            
           </div>
           }
           <div className="StoryHUD">
@@ -337,6 +438,34 @@ function StartMenu(){
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenGoblinYulaNPCInterestFn());}}>I want to learn Master Item</button>
             </div> : null}
+            {/* QUEST */}
+              {npcControlRoom.GeffenQuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              <div className="textCenter">
+                  <p className="chatDescriptTitle">Geffen Bounty Board</p>
+                <ul>
+                  {QuestBox.map(Quest => {
+                    return (
+                      <li key={Quest.id} className="questList">
+                        {/* index -1 means not found, > -1 means found */}
+                        {((questControlRoom.QuestDialog).indexOf(Quest.num) === -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? <button className="questBoardItems" onClick={() => {dispatch(AcceptQuestDialogFn(Quest.num));}}>{Quest.acceptName} + {Quest.acceptDescription}</button> : 
+                        // Quest Accept && Kill more than 3 monster - Poring Santaporing
+                        (questControlRoom.QuestDialog).indexOf(Quest.num) > -1  && ((questControlRoom.ProgressQuestDialog).length - (questControlRoom.ProgressQuestDialog).replaceAll(Quest.num,"").length) >= ((Quest.num).length*Quest.CompleteNum) ? <button className="questBoardItems" onClick={() => {dispatch(ReturnQuestDialogFn(Quest.num)); dispatch(WinResultFn(Quest.exp,Quest.zeny));}}>{Quest.finishName} + {Quest.finishText} </button> : null }
+                      </li>
+                    )
+                  })}
+                  {QuestItemBox.map(Quest => {
+                    return (
+                      <li key={Quest.id} className="questList">
+                        {/* index -1 means not found, > -1 means found */}
+                        {((questControlRoom.QuestDialog).indexOf(Quest.num) === -1 && questControlRoom.CompleteQuestDialog.indexOf(Quest.num) === -1) ? <button className="questBoardItems" onClick={() => {dispatch(AcceptQuestDialogFn(Quest.num));}}>{Quest.acceptName} + {Quest.acceptDescription}</button> : 
+                        // Quest Accept && Item Bag is >= Complete number
+                        (questControlRoom.QuestDialog).indexOf(Quest.num) > -1  && Quest.ItemTarget >= Quest.CompleteNum ? <button className="questBoardItems" onClick={() => {dispatch(ReturnQuestDialogFn(Quest.num)); dispatch(WinResultFn(Quest.exp,Quest.zeny)); dispatch((Quest.ReturnItem)(-(Quest.CompleteNum)))}}>{Quest.finishName} + {Quest.finishText} </button> : null }
+                      </li>
+                    )
+                  })}
+                </ul>
+                <p className="questCompleteResult"></p>
+              </div> : null}
         </fieldset>
       </div>
       }

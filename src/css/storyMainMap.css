@@ -88,9 +88,6 @@
   color: black;
   -webkit-text-stroke: 0.8px white;
   stroke: 0.8px white;
-  /* animation-name: fadeOutMapName;
-  animation-duration: 3s;
-  opacity: 0; */
   display: none;
   position: absolute;
   top:0;
@@ -394,11 +391,13 @@
   }
 }
 @media (max-width: 467px){
-  .Prontera,
-  .SogratDesertPoringIsland,
-  .PayonCave,
-  .Geffen{
-    font-size: 15px;
+  .StoryMap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-top: 40px;
   }
   .altanEquipment,
   .altanItems,
@@ -429,6 +428,7 @@
   .FinalBoss{
     width:100%;
     min-height:50px;
+    font-size: 15px;
   }
   .Prontera:active,
   .SogratDesertPoringIsland:active,
@@ -439,12 +439,5 @@
     min-height: 250px;
     transition: 0.3s ease-in-out;
 }
-  .StoryMap{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    overflow-x: hidden;
-    padding-top: 40px;
-  }
+
 }
