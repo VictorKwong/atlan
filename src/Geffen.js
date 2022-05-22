@@ -108,8 +108,9 @@ function StartMenu(){
     const QuestBox = [
       {id: 0, num: "Poporing", CompleteNum: 4, acceptName: "Clear Poporing", acceptDescription: "Hunt 4 Poporing in GeffenDungeon", finishName: "Clear Poporing xD",  finishText: "Received +500Exp +500z", exp:500, zeny:500},
       {id: 1, num: "Jakk", CompleteNum: 2, acceptName: "Clear Jakk", acceptDescription: "Hunt 2 Jakk in GeffenDungeon", finishName: "Clear Jakk xD",  finishText: "Received +600Exp +700z", exp:600, zeny:700},
+      {id: 2, num: "Ghoul", CompleteNum: 3, acceptName: "Clear Ghoul", acceptDescription: "Hunt 3 Ghoul in GeffenDungeon", finishName: "Clear Jakk xD",  finishText: "Received +900Exp +800z", exp:900, zeny:800},
       
-
+      
     ]
     //QUEST
     const QuestItemBox = [
