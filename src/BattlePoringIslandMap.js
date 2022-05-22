@@ -186,6 +186,7 @@ import BaphometDead from './img/Monster/BaphometDead.png'
 
 //SKILLS
 import skillFirstAid from './img/Skill/nv_firstaid.gif'
+import skillKodoku from './img/Skill/pr_kodoku.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillMammonite from './img/Skill/mc_mammonite.gif'
@@ -516,6 +517,7 @@ import SwordHit from './audio/SoundEffect/SwordHit.wav'
 import EmptyHandHit from './audio/SoundEffect/EmptyHandHit.wav'
 import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
 import Heal from './audio/SoundEffect/HealSoundEffect.mp3'
+import Poison from './audio/SoundEffect/PoisonSoundEffect.mp3'
 import UserHit from './audio/SoundEffect/UserHit.wav'
 import SkillBash from './audio/SoundEffect/BashSoundEffect.mp3'
 import SkillMammonite from './audio/SoundEffect/MammoniteSoundEffect.mp3'
@@ -534,6 +536,7 @@ const audioHit = new Audio(SwordHit);
 const audioEmptyHandHit = new Audio(EmptyHandHit);
 const audioMiss = new Audio(AttackMiss);
 const audioHeal = new Audio(Heal);
+const audioPoison = new Audio(Poison);
 const audioUserHit = new Audio(UserHit);
 const audioSkillBash = new Audio(SkillBash);
 const audioSkillMammonite = new Audio(SkillMammonite);
