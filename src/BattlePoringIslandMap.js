@@ -1111,7 +1111,6 @@ function Main(){
           case (i === 25):
             dispatch(BossBaphometDefeatFn());
             break;
-            
           default:
             break;
         }
@@ -1217,7 +1216,7 @@ function Main(){
               case((userStats.Level + 1) <= 9):
                 return dispatch(UserLevelUpFn(4));
               case((userStats.Level + 1) <= 14):
-                return dispatch(UserLevelUpFn(5));           
+                return dispatch(UserLevelUpFn(5));
               case((userStats.Level + 1) <= 19):
                 return dispatch(UserLevelUpFn(6));
               case((userStats.Level + 1) <= 24):
@@ -1227,7 +1226,7 @@ function Main(){
               case((userStats.Level + 1) <= 34):
                 return dispatch(UserLevelUpFn(9));
               case((userStats.Level + 1) <= 39):
-                return dispatch(UserLevelUpFn(10));     
+                return dispatch(UserLevelUpFn(10));
               case((userStats.Level + 1) <= 44):
                 return dispatch(UserLevelUpFn(11));
               case((userStats.Level + 1) <= 49):
@@ -2475,6 +2474,9 @@ function Main(){
               dispatch(ReturnUserInSelectItemFn());
               //Skill Quicken count
               dispatch(UserSkillQuickenClockTickFn());
+              //testing
+              dispatch(EnemyAttackUserFn(13));
+
               clockCheck = 1;
               dispatch(UserTurnFn());
               $('.storySpeech').append('<p>--------- Atlan Turn ---------</p>')
@@ -2543,7 +2545,11 @@ function Main(){
     //Rerender Clock FN
     //Uclock, clockCheck = 0;
     useEffect(() => {
-        setTimeout(() => clockRenderQtn(), 900);
+        if (Uclock === 0){
+          console.log("testing");
+          setTimeout(() => clockRenderQtn(), 900);
+        }
+        
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
@@ -2581,21 +2587,6 @@ function Main(){
                       i === 1 ? 
                       <div className="EnemyImageBox">
                         <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? LunaticHit : ImageControlRoom.EnemyAttack ? LunaticAttack : ImageControlRoom.EnemyDead ? LunaticDead : Lunatic } alt={enemyStats[i].name} />
-                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
-                      </div> :
-                      i === 2 ? 
-                      <div className="EnemyImageBox">
-                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlipTwo` : `imgFlipTwo`} src={ImageControlRoom.EnemyOnHit ? RockerHit : ImageControlRoom.EnemyAttack ? RockerAttack : ImageControlRoom.EnemyDead ? RockerDead : Rocker } alt={enemyStats[i].name} />
-                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
-                      </div> :
-                      i === 3 ? 
-                      <div className="EnemyImageBox">
-                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlipTwo` : `imgFlipTwo`} src={ImageControlRoom.EnemyOnHit ? AmberniteHit : ImageControlRoom.EnemyAttack ? AmberniteAttack : ImageControlRoom.EnemyDead ? AmberniteDead : Ambernite } alt={enemyStats[i].name} />
-                          <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
-                      </div> :
-                      i === 4 ? 
-                      <div className="EnemyImageBox">
-                        <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate imgFlip` : `imgFlip`} src={ImageControlRoom.EnemyOnHit ? GhostringHit : ImageControlRoom.EnemyAttack ? GhostringAttack : ImageControlRoom.EnemyDead ? GhostringDead : Ghostring } alt={enemyStats[i].name} />
                           <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                       </div> :
                       i === 5 ? 
@@ -2657,13 +2648,6 @@ function Main(){
 
                   <div className="leveltextHUD">
                     <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
-                    {/* <p>Player Attack {userStats.attack}</p>
-                    <p>Player Defence {userStats.defence}</p>
-                    <p>Player Speed {userStats.speed}</p>
-                    <p>Player Hit Rate {userStats.hitRate}</p>
-                    <p>Player Dodge Rate {userStats.dodgeRate}</p>
-                    <p>Player Crit Rate {userStats.critRate}</p>
-                    <p>Player Exp {userStats.Experience}</p> */}
                     {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
