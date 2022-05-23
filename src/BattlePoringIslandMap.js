@@ -1294,7 +1294,7 @@ function Main(){
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
       //Rerender, Block or not block
@@ -1507,6 +1507,7 @@ function Main(){
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       clockCheck = 0;
+      Uclock = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
       dispatch(ResetUserTurnFn());
 
@@ -1515,7 +1516,7 @@ function Main(){
       //Audio SoundEffect
       audioUserBlock.play();
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       dispatch(UserIsBlockAnimationFn());
       dispatch(UserTurnBlockFn());
       // Text display
@@ -1524,6 +1525,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 70;
       dispatch(ResetUserTurnFn());
       setTimeout(() => dispatch(userClockDefendFn()), 300);
@@ -1540,7 +1542,7 @@ function Main(){
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
       Damage = 150;
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UserSkillFirstAidFn()), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use First Aid!Recover ' + Damage + ' hp </p>')
@@ -1548,6 +1550,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
       dispatch(ResetUserTurnFn());
       }
@@ -1562,7 +1565,7 @@ function Main(){
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
@@ -1688,6 +1691,7 @@ function Main(){
         })()
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -1704,7 +1708,7 @@ function Main(){
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
@@ -1829,6 +1833,7 @@ function Main(){
         })()
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -1847,7 +1852,7 @@ function Main(){
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
@@ -1948,6 +1953,7 @@ function Main(){
         })()
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -1963,7 +1969,7 @@ function Main(){
         Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       let Khit = Math.random();
       //Rerender, Block or not block
       (() => {
@@ -2081,6 +2087,7 @@ function Main(){
         })()
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -2096,12 +2103,13 @@ function Main(){
       audioSkillQuicken.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillQuickenFn(180)), 300);
       $('.storySpeech').append(`<p>Atlan use skill Quicken! Attack Speed has increase a period of time!</p>`)  
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
         dispatch(ResetUserTurnFn());
       }else{
@@ -2120,7 +2128,7 @@ function Main(){
         setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
         Damage = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
         //Rerender
-        setTimeout(() => (Uclock = 0), 300);
+        // setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
         // Text display
         $('.storySpeech').append('<p style="color:#3fff00;">Atlan use red potion! Recover ' + Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
@@ -2128,6 +2136,7 @@ function Main(){
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         if(SkillControlRoom['User'].UserLearnMasterItem === true){
           clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
         }else{
@@ -2144,7 +2153,7 @@ function Main(){
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
       Damage = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack)
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use orange potion! Recover ' + Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
@@ -2152,6 +2161,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       if(SkillControlRoom['User'].UserLearnMasterItem === true){
         clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
       }else{
@@ -2168,7 +2178,7 @@ function Main(){
         setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
         Damage = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
         //Rerender
-        setTimeout(() => (Uclock = 0), 300);
+        // setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
         // Text display
         $('.storySpeech').append('<p style="color:#3fff00;">Atlan use yellow potion! Recover ' + Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
@@ -2176,6 +2186,7 @@ function Main(){
         listResult.scrollTop = listResult.scrollHeight;
         // End turn
         clockCheck = 0;
+        Uclock = 0;
         if(SkillControlRoom['User'].UserLearnMasterItem === true){
           clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
         }else{
@@ -2192,7 +2203,7 @@ function Main(){
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
       Damage = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use white potion!Recover ' + Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
@@ -2200,6 +2211,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       if(SkillControlRoom['User'].UserLearnMasterItem === true){
         clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
       }else{
@@ -2216,7 +2228,7 @@ function Main(){
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
       Damage = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use anniversary cake! Recover ' + Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
@@ -2224,6 +2236,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       if(SkillControlRoom['User'].UserLearnMasterItem === true){
         clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
       }else{
@@ -2240,7 +2253,7 @@ function Main(){
       setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
       Damage = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit + userAttribute.BonusVit)), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use mastela fruit! Recover ' + Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) + ' hp </p>')
@@ -2248,6 +2261,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       if(SkillControlRoom['User'].UserLearnMasterItem === true){
         clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
       }else{
@@ -2261,7 +2275,7 @@ function Main(){
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseBluePotionFn(userAttribute.int + userAttribute.BonusInt)), 300);
       dispatch(UserOnSPHealAnimationFn(true));
       setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1000);
@@ -2272,6 +2286,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       if(SkillControlRoom['User'].UserLearnMasterItem === true){
         clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
       }else{
@@ -2291,7 +2306,7 @@ function Main(){
       Damage = userStats.maxHealth;
       SPHeal = userStats.maxSP;
       //Rerender
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseYggdrasilBerryFn()), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use Yggdrasil Berry!! HP SP fully recover! </p>')
@@ -2299,6 +2314,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
       clockCheck = 0;
+      Uclock = 0;
       if(SkillControlRoom['User'].UserLearnMasterItem === true){
         clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
       }else{
@@ -2308,7 +2324,7 @@ function Main(){
     }
     // Enemy AI
     const enemyDecisionQFn = () => {
-      setTimeout(() => (Uclock = 0), 300);
+      // setTimeout(() => (Uclock = 0), 300);
       Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       let Khit = Math.random();
       (() => {
@@ -2447,6 +2463,7 @@ function Main(){
               return setTimeout(() => dispatch(enemyClockDefendFn()), 300);
             default:
               clockCheck = 0;
+              Uclock = 0;
               clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
               return dispatch(ResetEnemyTurnFn());
             }
@@ -2455,6 +2472,7 @@ function Main(){
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       clockCheck = 0;
+      Uclock = 0;
       clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
       dispatch(ResetEnemyTurnFn());
     }
@@ -2521,7 +2539,9 @@ function Main(){
 
     // Longest Animation 1.2 = 0.3 onhit + 0.9 delay
     useEffect(() => {
+      if (Uclock === 0){
         setTimeout(() => clockBaseQtn(), 900);
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
