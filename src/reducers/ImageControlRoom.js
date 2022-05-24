@@ -172,6 +172,12 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 EnemyDead: action.Turn
             }
+        case 'ResetAllBattleMapFn':
+            return{
+                ...state,
+                EnemyDead: action.Turn,
+                UserIsDefend: false,
+            }
         default:
             return {
                 ...state,

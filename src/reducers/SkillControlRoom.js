@@ -184,6 +184,23 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserLearnMasterItem: action.learn
                 }
             }
+        case 'ResetAllBattleMapFn':
+            return {
+                ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyBlock: false,
+                    EnemyTurn: false,
+                },
+                User:{
+                    ...state['User'],
+                    userClockQuicken: 0,
+                    UserBlock: false,
+                    BattleItemScreen: false,
+                    BattleSkillScreen: false,
+                    UserTurn: false,
+                }
+            }
         default:
             return {
                     ...state

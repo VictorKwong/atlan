@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
 import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+//Battle Reset
+import { ResetAllBattleMapFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -1194,15 +1196,17 @@ function Main(){
                 Uclock = 0;
                 clockCheck = 0;
                 obtain = false;
-                dispatch(EnemyDeadAnimationFn(false));
-                dispatch(ResetEnemyTurnFn());
-                dispatch(ResetUserTurnFn());
-                dispatch(ResetEnemyTurnBlockFn());
-                dispatch(ResetUserTurnBlockFn());
-                dispatch(ResetUserIsBlockAnimationFn());
-                dispatch(ReturnUserInSelectSkillFn());
-                dispatch(ReturnUserInSelectItemFn());
-                dispatch(ResetUserSkillQuickenClockFn());
+                //Summerize: ResetAllBattleMapFn
+                dispatch(ResetAllBattleMapFn(false));
+                // dispatch(EnemyDeadAnimationFn(false));
+                // dispatch(ResetEnemyTurnFn());
+                // dispatch(ResetUserTurnFn());
+                // dispatch(ResetEnemyTurnBlockFn());
+                // dispatch(ResetUserTurnBlockFn());
+                // dispatch(ResetUserIsBlockAnimationFn());
+                // dispatch(ReturnUserInSelectSkillFn());
+                // dispatch(ReturnUserInSelectItemFn());
+                // dispatch(ResetUserSkillQuickenClockFn());
     }
     // LEVEL FUNCTION
     useEffect(() => {
@@ -2493,7 +2497,7 @@ function Main(){
               //Skill Quicken count
               dispatch(UserSkillQuickenClockTickFn());
               //testing
-              dispatch(EnemyAttackUserFn(13));
+              dispatch(EnemyAttackUserFn(9999));
 
               clockCheck = 1;
               dispatch(UserTurnFn());
@@ -2566,7 +2570,6 @@ function Main(){
     //Uclock, clockCheck = 0;
     useEffect(() => {
         if (Uclock === 0){
-          console.log("testing");
           setTimeout(() => clockRenderQtn(), 900);
         }
         
@@ -2790,7 +2793,7 @@ function Main(){
                           </figcaption>
                         </button>
                       </div>
-                      : SkillControlRoom['User'].UserTurn ? 
+                      : SkillControlRoom['User'].UserTurn && userStats.currentHealth > 0? 
                       <div className="userSkillBox">
                         <button className="goGoButton" onClick={() => userAttackEnemyButton()}>
                           <figcaption className="goGoButtonFig">
