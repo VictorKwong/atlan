@@ -201,6 +201,17 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserTurn: false,
                 }
             }
+        case 'UserBattleStatsFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserBlock: false,
+                    BattleSkillScreen: false,
+                    BattleItemScreen: false,
+                    userClockQuicken: state['User'].userClockQuicken - 1
+                }
+        }
         default:
             return {
                     ...state

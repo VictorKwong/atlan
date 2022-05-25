@@ -131,6 +131,7 @@ const ImageControlRoomReducer = (state = Fn, action) => {
                 UserIsDefend: true,
                 }
         case 'ResetUserIsBlockAnimationFn':
+        case 'UserBattleStatsFn':
             return {
                 ...state,
                 UserIsDefend: false,

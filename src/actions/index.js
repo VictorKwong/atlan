@@ -2326,6 +2326,12 @@ export const ResetAllBattleMapFn = (Turn) => {
         Turn: Turn
     };
 };
+//User Battle Fn
+export const UserBattleStatsFn = () => {
+    return {
+        type: 'UserBattleStatsFn',
+    };
+};
 
 
 export const TrainingLoadingScreenFn = () => {

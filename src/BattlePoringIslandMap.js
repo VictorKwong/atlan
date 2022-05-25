@@ -2490,12 +2490,14 @@ function Main(){
           switch (true) {
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) >= enemyStats[i].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
               //Reset All Block
-              dispatch(ResetUserIsBlockAnimationFn());
-              dispatch(ResetUserTurnBlockFn());
-              dispatch(ReturnUserInSelectSkillFn());
-              dispatch(ReturnUserInSelectItemFn());
-              //Skill Quicken count
-              dispatch(UserSkillQuickenClockTickFn());
+              // dispatch(ResetUserIsBlockAnimationFn());
+              // dispatch(ResetUserTurnBlockFn());
+              // dispatch(ReturnUserInSelectSkillFn());
+              // dispatch(ReturnUserInSelectItemFn());
+              // Skill Quicken count
+              // dispatch(UserSkillQuickenClockTickFn());
+              //ResetAllBattleStats
+              dispatch(UserBattleStatsFn());
               //testing
               dispatch(EnemyAttackUserFn(9999));
 
