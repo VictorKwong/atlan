@@ -1309,11 +1309,8 @@ function Main(){
           // CRIT RATE & BLOCKING, Crit rate can't dodge
           case(SkillControlRoom['Enemy'].EnemyBlock && (userStats.critRate - enemyStats[i].critResist >= Math.random())):
               //Audio SoundEffect
-              if (userStats.userWeapon === "Empty"){
-                audioEmptyHandHit.play();
-              }else{
-                audioHit.play();
-              }
+              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
+
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               dispatch(EnemyOnCritAnimationFn(true));
@@ -1355,11 +1352,7 @@ function Main(){
               }
           case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
               //Audio SoundEffect
-              if (userStats.userWeapon === "Empty"){
-                audioEmptyHandHit.play();
-              }else{
-                audioHit.play();
-              }
+              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
@@ -1402,11 +1395,7 @@ function Main(){
           // CRIT RATE
           case((userStats.critRate - enemyStats[i].critResist >= Math.random())):
               //Audio SoundEffect
-              if (userStats.userWeapon === "Empty"){
-                audioEmptyHandHit.play();
-              }else{
-                audioHit.play();
-              }
+              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               dispatch(EnemyOnCritAnimationFn(true));
@@ -1448,11 +1437,7 @@ function Main(){
               }
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
               //Audio SoundEffect
-              if (userStats.userWeapon === "Empty"){
-                audioEmptyHandHit.play();
-              }else{
-                audioHit.play();
-              }
+              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
               dispatch(EnemyOnHitAnimationFn());
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
@@ -1582,11 +1567,7 @@ function Main(){
             switch (true) {
               case(userStats.critRate - enemyStats[i].critResist >= Khit):
                 //Audio SoundEffect
-                if (userStats.userWeapon === "Empty"){
-                  setTimeout(() => audioEmptyHandHit.play() , 100)
-                }else{
-                  setTimeout(() => audioHit.play(), 100)
-                }
+                userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
@@ -1609,11 +1590,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                   //Audio SoundEffect
-                  if (userStats.userWeapon === "Empty"){
-                    setTimeout(() => audioEmptyHandHit.play() , 100)
-                  }else{
-                    setTimeout(() => audioHit.play(), 100)
-                  }
+                  userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1634,11 +1611,7 @@ function Main(){
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
               //Audio SoundEffect
-              if (userStats.userWeapon === "Empty"){
-                setTimeout(() => audioEmptyHandHit.play() , 100)
-              }else{
-                setTimeout(() => audioHit.play(), 100)
-              }
+              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
@@ -1664,11 +1637,7 @@ function Main(){
               case ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
                 Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 //Audio SoundEffect
-                if (userStats.userWeapon === "Empty"){
-                  setTimeout(() => audioEmptyHandHit.play() , 100)
-                }else{
-                  setTimeout(() => audioHit.play(), 100)
-                }
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1729,11 +1698,7 @@ function Main(){
             switch(true){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 //Audio SoundEffect
-                if (userStats.userWeapon === "Empty"){
-                  setTimeout(() => audioEmptyHandHit.play() , 100)
-                }else{
-                  setTimeout(() => audioHit.play(), 100)
-                }
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
@@ -1754,11 +1719,7 @@ function Main(){
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                   //Audio SoundEffect
-                  if (userStats.userWeapon === "Empty"){
-                    setTimeout(() => audioEmptyHandHit.play() , 100)
-                  }else{
-                    setTimeout(() => audioHit.play(), 100)
-                  }
+                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1783,11 +1744,7 @@ function Main(){
             switch(true){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                   //Audio SoundEffect
-                  if (userStats.userWeapon === "Empty"){
-                    setTimeout(() => audioEmptyHandHit.play() , 100)
-                  }else{
-                    setTimeout(() => audioHit.play(), 100)
-                  }
+                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
@@ -1808,11 +1765,7 @@ function Main(){
               default:
                 Math.sign((Damage - enemyStats[i].defence)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*0.8*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                   //Audio SoundEffect
-                  if (userStats.userWeapon === "Empty"){
-                    setTimeout(() => audioEmptyHandHit.play() , 100)
-                  }else{
-                    setTimeout(() => audioHit.play(), 100)
-                  }
+                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1990,11 +1943,7 @@ function Main(){
             switch(true){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                   //Audio SoundEffect
-                  if (userStats.userWeapon === "Empty"){
-                    setTimeout(() => audioEmptyHandHit.play() , 100)
-                  }else{
-                    setTimeout(() => audioHit.play(), 100)
-                  }
+                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
@@ -2016,11 +1965,7 @@ function Main(){
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                   //Audio SoundEffect
-                  if (userStats.userWeapon === "Empty"){
-                    setTimeout(() => audioEmptyHandHit.play() , 100)
-                  }else{
-                    setTimeout(() => audioHit.play(), 100)
-                  }
+                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2039,11 +1984,7 @@ function Main(){
           // ENEMY HIT
           case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
               //Audio SoundEffect
-              if (userStats.userWeapon === "Empty"){
-                setTimeout(() => audioEmptyHandHit.play() , 100)
-              }else{
-                setTimeout(() => audioHit.play(), 100)
-              }
+              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
