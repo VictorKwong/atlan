@@ -1317,6 +1317,8 @@ function Main(){
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defencebuffer)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5) : Damage = 1;
               if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1329,6 +1331,8 @@ function Main(){
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),i,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
               }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1358,6 +1362,8 @@ function Main(){
               Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
               
               if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Double Attack! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1370,6 +1376,8 @@ function Main(){
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),i,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
               }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Double Attack! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1402,6 +1410,8 @@ function Main(){
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
               Math.sign((Damage - enemyStats[i].defence)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5) : Damage = 1;
               if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1414,6 +1424,8 @@ function Main(){
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),i,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
               }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1442,6 +1454,8 @@ function Main(){
               setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
               Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
               if(SkillControlRoom['User'].UserLearnDoubleAttack === true && SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Double Attack! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
@@ -1454,6 +1468,8 @@ function Main(){
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),i,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
               }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 $('.storySpeech').append(`<p>Atlan Attack! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
                 $('.storySpeech').append(`<p>Double Attack! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
