@@ -8,7 +8,6 @@ import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn,
 import { GotoPoringIslandPath6Fn , GotoPayonCave1FPath2HiddenFn , GotoPayonCave2FPath9HiddenFn , GotoGeffenDungeon3FPath5HiddenFn } from './actions'
 
 import './css/mapAltanItem.css'
-// import useSound from 'use-sound';
 //WEAPON
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
