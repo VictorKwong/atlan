@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
 import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle Reset
-import { ResetAllBattleMapFn } from './actions';
+import { ResetAllBattleMapFn, UserBattleStatsFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -1523,24 +1523,24 @@ function Main(){
                 }
 
               case ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
-                Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
-                Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
-                  //Audio SoundEffect
-                  userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
-                  return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
-                }
+                  Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                  Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
+                    //Audio SoundEffect
+                    userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
+                  if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                    // Text display
+                    dispatch(UserOnLifeStealAnimationFn(true));
+                    setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                    $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                    //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                    return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
+                  }else{
+                    // Text display
+                    $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                    //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
+                    return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
+                  }
               default:
                   break;
               }
@@ -2390,6 +2390,9 @@ function Main(){
               // console.log('UserTurn is good')
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
+
+              //testing
+              dispatch(UserAttackEnemyFn(13,i));
               dispatch(ResetEnemyTurnBlockFn());
               clockCheck = 1;
               dispatch(EnemyTurnFn());
