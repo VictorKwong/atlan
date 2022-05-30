@@ -155,6 +155,11 @@ const userStatsReducer = (state = Fn, action) => {
                 ...state,
                 currentSP: state.currentSP - 180,
             }
+        case 'UserSkillKodokuFn':
+            return{
+                ...state,
+                currentSP: state.currentSP - 80,
+            }
         case 'UserLevelUpFn':
             return {
                 ...state,

@@ -107,6 +107,12 @@ export const UserSkillQuickenFn = () => {
         type: 'UserSkillQuickenFn',
     };
 };
+export const UserSkillKodokuFn = () => {
+    return {
+        type: 'UserSkillKodokuFn',
+    };
+};
+
 export const UserSkillQuickenClockTickFn = () => {
     return {
         type: 'UserSkillQuickenClockTickFn'
@@ -2332,7 +2338,12 @@ export const UserBattleStatsFn = () => {
         type: 'UserBattleStatsFn',
     };
 };
-
+//Emeny Battle Fn
+export const EnemyBattleStatsFn = () => {
+    return {
+        type: 'EnemyBattleStatsFn',
+    };
+};
 
 export const TrainingLoadingScreenFn = () => {
     return {

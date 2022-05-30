@@ -20,6 +20,7 @@ const Fn = {
     Enemy:{
         EnemyTurn: false,
         EnemyBlock: false,
+        EnemyPoison: 0,
     }
     
 }
@@ -118,6 +119,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     userClockQuicken: 0
                 }
             }
+        case 'UserSkillKodokuFn':
+            return{
+                ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyPoison: 2,
+            }
+        }
         case 'EnemyTurnFn':
             return {
                 ...state,
@@ -191,6 +200,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     ...state['Enemy'],
                     EnemyBlock: false,
                     EnemyTurn: false,
+                    EnemyPoison: 0,
                 },
                 User:{
                     ...state['User'],
@@ -211,6 +221,16 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     BattleItemScreen: false,
                     userClockQuicken: state['User'].userClockQuicken - 1
                 }
+        }
+        case 'EnemyBattleStatsFn':
+            return{
+                ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyBlock: false,
+                    EnemyTurn: true,
+                    EnemyPoison: state['Enemy'].EnemyPoison - 1,
+            }
         }
         default:
             return {

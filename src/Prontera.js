@@ -69,6 +69,7 @@ import Chocolate from './img/NPC/Chocolate.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillKodoku from './img/Skill/pr_kodoku.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
@@ -289,6 +290,8 @@ function StartMenu(){
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
               case((userStats.Level + 1) === 10):
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
+              case((userStats.Level + 1) === 13):
+                return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Kodoku<img src=${skillKodoku} alt="Kodoku" />!</p>`) 
               case((userStats.Level + 1) === 20):
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === 35):

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
 import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle Reset
-import { ResetAllBattleMapFn, UserBattleStatsFn } from './actions';
+import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
@@ -14,7 +14,8 @@ import { ReturnCheckPointFn } from './actions'
 //BOSS Defeat
 import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,BossBaphometDefeatFn } from './actions'
 //Skills T/F
-import { UserTurnBlockFn, ResetUserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillFirstAidFn , UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn} from './actions'
+import { UserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn } from './actions'
+//OBS: UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn, ResetUserTurnBlockFn
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
 //ITEMS
@@ -1266,6 +1267,8 @@ function Main(){
                  return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
               case((userStats.Level + 1) === 10):
                  return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
+              case((userStats.Level + 1) === 13):
+                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Kodoku<img src=${skillKodoku} alt="Kodoku" />!</p>`) 
               case((userStats.Level + 1) === 20):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === 35):
@@ -1740,7 +1743,27 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
     }
 
-
+    const userSkillKodokuButton = () => {
+      if (userStats.currentSP >= 80){
+      //Audio SoundEffect
+      audioPoison.play();
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      // setTimeout(() => (Uclock = 0), 300);
+      //Rerender, Block or not block
+      setTimeout(() => dispatch(UserSkillKodokuFn(80)), 300);
+      $('.storySpeech').append(`<p>Atlan use skill Kodoku! Enemy is become poison.</p>`)
+        // End turn
+        clockCheck = 0;
+        Uclock = 0;
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
+      }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+    }
 
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= 100){
@@ -2361,6 +2384,7 @@ function Main(){
       clockBarObject.enemyClockBar = clockBarObject.enemyClockBar - 100;
       dispatch(ResetEnemyTurnFn());
     }
+    
 
 
   const clockBaseQtn = () => {
@@ -2380,8 +2404,7 @@ function Main(){
               //ResetAllBattleStats
               dispatch(UserBattleStatsFn());
               //testing
-              dispatch(EnemyAttackUserFn(9999));
-
+              dispatch(EnemyAttackUserFn(1));
               clockCheck = 1;
               dispatch(UserTurnFn());
               $('.storySpeech').append('<p>--------- Atlan Turn ---------</p>')
@@ -2391,15 +2414,21 @@ function Main(){
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
 
-              //testing
-              dispatch(UserAttackEnemyFn(13,i));
-              dispatch(ResetEnemyTurnBlockFn());
-              clockCheck = 1;
-              dispatch(EnemyTurnFn());
+              // dispatch(ResetEnemyTurnBlockFn());
+              // dispatch(EnemyTurnFn());
+              dispatch(EnemyBattleStatsFn());
               $('.storySpeech').append(`<p style="color:red">--------- ${enemyStats[i].name} Turn ---------</p>\n`)
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
-              enemyDecisionQFn();
+              clockCheck = 1;
+              //Prevent Rerender
+              //testing
+              if (enemyStats[i].currentHealth - 13 > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
+                dispatch(UserAttackEnemyFn(13,i));
+                enemyDecisionQFn();
+              }else{
+                enemyDecisionQFn();
+              }
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
@@ -2589,7 +2618,15 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillMammoniteButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMammonite} alt="skillMammonite"/> Mam<span className="goGoButtonHide">monite</span></p>
-                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMammonite} alt="skillMammonite" /> <span className="goGoButtonHide">SP</span>:50</span>
+                              <span className={userStats.currentSP >= 50 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMammonite} alt="skillMammonite" /> <span className="goGoButtonHide">SP</span>:50</span>
+                            </figcaption>
+                          </button>
+                        : null}
+                        {userStats.Level >= 1 ? 
+                          <button className="goGoButtonSkills" onClick={() => userSkillKodokuButton()}>
+                            <figcaption className="goGoButtonFig">
+                              <p className="goGoButtonName"><img src={skillKodoku} alt="skillKodoku"/> Kodoku</p>
+                              <span className={userStats.currentSP >= 80 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillKodoku} alt="skillKodoku" /> <span className="goGoButtonHide">SP</span>:80</span>
                             </figcaption>
                           </button>
                         : null}
