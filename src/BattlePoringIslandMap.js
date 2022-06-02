@@ -2426,6 +2426,7 @@ function Main(){
               if (enemyStats[i].currentHealth - 13 > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
                 dispatch(UserAttackEnemyFn(13,i));
                 enemyDecisionQFn();
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received 13 damage</p>\n`)
               }else{
                 enemyDecisionQFn();
               }
@@ -2508,7 +2509,7 @@ function Main(){
                           <div key={Enemy.id}>
                             {i === Enemy.number ? 
                             <div className="EnemyImageBox">
-                              <img className={ImageControlRoom.EnemyOnHit ? `onHitAnimate ${Enemy.FlipCSS}` : `${Enemy.FlipCSS}`} src={ImageControlRoom.EnemyOnHit ? Enemy.GetHit : ImageControlRoom.EnemyAttack ? Enemy.GetAttack : ImageControlRoom.EnemyDead ? Enemy.GetDead : Enemy.GetStand } alt={enemyStats[i].name} />
+                              <img className={ImageControlRoom.EnemyOnHit && SkillControlRoom['Enemy'].EnemyPoison >= 1 ? `onHitAnimate imgPosion ${Enemy.FlipCSS}` : SkillControlRoom['Enemy'].EnemyPoison >= 1? `imgPosion ${Enemy.FlipCSS}` : ImageControlRoom.EnemyOnHit ? `onHitAnimate ${Enemy.FlipCSS}` : `${Enemy.FlipCSS}`} src={ImageControlRoom.EnemyOnHit ? Enemy.GetHit : ImageControlRoom.EnemyAttack ? Enemy.GetAttack : ImageControlRoom.EnemyDead ? Enemy.GetDead : Enemy.GetStand } alt={enemyStats[i].name} />
                               <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit) || ImageControlRoom.EnemyDodge ? `DamageResultNumberCrit` : ImageControlRoom.EnemyOnHit || ImageControlRoom.EnemyDodge ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Damage}</p>
                               <p className={(ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnCrit && ImageControlRoom.EnemyOnHitDouble) || (ImageControlRoom.EnemyDodge && ImageControlRoom.EnemyOnHitDouble) ? `DamageResultNumberCrit` : (ImageControlRoom.EnemyOnHit && ImageControlRoom.EnemyOnHitDouble) || (ImageControlRoom.EnemyDodge && ImageControlRoom.EnemyOnHitDouble) ? `DamageResultNumber` : `DamageResultNumberHide`}>{ImageControlRoom.EnemyDodge ? "MISS" : Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)}</p>
                               <p className={ImageControlRoom.EnemyOnReflectNumber ? `DamageResultNumber` : `DamageResultNumberHide`}>{Reflecting}</p>

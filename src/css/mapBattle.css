@@ -78,6 +78,10 @@
   height: auto;  
   filter: invert(0%) sepia(13%) saturate(341%) hue-rotate(243deg) brightness(82%) contrast(87%);
 }
+
+.imgPosion{
+  filter: grayscale(100%) brightness(70%) sepia(50%) hue-rotate(-100deg) saturate(500%) contrast(1);
+}
 .onHitAnimate{
   animation-name: OnHit;
   animation-duration: 1.0s;
