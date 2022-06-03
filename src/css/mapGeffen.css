@@ -93,6 +93,11 @@
   background-image: none;
 }
 
+.GeffenSoldier::before,
+.GeffenSoldier:hover::before{
+  background-image: none;
+}
+
 .GeffenWorldMap,
 .GeffenBase{
   position: relative;
@@ -111,6 +116,8 @@
 .GeffenTimer { grid-area: 1 / 2 / 2 / 3; }
 .GeffenGrandma { grid-area: 3 / 4 / 4 / 5; }
 .GeffenQuestBoard { grid-area: 3 / 5 / 4 / 6; }
+.GeffenSoldier { grid-area: 2 / 4 / 3 / 5; }
+
 @media (max-width: 1199px){
 
 }
@@ -133,7 +140,8 @@
   .GeffenTimer,
   .GeffenGrandma,
   .GeffenBase,
-  .GeffenQuestBoard{
+  .GeffenQuestBoard,
+  .GeffenSoldier{
     width:100%;
     min-height: 120px;
   }

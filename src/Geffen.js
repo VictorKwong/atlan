@@ -5,7 +5,7 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
-import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, ResetGeffenNPCFn } from './actions'
+import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, GeffenSoldierNPCFn, ResetGeffenNPCFn } from './actions'
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
@@ -59,6 +59,7 @@ import GeffenCitizen from './img/NPC/GeffenCitizen.gif'
 import GeffenTimer from './img/NPC/GeffenTimer.gif'
 import GeffenGrandma from './img/NPC/GeffenGrandma.gif'
 import QuestBoard from './img/NPC/QuestBoard.gif'
+import GeffenSoldier from './img/NPC/GeffenSoldier.gif'
 
 import audio13ThemeOfGeffen from './audio/13ThemeOfGeffen.mp3'
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
@@ -247,6 +248,10 @@ function StartMenu(){
           $('.storySpeech').html(`${npcSpeech['GeffenGrandma'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenGrandma'][0].name}</p>`)
           break;
+        case(npcControlRoom.GeffenSoldierNPC):
+          $('.storySpeech').html(`${npcSpeech['GeffenSoldier'][0].text}`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenSoldier'][0].name}</p>`)
+          break;
         default:
           $('.storySpeech').html('')  
           $('.storyCharacter').html('')
@@ -325,6 +330,7 @@ function StartMenu(){
             <button className="GeffenBase GeffenTimer" onClick={() =>{dispatch(GeffenTimerNPCFn()); changePlaceFadeAudio();}}><img src={GeffenTimer} alt="GeffenTimer"/></button>
             <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
             <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
+            <button className="GeffenBase GeffenSoldier" onClick={() =>{dispatch(GeffenSoldierNPCFn()); changePlaceFadeAudio();}}><img src={GeffenSoldier} alt="GeffenSoldier"/></button>
             <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>Geffen Dungeon Entrance</button>
 
             

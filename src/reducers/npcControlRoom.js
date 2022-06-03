@@ -595,6 +595,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenTimerNPC: true,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
+                GeffenSoldierNPC: false,
             }
         case 'GeffenGoblinYulaNPCFn':
             return{
@@ -605,6 +606,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
+                GeffenSoldierNPC: false,
             }
         case 'GeffenGoblinYulaNPCInterestFn':
             return{
@@ -625,6 +627,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
+                GeffenSoldierNPC: false,
             }
         case "GeffenGrandmaNPCFn":
             return {
@@ -635,6 +638,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: true,
                 GeffenQuestBoard: false,
+                GeffenSoldierNPC: false,
             }
         case "GeffenQuestBoardFn":
             return {
@@ -645,6 +649,18 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: true,
+                GeffenSoldierNPC: false,
+            }
+        case "GeffenSoldierNPCFn":
+            return {
+                ...state,
+                GeffenGoblinYulaNPC: false,
+                GeffenGoblinYulaNPCInterest: false,
+                GeffenCitizenNPC: false,
+                GeffenTimerNPC:false,
+                GeffenGrandmaNPC: false,
+                GeffenQuestBoard: false,
+                GeffenSoldierNPC: true,
             }
         case 'ResetGeffenNPCFn':
             return{
@@ -655,6 +671,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
+                GeffenSoldierNPC: false,
             }   
         //Inside BuySell Fn
         case 'DealerBuySuccessFn':

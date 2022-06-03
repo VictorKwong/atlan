@@ -267,6 +267,10 @@ const Fn = {
         name: 'GeffenGrandma',
         text: 'Atlan, I hope you notice to give it out all your best when there is a chance. Just give it all out with no regrets like me'
     }],
+    GeffenSoldier:[{
+        name: 'GeffenSoldier',
+        text: 'Please be mindful of Geffen Dungeon, the monster are cursed , brutal and aggressive. Be aware and prepared ^^!'
+    }],
     Fairy:[{
     //PoringIsland
         name: 'Fairy',

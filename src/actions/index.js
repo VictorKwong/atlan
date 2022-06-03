@@ -985,6 +985,11 @@ export const GeffenGrandmaNPCFn = () => {
         type: 'GeffenGrandmaNPCFn'
     };
 };
+export const GeffenSoldierNPCFn = () => {
+    return {
+        type: 'GeffenSoldierNPCFn'
+    };
+};
 export const ResetGeffenNPCFn = () => {
     return {
         type: 'ResetGeffenNPCFn'
