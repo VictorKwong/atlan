@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn} from './actions';
+import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn, GotoChallengeTowerFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
-import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn} from './actions'
+import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn } from './actions'
 import { cutsceneSixFn } from './actions'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
@@ -12,6 +12,7 @@ import Geffen from './Geffen'
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon3F from './GeffenDungeon3F'
 import PayonCave1F from './PayonCave1F'
+import ChallengeTower from './ChallengeTower'
 import StoryLineTwo from './StoryLineTwo'
 import StoryLineThree from './StoryLineThree'
 import StoryLineFour from './StoryLineFour'
@@ -112,6 +113,7 @@ function StartMenu(){
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
         screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F /> :
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
+        screenControlRoom.ChallengeTower ? <ChallengeTower />:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         screenControlRoom.cutsceneThree ? <StoryLineThree /> :
@@ -157,8 +159,9 @@ function StartMenu(){
                   screenControlRoom.storyLineSix ? 
                   () => {LoadingScreen0();}:
                   () => {dispatch(cutsceneSixFn());}}>Baphomet Gate💢</button> : null}
+                <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn())}}>RaidTower</button>
               </div>
-            }
+            }               
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>
               <p className="nameStatsHUD destextHUD">Atlan</p>

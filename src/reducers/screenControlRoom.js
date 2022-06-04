@@ -144,7 +144,8 @@ const Fn = {
     StatsChoice: false,
     SkillChoice: false,
     GuildChoice: false,
-
+    //Challenge Tower Late Game
+    UnlockChallengeTower:false,
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
@@ -443,6 +444,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GeffenDungeon4F: false,
                 PayonCave1F: false,
                 PayonCave2F: false,
+                ChallengeTower: false,
             }
             case 'GotoPronteraCastleFn':
                 return {
@@ -460,6 +462,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
+                    ChallengeTower: false,
                 }
             case 'GotoPoringIslandFn':
                 return {
@@ -477,8 +480,29 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
-                    UserLocation: "Path0"
+                    UserLocation: "Path0",
+                    ChallengeTower: false,
                 }
+            case 'GotoChallengeTowerFn':
+                return {
+                    ...state,
+                    WorldMap: false,
+                    BattlePoringIslandMap: false,
+                    Prontera: false,
+                    PronteraCastle: false,
+                    PronteraSouth: false,
+                    PoringIsland: false,
+                    Geffen: false,
+                    GeffenDungeon1F: false,
+                    GeffenDungeon2F: false,
+                    GeffenDungeon3F: false,
+                    GeffenDungeon4F: false,
+                    PayonCave1F: false,
+                    PayonCave2F: false,
+                    UserLocation: "Path0",
+                    ChallengeTower: true,
+                }
+
             case 'GotoWorldMapFn':
                 return {
                     ...state,
@@ -495,6 +519,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
+                    ChallengeTower: false,
                 }
             case 'GotoBattlePoringIslandMapFn':
                 return {
@@ -531,7 +556,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
-                    UserLocation: ""
+                    UserLocation: "",
+                    ChallengeTower: false,
                 }
             case 'GotoGeffenDungeon1FFn':
                 return {
@@ -549,7 +575,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
-                    UserLocation: ""
+                    UserLocation: "",
+                    ChallengeTower: false,
                 }
             case 'GotoGeffenDungeon2FFn':
                 return {
@@ -597,7 +624,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon3F: false,
                     PayonCave1F: true,
                     PayonCave2F: false,
-                    UserLocation: "PayonCavePath0"
+                    UserLocation: "PayonCavePath0",
+                    ChallengeTower: false,
                 }
             //careful PayonCave1F is base = true
             case 'GotoPayonCave2FFn':
@@ -1050,6 +1078,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     //TreasureUnlockPath
                     TreasurePath:"Path",
                     PoringIslandHouseMap: false,
+                    UnlockChallengeTower: true,
                 }
         default:
             return state;

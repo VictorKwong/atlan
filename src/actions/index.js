@@ -398,7 +398,11 @@ export const GotoPronteraCastleFn = () => {
     };
 };
 
-
+export const GotoChallengeTowerFn = () => {
+    return {
+        type: 'GotoChallengeTowerFn',
+    };
+};
 
 export const GotoPoringIslandFn = () => {
     return {
