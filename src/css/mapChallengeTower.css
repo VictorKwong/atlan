@@ -109,109 +109,13 @@
   border: 1px solid rgb(23, 218, 23);
   cursor: pointer;
 }
-.SmallIsland::before,
-.SmallIsland:hover::before{
-  background-image: url('../img/Background/SmallIlsland0.jpg');
+.GoldenThiefBug::before,
+.GoldenThiefBug:hover::before{
+  background-image: url('../img/Background/ChallengeTower1.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
-.SmallIsland1::before,
-.SmallIsland1:hover::before{
-  background-image: url('../img/Background/SmallIlsland1.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.SmallIsland2::before,
-.SmallIsland2:hover::before{
-  background-image: url('../img/Background/SmallIlsland2.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-.SmallIsland3Secret::before,
-.SmallIsland3Secret:hover::before{
-  background-image: url('../img/Background/SmallIlsland2Secret.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.SmallIsland3::before,
-.SmallIsland3:hover::before{
-  background-image: url('../img/Background/SmallIlsland3.jpg');
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: cover;
-}
-.SmallIsland4::before,
-.SmallIsland4:hover::before{
-  background-image: url('../img/Background/SmallIlslandBridge.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.SmallIsland5::before,
-.SmallIsland5:hover::before{
-  background-image: url('../img/Background/SmallIlsland5.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-.SmallIsland5B::before,
-.SmallIsland5B:hover::before{
-  background-image: url('../img/Background/SmallIlsland5B.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-
-
-.TreasureBoxPoringIsland::before,
-.TreasureBoxPoringIsland:hover::before{
-  background-image: url('../img/Background/TreasureBoxPoringIsland1.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.TreasureBoxPoringIsland2::before,
-.TreasureBoxPoringIsland2:hover::before{
-  background-image: url('../img/Background/TreasureBoxPoringIsland2.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.BossTreasureBoxPoringIsland::before,
-.BossTreasureBoxPoringIsland:hover::before{
-  background-image: url('../img/Background/BossTreasureBoxPoringIsland.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.SmallIslandBridgeHidden1::before,
-.SmallIslandBridgeHidden1:hover::before{
-  background-image: url('../img/Background/SmallIslandPathBridgeHidden1.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.SmallIslandBridgeHidden2::before,
-.SmallIslandBridgeHidden2:hover::before{
-  background-image: url('../img/Background/SmallIslandPathBridgeHidden2.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.SmallIslandBridgeHiddenNPC::before,
-.SmallIslandBridgeHiddenNPC:hover::before{
-  background-image: url('../img/Background/SmallIslandBridgeHiddenNPC.jpg');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-
-
 
 .WorldMap,
 .ChallengeTowerBase,
@@ -266,6 +170,7 @@
 }
 
 .WorldMap { grid-area: 5 / 2 / 6 / 3; }
+.GoldenThiefBug { grid-area: 4 / 1 / 5 / 2; }
 
 
 @media (max-width: 1199px){
@@ -283,58 +188,26 @@
     align-items: center;
     padding-top: 40px;
   }
-  .WorldMap,
-  .SmallIslandPath0,
-  .SmallIslandPath1,
-  .SmallIslandPath2,
-  .SmallIslandPath2Secret,
-  .SmallIslandPathBridge,
-  .SmallIslandPathBoss,
-  .BossTreasureBoxPoringIsland,
-  /* Hidden Passage */
-  .SmallIslandPathBridgeHidden1,
-  .SmallIslandPathBridgeHidden2,
-  .TreasureBoxPoringIsland,
-  .TreasureBoxPoringIsland2,
-  .SmallIsland{
+  .WorldMap{
     width:100%;
     min-height:50px;
   }
-  .SmallIslandPathBridgeHiddenNPC{
-    width:100%;
-    min-height:120px;
-  }
 
-  .WorldMap:active,
-  .SmallIslandPath0:active,
-  .SmallIslandPath1:active,
-  .SmallIslandPath2:active,
-  .SmallIslandPath2Secret:active,
-  .SmallIslandPathBridge:active,
-  .SmallIslandPathBoss:active,
-  .BossTreasureBoxPoringIsland:active,
-  /* Hidden Passage */
-  .SmallIslandPathBridgeHidden1:active,
-  .SmallIslandPathBridgeHidden2:active,
-  .SmallIslandPathBridgeHiddenNPC:active,
-  .TreasureBoxPoringIsland:active,
-  .TreasureBoxPoringIsland2:active
-  .PoringIslandMapTitle:active,
-  .SmallIsland:active{
+  .WorldMap:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;
   }
-  .PoringIslandMapTitle{
+  .ChallengeTowerMapTitle{
     font-size: 24px;
     text-align: center;
   }
 }
 @media (max-width: 467px){
-  .PoringIslandMapTitle{
+  .ChallengeTowerMapTitle{
     font-size: 20px;
   }
-  .PoringIslandMap{
+  .ChallengeTowerMap{
     padding-top: 50px;
   }
 }

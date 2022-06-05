@@ -79,6 +79,8 @@ const Fn = {
     CursedRuby:1,
     Diamond:1,
     EyeOfHellion:1,
+    //ChallengeTower
+    Gold:1,
 
 
 
@@ -561,7 +563,12 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.enemyZeny
             }
-
+        case 'WinGoldFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Gold: state.Gold + action.Number,
+            }
         //Combat
         case 'UserSkillMammoniteEnemyFn':
             return{

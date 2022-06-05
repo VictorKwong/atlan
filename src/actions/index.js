@@ -1796,6 +1796,16 @@ export const WinEyeOfHellionFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//GoldenThiefBug
+export const WinGoldFn = (Zeny,Num) => {
+    return {
+        type: 'WinGoldFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+
+
 //PORING ISLAND CHEST
 export const OpenChest1Fn = () => {
     return {

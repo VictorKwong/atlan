@@ -41,6 +41,7 @@ import { WinCursedRubyFn } from './actions'
 import { WinDiamondFn } from './actions'
 import { WinEyeOfHellionFn } from './actions'
 import { LordKahosHornFn } from './actions'
+import { WinGoldFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -186,6 +187,11 @@ import Baphomet from './img/Monster/Baphomet.gif'
 import BaphometHit from './img/Monster/BaphometHit.png'
 import BaphometAttack from './img/Monster/BaphometAttack.gif'
 import BaphometDead from './img/Monster/BaphometDead.png'
+
+import GoldenThiefBug from './img/Monster/GoldenThiefBug.gif'
+import GoldenThiefBugHit from './img/Monster/GoldenThiefBugHit.png'
+import GoldenThiefBugAttack from './img/Monster/GoldenThiefBugAttack.gif'
+import GoldenThiefBugDead from './img/Monster/GoldenThiefBugDead.png'
 
 //SKILLS
 import skillFirstAid from './img/Skill/nv_firstaid.gif'
@@ -509,6 +515,8 @@ import EyeOfHellion from './img/Etc/HellionRevenant_EyeOfHellion80.gif'
 
 import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
 
+import Gold from './img/Etc/GoldenThiefBug_Gold100.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioLittleFighter2ThemeSong from './audio/LittleFighter2ThemeSong.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -612,6 +620,7 @@ const EtcBox = [
   {id: 38, num: 23, name: "Diamond", img: Diamond , percent: 0.1, Gain: WinDiamondFn},
   {id: 39, num: 24, name: "Eye Of Hellion", img: EyeOfHellion , percent: 0.8, Gain: WinEyeOfHellionFn},
   {id: 40, num: 25, name: "Lord Kaho`s Horn", img: LordKahosHorn , percent: 1, Gain: LordKahosHornFn},
+  {id: 41, num: 26, name: "Gold", img: Gold , percent: 1, Gain: WinGoldFn},
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -699,6 +708,7 @@ const EnemyBox = [
   {id:23, number:23, FlipCSS: 'imgFlipTwo', GetHit:WraithdeadHit, GetAttack:WraithdeadAttack, GetDead: WraithdeadDead, GetStand: Wraithdead},
   {id:24, number:24, FlipCSS: 'imgFlipTwo', GetHit:HellionRevenantHit, GetAttack:HellionRevenantAttack, GetDead: HellionRevenantDead, GetStand: HellionRevenant},
   {id:25, number:25, FlipCSS: 'imgFlipTwo', GetHit:BaphometHit, GetAttack:BaphometAttack, GetDead: BaphometDead, GetStand: Baphomet},
+  {id:26, number:26, FlipCSS: 'imgFlipTwo', GetHit:GoldenThiefBugHit, GetAttack:GoldenThiefBugAttack, GetDead: GoldenThiefBugDead, GetStand: GoldenThiefBug},
 ]
 
 function Main(){
@@ -1172,6 +1182,8 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Hellionrevenant"));
             case ((questControlRoom.QuestDialog).indexOf("Baphomet") > -1 && i === 25):
               return dispatch(ProgressQuestDialogFn("Baphomet"));
+            case ((questControlRoom.QuestDialog).indexOf("GoldenThiefBug") > -1 && i === 26):
+              return dispatch(ProgressQuestDialogFn("GoldenThiefBug"));
             default:
               return null;
           }

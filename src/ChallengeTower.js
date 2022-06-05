@@ -164,11 +164,11 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [npcControlRoom, screenControlRoom])
 
-  const LoadingScreen0 = () => {
-    dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1",Math.round(Math.random()))), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
-  }
+const LoadingScreen0 = () => {
+  dispatch(BattleLoadingScreenFn());
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath1",26)), 1000);
+  setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+}
 
 
     return(
@@ -209,7 +209,9 @@ useEffect(() => {
               <button className="ReturnHUDBugFix"></button>
               <h3 className="ChallengeTowerMapTitle">Challenge Tower</h3>
               {/* World Map, Reset Path Fn Optional dispatch(ReturnPoringIslandPathFn());*/}
-              <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn()); dispatch(ReturnPoringIslandPathFn());} }>ToWorldMap</button>
+              <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} }>ToWorldMap</button>
+
+              <button className="ChallengeTowerBase GoldenThiefBug" onClick={() =>{LoadingScreen0(); changeMapFadeAudio();}}>Golden Stage 1</button>
             </div>
             }
             <div className="StoryHUD">

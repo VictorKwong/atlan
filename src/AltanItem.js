@@ -75,6 +75,7 @@ import RedGemstone from './img/Etc/Wraith_RedGemstone10.gif'
 import CursedRuby from './img/Etc/Doppelganger_CursedRuby80.gif'
 import Diamond from './img/Etc/WraithDead_Diamond10.gif'
 import EyeOfHellion from './img/Etc/HellionRevenant_EyeOfHellion80.gif'
+import Gold from './img/Etc/GoldenThiefBug_Gold100.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
@@ -167,6 +168,7 @@ function StartMenu(){
       {id:1031, Img:CursedRuby, name:"Cursed Ruby", itemCheck:userGoldItem.CursedRuby},
       {id:1032, Img:Diamond, name:"Diamond", itemCheck:userGoldItem.Diamond},
       {id:1033, Img:EyeOfHellion, name:"Eye Of Hellion", itemCheck:userGoldItem.EyeOfHellion},
+      {id:1034, Img:Gold, name:"Gold", itemCheck:userGoldItem.Gold},
       
       
 
