@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.856265d7.css",
-    "main.js": "/atlan/static/js/main.856d4846.js",
+    "main.css": "/atlan/static/css/main.792858cb.css",
+    "main.js": "/atlan/static/js/main.3956240d.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -34,6 +34,7 @@
     "static/media/GeffenDungeon4F1.jpg": "/atlan/static/media/GeffenDungeon4F1.7b51683f2a1e3e0d8a79.jpg",
     "static/media/PoringIslandChest1.png": "/atlan/static/media/PoringIslandChest1.292ed3e8ee72bd4a5596.png",
     "static/media/FinalBoss10.png": "/atlan/static/media/FinalBoss10.d87df199764656b07acb.png",
+    "static/media/ChallengeTower.jpg": "/atlan/static/media/ChallengeTower.5cc918b83b431f036e47.jpg",
     "static/media/PayonCave2FCave1.jpg": "/atlan/static/media/PayonCave2FCave1.ab1cb38a557cd4bad840.jpg",
     "static/media/GeffenDungeon1F4.jpg": "/atlan/static/media/GeffenDungeon1F4.f5e8522bfbddf7dd41c6.jpg",
     "static/media/PoringIsland.jpg": "/atlan/static/media/PoringIsland.cde8b3ad71b8d3bac6bd.jpg",
@@ -93,6 +94,9 @@
     "static/media/UserBlock.mp3": "/atlan/static/media/UserBlock.133e1e13d82ad0d0ef05.mp3",
     "static/media/HealSoundEffect.mp3": "/atlan/static/media/HealSoundEffect.d0bcc25625415bc716fb.mp3",
     "static/media/SmallIlsland2.jpg": "/atlan/static/media/SmallIlsland2.1310a5c42ca85735e5c0.jpg",
+    "static/media/PoisonSoundEffect.mp3": "/atlan/static/media/PoisonSoundEffect.2b643262e5f173785696.mp3",
+    "static/media/ChallengeTower2.jpg": "/atlan/static/media/ChallengeTower2.6c633c0ddadedd3a57c2.jpg",
+    "static/media/ChallengeTower1.jpg": "/atlan/static/media/ChallengeTower1.ed794afceb58beb31697.jpg",
     "static/media/PayonCave2F3.jpg": "/atlan/static/media/PayonCave2F3.539cdc53444f89b44bb8.jpg",
     "static/media/PayonCave3F3.jpg": "/atlan/static/media/PayonCave3F3.a4d1390dc2757a40495f.jpg",
     "static/media/PayonCave2F4.jpg": "/atlan/static/media/PayonCave2F4.70de07a3bebce0ef1507.jpg",
@@ -166,7 +170,9 @@
     "static/media/UserAttackPostEmptyHand1.gif": "/atlan/static/media/UserAttackPostEmptyHand1.20e470ad47dffbde7f01.gif",
     "static/media/UserAttackPostBastardSword1_Helm.gif": "/atlan/static/media/UserAttackPostBastardSword1_Helm.8f4f95836f61f01a27e1.gif",
     "static/media/KafraEmployee.gif": "/atlan/static/media/KafraEmployee.26ee92490de3ab46a495.gif",
+    "static/media/DrakeAttack.gif": "/atlan/static/media/DrakeAttack.664ce8d21569e2fc7ecf.gif",
     "static/media/ArcherskeletonAttack.gif": "/atlan/static/media/ArcherskeletonAttack.50d40389ac55a6f6ebfd.gif",
+    "static/media/Drake.gif": "/atlan/static/media/Drake.90765f363fc690a1d213.gif",
     "static/media/UserBattlePostVioletFear1.gif": "/atlan/static/media/UserBattlePostVioletFear1.1c3d76b93b88e695d08e.gif",
     "static/media/GiantWhisper.gif": "/atlan/static/media/GiantWhisper.6c69197c04cf4e980f69.gif",
     "static/media/HellionRevenantAttack.gif": "/atlan/static/media/HellionRevenantAttack.4bed572a5e41c49def39.gif",
@@ -222,12 +228,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.856265d7.css.map": "/atlan/static/css/main.856265d7.css.map",
-    "main.856d4846.js.map": "/atlan/static/js/main.856d4846.js.map",
+    "main.792858cb.css.map": "/atlan/static/css/main.792858cb.css.map",
+    "main.3956240d.js.map": "/atlan/static/js/main.3956240d.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.856265d7.css",
-    "static/js/main.856d4846.js"
+    "static/css/main.792858cb.css",
+    "static/js/main.3956240d.js"
   ]
 }
