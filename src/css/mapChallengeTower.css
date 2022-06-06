@@ -77,7 +77,7 @@
   overflow-x: hidden;
 }
 
-.WorldMap::before,
+.ChallengeWorldMap::before,
 .ChallengeTowerBase::before,
 .TreasureBoxPoringIsland::before,
 .BossTreasureBoxPoringIsland::before{
@@ -96,7 +96,7 @@
   transition: opacity 0.3s ease-in-out;
   border: solid #7CAFFF 1px;
 }
-.WorldMap:hover::before,
+.ChallengeWorldMap:hover::before,
 .ChallengeTowerBase:hover::before,
 .TreasureBoxPoringIsland:hover::before,
 .BossTreasureBoxPoringIsland:hover::before{
@@ -123,7 +123,7 @@
   background-position: center;
   background-size: cover;
 }
-.WorldMap,
+.ChallengeWorldMap,
 .ChallengeTowerBase,
 .TreasureBoxPoringIsland,
 .BossTreasureBoxPoringIsland{
@@ -175,7 +175,7 @@
   opacity: 1;
 }
 
-.WorldMap { grid-area: 5 / 2 / 6 / 3; }
+.ChallengeWorldMap { grid-area: 5 / 2 / 6 / 3; }
 .GoldenThiefBug { grid-area: 4 / 1 / 5 / 2; }
 .Drake { grid-area: 3 / 2 / 4 / 3; }
 
@@ -195,12 +195,12 @@
     align-items: center;
     padding-top: 40px;
   }
-  .WorldMap{
+  .ChallengeWorldMap{
     width:100%;
     min-height:50px;
   }
 
-  .WorldMap:active{
+  .ChallengeWorldMap:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;
