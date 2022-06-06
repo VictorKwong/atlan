@@ -1533,26 +1533,74 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
-                }
+                  if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                    // Text display
+                    dispatch(UserOnLifeStealAnimationFn(true));
+                    setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                    $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                    //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                    return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
+                  }else{
+                    // Text display
+                    $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                    // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                    return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
+                  }
 
               case ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
                   Math.sign((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                   Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                     //Audio SoundEffect
                     userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
+                    if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                      // Text display
+                      dispatch(UserOnLifeStealAnimationFn(true));
+                      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                      $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                      $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                      //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                      return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
+                    }else{
+                      // Text display
+                      $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                      //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
+                      return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
+                    }
+              default:
+                  break;
+              }
+          break;
+          // ENEMY HIT
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+              //Audio SoundEffect
+            userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE
+            switch (true) {
+              case (userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                  if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                    // Text display
+                    dispatch(UserOnLifeStealAnimationFn(true));
+                    setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                    $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                    $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                    //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                    return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
+                  }else{
+                    // Text display
+                    $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                    // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                    return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
+                  }
+              case ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
+                Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                //Audio SoundEffect
+                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                   if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                     // Text display
                     dispatch(UserOnLifeStealAnimationFn(true));
@@ -1568,55 +1616,9 @@ function Main(){
                     return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
                   }
               default:
-                  break;
-              }
-          // ENEMY HIT
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
-              //Audio SoundEffect
-              userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
-            dispatch(EnemyOnHitAnimationFn());
-            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE
-            switch (true) {
-              case (userStats.critRate - enemyStats[i].critResist >= Math.random()):
-                dispatch(EnemyOnCritAnimationFn(true));
-                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
-                }
-              case ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Math.random()):
-                Math.sign((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
-                //Audio SoundEffect
-                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk     
-                  return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
-                }
-              default:
                 break;
               }
+          break;
           // ENEMY DODGE
           default:
             //Audio SoundEffect

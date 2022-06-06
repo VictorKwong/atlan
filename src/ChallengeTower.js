@@ -2,16 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoTreasurePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
-//CHEST
-import { Chest1VisitRepeatFn , Chest2VisitRepeatFn, ChestBoss1VisitRepeatFn} from './actions'
-//HOUSE
-import { RedPotionFn } from './actions'
 //Loading Screen
-import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreenDelayFn} from './actions'
-//PATH
-import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
-//NPC
-import { PoringIslandBridgeNPCFn, PoringIslandFairyNPC1Fn, PoringIslandFairyNPC2Fn, ResetPoringIslandNPCFn } from './actions'
+import { BattleLoadingScreenFn } from './actions'
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //cutscene

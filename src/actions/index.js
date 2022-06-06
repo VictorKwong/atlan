@@ -1804,6 +1804,14 @@ export const WinGoldFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//Drake
+export const WinAmethystFn = (Zeny,Num) => {
+    return {
+        type: 'WinAmethystFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 
 
 //PORING ISLAND CHEST
