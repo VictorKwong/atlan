@@ -116,7 +116,13 @@
   background-position: center;
   background-size: cover;
 }
-
+.Drake::before,
+.Drake:hover::before{
+  background-image: url('../img/Background/ChallengeTower2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .WorldMap,
 .ChallengeTowerBase,
 .TreasureBoxPoringIsland,
@@ -171,6 +177,7 @@
 
 .WorldMap { grid-area: 5 / 2 / 6 / 3; }
 .GoldenThiefBug { grid-area: 4 / 1 / 5 / 2; }
+.Drake { grid-area: 3 / 2 / 4 / 3; }
 
 
 @media (max-width: 1199px){

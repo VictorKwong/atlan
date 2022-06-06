@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, GotoChallengeTowerFn} from './actions';
 //Battle Reset
 import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
@@ -41,7 +41,7 @@ import { WinCursedRubyFn } from './actions'
 import { WinDiamondFn } from './actions'
 import { WinEyeOfHellionFn } from './actions'
 import { LordKahosHornFn } from './actions'
-import { WinGoldFn } from './actions'
+import { WinGoldFn , WinAmethystFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -192,6 +192,11 @@ import GoldenThiefBug from './img/Monster/GoldenThiefBug.gif'
 import GoldenThiefBugHit from './img/Monster/GoldenThiefBugHit.png'
 import GoldenThiefBugAttack from './img/Monster/GoldenThiefBugAttack.gif'
 import GoldenThiefBugDead from './img/Monster/GoldenThiefBugDead.png'
+
+import Drake from './img/Monster/Drake.gif'
+import DrakeHit from './img/Monster/DrakeHit.png'
+import DrakeAttack from './img/Monster/DrakeAttack.gif'
+import DrakeDead from './img/Monster/DrakeDead.png'
 
 //SKILLS
 import skillFirstAid from './img/Skill/nv_firstaid.gif'
@@ -517,6 +522,8 @@ import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
 
 import Gold from './img/Etc/GoldenThiefBug_Gold100.gif'
 
+import Amethyst from './img/Etc/Drake_Amethyst100.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioLittleFighter2ThemeSong from './audio/LittleFighter2ThemeSong.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -621,6 +628,7 @@ const EtcBox = [
   {id: 39, num: 24, name: "Eye Of Hellion", img: EyeOfHellion , percent: 0.8, Gain: WinEyeOfHellionFn},
   {id: 40, num: 25, name: "Lord Kaho`s Horn", img: LordKahosHorn , percent: 1, Gain: LordKahosHornFn},
   {id: 41, num: 26, name: "Gold", img: Gold , percent: 1, Gain: WinGoldFn},
+  {id: 42, num: 27, name: "Amethyst", img: Amethyst , percent: 1, Gain: WinAmethystFn},
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -709,6 +717,7 @@ const EnemyBox = [
   {id:24, number:24, FlipCSS: 'imgFlipTwo', GetHit:HellionRevenantHit, GetAttack:HellionRevenantAttack, GetDead: HellionRevenantDead, GetStand: HellionRevenant},
   {id:25, number:25, FlipCSS: 'imgFlipTwo', GetHit:BaphometHit, GetAttack:BaphometAttack, GetDead: BaphometDead, GetStand: Baphomet},
   {id:26, number:26, FlipCSS: 'imgFlipTwo', GetHit:GoldenThiefBugHit, GetAttack:GoldenThiefBugAttack, GetDead: GoldenThiefBugDead, GetStand: GoldenThiefBug},
+  {id:27, number:27, FlipCSS: 'imgFlipTwo', GetHit:DrakeHit, GetAttack:DrakeAttack, GetDead: DrakeDead, GetStand: Drake},
 ]
 
 function Main(){
@@ -1184,6 +1193,8 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Baphomet"));
             case ((questControlRoom.QuestDialog).indexOf("GoldenThiefBug") > -1 && i === 26):
               return dispatch(ProgressQuestDialogFn("GoldenThiefBug"));
+            case ((questControlRoom.QuestDialog).indexOf("Drake") > -1 && i === 27):
+              return dispatch(ProgressQuestDialogFn("Drake"));
             default:
               return null;
           }
@@ -2767,8 +2778,11 @@ function Main(){
                           i <= 22 ?
                           () =>{dispatch(GotoGeffenDungeon3FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
                           i <= 24 ?
-                          () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:                           i <= 25 ?
-                          () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
+                          () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
+                          i <= 25 ?
+                          () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
+                          i <= 27 ?
+                          () =>{dispatch(GotoChallengeTowerFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
                         }>
                           <figcaption className="goGoButtonFig">
                             <p className="goGoButtonName">Run</p>
@@ -2807,7 +2821,9 @@ function Main(){
                 i <= 24 ?
                 () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : 
                 i <= 25 ?
-                () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
+                () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
+                i <= 27 ?
+                () =>{dispatch(GotoChallengeTowerFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
               }>Goto CheckPoint</button>
             </div> 
             : enemyStats[i].currentHealth <= 0 && clockCheck === 1? 
@@ -2837,7 +2853,9 @@ function Main(){
                 i <= 24 ?
                 () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} : 
                 i <= 25 ?
-                () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :  null
+                () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
+                i <= 27 ?
+                () =>{dispatch(GotoChallengeTowerFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :  null
                 }>Press to Continue</button>
             </div> : null}
 

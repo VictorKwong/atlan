@@ -495,6 +495,23 @@ const Fn = [
         Zeny: (2000 + Math.floor(Math.random() * 50)),
         enemyClockDefend: false,
     },
+    {
+        name: 'Drake',
+        level: 10,
+        maxHealth: 1000, //2000
+        currentHealth: 1000,
+        attack: 60,
+        defence: 19,
+        defencebuffer: 25, //+6
+        speed: 7,
+        hitRate: 0.9,
+        dodgeRate: 0.10,
+        critRate: 0.05,
+        critResist: 0.05,
+        Experience: 500,
+        Zeny: (2000 + Math.floor(Math.random() * 50)),
+        enemyClockDefend: false,
+    },
 ]
 
 const enemyStatsReducer = (state = Fn, action) => {

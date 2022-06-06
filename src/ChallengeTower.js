@@ -169,6 +169,12 @@ const LoadingScreen0 = () => {
   setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath1",26)), 1000);
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
+const LoadingScreen1 = () => {
+  dispatch(BattleLoadingScreenFn());
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath2",27)), 1000);
+  setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+}
+
 
 
     return(
@@ -210,8 +216,8 @@ const LoadingScreen0 = () => {
               <h3 className="ChallengeTowerMapTitle">Challenge Tower</h3>
               {/* World Map, Reset Path Fn Optional dispatch(ReturnPoringIslandPathFn());*/}
               <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} }>ToWorldMap</button>
-
               <button className="ChallengeTowerBase GoldenThiefBug" onClick={() =>{LoadingScreen0(); changeMapFadeAudio();}}>Golden Stage 1</button>
+              <button className="ChallengeTowerBase Drake" onClick={() =>{LoadingScreen1(); changeMapFadeAudio();}}>Priate Stage 2</button>
             </div>
             }
             <div className="StoryHUD">
