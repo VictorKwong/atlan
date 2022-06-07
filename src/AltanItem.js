@@ -77,6 +77,8 @@ import Diamond from './img/Etc/WraithDead_Diamond10.gif'
 import EyeOfHellion from './img/Etc/HellionRevenant_EyeOfHellion80.gif'
 import Gold from './img/Etc/GoldenThiefBug_Gold100.gif'
 import Amethyst from './img/Etc/Drake_Amethyst100.gif'
+import Tongue from './img/Etc/Phreeoni_Tongue100.gif'
+import AntJaw from './img/Etc/Phreeoni_AntJaw90.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
@@ -171,6 +173,8 @@ function StartMenu(){
       {id:1033, Img:EyeOfHellion, name:"Eye Of Hellion", itemCheck:userGoldItem.EyeOfHellion},
       {id:1034, Img:Gold, name:"Gold", itemCheck:userGoldItem.Gold},
       {id:1035, Img:Amethyst, name:"Amethyst", itemCheck:userGoldItem.Amethyst},
+      {id:1036, Img:Tongue, name:"Tongue", itemCheck:userGoldItem.Tongue},
+      {id:1037, Img:AntJaw, name:"AntJaw", itemCheck:userGoldItem.AntJaw},
       
       
 

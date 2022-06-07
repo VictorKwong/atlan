@@ -1812,7 +1812,21 @@ export const WinAmethystFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
-
+//Phreeoni
+export const WinTongueFn = (Zeny,Num) => {
+    return {
+        type: 'WinTongueFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinAntJawFn = (Zeny,Num) => {
+    return {
+        type: 'WinAntJawFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 
 //PORING ISLAND CHEST
 export const OpenChest1Fn = () => {

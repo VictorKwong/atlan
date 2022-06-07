@@ -41,7 +41,7 @@ import { WinCursedRubyFn } from './actions'
 import { WinDiamondFn } from './actions'
 import { WinEyeOfHellionFn } from './actions'
 import { LordKahosHornFn } from './actions'
-import { WinGoldFn , WinAmethystFn } from './actions'
+import { WinGoldFn , WinAmethystFn, WinTongueFn, WinAntJawFn } from './actions'
 //PATH UNLOCK
 import { GotoPoringIslandPath1Fn, GotoPoringIslandPath2Fn } from './actions'
 import { GotoPoringIslandPath3Fn } from './actions'
@@ -197,6 +197,11 @@ import Drake from './img/Monster/Drake.gif'
 import DrakeHit from './img/Monster/DrakeHit.png'
 import DrakeAttack from './img/Monster/DrakeAttack.gif'
 import DrakeDead from './img/Monster/DrakeDead.png'
+
+import Phreeoni from './img/Monster/Phreeoni.gif'
+import PhreeoniHit from './img/Monster/PhreeoniHit.png'
+import PhreeoniAttack from './img/Monster/PhreeoniAttack.gif'
+import PhreeoniDead from './img/Monster/PhreeoniDead.png'
 
 //SKILLS
 import skillFirstAid from './img/Skill/nv_firstaid.gif'
@@ -524,6 +529,9 @@ import Gold from './img/Etc/GoldenThiefBug_Gold100.gif'
 
 import Amethyst from './img/Etc/Drake_Amethyst100.gif'
 
+import Tongue from './img/Etc/Phreeoni_Tongue100.gif'
+import AntJaw from './img/Etc/Phreeoni_AntJaw90.gif'
+
 import audioStrugardenNEOBattle1 from './audio/StrugardenNEOBattle1.mp3'
 import audioLittleFighter2ThemeSong from './audio/LittleFighter2ThemeSong.mp3'
 import audioPayonCave from './audio/Tobu-Infectious.mp3'
@@ -629,6 +637,8 @@ const EtcBox = [
   {id: 40, num: 25, name: "Lord Kaho`s Horn", img: LordKahosHorn , percent: 1, Gain: LordKahosHornFn},
   {id: 41, num: 26, name: "Gold", img: Gold , percent: 1, Gain: WinGoldFn},
   {id: 42, num: 27, name: "Amethyst", img: Amethyst , percent: 1, Gain: WinAmethystFn},
+  {id: 42, num: 28, name: "Tongue", img: Tongue , percent: 1, Gain: WinTongueFn},
+  {id: 42, num: 28, name: "Ant Jaw", img: AntJaw , percent: 0.9, Gain: WinAntJawFn},
 ]
 //ANIMATION PART, 1.Battle, 2.Attack, 3.Defend, 4.OnHit, 5.Dying, 6.Dead, 7.Channel, 8.PickUp
 const AnimationBox =[
@@ -718,6 +728,7 @@ const EnemyBox = [
   {id:25, number:25, FlipCSS: 'imgFlipTwo', GetHit:BaphometHit, GetAttack:BaphometAttack, GetDead: BaphometDead, GetStand: Baphomet},
   {id:26, number:26, FlipCSS: 'imgFlipTwo', GetHit:GoldenThiefBugHit, GetAttack:GoldenThiefBugAttack, GetDead: GoldenThiefBugDead, GetStand: GoldenThiefBug},
   {id:27, number:27, FlipCSS: 'imgFlipTwo', GetHit:DrakeHit, GetAttack:DrakeAttack, GetDead: DrakeDead, GetStand: Drake},
+  {id:28, number:28, FlipCSS: 'imgFlipTwo', GetHit:PhreeoniHit, GetAttack:PhreeoniAttack, GetDead: PhreeoniDead, GetStand: Phreeoni},
 ]
 
 function Main(){
@@ -1195,6 +1206,8 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("GoldenThiefBug"));
             case ((questControlRoom.QuestDialog).indexOf("Drake") > -1 && i === 27):
               return dispatch(ProgressQuestDialogFn("Drake"));
+            case ((questControlRoom.QuestDialog).indexOf("Phreeoni") > -1 && i === 28):
+              return dispatch(ProgressQuestDialogFn("Phreeoni"));
             default:
               return null;
           }
@@ -2783,7 +2796,7 @@ function Main(){
                           () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
                           i <= 25 ?
                           () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}:
-                          i <= 27 ?
+                          i <= 28 ?
                           () =>{dispatch(GotoChallengeTowerFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}: null
                         }>
                           <figcaption className="goGoButtonFig">
@@ -2824,7 +2837,7 @@ function Main(){
                 () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : 
                 i <= 25 ?
                 () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} :
-                i <= 27 ?
+                i <= 28 ?
                 () =>{dispatch(GotoChallengeTowerFn()); dispatch(ResetEnemyCurrentHealthFn()); dispatch(ResetUserIsDeadAnimationFn()); dispatch(ReturnCheckPointFn()); resetClockButton(); changeMapFadeAudio();} : null
               }>Goto CheckPoint</button>
             </div> 
@@ -2856,7 +2869,7 @@ function Main(){
                 () =>{dispatch(GotoGeffenDungeon4FFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} : 
                 i <= 25 ?
                 () =>{dispatch(GotoWorldMapFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :
-                i <= 27 ?
+                i <= 28 ?
                 () =>{dispatch(GotoChallengeTowerFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();} :  null
                 }>Press to Continue</button>
             </div> : null}

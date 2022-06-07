@@ -123,6 +123,13 @@
   background-position: center;
   background-size: cover;
 }
+.Phreeoni::before,
+.Phreeoni:hover::before{
+  background-image: url('../img/Background/ChallengeTower3.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .ChallengeWorldMap,
 .ChallengeTowerBase,
 .TreasureBoxPoringIsland,
@@ -178,6 +185,7 @@
 .ChallengeWorldMap { grid-area: 5 / 2 / 6 / 3; }
 .GoldenThiefBug { grid-area: 4 / 1 / 5 / 2; }
 .Drake { grid-area: 3 / 2 / 4 / 3; }
+.Phreeoni { grid-area: 2 / 1 / 3 / 2; }
 
 
 @media (max-width: 1199px){
@@ -189,18 +197,20 @@
 }
 
 @media (max-width: 767px){
-  .PoringIslandMap{
+  .ChallengeTowerMap{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
   }
-  .ChallengeWorldMap{
+  .ChallengeWorldMap,
+  .ChallengeTowerBase{
     width:100%;
     min-height:50px;
   }
 
-  .ChallengeWorldMap:active{
+  .ChallengeWorldMap:active,
+  .ChallengeTowerBase:active{
     height:100%;
     min-height: 250px;
     transition: 0.3s ease-in-out;

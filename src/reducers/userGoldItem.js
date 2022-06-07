@@ -82,6 +82,8 @@ const Fn = {
     //ChallengeTower
     Gold:1,
     Amethyst:1,
+    Tongue:1,
+    AntJaw:1,
 
 
 
@@ -575,6 +577,19 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 Amethyst: state.Amethyst + action.Number,
+            }
+
+        case 'WinTongueFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Tongue: state.Tongue + action.Number,
+            }
+        case 'WinAntJawFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                AntJaw: state.AntJaw + action.Number,
             }
         //Combat
         case 'UserSkillMammoniteEnemyFn':
