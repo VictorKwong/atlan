@@ -16,7 +16,7 @@ import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
 import './css/mapChallengeTower.css'
 import $ from 'jquery'
-import audioStreamside from './audio/112Streamside.mp3'
+import audioPampasUpas from './audio/PampasUpas.mp3'
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -41,7 +41,7 @@ import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
-const audioBGM = new Audio(audioStreamside);
+const audioBGM = new Audio(audioPampasUpas);
 
 
 function StartMenu(){
@@ -51,8 +51,6 @@ function StartMenu(){
     const userGoldItem = useSelector(state => state.userGoldItem)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
-    const npcSpeech = useSelector(state => state.npcSpeech)
-    const userAttribute = useSelector(state => state.userAttribute)
     const dispatch = useDispatch();
 
     let HeadGearBox = [
