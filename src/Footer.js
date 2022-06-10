@@ -12,10 +12,10 @@ function App(){
     const dispatch = useDispatch();
     useEffect(() => {
         // create a variable that holds our database details
-        const database = getDatabase(firebase)
+        const database = getDatabase(firebase);
         
         // we then create a variable that makes reference to our database
-        const dbRef = ref(database)
+        const dbRef = ref(database);
         const userId = `-MBlboEQaOw7kXBs1I8y`;
         // add an event listener to that variable that will fire
         // from the database, and call that data 'response'.
