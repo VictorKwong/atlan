@@ -130,6 +130,15 @@
   background-position: center;
   background-size: cover;
 }
+
+.StormyKnight::before,
+.StormyKnight:hover::before{
+  background-image: url('../img/Background/ChallengeTower4.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .ChallengeWorldMap,
 .ChallengeTowerBase,
 .TreasureBoxPoringIsland,
@@ -186,6 +195,7 @@
 .GoldenThiefBug { grid-area: 4 / 1 / 5 / 2; }
 .Drake { grid-area: 3 / 2 / 4 / 3; }
 .Phreeoni { grid-area: 2 / 1 / 3 / 2; }
+.StormyKnight { grid-area: 1 / 2 / 2 / 3; }
 
 
 @media (max-width: 1199px){

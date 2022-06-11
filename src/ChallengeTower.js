@@ -169,7 +169,11 @@ const LoadingScreen2 = () => {
   setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath3",28)), 1000);
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
-
+const LoadingScreen3 = () => {
+  dispatch(BattleLoadingScreenFn());
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath3",29)), 1000);
+  setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+}
 
     return(
       <div className={
@@ -213,6 +217,7 @@ const LoadingScreen2 = () => {
               <button className="ChallengeTowerBase GoldenThiefBug" onClick={() =>{LoadingScreen0(); changeMapFadeAudio();}}>Golden Stage 1</button>
               <button className="ChallengeTowerBase Drake" onClick={() =>{LoadingScreen1(); changeMapFadeAudio();}}>Priate Stage 2</button>
               <button className="ChallengeTowerBase Phreeoni" onClick={() =>{LoadingScreen2(); changeMapFadeAudio();}}>Ant Stage 3</button>
+              <button className="ChallengeTowerBase StormyKnight" onClick={() =>{LoadingScreen3(); changeMapFadeAudio();}}>Snow Stage 4</button>
             </div>
             }
             <div className="StoryHUD">
