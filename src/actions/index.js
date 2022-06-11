@@ -1827,6 +1827,21 @@ export const WinAntJawFn = (Zeny,Num) => {
         Zeny: Zeny
     };
 };
+//Stormy Knight
+export const WinMysticFrozenFn = (Zeny,Num) => {
+    return {
+        type: 'WinMysticFrozenFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
+export const WinAquamarineFn = (Zeny,Num) => {
+    return {
+        type: 'WinAquamarineFn',
+        Number: Num,
+        Zeny: Zeny
+    };
+};
 
 //PORING ISLAND CHEST
 export const OpenChest1Fn = () => {

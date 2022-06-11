@@ -79,6 +79,8 @@ import Gold from './img/Etc/GoldenThiefBug_Gold100.gif'
 import Amethyst from './img/Etc/Drake_Amethyst100.gif'
 import Tongue from './img/Etc/Phreeoni_Tongue100.gif'
 import AntJaw from './img/Etc/Phreeoni_AntJaw90.gif'
+import MysticFrozen from './img/Etc/StormyKnight_MysticFrozen90.gif'
+import Aquamarine from './img/Etc/StormyKnight_Aquamarine80.gif'
 //IMPORTANT
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
@@ -175,6 +177,8 @@ function StartMenu(){
       {id:1035, Img:Amethyst, name:"Amethyst", itemCheck:userGoldItem.Amethyst},
       {id:1036, Img:Tongue, name:"Tongue", itemCheck:userGoldItem.Tongue},
       {id:1037, Img:AntJaw, name:"AntJaw", itemCheck:userGoldItem.AntJaw},
+      {id:1038, Img:MysticFrozen, name:"Mystic Frozen", itemCheck:userGoldItem.MysticFrozen},
+      {id:1039, Img:Aquamarine, name:"Aquamarine", itemCheck:userGoldItem.Aquamarine},
       
       
 

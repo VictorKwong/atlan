@@ -84,6 +84,8 @@ const Fn = {
     Amethyst:1,
     Tongue:1,
     AntJaw:1,
+    MysticFrozen:1,
+    Aquamarine:1,
 
 
 
@@ -590,6 +592,18 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 AntJaw: state.AntJaw + action.Number,
+            }
+        case 'WinMysticFrozenFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                MysticFrozen: state.MysticFrozen + action.Number,
+            }
+        case 'WinAquamarineFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Aquamarine: state.Aquamarine + action.Number,
             }
         //Combat
         case 'UserSkillMammoniteEnemyFn':
