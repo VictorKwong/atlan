@@ -112,6 +112,7 @@ function StartMenu(){
       {id: 1, num: "Jakk", CompleteNum: 2, acceptName: "Clear Jakk", acceptDescription: "Hunt 2 Jakk in GeffenDungeon", finishName: "Clear Jakk xD",  finishText: "Received +600Exp +700z", exp:600, zeny:700},
       {id: 2, num: "Ghoul", CompleteNum: 3, acceptName: "Clear Ghoul", acceptDescription: "Hunt 3 Ghoul in GeffenDungeon", finishName: "Clear Ghoul xD",  finishText: "Received +900Exp +800z", exp:900, zeny:800},
       {id: 3, num: "Marionette", CompleteNum: 2, acceptName: "Clear Marionette", acceptDescription: "Hunt 2 Marionette in GeffenDungeon", finishName: "Clear Marionette xD",  finishText: "Received +1200Exp +900z", exp:1200, zeny:900},
+      {id: 4, num: "Wraith", CompleteNum: 2, acceptName: "Clear Wraith", acceptDescription: "Hunt 2 Wraith in GeffenDungeon", finishName: "Clear Wraith xD",  finishText: "Received +1600Exp +1000z", exp:1600, zeny:1000},
 
     ]
     //QUEST
