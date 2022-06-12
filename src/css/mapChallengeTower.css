@@ -147,7 +147,7 @@
   font-family: 'Pangolin', cursive;
   font-size: 20px;
   color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(224, 131, 208) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
 }
@@ -155,7 +155,7 @@
 .ReturnPoringIsland{
   font-size: 20px;
   color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(149, 216, 210) 100%);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(224, 131, 208) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
   width:50%;
