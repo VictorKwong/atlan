@@ -9,7 +9,7 @@ import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGran
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
-import { WinPoisonSporeFn } from './actions'
+import { WinPoisonSporeFn , WinJackPumpkinFn } from './actions'
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Function
@@ -118,6 +118,8 @@ function StartMenu(){
     //QUEST
     const QuestItemBox = [
       {id: 1001, num: "Poisonspore", CompleteNum: 4, ItemTarget: userGoldItem.PoisonSpore, ReturnItem: WinPoisonSporeFn , acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", finishName: "Submit 4 Poison Spore",  finishText: "Received +250Exp +4500z", exp:250, zeny:4500},
+      {id: 1002, num: "JackPumpkin", CompleteNum: 3, ItemTarget: userGoldItem.JackPumpkin, ReturnItem: WinJackPumpkinFn , acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", finishName: "Submit 3 JackPumpkin",  finishText: "Received +450Exp +6500z", exp:450, zeny:6500},
+      
     ]
 
     useEffect(() => {

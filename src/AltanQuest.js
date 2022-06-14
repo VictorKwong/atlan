@@ -35,7 +35,9 @@ function StartMenu(){
       {id: 1002, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle},
       {id: 1003, num: "Stickymucus", acceptName: "Request Item", acceptDescription: "Need 2 StickyMucus", totalNum: "2", currentNum:userGoldItem.StickyMucus, Img:StickyMucus},{id: 1004, num: "Redpotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion},
       {id: 1005, num: "Poisonspore", acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", totalNum: "4", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
+      {id: 1006, num: "JackPumpkin", acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", totalNum: "3", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
     ]
+    
     const QuestSpecialBox = [
       {id: 10000, num: "Lemonstory", acceptName: "Hidden Story - Lemon", acceptDescription1: "Find out hidden story from Lemon in PayonCave (1/3)", acceptDescription2: "Find out hidden story from Lemon in Geffen Dungeon (2/3)", acceptDescription3: "Find out all hidden story (3/3) - Talk to Lemon in Prontera", condition1:"Lemonstorytwo", condition2:"Lemonstorythree"}
     ]
