@@ -10,6 +10,8 @@ import EmptyBottle from './img/Etc/Poring_EmptyBottle15.gif'
 import RedPotion from './img/Item/RedPotion.gif'
 import StickyMucus from './img/Etc/Poring_StickyMucus004.gif'
 import PoisonSpore from './img/Etc/PoisonSpore_PoisonSpore90.gif'
+import JackPumpkin from './img/Etc/Jakk_JackPumpkin90.gif'
+import Zargon from './img/Etc/Jakk_Zargon9.gif'
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
     const userStats = useSelector(state => state.userStats)
@@ -35,7 +37,7 @@ function StartMenu(){
       {id: 1002, num: "Emptybottle", acceptName: "Request Item", acceptDescription: "Need 5 Empty Bottle", totalNum: "5", currentNum:userGoldItem.EmptyBottle, Img:EmptyBottle},
       {id: 1003, num: "Stickymucus", acceptName: "Request Item", acceptDescription: "Need 2 StickyMucus", totalNum: "2", currentNum:userGoldItem.StickyMucus, Img:StickyMucus},{id: 1004, num: "Redpotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion},
       {id: 1005, num: "Poisonspore", acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", totalNum: "4", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
-      {id: 1006, num: "JackPumpkin", acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", totalNum: "3", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
+      {id: 1006, num: "JackPumpkin", acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", totalNum: "3", currentNum:userGoldItem.JackPumpkin, Img:JackPumpkin},{id: 1007, num: "Zargon", acceptName: "Request Item", acceptDescription: "Need 1 Zargon", totalNum: "1", currentNum:userGoldItem.Zargon, Img:Zargon},
     ]
     
     const QuestSpecialBox = [
