@@ -120,7 +120,7 @@ function StartMenu(){
       {id: 1001, num: "Poisonspore", CompleteNum: 4, ItemTarget: userGoldItem.PoisonSpore, ReturnItem: WinPoisonSporeFn , acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", finishName: "Submit 4 Poison Spore",  finishText: "Received +250Exp +4500z", exp:250, zeny:4500},
       {id: 1002, num: "JackPumpkin", CompleteNum: 3, ItemTarget: userGoldItem.JackPumpkin, ReturnItem: WinJackPumpkinFn , acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", finishName: "Submit 3 JackPumpkin",  finishText: "Received +450Exp +6500z", exp:450, zeny:6500},
       {id: 1003, num: "Zargon", CompleteNum: 1, ItemTarget: userGoldItem.Zargon, ReturnItem: WinZargonFn , acceptName: "Request Item", acceptDescription: "Need 1 Zargon", finishName: "Submit 1 Zargon",  finishText: "Received +550Exp +8500z", exp:550, zeny:8500},
-      
+      {id: 1004, num: "HorrendousMouth", CompleteNum: 2, ItemTarget: userGoldItem.HorrendousMouth, ReturnItem: WinHorrendousMouthFn , acceptName: "Request Item", acceptDescription: "Need 2 HorrendousMouth", finishName: "Submit 2 HorrendousMouth",  finishText: "Received +650Exp +10500z", exp:650, zeny:10500},
       
     ]
 
