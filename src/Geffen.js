@@ -9,7 +9,7 @@ import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGran
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
-import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn} from './actions'
+import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthFn} from './actions'
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Function
