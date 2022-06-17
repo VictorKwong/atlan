@@ -13,6 +13,7 @@ import PoisonSpore from './img/Etc/PoisonSpore_PoisonSpore90.gif'
 import JackPumpkin from './img/Etc/Jakk_JackPumpkin90.gif'
 import Zargon from './img/Etc/Jakk_Zargon9.gif'
 import HorrendousMouth from './img/Etc/Ghoul_HorrendousMouth65.gif'
+import Memento from './img/Etc/Ghoul_Memento20.gif'
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
     const userStats = useSelector(state => state.userStats)
@@ -40,6 +41,8 @@ function StartMenu(){
       {id: 1005, num: "Poisonspore", acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", totalNum: "4", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
       {id: 1006, num: "JackPumpkin", acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", totalNum: "3", currentNum:userGoldItem.JackPumpkin, Img:JackPumpkin},{id: 1007, num: "Zargon", acceptName: "Request Item", acceptDescription: "Need 1 Zargon", totalNum: "1", currentNum:userGoldItem.Zargon, Img:Zargon},
       {id: 1008, num: "HorrendousMouth", acceptName: "Request Item", acceptDescription: "Need 3 HorrendousMouth", totalNum: "3", currentNum:userGoldItem.HorrendousMouth, Img:HorrendousMouth},
+      {id: 1009, num: "Memento", acceptName: "Request Item", acceptDescription: "Need 2 Memento", totalNum: "2", currentNum:userGoldItem.Memento, Img:Memento},
+      
     ]
     
     const QuestSpecialBox = [
