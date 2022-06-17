@@ -40,7 +40,7 @@ function StartMenu(){
       {id: 1003, num: "Stickymucus", acceptName: "Request Item", acceptDescription: "Need 2 StickyMucus", totalNum: "2", currentNum:userGoldItem.StickyMucus, Img:StickyMucus},{id: 1004, num: "Redpotion", acceptName: "Gather Red Potions", acceptDescription: "Need 5 Red Potions", totalNum: "5", currentNum:userGoldItem.RedPotion, Img:RedPotion},
       {id: 1005, num: "Poisonspore", acceptName: "Request Item", acceptDescription: "Need 4 Poison Spore", totalNum: "4", currentNum:userGoldItem.PoisonSpore, Img:PoisonSpore},
       {id: 1006, num: "JackPumpkin", acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", totalNum: "3", currentNum:userGoldItem.JackPumpkin, Img:JackPumpkin},{id: 1007, num: "Zargon", acceptName: "Request Item", acceptDescription: "Need 1 Zargon", totalNum: "1", currentNum:userGoldItem.Zargon, Img:Zargon},
-      {id: 1008, num: "HorrendousMouth", acceptName: "Request Item", acceptDescription: "Need 3 HorrendousMouth", totalNum: "3", currentNum:userGoldItem.HorrendousMouth, Img:HorrendousMouth},
+      {id: 1008, num: "HorrendousMouth", acceptName: "Request Item", acceptDescription: "Need 2 HorrendousMouth", totalNum: "2", currentNum:userGoldItem.HorrendousMouth, Img:HorrendousMouth},
       {id: 1009, num: "Memento", acceptName: "Request Item", acceptDescription: "Need 2 Memento", totalNum: "2", currentNum:userGoldItem.Memento, Img:Memento},
       
     ]
