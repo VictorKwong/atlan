@@ -14,6 +14,7 @@ import JackPumpkin from './img/Etc/Jakk_JackPumpkin90.gif'
 import Zargon from './img/Etc/Jakk_Zargon9.gif'
 import HorrendousMouth from './img/Etc/Ghoul_HorrendousMouth65.gif'
 import Memento from './img/Etc/Ghoul_Memento20.gif'
+import GoldenHair from './img/Etc/Marionette_GoldenHair90.gif'
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
     const userStats = useSelector(state => state.userStats)
@@ -42,6 +43,7 @@ function StartMenu(){
       {id: 1006, num: "JackPumpkin", acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", totalNum: "3", currentNum:userGoldItem.JackPumpkin, Img:JackPumpkin},{id: 1007, num: "Zargon", acceptName: "Request Item", acceptDescription: "Need 1 Zargon", totalNum: "1", currentNum:userGoldItem.Zargon, Img:Zargon},
       {id: 1008, num: "HorrendousMouth", acceptName: "Request Item", acceptDescription: "Need 2 HorrendousMouth", totalNum: "2", currentNum:userGoldItem.HorrendousMouth, Img:HorrendousMouth},
       {id: 1009, num: "Memento", acceptName: "Request Item", acceptDescription: "Need 2 Memento", totalNum: "2", currentNum:userGoldItem.Memento, Img:Memento},
+      {id: 1010, num: "GoldenHair", acceptName: "Request Item", acceptDescription: "Need 3 GoldenHair", totalNum: "3", currentNum:userGoldItem.GoldenHair, Img:GoldenHair},
       
     ]
     

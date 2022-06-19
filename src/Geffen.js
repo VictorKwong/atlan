@@ -9,7 +9,7 @@ import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGran
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
-import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthFn} from './actions'
+import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthFn , WinMementoFn, WinGoldenHairFn} from './actions'
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Function
@@ -121,7 +121,8 @@ function StartMenu(){
       {id: 1002, num: "JackPumpkin", CompleteNum: 3, ItemTarget: userGoldItem.JackPumpkin, ReturnItem: WinJackPumpkinFn , acceptName: "Request Item", acceptDescription: "Need 3 JackPumpkin", finishName: "Submit 3 JackPumpkin",  finishText: "Received +450Exp +6500z", exp:450, zeny:6500},
       {id: 1003, num: "Zargon", CompleteNum: 1, ItemTarget: userGoldItem.Zargon, ReturnItem: WinZargonFn , acceptName: "Request Item", acceptDescription: "Need 1 Zargon", finishName: "Submit 1 Zargon",  finishText: "Received +550Exp +8500z", exp:550, zeny:8500},
       {id: 1004, num: "HorrendousMouth", CompleteNum: 2, ItemTarget: userGoldItem.HorrendousMouth, ReturnItem: WinHorrendousMouthFn , acceptName: "Request Item", acceptDescription: "Need 2 HorrendousMouth", finishName: "Submit 2 HorrendousMouth",  finishText: "Received +650Exp +10500z", exp:650, zeny:10500},
-      
+      {id: 1005, num: "Memento", CompleteNum: 2, ItemTarget: userGoldItem.Memento, ReturnItem: WinMementoFn , acceptName: "Request Item", acceptDescription: "Need 2 Memento", finishName: "Submit 2 Memento",  finishText: "Received +750Exp +12500z", exp:750, zeny:12500},
+      {id: 1006, num: "GoldenHair", CompleteNum: 3, ItemTarget: userGoldItem.GoldenHair, ReturnItem: WinGoldenHairFn , acceptName: "Request Item", acceptDescription: "Need 3 GoldenHair", finishName: "Submit 3 GoldenHair",  finishText: "Received +850Exp +14500z", exp:850, zeny:14500},
     ]
 
     useEffect(() => {
