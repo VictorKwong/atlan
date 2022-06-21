@@ -9,7 +9,7 @@ import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGran
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
-import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthFn , WinMementoFn, WinGoldenHairFn , WinRedGemstoneFn} from './actions'
+import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthFn , WinMementoFn, WinGoldenHairFn , WinRedGemstoneFn , WinCursedRubyFn } from './actions'
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Function
@@ -123,7 +123,9 @@ function StartMenu(){
       {id: 1004, num: "HorrendousMouth", CompleteNum: 2, ItemTarget: userGoldItem.HorrendousMouth, ReturnItem: WinHorrendousMouthFn , acceptName: "Request Item", acceptDescription: "Need 2 HorrendousMouth", finishName: "Submit 2 HorrendousMouth",  finishText: "Received +650Exp +10500z", exp:650, zeny:10500},
       {id: 1005, num: "Memento", CompleteNum: 2, ItemTarget: userGoldItem.Memento, ReturnItem: WinMementoFn , acceptName: "Request Item", acceptDescription: "Need 2 Memento", finishName: "Submit 2 Memento",  finishText: "Received +750Exp +12500z", exp:750, zeny:12500},
       {id: 1006, num: "GoldenHair", CompleteNum: 3, ItemTarget: userGoldItem.GoldenHair, ReturnItem: WinGoldenHairFn , acceptName: "Request Item", acceptDescription: "Need 3 GoldenHair", finishName: "Submit 3 GoldenHair",  finishText: "Received +850Exp +14500z", exp:850, zeny:14500},
-      {id: 1006, num: "RedGemstone", CompleteNum: 2, ItemTarget: userGoldItem.RedGemstone, ReturnItem: WinRedGemstoneFn , acceptName: "Request Item", acceptDescription: "Need 2 RedGemstone", finishName: "Submit 2 RedGemstone",  finishText: "Received +950Exp +16500z", exp:950, zeny:16500},
+      {id: 1007, num: "RedGemstone", CompleteNum: 2, ItemTarget: userGoldItem.RedGemstone, ReturnItem: WinRedGemstoneFn , acceptName: "Request Item", acceptDescription: "Need 2 RedGemstone", finishName: "Submit 2 RedGemstone",  finishText: "Received +950Exp +16500z", exp:950, zeny:16500},
+      {id: 1008, num: "CursedRuby", CompleteNum: 1, ItemTarget: userGoldItem.CursedRuby, ReturnItem: WinCursedRubyFn , acceptName: "Request Item", acceptDescription: "Need 1 CursedRuby", finishName: "Submit 1 CursedRuby",  finishText: "Received +1050Exp +18500z", exp:1050, zeny:18500},
+      
     ]
 
     useEffect(() => {

@@ -16,6 +16,7 @@ import HorrendousMouth from './img/Etc/Ghoul_HorrendousMouth65.gif'
 import Memento from './img/Etc/Ghoul_Memento20.gif'
 import GoldenHair from './img/Etc/Marionette_GoldenHair90.gif'
 import RedGemstone from './img/Etc/Wraith_RedGemstone10.gif'
+import CursedRuby from './img/Etc/Doppelganger_CursedRuby80.gif'
 function StartMenu(){
     const questControlRoom = useSelector(state => state.questControlRoom)
     const userStats = useSelector(state => state.userStats)
@@ -46,7 +47,7 @@ function StartMenu(){
       {id: 1009, num: "Memento", acceptName: "Request Item", acceptDescription: "Need 2 Memento", totalNum: "2", currentNum:userGoldItem.Memento, Img:Memento},
       {id: 1010, num: "GoldenHair", acceptName: "Request Item", acceptDescription: "Need 3 GoldenHair", totalNum: "3", currentNum:userGoldItem.GoldenHair, Img:GoldenHair},
       {id: 1011, num: "RedGemstone", acceptName: "Request Item", acceptDescription: "Need 2 RedGemstone", totalNum: "2", currentNum:userGoldItem.RedGemstone, Img:RedGemstone},
-      
+      {id: 1012, num: "CursedRuby", acceptName: "Request Item", acceptDescription: "Need 1 CursedRuby", totalNum: "1", currentNum:userGoldItem.CursedRuby, Img:CursedRuby},
     ]
     
     const QuestSpecialBox = [
