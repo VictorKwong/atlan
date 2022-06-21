@@ -192,7 +192,7 @@ const Fn = {
         },{
             //who are you?
             name: 'RestingGirl',
-            text: 'I`m just a girl and I like to collect 3 <span style="color:red;">Jellopy</span> and <span style="color:red;">Empty Bottle</span>.. ⛦◜▿◝'
+            text: 'I`m just a girl and I like to collect 3 <span style="color:red;">Jellopy</span> and a <span style="color:red;">Empty Bottle</span>.. ⛦◜▿◝'
         },{
             //Give 3 Jellopy & 3 Empty Bottle
             name: 'RestingGirl',

@@ -630,9 +630,12 @@ useEffect(() => {
               {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectTwo && !npcControlRoom.PoringIslandBridgeNPCSelectThree &&
                userGoldItem.Jellopy >= 3 && userGoldItem.EmptyBottle >= 3 ?
                 <div className="storyScreen">
-                  <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectThreeFn()); dispatch(WinResultFn(100,3000)); dispatch(WinJellopyFn(0,3)); dispatch(WinEmptyBottleFn(0,3));}}>Give 3 Jellopy & 3 Empty Bottle</button>
+                  <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectThreeFn()); dispatch(WinResultFn(100,3000)); dispatch(WinJellopyFn(0,-3)); dispatch(WinEmptyBottleFn(0,-1));}}>Give 3 Jellopy & 1 Empty Bottle</button>
                 </div> : null}
-              <p className="questCompleteResult"></p>
+              {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectThree ?
+                <div className="storyScreen">
+                  <p className="questCompleteResult"></p>
+                </div> : null}
           </fieldset>
         </div>
         }
