@@ -15,7 +15,11 @@ import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreen
 //PATH
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
-import { PoringIslandBridgeNPCFn, PoringIslandFairyNPC1Fn, PoringIslandFairyNPC2Fn, ResetPoringIslandNPCFn } from './actions'
+import { PoringIslandBridgeNPCFn , PoringIslandBridgeNPCSelectOneFn, PoringIslandBridgeNPCSelectTwoFn, PoringIslandBridgeNPCSelectThreeFn, PoringIslandFairyNPC1Fn, PoringIslandFairyNPC2Fn, ResetPoringIslandNPCFn } from './actions'
+//NPC Action
+import { WinJellopyFn, WinEmptyBottleFn} from './actions'
+//Quest Result
+import { WinResultFn, UserLevelUpFn } from './actions';
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //cutscene
@@ -55,19 +59,30 @@ import Helm from './img/Equipment/HeadGear/Helm.gif'
 import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
-// import useSound from 'use-sound';
-// import audioStartUpGame from './audio/audioStartUpGame.mp3'
+//SKILLS
+import skillBash from './img/Skill/sm_bash.gif'
+import skillMammonite from './img/Skill/mc_mammonite.gif'
+import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillKodoku from './img/Skill/pr_kodoku.gif'
+import skillQuicken from './img/Skill/sm_quicken.gif'
+import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+
 import Success from './img/Emote/Success.gif'
 import Failure from './img/Emote/Failure.gif'
 import BlackSmith from './img/NPC/BlackSmith.gif'
 
 import TrainingSuccess from './audio/SoundEffect/TrainingSuccess.mp3'
 import TrainingFailure from './audio/SoundEffect/TrainingFailure.mp3'
+import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
+const audioLevelUp = new Audio(LevelUpSoundEffect);
+
 const audioTrainingSuccess = new Audio (TrainingSuccess)
 const audioTrainingFailure = new Audio (TrainingFailure)
 
 const audioBGM = new Audio(audioStreamside);
 
+//Chat reading
+let listResult = document.getElementsByClassName('storyChat')[0];
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -218,6 +233,80 @@ const FailureAudio = () => {
   audioTrainingFailure.play();
 }
 
+    //LEVEL FUNCTION
+    useEffect(() => {
+      //MAX Lv99
+      if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
+        (() => {
+          switch (true) {
+            case((userStats.Level + 1) <= 4):
+              return dispatch(UserLevelUpFn(3));
+            case((userStats.Level + 1) <= 9):
+              return dispatch(UserLevelUpFn(4));
+            case((userStats.Level + 1) <= 14):
+              return dispatch(UserLevelUpFn(5));           
+            case((userStats.Level + 1) <= 19):
+              return dispatch(UserLevelUpFn(6));
+            case((userStats.Level + 1) <= 24):
+              return dispatch(UserLevelUpFn(7));
+            case((userStats.Level + 1) <= 29):
+              return dispatch(UserLevelUpFn(8));
+            case((userStats.Level + 1) <= 34):
+              return dispatch(UserLevelUpFn(9));
+            case((userStats.Level + 1) <= 39):
+              return dispatch(UserLevelUpFn(10));     
+            case((userStats.Level + 1) <= 44):
+              return dispatch(UserLevelUpFn(11));
+            case((userStats.Level + 1) <= 49):
+              return dispatch(UserLevelUpFn(12));
+            case((userStats.Level + 1) <= 54):
+              return dispatch(UserLevelUpFn(13));
+            case((userStats.Level + 1) <= 59):
+              return dispatch(UserLevelUpFn(14));
+            case((userStats.Level + 1) <= 64):
+              return dispatch(UserLevelUpFn(15));
+            case((userStats.Level + 1) <= 69):
+              return dispatch(UserLevelUpFn(16));
+            case((userStats.Level + 1) <= 74):
+              return dispatch(UserLevelUpFn(17));
+            case((userStats.Level + 1) <= 79):
+              return dispatch(UserLevelUpFn(18));
+            case((userStats.Level + 1) <= 84):
+              return dispatch(UserLevelUpFn(19));
+            case((userStats.Level + 1) <= 89):
+              return dispatch(UserLevelUpFn(20));
+            case((userStats.Level + 1) <= 94):
+              return dispatch(UserLevelUpFn(21));
+            case((userStats.Level + 1) <= 98):
+              return dispatch(UserLevelUpFn(22));
+            default:
+              return dispatch(UserLevelUpFn(23));
+          }
+          })()
+          audioLevelUp.play();
+        $('.questCompleteResult').append(`\n <p>Atlan has Level Up to Lv${userStats.Level + 1}</p>`)
+          switch (true) {
+            case((userStats.Level + 1) === 5):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
+            case((userStats.Level + 1) === 10):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
+            case((userStats.Level + 1) === 13):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Kodoku<img src=${skillKodoku} alt="Kodoku" />!</p>`) 
+            case((userStats.Level + 1) === 20):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+            case((userStats.Level + 1) === 35):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
+            case((userStats.Level + 1) === 70):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
+            default:
+              return 0;
+          }
+      }
+    listResult = document.getElementsByClassName('storyChat')[0];
+    listResult.scrollTop = listResult.scrollHeight;
+  }, [dispatch, userStats, baseEXPChart]);
+
+
 
 useEffect(() => {
   switch(true){
@@ -229,6 +318,18 @@ useEffect(() => {
     case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
       $('.storySpeech').html('')  
       $('.storyCharacter').html('')
+      break;
+    case(npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectThree):
+      $('.storySpeech').html(`${npcSpeech['RestingGirl'][3].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][3].name}</p>`)
+      break;
+    case(npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectOne):
+      $('.storySpeech').html(`${npcSpeech['RestingGirl'][1].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][1].name}</p>`)
+      break;
+    case(npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectTwo):
+      $('.storySpeech').html(`${npcSpeech['RestingGirl'][2].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][2].name}</p>`)
       break;
     case(npcControlRoom.PoringIslandBridgeNPC):
       $('.storySpeech').html(`${npcSpeech['RestingGirl'][0].text}`)
@@ -259,9 +360,10 @@ useEffect(() => {
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['MightyGuy'][0].name}</p>`)
       break;
     default:
-      $('.storySpeech').html('')  
-      $('.storyCharacter').html('')
-        break;
+      $('.storySpeech').html('');
+      $('.storyCharacter').html('');
+      $('.questCompleteResult').html('');
+      break;
   }
 //userState,screenControRoom not included
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -520,6 +622,17 @@ useEffect(() => {
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}
+              {npcControlRoom.PoringIslandBridgeNPC && !npcControlRoom.PoringIslandBridgeNPCSelectOne && !npcControlRoom.PoringIslandBridgeNPCSelectTwo ?
+                <div className="storyScreen">
+                  <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectOneFn());}}>Hidden Path...?</button>
+                  <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectTwoFn());}}>Who are you?</button>
+                </div> : null}
+              {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectTwo && !npcControlRoom.PoringIslandBridgeNPCSelectThree &&
+               userGoldItem.Jellopy >= 3 && userGoldItem.EmptyBottle >= 3 ?
+                <div className="storyScreen">
+                  <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectThreeFn()); dispatch(WinResultFn(100,3000)); dispatch(WinJellopyFn(0,3)); dispatch(WinEmptyBottleFn(0,3));}}>Give 3 Jellopy & 3 Empty Bottle</button>
+                </div> : null}
+              <p className="questCompleteResult"></p>
           </fieldset>
         </div>
         }

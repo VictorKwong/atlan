@@ -78,9 +78,7 @@
 }
 
 .ChallengeWorldMap::before,
-.ChallengeTowerBase::before,
-.TreasureBoxPoringIsland::before,
-.BossTreasureBoxPoringIsland::before{
+.ChallengeTowerBase::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -97,9 +95,7 @@
   border: solid #7CAFFF 1px;
 }
 .ChallengeWorldMap:hover::before,
-.ChallengeTowerBase:hover::before,
-.TreasureBoxPoringIsland:hover::before,
-.BossTreasureBoxPoringIsland:hover::before{
+.ChallengeTowerBase:hover::before{
   opacity: 1;
   background-image: url('../img/Background/WorldMap.jpg');
   background-repeat: no-repeat;
@@ -140,9 +136,7 @@
 }
 
 .ChallengeWorldMap,
-.ChallengeTowerBase,
-.TreasureBoxPoringIsland,
-.BossTreasureBoxPoringIsland{
+.ChallengeTowerBase{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -150,45 +144,6 @@
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(224, 131, 208) 100%);
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
-}
-
-.ReturnPoringIsland{
-  font-size: 20px;
-  color: rgb(26, 26, 26);
-  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(224, 131, 208) 100%);
-  border-radius: 5px;
-  text-shadow: 2px 2px 4px #536481;
-  width:50%;
-  cursor: pointer;
-  position: relative;
-  font-family: 'Balsamiq Sans', cursive;
-  width: 80%;
-  margin: 10px 0 10px;
-}
-
-.ReturnPoringIsland:hover{
-  text-shadow: 1px 1px 1px #657c9c;
-}
-
-.ReturnPoringIsland::before{
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  /* Change 0px */
-  width: 100%;
-  height: 0px;
-  border-top: 7px solid transparent;  
-  border-bottom: 7px solid transparent;
-  border-left: 10px solid #764abc;
-  content: '';
-  transition: all 0.1s;
-  transform: translate3d(0,-50%,0) scale3d(0,0,1);
-  opacity: 0;
-}
-
-.ReturnPoringIsland:hover::before{
-  transform: translate3d(0,-50%,0) scale3d(1,1,1);
-  opacity: 1;
 }
 
 .ChallengeWorldMap { grid-area: 5 / 2 / 6 / 3; }

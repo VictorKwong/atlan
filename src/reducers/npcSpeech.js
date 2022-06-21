@@ -186,8 +186,17 @@ const Fn = {
             name: 'RestingGirl',
             text: 'Rumors saids there is a hidden passage near by here...hmm where is it?',
         },{
+            //Hidden Path?
             name: 'RestingGirl',
-            text: 'He`s fast and very aggressive, I better get going becaues I`m definitely not hanging around here!!'
+            text: 'Use <span style="color:red;">Lamp</span> in item menu can forsee the unknown path~ :)'
+        },{
+            //who are you?
+            name: 'RestingGirl',
+            text: 'I`m just a girl and I like to collect 3 <span style="color:red;">Jellopy</span> and <span style="color:red;">Empty Bottle</span>.. ⛦◜▿◝'
+        },{
+            //Give 3 Jellopy & 3 Empty Bottle
+            name: 'RestingGirl',
+            text: 'You are my hero!! I love you(*°ヮ° *) <p style="color:#3fff00;">Recieved +100exp +3000z</p>'
         }],
     MightyGuy:[{
             name: 'MightyGuy',

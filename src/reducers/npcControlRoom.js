@@ -52,6 +52,8 @@ const Fn = {
     ChestBoss1: false,
     ChestBoss1VisitRepeat: false,
     PoringIslandBridgeNPC: false,
+    PoringIslandBridgeNPCSelectOne: false,
+    PoringIslandBridgeNPCSelectTwo: false,
     PoringIslandFairyNPC1:false,
     PoringIslandFairyNPC2:false,
     BossEclipseDefeat: false,
@@ -788,6 +790,24 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: false,
                 PoringIslandBridgeNPC: true,
+                PoringIslandBridgeNPCSelectOne: false,
+                PoringIslandBridgeNPCSelectTwo: false,
+                PoringIslandBridgeNPCSelectThree: false,
+            }
+        case 'PoringIslandBridgeNPCSelectOneFn':
+            return {
+                ...state,
+                PoringIslandBridgeNPCSelectOne: true,
+            }
+        case 'PoringIslandBridgeNPCSelectTwoFn':
+            return {
+                ...state,
+                PoringIslandBridgeNPCSelectTwo: true,
+            }
+        case 'PoringIslandBridgeNPCSelectThreeFn':
+            return {
+                ...state,
+                PoringIslandBridgeNPCSelectThree: true,
             }
         case 'PoringIslandFairyNPC1Fn':
             return {
@@ -795,6 +815,9 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: true,
                 PoringIslandFairyNPC2: false,
                 PoringIslandBridgeNPC: false,
+                PoringIslandBridgeNPCSelectOne: false,
+                PoringIslandBridgeNPCSelectTwo: false,
+                PoringIslandBridgeNPCSelectThree: false,
             }
         case 'PoringIslandFairyNPC2Fn':
             return {
@@ -802,6 +825,9 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: true,
                 PoringIslandBridgeNPC: false,
+                PoringIslandBridgeNPCSelectOne: false,
+                PoringIslandBridgeNPCSelectTwo: false,
+                PoringIslandBridgeNPCSelectThree: false,
             }
         case 'ResetPoringIslandNPCFn':
             return {
@@ -809,6 +835,9 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: false,
                 PoringIslandBridgeNPC: false,
+                PoringIslandBridgeNPCSelectOne: false,
+                PoringIslandBridgeNPCSelectTwo: false,
+                PoringIslandBridgeNPCSelectThree: false,
             }
         //PayonCave
         case 'OpenPayonCaveChest3Fn':

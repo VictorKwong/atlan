@@ -1995,6 +1995,21 @@ export const PoringIslandBridgeNPCFn = () => {
         type: 'PoringIslandBridgeNPCFn',
     };
 };
+export const PoringIslandBridgeNPCSelectOneFn = () => {
+    return {
+        type: 'PoringIslandBridgeNPCSelectOneFn',
+    };
+};
+export const PoringIslandBridgeNPCSelectTwoFn = () => {
+    return {
+        type: 'PoringIslandBridgeNPCSelectTwoFn',
+    };
+};
+export const PoringIslandBridgeNPCSelectThreeFn = () => {
+    return {
+        type: 'PoringIslandBridgeNPCSelectThreeFn',
+    };
+};
 export const PoringIslandFairyNPC1Fn = () => {
     return {
         type: 'PoringIslandFairyNPC1Fn',
