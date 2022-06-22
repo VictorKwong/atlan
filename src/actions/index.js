@@ -2020,6 +2020,11 @@ export const PoringIslandFairyNPC2Fn = () => {
         type: 'PoringIslandFairyNPC2Fn',
     };
 };
+export const PoringIslandFairyNPCSelectOneFn = () => {
+    return {
+        type: 'PoringIslandFairyNPCSelectOneFn',
+    };
+};
 
 
 export const ResetPoringIslandNPCFn = () => {

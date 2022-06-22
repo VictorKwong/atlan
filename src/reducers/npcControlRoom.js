@@ -56,6 +56,7 @@ const Fn = {
     PoringIslandBridgeNPCSelectTwo: false,
     PoringIslandFairyNPC1:false,
     PoringIslandFairyNPC2:false,
+    PoringIslandFairyNPCSelectOne: false,
     BossEclipseDefeat: false,
     //PayonCave1F Dungeon
     PayonCaveChest3: false,
@@ -789,10 +790,16 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: false,
+                PoringIslandFairyNPCSelectOne:false,
                 PoringIslandBridgeNPC: true,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
                 PoringIslandBridgeNPCSelectThree: false,
+            }
+        case 'PoringIslandFairyNPCSelectOneFn':
+            return {
+                ...state,
+                PoringIslandFairyNPCSelectOne: true,
             }
         case 'PoringIslandBridgeNPCSelectOneFn':
             return {
@@ -814,6 +821,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PoringIslandFairyNPC1: true,
                 PoringIslandFairyNPC2: false,
+                PoringIslandFairyNPCSelectOne: false,
                 PoringIslandBridgeNPC: false,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
@@ -824,6 +832,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: true,
+                PoringIslandFairyNPCSelectOne: false,
                 PoringIslandBridgeNPC: false,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
@@ -834,6 +843,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: false,
+                PoringIslandFairyNPCSelectOne: false,
                 PoringIslandBridgeNPC: false,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,

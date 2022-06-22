@@ -15,7 +15,7 @@ import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreen
 //PATH
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
-import { PoringIslandBridgeNPCFn , PoringIslandBridgeNPCSelectOneFn, PoringIslandBridgeNPCSelectTwoFn, PoringIslandBridgeNPCSelectThreeFn, PoringIslandFairyNPC1Fn, PoringIslandFairyNPC2Fn, ResetPoringIslandNPCFn } from './actions'
+import { PoringIslandBridgeNPCFn , PoringIslandBridgeNPCSelectOneFn, PoringIslandBridgeNPCSelectTwoFn, PoringIslandBridgeNPCSelectThreeFn, PoringIslandFairyNPC1Fn, PoringIslandFairyNPC2Fn, PoringIslandFairyNPCSelectOneFn, ResetPoringIslandNPCFn } from './actions'
 //NPC Action
 import { WinJellopyFn, WinEmptyBottleFn} from './actions'
 //Quest Result
@@ -335,6 +335,10 @@ useEffect(() => {
       $('.storySpeech').html(`${npcSpeech['RestingGirl'][0].text}`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RestingGirl'][0].name}</p>`)
       break;
+    case((npcControlRoom.PoringIslandFairyNPC1 || npcControlRoom.PoringIslandFairyNPC2)&& npcControlRoom.PoringIslandFairyNPCSelectOne):
+      $('.storySpeech').html(`${npcSpeech['Fairy'][3].text}`)
+      $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Fairy'][3].name}</p>`)
+      break;
     case(npcControlRoom.PoringIslandFairyNPC1):
       $('.storySpeech').html(`${npcSpeech['Fairy'][0].text}`)
       $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Fairy'][0].name}</p>`)
@@ -622,6 +626,7 @@ useEffect(() => {
               <div className="storyScreen">
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}
+              {/* Bridge NPC */}
               {npcControlRoom.PoringIslandBridgeNPC && !npcControlRoom.PoringIslandBridgeNPCSelectOne && !npcControlRoom.PoringIslandBridgeNPCSelectTwo ?
                 <div className="storyScreen">
                   <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectOneFn());}}>Hidden Path...?</button>
@@ -635,6 +640,11 @@ useEffect(() => {
               {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectThree ?
                 <div className="storyScreen">
                   <p className="questCompleteResult"></p>
+                </div> : null}
+                {/* Fairy NPC */}
+              {(npcControlRoom.PoringIslandFairyNPC1 || npcControlRoom.PoringIslandFairyNPC2) && !npcControlRoom.PoringIslandFairyNPCSelectOne ?
+                <div className="storyScreen">
+                  <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandFairyNPCSelectOneFn());}}>Hidden path on PayonCave..?</button>
                 </div> : null}
           </fieldset>
         </div>

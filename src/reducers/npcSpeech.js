@@ -291,6 +291,10 @@ const Fn = {
     //PayonCave
         name: 'Fairy',
         text: 'Atlan, look at the lake, it seems like this place might have some hidden path!'
+    },{
+        // Hidden path on PayonCave..?
+        name: 'Fairy',
+        text: 'Yes yes yes I know ~@@, there are <span style="color:red;">two</span> hidden paths on Payon Cave, The first one is on <span style="color:red;">1F</span>, if you want me to tell you the second one, treat me something good xD.'
     }],
 }
 
