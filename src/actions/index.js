@@ -2025,7 +2025,11 @@ export const PoringIslandFairyNPCSelectOneFn = () => {
         type: 'PoringIslandFairyNPCSelectOneFn',
     };
 };
-
+export const PoringIslandFairyNPCSelectTwoFn = () => {
+    return {
+        type: 'PoringIslandFairyNPCSelectTwoFn',
+    };
+};
 
 export const ResetPoringIslandNPCFn = () => {
     return {

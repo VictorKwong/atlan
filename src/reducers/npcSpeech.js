@@ -294,7 +294,11 @@ const Fn = {
     },{
         // Hidden path on PayonCave..?
         name: 'Fairy',
-        text: 'Yes yes yes I know ~@@, there are <span style="color:red;">two</span> hidden paths on Payon Cave, The first one is on <span style="color:red;">1F</span>, if you want me to tell you the second one, treat me something good xD.'
+        text: 'Yes yes yes I know ~@@, there are <span style="color:red;">two</span> hidden paths on Payon Cave, The first one is on <span style="color:red;">1F</span>, I`m sure you could find the second one :)'
+    },{
+        // Hidden path on GeffenDungeon..?
+        name: 'Fairy',
+        text: 'that place is strange.. You should find a way to enter the center of the map on <span style="color:red;">2F</span>, also there is a <span style="color:red;">hidden treasure</span> hiding somewhere on GeffenDungeon o_o.'
     }],
 }
 

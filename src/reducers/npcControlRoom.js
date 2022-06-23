@@ -57,6 +57,7 @@ const Fn = {
     PoringIslandFairyNPC1:false,
     PoringIslandFairyNPC2:false,
     PoringIslandFairyNPCSelectOne: false,
+    PoringIslandFairyNPCSelectTwo: false,
     BossEclipseDefeat: false,
     //PayonCave1F Dungeon
     PayonCaveChest3: false,
@@ -791,6 +792,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: false,
                 PoringIslandFairyNPCSelectOne:false,
+                PoringIslandFairyNPCSelectTwo:false,
                 PoringIslandBridgeNPC: true,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
@@ -800,6 +802,11 @@ const npcControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 PoringIslandFairyNPCSelectOne: true,
+            }
+        case 'PoringIslandFairyNPCSelectTwoFn':
+            return {
+                ...state,
+                PoringIslandFairyNPCSelectTwo: true,
             }
         case 'PoringIslandBridgeNPCSelectOneFn':
             return {
@@ -822,6 +829,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: true,
                 PoringIslandFairyNPC2: false,
                 PoringIslandFairyNPCSelectOne: false,
+                PoringIslandFairyNPCSelectTwo: false,
                 PoringIslandBridgeNPC: false,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
@@ -833,6 +841,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: true,
                 PoringIslandFairyNPCSelectOne: false,
+                PoringIslandFairyNPCSelectTwo: false,
                 PoringIslandBridgeNPC: false,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
@@ -844,6 +853,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 PoringIslandFairyNPC1: false,
                 PoringIslandFairyNPC2: false,
                 PoringIslandFairyNPCSelectOne: false,
+                PoringIslandFairyNPCSelectTwo: false,
                 PoringIslandBridgeNPC: false,
                 PoringIslandBridgeNPCSelectOne: false,
                 PoringIslandBridgeNPCSelectTwo: false,
