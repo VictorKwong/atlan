@@ -185,41 +185,6 @@ function StartMenu(){
           }
       }, 10);
   }
-  //   const changeMapFadeAudio = () => {
-  //     let i = 0;
-  //     const fadeAudio = setInterval(() => {
-  //         if (audioBGM.volume === 0.15){
-  //           i = i + 1;
-  //         }
-  //         if (audioBGM.volume !== 0) {
-  //           audioBGM.volume -= 0.002
-  //           audioBGM.volume = audioBGM.volume.toFixed(4)
-  //         }
-  //         if (audioBGM.volume < 0.002) {
-  //             audioBGM.pause();
-  //             audioBGM.currentTime = 0;
-  //           clearInterval(fadeAudio);
-  //         }else if (i >= 2){
-  //           audioBGM.volume = 0.15
-  //           clearInterval(fadeAudio);
-  //         }
-  //       }, 10);
-  //   }
-
-  //   const changePlaceFadeAudio = () => {
-  //     const fadeAudioOut = setInterval(() => {
-  //       console.log(audioBGM.volume);
-  //       if (audioBGM.volume > 0.01) {
-  //         audioBGM.volume -= 0.004
-  //         audioBGM.volume = audioBGM.volume.toFixed(4)
-  //         console.log(audioBGM.volume);
-  //       }
-  //         if (audioBGM.volume === 0.01) {
-  //           audioBGM.volume = 0.15;
-  //           clearInterval(fadeAudioOut);
-  //         }
-  //     }, 10);
-  // }
 //NPC Speech
 
 const SuccessAudio = () => {
