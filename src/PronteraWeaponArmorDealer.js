@@ -9,8 +9,6 @@ import { KatanaFn, BastardSwordFn , GaiaSwordFn , TwinEdgeofNaghtSiegerFn , Viol
 import { CottonShirtFn, AdventureSuitFn , WoodenMailFn , CoatFn , PaddedArmorFn, ChainMailFn , FullPlateFn } from './actions';
 
 import './css/mapWeaponArmorDealer.css'
-import $ from 'jquery'
-import Prontera from './Prontera'
 // Weapon
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
