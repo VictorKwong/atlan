@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { GotoHouseTrainingSTRFn, GotoHouseTrainingAGIFn, GotoHouseTrainingVITFn, GotoHouseTrainingINTFn , GotoHouseTrainingDEXFn, GotoHouseTrainingLUKFn } from './actions'
 
-import { RedPotionFn } from './actions'
 
 //Training Success Failure Reset
 import {ResetTrainingRateFn} from './actions'
@@ -37,7 +36,6 @@ function StartMenu(){
       {id:20005, Img:"", name:"DEX Training", result:"Complete + 10 DEX Training", Points:userAttribute.BonusDex, Confirm:GotoHouseTrainingDEXFn()},
       {id:20006, Img:"", name:"LUK Training", result:"Complete + 10 LUK Training", Points:userAttribute.BonusLuk, Confirm:GotoHouseTrainingLUKFn()}
     ]
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
 
