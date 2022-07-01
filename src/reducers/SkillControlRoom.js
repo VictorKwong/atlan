@@ -12,6 +12,8 @@ const Fn = {
         UserLearnReflectAttack: true,
         UserLearnLifeStealAttack: false,
         UserLearnMasterItem: true,
+        //UserTriggerMasterItem
+        UserTriggerMasterItem: true,
         //Stable Skills Scale
         UserDoubleAttackScale: 0.2,
         UserReflectAttackScale: 0.5,
@@ -193,6 +195,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserLearnMasterItem: action.learn
                 }
             }
+        case 'UserTriggerMasterItemFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserTriggerMasterItem: action.trigger
+                }
+            }
         case 'ResetAllBattleMapFn':
             return {
                 ...state,
@@ -209,6 +219,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     BattleItemScreen: false,
                     BattleSkillScreen: false,
                     UserTurn: false,
+                    UserTriggerMasterItem: true,
                 }
             }
         case 'UserBattleStatsFn':

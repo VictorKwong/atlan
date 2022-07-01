@@ -14,7 +14,7 @@ import { ReturnCheckPointFn } from './actions'
 //BOSS Defeat
 import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,BossBaphometDefeatFn } from './actions'
 //Skills T/F
-import { UserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn } from './actions'
+import { UserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn, UserTriggerMasterItemFn} from './actions'
 //OBS: UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn, ResetUserTurnBlockFn
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
@@ -2097,10 +2097,11 @@ function Main(){
         // End turn
         clockCheck = 0;
         Uclock = 0;
-        if(SkillControlRoom['User'].UserLearnMasterItem === true){
-          clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+        if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+          dispatch(UserTriggerMasterItemFn(false));
         }else{
           clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+          dispatch(UserTriggerMasterItemFn(true));
         }
         dispatch(ResetUserTurnFn());
     }
@@ -2122,10 +2123,11 @@ function Main(){
       // End turn
       clockCheck = 0;
       Uclock = 0;
-      if(SkillControlRoom['User'].UserLearnMasterItem === true){
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+        dispatch(UserTriggerMasterItemFn(false));
       }else{
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(UserTriggerMasterItemFn(true));
       }
       dispatch(ResetUserTurnFn());
     }
@@ -2147,10 +2149,11 @@ function Main(){
         // End turn
         clockCheck = 0;
         Uclock = 0;
-        if(SkillControlRoom['User'].UserLearnMasterItem === true){
-          clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+        if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+          dispatch(UserTriggerMasterItemFn(false));
         }else{
           clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+          dispatch(UserTriggerMasterItemFn(true));
         }
         dispatch(ResetUserTurnFn());
     }
@@ -2172,10 +2175,11 @@ function Main(){
       // End turn
       clockCheck = 0;
       Uclock = 0;
-      if(SkillControlRoom['User'].UserLearnMasterItem === true){
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+        dispatch(UserTriggerMasterItemFn(false));
       }else{
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(UserTriggerMasterItemFn(true));
       }
       dispatch(ResetUserTurnFn());
     }
@@ -2197,10 +2201,11 @@ function Main(){
       // End turn
       clockCheck = 0;
       Uclock = 0;
-      if(SkillControlRoom['User'].UserLearnMasterItem === true){
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+        dispatch(UserTriggerMasterItemFn(false));
       }else{
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(UserTriggerMasterItemFn(true));
       }
       dispatch(ResetUserTurnFn());
     }
@@ -2222,10 +2227,11 @@ function Main(){
       // End turn
       clockCheck = 0;
       Uclock = 0;
-      if(SkillControlRoom['User'].UserLearnMasterItem === true){
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+        dispatch(UserTriggerMasterItemFn(false));
       }else{
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(UserTriggerMasterItemFn(true));
       }
       dispatch(ResetUserTurnFn());
     }
@@ -2247,10 +2253,11 @@ function Main(){
       // End turn
       clockCheck = 0;
       Uclock = 0;
-      if(SkillControlRoom['User'].UserLearnMasterItem === true){
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+        dispatch(UserTriggerMasterItemFn(false));
       }else{
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(UserTriggerMasterItemFn(true));
       }
       dispatch(ResetUserTurnFn());
     }
@@ -2275,10 +2282,11 @@ function Main(){
       // End turn
       clockCheck = 0;
       Uclock = 0;
-      if(SkillControlRoom['User'].UserLearnMasterItem === true){
-        clockBarObject.userClockBar = clockBarObject.userClockBar - 90;
+      if(SkillControlRoom['User'].UserLearnMasterItem === true && SkillControlRoom['User'].UserTriggerMasterItem === true){
+        dispatch(UserTriggerMasterItemFn(false));
       }else{
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(UserTriggerMasterItemFn(true));
       }
       dispatch(ResetUserTurnFn());
     }
@@ -2490,13 +2498,13 @@ function Main(){
               
               switch (true) {
                 case (SkillControlRoom['User'].userClockQuicken >= 1):
-                  Uclock = 1
+                  Uclock = 1;
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
                           }
                 default:
-                  Uclock = 1
+                  Uclock = 1;
                   return clockBarObject = {
                           userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
                           enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
@@ -2511,7 +2519,7 @@ function Main(){
 
     // Longest Animation 1.2 = 0.3 onhit + 0.9 delay
     useEffect(() => {
-      if (Uclock === 0){
+      if (Uclock === 0 && clockCheck === 0){
         setTimeout(() => clockBaseQtn(), 900);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -2651,7 +2659,7 @@ function Main(){
                 </div>
                 <div>
                       
-                      { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn ? 
+                      { SkillControlRoom['User'].BattleSkillScreen && SkillControlRoom['User'].UserTurn && clockBarObject.userClockBar >= 100 ? 
                       <div className="userSkillBox">
                           <button className="goGoButtonSkills" onClick={() => userSkillFirstAidButton()}>
                             <figcaption className="goGoButtonFig">
@@ -2713,7 +2721,7 @@ function Main(){
                           </figcaption>
                         </button>
                       </div>
-                      : SkillControlRoom['User'].BattleItemScreen && SkillControlRoom['User'].UserTurn ? 
+                      : SkillControlRoom['User'].BattleItemScreen && SkillControlRoom['User'].UserTurn && clockBarObject.userClockBar >= 100 ? 
                       <div className="userSkillBox">
                         {userGoldItem.RedPotion >= 1 ?
                             <button className="goGoButton" onClick={() => userItemRedPotionButton()}>
@@ -2769,7 +2777,7 @@ function Main(){
                           </figcaption>
                         </button>
                       </div>
-                      : SkillControlRoom['User'].UserTurn && userStats.currentHealth > 0? 
+                      : SkillControlRoom['User'].UserTurn && userStats.currentHealth > 0 && clockBarObject.userClockBar >= 100? 
                       <div className="userSkillBox">
                         <button className="goGoButton" onClick={() => userAttackEnemyButton()}>
                           <figcaption className="goGoButtonFig">

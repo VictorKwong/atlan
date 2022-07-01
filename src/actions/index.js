@@ -147,6 +147,12 @@ export const UserLearnMasterItemFn = (learn) => {
         learn:learn
     };
 };
+export const UserTriggerMasterItemFn = (trigger) => {
+    return {
+        type: 'UserTriggerMasterItemFn',
+        trigger:trigger
+    };
+};
 
 
 export const UserLevelUpFn = (Points) => {

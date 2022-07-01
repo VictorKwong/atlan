@@ -67,7 +67,6 @@ function StartMenu(){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const npcSpeech = useSelector(state => state.npcSpeech)
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
     let HeadGearBox = [
