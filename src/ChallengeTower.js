@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoTreasurePoringIslandMapFn} from './actions';
+import { GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 // EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
+import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //cutscene
 import BattlePoringIslandMap from './BattlePoringIslandMap'
-import TreasurePoringIslandMap from './TreasurePoringIslandMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
@@ -94,11 +93,13 @@ function StartMenu(){
           // Auto-play was prevented
         });
       }
-      $('.ChallengeTowerMapTitle').fadeIn(600);
-      $('.ChallengeTowerMapTitle').delay(2400).fadeOut(600);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    useEffect(() => {
+      $('.ChallengeTowerMapTitle').fadeIn(600);
+      $('.ChallengeTowerMapTitle').delay(2400).fadeOut(600);
+    }, [screenControlRoom])
     const changeMapFadeAudio = () => {
       let i = 0;
       const fadeAudio = setInterval(() => {
@@ -133,28 +134,6 @@ function StartMenu(){
           }
       }, 10);
   }
-
-//NPC Speech
-useEffect(() => {
-  switch(true){
-    case(npcControlRoom.PoringIslandBridgeNPC && screenControlRoom.PoringIslandPath6 && screenControlRoom.AltanItem):
-      $('.storySpeech').html('You found a hidden passage in PoringIsland...')  
-      $('.storyCharacter').html('')
-      break;
-    //GEAR LIST
-    case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
-      $('.storySpeech').html('')  
-      $('.storyCharacter').html('')
-      break;
-    default:
-      $('.storySpeech').html('')  
-      $('.storyCharacter').html('')
-        break;
-  }
-//userState,screenControRoom not included
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [npcControlRoom, screenControlRoom])
-
 const LoadingScreen0 = () => {
   dispatch(BattleLoadingScreenFn());
   setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath1",26)), 1000);
@@ -177,9 +156,7 @@ const LoadingScreen3 = () => {
 }
 
     return(
-      <div className={
-      screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingSuccess && screenControlRoom.TrainingLoadingScreenDelay ? "loadingTrainingSuccessScreen loadingTrainingSuccessScreenImg" : screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingSuccess ? "loadingTrainingSuccessScreen" : 
-      screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingFailure && screenControlRoom.TrainingLoadingScreenDelay ? "loadingTrainingFailureScreen loadingTrainingFailureScreenImg" : screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingFailure ? "loadingTrainingFailureScreen" : null}>
+      <div>
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
@@ -204,11 +181,6 @@ const LoadingScreen3 = () => {
               <div className="ReturnParent">
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
-              </div>:
-            // TREASURE MAP
-            screenControlRoom.TreasurePoringIslandMap ?
-              <div className="ReturnParent">
-                <TreasurePoringIslandMap />
               </div>:
             <div className="ChallengeTowerMap">
               <button className="ReturnHUDBugFix"></button>
@@ -315,11 +287,6 @@ const LoadingScreen3 = () => {
                 })}
                 </div>
               : <p>Empty HeadGear Storage T^T</p>}
-              </div> : null}
-
-              {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
-              <div className="storyScreen">
-                <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
               </div> : null}
           </fieldset>
         </div>

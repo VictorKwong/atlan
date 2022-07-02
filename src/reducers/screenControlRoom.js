@@ -538,6 +538,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon4F: false,
                     PayonCave1F: false,
                     PayonCave2F: false,
+                    ChallengeTower: false,
                     UserUnlockPath: action.Path
                 }
             case 'GotoGeffenFn':

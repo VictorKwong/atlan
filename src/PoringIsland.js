@@ -134,6 +134,7 @@ function StartMenu(){
       {id:20006, Attr:TrainingLUKFn(1), name:"LUK", Points:userAttribute.BonusLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)}
     ]
     useEffect(() => {
+      console.log("Trigger test");
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
       let playPromise = audioBGM.play(); 
       if (playPromise !== undefined) {

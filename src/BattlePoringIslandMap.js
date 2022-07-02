@@ -59,6 +59,7 @@ import PayonCave1F from './PayonCave1F'
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon3F from './GeffenDungeon3F'
 import WorldMap from './WorldMap'
+import ChallengeTower from './ChallengeTower'
 //PoringIsland
 import Poring from './img/Monster/Poring.gif'
 import PoringHit from './img/Monster/PoringHit.png'
@@ -2559,6 +2560,7 @@ function Main(){
         screenControlRoom.PayonCave1F ? <PayonCave1F />:
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F />:
         screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F />:
+        screenControlRoom.ChallengeTower ? <ChallengeTower />:
         screenControlRoom.WorldMap ? <WorldMap /> :
         <div className={ImageControlRoom.EnemyOnCrit || ImageControlRoom.UserIsCrit ? "battleScreenShakeMore" : ImageControlRoom.EnemyOnHit || ImageControlRoom.UserOnHit ? "battleScreenShake" : null}>
             <div className="storyMapScreen">
