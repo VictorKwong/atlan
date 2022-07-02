@@ -35,8 +35,9 @@ const Fn = [
     //26.Baphomet (FinalBoss)
 
     //27.GoldenThiefBug
-    //28.Phreeoni
-    //29.Stormy Knight
+    //28.Drake
+    //29.Phreeoni
+    //30.Stormy Knight
     {
         name: 'Poring',
         level: 1,

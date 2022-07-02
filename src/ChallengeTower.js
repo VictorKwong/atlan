@@ -16,7 +16,7 @@ import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
 import './css/mapChallengeTower.css'
 import $ from 'jquery'
-import audioPampasUpas from './audio/PampasUpas.mp3'
+
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -41,6 +41,7 @@ import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
+import audioPampasUpas from './audio/PampasUpas.mp3'
 const audioBGM = new Audio(audioPampasUpas);
 
 
