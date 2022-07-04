@@ -548,6 +548,7 @@ import audioRustyHeartsWings from './audio/RustyHeartsWings.mp3'
 import audioGeffenDungeon from './audio/AriaTheScarletAmmoSoundtrackHysteriaMode.mp3'
 import audioImaginaryFriends from './audio/Laszlo-ImaginaryFriends.mp3'
 import audioRustyHeartsHeartbroken from './audio/RustyHeartsHeartbroken.mp3'
+import audioDreamersDream from './audio/27DreamersDream.mp3'
 import SwordHit from './audio/SoundEffect/SwordHit.wav'
 import EmptyHandHit from './audio/SoundEffect/EmptyHandHit.wav'
 import AttackMiss from './audio/SoundEffect/AttackMiss.wav'
@@ -567,6 +568,7 @@ const audioPayonCaveBossBGM = new Audio(audioRustyHeartsWings);
 const audioGeffenDungeonBGM = new Audio(audioGeffenDungeon);
 const audioGeffenDungeonBossBGM = new Audio(audioImaginaryFriends);
 const audioFinalBossBGM = new Audio(audioRustyHeartsHeartbroken);
+const audioChallengeTowerBGM = new Audio(audioDreamersDream);
 const audioHit = new Audio(SwordHit);
 const audioEmptyHandHit = new Audio(EmptyHandHit);
 const audioMiss = new Audio(AttackMiss);
@@ -842,7 +844,7 @@ function Main(){
                 });
               }
               break;
-          case(screenControlRoom.BattlePoringIslandMapMonsterID >= 16):
+          case(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25):
             audioGeffenDungeonBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
                 playPromise = audioGeffenDungeonBGM.play();
                 if (playPromise !== undefined) {
@@ -850,6 +852,20 @@ function Main(){
                     // Automatic playback started!
                     audioGeffenDungeonBGM.loop = true;
                     audioGeffenDungeonBGM.play()
+                  })
+                  .catch(error => {
+                    // Auto-play was prevented
+                  });
+                }
+                break;
+          case(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29):
+          audioChallengeTowerBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+                playPromise = audioChallengeTowerBGM.play();
+                if (playPromise !== undefined) {
+                  playPromise.then(_ => {
+                    // Automatic playback started!
+                    audioChallengeTowerBGM.loop = true;
+                    audioChallengeTowerBGM.play()
                   })
                   .catch(error => {
                     // Auto-play was prevented
@@ -1000,7 +1016,7 @@ function Main(){
                       }
                     }, 10);
                     break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID >= 16):
+            case(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25):
                     fadeAudio = setInterval(() => {
                         if (audioGeffenDungeonBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
                           i = i + 1;
@@ -1020,6 +1036,27 @@ function Main(){
                         }
                       }, 10);
                       break;
+
+            case(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29):
+                      fadeAudio = setInterval(() => {
+                          if (audioChallengeTowerBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+                            i = i + 1;
+                          }
+                          if (audioChallengeTowerBGM.volume !== 0) {
+                            audioChallengeTowerBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+                            audioChallengeTowerBGM.volume = audioChallengeTowerBGM.volume.toFixed(5)
+                          }
+                          if (audioChallengeTowerBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+                            audioChallengeTowerBGM.volume = 0;
+                            audioChallengeTowerBGM.pause();
+                            audioChallengeTowerBGM.currentTime = 0;
+                            clearInterval(fadeAudio);
+                          }else if (i >= 2){
+                            audioChallengeTowerBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+                            clearInterval(fadeAudio);
+                          }
+                        }, 10);
+                        break;
             default:
                 fadeAudio = setInterval(() => {
                   if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
