@@ -484,8 +484,8 @@ const Fn = [
     {
         name: 'GoldenThiefBug',
         level: 10,
-        maxHealth: 1000, //2000
-        currentHealth: 1000,
+        maxHealth: 9000, //2000
+        currentHealth: 9000,
         attack: 60,
         defence: 19,
         defencebuffer: 25, //+6

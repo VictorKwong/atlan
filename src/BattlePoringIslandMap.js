@@ -589,6 +589,7 @@ let clockBarObject = {
 let Damage = 0;
 let SPHeal = 0;
 let Reflecting = 0;
+let EnemyStunClock = 0;
 //Monster Random Number 0 1 
 // let i = Math.round(Math.random())
 let Uclock = 0;
@@ -1183,7 +1184,7 @@ function Main(){
         })
         switch (true) {
           case (i === 5):
-            dispatch(BossEclipseDefeatFn());
+            dispatch(BossEclipseDefeatFn());;
             break;
           case (i === 15):
             dispatch(BossWolyafaDefeatFn());
@@ -1258,7 +1259,7 @@ function Main(){
               return dispatch(ProgressQuestDialogFn("Drake"));
             case ((questControlRoom.QuestDialog).indexOf("Phreeoni") > -1 && i === 28):
               return dispatch(ProgressQuestDialogFn("Phreeoni"));
-            case ((questControlRoom.QuestDialog).indexOf("StormyKnight") > -1 && i === 28):
+            case ((questControlRoom.QuestDialog).indexOf("StormyKnight") > -1 && i === 29):
               return dispatch(ProgressQuestDialogFn("StormyKnight"));
             default:
               return null;
@@ -1598,6 +1599,10 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                if(Math.random() >= 0.5){
+                  EnemyStunClock = 3;
+                  $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
+                }
                   if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                     // Text display
                     dispatch(UserOnLifeStealAnimationFn(true));
@@ -1618,6 +1623,10 @@ function Main(){
                   Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*2.5)
                     //Audio SoundEffect
                     userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
+                    if(Math.random() >= 0.5){
+                      EnemyStunClock = 3;
+                      $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
+                    }
                     if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                       // Text display
                       dispatch(UserOnLifeStealAnimationFn(true));
@@ -1641,6 +1650,10 @@ function Main(){
               //Audio SoundEffect
             userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
+            if(Math.random() >= 0.5){
+              EnemyStunClock = 3;
+              $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
+            }
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //CRIT RATE
             switch (true) {
@@ -1699,6 +1712,7 @@ function Main(){
         clockCheck = 0;
         Uclock = 0;
         clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        
         dispatch(ResetUserTurnFn());
       }else{
         $('.storySpeech').append(`<p>Not enough SP.</p>`)
@@ -2535,11 +2549,25 @@ function Main(){
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               
               switch (true) {
-                case (SkillControlRoom['User'].userClockQuicken >= 1):
+                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock <= 0):
                   Uclock = 1;
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                          }
+                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock >= 0):
+                  Uclock = 1;
+                  EnemyStunClock = EnemyStunClock - 1;
+                  return clockBarObject = {
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                            enemyClockBar: clockBarObject.enemyClockBar
+                          }
+                case (EnemyStunClock >= 0):
+                  Uclock = 1;
+                  EnemyStunClock = EnemyStunClock - 1;
+                  return clockBarObject = {
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                            enemyClockBar: clockBarObject.enemyClockBar,
                           }
                 default:
                   Uclock = 1;
