@@ -136,22 +136,22 @@ function StartMenu(){
   }
 const LoadingScreen0 = () => {
   dispatch(BattleLoadingScreenFn());
-  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath1",26)), 1000);
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengeTowerPath1",26)), 1000);
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
 const LoadingScreen1 = () => {
   dispatch(BattleLoadingScreenFn());
-  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath2",27)), 1000);
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengeTowerPath2",27)), 1000);
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
 const LoadingScreen2 = () => {
   dispatch(BattleLoadingScreenFn());
-  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath3",28)), 1000);
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengeTowerPath3",28)), 1000);
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
 const LoadingScreen3 = () => {
   dispatch(BattleLoadingScreenFn());
-  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengePath3",29)), 1000);
+  setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("ChallengeTowerPath4",29)), 1000);
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
 

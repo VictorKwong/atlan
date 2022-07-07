@@ -49,6 +49,7 @@ import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
 import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn, GotoPayonCave3FPath1Fn, GotoPayonCave3FPath2Fn, GotoPayonCave3FPath4Fn } from './actions'
 import { GotoGeffenDungeon1FPath1Fn, GotoGeffenDungeon1FPath3Fn, GotoGeffenDungeon2FPath1Fn, GotoGeffenDungeon2FPath2Fn, GotoGeffenDungeon2FPath4Fn, GotoGeffenDungeon2FPath6Fn, GotoGeffenDungeon3FPath1Fn , GotoGeffenDungeon3FPath2Fn , GotoGeffenDungeon3FPath4Fn , GotoGeffenDungeon4FPath1Fn } from './actions'
+import { GotoChallengeTowerPath1Fn, GotoChallengeTowerPath2Fn, GotoChallengeTowerPath3Fn, ReturnChallengeTowerPathFn} from './actions'
 //cutsence
 import {cutsceneFiveFn, cutsceneSevenFn} from './actions'
 
@@ -1163,6 +1164,16 @@ function Main(){
             break;
           case (screenControlRoom.UserUnlockPath === "GeffenDungeon4FPath1"):
             dispatch(GotoGeffenDungeon4FPath1Fn());
+            break;
+          //Challenge Tower
+          case (screenControlRoom.UserUnlockPath === "ChallengeTowerPath1"):
+            dispatch(GotoChallengeTowerPath1Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "ChallengeTowerPath2"):
+            dispatch(GotoChallengeTowerPath2Fn());
+            break;
+          case (screenControlRoom.UserUnlockPath === "ChallengeTowerPath3"):
+            dispatch(GotoChallengeTowerPath3Fn());
             break;
           default:
             break;

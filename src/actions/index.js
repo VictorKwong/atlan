@@ -2322,6 +2322,29 @@ export const ReturnGeffenDungeonPathFn = () => {
         type: 'ReturnGeffenDungeonPathFn',
     };
 };
+
+//Challenge Tower
+export const GotoChallengeTowerPath1Fn = () => {
+    return {
+        type: 'GotoChallengeTowerPath1Fn',
+    };
+};
+export const GotoChallengeTowerPath2Fn = () => {
+    return {
+        type: 'GotoChallengeTowerPath2Fn',
+    };
+};
+export const GotoChallengeTowerPath3Fn = () => {
+    return {
+        type: 'GotoChallengeTowerPath3Fn',
+    };
+};
+export const ReturnChallengeTowerPathFn = () => {
+    return {
+        type: 'ReturnChallengeTowerPathFn',
+    };
+};
+
 //GEFFEN DUNGEON BOSS & NPC
 export const BossDoppelgangerDefeatFn = () => {
     return {

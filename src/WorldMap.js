@@ -151,15 +151,47 @@ function StartMenu(){
                 {/* click x trigger hover */}
                 <button className="ReturnHUDBugFix"></button>
                 <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
-                <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>Payon Cave</button>
-                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>Poring Island</button>
+                <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>{
+                      screenControlRoom.PayonCave1FPath1 &&
+                      screenControlRoom.PayonCave1FPath2Hidden &&
+                      screenControlRoom.PayonCave1FPath3Hidden &&
+                      screenControlRoom.PayonCave2FPath1 &&
+                      screenControlRoom.PayonCave2FPath2 &&
+                      screenControlRoom.PayonCave2FPath3 &&
+                      screenControlRoom.PayonCave2FPath4 &&
+                      screenControlRoom.PayonCave2FPath5 &&
+                      screenControlRoom.PayonCave2FPath6 &&
+                      screenControlRoom.PayonCave2FPath7 &&
+                      screenControlRoom.PayonCave2FPath8 &&
+                      screenControlRoom.PayonCave2FPath9Hidden &&
+                      screenControlRoom.PayonCave2FPath10Hidden &&
+                      screenControlRoom.PayonCave3FPath1 &&
+                      screenControlRoom.PayonCave3FPath2 &&
+                      screenControlRoom.PayonCave3FPath3 &&
+                      screenControlRoom.PayonCave3FPath4 ? <span>Payon Cave(⭐⭐)</span> : <span>Payon Cave</span>}
+                </button>
+                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>{
+                    screenControlRoom.PoringIslandPath1 &&
+                    screenControlRoom.PoringIslandPath2 &&
+                    screenControlRoom.PoringIslandPath3 &&
+                    screenControlRoom.PoringIslandPath4 &&
+                    screenControlRoom.PoringIslandPath5 &&
+                    screenControlRoom.PoringIslandPath6 &&
+                    screenControlRoom.PoringIslandPath7 &&
+                    screenControlRoom.PoringIslandPath8 ? <span>Poring Island(⭐)</span> : <span>Poring Island</span>}
+                
+                </button>
                 <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn())}}>Geffen</button>
                 {screenControlRoom.FinalBossPath ?
                 <button className="FinalBoss" onClick={
                   screenControlRoom.storyLineSix ? 
                   () => {LoadingScreen0();}:
                   () => {dispatch(cutsceneSixFn());}}>Baphomet Gate💢</button> : null}
-                <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn())}}>RaidTower</button>
+                <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn())}}>{
+                    screenControlRoom.ChallengeTowerPath1 &&
+                    screenControlRoom.ChallengeTowerPath2 &&
+                    screenControlRoom.ChallengeTowerPath3 ? <span>RaidTower(⭐⭐⭐⭐)</span> : <span>RaidTower</span>}
+                </button>
               </div>
             }               
             <div className="StoryHUD">

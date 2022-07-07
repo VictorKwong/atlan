@@ -72,7 +72,7 @@ const Fn = {
     PoringIslandPath5: true,
     PoringIslandPath6: true,
     PoringIslandPath7: true,
-    PoringIslandPath8: true,
+    PoringIslandPath8: false,
     //Payon Cave PATH
     // PayonCave1FPath1: false,
     // PayonCave1FPath2Hidden: false,
@@ -121,6 +121,10 @@ const Fn = {
     GeffenDungeon4FPath1: true,
     //Final Boss
     FinalBossPath: false,
+    //ChallengeTower
+    ChallengeTowerPath1: true,
+    ChallengeTowerPath2: true,
+    ChallengeTowerPath3: true,
     //UserUnlockPath 0-8, 5-8 hidden
     UserUnlockPath: "Path0",
     //Mini Screen (StoryMap)
@@ -999,6 +1003,29 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     GeffenDungeon3FPath4: false,
                     GeffenDungeon3FPath5Hidden: false,
                     GeffenDungeon4FPath1: false,
+                }
+            //Challenge Tower
+            case 'GotoChallengeTowerPath1Fn':
+                return{
+                    ...state,
+                    ChallengeTowerPath1: true,
+                }
+            case 'GotoChallengeTowerPath2Fn':
+                return{
+                    ...state,
+                    ChallengeTowerPath2: true,
+                }
+            case 'GotoChallengeTowerPath3Fn':
+                return{
+                    ...state,
+                    ChallengeTowerPath3: true,
+                }
+            case 'ReturnChallengeTowerPathFn':
+                return{
+                    ...state,
+                    ChallengeTowerPath1: false,
+                    ChallengeTowerPath2: false,
+                    ChallengeTowerPath3: false,
                 }
             case 'FinalBossPathFn':
                 return{

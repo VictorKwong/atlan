@@ -340,9 +340,25 @@ function StartMenu(){
             <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
             <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
             <button className="GeffenBase GeffenSoldier" onClick={() =>{dispatch(GeffenSoldierNPCFn()); changePlaceFadeAudio();}}><img src={GeffenSoldier} alt="GeffenSoldier"/></button>
-            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>Geffen Dungeon Entrance</button>
-
-            
+            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>{
+                screenControlRoom.GeffenDungeon1FPath1 &&
+                screenControlRoom.GeffenDungeon1FPath2 &&
+                screenControlRoom.GeffenDungeon1FPath3 &&
+                screenControlRoom.GeffenDungeon1FPath4 &&
+                screenControlRoom.GeffenDungeon2FPath1 &&
+                screenControlRoom.GeffenDungeon2FPath2 &&
+                screenControlRoom.GeffenDungeon2FPath3 &&
+                screenControlRoom.GeffenDungeon2FPath4 &&
+                screenControlRoom.GeffenDungeon2FPath5 &&
+                screenControlRoom.GeffenDungeon2FPath6 &&
+                screenControlRoom.GeffenDungeon2FPath7Hidden &&
+                screenControlRoom.GeffenDungeon3FPath1 &&
+                screenControlRoom.GeffenDungeon3FPath2 &&
+                screenControlRoom.GeffenDungeon3FPath3 &&
+                screenControlRoom.GeffenDungeon3FPath4 &&
+                screenControlRoom.GeffenDungeon3FPath5Hidden &&
+                screenControlRoom.GeffenDungeon4FPath1 ? <span>Geffen Dungeon Entrance(⭐⭐⭐)</span> : <span>Geffen Dungeon Entrance</span>}
+            </button>
           </div>
           }
           <div className="StoryHUD">
