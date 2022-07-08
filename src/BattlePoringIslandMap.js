@@ -897,21 +897,6 @@ function Main(){
         }
         return null;
       })
-      // switch(true){
-      //   case (userStats.userWeapon === "Katana"):
-      //     return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
-      //   case (userStats.userWeapon === "Bastard Sword"):
-      //     return dispatch(UserWeaponImgFn(UserBattlePostBastardSword1,UserAttackPostBastardSword1,UserDefendPostBastardSword1))
-      //   case (userStats.userWeapon === "Gaia Sword"):
-      //     return dispatch(UserWeaponImgFn(UserBattlePostGaiaSword1,UserAttackPostGaiaSword1,UserDefendPostGaiaSword1))
-      //   case (userStats.userWeapon === "Twin Edge of Naght Sieger"):
-      //     return dispatch(UserWeaponImgFn(UserBattlePostTwinEdgeofNaghtSieger1,UserAttackPostTwinEdgeofNaghtSieger1,UserDefendPostTwinEdgeofNaghtSieger1))
-      //   case (userStats.userWeapon === "Violet Fear"):
-      //     return dispatch(UserWeaponImgFn(UserBattlePostVioletFear1,UserAttackPostVioletFear1,UserDefendPostVioletFear1))
-      //   default:
-      //     return dispatch(UserWeaponImgFn(UserBattlePostKatana1,UserAttackPostKatana1,UserDefendPostKatana1))
-      // }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const changeMapFadeAudio = () => {
