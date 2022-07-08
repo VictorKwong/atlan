@@ -126,7 +126,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 Enemy:{
                     ...state['Enemy'],
-                    EnemyPoison: 2,
+                    EnemyPoison: 5,
             }
         }
         case 'EnemyTurnFn':
@@ -231,6 +231,10 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     BattleSkillScreen: false,
                     BattleItemScreen: false,
                     userClockQuicken: state['User'].userClockQuicken - 1
+                },
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyPoison: state['Enemy'].EnemyPoison - 1,
                 }
         }
         case 'EnemyBattleStatsFn':

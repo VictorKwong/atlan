@@ -36,6 +36,11 @@ export const UserSkillLifeStealEnemyFn = (Damage,Target,LifeSteal,Consume) => {
         Consume: Consume
     }
 };
+export const UserSkillKodokuEnemyFn = () => {
+    return {
+        type: 'UserSkillKodokuEnemyFn',
+    }
+};
 
 
 

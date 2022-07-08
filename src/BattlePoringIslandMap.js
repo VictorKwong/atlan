@@ -17,7 +17,7 @@ import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,Bos
 import { UserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn, UserTriggerMasterItemFn} from './actions'
 //OBS: UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn, ResetUserTurnBlockFn
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn, UserSkillKodokuEnemyFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -2534,6 +2534,13 @@ function Main(){
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.05) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.05),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*0.05)} damage</p>\n`)
+              }else if(SkillControlRoom['Enemy'].EnemyPoison >= 1) {
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
+              }
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
 
@@ -2545,14 +2552,14 @@ function Main(){
               listResult.scrollTop = listResult.scrollHeight;
               clockCheck = 1;
               //Prevent Rerender
-              //testing
-              if (enemyStats[i].currentHealth - 13 > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
-                dispatch(UserAttackEnemyFn(13,i));
-                enemyDecisionQFn();
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received 13 damage</p>\n`)
-              }else{
-                enemyDecisionQFn();
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.05) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.05),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*0.05)} damage</p>\n`)
+              }else if(SkillControlRoom['Enemy'].EnemyPoison >= 1){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
               }
+              enemyDecisionQFn();
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
