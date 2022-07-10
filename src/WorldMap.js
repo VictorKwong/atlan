@@ -55,7 +55,6 @@ import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
 function StartMenu(){
 
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
