@@ -2533,6 +2533,13 @@ function Main(){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
               }
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.02) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.02),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*0.02)} damage</p>\n`)
+              }else if(SkillControlRoom['Enemy'].EnemyBurning >= 1){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
+              }
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
 
@@ -2551,7 +2558,13 @@ function Main(){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
               }
-              
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.02) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.02),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*0.02)} damage</p>\n`)
+              }else if(SkillControlRoom['Enemy'].EnemyBurning >= 1){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
+              }
               enemyDecisionQFn();
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
