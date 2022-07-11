@@ -117,6 +117,11 @@ export const UserSkillKodokuFn = () => {
         type: 'UserSkillKodokuFn',
     };
 };
+export const UserSkillMagnumBreakFn = () => {
+    return {
+        type: 'UserSkillMagnumBreakFn',
+    };
+};
 
 export const UserSkillQuickenClockTickFn = () => {
     return {

@@ -23,6 +23,7 @@ const Fn = {
         EnemyTurn: false,
         EnemyBlock: false,
         EnemyPoison: 0,
+        EnemyBurning: 0,
     }
     
 }
@@ -127,8 +128,16 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 Enemy:{
                     ...state['Enemy'],
                     EnemyPoison: 5,
+                }
             }
-        }
+        case 'UserSkillMagnumBreakFn':
+            return{
+                ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyBurning: 5,
+                }
+            }
         case 'EnemyTurnFn':
             return {
                 ...state,
@@ -211,6 +220,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyBlock: false,
                     EnemyTurn: false,
                     EnemyPoison: 0,
+                    EnemyBurning: 0,
                 },
                 User:{
                     ...state['User'],
@@ -235,6 +245,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 Enemy:{
                     ...state['Enemy'],
                     EnemyPoison: state['Enemy'].EnemyPoison - 1,
+                    EnemyBurning: state['Enemy'].EnemyBurning - 1,
                 }
         }
         case 'EnemyBattleStatsFn':
@@ -245,6 +256,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyBlock: false,
                     EnemyTurn: true,
                     EnemyPoison: state['Enemy'].EnemyPoison - 1,
+                    EnemyBurning: state['Enemy'].EnemyBurning - 1,
             }
         }
         default:

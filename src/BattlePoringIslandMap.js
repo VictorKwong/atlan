@@ -1889,6 +1889,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
+                  dispatch(UserSkillMagnumBreakFn());
                   dispatch(UserOnLifeStealAnimationFn(true));
                   setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
                   $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1897,6 +1898,7 @@ function Main(){
                   return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
                 }else{
                   // Text display
+                  dispatch(UserSkillMagnumBreakFn());
                   $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                   // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                   return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
@@ -1905,6 +1907,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
+                  dispatch(UserSkillMagnumBreakFn());
                   dispatch(UserOnLifeStealAnimationFn(true));
                   setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
                   $('.storySpeech').append(`<p>Atlan use Magnum Break! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1913,6 +1916,7 @@ function Main(){
                   return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
                 }else{
                   // Text display
+                  dispatch(UserSkillMagnumBreakFn());
                   $('.storySpeech').append(`<p>Atlan use Magnum Break! Enemy Received ${Damage} damage</p>`)
                   // Rerender
                   return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
@@ -1931,6 +1935,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
+                  dispatch(UserSkillMagnumBreakFn());
                   dispatch(UserOnLifeStealAnimationFn(true));
                   setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
                   $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1947,6 +1952,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defence)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
+                  dispatch(UserSkillMagnumBreakFn());
                   dispatch(UserOnLifeStealAnimationFn(true));
                   setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
                   $('.storySpeech').append(`<p>Atlan use Magnum Break! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1971,6 +1977,7 @@ function Main(){
               return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
         }
         })()
+
         // End turn
         clockCheck = 0;
         Uclock = 0;
@@ -2544,6 +2551,7 @@ function Main(){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
               }
+              
               enemyDecisionQFn();
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
