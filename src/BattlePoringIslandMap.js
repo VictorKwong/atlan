@@ -229,6 +229,10 @@ import MastelaFruit from './img/Item/MastelaFruit.gif'
 import BluePotion from './img/Item/BluePotion.gif'
 import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 
+//stats
+import BurningEffect from './img/Stats/Burning.png'
+import PoisonEffect from './img/Stats/Poison.png'
+
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
 import UserIsDeadPost from './img/Character/UserDeadPost1.png'
@@ -2698,6 +2702,9 @@ function Main(){
                     }*/}
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
                      <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
+                     {SkillControlRoom['Enemy'].EnemyPoison >= 1 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
+                     {SkillControlRoom['Enemy'].EnemyBurning >= 1 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
+                     
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
                     <p>Enemy Power {enemyStats[i].power}</p>
