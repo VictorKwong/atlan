@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn,  EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , ResetUserIsBlockAnimationFn, UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, GotoChallengeTowerFn} from './actions';
+import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
 //Battle Reset
 import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
 import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
 //Clock
-import { UserTurnFn , ResetUserTurnFn, EnemyTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn, TickingClockFn } from './actions';
+import { UserTurnFn , ResetUserTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn, TickingClockFn } from './actions';
 //Game Result (Victory/Defeat)
 import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
 //BOSS Defeat
 import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,BossBaphometDefeatFn } from './actions'
 //Skills T/F
-import { UserTurnBlockFn , EnemyTurnBlockFn, ResetEnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn, UserTriggerMasterItemFn} from './actions'
+import { UserTurnBlockFn , EnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn, UserTriggerMasterItemFn} from './actions'
 //OBS: UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn, ResetUserTurnBlockFn
 //Battle Calculation
 import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn, UserSkillKodokuEnemyFn, UserSkillMagnumBreakFn} from './actions'
@@ -49,7 +49,7 @@ import { GotoPoringIslandPath5Fn } from './actions'
 import { GotoPayonCave1FPath1Fn } from './actions'
 import { GotoPayonCave2FPath1Fn, GotoPayonCave2FPath2Fn, GotoPayonCave2FPath5Fn , GotoPayonCave2FPath7Fn , GotoPayonCave2FPath8Fn, GotoPayonCave3FPath1Fn, GotoPayonCave3FPath2Fn, GotoPayonCave3FPath4Fn } from './actions'
 import { GotoGeffenDungeon1FPath1Fn, GotoGeffenDungeon1FPath3Fn, GotoGeffenDungeon2FPath1Fn, GotoGeffenDungeon2FPath2Fn, GotoGeffenDungeon2FPath4Fn, GotoGeffenDungeon2FPath6Fn, GotoGeffenDungeon3FPath1Fn , GotoGeffenDungeon3FPath2Fn , GotoGeffenDungeon3FPath4Fn , GotoGeffenDungeon4FPath1Fn } from './actions'
-import { GotoChallengeTowerPath1Fn, GotoChallengeTowerPath2Fn, GotoChallengeTowerPath3Fn, ReturnChallengeTowerPathFn} from './actions'
+import { GotoChallengeTowerPath1Fn, GotoChallengeTowerPath2Fn, GotoChallengeTowerPath3Fn} from './actions'
 //cutsence
 import {cutsceneFiveFn, cutsceneSevenFn} from './actions'
 
@@ -901,6 +901,7 @@ function Main(){
         }
         return null;
       })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const changeMapFadeAudio = () => {
@@ -2702,9 +2703,10 @@ function Main(){
                     }*/}
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
                      <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
-                     {SkillControlRoom['Enemy'].EnemyPoison >= 1 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
-                     {SkillControlRoom['Enemy'].EnemyBurning >= 1 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
-                     
+                     <div>
+                      {SkillControlRoom['Enemy'].EnemyPoison >= 1 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBurning >= 1 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
+                     </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
                     <p>Enemy Power {enemyStats[i].power}</p>
