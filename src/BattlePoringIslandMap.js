@@ -232,6 +232,7 @@ import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 //stats
 import BurningEffect from './img/Stats/Burning.png'
 import PoisonEffect from './img/Stats/Poison.png'
+import StunEffect from './img/Stats/Stun.png'
 
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
@@ -2566,14 +2567,14 @@ function Main(){
               listResult.scrollTop = listResult.scrollHeight;
               clockCheck = 1;
               //Prevent Rerender
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.05) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.05) > 0 && SkillControlRoom['Enemy'].EnemyPoison > 0){
                 dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.05),i));
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*0.05)} damage</p>\n`)
               }else if(SkillControlRoom['Enemy'].EnemyPoison >= 1){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
               }
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.02) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 1){
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.02) > 0 && SkillControlRoom['Enemy'].EnemyBurning > 0){
                 dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.02),i));
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*0.02)} damage</p>\n`)
               }else if(SkillControlRoom['Enemy'].EnemyBurning >= 1){
@@ -2594,7 +2595,7 @@ function Main(){
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
                           }
-                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock >= 0):
+                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock > 0):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
                   return clockBarObject = {
@@ -2704,8 +2705,9 @@ function Main(){
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
                      <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
                      <div>
-                      {SkillControlRoom['Enemy'].EnemyPoison >= 1 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyBurning >= 1 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
+                      {EnemyStunClock > 0 ? <img src={StunEffect} alt="StunEffectImage"></img>: null}
                      </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
