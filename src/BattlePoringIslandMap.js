@@ -233,6 +233,7 @@ import YggdrasilBerry from './img/Item/YggdrasilBerry.gif'
 import BurningEffect from './img/Stats/Burning.png'
 import PoisonEffect from './img/Stats/Poison.png'
 import StunEffect from './img/Stats/Stun.png'
+import SlowEffect from './img/Stats/Slow.png'
 
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
@@ -2708,6 +2709,7 @@ function Main(){
                       {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
                       {EnemyStunClock > 0 ? <img src={StunEffect} alt="StunEffectImage"></img>: null}
+                      {0 != 0 ? <img src={SlowEffect} alt="SlowEffectImage"></img>: null}
                      </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
