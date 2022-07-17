@@ -597,6 +597,7 @@ let Damage = 0;
 let SPHeal = 0;
 let Reflecting = 0;
 let EnemyStunClock = 0;
+let EnemySlowClock = 0;
 //Monster Random Number 0 1 
 // let i = Math.round(Math.random())
 let Uclock = 0;
@@ -1289,6 +1290,8 @@ function Main(){
                 Uclock = 0;
                 clockCheck = 0;
                 obtain = false;
+                EnemyStunClock = 0;
+                EnemySlowClock = 0;
                 //Summerize: ResetAllBattleMapFn
                 dispatch(ResetAllBattleMapFn(false));
                 // dispatch(EnemyDeadAnimationFn(false));
@@ -1603,7 +1606,7 @@ function Main(){
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*2.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 if(Math.random() >= 0.5){
-                  EnemyStunClock = 3;
+                  EnemyStunClock = 5;
                   $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
                 }
                   if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
@@ -1627,7 +1630,7 @@ function Main(){
                     //Audio SoundEffect
                     userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
                     if(Math.random() >= 0.5){
-                      EnemyStunClock = 3;
+                      EnemyStunClock = 5;
                       $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
                     }
                     if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
@@ -1654,7 +1657,7 @@ function Main(){
             userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
             if(Math.random() >= 0.5){
-              EnemyStunClock = 3;
+              EnemyStunClock = 5;
               $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
             }
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
@@ -1894,6 +1897,8 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1914,6 +1919,8 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1944,6 +1951,8 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1964,6 +1973,8 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defence)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2590,7 +2601,7 @@ function Main(){
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               
               switch (true) {
-                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock <= 0):
+                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock <= 0 && EnemySlowClock <= 0):
                   Uclock = 1;
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
@@ -2603,6 +2614,13 @@ function Main(){
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar
                           }
+                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemySlowClock > 0):
+                  Uclock = 1;
+                  EnemySlowClock = EnemySlowClock - 1;
+                  return clockBarObject = {
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                            enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
+                          }
                 case (EnemyStunClock >= 0):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
@@ -2610,12 +2628,19 @@ function Main(){
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
                             enemyClockBar: clockBarObject.enemyClockBar,
                           }
-                default:
-                  Uclock = 1;
-                  return clockBarObject = {
-                          userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
-                          enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
-                        }
+                  case (EnemySlowClock >= 0):
+                    Uclock = 1;
+                    EnemySlowClock = EnemySlowClock - 1;
+                    return clockBarObject = {
+                              userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                              enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
+                            }
+                  default:
+                    Uclock = 1;
+                    return clockBarObject = {
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                            enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                          }
               }
           }
         })()
