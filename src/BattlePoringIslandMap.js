@@ -1866,7 +1866,7 @@ function Main(){
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillKodokuFn(80)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack*3 + userStats.Level*30) + (userAttribute.int)*8
-      dispatch(UserAttackEnemyFn(parseInt(eDamage),i));
+      dispatch(UserAttackEnemyFn(parseInt(Damage),i));
       $('.storySpeech').append(`<p>Atlan use skill Kodoku! Enemy is become poison.</p>`)
       $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
         // End turn
