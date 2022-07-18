@@ -235,6 +235,9 @@ import PoisonEffect from './img/Stats/Poison.png'
 import StunEffect from './img/Stats/Stun.png'
 import SlowEffect from './img/Stats/Slow.png'
 
+//buff
+import QuickenEffect from './img/Stats/TwoHandQuicken.png'
+
 import UserOnHitPost from './img/Character/UserOnHitPost1.gif'
 import UserIsDyingPost from './img/Character/UserDyingPost1.png'
 import UserIsDeadPost from './img/Character/UserDeadPost1.png'
@@ -2737,7 +2740,7 @@ function Main(){
                       {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
                       {EnemyStunClock > 0 ? <img src={StunEffect} alt="StunEffectImage"></img>: null}
-                      {0 != 0 ? <img src={SlowEffect} alt="SlowEffectImage"></img>: null}
+                      {EnemySlowClock > 0 ? <img src={SlowEffect} alt="SlowEffectImage"></img>: null}
                      </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
@@ -2769,6 +2772,9 @@ function Main(){
                     <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                     <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
                     <h2 className="wordCenter titleName userNamePosition">Atlan</h2>
+                    <div>
+                      {SkillControlRoom['User'].userClockQuicken >= 1 ? <img src={QuickenEffect} alt="QuickenEffect"></img>: null}
+                     </div>
                   </div>
                 </div>
               </div>  
