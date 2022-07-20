@@ -501,8 +501,8 @@ const Fn = [
     {
         name: 'Drake',
         level: 10,
-        maxHealth: 1000, //2000
-        currentHealth: 1000,
+        maxHealth: 50000, //2000
+        currentHealth: 50000,
         attack: 60,
         defence: 19,
         defencebuffer: 25, //+6
@@ -518,8 +518,8 @@ const Fn = [
     {
         name: 'Phreeoni',
         level: 10,
-        maxHealth: 1000, //2000
-        currentHealth: 1000,
+        maxHealth: 90000, //2000
+        currentHealth: 90000,
         attack: 60,
         defence: 19,
         defencebuffer: 25, //+6
@@ -556,18 +556,7 @@ const enemyStatsReducer = (state = Fn, action) => {
         case 'UserAttackEnemyFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content)                  
-            // [{
-            //     ...state[0], //20
-            //     currentHealth: state[0].currentHealth - action.DamageCalculation
-            // },
-            // {
-            //     ...state[1],
-            //     currentHealth: state[1].currentHealth - action.DamageCalculation
-            // },
-            // {
-            //     ...state[2],
-            //     currentHealth: state[2].currentHealth - action.DamageCalculation
-            // }]
+
         case 'UserSkillBashEnemyFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content)  
@@ -596,6 +585,8 @@ const enemyStatsReducer = (state = Fn, action) => {
             return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.DamageCalculation} : content)
         case 'EnemyAttackReflectUserFn':
             return state.map((content, i) => i === action.Target ? {...content, currentHealth: state[i].currentHealth - action.Reflecting} : content)
+        case 'UserSkillKodokuEnemyFn':
+            return state.map((content, i) => i === action.Target ? {...content, currentHealth: 1} : content)
         case 'ResetEnemyCurrentHealthFn':
             // If i is the monster, update it's current health
             return state.map((content, i) => true ? {...content, currentHealth: state[i].maxHealth} : content) 

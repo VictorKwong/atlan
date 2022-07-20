@@ -1903,8 +1903,6 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                EnemySlowClock = 10;
-                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1925,8 +1923,6 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                EnemySlowClock = 10;
-                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1957,8 +1953,6 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*3.5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                EnemySlowClock = 10;
-                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2047,6 +2041,8 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2066,6 +2062,8 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                   //Audio SoundEffect
                   userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
+                  EnemySlowClock = 10;
+                  $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2093,6 +2091,8 @@ function Main(){
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
                 Math.sign((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2109,6 +2109,8 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defence)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*5*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                EnemySlowClock = 10;
+                $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
