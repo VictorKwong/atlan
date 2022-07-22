@@ -15,6 +15,7 @@ import baseEXPChartReducer from "./baseEXPChart";
 import clockControlRoomReducer from './clockControlRoom'
 import trainingSuccessRateReducer from './trainingSuccessRate'
 import trainingSuccessRequireReducer from './trainingSuccessRequire'
+import skillCapChartReducer from './skillCapChart'
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
@@ -39,6 +40,7 @@ const allReducers = combineReducers({
     footerEasterEgg: footerEasterEggReducer,
     trainingSuccessRate: trainingSuccessRateReducer,
     trainingSuccessRequire: trainingSuccessRequireReducer,
+    skillCapChart: skillCapChartReducer,
 
 });
 

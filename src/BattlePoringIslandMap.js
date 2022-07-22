@@ -234,6 +234,7 @@ import BurningEffect from './img/Stats/Burning.png'
 import PoisonEffect from './img/Stats/Poison.png'
 import StunEffect from './img/Stats/Stun.png'
 import SlowEffect from './img/Stats/Slow.png'
+import BleedingEffect from './img/Stats/Bleeding.png'
 
 //buff
 import QuickenEffect from './img/Stats/TwoHandQuicken.png'
@@ -569,6 +570,7 @@ import SkillBash from './audio/SoundEffect/BashSoundEffect.mp3'
 import SkillMammonite from './audio/SoundEffect/MammoniteSoundEffect.mp3'
 import SkillMagBreak from './audio/SoundEffect/MagnumBreakSoundEffect.mp3'
 import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
+import SkillHeadCrush from './audio/SoundEffect/HeadCrushSoundEffect.mp3'
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
 import UserBlock from './audio/SoundEffect/UserBlock.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
@@ -589,6 +591,7 @@ const audioSkillBash = new Audio(SkillBash);
 const audioSkillMammonite = new Audio(SkillMammonite);
 const audioSkillMagBreak = new Audio(SkillMagBreak);
 const audioSkillQuicken = new Audio(SkillQuicken);
+const audioSkillHeadCrush = new Audio(SkillHeadCrush);
 const audioLevelUp = new Audio(LevelUpSoundEffect);
 const audioUserBlock = new Audio(UserBlock)
 
@@ -763,6 +766,7 @@ function Main(){
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const skillCapChart = useSelector(state => state.skillCapChart)
     const userStats = useSelector(state => state.userStats)
     const questControlRoom = useSelector(state => state.questControlRoom)
     const userAttribute = useSelector(state => state.userAttribute)
@@ -1361,17 +1365,17 @@ function Main(){
           audioLevelUp.play();
           $('.storySpeech').append(`\n <p>Atlan has Level Up to Lv${userStats.Level + 1}</p>`)
             switch (true) {
-              case((userStats.Level + 1) === 5):
+              case((userStats.Level + 1) === skillCapChart.Bash):
                  return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
-              case((userStats.Level + 1) === 10):
+              case((userStats.Level + 1) === skillCapChart.Mammonite):
                  return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
-              case((userStats.Level + 1) === 13):
+              case((userStats.Level + 1) === skillCapChart.Kodoku):
                  return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Kodoku<img src=${skillKodoku} alt="Kodoku" />!</p>`) 
-              case((userStats.Level + 1) === 20):
+              case((userStats.Level + 1) === skillCapChart.MagnumBreak):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
-              case((userStats.Level + 1) === 35):
+              case((userStats.Level + 1) === skillCapChart.Quicken):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
-              case((userStats.Level + 1) === 70):
+              case((userStats.Level + 1) === skillCapChart.BowlingBash):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:
                 return 0;

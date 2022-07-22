@@ -78,6 +78,8 @@ function StartMenu(){
   const npcControlRoom = useSelector(state => state.npcControlRoom)
   const audioControlRoom = useSelector(state => state.audioControlRoom)
   const npcSpeech = useSelector(state => state.npcSpeech)
+  const skillCapChart = useSelector(state => state.skillCapChart)
+
   const dispatch = useDispatch();
   let HeadGearBox = [
     {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty"},
@@ -202,17 +204,17 @@ function StartMenu(){
           audioLevelUp.play();
         $('.questCompleteResult').append(`\n <p>Atlan has Level Up to Lv${userStats.Level + 1}</p>`)
           switch (true) {
-            case((userStats.Level + 1) === 5):
+            case((userStats.Level + 1) === skillCapChart.Bash):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bash <img src=${skillBash} alt="skillBash" /> !</p>`)
-            case((userStats.Level + 1) === 10):
+            case((userStats.Level + 1) === skillCapChart.Mammonite):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Mammonite<img src=${skillMammonite} alt="skillMammonite" />!</p>`)
-            case((userStats.Level + 1) === 13):
+            case((userStats.Level + 1) === skillCapChart.Kodoku):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Kodoku<img src=${skillKodoku} alt="Kodoku" />!</p>`) 
-            case((userStats.Level + 1) === 20):
+            case((userStats.Level + 1) === skillCapChart.MagnumBreak):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
-            case((userStats.Level + 1) === 35):
+            case((userStats.Level + 1) === skillCapChart.Quicken):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
-            case((userStats.Level + 1) === 70):
+            case((userStats.Level + 1) === skillCapChart.BowlingBash):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
             default:
               return 0;
