@@ -1,5 +1,5 @@
 const Fn = {
-    //Level
+    //Level learning
     Bash: 5,
     Mammonite: 10,
     Kodoku: 13,
@@ -8,6 +8,9 @@ const Fn = {
     BowlingBash: 70,
     //Damage Amplifier
     BashDamage: 2.5,
+    MammoniteDamage: 0.8,
+    MagnumBreakDamage: 3.5,
+    BowlingBashDamage: 5,
 }
 
 
