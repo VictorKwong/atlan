@@ -11,6 +11,8 @@ const Fn = {
     MammoniteDamage: 0.8,
     MagnumBreakDamage: 3.5,
     BowlingBashDamage: 5,
+    //Crit
+    CritDamage: 1.5
 }
 
 

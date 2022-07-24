@@ -1415,10 +1415,10 @@ function Main(){
               // Is it Block?
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*1.5) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage) : Damage = 1;
               }
               //Audio SoundEffect
               userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
@@ -1611,7 +1611,7 @@ function Main(){
                 userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                 if(Math.random() >= 0.5){
                   EnemyStunClock = 5;
                   $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
@@ -1673,7 +1673,7 @@ function Main(){
               case (userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
                   if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                     // Text display
                     dispatch(UserOnLifeStealAnimationFn(true));
@@ -1757,7 +1757,7 @@ function Main(){
                 userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1803,7 +1803,7 @@ function Main(){
                   userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1906,7 +1906,7 @@ function Main(){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -1956,7 +1956,7 @@ function Main(){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2044,7 +2044,7 @@ function Main(){
                   userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*1.5*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                 EnemySlowClock = 10;
                 $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
@@ -2094,7 +2094,7 @@ function Main(){
               case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
                 dispatch(EnemyOnCritAnimationFn(true));
                 setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-                Math.sign((Damage - enemyStats[i].defence)*1.5*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*1.5*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
                 EnemySlowClock = 10;
                 $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
