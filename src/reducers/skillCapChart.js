@@ -13,7 +13,17 @@ const Fn = {
     HeadCrushDamage:2.5,
     BowlingBashDamage: 5,
     //Crit
-    CritDamage: 1.5
+    CritDamage: 1.5,
+    //SP Usage
+    SPFirstAid: 30,
+    SPBash: 40,
+    SPMammonite: 50,
+    SPKodoku: 80,
+    SPMagnumBreak: 100,
+    SPHeadCrush: 100,
+    SPBowlingBash: 250,
+    SPQuicken: 180,
+
 }
 
 

@@ -1563,7 +1563,7 @@ function Main(){
 
     //COMBAT SKILLS
     const userSkillFirstAidButton = () => {
-      if (userStats.currentSP >= 30){
+      if (userStats.currentSP >= skillCapChart.SPFirstAid){
       //Audio Sound Effect
       audioHeal.play();
       dispatch(UserChannelAnimationFn());
@@ -1589,7 +1589,7 @@ function Main(){
 
 
     const userSkillBashButton = () => {
-      if (userStats.currentSP >= 40){
+      if (userStats.currentSP >= skillCapChart.SPBash){
       //Audio SoundEffect
       audioSkillBash.play();
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
@@ -1735,7 +1735,7 @@ function Main(){
     }
 
     const userSkillMammoniteButton = () => {
-      if (userStats.currentSP >= 50){
+      if (userStats.currentSP >= skillCapChart.SPMammonite){
       //Audio SoundEffect
       audioSkillMammonite.play();
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
@@ -1861,7 +1861,7 @@ function Main(){
     }
 
     const userSkillKodokuButton = () => {
-      if (userStats.currentSP >= 80){
+      if (userStats.currentSP >= skillCapChart.SPKodoku){
       //Audio SoundEffect
       audioPoison.play();
       dispatch(UserChannelAnimationFn());
@@ -1886,7 +1886,7 @@ function Main(){
     }
 
     const userSkillMagnumBreakButton = () => {
-      if (userStats.currentSP >= 100){
+      if (userStats.currentSP >= skillCapChart.SPMagnumBreak){
       //Audio SoundEffect
       audioSkillMagBreak.play();
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
@@ -2021,7 +2021,7 @@ function Main(){
     }
 
     const userSkillHeadCrushButton = () => {
-      if (userStats.currentSP >= 100){
+      if (userStats.currentSP >= skillCapChart.SPHeadCrush){
       //Audio SoundEffect
       audioSkillMagBreak.play();
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
@@ -2159,7 +2159,7 @@ function Main(){
 
 
     const userSkillBowlingBashButton = () => {
-      if (userStats.currentSP >= 250){
+      if (userStats.currentSP >= skillCapChart.SPBowlingBash){
         //Audio SoundEffect
         audioSkillHeadCrush.play();
         Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
@@ -2290,7 +2290,7 @@ function Main(){
     }
 
     const userSkillQuickenButton = () => {
-      if (userStats.currentSP >= 180){
+      if (userStats.currentSP >= skillCapChart.SPQuicken){
       //Audio SoundEffect
       audioSkillQuicken.play();
       dispatch(UserChannelAnimationFn());
@@ -2956,54 +2956,54 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillFirstAidButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillFirstAid} alt="skillFirstAid" /> First Aid</p>
-                              <span className={userStats.currentSP >= 30 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillFirstAid} alt="skillFirstAid"/> <span className="goGoButtonHide">SP</span>:30</span>
+                              <span className={userStats.currentSP >= skillCapChart.FirstAid ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillFirstAid} alt="skillFirstAid"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.FirstAid}</span>
                             </figcaption>
                           </button>
-                        {userStats.Level >= 5 ? 
+                        {userStats.Level >= skillCapChart.Bash ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillBashButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBash} alt="skillBash" /> Bash</p>
-                              <span className={userStats.currentSP >= 40 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> <span className="goGoButtonHide">SP</span>:40</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPBash ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPBash}</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 10 ? 
+                        {userStats.Level >= skillCapChart.Mammonite ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillMammoniteButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMammonite} alt="skillMammonite"/> Mam<span className="goGoButtonHide">monite</span></p>
-                              <span className={userStats.currentSP >= 50 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMammonite} alt="skillMammonite" /> <span className="goGoButtonHide">SP</span>:50</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPMammonite ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMammonite} alt="skillMammonite" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPMammonite}</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 1 ? 
+                        {userStats.Level >= skillCapChart.Kodoku ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillKodokuButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillKodoku} alt="skillKodoku"/> Kodoku</p>
-                              <span className={userStats.currentSP >= 80 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillKodoku} alt="skillKodoku" /> <span className="goGoButtonHide">SP</span>:80</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPKodoku ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillKodoku} alt="skillKodoku" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPKodoku}</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 20 ? 
+                        {userStats.Level >= skillCapChart.MagnumBreak ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Mag<span className="goGoButtonHide">num</span> Break</p>
-                              <span className={userStats.currentSP >= 100 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> <span className="goGoButtonHide">SP</span>:100</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPMagnumBreak ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPMagnumBreak}</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 35 ? 
+                        {userStats.Level >= skillCapChart.Quicken ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillQuickenButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillQuicken} alt="skillQuicken"/> Quick<span className="goGoButtonHide">en</span></p>
-                              <span className={userStats.currentSP >= 180 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillQuicken} alt="skillQuicken" /> <span className="goGoButtonHide">SP</span>:180</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPQuicken ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillQuicken} alt="skillQuicken" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPQuicken}</span>
                             </figcaption>
                           </button>
                         : null}
-                        {userStats.Level >= 70 ? 
+                        {userStats.Level >= skillCapChart.BowlingBash ? 
                           <button className="goGoButtonSkills" onClick={() => userSkillBowlingBashButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBowlingBash} alt="skillBowlingBash" /> Bowl<span className="goGoButtonHide">ing</span> Bash</p>
-                              <span className={userStats.currentSP >= 250 ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBowlingBash} alt="skillBowlingBash"/> <span className="goGoButtonHide">SP</span>:250</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPBowlingBash ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBowlingBash} alt="skillBowlingBash"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPBowlingBash}</span>
                             </figcaption>
                           </button>
                         : null}
