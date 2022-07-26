@@ -122,6 +122,11 @@ export const UserSkillMagnumBreakFn = () => {
         type: 'UserSkillMagnumBreakFn',
     };
 };
+export const UserSkillHeadCrushFn = () => {
+    return {
+        type: 'UserSkillHeadCrushFn',
+    };
+};
 
 export const UserSkillQuickenClockTickFn = () => {
     return {

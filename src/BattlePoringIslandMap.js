@@ -17,7 +17,7 @@ import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,Bos
 import { UserTurnBlockFn , EnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn, UserTriggerMasterItemFn} from './actions'
 //OBS: UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn, ResetUserTurnBlockFn
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn, UserSkillKodokuEnemyFn, UserSkillMagnumBreakFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn, UserSkillKodokuEnemyFn, UserSkillMagnumBreakFn, UserSkillHeadCrushFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -1977,8 +1977,6 @@ function Main(){
                 }
               default:
                 Math.sign((Damage - enemyStats[i].defence)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                EnemySlowClock = 10;
-                $('.storySpeech').append(`<p>Magnum Break!${enemyStats[i].name} suffer a period of slow time...</p>`)
                 if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                   // Text display
                   dispatch(UserOnLifeStealAnimationFn(true));
@@ -2021,10 +2019,149 @@ function Main(){
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
     }
+
+    const userSkillHeadCrushButton = () => {
+      if (userStats.currentSP >= 100){
+      //Audio SoundEffect
+      audioSkillMagBreak.play();
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
+      dispatch(UserAttackAnimationFn());
+      setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
+      // setTimeout(() => (Uclock = 0), 300);
+      let Khit = Math.random();
+      //Rerender, Block or not block
+      (() => {
+        switch (true) {
+          // ENEMY BLOCK
+          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE && BLOCKING
+            switch(true){
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Critical Hit Head Crush!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Critical Hit Head Crush!! Enemy Received ${Damage} damage</p>`)
+                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
+                }
+              default:
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Atlan use Head Crush! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Atlan use Head Crush! Enemy Received ${Damage} damage</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  // Rerender
+                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
+                }
+
+            }
+          // ENEMY HIT
+          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+            dispatch(EnemyOnHitAnimationFn());
+            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
+            //CRIT RATE
+            switch(true){
+              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
+                dispatch(EnemyOnCritAnimationFn(true));
+                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Critical Hit Head Crush!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Critical Hit Head Crush!! Enemy Received ${Damage} damage</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
+                }
+              default:
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                  // Text display
+                  dispatch(UserOnLifeStealAnimationFn(true));
+                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                  $('.storySpeech').append(`<p>Atlan use Head Crush! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                }else{
+                  // Text display
+                  $('.storySpeech').append(`<p>Atlan use Head Crush! Enemy Received ${Damage} damage</p>`)
+                  dispatch(UserSkillHeadCrushFn());
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
+                  // Rerender
+                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
+                }
+              }
+          // ENEMY DODGE 
+          default:  
+              //Audio SoundEffect
+              setTimeout(() => audioMiss.play(), 250)
+              dispatch(EnemyDodgeAnimationFn(true));
+              setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
+              $('.storySpeech').append(`<p>Atlan use Head Cursh! ${enemyStats[i].name} dodge the attack.</p>`)
+              //Rerender
+              return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
+        }
+        })()
+
+        // End turn
+        clockCheck = 0;
+        Uclock = 0;
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
+      }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+    }
+
+
+
+
     const userSkillBowlingBashButton = () => {
       if (userStats.currentSP >= 250){
         //Audio SoundEffect
-        audioSkillBash.play();
+        audioSkillHeadCrush.play();
         Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -2743,10 +2880,11 @@ function Main(){
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
                      <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
                      <div>
-                      {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
                       {EnemyStunClock > 0 ? <img src={StunEffect} alt="StunEffectImage"></img>: null}
                       {EnemySlowClock > 0 ? <img src={SlowEffect} alt="SlowEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBleeding > 0? <img src={BleedingEffect} alt="BleedingEffectImage"></img>: null}
                      </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
