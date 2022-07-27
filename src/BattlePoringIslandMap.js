@@ -2750,20 +2750,20 @@ function Main(){
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               
               switch (true) {
-                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock <= 0 && EnemySlowClock <= 0):
+                case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemyStunClock <= 0) && (EnemySlowClock <= 0)):
                   Uclock = 1;
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
                           }
-                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemyStunClock > 0):
+                case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemyStunClock > 0)):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar
                           }
-                case (SkillControlRoom['User'].userClockQuicken >= 1 && EnemySlowClock > 0):
+                case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemySlowClock > 0)):
                   Uclock = 1;
                   EnemySlowClock = EnemySlowClock - 1;
                   return clockBarObject = {
@@ -2956,7 +2956,7 @@ function Main(){
                           <button className="goGoButtonSkills" onClick={() => userSkillFirstAidButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillFirstAid} alt="skillFirstAid" /> First Aid</p>
-                              <span className={userStats.currentSP >= skillCapChart.FirstAid ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillFirstAid} alt="skillFirstAid"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.FirstAid}</span>
+                              <span className={userStats.currentSP >= skillCapChart.SPFirstAid ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillFirstAid} alt="skillFirstAid"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPFirstAid}</span>
                             </figcaption>
                           </button>
                         {userStats.Level >= skillCapChart.Bash ? 
