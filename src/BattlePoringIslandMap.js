@@ -215,6 +215,7 @@ import skillFirstAid from './img/Skill/nv_firstaid.gif'
 import skillKodoku from './img/Skill/pr_kodoku.gif'
 import skillBash from './img/Skill/sm_bash.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillHeadCrush from './img/Skill/lk_headcrush.gif'
 import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
@@ -2988,6 +2989,14 @@ function Main(){
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Mag<span className="goGoButtonHide">num</span> Break</p>
                               <span className={userStats.currentSP >= skillCapChart.SPMagnumBreak ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPMagnumBreak}</span>
+                            </figcaption>
+                          </button>
+                        : null}
+                        {userStats.Level >= skillCapChart.HeadCrush ? 
+                          <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
+                            <figcaption className="goGoButtonFig">
+                              <p className="goGoButtonName"><img src={skillHeadCrush} alt="skillMagnumBreak"/> Head Crush</p>
+                              <span className={userStats.currentSP >= skillCapChart.SPHeadCrush ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillHeadCrush} alt="skillHeadCrush" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPHeadCrush}</span>
                             </figcaption>
                           </button>
                         : null}

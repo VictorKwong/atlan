@@ -4,6 +4,7 @@ const Fn = {
     Mammonite: 10,
     Kodoku: 13,
     MagnumBreak: 20,
+    HeadCrush: 27,
     Quicken: 35,
     BowlingBash: 70,
     //Damage Amplifier
