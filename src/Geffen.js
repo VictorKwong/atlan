@@ -51,6 +51,7 @@ import skillBash from './img/Skill/sm_bash.gif'
 import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillKodoku from './img/Skill/pr_kodoku.gif'
+import skillHeadCrush from './img/Skill/lk_headcrush.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
@@ -212,6 +213,8 @@ function StartMenu(){
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Kodoku<img src=${skillKodoku} alt="Kodoku" />!</p>`) 
             case((userStats.Level + 1) === skillCapChart.MagnumBreak):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
+            case((userStats.Level + 1) === skillCapChart.HeadCrush):
+              return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillHeadCrush} alt="skillMagnumBreak" />!</p>`)
             case((userStats.Level + 1) === skillCapChart.Quicken):
               return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
             case((userStats.Level + 1) === skillCapChart.BowlingBash):
