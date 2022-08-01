@@ -267,6 +267,9 @@ const Fn = {
     GeffenCitizen:[{
         name: 'Citizen',
         text: 'Being a mage is hard, Passing the test to be wizard is almost impossible.'
+    },{
+        name: 'Citizen',
+        text: 'The rarest head gear is Lord Kahos Horn, it is nearly impossible to get it...'
     }],
     GeffenTimer:[{
         name: 'GeffenTimer',

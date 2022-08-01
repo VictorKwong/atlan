@@ -989,6 +989,12 @@ export const GeffenGoblinYulaNPCLearnedFn = () => {
         type: 'GeffenGoblinYulaNPCLearnedFn'
     };
 };
+export const GeffenCitizenNPCContinueFn = () => {
+    return {
+        type: 'GeffenCitizenNPCContinueFn'
+    };
+};
+
 export const GeffenCitizenNPCFn = () => {
     return {
         type: 'GeffenCitizenNPCFn'

@@ -42,6 +42,7 @@ const Fn = {
     GeffenGoblinYulaNPCInterest:false,
     GeffenGoblinYulaNPCLearned:false,
     GeffenCitizenNPC:false,
+    GeffenCitizenNPCContinue:false,
     GeffenTimerNPC: false,
     GeffenGrandmaNPC: false,
     //PoringIsland Dungeon
@@ -596,6 +597,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: false,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC: true,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
@@ -607,6 +609,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenGoblinYulaNPC: true,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: false,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
@@ -622,12 +625,18 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 GeffenGoblinYulaNPCLearned: true,
             }
-        case "GeffenCitizenNPCFn":
+        case 'GeffenGoblinYulaNPCLearnedFn':
+            return{
+                ...state,
+                GeffenGoblinYulaNPCLearned: true,
+            }
+        case "GeffenCitizenNPCContinueFn":
             return {
                 ...state,
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: true,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
@@ -639,6 +648,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: false,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: true,
                 GeffenQuestBoard: false,
@@ -650,6 +660,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: false,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: true,
@@ -661,6 +672,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: false,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC:false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,
@@ -672,6 +684,7 @@ const npcControlRoomReducer = (state = Fn, action) => {
                 GeffenGoblinYulaNPC: false,
                 GeffenGoblinYulaNPCInterest: false,
                 GeffenCitizenNPC: false,
+                GeffenCitizenNPCContinue:false,
                 GeffenTimerNPC: false,
                 GeffenGrandmaNPC: false,
                 GeffenQuestBoard: false,

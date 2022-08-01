@@ -5,7 +5,7 @@ import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQue
 // EQUIP ACTION
 import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
-import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, GeffenSoldierNPCFn, ResetGeffenNPCFn } from './actions'
+import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, GeffenSoldierNPCFn, GeffenCitizenNPCContinueFn, ResetGeffenNPCFn } from './actions'
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
@@ -254,6 +254,10 @@ function StartMenu(){
           $('.storySpeech').html(`${npcSpeech['GeffenTimer'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenTimer'][0].name}</p>`)
           break;
+        case(npcControlRoom.GeffenCitizenNPC && npcControlRoom.GeffenCitizenNPCContinue):
+          $('.storySpeech').html(`${npcSpeech['GeffenCitizen'][1].text}`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenCitizen'][1].name}</p>`)
+          break;
         case(npcControlRoom.GeffenCitizenNPC):
           $('.storySpeech').html(`${npcSpeech['GeffenCitizen'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenCitizen'][0].name}</p>`)
@@ -480,6 +484,10 @@ function StartMenu(){
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenGoblinYulaNPCInterestFn());}}>I want to learn Master Item</button>
             </div> : null}
+            {npcControlRoom.GeffenCitizenNPC && !npcControlRoom.GeffenCitizenNPCContinue && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            <div className="storyScreen">
+              <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenCitizenNPCContinueFn());}}>Hey, how is it going?</button>
+            </div> : null}}
             {/* QUEST */}
               {npcControlRoom.GeffenQuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="textCenter">
