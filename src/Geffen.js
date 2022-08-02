@@ -487,7 +487,7 @@ function StartMenu(){
             {npcControlRoom.GeffenCitizenNPC && !npcControlRoom.GeffenCitizenNPCContinue && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenCitizenNPCContinueFn());}}>Hey, how is it going?</button>
-            </div> : null}}
+            </div> : null}
             {/* QUEST */}
               {npcControlRoom.GeffenQuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="textCenter">

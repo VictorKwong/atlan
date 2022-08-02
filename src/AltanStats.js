@@ -54,6 +54,8 @@ import skillKodoku from './img/Skill/pr_kodoku.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
+import guildMasterItem from './img/Skill/gd_masteritem.gif'
+
 function StartMenu(){
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
@@ -73,7 +75,7 @@ function StartMenu(){
       {id:20007, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
     ]
     let GuildBox = [
-      {id:100, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:100, Img:guildMasterItem, name:"Master Iteem", skillLevelCheck:1, title:"Can Use Item x2 during your turn"},
       {id:101, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal Damage to enemy"},
       {id:102, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
       {id:103, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal Damage to enemy"},
