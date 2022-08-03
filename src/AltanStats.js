@@ -55,6 +55,7 @@ import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 import guildMasterItem from './img/Skill/gd_masteritem.gif'
+import guildDoubleAttack from './img/Skill/gd_doubleattack.gif'
 
 function StartMenu(){
     const userStats = useSelector(state => state.userStats)
@@ -76,7 +77,7 @@ function StartMenu(){
     ]
     let GuildBox = [
       {id:100, Img:guildMasterItem, name:"Master Iteem", skillLevelCheck:1, title:"Can Use Item x2 during your turn"},
-      {id:101, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:101, Img:guildDoubleAttack, name:"Double Attack", skillLevelCheck:1, title:"Attack can deal damage twice"},
       {id:102, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
       {id:103, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal Damage to enemy"},
     ]
