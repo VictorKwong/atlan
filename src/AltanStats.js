@@ -56,7 +56,7 @@ import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 import guildMasterItem from './img/Skill/gd_masteritem.gif'
 import guildDoubleAttack from './img/Skill/gd_doubleattack.gif'
-import guildLifeSteal from'./img/Skill/gd_lifesteal.gif
+import guildLifeSteal from './img/Skill/gd_lifesteal.gif'
 
 function StartMenu(){
     const userStats = useSelector(state => state.userStats)
