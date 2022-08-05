@@ -57,6 +57,7 @@ import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 import guildMasterItem from './img/Skill/gd_masteritem.gif'
 import guildDoubleAttack from './img/Skill/gd_doubleattack.gif'
 import guildLifeSteal from './img/Skill/gd_lifesteal.gif'
+import guildReflect from './img/Skill/gd_reflect.gif'
 
 function StartMenu(){
     const userStats = useSelector(state => state.userStats)
@@ -80,7 +81,7 @@ function StartMenu(){
       {id:100, Img:guildMasterItem, name:"Master Iteem", skillLevelCheck:1, title:"Can Use Item x2 during your turn"},
       {id:101, Img:guildDoubleAttack, name:"Double Attack", skillLevelCheck:1, title:"Attack can deal damage twice"},
       {id:102, Img:guildLifeSteal, name:"Life Steal", skillLevelCheck:1, title:"Physical Attack will drain opponents life"},
-      {id:103, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal Damage to enemy"},
+      {id:103, Img:guildReflect, name:"Reflect", skillLevelCheck:1, title:"Reflect Physical damage from enemy"},
     ]
     let UserDisplay = [
       {id:0, name:"Lord Kaho`s Horn", img0:UserStand_LordKahosHorn , img1:UserSit_LordKahosHorn, img2:UserStand2_LordKahosHorn, img3:UserStand3_LordKahosHorn, explain:"User_LordKahosHorn" },
