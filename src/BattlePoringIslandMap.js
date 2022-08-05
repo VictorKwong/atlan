@@ -2024,7 +2024,7 @@ function Main(){
     const userSkillHeadCrushButton = () => {
       if (userStats.currentSP >= skillCapChart.SPHeadCrush){
       //Audio SoundEffect
-      audioSkillMagBreak.play();
+      audioSkillHeadCrush.play();
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
@@ -2993,7 +2993,7 @@ function Main(){
                           </button>
                         : null}
                         {userStats.Level >= skillCapChart.HeadCrush ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillHeadCrushButton()}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillHeadCrush} alt="skillMagnumBreak"/> Head Crush</p>
                               <span className={userStats.currentSP >= skillCapChart.SPHeadCrush ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillHeadCrush} alt="skillHeadCrush" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPHeadCrush}</span>
