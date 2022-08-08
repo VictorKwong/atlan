@@ -94,7 +94,7 @@ function StartMenu(){
         $('.mapTitle').fadeIn(600);
         $('.mapTitle').delay(2400).fadeOut(600);
     }, [screenControlRoom])
-
+    
     const LoadingScreen0 = () => {
       dispatch(BattleLoadingScreenFn());
       setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), 1000);
