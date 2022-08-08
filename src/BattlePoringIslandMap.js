@@ -1181,7 +1181,7 @@ function Main(){
         }
         //ETC items
         EtcBox.map(EtcItems => {
-          if((i === EtcItems.num) && (EtcItems.percent > Math.random())){
+          if((i === EtcItems.num) && (EtcItems.percent >= Math.random())){
             if (obtain === false){
               setTimeout(() => dispatch(UserPickUpAnimationFn(true)), 1050);
               setTimeout(() => dispatch(UserPickUpAnimationFn(false)), 1350);
