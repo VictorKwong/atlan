@@ -1642,106 +1642,56 @@ function Main(){
       //Rerender, Block or not block
       (() => {
         switch (true) {
-          // ENEMY BLOCK
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+            //Audio SoundEffect
+            userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE && BLOCKING
-            switch(true){
-              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
-                //Audio SoundEffect
-                userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
-                dispatch(EnemyOnCritAnimationFn(true));
-                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+              // Crit Block/No	-Block Calculation
+              if (SkillControlRoom['Enemy'].EnemyBlock){
+                //blocking
                 Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
-                }
-              default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                  //Audio SoundEffect
-                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Atlan use Mammonite! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  // Rerender
-                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
-                }
-
-            }
-          // ENEMY HIT
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
-            dispatch(EnemyOnHitAnimationFn());
-            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE
-            switch(true){
-              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
-                  //Audio SoundEffect
-                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
-                dispatch(EnemyOnCritAnimationFn(true));
-                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+              }else{
+                //not blocking
                 Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Critical Hit Mammonite!! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
-                }
-              default:
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                  //Audio SoundEffect
-                  userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Atlan use Mammonite! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
-                  // Rerender
-                  return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
-                }
               }
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+            //if Hit
+            }else{
+              //Hit Block/No-Block Calculation
+              if (SkillControlRoom['Enemy'].EnemyBlock){
+                //blocking
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+              }else{
+                //not blocking
+                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+              }
+            }
+            if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+              // Text display
+              dispatch(UserOnLifeStealAnimationFn(true));
+              setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+              $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+              $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+              //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+            }else{
+              // Text display
+              $('.storySpeech').append(`<p>Critical Hit Mammonite!! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+              // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+              return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
+            }
           // ENEMY DODGE 
           default:  
-              //Audio SoundEffect
-              setTimeout(() => audioMiss.play(), 250)
-              dispatch(EnemyDodgeAnimationFn(true));
-              setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
-              $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} dodge the attack.</p>`)
-              //Rerender
-              return setTimeout(() => dispatch(UserSkillMammoniteMissedFn()), 300);
+            //Audio SoundEffect
+            setTimeout(() => audioMiss.play(), 250)
+            dispatch(EnemyDodgeAnimationFn(true));
+            setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
+            $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} dodge the attack.</p>`)
+            //Rerender
+            return setTimeout(() => dispatch(UserSkillMammoniteMissedFn()), 300);
         }
         })()
         // End turn
@@ -1794,103 +1744,49 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE && BLOCKING
-            switch(true){
-              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
-                dispatch(EnemyOnCritAnimationFn(true));
-                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+            //if Crit
+            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+              // Crit Block/No	-Block Calculation
+              if (SkillControlRoom['Enemy'].EnemyBlock){
+                //blocking
                 Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
-                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
-                }
-              default:
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Atlan use Magnum Break! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Atlan use Magnum Break! Enemy Received ${Damage} damage</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  // Rerender
-                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
-                }
-
-            }
-          // ENEMY HIT
-          case((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
-            dispatch(EnemyOnHitAnimationFn());
-            setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            //CRIT RATE
-            switch(true){
-              case(userStats.critRate - enemyStats[i].critResist >= Math.random()):
-                dispatch(EnemyOnCritAnimationFn(true));
-                setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+              }else{
+                //not blocking
                 Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
-                }
-              default:
+              }
+              dispatch(EnemyOnCritAnimationFn(true));
+              setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
+            //if Hit
+            }else{
+              //Hit Block/No-Block Calculation
+              if (SkillControlRoom['Enemy'].EnemyBlock){
+                //blocking
+                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+              }else{
+                //not blocking
                 Math.sign((Damage - enemyStats[i].defence)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
-                if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
-                  // Text display
-                  dispatch(UserOnLifeStealAnimationFn(true));
-                  setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                  $('.storySpeech').append(`<p>Atlan use Magnum Break! ${enemyStats[i].name} Received ${Damage} damage</p>`)
-                  $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                  return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
-                }else{
-                  // Text display
-                  $('.storySpeech').append(`<p>Atlan use Magnum Break! Enemy Received ${Damage} damage</p>`)
-                  dispatch(UserSkillMagnumBreakFn());
-                  $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                  // Rerender
-                  return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
-                }
+              }
+            }
+              if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
+                // Text display
+                dispatch(UserOnLifeStealAnimationFn(true));
+                setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+                $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+                dispatch(UserSkillMagnumBreakFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
+                //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+              }else{
+                // Text display
+                $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
+                // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
+                dispatch(UserSkillMagnumBreakFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
               }
           // ENEMY DODGE 
           default:  
