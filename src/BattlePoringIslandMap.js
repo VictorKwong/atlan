@@ -1899,7 +1899,7 @@ function Main(){
     const userSkillBowlingBashButton = () => {
       if (userStats.currentSP >= skillCapChart.SPBowlingBash){
         //Audio SoundEffect
-        audioSkillHeadCrush.play();
+        audioSkillBash.play();
         Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
       dispatch(UserAttackAnimationFn());
       setTimeout(() => dispatch(ResetUserAttackAnimationFn()), 1200);
