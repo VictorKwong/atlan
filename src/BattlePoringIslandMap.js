@@ -1283,6 +1283,10 @@ function Main(){
     // DEFEAT FUNCTION
       useEffect(() => {
         if (userStats.currentHealth <= 0){
+          // USER DEAD ANIMATION
+          setTimeout(() => dispatch(UserIsDyingAnimationFn()), 250);
+          setTimeout(() => dispatch(ResetUserIsDyingAnimationFn()), 400);
+          dispatch(UserIsDeadAnimationFn());
           setTimeout(() => (clockCheck = 1), 300);
           $('.storySpeech').html(`Defeat... Atlan Fainted......`)
           // $('.goGoAttack').prop("disabled", true);
@@ -1389,16 +1393,6 @@ function Main(){
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [enemyStats, dispatch, userStats, baseEXPChart]);
 
-
-    // USER DEAD ANIMATION
-      useEffect(() => {
-        if (userStats.currentHealth <= 0){
-          setTimeout(() => dispatch(UserIsDyingAnimationFn()), 250);
-          setTimeout(() => dispatch(ResetUserIsDyingAnimationFn()), 400);
-          dispatch(UserIsDeadAnimationFn());
-          // $('.goGoAttack').prop("disabled", true);
-        }
-    }, [userStats, dispatch]);
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage * (Math.random() * 0.5) - 0.25);
