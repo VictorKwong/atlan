@@ -96,8 +96,7 @@ const Fn = {
     GeffenDungeon2FSelfNPCHidden: false,
     GeffenDungeon3FNiaNPC: false,
     BossBaphometDefeat:false,
-    
-    
+
 }
 
 const npcControlRoomReducer = (state = Fn, action) => {
