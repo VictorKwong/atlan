@@ -788,123 +788,38 @@ function Main(){
       audioSkillQuicken.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioLevelUp.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioUserBlock.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
-      (() => {
-        let playPromise;
-        switch (true) {
-          case(screenControlRoom.BattlePoringIslandMapMonsterID === 5):
-              audioBGMBoss.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-              playPromise = audioBGMBoss.play();
-              if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                  // Automatic playback started!
-                  audioBGMBoss.loop = true;
-                  audioBGMBoss.play()
-                })
-                .catch(error => {
-                  // Auto-play was prevented
-                });
-              }
-              break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID === 15):
-              audioPayonCaveBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-              playPromise = audioPayonCaveBossBGM.play();
-              if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                  // Automatic playback started!
-                  audioPayonCaveBossBGM.loop = true;
-                  audioPayonCaveBossBGM.play()
-                })
-                .catch(error => {
-                  // Auto-play was prevented
-                });
-              }
-              break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID === 22):
-              audioGeffenDungeonBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-              playPromise = audioGeffenDungeonBossBGM.play();
-              if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                  // Automatic playback started!
-                  audioGeffenDungeonBossBGM.loop = true;
-                  audioGeffenDungeonBossBGM.play()
-                })
-                .catch(error => {
-                  // Auto-play was prevented
-                });
-              }
-              break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID === 25):
-              audioFinalBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-              playPromise = audioFinalBossBGM.play();
-              if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                  // Automatic playback started!
-                  audioFinalBossBGM.loop = true;
-                  audioFinalBossBGM.play()
-                })
-                .catch(error => {
-                  // Auto-play was prevented
-                });
-              }
-              break;
-          case(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14):
-            audioPayonCaveBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-              playPromise = audioPayonCaveBGM.play();
-              if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                  // Automatic playback started!
-                  audioPayonCaveBGM.loop = true;
-                  audioPayonCaveBGM.play()
-                })
-                .catch(error => {
-                  // Auto-play was prevented
-                });
-              }
-              break;
-          case(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25):
-            audioGeffenDungeonBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-                playPromise = audioGeffenDungeonBGM.play();
-                if (playPromise !== undefined) {
-                  playPromise.then(_ => {
-                    // Automatic playback started!
-                    audioGeffenDungeonBGM.loop = true;
-                    audioGeffenDungeonBGM.play()
-                  })
-                  .catch(error => {
-                    // Auto-play was prevented
-                  });
-                }
-                break;
-          case(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29):
-          audioChallengeTowerBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-                playPromise = audioChallengeTowerBGM.play();
-                if (playPromise !== undefined) {
-                  playPromise.then(_ => {
-                    // Automatic playback started!
-                    audioChallengeTowerBGM.loop = true;
-                    audioChallengeTowerBGM.play()
-                  })
-                  .catch(error => {
-                    // Auto-play was prevented
-                  });
-                }
-                break;
-          default:
-            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-            playPromise = audioBGM.play();
-            if (playPromise !== undefined) {
-              playPromise.then(_ => {
-                // Automatic playback started!
-                audioBGM.loop = true;
-                audioBGM.play()
-              })
-              .catch(error => {
-                // Auto-play was prevented
-              });
-            }
-            break;
+
+      let memoryAudio;
+      let playPromise;
+      if(screenControlRoom.BattlePoringIslandMapMonsterID === 5){
+        memoryAudio = audioBGMBoss;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID === 15){
+        memoryAudio = audioPayonCaveBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID === 22){
+        memoryAudio = audioGeffenDungeonBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID === 25){
+        memoryAudio = audioFinalBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14){
+        memoryAudio = audioPayonCaveBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25){
+        memoryAudio = audioGeffenDungeonBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29){
+        memoryAudio = audioChallengeTowerBGM;
+      }else{
+        memoryAudio = audioBGM;
       }
-      })()
+      memoryAudio.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+      playPromise = memoryAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          // Automatic playback started!
+          memoryAudio.loop = true;
+          memoryAudio.play()
+        })
+        .catch(error => {
+          // Auto-play was prevented
+        });
+      }
       //ANIMATION PART
       AnimationBox.map(Animation => {
         if(userStats.userWeapon === Animation.weaponName && userStats.userHeadGear === Animation.headGearName){
@@ -918,169 +833,42 @@ function Main(){
     const changeMapFadeAudio = () => {
       let i = 0;
       let fadeAudio;
-          switch (true) {
-            case(screenControlRoom.BattlePoringIslandMapMonsterID === 5):
-                fadeAudio = setInterval(() => {
-                    if (audioBGMBoss.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                      i = i + 1;
-                    }
-                    if (audioBGMBoss.volume !== 0) {
-                      audioBGMBoss.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                      audioBGMBoss.volume = audioBGMBoss.volume.toFixed(5)
-                    }
-                    if (audioBGMBoss.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                        audioBGMBoss.volume = 0;
-                        audioBGMBoss.pause();
-                        audioBGMBoss.currentTime = 0;
-                      clearInterval(fadeAudio);
-                    }else if (i >= 2){
-                      audioBGMBoss.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                      clearInterval(fadeAudio);
-                    }
-                  }, 10);
-                  break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID === 15):
-                  fadeAudio = setInterval(() => {
-                    if (audioPayonCaveBossBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                      i = i + 1;
-                    }
-                    if (audioPayonCaveBossBGM.volume !== 0) {
-                      audioPayonCaveBossBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                      audioPayonCaveBossBGM.volume = audioPayonCaveBossBGM.volume.toFixed(5)
-                    }
-                    if (audioPayonCaveBossBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                        audioPayonCaveBossBGM.volume = 0;
-                        audioPayonCaveBossBGM.pause();
-                        audioPayonCaveBossBGM.currentTime = 0;
-                      clearInterval(fadeAudio);
-                    }else if (i >= 2){
-                      audioPayonCaveBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                      clearInterval(fadeAudio);
-                    }
-                  }, 10);
-                  break;
-                case(screenControlRoom.BattlePoringIslandMapMonsterID === 22):
-                  fadeAudio = setInterval(() => {
-                    if (audioGeffenDungeonBossBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                      i = i + 1;
-                    }
-                    if (audioGeffenDungeonBossBGM.volume !== 0) {
-                      audioGeffenDungeonBossBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                      audioGeffenDungeonBossBGM.volume = audioGeffenDungeonBossBGM.volume.toFixed(5)
-                    }
-                    if (audioGeffenDungeonBossBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                        audioGeffenDungeonBossBGM.volume = 0;
-                        audioGeffenDungeonBossBGM.pause();
-                        audioGeffenDungeonBossBGM.currentTime = 0;
-                      clearInterval(fadeAudio);
-                    }else if (i >= 2){
-                      audioGeffenDungeonBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                      clearInterval(fadeAudio);
-                    }
-                  }, 10);
-                  break;
-                case(screenControlRoom.BattlePoringIslandMapMonsterID === 25):
-                  fadeAudio = setInterval(() => {
-                    if (audioFinalBossBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                      i = i + 1;
-                    }
-                    if (audioFinalBossBGM.volume !== 0) {
-                      audioFinalBossBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                      audioFinalBossBGM.volume = audioFinalBossBGM.volume.toFixed(5)
-                    }
-                    if (audioFinalBossBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                        audioFinalBossBGM.volume = 0;
-                        audioFinalBossBGM.pause();
-                        audioFinalBossBGM.currentTime = 0;
-                      clearInterval(fadeAudio);
-                    }else if (i >= 2){
-                      audioFinalBossBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                      clearInterval(fadeAudio);
-                    }
-                  }, 10);
-                  break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14):
-                  fadeAudio = setInterval(() => {
-                      if (audioPayonCaveBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                        i = i + 1;
-                      }
-                      if (audioPayonCaveBGM.volume !== 0) {
-                        audioPayonCaveBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                        audioPayonCaveBGM.volume = audioPayonCaveBGM.volume.toFixed(5)
-                      }
-                      if (audioPayonCaveBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                        audioPayonCaveBGM.volume = 0;
-                        audioPayonCaveBGM.pause();
-                        audioPayonCaveBGM.currentTime = 0;
-                        clearInterval(fadeAudio);
-                      }else if (i >= 2){
-                        audioPayonCaveBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                        clearInterval(fadeAudio);
-                      }
-                    }, 10);
-                    break;
-            case(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25):
-                    fadeAudio = setInterval(() => {
-                        if (audioGeffenDungeonBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                          i = i + 1;
-                        }
-                        if (audioGeffenDungeonBGM.volume !== 0) {
-                          audioGeffenDungeonBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                          audioGeffenDungeonBGM.volume = audioGeffenDungeonBGM.volume.toFixed(5)
-                        }
-                        if (audioGeffenDungeonBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                          audioGeffenDungeonBGM.volume = 0;
-                          audioGeffenDungeonBGM.pause();
-                          audioGeffenDungeonBGM.currentTime = 0;
-                          clearInterval(fadeAudio);
-                        }else if (i >= 2){
-                          audioGeffenDungeonBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                          clearInterval(fadeAudio);
-                        }
-                      }, 10);
-                      break;
-
-            case(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29):
-                      fadeAudio = setInterval(() => {
-                          if (audioChallengeTowerBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                            i = i + 1;
-                          }
-                          if (audioChallengeTowerBGM.volume !== 0) {
-                            audioChallengeTowerBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                            audioChallengeTowerBGM.volume = audioChallengeTowerBGM.volume.toFixed(5)
-                          }
-                          if (audioChallengeTowerBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                            audioChallengeTowerBGM.volume = 0;
-                            audioChallengeTowerBGM.pause();
-                            audioChallengeTowerBGM.currentTime = 0;
-                            clearInterval(fadeAudio);
-                          }else if (i >= 2){
-                            audioChallengeTowerBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                            clearInterval(fadeAudio);
-                          }
-                        }, 10);
-                        break;
-            default:
-                fadeAudio = setInterval(() => {
-                  if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
-                    i = i + 1;
-                  }
-                  if (audioBGM.volume !== 0) {
-                    audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
-                    audioBGM.volume = audioBGM.volume.toFixed(5)
-                  }
-                  if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
-                      audioBGM.volume = 0;
-                      audioBGM.pause();
-                      audioBGM.currentTime = 0;
-                    clearInterval(fadeAudio);
-                  }else if (i >= 2){
-                    audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
-                    clearInterval(fadeAudio);
-                  }
-                }, 10);
-                break;
-          }
+      let memoryAudio;
+      if(screenControlRoom.BattlePoringIslandMapMonsterID === 5){
+        memoryAudio = audioBGMBoss;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID === 15){
+        memoryAudio = audioPayonCaveBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID === 22){
+        memoryAudio = audioGeffenDungeonBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID === 25){
+        memoryAudio = audioFinalBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14){
+        memoryAudio = audioPayonCaveBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25){
+        memoryAudio = audioGeffenDungeonBossBGM;
+      }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29){
+        memoryAudio = audioChallengeTowerBGM;
+      }else{
+        memoryAudio = audioBGM;
+      }
+      fadeAudio = setInterval(() => {
+        if (memoryAudio.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+          i = i + 1;
+        }
+        if (memoryAudio.volume !== 0) {
+          memoryAudio.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+          memoryAudio.volume = memoryAudio.volume.toFixed(5)
+        }
+        if (memoryAudio.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+          memoryAudio.volume = 0;
+          memoryAudio.pause();
+          memoryAudio.currentTime = 0;
+          clearInterval(fadeAudio);
+        }else if (i >= 2){
+          memoryAudio.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+          clearInterval(fadeAudio);
+        }
+      }, 10);
     }
 
     // VICTORY FUCNTION
