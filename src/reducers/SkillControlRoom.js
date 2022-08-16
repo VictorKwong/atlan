@@ -25,6 +25,7 @@ const Fn = {
         EnemyPoison: 0,
         EnemyBurning: 0,
         EnemyBleeding: 0,
+        EnemyDefenceBreak: 0,
     }
     
 }
@@ -131,6 +132,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyPoison: 5,
                 }
             }
+        case 'UserSkillVitalStrikeFn':
+            return{
+                ...state,
+                Enemy:{
+                    ...state['Enemy'],
+                    EnemyDefenceBreak: 8,
+                }
+            }
         case 'UserSkillMagnumBreakFn':
             return{
                 ...state,
@@ -232,6 +241,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyPoison: 0,
                     EnemyBurning: 0,
                     EnemyBleeding: 0,
+                    EnemyDefenceBreak: 0,
                 },
                 User:{
                     ...state['User'],
@@ -258,6 +268,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyPoison: state['Enemy'].EnemyPoison - 1,
                     EnemyBurning: state['Enemy'].EnemyBurning - 1,
                     EnemyBleeding: state['Enemy'].EnemyBleeding - 1,
+                    EnemyDefenceBreak: state['Enemy'].EnemyDefenceBreak -1,
                 }
         }
         case 'EnemyBattleStatsFn':
@@ -270,6 +281,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyPoison: state['Enemy'].EnemyPoison - 1,
                     EnemyBurning: state['Enemy'].EnemyBurning - 1,
                     EnemyBleeding: state['Enemy'].EnemyBleeding - 1,
+                    EnemyDefenceBreak: state['Enemy'].EnemyDefenceBreak -1,
             }
         }
         default:

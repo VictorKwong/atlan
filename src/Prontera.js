@@ -50,6 +50,7 @@ import skillKodoku from './img/Skill/pr_kodoku.gif'
 import skillHeadCrush from './img/Skill/lk_headcrush.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+import skillVitalStrike from './img/Skill/lk_vitalstrike.gif'
 
 import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
 import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
@@ -215,6 +216,8 @@ function StartMenu(props){
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillHeadCrush} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === skillCapChart.Quicken):
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
+              case((userStats.Level + 1) === skillCapChart.VitalStrike):
+                return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Vital Strike<img src=${skillVitalStrike} alt="skillVitalStrike" />!</p>`)
               case((userStats.Level + 1) === skillCapChart.BowlingBash):
                 return $('.questCompleteResult').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:

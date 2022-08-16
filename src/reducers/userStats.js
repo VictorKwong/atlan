@@ -114,51 +114,53 @@ const userStatsReducer = (state = Fn, action) => {
                     return {
                         ...state,
                         currentHealth: state.currentHealth + 150,
-                        currentSP: state.currentSP - 30,
+                        currentSP: state.currentSP - action.sp,
                     }
                 default:
                     return {
                         ...state,
                         currentHealth: state.maxHealth,
-                        currentSP: state.currentSP - 30
+                        currentSP: state.currentSP - action.sp
                     }
             }
-        case 'UserSkillBashBlockEnemyFn':
         case 'UserSkillBashEnemyFn':
         case 'UserSkillBashMissedFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 40,
+                currentSP: state.currentSP - action.sp,
             }
-        case 'UserSkillMammoniteBlockEnemyFn':
         case 'UserSkillMammoniteEnemyFn':
         case 'UserSkillMammoniteMissedFn':
                 return{
                     ...state,
-                    currentSP: state.currentSP - 50,
+                    currentSP: state.currentSP - action.sp,
                 }
-        case 'UserSkillMagnumBreakBlockEnemyFn':
         case 'UserSkillMagnumBreakEnemyFn':
         case 'UserSkillMagnumBreakMissedFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 100,
+                currentSP: state.currentSP - action.sp,
             }
         case 'UserSkillBowlingBashEnemyFn':
         case 'UserSkillBowlingBashMissedFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 250,
+                currentSP: state.currentSP - action.sp,
             }    
         case 'UserSkillQuickenFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 180,
+                currentSP: state.currentSP - action.sp,
             }
         case 'UserSkillKodokuFn':
             return{
                 ...state,
-                currentSP: state.currentSP - 80,
+                currentSP: state.currentSP - action.sp,
+            }
+        case 'UserSkillVitalStrikeFn':
+            return{
+                ...state,
+                currentSP: state.currentSP - action.sp,
             }
         case 'UserLevelUpFn':
             return {

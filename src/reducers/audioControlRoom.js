@@ -3,7 +3,7 @@ const Fn = {
     AudioChangeMapVolume: 0.00125,
     AudioChangePlaceVolume: 0.00225,
     AudioChangePlaceThreshold: 0.01,
-    AudioVolumeSoundEffectFixed: 0.3
+    AudioVolumeSoundEffectFixed: 0.5
 }
 
 const audioControlRoomReducer = (state = Fn, action) => {

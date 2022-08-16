@@ -6,6 +6,7 @@ const Fn = {
     MagnumBreak: 20,
     HeadCrush: 27,
     Quicken: 35,
+    VitalStrike: 40,
     BowlingBash: 70,
     //Damage Amplifier
     BashDamage: 2.5,
@@ -22,8 +23,10 @@ const Fn = {
     SPKodoku: 80,
     SPMagnumBreak: 100,
     SPHeadCrush: 100,
-    SPBowlingBash: 250,
     SPQuicken: 180,
+    SPVitalStrike: 100,
+    SPBowlingBash: 250,
+
 
 }
 

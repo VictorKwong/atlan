@@ -51,70 +51,81 @@ export const UserAttackEnemyFn = (Damage,Target) => {
         Target: Target,
     };
 };
-export const UserSkillFirstAidFn = () => {
+export const UserSkillFirstAidFn = (sp) => {
     return {
         type: 'UserSkillFirstAidFn',
+        sp:sp
     };
 };
 
-export const UserSkillBashEnemyFn = (Damage,Target) => {
+export const UserSkillBashEnemyFn = (Damage,Target,sp) => {
     return {
         type: 'UserSkillBashEnemyFn',
         DamageCalculation: Damage,
         Target: Target,
+        sp:sp
     };
 };
 
-export const UserSkillBashMissedFn = () => {
+export const UserSkillBashMissedFn = (sp) => {
     return {
         type: 'UserSkillBashMissedFn',
+        sp:sp
     };
 };
 
-export const UserSkillMammoniteEnemyFn = (Damage,Target) => {
+export const UserSkillMammoniteEnemyFn = (Damage,Target,sp) => {
     return {
         type: 'UserSkillMammoniteEnemyFn',
         DamageCalculation: Damage,
         Target: Target,
+        sp:sp
     };
 };
-export const UserSkillMammoniteMissedFn = () => {
+export const UserSkillMammoniteMissedFn = (sp) => {
     return {
         type: 'UserSkillMammoniteMissedFn',
+        sp:sp
     };
 };
-export const UserSkillMagnumBreakEnemyFn = (Damage,Target) => {
+export const UserSkillMagnumBreakEnemyFn = (Damage,Target,sp) => {
     return {
         type: 'UserSkillMagnumBreakEnemyFn',
         DamageCalculation: Damage,
         Target: Target,
+        sp:sp
     };
 };
-export const UserSkillMagnumBreakMissedFn = () => {
+export const UserSkillMagnumBreakMissedFn = (sp) => {
     return {
         type: 'UserSkillMagnumBreakMissedFn',
+        sp:sp
     };
 };
-export const UserSkillBowlingBashEnemyFn = (Damage,Target) => {
+export const UserSkillBowlingBashEnemyFn = (Damage,Target,sp) => {
     return {
         type: 'UserSkillBowlingBashEnemyFn',
         DamageCalculation: Damage,
         Target: Target,
+        sp:sp
     };
 };
-export const UserSkillBowlingBashMissedFn = () => {
+export const UserSkillBowlingBashMissedFn = (sp) => {
     return {
         type: 'UserSkillBowlingBashMissedFn',
+        sp:sp
     };
 };
-export const UserSkillQuickenFn = () => {
+export const UserSkillQuickenFn = (sp) => {
     return {
         type: 'UserSkillQuickenFn',
+        sp:sp
     };
 };
-export const UserSkillKodokuFn = () => {
+export const UserSkillKodokuFn = (sp) => {
     return {
         type: 'UserSkillKodokuFn',
+        sp: sp
     };
 };
 export const UserSkillMagnumBreakFn = () => {
@@ -122,9 +133,16 @@ export const UserSkillMagnumBreakFn = () => {
         type: 'UserSkillMagnumBreakFn',
     };
 };
-export const UserSkillHeadCrushFn = () => {
+export const UserSkillHeadCrushFn = (sp) => {
     return {
         type: 'UserSkillHeadCrushFn',
+        sp:sp
+    };
+};
+export const UserSkillVitalStrikeFn = (sp) => {
+    return {
+        type: 'UserSkillVitalStrikeFn',
+        sp:sp
     };
 };
 

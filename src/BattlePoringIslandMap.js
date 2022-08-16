@@ -17,7 +17,7 @@ import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,Bos
 import { UserTurnBlockFn , EnemyTurnBlockFn, UserSkillQuickenFn , UserSkillKodokuFn, UserSkillFirstAidFn, UserTriggerMasterItemFn} from './actions'
 //OBS: UserSkillQuickenClockTickFn, ResetUserSkillQuickenClockFn, ResetUserTurnBlockFn
 //Battle Calculation
-import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn, UserSkillKodokuEnemyFn, UserSkillMagnumBreakFn, UserSkillHeadCrushFn} from './actions'
+import { EnemyAttackBlockUserFn , UserSkillBashEnemyFn , UserSkillMagnumBreakEnemyFn , UserSkillMammoniteEnemyFn, UserSkillMammoniteMissedFn , UserSkillBashMissedFn, UserSkillMagnumBreakMissedFn, UserSkillBowlingBashEnemyFn, UserSkillBowlingBashMissedFn, EnemyAttackReflectUserFn, UserLifeStealEnemyFn, UserSkillLifeStealEnemyFn, UserSkillKodokuEnemyFn, UserSkillMagnumBreakFn, UserSkillHeadCrushFn, UserSkillVitalStrikeFn} from './actions'
 //ITEMS
 import { UseRedPotionFn, UseOrangePotionFn, UseYellowPotionFn, UseWhitePotionFn, UseAnniversaryCakeFn, UseMastelaFruitFn, UseBluePotionFn, UseYggdrasilBerryFn } from './actions'
 //QUEST
@@ -218,6 +218,7 @@ import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillHeadCrush from './img/Skill/lk_headcrush.gif'
 import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
+import skillVitalStrike from './img/Skill/lk_vitalstrike.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 //ITEMS
@@ -236,6 +237,7 @@ import PoisonEffect from './img/Stats/Poison.png'
 import StunEffect from './img/Stats/Stun.png'
 import SlowEffect from './img/Stats/Slow.png'
 import BleedingEffect from './img/Stats/Bleeding.png'
+import DefenceDownEffect from './img/Stats/DefDecrease.png'
 
 //buff
 import QuickenEffect from './img/Stats/TwoHandQuicken.png'
@@ -572,6 +574,7 @@ import SkillMammonite from './audio/SoundEffect/MammoniteSoundEffect.mp3'
 import SkillMagBreak from './audio/SoundEffect/MagnumBreakSoundEffect.mp3'
 import SkillQuicken from './audio/SoundEffect/QuickenSoundEffect.mp3'
 import SkillHeadCrush from './audio/SoundEffect/HeadCrushSoundEffect.mp3'
+import SkillVitalStrike from './audio/SoundEffect/VitialStrikeSoundEffect.mp3'
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
 import UserBlock from './audio/SoundEffect/UserBlock.mp3'
 const audioBGM = new Audio(audioStrugardenNEOBattle1);
@@ -593,6 +596,7 @@ const audioSkillMammonite = new Audio(SkillMammonite);
 const audioSkillMagBreak = new Audio(SkillMagBreak);
 const audioSkillQuicken = new Audio(SkillQuicken);
 const audioSkillHeadCrush = new Audio(SkillHeadCrush);
+const audioSkillVitalStrike = new Audio(SkillVitalStrike);
 const audioLevelUp = new Audio(LevelUpSoundEffect);
 const audioUserBlock = new Audio(UserBlock)
 
@@ -788,6 +792,7 @@ function Main(){
       audioSkillQuicken.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioLevelUp.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioUserBlock.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+      audioSkillVitalStrike.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
 
       let memoryAudio;
       let playPromise;
@@ -802,7 +807,7 @@ function Main(){
       }else if(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14){
         memoryAudio = audioPayonCaveBGM;
       }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25){
-        memoryAudio = audioGeffenDungeonBossBGM;
+        memoryAudio = audioGeffenDungeonBGM;
       }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29){
         memoryAudio = audioChallengeTowerBGM;
       }else{
@@ -845,7 +850,7 @@ function Main(){
       }else if(screenControlRoom.BattlePoringIslandMapMonsterID > 5 && screenControlRoom.BattlePoringIslandMapMonsterID <= 14){
         memoryAudio = audioPayonCaveBGM;
       }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 16 && screenControlRoom.BattlePoringIslandMapMonsterID <= 25){
-        memoryAudio = audioGeffenDungeonBossBGM;
+        memoryAudio = audioGeffenDungeonBGM;
       }else if(screenControlRoom.BattlePoringIslandMapMonsterID >= 26 && screenControlRoom.BattlePoringIslandMapMonsterID <= 29){
         memoryAudio = audioChallengeTowerBGM;
       }else{
@@ -1168,6 +1173,8 @@ function Main(){
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Magnum Break<img src=${skillMagnum} alt="skillMagnumBreak" />!</p>`)
               case((userStats.Level + 1) === skillCapChart.Quicken):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Quicken<img src=${skillQuicken} alt="skillQuicken" />!</p>`)
+              case((userStats.Level + 1) === skillCapChart.VitalStrike):
+                return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Vital Strike<img src=${skillVitalStrike} alt="skillVitalStrike" />!</p>`)
               case((userStats.Level + 1) === skillCapChart.BowlingBash):
                 return $('.storySpeech').append(`\n <p>Atlan has Unlock Skill Bowling Bash<img src=${skillBowlingBash} alt="skillBowlingBash" />!</p>`)
               default:
@@ -1315,7 +1322,7 @@ function Main(){
       Damage = 150;
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UserSkillFirstAidFn()), 300);
+      setTimeout(() => dispatch(UserSkillFirstAidFn(skillCapChart.SPFirstAid)), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use First Aid!Recover ' + Damage + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
@@ -1381,12 +1388,12 @@ function Main(){
               $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),40), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBash), 300));
             }else{
               // Text display
               $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i)), 300);
+              return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i,skillCapChart.SPBash)), 300);
             }
           // ENEMY DODGE
           default:
@@ -1396,7 +1403,7 @@ function Main(){
             dispatch(EnemyDodgeAnimationFn(true));
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-            return setTimeout(() => dispatch(UserSkillBashMissedFn()), 300);
+            return setTimeout(() => dispatch(UserSkillBashMissedFn(skillCapChart.SPBash)), 300);
         }
         })()
         // End turn
@@ -1458,12 +1465,12 @@ function Main(){
               $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
               $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMammonite), 300));
             }else{
               // Text display
               $('.storySpeech').append(`<p>Critical Hit Mammonite!! Enemy Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i)), 300);
+              return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i,skillCapChart.SPMammonite)), 300);
             }
           // ENEMY DODGE 
           default:  
@@ -1473,7 +1480,7 @@ function Main(){
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             $('.storySpeech').append(`<p>Atlan use Mammonite! ${enemyStats[i].name} dodge the attack.</p>`)
             //Rerender
-            return setTimeout(() => dispatch(UserSkillMammoniteMissedFn()), 300);
+            return setTimeout(() => dispatch(UserSkillMammoniteMissedFn(skillCapChart.SPMammonite)), 300);
         }
         })()
         // End turn
@@ -1496,8 +1503,8 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
-      setTimeout(() => dispatch(UserSkillKodokuFn(80)), 300);
-      Damage = Math.floor(userStats.attack + userStats.Bonusattack*3 + userStats.Level*30) + (userAttribute.int)*8
+      setTimeout(() => dispatch(UserSkillKodokuFn(skillCapChart.SPKodoku)), 300);
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack*3 + userStats.Level*30 + (userAttribute.int)*8)
       dispatch(UserAttackEnemyFn(parseInt(Damage),i));
       $('.storySpeech').append(`<p>Atlan use skill Kodoku! Enemy is become poison.</p>`)
       $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1512,6 +1519,32 @@ function Main(){
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
     }
+
+    const userSkillVitalStrikeButton = () => {
+      if (userStats.currentSP >= skillCapChart.SPVitalStrike){
+      //Audio SoundEffect
+      audioSkillVitalStrike.play();
+      dispatch(UserChannelAnimationFn());
+      setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      // setTimeout(() => (Uclock = 0), 300);
+      //Rerender, Block or not block
+      setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike)), 300);
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack*1 + userStats.Level*30 + (userAttribute.int)*8)
+      dispatch(UserAttackEnemyFn(parseInt(Damage),i));
+      $('.storySpeech').append(`<p>Atlan use skill Vital Strike! Enemy defence is breaking down...</p>`)
+      $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+        // End turn
+        clockCheck = 0;
+        Uclock = 0;
+        clockBarObject.userClockBar = clockBarObject.userClockBar - 100;
+        dispatch(ResetUserTurnFn());
+      }else{
+        $('.storySpeech').append(`<p>Not enough SP.</p>`)
+      }
+      listResult = document.getElementsByClassName('storyChat')[0];
+      listResult.scrollTop = listResult.scrollHeight;
+    }
+
 
     const userSkillMagnumBreakButton = () => {
       if (userStats.currentSP >= skillCapChart.SPMagnumBreak){
@@ -1561,14 +1594,14 @@ function Main(){
                 dispatch(UserSkillMagnumBreakFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMagnumBreak), 300));
               }else{
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Magnum Break!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 dispatch(UserSkillMagnumBreakFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i,skillCapChart.SPMagnumBreak)), 300);
               }
           // ENEMY DODGE 
           default:  
@@ -1578,7 +1611,7 @@ function Main(){
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Atlan use Magnum Break! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
-              return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
+              return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn(skillCapChart.SPMagnumBreak)), 300);
         }
         })()
 
@@ -1642,14 +1675,14 @@ function Main(){
               dispatch(UserSkillHeadCrushFn());
               $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),100), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPHeadCrush), 300));
             }else{
               // Text display
               $('.storySpeech').append(`<p>Critical Hit Head Crush!! Enemy Received ${Damage} damage</p>`)
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               dispatch(UserSkillHeadCrushFn());
               $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
-              return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i)), 300);
+              return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i,skillCapChart.SPHeadCrush)), 300);
             }
           // ENEMY DODGE 
           default:  
@@ -1659,7 +1692,7 @@ function Main(){
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Atlan use Head Cursh! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
-              return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn()), 300);
+              return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn(skillCapChart.SPHeadCrush)), 300);
         }
         })()
 
@@ -1675,9 +1708,6 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
     }
 
-
-
-
     const userSkillBowlingBashButton = () => {
       if (userStats.currentSP >= skillCapChart.SPBowlingBash){
         //Audio SoundEffect
@@ -1691,7 +1721,7 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(SkillControlRoom['Enemy'].EnemyBlock && ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case(((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
@@ -1729,12 +1759,12 @@ function Main(){
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),250), 300));
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBowlingBash), 300));
               }else{
                 // Text display
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! Enemy Received ${Damage} damage</p>`)
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i)), 300);
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i,skillCapChart.SPBowlingBash)), 300);
               }
           // ENEMY DODGE 
           default:
@@ -1742,7 +1772,7 @@ function Main(){
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p>Atlan use Bowling Bash! ${enemyStats[i].name} dodge the attack.</p>`)
               //Rerender
-              return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn()), 300);
+              return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn(skillCapChart.SPBowlingBash)), 300);
         }
         })()
         // End turn
@@ -1765,7 +1795,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
-      setTimeout(() => dispatch(UserSkillQuickenFn(180)), 300);
+      setTimeout(() => dispatch(UserSkillQuickenFn(skillCapChart.SPQuicken)), 300);
       $('.storySpeech').append(`<p>Atlan use skill Quicken! Attack Speed has increase a period of time!</p>`)  
         // End turn
         clockCheck = 0;
@@ -2353,6 +2383,8 @@ function Main(){
                       {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyBleeding > 0? <img src={BleedingEffect} alt="BleedingEffectImage"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyDefenceBreak > 0? <img src={DefenceDownEffect} alt="DefenceDownEffectImage"></img>: null}
+                      
                      </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
                     <p>Enemy Attack {enemyStats[i].attack}</p>
@@ -2472,6 +2504,14 @@ function Main(){
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillQuicken} alt="skillQuicken"/> Quick<span className="goGoButtonHide">en</span></p>
                               <span className={userStats.currentSP >= skillCapChart.SPQuicken ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillQuicken} alt="skillQuicken" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPQuicken}</span>
+                            </figcaption>
+                          </button>
+                        : null}
+                        {userStats.Level >= skillCapChart.VitalStrike ? 
+                          <button className="goGoButtonSkills" onClick={() => userSkillVitalStrikeButton()}>
+                            <figcaption className="goGoButtonFig">
+                              <p className="goGoButtonName"><img src={skillVitalStrike} alt="skillVitalStrike"/> Vit<span className="goGoButtonHide">ial</span> S<span className="goGoButtonHide">tri</span>k<span className="goGoButtonHide">e</span></p>
+                              <span className={userStats.currentSP >= skillCapChart.SPVitalStrike ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillVitalStrike} alt="skillVitalStrike" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPVitalStrike}</span>
                             </figcaption>
                           </button>
                         : null}
