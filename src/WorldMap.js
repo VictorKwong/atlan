@@ -106,14 +106,14 @@ function StartMenu(){
     return(
       <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
-        screenControlRoom.Prontera ? <Prontera />:
-        screenControlRoom.PronteraCastle ? <PronteraCastle />:
-        screenControlRoom.PoringIsland ? <PoringIsland />:
-        screenControlRoom.Geffen ? <Geffen />:
-        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
-        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F /> :
-        screenControlRoom.PayonCave1F ? <PayonCave1F />:
-        screenControlRoom.ChallengeTower ? <ChallengeTower />:
+        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/>:
+        screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/>:
+        screenControlRoom.PoringIsland ? <PoringIsland ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/>:
+        screenControlRoom.Geffen ? <Geffen ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/>:
+        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/> :
+        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/> :
+        screenControlRoom.PayonCave1F ? <PayonCave1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/>:
+        screenControlRoom.ChallengeTower ? <ChallengeTower ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox}/>:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         screenControlRoom.cutsceneThree ? <StoryLineThree /> :
@@ -125,7 +125,7 @@ function StartMenu(){
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
-            {screenControlRoom.AltanEquipment ? 
+            {screenControlRoom.AltanEquipment ?
               <div className="ReturnParent">
                 <AltanEquipment/>
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanEquipmentFn());}}>x</button>
