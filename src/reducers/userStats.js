@@ -397,7 +397,33 @@ const userStatsReducer = (state = Fn, action) => {
                         currentHealth: state.maxHealth,
                         currentSP: state.maxSP
                     }
-
+        case 'AmuletRecoveryFn':
+            switch(true){
+                case (((state.currentHealth + action.HPHeal) <= state.maxHealth) && ((state.currentSP + action.SPHeal) <= state.maxSP)):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + action.HPHeal,
+                        currentSP: state.currentSP + action.SPHeal
+                    }
+                case (((state.currentHealth + action.HPHeal) <= state.maxHealth) && ((state.currentSP + action.SPHeal) > state.maxSP)):
+                    return {
+                        ...state,
+                        currentHealth: state.currentHealth + action.HPHeal,
+                        currentSP: state.maxSP
+                    }
+                case (((state.currentHealth + action.HPHeal) > state.maxHealth) && ((state.currentSP + action.SPHeal) <= state.maxSP)):
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth,
+                        currentSP: state.currentSP + action.SPHeal
+                    }
+                default:
+                    return {
+                        ...state,
+                        currentHealth: state.maxHealth,
+                        currentSP: state.maxSP
+                    }
+            } 
 
         //Rerender Fn
         case 'userClockDefendFn':

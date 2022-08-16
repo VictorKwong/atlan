@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn} from './actions';
+import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, AmuletRecoveryFn} from './actions';
 //Battle Reset
 import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
@@ -1300,6 +1300,21 @@ function Main(){
       dispatch(UserTurnBlockFn());
       // Text display
       $('.storySpeech').append('<p>Atlan Defend himself!</p>')
+      Math.floor(userAttribute.Level*5*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack) > 0 ? Damage = Math.floor(userAttribute.Level*5*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack) : Damage = 3;
+      Math.floor(userAttribute.Level*2*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) > 0 ? SPHeal = Math.floor(userAttribute.Level*2*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) : SPHeal = 1;
+
+      if(SkillControlRoom['User'].UserLearnAmuletRecovery == true){
+        dispatch(UserOnLifeStealAnimationFn(true));
+        setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
+        setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 50);
+        setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1050);
+        setTimeout(() => dispatch(AmuletRecoveryFn(Damage == 3 ? Damage : Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),SPHeal)), 300);
+        // Text display
+        $('.storySpeech').append(`<p style="color:#3fff00;">Amulet Recovery heals ${Damage == 3 ? Damage : Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}HP ${SPHeal}SP!</p>`);
+      }else{
+        setTimeout(() => dispatch(userClockDefendFn()), 300);
+      }
+
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
       // End turn
@@ -1307,7 +1322,7 @@ function Main(){
       Uclock = 0;
       clockBarObject.userClockBar = clockBarObject.userClockBar - 70;
       dispatch(ResetUserTurnFn());
-      setTimeout(() => dispatch(userClockDefendFn()), 300);
+      
     }
 
     //COMBAT SKILLS

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn} from './actions';
-import { TalktoPronteraKingFn, TalktoRoyalGuard1Fn, TalktoRoyalGuard2Fn , TalktoPronteraAssistantFn } from './actions'
+import { TalktoPronteraKingFn, TalktoRoyalGuard1Fn, TalktoRoyalGuard2Fn , TalktoPronteraAssistantFn, TalktoPronteraAssistantContinueFn, TalktoPronteraAssistantLearnedFn } from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions'
 
+//Learn
+import { UserLearnAmuletRecoveryFn } from './actions'
 //PATH
 import { FinalBossPathFn } from './actions'
 //ITEM
@@ -91,27 +93,39 @@ function StartMenu(props){
           $('.storyCharacter').html('')
           break;
         //Talk message
-        case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && screenControlRoom.FinalBossPath && npcControlRoom.BossBaphometDefeat):
+        case(npcControlRoom.PronteraKing && screenControlRoom.FinalBossPath && npcControlRoom.BossBaphometDefeat):
           $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][2].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][2].name}</p>`)
           break;
-        case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && screenControlRoom.FinalBossPath):
+        case(npcControlRoom.PronteraKing && screenControlRoom.FinalBossPath):
           $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][1].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][1].name}</p>`)
           break;
-        case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing):
+        case(npcControlRoom.PronteraKing):
           $('.storySpeech').html(`<p>${npcSpeech['PronteraKing'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraKing'][0].name}</p>`)
           break;
-          case(screenControlRoom.PronteraCastle && npcControlRoom.PronteraAssistant):
+        case(npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue && npcControlRoom.PronteraAssistantLearned):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraAssistant'][2].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraAssistant'][2].name}</p>`)
+          break;
+        case(npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantLearned):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraAssistant'][3].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraAssistant'][3].name}</p>`)
+          break;
+        case(npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue):
+          $('.storySpeech').html(`<p>${npcSpeech['PronteraAssistant'][1].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraAssistant'][1].name}</p>`)
+          break;
+        case(npcControlRoom.PronteraAssistant):
           $('.storySpeech').html(`<p>${npcSpeech['PronteraAssistant'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['PronteraAssistant'][0].name}</p>`)
         break;
-        case(screenControlRoom.PronteraCastle && npcControlRoom.RoyalGuard1):
+        case(npcControlRoom.RoyalGuard1):
           $('.storySpeech').html(`<p>${npcSpeech['RoyalGuard1'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RoyalGuard1'][0].name}</p>`)
         break;
-        case(screenControlRoom.PronteraCastle && npcControlRoom.RoyalGuard2):
+        case(npcControlRoom.RoyalGuard2):
           $('.storySpeech').html(`<p>${npcSpeech['RoyalGuard2'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['RoyalGuard2'][0].name}</p>`)
         break;
@@ -205,6 +219,16 @@ function StartMenu(props){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech"></p>
+            {npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            <div className="storyScreen">
+              <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnAmuletRecoveryFn(true)); dispatch(TalktoPronteraAssistantLearnedFn());}}>Hang Over the Items</button>
+            </div> :
+            npcControlRoom.PronteraAssistant && !npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            <div className="storyScreen">
+              <button className="ReturnPayonCave" onClick={() => {dispatch(TalktoPronteraAssistantContinueFn());}}>Research..?</button>
+            </div> : null}
+
+
             {/* WEAPONS */}
             {screenControlRoom.WeaponEquipmentChoice ? 
               <div className="textCenter">

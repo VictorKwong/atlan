@@ -12,6 +12,7 @@ const Fn = {
         UserLearnReflectAttack: true,
         UserLearnLifeStealAttack: false,
         UserLearnMasterItem: true,
+        UserLearnAmuletRecovery: true,
         //UserTriggerMasterItem
         UserTriggerMasterItem: true,
         //Stable Skills Scale
@@ -221,6 +222,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 User:{
                     ...state['User'],
                     UserLearnMasterItem: action.learn
+                }
+            }
+        case 'UserLearnAmuletRecoveryFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserLearnAmuletRecovery: action.learn
                 }
             }
         case 'UserTriggerMasterItemFn':

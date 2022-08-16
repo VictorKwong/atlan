@@ -503,7 +503,7 @@ const Fn = [
         level: 10,
         maxHealth: 50000, //2000
         currentHealth: 50000,
-        attack: 60,
+        attack: 120,
         defence: 19,
         defencebuffer: 25, //+6
         speed: 7,
@@ -520,11 +520,11 @@ const Fn = [
         level: 10,
         maxHealth: 90000, //2000
         currentHealth: 90000,
-        attack: 60,
+        attack: 200,
         defence: 19,
         defencebuffer: 25, //+6
         speed: 7,
-        hitRate: 0.9,
+        hitRate: 1,
         dodgeRate: 0.10,
         critRate: 0.05,
         critResist: 0.05,
@@ -535,13 +535,13 @@ const Fn = [
     {
         name: 'Stormy Knight',
         level: 10,
-        maxHealth: 1000, //2000
-        currentHealth: 1000,
-        attack: 60,
+        maxHealth: 220000, //2000
+        currentHealth: 220000,
+        attack: 400,
         defence: 19,
         defencebuffer: 25, //+6
-        speed: 7,
-        hitRate: 0.9,
+        speed: 10,
+        hitRate: 1,
         dodgeRate: 0.10,
         critRate: 0.05,
         critResist: 0.05,

@@ -36,6 +36,14 @@ export const UserSkillLifeStealEnemyFn = (Damage,Target,LifeSteal,Consume) => {
         Consume: Consume
     }
 };
+
+export const AmuletRecoveryFn = (HPHeal,SPHeal) => {
+    return {
+        type: 'AmuletRecoveryFn',
+        HPHeal:HPHeal,
+        SPHeal:SPHeal
+    }
+};
 export const UserSkillKodokuEnemyFn = () => {
     return {
         type: 'UserSkillKodokuEnemyFn',
@@ -177,6 +185,12 @@ export const UserLearnLifeStealAttackFn = (learn) => {
 export const UserLearnMasterItemFn = (learn) => {
     return {
         type: 'UserLearnMasterItemFn',
+        learn:learn
+    };
+};
+export const UserLearnAmuletRecoveryFn = (learn) => {
+    return {
+        type: 'UserLearnAmuletRecoveryFn',
         learn:learn
     };
 };
@@ -845,6 +859,17 @@ export const TalktoPronteraAssistantFn = () => {
         type: 'TalktoPronteraAssistantFn'
     };
 };
+export const TalktoPronteraAssistantContinueFn = () => {
+    return {
+        type: 'TalktoPronteraAssistantContinueFn'
+    };
+};
+export const TalktoPronteraAssistantLearnedFn = () => {
+    return {
+        type: 'TalktoPronteraAssistantLearnedFn'
+    };
+};
+
 export const TalktoKiwiFn = () => {
     return {
         type: 'TalktoKiwiFn'
@@ -1390,7 +1415,7 @@ export const UseWhitePotionFn = (vit) => {
 export const UseAnniversaryCakeFn = (vit) => {
     return {
         type: 'UseAnniversaryCakeFn',
-        Vit:vit
+        Vit:vit,
     };
 };
 

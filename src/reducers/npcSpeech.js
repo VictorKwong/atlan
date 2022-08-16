@@ -173,6 +173,15 @@ const Fn = {
     PronteraAssistant:[{
             name: 'PronteraAssistant',
             text: 'I`m doing a research now, please don`t distrub me.'
+        },{
+            name: 'PronteraAssistant',
+            text: 'I can create a magic amulet that allows to regenerate your wounds when you are defending, but I need 1 RedGemstone, 10 CursedRubies,and 2 Diamonds to create it'
+        },{
+            name: 'PronteraAssistant',
+            text: 'You have learn Amulet Recovery!!'
+        },{
+            name: 'PronteraAssistant',
+            text: 'Thanks for helping my research o_o, hope the amulet will guide you to success~'
         }],
     RoyalGuard1:[{
             name: 'RoyalGuard',
