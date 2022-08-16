@@ -2450,14 +2450,14 @@ function Main(){
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
                           }
-                case (EnemyStunClock >= 0):
+                case (EnemyStunClock > 0):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
                             enemyClockBar: clockBarObject.enemyClockBar,
                           }
-                  case (EnemySlowClock >= 0):
+                  case (EnemySlowClock > 0):
                     Uclock = 1;
                     EnemySlowClock = EnemySlowClock - 1;
                     return clockBarObject = {

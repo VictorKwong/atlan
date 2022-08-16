@@ -63,11 +63,8 @@ function StartMenu(){
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
-    const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     const dispatch = useDispatch();
     let SkillBox = [
-      //1,5,20,35,70
       {id:20000, Img:skillFirstAid, name:"First Aid", skillLevelCheck:1, title:"SP:30, Heal small amount of health", Activate:UserSkillFirstAidFn()},
       {id:20001, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal damage to enemy"},
       {id:20002, Img:skillMammonite, name:"Mammonite", skillLevelCheck:1, title:"Deal small amount damage to enemy and recieved zeny"},
@@ -78,7 +75,7 @@ function StartMenu(){
       {id:20007, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
     ]
     let GuildBox = [
-      {id:100, Img:guildMasterItem, name:"Master Iteem", skillLevelCheck:1, title:"Can Use Item x2 during your turn"},
+      {id:100, Img:guildMasterItem, name:"Master Item", skillLevelCheck:1, title:"Can Use Item x2 during your turn"},
       {id:101, Img:guildDoubleAttack, name:"Double Attack", skillLevelCheck:1, title:"Attack can deal damage twice"},
       {id:102, Img:guildLifeSteal, name:"Life Steal", skillLevelCheck:1, title:"Physical Attack will drain opponents life"},
       {id:103, Img:guildReflect, name:"Reflect", skillLevelCheck:1, title:"Reflect Physical damage from enemy"},
