@@ -25,9 +25,6 @@ function StartMenu(){
         // Read text
         case(i < (storyLineOne['storyLineOne'][textReadAndSpeed.count].text).length):
           $('.storySpeech').append(`${(storyLineOne['storyLineOne'][textReadAndSpeed.count].text).charAt(i)}`);
-          console.log((storyLineOne['storyLineOne'][textReadAndSpeed.count].text).charAt(i))
-          console.log(i)
-          console.log(storyLineOne['storyLineOne'][textReadAndSpeed.count].text.length)
           i++;
           setTimeout(() => {typeWrite()}, textReadAndSpeed.speed);
           return ;

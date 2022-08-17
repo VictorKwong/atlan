@@ -64,6 +64,7 @@ function StartMenu(){
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
+    const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const dispatch = useDispatch();
     let SkillBox = [
       {id:20000, Img:skillFirstAid, name:"First Aid", skillLevelCheck:1, title:"SP:30, Heal small amount of health", Activate:UserSkillFirstAidFn()},
@@ -76,11 +77,11 @@ function StartMenu(){
       {id:20007, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
     ]
     let GuildBox = [
-      {id:100, Img:guildMasterItem, name:"Master Item", skillLevelCheck:1, title:"Can Use Item x2 during your turn"},
-      {id:101, Img:guildDoubleAttack, name:"Double Attack", skillLevelCheck:1, title:"Attack can deal damage twice"},
-      {id:102, Img:guildLifeSteal, name:"Life Steal", skillLevelCheck:1, title:"Physical Attack will drain opponents life"},
-      {id:103, Img:guildReflect, name:"Reflect", skillLevelCheck:1, title:"Reflect Physical damage from enemy"},
-      {id:104, Img:AmuletRecovery, name:"Amulet Recovery", skillLevelCheck:1, title:"Recover health and sp while defending"}
+      {id:100, Img:guildMasterItem, name:"Master Item", skillLevelCheck:1, title:"Can Use Item x2 during your turn", condition:SkillControlRoom['User'].UserLearnMasterItem},
+      {id:101, Img:guildDoubleAttack, name:"Double Attack", skillLevelCheck:1, title:"Attack can deal damage twice", condition:SkillControlRoom['User'].UserLearnDoubleAttack},
+      {id:102, Img:guildLifeSteal, name:"Life Steal", skillLevelCheck:1, title:"Physical Attack will drain opponents life", condition:SkillControlRoom['User'].UserLearnLifeStealAttack},
+      {id:103, Img:guildReflect, name:"Reflect", skillLevelCheck:1, title:"Reflect Physical damage from enemy", condition:SkillControlRoom['User'].UserLearnReflectAttack},
+      {id:104, Img:AmuletRecovery, name:"Amulet Recovery", skillLevelCheck:1, title:"Recover health and sp while defending", condition:SkillControlRoom['User'].UserLearnAmuletRecovery}
     ]
     let UserDisplay = [
       {id:0, name:"Lord Kaho`s Horn", img0:UserStand_LordKahosHorn , img1:UserSit_LordKahosHorn, img2:UserStand2_LordKahosHorn, img3:UserStand3_LordKahosHorn, explain:"User_LordKahosHorn" },
@@ -311,9 +312,9 @@ function StartMenu(){
         {screenControlRoom.GuildChoice ?
           <div className="guildBoxDisplay">
             {GuildBox.map(Guild => {
-              return( 
+              return(
                 <span key={Guild.id}>
-                  {userStats.Level >= Guild.skillLevelCheck ? <button className="atlanGuildButton atlanGuildButtonFix" title={Guild.title} disabled>
+                  {Guild.condition ? <button className="atlanGuildButton atlanGuildButtonFix" title={Guild.title} disabled>
                     <div className="adjImgCenterBox">
                       <p className="adjImgCenter"><img src={Guild.Img} alt={Guild.name} />{Guild.name}</p>
                     </div>
