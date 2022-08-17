@@ -3,9 +3,9 @@ const Fn = {
     Level: 1,
     Experience: 0,
     maxHealth: 150,
-    currentHealth: 140,
+    currentHealth: 100,
     maxSP: 50,
-    currentSP: 0,
+    currentSP: 3,
     attack: 25,
     defence: 18,
     defencebuffer: 38, // 18 + 20

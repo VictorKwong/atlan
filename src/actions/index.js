@@ -685,6 +685,12 @@ export const UserOnLifeStealAnimationFn = (animation) => {
         animation: animation
     };
 };
+export const UserOnHPHealAnimationFn = (animation) => {
+    return {
+        type: 'UserOnHPHealAnimationFn',
+        animation: animation
+    };
+};
 export const UserOnSPHealAnimationFn = (animation) => {
     return {
         type: 'UserOnSPHealAnimationFn',

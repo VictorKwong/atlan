@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, AmuletRecoveryFn} from './actions';
+import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, UserOnHPHealAnimationFn, AmuletRecoveryFn} from './actions';
 //Battle Reset
 import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
@@ -1300,17 +1300,18 @@ function Main(){
       dispatch(UserTurnBlockFn());
       // Text display
       $('.storySpeech').append('<p>Atlan Defend himself!</p>')
-      Math.floor(userAttribute.Level*5*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack) > 0 ? Damage = Math.floor(userAttribute.Level*5*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack) : Damage = 3;
-      Math.floor(userAttribute.Level*2*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) > 0 ? SPHeal = Math.floor(userAttribute.Level*2*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) : SPHeal = 1;
-
+      Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) > 0 ? Damage = Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) : Damage = 3;
+      Math.floor(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) > 0 ? SPHeal = Math.floor(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) : SPHeal = 1;
+      console.log(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      console.log(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02));
       if(SkillControlRoom['User'].UserLearnAmuletRecovery == true){
-        dispatch(UserOnLifeStealAnimationFn(true));
-        setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-        setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 50);
-        setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1050);
-        setTimeout(() => dispatch(AmuletRecoveryFn(Damage == 3 ? Damage : Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),SPHeal)), 300);
+        dispatch(UserOnHPHealAnimationFn(true));
+        setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+        setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);
+        setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1100);
+        setTimeout(() => dispatch(AmuletRecoveryFn(Damage,SPHeal)), 300);
         // Text display
-        $('.storySpeech').append(`<p style="color:#3fff00;">Amulet Recovery heals ${Damage == 3 ? Damage : Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}HP ${SPHeal}SP!</p>`);
+        $('.storySpeech').append(`<p style="color:#3fff00;">Amulet Recovery heals ${Damage}HP ${SPHeal}SP!</p>`);
       }else{
         setTimeout(() => dispatch(userClockDefendFn()), 300);
       }
@@ -1829,9 +1830,9 @@ function Main(){
         audioHeal.play();
         dispatch(UserChannelAnimationFn());
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-        dispatch(UserOnLifeStealAnimationFn(true));
-        setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-        Damage = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
+        dispatch(UserOnHPHealAnimationFn(true));
+        setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+        Damage = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
         //Rerender
         // setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1855,9 +1856,9 @@ function Main(){
       audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-      dispatch(UserOnLifeStealAnimationFn(true));
-      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack)
+      dispatch(UserOnHPHealAnimationFn(true));
+      setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+      Damage = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02))
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1881,9 +1882,9 @@ function Main(){
         audioHeal.play();
         dispatch(UserChannelAnimationFn());
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-        dispatch(UserOnLifeStealAnimationFn(true));
-        setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-        Damage = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
+        dispatch(UserOnHPHealAnimationFn(true));
+        setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+        Damage = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
         //Rerender
         // setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1907,9 +1908,9 @@ function Main(){
       audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-      dispatch(UserOnLifeStealAnimationFn(true));
-      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
+      dispatch(UserOnHPHealAnimationFn(true));
+      setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+      Damage = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1933,9 +1934,9 @@ function Main(){
       audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-      dispatch(UserOnLifeStealAnimationFn(true));
-      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
+      dispatch(UserOnHPHealAnimationFn(true));
+      setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+      Damage = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1959,9 +1960,9 @@ function Main(){
       audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-      dispatch(UserOnLifeStealAnimationFn(true));
-      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      Damage = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)/SkillControlRoom['User'].UserLifeStealAttack);
+      dispatch(UserOnHPHealAnimationFn(true));
+      setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+      Damage = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -2011,10 +2012,10 @@ function Main(){
       audioHeal.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
-      dispatch(UserOnLifeStealAnimationFn(true));
-      setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-      setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 50);
-      setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1050);
+      dispatch(UserOnHPHealAnimationFn(true));
+      setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+      setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);
+      setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1100);
       Damage = userStats.maxHealth;
       SPHeal = userStats.maxSP;
       //Rerender
@@ -2426,6 +2427,7 @@ function Main(){
                     <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
                     <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>
                     <p className={ ImageControlRoom.UserOnLifeStealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}</p>
+                    <p className={ ImageControlRoom.UserOnHPHealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage)}</p>
                     <p className={ ImageControlRoom.UserOnLifeStealAnimation && ImageControlRoom.EnemyOnHitDouble ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale)}</p>
                     <p className={ ImageControlRoom.UserOnSPHealAnimation ? `HealSPResultNumberUser` : `DamageResultNumberHide`}>{SPHeal}</p>
                     <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
