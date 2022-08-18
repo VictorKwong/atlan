@@ -75,9 +75,9 @@ const Fn = {
     HorrendousMouth:1,
     Memento:1,
     GoldenHair:1,
-    RedGemstone:1,
-    CursedRuby:1,
-    Diamond:1,
+    RedGemstone:2,
+    CursedRuby:10,
+    Diamond:3,
     EyeOfHellion:1,
     //ChallengeTower
     Gold:1,

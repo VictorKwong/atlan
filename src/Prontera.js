@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDealerFn, GotoPronteraHeadGearDealerFn, GotoPronteraCastleFn } from './actions';
 // EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, TalktoChocolateGuildFn, TalktoLemonGuildFn, ResetTalktoFn} from './actions';
 //Guild
@@ -16,7 +15,7 @@ import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn ,
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Win ETC Items
-import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn , WinFeatherFn , WinCloverFn } from './actions'
+import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn } from './actions'
 
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
@@ -226,7 +225,7 @@ function StartMenu(props){
         }
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight;
-    }, [questControlRoom, dispatch, userStats, baseEXPChart]);
+    }, [questControlRoom, dispatch, userStats, baseEXPChart, skillCapChart]);
 
   //NPC Speech
   useEffect(() => {
@@ -400,6 +399,14 @@ function StartMenu(props){
             $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][0].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Kiwi'][0].name}</p>`)
           break;
+        case(npcControlRoom.Lemon && npcControlRoom.LemonComplete):
+          $('.storySpeech').html(`<p>${npcSpeech['Lemon'][5].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][5].name}</p>`)
+        break;
+        case(npcControlRoom.Lemon && npcControlRoom.LemonResponse):
+          $('.storySpeech').html(`<p>${npcSpeech['Lemon'][4].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][4].name}</p>`)
+        break;
         case(npcControlRoom.Lemon && npcControlRoom.IWantToJoinGuild && npcControlRoom.LemonGuild):
           $('.storySpeech').html(`<p>${npcSpeech['Lemon'][2].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][2].name}</p>`)
@@ -412,14 +419,6 @@ function StartMenu(props){
             $('.storySpeech').html(`<p>${npcSpeech['Lemon'][1].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][1].name}</p>`)
           break;
-        case(npcControlRoom.Lemon && npcControlRoom.LemonComplete):
-          $('.storySpeech').html(`<p>${npcSpeech['Lemon'][3].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][5].name}</p>`)
-        break;
-        case(npcControlRoom.Lemon && npcControlRoom.LemonResponse):
-          $('.storySpeech').html(`<p>${npcSpeech['Lemon'][2].text}</p>`)
-          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][4].name}</p>`)
-        break;
         case(npcControlRoom.Lemon):
             $('.storySpeech').html(`<p>${npcSpeech['Lemon'][0].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['Lemon'][0].name}</p>`)
@@ -631,7 +630,7 @@ function StartMenu(props){
               <div className="textCenter">
                 
                 {!npcControlRoom.LemonResponse && 
-                ((npcControlRoom.Kiwi && !npcControlRoom.KiwiGuild) || (npcControlRoom.Lemon && !npcControlRoom.LemonGuild) || (npcControlRoom.Chocolate && !npcControlRoom.ChocolateGuild)) && !npcControlRoom.IWantToJoinGuild ?
+                ((npcControlRoom.Kiwi && !npcControlRoom.KiwiGuild) || (npcControlRoom.Lemon && !npcControlRoom.LemonGuild && !npcControlRoom.LemonComplete) || (npcControlRoom.Chocolate && !npcControlRoom.ChocolateGuild)) && !npcControlRoom.IWantToJoinGuild ?
                 <button className="guildInterest" onClick={() => dispatch(TalktoIWantToJoinGuildFn())}>Join Guild</button> : null}
                 {/* KiwiGuild */}
                 {npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild && npcControlRoom.BossEclipseDefeat && !npcControlRoom.KiwiGuild?

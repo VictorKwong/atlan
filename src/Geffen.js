@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
-// EQUIP ACTION
-import { ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 // NPC
 import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, GeffenSoldierNPCFn, GeffenCitizenNPCContinueFn, ResetGeffenNPCFn } from './actions'
 //Learn
@@ -180,7 +178,7 @@ function StartMenu(props){
       }
     listResult = document.getElementsByClassName('storyChat')[0];
     listResult.scrollTop = listResult.scrollHeight;
-  }, [questControlRoom, dispatch, userStats, baseEXPChart]);
+  }, [questControlRoom, dispatch, userStats, baseEXPChart, skillCapChart]);
 
 
     useEffect(() => {

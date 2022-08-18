@@ -1302,7 +1302,7 @@ function Main(){
       $('.storySpeech').append('<p>Atlan Defend himself!</p>')
       Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) > 0 ? Damage = Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) : Damage = 3;
       Math.floor(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) > 0 ? SPHeal = Math.floor(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) : SPHeal = 1;
-      if(SkillControlRoom['User'].UserLearnAmuletRecovery == true){
+      if(SkillControlRoom['User'].UserLearnAmuletRecovery === true){
         dispatch(UserOnHPHealAnimationFn(true));
         setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
         setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);

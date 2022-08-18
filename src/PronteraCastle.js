@@ -9,7 +9,7 @@ import { UserLearnAmuletRecoveryFn } from './actions'
 //PATH
 import { FinalBossPathFn } from './actions'
 //ITEM
-import { SpiritOfDoppelgangerFn, SpiritOfWolyafaFn, SpiritOfEclipseFn} from './actions'
+import { SpiritOfDoppelgangerFn, SpiritOfWolyafaFn, SpiritOfEclipseFn, WinRedGemstoneFn, WinCursedRubyFn, WinDiamondFn} from './actions'
 
 
 import Prontera from './Prontera'
@@ -24,12 +24,14 @@ import PronteraKingImg from './img/NPC/PronteraKing.gif'
 import PronteraAssistantImg from './img/NPC/PronteraAssistant.gif'
 import PronteraRoyalSoldierImg from './img/NPC/RoyalSoldier.gif'
 
+import RedGemstone from './img/Etc/Wraith_RedGemstone10.gif'
+import CursedRuby from './img/Etc/Doppelganger_CursedRuby80.gif'
+import Diamond from './img/Etc/WraithDead_Diamond10.gif'
+import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 
 import audioThemeOfJuno from './audio/310ThemeOfJuno.mp3'
 const audioBGM = new Audio(audioThemeOfJuno);
 
-//Chat reading
-let listResult = document.getElementsByClassName('storyChat')[0];
 
 // import useSound from 'use-sound';
 // import audioStartUpGame from './audio/audioStartUpGame.mp3'
@@ -219,9 +221,9 @@ function StartMenu(props){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech"></p>
-            {npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            {npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) && (userGoldItem.RedGemstone >= 1 && userGoldItem.CursedRuby >= 10 && userGoldItem.Diamond >= 1) ?
             <div className="storyScreen">
-              <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnAmuletRecoveryFn(true)); dispatch(TalktoPronteraAssistantLearnedFn());}}>Hang Over the Items</button>
+              <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnAmuletRecoveryFn(true)); dispatch(TalktoPronteraAssistantLearnedFn()); dispatch(WinRedGemstoneFn(0,-1)); dispatch(WinCursedRubyFn(0,-10)); dispatch(WinDiamondFn(0,-2));}}>Hang Over the Items - x1<img src={RedGemstone} alt="RedGemstone"/> x10<img src={CursedRuby} alt="CursedRuby"/> x2<img src={Diamond} alt="Diamond"/></button>
             </div> :
             npcControlRoom.PronteraAssistant && !npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
             <div className="storyScreen">
@@ -294,7 +296,7 @@ function StartMenu(props){
               </div> : null}
               {userGoldItem.SpiritOfEclipse >= 1 && userGoldItem.SpiritOfWolyafa >= 1 && userGoldItem.SpiritOfDoppelganger >= 1 && screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && !screenControlRoom.FinalBossPath ?
               <div className="textCenter">
-                <button className="kafraEmployeeHeal" onClick={() => {dispatch(FinalBossPathFn()); dispatch(SpiritOfDoppelgangerFn(0,-1)); dispatch(SpiritOfWolyafaFn(0,-1)); dispatch(SpiritOfEclipseFn(0,-1));}}>Hang over the 3 souls</button> 
+                <button className="kafraEmployeeHeal" onClick={() => {dispatch(FinalBossPathFn()); dispatch(SpiritOfDoppelgangerFn(0,-1)); dispatch(SpiritOfWolyafaFn(0,-1)); dispatch(SpiritOfEclipseFn(0,-1));}}>Hang over the 3 souls - x1<img src={SpiritOfBoss} alt="SpiritOfBoss"/> x1<img src={SpiritOfBoss} alt="SpiritOfBoss"/> x1<img src={SpiritOfBoss} alt="SpiritOfBoss"/></button> 
               </div> : null}
           </fieldset>
         </div>

@@ -20,8 +20,6 @@ import { PoringIslandBridgeNPCFn , PoringIslandBridgeNPCSelectOneFn, PoringIslan
 import { WinJellopyFn, WinEmptyBottleFn} from './actions'
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
-// EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 //cutscene
 import {cutsceneTwoFn} from './actions'
 

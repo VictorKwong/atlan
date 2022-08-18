@@ -111,6 +111,20 @@
 .lemonGuild:hover::before{
   border: solid #3c70ff 1px;
 }
+.kafraEmployee:hover,
+.questBoard:hover,
+.pronteraFountain:hover,
+.toolDealerNPC:hover,
+.weaponArmorDealerNPC:hover,
+.headGearDealerNPC:hover,
+.soldier1:hover,
+.soldier2:hover,
+.castleEnterence:hover,
+.kiwiGuild:hover,
+.chocolateGuild:hover,
+.lemonGuild:hover{
+  background: linear-gradient(135deg, rgb(134, 134, 134) 0%, rgb(33, 73, 158) 100%);
+}
 
 .PronteraWorldMap,
 .kafraEmployee,
@@ -125,6 +139,7 @@
 .kiwiGuild,
 .chocolateGuild,
 .lemonGuild{
+  transition: 0.3s;
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -133,6 +148,7 @@
   border-radius: 5px;
   text-shadow: 2px 2px 4px #536481;
   cursor: pointer;
+  
 }
 .PronteraWorldMap{
   min-height: 50px;
