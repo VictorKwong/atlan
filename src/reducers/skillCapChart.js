@@ -8,6 +8,15 @@ const Fn = {
     Quicken: 35,
     VitalStrike: 40,
     BowlingBash: 70,
+    //Skill Level
+    BashSkillLevel: 1,
+    MammoniteSkillLevel: 1,
+    KodokuSkillLevel: 1,
+    MagnumBreakSkillLevel: 1,
+    HeadCrushSkillLevel: 1,
+    QuickenSkillLevel: 1,
+    VitalStrikeSkillLevel: 1,
+    BowlingBashSkillLevel: 1,
     //Damage Amplifier
     BashDamage: 2.5,
     MammoniteDamage: 0.8,
