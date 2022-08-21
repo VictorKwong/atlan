@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanEquipmentFn , GotoImageEquipmentFn} from './actions';
 import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn, GotoHeadGearEquipmentChoiceFn} from './actions'
@@ -50,6 +50,7 @@ import UserStand3_SantaPoringHat from './img/Character/UserStand3_SantaPoringHat
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import CottonShirt from './img/Equipment/Armor/CottonShirt.gif'
 
+
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
@@ -77,9 +78,14 @@ function StartMenu(){
       {id:7, name:null, img0:UserStandPost , img1:UserSitPost, img2:UserStand2Post, img3:UserStand3Post, explain:"UserPost" },
     ]
 
+    let HeadGearBonusAttributes = [
+      {id: 100, name:"Lord Kaho`s Horn", BonusSTR: 10, BonusAGI: 10, BonusVIT: 10, BonusINT: 10, BonusDEX: 10, BonusLUK: 10},
+      {id: 101, name:"Teddybear Hat", BonusSTR: 2, BonusAGI: 4, BonusVIT: 0, BonusINT: 0, BonusDEX: 1, BonusLUK: 1},
+      {id: 107, name: null, BonusSTR: 0, BonusAGI: 0, BonusVIT: 0, BonusINT: 0, BonusDEX: 0, BonusLUK: 0},
+    ]
 
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
+
     return(
       <div className="AltanEquipmentMap">
         <h2 className="altanEquipTitle">Equipment</h2>

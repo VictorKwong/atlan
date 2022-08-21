@@ -30,6 +30,9 @@ import $ from 'jquery'
 // EQUIP ACTION
 import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
 
+// EQUIP ATTRI
+import { TrainingSTRFn, TrainingAGIFn, TrainingVITFn, TrainingINTFn, TrainingDEXFn, TrainingLUKFn, BonusSTRPointsFn, BonusAGIPointsFn, BonusVITPointsFn, BonusINTPointsFn, BonusDEXPointsFn, BonusLUKPointsFn} from './actions'
+
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
@@ -53,19 +56,29 @@ import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
+let STRBuffer = 0;
+let AGIBuffer = 0;
+let VITBuffer = 0;
+let INTBuffer = 0;
+let DEXBuffer = 0;
+let LUKBuffer = 0;
+
+let listResult = document.getElementsByClassName('storyChat')[0];
+
 function StartMenu(){
 
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
+    const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
    
     const dispatch = useDispatch();
 
     let HeadGearBox = [
-      {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty"},
-      {id:7001, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn"},
-      {id:7002, num: userGoldItem.TeddybearHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Teddybear Hat", TeddybearHat, 20), Img:TeddybearHat, name:"Teddybear Hat"},
+      {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty", BonusSTR:0},
+      {id:7001, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn", BonusSTR:10},
+      {id:7002, num: userGoldItem.TeddybearHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Teddybear Hat", TeddybearHat, 20), Img:TeddybearHat, name:"Teddybear Hat", BonusSTR:3},
       {id:7003, num: userGoldItem.Crown, EquipItem:ReturnHeadGearEquipmentChoiceFn("Crown", Crown, 20), Img:Crown, name:"Crown"},
       {id:7004, num: userGoldItem.Helm, EquipItem:ReturnHeadGearEquipmentChoiceFn("Helm", Helm, 20), Img:Helm, name:"Helm"},
       {id:7005, num: userGoldItem.PandaHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Panda Hat", PandaHat, 20), Img:PandaHat, name:"Panda Hat"},
@@ -96,10 +109,39 @@ function StartMenu(){
         $('.mapTitle').delay(2400).fadeOut(600);
     }, [screenControlRoom])
     
+    //LEVEL FUNCTION
+    useEffect(() => {
+      //MAX Lv99
+    listResult = document.getElementsByClassName('storyChat')[0];
+    listResult.scrollTop = listResult.scrollHeight;
+  }, [dispatch, userStats, baseEXPChart]);
+
+
     const LoadingScreen0 = () => {
       dispatch(BattleLoadingScreenFn());
       setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), 1000);
       setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    }
+    const EquipmentAttribute = (BonusSTR) => {
+        dispatch(TrainingSTRFn(BonusSTR - STRBuffer));
+        // dispatch(TrainingAGIFn(BonusAGI - AGIBuffer));
+        // dispatch(TrainingVITFn(BonusVIT - VITBuffer));
+        // dispatch(TrainingINTFn(BonusINT - INTBuffer));
+        // dispatch(TrainingDEXFn(BonusDEX - DEXBuffer));
+        // dispatch(TrainingLUKFn(BonusLUK - LUKBuffer));
+        dispatch(BonusSTRPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk));
+        // dispatch(BonusAGIPointsFn(userAttribute.BonusAgi));
+        // dispatch(BonusVITPointsFn(userAttribute.BonusVit,userAttribute.vit));
+        // dispatch(BonusINTPointsFn(userAttribute.BonusInt,userAttribute.int));
+        // dispatch(BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk));
+        // dispatch(BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk));
+        STRBuffer = BonusSTR;
+        // AGIBuffer = -BonusAGI;
+        // VITBuffer = -BonusVIT;
+        // INTBuffer = -BonusINT;
+        // DEXBuffer = -BonusDEX;
+        // LUKBuffer = -BonusLUK;
+             
     }
 
 
@@ -277,7 +319,7 @@ function StartMenu(){
                   return(
                     <span key={Equip.id}>
                       {Equip.num >= 1 ? 
-                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); EquipmentAttribute(Equip.BonusSTR);}}>
                         <div className="adjImgCenterBox">
                           <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
                         </div>

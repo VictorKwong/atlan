@@ -26,29 +26,6 @@ import AltanQuest from './AltanQuest'
 import './css/mapGeffenDungeon3F.css'
 import $ from 'jquery'
 
-// WEAPON IMAGE
-import Katana from './img/Equipment/Weapon/Katana.gif'
-import BastardSword from './img/Equipment/Weapon/BastardSword.gif'
-import GaiaSword from './img/Equipment/Weapon/GaiaSword.gif'
-import TwinEdgeofNaghtSieger from './img/Equipment/Weapon/TwinEdgeofNaghtSieger.gif'
-import VioletFear from './img/Equipment/Weapon/VioletFear.gif'
-// ARMOR IMAGE
-import CottonShirt from './img/Equipment/Armor/CottonShirt.gif'
-import AdventureSuit from './img/Equipment/Armor/AdventurersSuit.gif'
-import WoodenMail from './img/Equipment/Armor/WoodenMail.gif'
-import Coat from './img/Equipment/Armor/Coat.gif'
-import PaddedArmor from './img/Equipment/Armor/PaddedArmor.gif'
-import ChainMail from './img/Equipment/Armor/ChainMail.gif'
-import FullPlate from './img/Equipment/Armor/FullPlate.gif'
-//HEADGEAR
-import LordKahosHorn from './img/Equipment/HeadGear/LordKahosHorn.gif'
-import TeddybearHat from './img/Equipment/HeadGear/TeddybearHat.gif'
-import Crown from './img/Equipment/HeadGear/Crown.gif'
-import Helm from './img/Equipment/HeadGear/Helm.gif'
-import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
-import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
-import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
-
 import audioOutOfCuriosity from './audio/50OutOfCuriosity.mp3'
 const audioBGM = new Audio(audioOutOfCuriosity);
 

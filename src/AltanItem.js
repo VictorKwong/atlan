@@ -187,7 +187,7 @@ function StartMenu(){
       {id:91002, Img:GeffenDungeonMap, name:"GeffenDungeon Map", itemCheck:userGoldItem.GeffenDungeonMap},
       {id:100001, Img:SpiritOfBoss, name:"Spirit Of Eclipse", itemCheck:userGoldItem.SpiritOfEclipse},
       {id:100002, Img:SpiritOfBoss, name:"Spirit Of Wolyafa", itemCheck:userGoldItem.SpiritOfWolyafa},
-      {id:100002, Img:SpiritOfBoss, name:"Spirit Of Doppelganger", itemCheck:userGoldItem.SpiritOfDoppelganger}
+      {id:100003, Img:SpiritOfBoss, name:"Spirit Of Doppelganger", itemCheck:userGoldItem.SpiritOfDoppelganger}
     ]
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});

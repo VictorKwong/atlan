@@ -103,7 +103,6 @@ function StartMenu(){
                               <p className="adjImgCenter">{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</p>
                             </div>
                           </button> : null}
-                          {/* {Sell.Item >= 1 ? <button className="sellToolDealerButton" onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</button> : null} */}
                         </span>
                       )
                   })}

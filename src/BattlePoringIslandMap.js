@@ -2249,7 +2249,7 @@ function Main(){
               if (SkillControlRoom['Enemy'].EnemyDefenceBreak <= 0){
                 EnemyDefenceDebuff = 0;
               }else if (SkillControlRoom['Enemy'].EnemyDefenceBreak > 0){
-                $('.storySpeech').append(`<p>${enemyStats[i].name} defence is shredding</p>\n`)
+                $('.storySpeech').append(`<p>${enemyStats[i].name} defence is shredding...</p>\n`)
               }
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
@@ -2421,12 +2421,12 @@ function Main(){
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
                      <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
                      <div>
-                      {EnemyStunClock > 0 ? <img src={StunEffect} alt="StunEffectImage"></img>: null}
-                      {EnemySlowClock > 0 ? <img src={SlowEffect} alt="SlowEffectImage"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyBleeding > 0? <img src={BleedingEffect} alt="BleedingEffectImage"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyDefenceBreak > 0? <img src={DefenceDownEffect} alt="DefenceDownEffectImage"></img>: null}
+                      {EnemyStunClock > 0 ? <img src={StunEffect} alt="StunEffectImage" title="Stun"></img>: null}
+                      {EnemySlowClock > 0 ? <img src={SlowEffect} alt="SlowEffectImage" title="Slow"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage" title="Poison"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage" title="Burn"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBleeding > 0? <img src={BleedingEffect} alt="BleedingEffectImage" title="Bleed"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyDefenceBreak > 0? <img src={DefenceDownEffect} alt="DefenceDownEffectImage" title="Def Break"></img>: null}
                       
                      </div>
                     {/* <p>Enemy Level {enemyStats[i].level}</p>
