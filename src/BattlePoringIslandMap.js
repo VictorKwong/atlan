@@ -609,6 +609,7 @@ let SPHeal = 0;
 let Reflecting = 0;
 let EnemyStunClock = 0;
 let EnemySlowClock = 0;
+let EnemyDefenceDebuff = 0;
 //Monster Random Number 0 1 
 // let i = Math.round(Math.random())
 let Uclock = 0;
@@ -1097,6 +1098,7 @@ function Main(){
                 obtain = false;
                 EnemyStunClock = 0;
                 EnemySlowClock = 0;
+                EnemyDefenceDebuff = 0;
                 //Summerize: ResetAllBattleMapFn
                 dispatch(ResetAllBattleMapFn(false));
                 // dispatch(EnemyDeadAnimationFn(false));
@@ -1205,10 +1207,10 @@ function Main(){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff) *skillCapChart.CritDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1217,10 +1219,10 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)) : Damage = 1;
               }
             }
               //Audio SoundEffect
@@ -1373,10 +1375,10 @@ function Main(){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1385,10 +1387,10 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
               }
             }
             if(Math.random() >= 0.5){
@@ -1456,10 +1458,10 @@ function Main(){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1468,10 +1470,10 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
             }
 
@@ -1552,6 +1554,7 @@ function Main(){
       dispatch(UserAttackEnemyFn(parseInt(Damage),i));
       $('.storySpeech').append(`<p>Atlan use skill Vital Strike! Enemy defence is breaking down...</p>`)
       $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+      EnemyDefenceDebuff = Math.floor(enemyStats[i].defence * 0.25);
         // End turn
         clockCheck = 0;
         Uclock = 0;
@@ -1586,10 +1589,10 @@ function Main(){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1598,10 +1601,10 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
             }
             if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
@@ -1669,10 +1672,10 @@ function Main(){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1681,10 +1684,10 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
             }
             if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
@@ -1752,12 +1755,10 @@ function Main(){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
-                EnemySlowClock = 10;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
-                EnemySlowClock = 10;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1766,14 +1767,13 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
-                EnemySlowClock = 10;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
-                EnemySlowClock = 10;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
               }
             }
+            EnemySlowClock = 10;
               $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
               if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -2239,6 +2239,18 @@ function Main(){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
               }
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.01) > 0 && SkillControlRoom['Enemy'].EnemyBleeding >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.01),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding, Received ${parseInt(enemyStats[i].maxHealth*0.01)} damage</p>\n`)
+              }else if(SkillControlRoom['Enemy'].EnemyBleeding >= 1){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding...</p>\n`)
+              }
+              if (SkillControlRoom['Enemy'].EnemyDefenceBreak <= 0){
+                EnemyDefenceDebuff = 0;
+              }else if (SkillControlRoom['Enemy'].EnemyDefenceBreak > 0){
+                $('.storySpeech').append(`<p>${enemyStats[i].name} defence is shredding</p>\n`)
+              }
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
 
@@ -2263,6 +2275,13 @@ function Main(){
               }else if(SkillControlRoom['Enemy'].EnemyBurning >= 1){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
+              }
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.01) > 0 && SkillControlRoom['Enemy'].EnemyBleeding >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.01),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding, Received ${parseInt(enemyStats[i].maxHealth*0.01)} damage</p>\n`)
+              }else if(SkillControlRoom['Enemy'].EnemyBleeding >= 1){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding...</p>\n`)
               }
               enemyDecisionQFn();
               // console.log('EnemyTurn is good')
