@@ -1531,10 +1531,11 @@ export const BonusSTRPointsFn = (BonusStr,BonusDex,BonusLuk) => {
         BonusLuk: BonusLuk,
     };
 };
-export const BonusAGIPointsFn = (BonusAgi) => {
+export const BonusAGIPointsFn = (BonusAgi,BonusDex) => {
     return {
         type: 'BonusAGIPointsFn',
-        BonusAgi: BonusAgi
+        BonusAgi: BonusAgi,
+        BonusDex: BonusDex,
     };
 };
 export const BonusVITPointsFn = (BonusVit,Vit) => {
@@ -1551,10 +1552,11 @@ export const BonusINTPointsFn = (BonusInt,Int) => {
         BonusInt: BonusInt
     };
 };
-export const BonusDEXPointsFn = (BonusStr,BonusDex,BonusLuk) => {
+export const BonusDEXPointsFn = (BonusStr,BonusAgi,BonusDex,BonusLuk) => {
     return {
         type: 'BonusDEXPointsFn',
         BonusStr: BonusStr,
+        BonusAgi: BonusAgi,
         BonusDex: BonusDex,
         BonusLuk: BonusLuk,
     };
@@ -1567,6 +1569,26 @@ export const BonusLUKPointsFn = (BonusStr,BonusDex,BonusLuk) => {
         BonusLuk: BonusLuk,
     };
 };
+export const BonusEquipPointsFn = (BonusStr,BonusAgi,BonusVit,Vit,BonusInt,Int,BonusDex,BonusLuk,STRPoint,AGIPoint,VITPoint,INTPoint,DEXPoint,LUKPoint) => {
+    return {
+        type: 'BonusEquipPointsFn',
+        BonusStr: BonusStr,
+        BonusAgi: BonusAgi,
+        Vit:Vit,
+        BonusVit: BonusVit,
+        Int:Int,
+        BonusInt: BonusInt,
+        BonusDex: BonusDex,
+        BonusLuk: BonusLuk,
+        STRPoint: STRPoint,
+        AGIPoint: AGIPoint,
+        VITPoint: VITPoint,
+        INTPoint: INTPoint,
+        DEXPoint: DEXPoint,
+        LUKPoint: LUKPoint,
+    };
+};
+
 //Clock Fixing
 export const userClockDefendFn = () => {
     return {

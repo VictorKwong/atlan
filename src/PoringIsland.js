@@ -73,12 +73,12 @@ function StartMenu(props){
     const dispatch = useDispatch();
 
     let TrainingBox = [
-      {id:20001, Attr:TrainingSTRFn(1), name:"STR", Points:userAttribute.BonusStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20002, Attr:TrainingAGIFn(1), name:"AGI", Points:userAttribute.BonusAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn(userAttribute.BonusAgi)},
-      {id:20003, Attr:TrainingVITFn(1), name:"VIT", Points:userAttribute.BonusVit, select: screenControlRoom.HouseTrainingVIT, effect:BonusVITPointsFn(userAttribute.BonusVit,userAttribute.vit)},
-      {id:20004, Attr:TrainingINTFn(1), name:"INT", Points:userAttribute.BonusInt, select: screenControlRoom.HouseTrainingINT, effect:BonusINTPointsFn(userAttribute.BonusInt,userAttribute.int)},
-      {id:20005, Attr:TrainingDEXFn(1), name:"DEX", Points:userAttribute.BonusDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20006, Attr:TrainingLUKFn(1), name:"LUK", Points:userAttribute.BonusLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk)}
+      {id:20001, Attr:TrainingSTRFn(1), name:"STR", Points:userAttribute.BonusStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn(userAttribute.BonusStr + 1,userAttribute.BonusDex,userAttribute.BonusLuk)},
+      {id:20002, Attr:TrainingAGIFn(1), name:"AGI", Points:userAttribute.BonusAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn(userAttribute.BonusAgi + 1, userAttribute.BonusDex)},
+      {id:20003, Attr:TrainingVITFn(1), name:"VIT", Points:userAttribute.BonusVit, select: screenControlRoom.HouseTrainingVIT, effect:BonusVITPointsFn(userAttribute.BonusVit + 1,userAttribute.vit)},
+      {id:20004, Attr:TrainingINTFn(1), name:"INT", Points:userAttribute.BonusInt, select: screenControlRoom.HouseTrainingINT, effect:BonusINTPointsFn(userAttribute.BonusInt + 1,userAttribute.int)},
+      {id:20005, Attr:TrainingDEXFn(1), name:"DEX", Points:userAttribute.BonusDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusAgi,userAttribute.BonusDex + 1,userAttribute.BonusLuk)},
+      {id:20006, Attr:TrainingLUKFn(1), name:"LUK", Points:userAttribute.BonusLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk + 1)}
     ]
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
@@ -460,7 +460,7 @@ useEffect(() => {
                     return(
                       <span key={Equip.id}>
                         {Equip.num >= 1 ? 
-                        <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                        <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.WeaponEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);  }}>
                           <div className="adjImgCenterBox">
                           <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
                           </div>
@@ -481,7 +481,7 @@ useEffect(() => {
                   return(
                     <span key={Equip.id}>
                       {Equip.num >= 1 ? 
-                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.ArmorEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);}}>
                         <div className="adjImgCenterBox">
                           <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
                         </div>
@@ -502,7 +502,7 @@ useEffect(() => {
                   return(
                     <span key={Equip.id}>
                       {Equip.num >= 1 ? 
-                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem)}}>
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.HeadGearEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);}}>
                         <div className="adjImgCenterBox">
                           <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
                         </div>

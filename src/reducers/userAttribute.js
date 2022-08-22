@@ -120,6 +120,16 @@ const userAttributeReducer = (state = Fn, action) => {
                 ...state,
                 BonusLuk: state.BonusLuk + action.num,
             }
+        case 'BonusEquipPointsFn':
+            return{
+                ...state,
+                BonusStr: state.BonusStr + action.STRPoint,
+                BonusAgi: state.BonusAgi + action.AGIPoint,
+                BonusVit: state.BonusVit + action.VITPoint,
+                BonusInt: state.BonusInt + action.INTPoint,
+                BonusDex: state.BonusDex + action.DEXPoint,
+                BonusLuk: state.BonusLuk + action.LUKPoint,
+            }
         case 'ResetMyPointsFn':
             return {
                 ...state,
