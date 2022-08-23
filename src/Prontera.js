@@ -616,6 +616,48 @@ function StartMenu(props){
                 </div>
               : <p>Empty HeadGear Storage T^T</p>}
               </div> : 
+            // {/* FOOTGEAR */}
+            screenControlRoom.FootGearEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Foot Gear Bag</p>
+              {userGoldItem.Sandals >= 1 || userGoldItem.Shoes >= 1 || userGoldItem.Boots >= 1 || userGoldItem.Greaves >= 1 || userGoldItem.BunnySlipper >= 1 || userGoldItem.TidalShoes >= 1 || userGoldItem.SiegeBoots >= 1 || userGoldItem.SiegeGreaves >= 1 || userGoldItem.VidarsBoots >= 1 || userGoldItem.VitalTreeShoes >= 1 || userGoldItem.VariantShoes >= 1 || userGoldItem.Sleipnir >= 1 ?
+                <div>
+                {props.FootGearBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.FootGearEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty FootGear Storage T^T</p>}
+              </div> :
+            // {/* GARMENT */}
+            screenControlRoom.GarmentEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Foot Gear Bag</p>
+              {userGoldItem.Hood >= 1 || userGoldItem.Muffler  >= 1 || userGoldItem.Manteau >= 1 || userGoldItem.FalconMuffler >= 1 || userGoldItem.ValisManteau >= 1 || userGoldItem.ValkyrianManteau >= 1 || userGoldItem.WoolScarf >= 1 || userGoldItem.FallenAngelWing >= 1 || userGoldItem.CloakofGray >= 1 || userGoldItem.ElementalCape >= 1 || userGoldItem.Asprika >= 1 ?
+                <div>
+                {props.GarmentBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.GarmentEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty Garment Storage T^T</p>}
+              </div> : 
               npcControlRoom.Fountain && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
               <div className="textCenter">
                 <p className="chatDescriptTitle">Fountain</p>

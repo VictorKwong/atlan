@@ -33,9 +33,9 @@ function StartMenu(){
       {id: 6, num: "Zombie", acceptName: "Clear Zombie", acceptDescription: "Kill 3 Zombie in PayonCave", totalNum: "3"},
       {id: 101, num: "Poporing", acceptName: "Clear Poporing", acceptDescription: "Kill 4 Poporing in GeffenDungeon", totalNum: "4"},
       {id: 102, num: "Jakk", acceptName: "Clear Jakk", acceptDescription: "Kill 2 Jakk in GeffenDungeon", totalNum: "2"},
-      {id: 102, num: "Ghoul", acceptName: "Clear Ghoul", acceptDescription: "Kill 3 Ghoul in GeffenDungeon", totalNum: "3"},
-      {id: 103, num: "Marionette", acceptName: "Clear Marionette", acceptDescription: "Kill 2 Marionette in GeffenDungeon", totalNum: "2"},
-      {id: 104, num: "Wraith", acceptName: "Clear Wraith", acceptDescription: "Kill 2 Wraith in GeffenDungeon", totalNum: "2"},
+      {id: 103, num: "Ghoul", acceptName: "Clear Ghoul", acceptDescription: "Kill 3 Ghoul in GeffenDungeon", totalNum: "3"},
+      {id: 104, num: "Marionette", acceptName: "Clear Marionette", acceptDescription: "Kill 2 Marionette in GeffenDungeon", totalNum: "2"},
+      {id: 105, num: "Wraith", acceptName: "Clear Wraith", acceptDescription: "Kill 2 Wraith in GeffenDungeon", totalNum: "2"},
     ]
     const QuestItemBox = [
       {id: 1001, num: "Jellopy", acceptName: "Request Item", acceptDescription: "Need 3 Jellopy", totalNum: "3", currentNum:userGoldItem.Jellopy, Img:Jellopy},

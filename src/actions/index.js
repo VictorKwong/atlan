@@ -353,6 +353,17 @@ export const GotoHeadGearEquipmentChoiceFn = () => {
         type: 'GotoHeadGearEquipmentChoiceFn',
     };
 };
+export const GotoFootGearEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoFootGearEquipmentChoiceFn',
+    };
+};
+export const GotoGarmentEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoGarmentEquipmentChoiceFn',
+    };
+};
+
 export const GotoImageEquipmentFn = () => {
     return {
         type: 'GotoImageEquipmentFn',
@@ -415,6 +426,27 @@ export const ReturnHeadGearEquipmentChoiceFn = (HeadGear,HeadGearImg,HeadGearDef
         HeadGearDef: HeadGearDef
     };
 };
+export const ReturnGarmentEquipmentChoiceFn = (Garment,GarmentImg,GarmentDef) => {
+    return {
+        type: 'ReturnGarmentEquipmentChoiceFn',
+        Garment: Garment,
+        GarmentImg: GarmentImg,
+        GarmentDef: GarmentDef
+    };
+};
+
+
+
+export const ReturnFootGearEquipmentChoiceFn = (FootGear,FootGearImg,FootGearDef) => {
+    return {
+        type: 'ReturnFootGearEquipmentChoiceFn',
+        FootGear: FootGear,
+        FootGearImg: FootGearImg,
+        FootGearDef: FootGearDef
+    };
+};
+
+
 
 //WORLD MAP
 export const GotoWorldMapFn = () => {
@@ -1388,6 +1420,170 @@ export const ChefHatFn = (Zeny,Item) => {
 export const SantaPoringHatFn = (Zeny,Item) => {
     return {
         type: 'SantaPoringHatFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+//FootGear Buy Sell
+//SandslsFn, ShoesFn, BootsFn, GreavesFn, BunnySlipperFn, TidalShoesFn, SiegeBootsFn, SiegeGreavesFn, VidarsBootsFn, VitalTreeShoesFn, VariantShoesFn, SleipnirFn
+export const SandalsFn = (Zeny,Item) => {
+    return {
+        type: 'SandalsFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const ShoesFn = (Zeny,Item) => {
+    return {
+        type: 'ShoesFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const BootsFn = (Zeny,Item) => {
+    return {
+        type: 'BootsFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const GreavesFn = (Zeny,Item) => {
+    return {
+        type: 'GreavesFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const BunnySlipperFn = (Zeny,Item) => {
+    return {
+        type: 'BunnySlipperFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const TidalShoesFn = (Zeny,Item) => {
+    return {
+        type: 'TidalShoesFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const SiegeBootsFn = (Zeny,Item) => {
+    return {
+        type: 'SiegeBootsFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const SiegeGreavesFn = (Zeny,Item) => {
+    return {
+        type: 'SiegeGreavesFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const VidarsBootsFn = (Zeny,Item) => {
+    return {
+        type: 'VidarsBootsFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const VitalTreeShoesFn = (Zeny,Item) => {
+    return {
+        type: 'VitalTreeShoesFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const VariantShoesFn = (Zeny,Item) => {
+    return {
+        type: 'VariantShoesFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const SleipnirFn = (Zeny,Item) => {
+    return {
+        type: 'SleipnirFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+//GARMENT
+export const HoodFn = (Zeny,Item) => {
+    return {
+        type: 'Hood',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const MufflerFn = (Zeny,Item) => {
+    return {
+        type: 'Muffler',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const ManteauFn = (Zeny,Item) => {
+    return {
+        type: 'Manteau',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const FalconMufflerFn = (Zeny,Item) => {
+    return {
+        type: 'FalconMuffler',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const ValisManteauFn = (Zeny,Item) => {
+    return {
+        type: 'ValisManteau',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const ValkyrianManteauFn = (Zeny,Item) => {
+    return {
+        type: 'ValkyrianManteau',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const WoolScarfFn = (Zeny,Item) => {
+    return {
+        type: 'WoolScarf',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const FallenAngelWingFn = (Zeny,Item) => {
+    return {
+        type: 'FallenAngelWing',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const CloakofGrayFn = (Zeny,Item) => {
+    return {
+        type: 'CloakofGray',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const ElementalCapeFn = (Zeny,Item) => {
+    return {
+        type: 'ElementalCape',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const AsprikaFn = (Zeny,Item) => {
+    return {
+        type: 'Asprika',
         Zeny: Zeny,
         Item: Item
     };

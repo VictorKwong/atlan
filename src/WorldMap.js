@@ -28,7 +28,7 @@ import './css/storyMainMap.css'
 import $ from 'jquery'
 
 // EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn} from './actions'
+import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn, ReturnGarmentEquipmentChoiceFn, ReturnFootGearEquipmentChoiceFn} from './actions'
 
 // EQUIP ATTRI
 import {BonusEquipPointsFn} from './actions'
@@ -55,6 +55,31 @@ import Helm from './img/Equipment/HeadGear/Helm.gif'
 import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
+//FootGear
+import Sandals from './img/Equipment/FootGear/Sandals.gif'
+import Shoes from './img/Equipment/FootGear/Shoes.gif'
+import Boots from './img/Equipment/FootGear/Boots.gif'
+import Greaves from './img/Equipment/FootGear/Greaves.gif'
+import BunnySlipper from './img/Equipment/FootGear/BunnySlipper.gif'
+import TidalShoes from './img/Equipment/FootGear/TidalShoes.gif'
+import SiegeBoots from './img/Equipment/FootGear/SiegeBoots.gif'
+import SiegeGreaves from './img/Equipment/FootGear/SiegeGreaves.gif'
+import VidarsBoots from './img/Equipment/FootGear/VidarsBoots.gif'
+import VitalTreeShoes from './img/Equipment/FootGear/VitalTreeShoes.gif'
+import VariantShoes from './img/Equipment/FootGear/VariantShoes.gif'
+import Sleipnir from './img/Equipment/FootGear/Sleipnir.gif'
+//Garment
+import Hood from './img/Equipment/Garment/Hood.gif'
+import Muffler from './img/Equipment/Garment/Muffler.gif'
+import Manteau from './img/Equipment/Garment/Manteau.gif'
+import FalconMuffler from './img/Equipment/Garment/FalconMuffler.gif'
+import ValisManteau from './img/Equipment/Garment/ValisManteau.gif'
+import ValkyrianManteau from './img/Equipment/Garment/ValkyrianManteau.gif'
+import WoolScarf from './img/Equipment/Garment/WoolScarf.gif'
+import FallenAngelWing from './img/Equipment/Garment/FallenAngelWing.gif'
+import CloakofGray from './img/Equipment/Garment/CloakofGray.gif'
+import ElementalCape from './img/Equipment/Garment/ElementalCape.gif'
+import Asprika from './img/Equipment/Garment/Asprika.gif'
 
 let STRBufferWeapon = 0;
 let AGIBufferWeapon = 0;
@@ -77,6 +102,20 @@ let INTBufferArmor = 0;
 let DEXBufferArmor = 0;
 let LUKBufferArmor = 0;
 
+let STRBufferGarment = 0;
+let AGIBufferGarment = 0;
+let VITBufferGarment = 0;
+let INTBufferGarment = 0;
+let DEXBufferGarment = 0;
+let LUKBufferGarment = 0;
+
+let STRBufferFootGear = 0;
+let AGIBufferFootGear = 0;
+let VITBufferFootGear = 0;
+let INTBufferFootGear = 0;
+let DEXBufferFootGear = 0;
+let LUKBufferFootGear = 0;
+
 let listResult = document.getElementsByClassName('storyChat')[0];
 
 function StartMenu(){
@@ -89,54 +128,110 @@ function StartMenu(){
    
     const dispatch = useDispatch();
     let WeaponGearBox = [
-      {id:8000, num: 1, EquipItem:ReturnWeaponEquipmentChoiceFn("Empty",null, 1), Img: null, name:"Empty", 
+      {id:1000, num: 1, EquipItem:ReturnWeaponEquipmentChoiceFn("Empty",null, 1), Img: null, name:"Empty", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:8001, num: userGoldItem.Katana, EquipItem:ReturnWeaponEquipmentChoiceFn("Katana",Katana, 60), Img:Katana, name:"Katana", 
+      {id:1001, num: userGoldItem.Katana, EquipItem:ReturnWeaponEquipmentChoiceFn("Katana",Katana, 60), Img:Katana, name:"Katana", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:8002, num: userGoldItem.BastardSword, EquipItem:ReturnWeaponEquipmentChoiceFn("Bastard Sword",BastardSword, 115), Img:BastardSword, name:"Bastard Sword", BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:8003, num: userGoldItem.GaiaSword, EquipItem:ReturnWeaponEquipmentChoiceFn("Gaia Sword",GaiaSword, 140), Img:GaiaSword, name:"Gaia Sword", 
+      {id:1002, num: userGoldItem.BastardSword, EquipItem:ReturnWeaponEquipmentChoiceFn("Bastard Sword",BastardSword, 115), Img:BastardSword, name:"Bastard Sword", BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:1003, num: userGoldItem.GaiaSword, EquipItem:ReturnWeaponEquipmentChoiceFn("Gaia Sword",GaiaSword, 140), Img:GaiaSword, name:"Gaia Sword", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:8004, num: userGoldItem.TwinEdgeofNaghtSieger, EquipItem:ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160), Img:TwinEdgeofNaghtSieger, name:"Twin Edge of Naght Sieger", 
+      {id:1004, num: userGoldItem.TwinEdgeofNaghtSieger, EquipItem:ReturnWeaponEquipmentChoiceFn("Twin Edge of Naght Sieger",TwinEdgeofNaghtSieger, 160), Img:TwinEdgeofNaghtSieger, name:"Twin Edge of Naght Sieger", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:8005, num: userGoldItem.VioletFear, EquipItem:ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275), Img:VioletFear, name:"Violet Fear", 
-      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0}
+      {id:1005, num: userGoldItem.VioletFear, EquipItem:ReturnWeaponEquipmentChoiceFn("Violet Fear",VioletFear, 275), Img:VioletFear, name:"Violet Fear", 
+      BonusSTR:7, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0}
     ]
     let HeadGearBox = [
-      {id:7000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty", 
+      {id:2000, num: 1, EquipItem:ReturnHeadGearEquipmentChoiceFn(null, null, 0), Img:null, name:"Empty", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:7002, num: userGoldItem.TeddybearHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Teddybear Hat", TeddybearHat, 20), Img:TeddybearHat, name:"Teddybear Hat", 
+      {id:2002, num: userGoldItem.TeddybearHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Teddybear Hat", TeddybearHat, 20), Img:TeddybearHat, name:"Teddybear Hat", 
       BonusSTR:3, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:7003, num: userGoldItem.Crown, EquipItem:ReturnHeadGearEquipmentChoiceFn("Crown", Crown, 20), Img:Crown, name:"Crown", 
+      {id:2003, num: userGoldItem.Crown, EquipItem:ReturnHeadGearEquipmentChoiceFn("Crown", Crown, 20), Img:Crown, name:"Crown", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:20, BonusDEX:0, BonusLUK:0},
-      {id:7004, num: userGoldItem.Helm, EquipItem:ReturnHeadGearEquipmentChoiceFn("Helm", Helm, 20), Img:Helm, name:"Helm", 
+      {id:2004, num: userGoldItem.Helm, EquipItem:ReturnHeadGearEquipmentChoiceFn("Helm", Helm, 20), Img:Helm, name:"Helm", 
       BonusSTR:0, BonusAGI:0, BonusVIT:5, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:7005, num: userGoldItem.PandaHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Panda Hat", PandaHat, 20), Img:PandaHat, name:"Panda Hat", 
+      {id:2005, num: userGoldItem.PandaHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Panda Hat", PandaHat, 20), Img:PandaHat, name:"Panda Hat", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:7006, num: userGoldItem.ChefHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Chef Hat", ChefHat, 20), Img:ChefHat, name:"Chef Hat", 
+      {id:2006, num: userGoldItem.ChefHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Chef Hat", ChefHat, 20), Img:ChefHat, name:"Chef Hat", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:7007, num: userGoldItem.SantaPoringHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Santa Poring Hat", SantaPoringHat, 20), Img:SantaPoringHat, name:"Santa Poring Hat", 
+      {id:2007, num: userGoldItem.SantaPoringHat, EquipItem:ReturnHeadGearEquipmentChoiceFn("Santa Poring Hat", SantaPoringHat, 20), Img:SantaPoringHat, name:"Santa Poring Hat", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:7008, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn", 
+      {id:2008, num: userGoldItem.LordKahosHorn, EquipItem:ReturnHeadGearEquipmentChoiceFn("Lord Kaho`s Horn", LordKahosHorn, 20), Img:LordKahosHorn, name:"Lord Kaho`s Horn", 
       BonusSTR:10, BonusAGI:10, BonusVIT:10, BonusINT:10, BonusDEX:10, BonusLUK:10},
     ]
     let ArmorGearBox = [
-      {id:9000, num: 1, EquipItem:ReturnArmorEquipmentChoiceFn("Empty",null, 1), Img: null, name:"Empty", 
+      {id:3000, num: 1, EquipItem:ReturnArmorEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9001, num:userGoldItem.CottonShirt, EquipItem:ReturnArmorEquipmentChoiceFn("Cotton Shirt",CottonShirt, 10), Img:CottonShirt, name:"Cotton Shirt", 
+      {id:3001, num:userGoldItem.CottonShirt, EquipItem:ReturnArmorEquipmentChoiceFn("Cotton Shirt",CottonShirt, 10), Img:CottonShirt, name:"Cotton Shirt", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9002, num:userGoldItem.AdventureSuit, EquipItem:ReturnArmorEquipmentChoiceFn("Adventure Suit",AdventureSuit, 30), Img:AdventureSuit, name:"Adventure Suit", 
+      {id:3002, num:userGoldItem.AdventureSuit, EquipItem:ReturnArmorEquipmentChoiceFn("Adventure Suit",AdventureSuit, 30), Img:AdventureSuit, name:"Adventure Suit", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9003, num:userGoldItem.WoodenMail, EquipItem:ReturnArmorEquipmentChoiceFn("Wooden Mail",WoodenMail, 40), Img:WoodenMail, name:"Wooden Mail", 
+      {id:3003, num:userGoldItem.WoodenMail, EquipItem:ReturnArmorEquipmentChoiceFn("Wooden Mail",WoodenMail, 40), Img:WoodenMail, name:"Wooden Mail", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9004, num:userGoldItem.Coat, EquipItem:ReturnArmorEquipmentChoiceFn("Coat",Coat, 50), Img:Coat, name:"Coat", 
+      {id:3004, num:userGoldItem.Coat, EquipItem:ReturnArmorEquipmentChoiceFn("Coat",Coat, 50), Img:Coat, name:"Coat", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9005, num:userGoldItem.PaddedArmor, EquipItem:ReturnArmorEquipmentChoiceFn("Padded Armor",PaddedArmor, 70), Img:PaddedArmor, name:"Padded Armor", 
+      {id:3005, num:userGoldItem.PaddedArmor, EquipItem:ReturnArmorEquipmentChoiceFn("Padded Armor",PaddedArmor, 70), Img:PaddedArmor, name:"Padded Armor", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9006, num:userGoldItem.ChainMail, EquipItem:ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80), Img:ChainMail, name:"Chain Mail", 
+      {id:3006, num:userGoldItem.ChainMail, EquipItem:ReturnArmorEquipmentChoiceFn("Chain Mail",ChainMail, 80), Img:ChainMail, name:"Chain Mail", 
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:9007, num:userGoldItem.FullPlate, EquipItem:ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90), Img:FullPlate, name:"Full Plate", 
+      {id:3007, num:userGoldItem.FullPlate, EquipItem:ReturnArmorEquipmentChoiceFn("Full Plate",FullPlate, 90), Img:FullPlate, name:"Full Plate", 
+      BonusSTR:4, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+    ]
+    let GarmentBox = [
+      {id:4000, num: 1, EquipItem:ReturnGarmentEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4001, num: userGoldItem.Hood, EquipItem:ReturnGarmentEquipmentChoiceFn("Hood",Hood, 10), Img: Hood, name:"Hood",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4002, num: userGoldItem.Muffler, EquipItem:ReturnGarmentEquipmentChoiceFn("Muffler",Muffler, 20), Img: Muffler, name:"Muffler",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4003, num: userGoldItem.Manteau, EquipItem:ReturnGarmentEquipmentChoiceFn("Manteau",Manteau, 30), Img: Manteau, name:"Manteau",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4004, num: userGoldItem.FalconMuffler, EquipItem:ReturnGarmentEquipmentChoiceFn("FalconMuffler",FalconMuffler, 40), Img: FalconMuffler, name:"Falcon Muffler",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4005, num: userGoldItem.ValisManteau, EquipItem:ReturnGarmentEquipmentChoiceFn("Vali`s Manteau",ValisManteau, 50), Img: ValisManteau, name:"Vali`s Manteau",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4006, num: userGoldItem.ValkyrianManteau, EquipItem:ReturnGarmentEquipmentChoiceFn("Valkyrian Manteau",ValkyrianManteau, 60), Img: ValkyrianManteau, name:"Valkyrian Manteau",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4007, num: userGoldItem.WoolScarf, EquipItem:ReturnGarmentEquipmentChoiceFn("Wool Scarf",WoolScarf, 70), Img: WoolScarf, name:"Wool Scarf",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4008, num: userGoldItem.FallenAngelWing, EquipItem:ReturnGarmentEquipmentChoiceFn("Fallen Angel Wing",FallenAngelWing, 80), Img: FallenAngelWing, name:"Fallen Ange lWing",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4009, num: userGoldItem.CloakofGray, EquipItem:ReturnGarmentEquipmentChoiceFn("Cloak of Gray",CloakofGray, 90), Img: CloakofGray, name:"Cloak of Gray",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4010, num: userGoldItem.ElementalCape, EquipItem:ReturnGarmentEquipmentChoiceFn("Elemental Cape",ElementalCape, 100), Img: ElementalCape, name:"Elemental Cape",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:4011, num: userGoldItem.Asprika, EquipItem:ReturnGarmentEquipmentChoiceFn("Asprika",Asprika, 110), Img: Asprika, name:"Asprika",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0}
+    ]
+
+    let FootGearBox = [
+      {id:5000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5001, num: userGoldItem.Sandals, EquipItem:ReturnFootGearEquipmentChoiceFn("Sandals",Sandals, 10), Img: Sandals, name:"Sandals",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5002, num: userGoldItem.Shoes, EquipItem:ReturnFootGearEquipmentChoiceFn("Shoes",Shoes, 20), Img: Shoes, name:"Shoes",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5003, num: userGoldItem.Boots, EquipItem:ReturnFootGearEquipmentChoiceFn("Boots",Boots, 30), Img: Boots, name:"Boots",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5004, num: userGoldItem.Greaves, EquipItem:ReturnFootGearEquipmentChoiceFn("Greaves",Greaves, 35), Img: Greaves, name:"Greaves",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5005, num: userGoldItem.BunnySlipper, EquipItem:ReturnFootGearEquipmentChoiceFn("Bunny Slipper",BunnySlipper, 40), Img: BunnySlipper, name:"BunnySlipper",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5006, num: userGoldItem.TidalShoes, EquipItem:ReturnFootGearEquipmentChoiceFn("Tidal Shoes",TidalShoes, 50), Img: TidalShoes, name:"TidalShoes",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5007, num: userGoldItem.SiegeBoots, EquipItem:ReturnFootGearEquipmentChoiceFn("Siege Boots",SiegeBoots, 60), Img: SiegeBoots, name:"SiegeBoots",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5008, num: userGoldItem.SiegeGreaves, EquipItem:ReturnFootGearEquipmentChoiceFn("Siege Greaves",SiegeGreaves, 70), Img: SiegeGreaves, name:"SiegeGreaves",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5009, num: userGoldItem.VidarsBoots, EquipItem:ReturnFootGearEquipmentChoiceFn("Vidar`s Boots",VidarsBoots, 80), Img: VidarsBoots, name:"VidarsBoots",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5010, num: userGoldItem.VitalTreeShoes, EquipItem:ReturnFootGearEquipmentChoiceFn("Vital Tree Shoes",VitalTreeShoes, 90), Img: VitalTreeShoes, name:"VitalTreeShoes",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5011, num: userGoldItem.VariantShoes, EquipItem:ReturnFootGearEquipmentChoiceFn("Variant Shoes",VariantShoes, 100), Img: VariantShoes, name:"VariantShoes",
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:5012, num: userGoldItem.Sleipnir, EquipItem:ReturnFootGearEquipmentChoiceFn("Sleipnir",Sleipnir, 110), Img: Sleipnir, name:"Sleipnir",
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
     ]
+
 
     useEffect(() => {
         $('.mapTitle').fadeIn(600);
@@ -192,17 +287,42 @@ function StartMenu(){
     LUKBufferArmor = BonusLUK;
 }
 
+const GarmentEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK) => {
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferGarment, userAttribute.BonusAgi + BonusAGI - AGIBufferGarment, userAttribute.BonusVit + BonusVIT - VITBufferGarment, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferGarment, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferGarment, userAttribute.BonusLuk + BonusLUK - LUKBufferGarment, BonusSTR - STRBufferGarment, BonusAGI - AGIBufferGarment, BonusVIT - VITBufferGarment, BonusINT - INTBufferGarment, BonusDEX - DEXBufferGarment, BonusLUK - LUKBufferGarment));
+  // Note Training = BonusSTR - STRBuffer
+  // BonusSTRPointFn = Update Stats
+  STRBufferGarment = BonusSTR;
+  AGIBufferGarment = BonusAGI;
+  VITBufferGarment = BonusVIT;
+  INTBufferGarment = BonusINT;
+  DEXBufferGarment = BonusDEX;
+  LUKBufferGarment = BonusLUK;
+}
+
+
+const FootGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK) => {
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferFootGear, userAttribute.BonusAgi + BonusAGI - AGIBufferFootGear, userAttribute.BonusVit + BonusVIT - VITBufferFootGear, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferFootGear, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferFootGear, userAttribute.BonusLuk + BonusLUK - LUKBufferFootGear, BonusSTR - STRBufferFootGear, BonusAGI - AGIBufferFootGear, BonusVIT - VITBufferFootGear, BonusINT - INTBufferFootGear, BonusDEX - DEXBufferFootGear, BonusLUK - LUKBufferFootGear));
+  // Note Training = BonusSTR - STRBuffer
+  // BonusSTRPointFn = Update Stats
+  STRBufferFootGear = BonusSTR;
+  AGIBufferFootGear = BonusAGI;
+  VITBufferFootGear = BonusVIT;
+  INTBufferFootGear = BonusINT;
+  DEXBufferFootGear = BonusDEX;
+  LUKBufferFootGear = BonusLUK;
+}
+
     return(
       <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
-        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.PoringIsland ? <PoringIsland ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.Geffen ? <Geffen ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
-        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
-        screenControlRoom.PayonCave1F ? <PayonCave1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.ChallengeTower ? <ChallengeTower ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.PoringIsland ? <PoringIsland ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.Geffen ? <Geffen ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
+        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
+        screenControlRoom.PayonCave1F ? <PayonCave1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.ChallengeTower ? <ChallengeTower ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         screenControlRoom.cutsceneThree ? <StoryLineThree /> :
@@ -376,6 +496,48 @@ function StartMenu(){
                 })}
                 </div>
               : <p>Empty HeadGear Storage T^T</p>}
+              </div> : null}
+            {/* FOOTGEAR */}
+            {screenControlRoom.FootGearEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Foot Gear Bag</p>
+              {userGoldItem.Sandals >= 1 || userGoldItem.Shoes >= 1 || userGoldItem.Boots >= 1 || userGoldItem.Greaves >= 1 || userGoldItem.BunnySlipper >= 1 || userGoldItem.TidalShoes >= 1 || userGoldItem.SiegeBoots >= 1 || userGoldItem.SiegeGreaves >= 1 || userGoldItem.VidarsBoots >= 1 || userGoldItem.VitalTreeShoes >= 1 || userGoldItem.VariantShoes >= 1 || userGoldItem.Sleipnir >= 1 ?
+                <div>
+                {FootGearBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); FootGearEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty FootGear Storage T^T</p>}
+              </div> : null}
+            {/* GARMENT */}
+            {screenControlRoom.GarmentEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Foot Gear Bag</p>
+              {userGoldItem.Hood >= 1 || userGoldItem.Muffler  >= 1 || userGoldItem.Manteau >= 1 || userGoldItem.FalconMuffler >= 1 || userGoldItem.ValisManteau >= 1 || userGoldItem.ValkyrianManteau >= 1 || userGoldItem.WoolScarf >= 1 || userGoldItem.FallenAngelWing >= 1 || userGoldItem.CloakofGray >= 1 || userGoldItem.ElementalCape >= 1 || userGoldItem.Asprika >= 1 ?
+                <div>
+                {GarmentBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); GarmentEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty Garment Storage T^T</p>}
               </div> : null}
           </fieldset>
         </div>

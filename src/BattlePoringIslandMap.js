@@ -2047,7 +2047,7 @@ function Main(){
     // Enemy AI
     const enemyDecisionQFn = () => {
       // setTimeout(() => (Uclock = 0), 300);
-      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
+      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) + userStats.BaseFootGearDef * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       let Khit = Math.random();
       (() => {
           switch (true) {

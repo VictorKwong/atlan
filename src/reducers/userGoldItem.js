@@ -31,7 +31,31 @@ const Fn = {
     PandaHat: 1,
     ChefHat: 1,
     SantaPoringHat: 1,
-
+    //FootGear
+    Sandals:1,
+    Shoes:1,
+    Boots:1,
+    Greaves:1,
+    BunnySlipper:1,
+    TidalShoes:1,
+    SiegeBoots:1,
+    SiegeGreaves:1,
+    VidarsBoots:1,
+    VitalTreeShoes:1,
+    VariantShoes:1,
+    Sleipnir:1,
+    //Garment
+    Hood:1,
+    Muffler:1,
+    Manteau:1,
+    FalconMuffler:1,
+    ValisManteau:1,
+    ValkyrianManteau:1,
+    WoolScarf:1,
+    FallenAngelWing:1,
+    CloakofGray:1,
+    ElementalCape:1,
+    Asprika:1,
     //Etc
     PoringIslandMap: 1,
     PayonCaveMap:1,
@@ -305,7 +329,147 @@ const userGoldItemReducer = (state = Fn, action) => {
                 Zeny: state.Zeny + action.Zeny,
                 SantaPoringHat: state.SantaPoringHat + action.Item,
             }
-        //Battle USEAGE
+        //FootGear Shop
+        case 'SandalsFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Sandals: state.Sandals + action.Item,
+            }
+        case 'ShoesFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Shoes: state.Shoes + action.Item,
+            }
+        case 'BootsFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Boots: state.Boots + action.Item,
+        }
+        case 'GreavesFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Greaves: state.Greaves + action.Item,
+            }
+        case 'BunnySlipperFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                BunnySlipper: state.BunnySlipper + action.Item,
+            }
+        case 'TidalShoesFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                TidalShoes: state.TidalShoes + action.Item,
+            }
+        case 'SiegeBootsFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SiegeBoots: state.SiegeBoots + action.Item,
+            }
+        case 'SiegeGreavesFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SiegeGreaves: state.SiegeGreaves + action.Item,
+            }
+        case 'VidarsBootsFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                VidarsBoots: state.VidarsBoots + action.Item,
+            }
+        case 'VitalTreeShoesFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                VitalTreeShoes: state.VitalTreeShoes + action.Item,
+            }
+        case 'VariantShoesFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                VariantShoes: state.VariantShoes + action.Item,
+            }
+        case 'SleipnirFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Sleipnir: state.Sleipnir + action.Item,
+            }
+        //GARMENT
+        case 'HoodFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Hood: state.Hood + action.Item,
+            }
+        case 'MufflerFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Muffler: state.Muffler + action.Item,
+            }
+        case 'ManteauFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Manteau: state.Manteau + action.Item,
+            }
+        case 'FalconMufflerFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                FalconMuffler: state.FalconMuffler + action.Item,
+            }
+        case 'ValisManteauFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                ValisManteau: state.ValisManteau + action.Item,
+            }
+        case 'ValkyrianManteauFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                ValkyrianManteau: state.ValkyrianManteau + action.Item,
+            }
+        case 'WoolScarfFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                WoolScarf: state.WoolScarf + action.Item,
+            }
+        case 'FallenAngelWingFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                FallenAngelWing: state.FallenAngelWing + action.Item,
+            }
+        case 'CloakofGrayFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                CloakofGray: state.CloakofGray + action.Item,
+            }
+        case 'ElementalCapeFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                ElementalCape: state.ElementalCape + action.Item,
+            }
+        case 'AsprikaFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Asprika: state.Asprika + action.Item,
+            }
+//Battle USEAGE
         case 'UseRedPotionFn':
             return{
                 ...state,

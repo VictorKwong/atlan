@@ -23,6 +23,12 @@ const Fn = {
     userHeadGear: null,
     userHeadGearImg: null,
     BaseHeadGearDef: 0,
+    userFootGear: null,
+    userFootGearImg: null,
+    BaseFootGearDef: 0,
+    userGarment: null,
+    userGarmentImg: null,
+    BaseGarmentDef: 0,
 
 
     //Bonus
@@ -312,6 +318,21 @@ const userStatsReducer = (state = Fn, action) => {
                 userHeadGearImg: action.HeadGearImg,
                 BaseHeadGearDef: action.HeadGearDef
             }
+        case 'ReturnFootGearEquipmentChoiceFn':
+            return {
+                ...state,
+                userFootGear: action.FootGear,
+                userFootGearImg: action.FootGearImg,
+                BaseFootGearDef: action.FootGearDef
+            }
+        case 'ReturnGarmentEquipmentChoiceFn':
+            return {
+                ...state,
+                userGarment: action.Garment,
+                userGarmentImg: action.GarmentImg,
+                BaseGarmentDef: action.GarmentDef
+            }
+            
         //ITEMS
         case 'UseRedPotionFn':
             switch(true){

@@ -274,7 +274,7 @@ function StartMenu(){
             <p className="atk1">Atk</p>
             <p className="atk2">{Math.floor(userStats.attack)} + {(userStats.BaseWeaponDamage + userStats.Bonusattack).toFixed(1)}</p>
             <p className="def3">Def</p>
-            <p className="def4">{Math.floor(userStats.defence)} + {userStats.BaseHeadGearDef + userStats.BaseArmorDef + userStats.Bonusdefence}</p>
+            <p className="def4">{Math.floor(userStats.defence)} + {userStats.BaseHeadGearDef + userStats.BaseArmorDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef+ userStats.Bonusdefence}</p>
             <p className="hit5">Hit</p>
             <p className="hit6">{Math.floor(userStats.hitRate *100)} {userStats.BonushitRate > 0 ? "+ " + Math.floor(userStats.BonushitRate * 100) : null}</p>
             <p className="fle7">Flee</p>

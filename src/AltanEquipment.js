@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanEquipmentFn , GotoImageEquipmentFn} from './actions';
-import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn, GotoHeadGearEquipmentChoiceFn} from './actions'
+import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn, GotoHeadGearEquipmentChoiceFn, GotoFootGearEquipmentChoiceFn, GotoGarmentEquipmentChoiceFn} from './actions'
 import './css/mapAltanEquipment.css'
 // import useSound from 'use-sound';
 
@@ -63,8 +63,10 @@ function StartMenu(){
     
     let GotoList = [
       {id:90001, name:userStats.userWeapon, DirectTo: GotoWeaponEquipmentChoiceFn(), Img:userStats.userWeaponImg, preload: Katana, wordDisplay:"Weapon:"},
-      {id:90002, name:userStats.userArmor, DirectTo: GotoArmorEquipmentChoiceFn(), Img:userStats.userArmorImg, preload: CottonShirt, wordDisplay:"Armor:"},
-      {id:90003, name:userStats.userHeadGear, DirectTo: GotoHeadGearEquipmentChoiceFn(), Img:userStats.userHeadGearImg, preload: '', wordDisplay:"HeadGear:"},
+      {id:90002, name:userStats.userHeadGear, DirectTo: GotoHeadGearEquipmentChoiceFn(), Img:userStats.userHeadGearImg, preload: '', wordDisplay:"HeadGear:"},
+      {id:90003, name:userStats.userArmor, DirectTo: GotoArmorEquipmentChoiceFn(), Img:userStats.userArmorImg, preload: CottonShirt, wordDisplay:"Armor:"},
+      {id:90004, name:userStats.userGarment, DirectTo: GotoGarmentEquipmentChoiceFn(), Img:userStats.userGarmentImg, preload: '', wordDisplay:"Garment:"},
+      {id:90005, name:userStats.userFootGear, DirectTo: GotoFootGearEquipmentChoiceFn(), Img:userStats.userFootGearImg, preload: '', wordDisplay:"FootGear:"},
     ]
 
     let UserDisplay = [
@@ -76,12 +78,6 @@ function StartMenu(){
       {id:5, name:"Chef Hat", img0:UserStand_ChefHat , img1:UserSit_ChefHat, img2:UserStand2_ChefHat, img3:UserStand3_ChefHat, explain:"User_ChefHat" },
       {id:6, name:"Santa Poring Hat", img0:UserStand_SantaPoringHat , img1:UserSit_SantaPoringHat, img2:UserStand2_SantaPoringHat, img3:UserStand3_SantaPoringHat, explain:"User_SantaPoringHat" },
       {id:7, name:null, img0:UserStandPost , img1:UserSitPost, img2:UserStand2Post, img3:UserStand3Post, explain:"UserPost" },
-    ]
-
-    let HeadGearBonusAttributes = [
-      {id: 100, name:"Lord Kaho`s Horn", BonusSTR: 10, BonusAGI: 10, BonusVIT: 10, BonusINT: 10, BonusDEX: 10, BonusLUK: 10},
-      {id: 101, name:"Teddybear Hat", BonusSTR: 2, BonusAGI: 4, BonusVIT: 0, BonusINT: 0, BonusDEX: 1, BonusLUK: 1},
-      {id: 107, name: null, BonusSTR: 0, BonusAGI: 0, BonusVIT: 0, BonusINT: 0, BonusDEX: 0, BonusLUK: 0},
     ]
 
     const dispatch = useDispatch();

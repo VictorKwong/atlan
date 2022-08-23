@@ -141,6 +141,8 @@ const Fn = {
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
     HeadGearEquipmentChoice: false,
+    FootGearEquipmentChoice: false,
+    GarmentEquipmentChoice: false,
     ImageEquipment:false,
     ItemChoice: false,
     EquipChoice: false,
@@ -278,6 +280,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
             }
         case 'GotoAltanStatsFn':
             return {
@@ -289,6 +293,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
                 StatsChoice: true,
                 SkillChoice: false,
                 GuildChoice: false,
@@ -303,6 +309,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
                 ItemChoice: true,
                 EquipChoice: false,
                 ETCChoice: false,
@@ -317,21 +324,27 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
                 ...state,
-                WeaponEquipmentChoice: !state.WeaponEquipmentChoice,
+                WeaponEquipmentChoice: true,
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
                 ImageEquipment:false,
             }
         case 'GotoArmorEquipmentChoiceFn':
             return {
                 ...state,
                 WeaponEquipmentChoice: false,
-                ArmorEquipmentChoice: !state.ArmorEquipmentChoice,
+                ArmorEquipmentChoice: true,
                 HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
                 ImageEquipment:false,
             }
         case 'GotoHeadGearEquipmentChoiceFn':
@@ -339,7 +352,29 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 WeaponEquipmentChoice: false,
                 ArmorEquipmentChoice: false,
-                HeadGearEquipmentChoice: !state.HeadGearEquipmentChoice,
+                HeadGearEquipmentChoice: true,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
+                ImageEquipment:false,
+            }
+        case 'GotoFootGearEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: true,
+                GarmentEquipmentChoice: false,
+                ImageEquipment:false,
+            }
+        case 'GotoGarmentEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: true,
                 ImageEquipment:false,
             }
         case 'GotoImageEquipmentFn':
@@ -414,6 +449,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 HeadGearEquipmentChoice: false,
+            }
+        case 'ReturnFootGearEquipmentChoiceFn':
+            return {
+                ...state,
+                FootGearEquipmentChoice: false,
+            }
+        case 'ReturnGarmentEquipmentChoiceFn':
+            return {
+                ...state,
+                GarmentEquipmentChoice: false,
             }
         // Mini Screen Shop
         case 'GotoPronteraHeadGearDealerFn':
