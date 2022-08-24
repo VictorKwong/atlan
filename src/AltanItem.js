@@ -30,6 +30,32 @@ import Helm from './img/Equipment/HeadGear/Helm.gif'
 import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
+//FootGear
+import Sandals from './img/Equipment/FootGear/Sandals.gif'
+import Shoes from './img/Equipment/FootGear/Shoes.gif'
+import Boots from './img/Equipment/FootGear/Boots.gif'
+import Greaves from './img/Equipment/FootGear/Greaves.gif'
+import BunnySlipper from './img/Equipment/FootGear/BunnySlipper.gif'
+import TidalShoes from './img/Equipment/FootGear/TidalShoes.gif'
+import SiegeBoots from './img/Equipment/FootGear/SiegeBoots.gif'
+import SiegeGreaves from './img/Equipment/FootGear/SiegeGreaves.gif'
+import VidarsBoots from './img/Equipment/FootGear/VidarsBoots.gif'
+import VitalTreeShoes from './img/Equipment/FootGear/VitalTreeShoes.gif'
+import VariantShoes from './img/Equipment/FootGear/VariantShoes.gif'
+import Sleipnir from './img/Equipment/FootGear/Sleipnir.gif'
+//Garment
+import Hood from './img/Equipment/Garment/Hood.gif'
+import Muffler from './img/Equipment/Garment/Muffler.gif'
+import Manteau from './img/Equipment/Garment/Manteau.gif'
+import FalconMuffler from './img/Equipment/Garment/FalconMuffler.gif'
+import ValisManteau from './img/Equipment/Garment/ValisManteau.gif'
+import ValkyrianManteau from './img/Equipment/Garment/ValkyrianManteau.gif'
+import WoolScarf from './img/Equipment/Garment/WoolScarf.gif'
+import FallenAngelWing from './img/Equipment/Garment/FallenAngelWing.gif'
+import CloakofGray from './img/Equipment/Garment/CloakofGray.gif'
+import ElementalCape from './img/Equipment/Garment/ElementalCape.gif'
+import Asprika from './img/Equipment/Garment/Asprika.gif'
+
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
 import OrangePotion from './img/Item/OrangePotion.gif'
@@ -135,7 +161,32 @@ function StartMenu(){
       {id:10016, Img:Helm, name:"Helm", itemCheck:userGoldItem.Helm},
       {id:10017, Img:PandaHat, name:"Panda Hat", itemCheck:userGoldItem.PandaHat},
       {id:10018, Img:ChefHat, name:"Chef Hat", itemCheck:userGoldItem.ChefHat},
-      {id:10019, Img:SantaPoringHat, name:"Santa Poring Hat", itemCheck:userGoldItem.SantaPoringHat}
+      {id:10019, Img:SantaPoringHat, name:"Santa Poring Hat", itemCheck:userGoldItem.SantaPoringHat},
+      //Garment
+      {id:2000, Img:Hood, name:"Hood", itemCheck:userGoldItem.Hood},
+      {id:2001, Img:Muffler, name:"Muffler", itemCheck:userGoldItem.Muffler},
+      {id:2002, Img:Manteau, name:"Manteau", itemCheck:userGoldItem.Manteau},
+      {id:2003, Img:FalconMuffler, name:"Falcon Muffler", itemCheck:userGoldItem.FalconMuffler},
+      {id:2004, Img:ValisManteau, name:"Vali`s Manteau", itemCheck:userGoldItem.ValisManteau},
+      {id:2005, Img:ValkyrianManteau, name:"Valkyrian Manteau", itemCheck:userGoldItem.ValkyrianManteau},
+      {id:2006, Img:WoolScarf, name:"Wool Scarf", itemCheck:userGoldItem.WoolScarf},
+      {id:2007, Img:FallenAngelWing, name:"Fallen Angel Wing", itemCheck:userGoldItem.FallenAngelWing},
+      {id:2008, Img:CloakofGray, name:"Cloak of Gray", itemCheck:userGoldItem.CloakofGray},
+      {id:2009, Img:ElementalCape, name:"Elemental Cape", itemCheck:userGoldItem.ElementalCape},
+      {id:2010, Img:Asprika, name:"Asprika", itemCheck:userGoldItem.Asprika},
+      //FootGear
+      {id:3000, Img:Sandals, name:"Sandals", itemCheck:userGoldItem.Sandals},
+      {id:3001, Img:Shoes, name:"Shoes", itemCheck:userGoldItem.Shoes},
+      {id:3002, Img:Boots, name:"Boots", itemCheck:userGoldItem.Boots},
+      {id:3003, Img:Greaves, name:"Greaves", itemCheck:userGoldItem.Greaves},
+      {id:3004, Img:BunnySlipper, name:"Bunny Slipper", itemCheck:userGoldItem.BunnySlipper},
+      {id:3005, Img:TidalShoes, name:"Tidal Shoes", itemCheck:userGoldItem.TidalShoes},
+      {id:3006, Img:SiegeBoots, name:"Siege Boots", itemCheck:userGoldItem.SiegeBoots},
+      {id:3007, Img:SiegeGreaves, name:"Siege Greaves", itemCheck:userGoldItem.SiegeGreaves},
+      {id:3008, Img:VidarsBoots, name:"Vidars Boots", itemCheck:userGoldItem.VidarsBoots},
+      {id:3009, Img:VitalTreeShoes, name:"Vital Tree Shoes", itemCheck:userGoldItem.VitalTreeShoes},
+      {id:3010, Img:VariantShoes, name:"Variant Shoes", itemCheck:userGoldItem.VariantShoes},
+      {id:3011, Img:Sleipnir, name:"Sleipnir", itemCheck:userGoldItem.Sleipnir},
     ]
     let EtcBox = [
       {id:1000, Img:Jellopy, name:"Jellopy", itemCheck:userGoldItem.Jellopy},

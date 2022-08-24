@@ -1513,77 +1513,77 @@ export const SleipnirFn = (Zeny,Item) => {
 //GARMENT
 export const HoodFn = (Zeny,Item) => {
     return {
-        type: 'Hood',
+        type: 'HoodFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const MufflerFn = (Zeny,Item) => {
     return {
-        type: 'Muffler',
+        type: 'MufflerFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const ManteauFn = (Zeny,Item) => {
     return {
-        type: 'Manteau',
+        type: 'ManteauFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const FalconMufflerFn = (Zeny,Item) => {
     return {
-        type: 'FalconMuffler',
+        type: 'FalconMufflerFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const ValisManteauFn = (Zeny,Item) => {
     return {
-        type: 'ValisManteau',
+        type: 'ValisManteauFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const ValkyrianManteauFn = (Zeny,Item) => {
     return {
-        type: 'ValkyrianManteau',
+        type: 'ValkyrianManteauFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const WoolScarfFn = (Zeny,Item) => {
     return {
-        type: 'WoolScarf',
+        type: 'WoolScarfFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const FallenAngelWingFn = (Zeny,Item) => {
     return {
-        type: 'FallenAngelWing',
+        type: 'FallenAngelWingFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const CloakofGrayFn = (Zeny,Item) => {
     return {
-        type: 'CloakofGray',
+        type: 'CloakofGrayFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const ElementalCapeFn = (Zeny,Item) => {
     return {
-        type: 'ElementalCape',
+        type: 'ElementalCapeFn',
         Zeny: Zeny,
         Item: Item
     };
 };
 export const AsprikaFn = (Zeny,Item) => {
     return {
-        type: 'Asprika',
+        type: 'AsprikaFn',
         Zeny: Zeny,
         Item: Item
     };
