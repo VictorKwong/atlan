@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoAltanEquipmentFn , GotoImageEquipmentFn} from './actions';
-import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn, GotoHeadGearEquipmentChoiceFn, GotoFootGearEquipmentChoiceFn, GotoGarmentEquipmentChoiceFn} from './actions'
+import { GotoWeaponEquipmentChoiceFn, GotoArmorEquipmentChoiceFn, GotoHeadGearEquipmentChoiceFn, GotoFootGearEquipmentChoiceFn, GotoGarmentEquipmentChoiceFn, GotoAccessoryOneEquipmentChoiceFn, GotoAccessoryTwoEquipmentChoiceFn} from './actions'
 import './css/mapAltanEquipment.css'
 // import useSound from 'use-sound';
 
@@ -67,6 +67,8 @@ function StartMenu(){
       {id:90003, name:userStats.userArmor, DirectTo: GotoArmorEquipmentChoiceFn(), Img:userStats.userArmorImg, preload: CottonShirt, wordDisplay:"Armor:"},
       {id:90004, name:userStats.userGarment, DirectTo: GotoGarmentEquipmentChoiceFn(), Img:userStats.userGarmentImg, preload: '', wordDisplay:"Garment:"},
       {id:90005, name:userStats.userFootGear, DirectTo: GotoFootGearEquipmentChoiceFn(), Img:userStats.userFootGearImg, preload: '', wordDisplay:"FootGear:"},
+      {id:90006, name:userStats.userAccessoryOne, DirectTo: GotoAccessoryOneEquipmentChoiceFn(), Img:userStats.userAccessoryOneImg, preload: '', wordDisplay:"Accessory:"},
+      {id:90007, name:userStats.userAccessoryTwo, DirectTo: GotoAccessoryTwoEquipmentChoiceFn(), Img:userStats.userAccessoryTwoImg, preload: '', wordDisplay:"Accessory:"},
     ]
 
     let UserDisplay = [

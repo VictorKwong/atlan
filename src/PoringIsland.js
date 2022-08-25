@@ -554,7 +554,49 @@ useEffect(() => {
                 })}
                 </div>
               : <p>Empty Garment Storage T^T</p>}
-              </div> : null}  
+              </div> : null}
+            {/* ACCESSORY ONE */}
+            {screenControlRoom.AccessoryOneEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Accessory Bag</p>
+              {userGoldItem.Clip >= 1 || userGoldItem.Rosary  >= 1 || userGoldItem.VesperCore02 >= 1 || userGoldItem.BradiumEarring >= 1 || userGoldItem.GloriousRing >= 1 || userGoldItem.SprintRing >= 1 || userGoldItem.DiabolusRing >= 1 || userGoldItem.MedalofHonor >= 1 || userGoldItem.BakonawaAgimatTattoo >= 1 || userGoldItem.Brisingamen >= 1 || userGoldItem.Megingjard >= 1 ?
+                <div>
+                {props.AccessoryOneBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.AccessoryOneEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK,Equip.Equip,Equip.UnEquip);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty Accessory Storage T^T</p>}
+              </div> : null}
+            {/* ACCESSORY TWO */}
+            {screenControlRoom.AccessoryTwoEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Accessory Bag</p>
+              {userGoldItem.Clip >= 1 || userGoldItem.Rosary  >= 1 || userGoldItem.VesperCore02 >= 1 || userGoldItem.BradiumEarring >= 1 || userGoldItem.GloriousRing >= 1 || userGoldItem.SprintRing >= 1 || userGoldItem.DiabolusRing >= 1 || userGoldItem.MedalofHonor >= 1 || userGoldItem.BakonawaAgimatTattoo >= 1 || userGoldItem.Brisingamen >= 1 || userGoldItem.Megingjard >= 1 ?
+                <div>
+                {props.AccessoryTwoBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); props.AccessoryTwoEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK,Equip.Equip,Equip.UnEquip);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty Accessory Storage T^T</p>}
+              </div> : null}
               {screenControlRoom.PoringIslandHouseMap && ( screenControlRoom.HouseTrainingSTR || screenControlRoom.HouseTrainingAGI || screenControlRoom.HouseTrainingVIT || screenControlRoom.HouseTrainingINT || screenControlRoom.HouseTrainingDEX || screenControlRoom.HouseTrainingLUK ) && 
               !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
                 <div>

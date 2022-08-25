@@ -56,6 +56,18 @@ const Fn = {
     CloakofGray:1,
     ElementalCape:1,
     Asprika:1,
+    //Accessory
+    Clip:1,
+    Rosary:1,
+    VesperCore02:1,
+    BradiumEarring:1,
+    GloriousRing:1,
+    SprintRing:1,
+    DiabolusRing:1,
+    MedalofHonor:1,
+    BakonawaAgimatTattoo:1,
+    Brisingamen:1,
+    Megingjard:1,
     //Etc
     PoringIslandMap: 1,
     PayonCaveMap:1,
@@ -468,6 +480,73 @@ const userGoldItemReducer = (state = Fn, action) => {
                 ...state,
                 Zeny: state.Zeny + action.Zeny,
                 Asprika: state.Asprika + action.Item,
+            }
+        //Accessory
+        case 'ClipFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Clip: state.Clip + action.Item,
+            }
+        case 'RosaryFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Rosary: state.Rosary + action.Item,
+            }
+        case 'VesperCore02Fn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                VesperCore02: state.VesperCore02 + action.Item,
+            }
+        case 'BradiumEarringFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                BradiumEarring: state.BradiumEarring + action.Item,
+            }
+        case 'GloriousRingFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                GloriousRing: state.GloriousRing + action.Item,
+            }
+        case 'SprintRingFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                SprintRing: state.SprintRing + action.Item,
+            }
+        case 'DiabolusRingFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                DiabolusRing: state.DiabolusRing + action.Item,
+            }
+        case 'MedalofHonorFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                MedalofHonor: state.MedalofHonor + action.Item,
+            }
+        case 'BakonawaAgimatTattooFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                BakonawaAgimatTattoo: state.BakonawaAgimatTattoo + action.Item,
+            }
+        case 'BrisingamenFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Brisingamen: state.Brisingamen + action.Item,
+            }
+        case 'MegingjardFn':
+            return{
+                ...state,
+                Zeny: state.Zeny + action.Zeny,
+                Megingjard: state.Megingjard + action.Item,
             }
 //Battle USEAGE
         case 'UseRedPotionFn':

@@ -28,7 +28,7 @@ import './css/storyMainMap.css'
 import $ from 'jquery'
 
 // EQUIP ACTION
-import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn, ReturnGarmentEquipmentChoiceFn, ReturnFootGearEquipmentChoiceFn} from './actions'
+import {ReturnWeaponEquipmentChoiceFn, ReturnArmorEquipmentChoiceFn, ReturnHeadGearEquipmentChoiceFn, ReturnGarmentEquipmentChoiceFn, ReturnFootGearEquipmentChoiceFn, ReturnAccessoryOneEquipmentChoiceFn, ReturnAccessoryTwoEquipmentChoiceFn} from './actions'
 // EQUIP ATTRI
 import {BonusEquipPointsFn} from './actions'
 //WEAPON
@@ -41,6 +41,8 @@ import { CottonShirtFn, AdventureSuitFn , WoodenMailFn , CoatFn , PaddedArmorFn,
 import { SandalsFn, ShoesFn, BootsFn, GreavesFn, BunnySlipperFn, TidalShoesFn, SiegeBootsFn, SiegeGreavesFn, VidarsBootsFn, VitalTreeShoesFn, VariantShoesFn, SleipnirFn} from './actions'
 //GARMENT
 import { HoodFn, MufflerFn, ManteauFn, FalconMufflerFn, ValisManteauFn, ValkyrianManteauFn, WoolScarfFn, FallenAngelWingFn, CloakofGrayFn, ElementalCapeFn, AsprikaFn} from './actions'
+//Accessory
+import { ClipFn, RosaryFn, VesperCore02Fn, BradiumEarringFn, GloriousRingFn, SprintRingFn, DiabolusRingFn, MedalofHonorFn, BakonawaAgimatTattooFn, BrisingamenFn, MegingjardFn } from './actions'
 
 // WEAPON IMAGE
 import Katana from './img/Equipment/Weapon/Katana.gif'
@@ -89,6 +91,18 @@ import FallenAngelWing from './img/Equipment/Garment/FallenAngelWing.gif'
 import CloakofGray from './img/Equipment/Garment/CloakofGray.gif'
 import ElementalCape from './img/Equipment/Garment/ElementalCape.gif'
 import Asprika from './img/Equipment/Garment/Asprika.gif'
+//Accessory
+import Clip from './img/Equipment/Accessory/Clip.gif'
+import Rosary from './img/Equipment/Accessory/Rosary.gif'
+import VesperCore02 from './img/Equipment/Accessory/VesperCore02.gif'
+import BradiumEarring from './img/Equipment/Accessory/BradiumEarring.gif'
+import GloriousRing from './img/Equipment/Accessory/GloriousRing.gif'
+import SprintRing from './img/Equipment/Accessory/SprintRing.gif'
+import DiabolusRing from './img/Equipment/Accessory/DiabolusRing.gif'
+import MedalofHonor from './img/Equipment/Accessory/MedalofHonor.gif'
+import BakonawaAgimatTattoo from './img/Equipment/Accessory/BakonawaAgimatTattoo.gif'
+import Brisingamen from './img/Equipment/Accessory/Brisingamen.gif'
+import Megingjard from './img/Equipment/Accessory/Megingjard.gif'
 
 let STRBufferWeapon = 0;
 let AGIBufferWeapon = 0;
@@ -125,6 +139,19 @@ let INTBufferFootGear = 0;
 let DEXBufferFootGear = 0;
 let LUKBufferFootGear = 0;
 
+let STRBufferAccessoryOne = 0;
+let AGIBufferAccessoryOne = 0;
+let VITBufferAccessoryOne = 0;
+let INTBufferAccessoryOne = 0;
+let DEXBufferAccessoryOne = 0;
+let LUKBufferAccessoryOne = 0;
+
+let STRBufferAccessoryTwo = 0;
+let AGIBufferAccessoryTwo = 0;
+let VITBufferAccessoryTwo = 0;
+let INTBufferAccessoryTwo = 0;
+let DEXBufferAccessoryTwo = 0;
+let LUKBufferAccessoryTwo = 0;
 //Kanata
 let CurrentWeapon = 0;  
 //Armor
@@ -133,6 +160,8 @@ let CurrentArmor = 0;
 let CurrentHeadGear = 0;
 let CurrentGarment = 0;
 let CurrentFootGear = 0;
+let CurrentAccessoryOne = 0;
+let CurrentAccessoryTwo = 0;
 
 let listResult = document.getElementsByClassName('storyChat')[0];
 
@@ -250,19 +279,58 @@ function StartMenu(){
       {id:5012, num: userGoldItem.Sleipnir, EquipItem:ReturnFootGearEquipmentChoiceFn("Sleipnir",Sleipnir, 110), Img: Sleipnir, name:"Sleipnir", Equip:SleipnirFn(0,-1), UnEquip:SleipnirFn(0,1),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
     ]
-    //Accessories
-    let AccessoriesBox = [
-      {id:6000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+    //Accessory
+    let AccessoryOneBox = [
+      {id:6000, num: 1, EquipItem:ReturnAccessoryOneEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:5000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+      {id:6001, num: userGoldItem.Clip, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Clip",Clip, 10), Img: Clip, name:"Clip", Equip: ClipFn(0,-1), UnEquip: ClipFn(0,1),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:5000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+      {id:6002, num: userGoldItem.Rosary, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Rosary",Rosary, 20), Img: Rosary, name:"Rosary", Equip: RosaryFn(0,-1), UnEquip: RosaryFn(0,1),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:5000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+      {id:6003, num: userGoldItem.VesperCore02, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Vesper Core 02",VesperCore02, 30), Img: VesperCore02, name:"Vesper Core 02", Equip: VesperCore02Fn(0,-1), UnEquip: VesperCore02Fn(0,1),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:5000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+      {id:6004, num: userGoldItem.BradiumEarring, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Bradium Earring",BradiumEarring, 40), Img: BradiumEarring, name:"Bradium Earring", Equip: BradiumEarringFn(0,-1), UnEquip: BradiumEarringFn(0,1),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
-      {id:5000, num: 1, EquipItem:ReturnFootGearEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+      {id:6005, num: userGoldItem.GloriousRing, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Glorious Ring",GloriousRing, 50), Img: GloriousRing, name:"Glorious Ring", Equip: GloriousRingFn(0,-1), UnEquip: GloriousRingFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6006, num: userGoldItem.SprintRing, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Sprint Ring",SprintRing, 60), Img: SprintRing, name:"Sprint Ring", Equip: SprintRingFn(0,-1), UnEquip: SprintRingFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6007, num: userGoldItem.DiabolusRing, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Diabolus Ring",DiabolusRing, 70), Img: DiabolusRing, name:"Diabolus Ring", Equip: DiabolusRingFn(0,-1), UnEquip: DiabolusRingFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6008, num: userGoldItem.MedalofHonor, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Medal of Honor",MedalofHonor, 80), Img: MedalofHonor, name:"Medal of Honor", Equip: MedalofHonorFn(0,-1), UnEquip: MedalofHonorFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6009, num: userGoldItem.BakonawaAgimatTattoo, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Bakonawa Agimat Tattoo",BakonawaAgimatTattoo, 90), Img: BakonawaAgimatTattoo, name:"Bakonawa Agimat Tattoo", Equip: BakonawaAgimatTattooFn(0,-1), UnEquip: BakonawaAgimatTattooFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6010, num: userGoldItem.Brisingamen, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Brisingamen",Brisingamen, 100), Img: Brisingamen, name:"Brisingamen", Equip: BrisingamenFn(0,-1), UnEquip: BrisingamenFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6011, num: userGoldItem.Megingjard, EquipItem:ReturnAccessoryOneEquipmentChoiceFn("Megingjard",Megingjard, 110), Img: Megingjard, name:"Megingjard", Equip: MegingjardFn(0,-1), UnEquip: MegingjardFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+    ]
+
+    let AccessoryTwoBox = [
+      {id:6000, num: 1, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn(null,null, 0), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6001, num: userGoldItem.Clip, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Clip",Clip, 10), Img: Clip, name:"Clip", Equip: ClipFn(0,-1), UnEquip: ClipFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6002, num: userGoldItem.Rosary, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Rosary",Rosary, 20), Img: Rosary, name:"Rosary", Equip: RosaryFn(0,-1), UnEquip: RosaryFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6003, num: userGoldItem.VesperCore02, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Vesper Core 02",VesperCore02, 30), Img: VesperCore02, name:"Vesper Core 02", Equip: VesperCore02Fn(0,-1), UnEquip: VesperCore02Fn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6004, num: userGoldItem.BradiumEarring, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Bradium Earring",BradiumEarring, 40), Img: BradiumEarring, name:"Bradium Earring", Equip: BradiumEarringFn(0,-1), UnEquip: BradiumEarringFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6005, num: userGoldItem.GloriousRing, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Glorious Ring",GloriousRing, 50), Img: GloriousRing, name:"Glorious Ring", Equip: GloriousRingFn(0,-1), UnEquip: GloriousRingFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6006, num: userGoldItem.SprintRing, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Sprint Ring",SprintRing, 60), Img: SprintRing, name:"Sprint Ring", Equip: SprintRingFn(0,-1), UnEquip: SprintRingFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6007, num: userGoldItem.DiabolusRing, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Diabolus Ring",DiabolusRing, 70), Img: DiabolusRing, name:"Diabolus Ring", Equip: DiabolusRingFn(0,-1), UnEquip: DiabolusRingFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6008, num: userGoldItem.MedalofHonor, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Medal of Honor",MedalofHonor, 80), Img: MedalofHonor, name:"Medal of Honor", Equip: MedalofHonorFn(0,-1), UnEquip: MedalofHonorFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6009, num: userGoldItem.BakonawaAgimatTattoo, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Bakonawa Agimat Tattoo",BakonawaAgimatTattoo, 90), Img: BakonawaAgimatTattoo, name:"Bakonawa Agimat Tattoo", Equip: BakonawaAgimatTattooFn(0,-1), UnEquip: BakonawaAgimatTattooFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6010, num: userGoldItem.Brisingamen, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Brisingamen",Brisingamen, 100), Img: Brisingamen, name:"Brisingamen", Equip: BrisingamenFn(0,-1), UnEquip: BrisingamenFn(0,1),
+      BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
+      {id:6011, num: userGoldItem.Megingjard, EquipItem:ReturnAccessoryTwoEquipmentChoiceFn("Megingjard",Megingjard, 110), Img: Megingjard, name:"Megingjard", Equip: MegingjardFn(0,-1), UnEquip: MegingjardFn(0,1),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0},
     ]
 
@@ -394,17 +462,60 @@ const FootGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, Bonu
   CurrentFootGear = UnEquipItem;
 }
 
+const AccessoryOneEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem) => {
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferAccessoryOne, userAttribute.BonusAgi + BonusAGI - AGIBufferAccessoryOne, userAttribute.BonusVit + BonusVIT - VITBufferAccessoryOne, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferAccessoryOne, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferAccessoryOne, userAttribute.BonusLuk + BonusLUK - LUKBufferAccessoryOne, BonusSTR - STRBufferAccessoryOne, BonusAGI - AGIBufferAccessoryOne, BonusVIT - VITBufferAccessoryOne, BonusINT - INTBufferAccessoryOne, BonusDEX - DEXBufferAccessoryOne, BonusLUK - LUKBufferAccessoryOne));
+  // Note Training = BonusSTR - STRBuffer
+  // BonusSTRPointFn = Update Stats
+  STRBufferAccessoryOne = BonusSTR;
+  AGIBufferAccessoryOne = BonusAGI;
+  VITBufferAccessoryOne = BonusVIT;
+  INTBufferAccessoryOne = BonusINT;
+  DEXBufferAccessoryOne = BonusDEX;
+  LUKBufferAccessoryOne = BonusLUK;
+  //Equip UnEquip Item
+  dispatch(EquipItem);
+  if (CurrentAccessoryOne !== 0){
+    dispatch(CurrentAccessoryOne);
+  }else{
+    //Default Item
+    dispatch(userClockDefendFn());
+  }
+  CurrentAccessoryOne = UnEquipItem;
+}
+
+const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem) => {
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferAccessoryTwo, userAttribute.BonusAgi + BonusAGI - AGIBufferAccessoryTwo, userAttribute.BonusVit + BonusVIT - VITBufferAccessoryTwo, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferAccessoryTwo, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferAccessoryTwo, userAttribute.BonusLuk + BonusLUK - LUKBufferAccessoryTwo, BonusSTR - STRBufferAccessoryTwo, BonusAGI - AGIBufferAccessoryTwo, BonusVIT - VITBufferAccessoryTwo, BonusINT - INTBufferAccessoryTwo, BonusDEX - DEXBufferAccessoryTwo, BonusLUK - LUKBufferAccessoryTwo));
+  // Note Training = BonusSTR - STRBuffer
+  // BonusSTRPointFn = Update Stats
+  STRBufferAccessoryTwo = BonusSTR;
+  AGIBufferAccessoryTwo = BonusAGI;
+  VITBufferAccessoryTwo = BonusVIT;
+  INTBufferAccessoryTwo = BonusINT;
+  DEXBufferAccessoryTwo = BonusDEX;
+  LUKBufferAccessoryTwo = BonusLUK;
+  //Equip UnEquip Item
+  dispatch(EquipItem);
+  if (CurrentAccessoryTwo !== 0){
+    dispatch(CurrentAccessoryTwo);
+  }else{
+    //Default Item
+    dispatch(userClockDefendFn());
+  }
+  CurrentAccessoryTwo = UnEquipItem;
+}
+
+
     return(
       <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
-        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.PoringIsland ? <PoringIsland ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.Geffen ? <Geffen ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
-        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
-        screenControlRoom.PayonCave1F ? <PayonCave1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
-        screenControlRoom.ChallengeTower ? <ChallengeTower ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.PoringIsland ? <PoringIsland ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.Geffen ? <Geffen ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
+        screenControlRoom.GeffenDungeon3F ? <GeffenDungeon3F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/> :
+        screenControlRoom.PayonCave1F ? <PayonCave1F ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute}HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.ChallengeTower ? <ChallengeTower ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox}  GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap />:
         screenControlRoom.cutsceneTwo ? <StoryLineTwo /> :
         screenControlRoom.cutsceneThree ? <StoryLineThree /> :
@@ -620,6 +731,48 @@ const FootGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, Bonu
                 })}
                 </div>
               : <p>Empty Garment Storage T^T</p>}
+              </div> : null}
+            {/* ACCESSORY ONE */}
+            {screenControlRoom.AccessoryOneEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Accessory Bag</p>
+              {userGoldItem.Clip >= 1 || userGoldItem.Rosary  >= 1 || userGoldItem.VesperCore02 >= 1 || userGoldItem.BradiumEarring >= 1 || userGoldItem.GloriousRing >= 1 || userGoldItem.SprintRing >= 1 || userGoldItem.DiabolusRing >= 1 || userGoldItem.MedalofHonor >= 1 || userGoldItem.BakonawaAgimatTattoo >= 1 || userGoldItem.Brisingamen >= 1 || userGoldItem.Megingjard >= 1 ?
+                <div>
+                {AccessoryOneBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); AccessoryOneEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK,Equip.Equip,Equip.UnEquip);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty Accessory Storage T^T</p>}
+              </div> : null}
+            {/* ACCESSORY TWO */}
+            {screenControlRoom.AccessoryTwoEquipmentChoice ?
+              <div className="textCenter">
+                <p className="chatDescriptTitle">Accessory Bag</p>
+              {userGoldItem.Clip >= 1 || userGoldItem.Rosary  >= 1 || userGoldItem.VesperCore02 >= 1 || userGoldItem.BradiumEarring >= 1 || userGoldItem.GloriousRing >= 1 || userGoldItem.SprintRing >= 1 || userGoldItem.DiabolusRing >= 1 || userGoldItem.MedalofHonor >= 1 || userGoldItem.BakonawaAgimatTattoo >= 1 || userGoldItem.Brisingamen >= 1 || userGoldItem.Megingjard >= 1 ?
+                <div>
+                {AccessoryTwoBox.map(Equip => {
+                  return(
+                    <span key={Equip.id}>
+                      {Equip.num >= 1 ? 
+                      <button className="altanEquipmentGearChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Equip.EquipItem); AccessoryTwoEquipmentAttribute(Equip.BonusSTR,Equip.BonusAGI,Equip.BonusVIT,Equip.BonusINT,Equip.BonusDEX,Equip.BonusLUK,Equip.Equip,Equip.UnEquip);}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Equip.Img} alt={Equip.Img === null ? "" : Equip.name} />{Equip.name}</p>
+                        </div>
+                      </button> : null}
+                    </span>
+                  )
+                })}
+                </div>
+              : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
           </fieldset>
         </div>

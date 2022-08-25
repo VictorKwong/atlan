@@ -363,6 +363,16 @@ export const GotoGarmentEquipmentChoiceFn = () => {
         type: 'GotoGarmentEquipmentChoiceFn',
     };
 };
+export const GotoAccessoryOneEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoAccessoryOneEquipmentChoiceFn',
+    };
+};
+export const GotoAccessoryTwoEquipmentChoiceFn = () => {
+    return {
+        type: 'GotoAccessoryTwoEquipmentChoiceFn',
+    };
+};
 
 export const GotoImageEquipmentFn = () => {
     return {
@@ -443,6 +453,23 @@ export const ReturnFootGearEquipmentChoiceFn = (FootGear,FootGearImg,FootGearDef
         FootGear: FootGear,
         FootGearImg: FootGearImg,
         FootGearDef: FootGearDef
+    };
+};
+export const ReturnAccessoryOneEquipmentChoiceFn = (AccessoryOne,AccessoryOneImg,AccessoryOneDef) => {
+    return {
+        type: 'ReturnAccessoryOneEquipmentChoiceFn',
+        AccessoryOne: AccessoryOne,
+        AccessoryOneImg: AccessoryOneImg,
+        AccessoryOneDef: AccessoryOneDef
+    };
+};
+
+export const ReturnAccessoryTwoEquipmentChoiceFn = (AccessoryTwo,AccessoryTwoImg,AccessoryTwoDef) => {
+    return {
+        type: 'ReturnAccessoryTwoEquipmentChoiceFn',
+        AccessoryTwo: AccessoryTwo,
+        AccessoryTwoImg: AccessoryTwoImg,
+        AccessoryTwoDef: AccessoryTwoDef
     };
 };
 
@@ -1588,6 +1615,85 @@ export const AsprikaFn = (Zeny,Item) => {
         Item: Item
     };
 };
+//Accessory
+export const ClipFn = (Zeny,Item) => {
+    return {
+        type: 'ClipFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const RosaryFn = (Zeny,Item) => {
+    return {
+        type: 'RosaryFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const VesperCore02Fn = (Zeny,Item) => {
+    return {
+        type: 'VesperCore02Fn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const BradiumEarringFn = (Zeny,Item) => {
+    return {
+        type: 'BradiumEarringFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const GloriousRingFn = (Zeny,Item) => {
+    return {
+        type: 'GloriousRingFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const SprintRingFn = (Zeny,Item) => {
+    return {
+        type: 'SprintRingFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const DiabolusRingFn = (Zeny,Item) => {
+    return {
+        type: 'DiabolusRingFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const MedalofHonorFn = (Zeny,Item) => {
+    return {
+        type: 'MedalofHonorFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const BakonawaAgimatTattooFn = (Zeny,Item) => {
+    return {
+        type: 'BakonawaAgimatTattooFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const BrisingamenFn = (Zeny,Item) => {
+    return {
+        type: 'BrisingamenFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+export const MegingjardFn = (Zeny,Item) => {
+    return {
+        type: 'MegingjardFn',
+        Zeny: Zeny,
+        Item: Item
+    };
+};
+
 //ITEMS USEAGE
 export const UseRedPotionFn = (vit) => {
     return {

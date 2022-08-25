@@ -143,6 +143,8 @@ const Fn = {
     HeadGearEquipmentChoice: false,
     FootGearEquipmentChoice: false,
     GarmentEquipmentChoice: false,
+    AccessoryOneEquipmentChoice: false,
+    AccessoryTwoEquipmentChoice: false,
     ImageEquipment:false,
     ItemChoice: false,
     EquipChoice: false,
@@ -282,6 +284,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
             }
         case 'GotoAltanStatsFn':
             return {
@@ -295,6 +299,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
                 StatsChoice: true,
                 SkillChoice: false,
                 GuildChoice: false,
@@ -310,6 +316,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ArmorEquipmentChoice: false,
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
                 ItemChoice: true,
                 EquipChoice: false,
                 ETCChoice: false,
@@ -326,6 +334,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
@@ -335,6 +345,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
                 ImageEquipment:false,
             }
         case 'GotoArmorEquipmentChoiceFn':
@@ -345,6 +357,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
                 ImageEquipment:false,
             }
         case 'GotoHeadGearEquipmentChoiceFn':
@@ -355,6 +369,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: true,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
                 ImageEquipment:false,
             }
         case 'GotoFootGearEquipmentChoiceFn':
@@ -365,6 +381,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: true,
                 GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
                 ImageEquipment:false,
             }
         case 'GotoGarmentEquipmentChoiceFn':
@@ -375,6 +393,32 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 HeadGearEquipmentChoice: false,
                 FootGearEquipmentChoice: false,
                 GarmentEquipmentChoice: true,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: false,
+                ImageEquipment:false,
+            }
+        case 'GotoAccessoryOneEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: true,
+                AccessoryTwoEquipmentChoice: false,
+                ImageEquipment:false,
+            }
+        case 'GotoAccessoryTwoEquipmentChoiceFn':
+            return {
+                ...state,
+                WeaponEquipmentChoice: false,
+                ArmorEquipmentChoice: false,
+                HeadGearEquipmentChoice: false,
+                FootGearEquipmentChoice: false,
+                GarmentEquipmentChoice: false,
+                AccessoryOneEquipmentChoice: false,
+                AccessoryTwoEquipmentChoice: true,
                 ImageEquipment:false,
             }
         case 'GotoImageEquipmentFn':
@@ -459,6 +503,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 GarmentEquipmentChoice: false,
+            }
+        case 'ReturnAccessoryOneEquipmentChoiceFn':
+            return {
+                ...state,
+                AccessoryOneEquipmentChoice: false,
+            }
+        case 'ReturnAccessoryTwoEquipmentChoiceFn':
+            return {
+                ...state,
+                AccessoryTwoEquipmentChoice: false,
             }
         // Mini Screen Shop
         case 'GotoPronteraHeadGearDealerFn':

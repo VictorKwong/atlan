@@ -55,6 +55,18 @@ import FallenAngelWing from './img/Equipment/Garment/FallenAngelWing.gif'
 import CloakofGray from './img/Equipment/Garment/CloakofGray.gif'
 import ElementalCape from './img/Equipment/Garment/ElementalCape.gif'
 import Asprika from './img/Equipment/Garment/Asprika.gif'
+//Accessory
+import Clip from './img/Equipment/Accessory/Clip.gif'
+import Rosary from './img/Equipment/Accessory/Rosary.gif'
+import VesperCore02 from './img/Equipment/Accessory/VesperCore02.gif'
+import BradiumEarring from './img/Equipment/Accessory/BradiumEarring.gif'
+import GloriousRing from './img/Equipment/Accessory/GloriousRing.gif'
+import SprintRing from './img/Equipment/Accessory/SprintRing.gif'
+import DiabolusRing from './img/Equipment/Accessory/DiabolusRing.gif'
+import MedalofHonor from './img/Equipment/Accessory/MedalofHonor.gif'
+import BakonawaAgimatTattoo from './img/Equipment/Accessory/BakonawaAgimatTattoo.gif'
+import Brisingamen from './img/Equipment/Accessory/Brisingamen.gif'
+import Megingjard from './img/Equipment/Accessory/Megingjard.gif'
 
 //ITEMS
 import RedPotion from './img/Item/RedPotion.gif'
@@ -187,6 +199,18 @@ function StartMenu(){
       {id:3009, Img:VitalTreeShoes, name:"Vital Tree Shoes", itemCheck:userGoldItem.VitalTreeShoes},
       {id:3010, Img:VariantShoes, name:"Variant Shoes", itemCheck:userGoldItem.VariantShoes},
       {id:3011, Img:Sleipnir, name:"Sleipnir", itemCheck:userGoldItem.Sleipnir},
+      //Accessory
+      {id:4000, Img: Clip, name: "Clip", Item: userGoldItem.Clip},
+      {id:4001, Img: Rosary, name: "Rosary", Item: userGoldItem.Rosary},
+      {id:4002, Img: VesperCore02, name: "Vesper Core 02", Item: userGoldItem.VesperCore02},
+      {id:4003, Img: BradiumEarring, name: "Bradium Earring", Item: userGoldItem.BradiumEarring},
+      {id:4004, Img: GloriousRing, name: "Glorious Ring", Item: userGoldItem.GloriousRing},
+      {id:4005, Img: SprintRing, name: "Sprint Ring", Item: userGoldItem.SprintRing},
+      {id:4006, Img: DiabolusRing, name: "Diabolus Ring", Item: userGoldItem.DiabolusRing},
+      {id:4007, Img: MedalofHonor, name: "Medal of Honor", Item: userGoldItem.MedalofHonor},
+      {id:4008, Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo", Item: userGoldItem.BakonawaAgimatTattoo},
+      {id:4009, Img: Brisingamen, name: "Brisingamen", Item: userGoldItem.Brisingamen},
+      {id:4010, Img: Megingjard, name: "Megingjard", Item: userGoldItem.Megingjard},
     ]
     let EtcBox = [
       {id:1000, Img:Jellopy, name:"Jellopy", itemCheck:userGoldItem.Jellopy},

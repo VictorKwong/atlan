@@ -1201,9 +1201,9 @@ function Main(){
       (() => {
         switch (true) {
           // Is it Hit? Either Hit or Crit 100% can't dodge
-          case(((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
             //if Crit
-            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
@@ -1365,13 +1365,13 @@ function Main(){
       //Rerender, Block or not block
       (() => {
         switch (true) {
-          case((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
             //Audio SoundEffect
             userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
@@ -1398,7 +1398,7 @@ function Main(){
               $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
             }
             //Display Damage
-            if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
             }else{
               $('.storySpeech').append(`<p>Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1449,12 +1449,12 @@ function Main(){
       //Rerender, Block or not block
       (() => {
         switch (true) {
-          case((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
             //Audio SoundEffect
             userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
-            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
@@ -1478,7 +1478,7 @@ function Main(){
             }
 
             //Display Damage
-            if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
             }else{
               $('.storySpeech').append(`<p>Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
@@ -1581,11 +1581,11 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate- enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
@@ -1607,7 +1607,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
             }
-            if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
             }else{
               $('.storySpeech').append(`<p>Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1664,11 +1664,11 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
@@ -1690,7 +1690,7 @@ function Main(){
                 Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
             }
-            if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Head Crush!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
             }else{
               $('.storySpeech').append(`<p>Head Crush!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1747,11 +1747,11 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
@@ -1775,7 +1775,7 @@ function Main(){
             }
             EnemySlowClock = 10;
               $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
-              if((userStats.critRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+              if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
               }else{
                 $('.storySpeech').append(`<p>Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -2047,7 +2047,7 @@ function Main(){
     // Enemy AI
     const enemyDecisionQFn = () => {
       // setTimeout(() => (Uclock = 0), 300);
-      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef) + userStats.BaseFootGearDef * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
+      Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef + userStats.BaseAccessoryOneDef + userStats.BaseAccessoryTwoDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef + userStats.BaseAccessoryOneDef + userStats.BaseAccessoryTwoDef) * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       let Khit = Math.random();
       (() => {
           switch (true) {
@@ -2057,7 +2057,7 @@ function Main(){
               (() => {
               switch (true) {
                 // USER BLOCK
-                case (SkillControlRoom['User'].UserBlock && ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Khit)):
+                case (SkillControlRoom['User'].UserBlock && ((enemyStats[i].hitRate - userStats.dodgeRate - userStats.BonusdodgeRate).toFixed(3) >= Khit)):
                   dispatch(EnemyAttackAnimationFn(true));
                   setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserOnHitAnimationFn());
@@ -2109,7 +2109,7 @@ function Main(){
                       }
                   }
                 // USER HIT
-                case ((enemyStats[i].hitRate - userStats.dodgeRate).toFixed(3) >= Khit):
+                case ((enemyStats[i].hitRate - userStats.dodgeRate - userStats.BonusdodgeRate).toFixed(3) >= Khit):
                   dispatch(EnemyAttackAnimationFn(true));
                   setTimeout(() => dispatch(EnemyAttackAnimationFn(false)), 1050);
                   dispatch(UserOnHitAnimationFn());
@@ -2294,41 +2294,41 @@ function Main(){
                 case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemyStunClock <= 0) && (EnemySlowClock <= 0)):
                   Uclock = 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
                           }
                 case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemyStunClock > 0)):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar
                           }
                 case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemySlowClock > 0)):
                   Uclock = 1;
                   EnemySlowClock = EnemySlowClock - 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed) + 10,
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + 10,
                             enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
                           }
                 case (EnemyStunClock > 0):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
                             enemyClockBar: clockBarObject.enemyClockBar,
                           }
                   case (EnemySlowClock > 0):
                     Uclock = 1;
                     EnemySlowClock = EnemySlowClock - 1;
                     return clockBarObject = {
-                              userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                              userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
                               enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
                             }
                   default:
                     Uclock = 1;
                     return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed),
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
                           }
               }
