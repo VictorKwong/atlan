@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.ef1ad9c5.css",
-    "main.js": "/atlan/static/js/main.bff98082.js",
+    "main.css": "/atlan/static/css/main.33be6845.css",
+    "main.js": "/atlan/static/js/main.bcbe3306.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -92,6 +92,7 @@
     "static/media/PayonCave2F.jpg": "/atlan/static/media/PayonCave2F.48446ca323492029ec3b.jpg",
     "static/media/ChallengeTower4.jpg": "/atlan/static/media/ChallengeTower4.c75913574f1c4c79662c.jpg",
     "static/media/PayonCave2F1.jpg": "/atlan/static/media/PayonCave2F1.4f94b95eaada0ba845f4.jpg",
+    "static/media/VitialStrikeSoundEffect.mp3": "/atlan/static/media/VitialStrikeSoundEffect.9b7048897cd77722c1dd.mp3",
     "static/media/MammoniteSoundEffect.mp3": "/atlan/static/media/MammoniteSoundEffect.9632dc4b64ba1e679e19.mp3",
     "static/media/PayonCave2F2.jpg": "/atlan/static/media/PayonCave2F2.180269de7fcbe78c2d29.jpg",
     "static/media/PayonCave1F2.jpg": "/atlan/static/media/PayonCave1F2.a6819745ed9073500b0d.jpg",
@@ -237,12 +238,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.ef1ad9c5.css.map": "/atlan/static/css/main.ef1ad9c5.css.map",
-    "main.bff98082.js.map": "/atlan/static/js/main.bff98082.js.map",
+    "main.33be6845.css.map": "/atlan/static/css/main.33be6845.css.map",
+    "main.bcbe3306.js.map": "/atlan/static/js/main.bcbe3306.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef1ad9c5.css",
-    "static/js/main.bff98082.js"
+    "static/css/main.33be6845.css",
+    "static/js/main.bcbe3306.js"
   ]
 }
