@@ -275,15 +275,15 @@ const userStatsReducer = (state = Fn, action) => {
         case 'BonusEquipPointsFn':
             return {
                 ...state,
-                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5),
-                Bonusspeed: action.BonusAgi * 0.2 + action.BonusDex * 0.1,
-                BonusdodgeRate: action.BonusAgi * 0.01,
+                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack,
+                Bonusspeed: action.BonusAgi * 0.2 + action.BonusDex * 0.1 + action.Bonusspeed,
+                BonusdodgeRate: action.BonusAgi * 0.01 + action.BonusdodgeRate,
                 maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01)),
-                Bonusdefence: action.BonusVit * 0.5,
-                Bonusdefencebuffer: Math.floor(action.BonusVit * 1),
+                Bonusdefence: action.BonusVit * 0.5 + action.Bonusdefence,
+                Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
                 maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01)),
-                BonushitRate: action.BonusDex * 0.01,
-                BonuscritRate: action.BonusLuk * 0.03,
+                BonushitRate: action.BonusDex * 0.01 + action.BonushitRate,
+                BonuscritRate: action.BonusLuk * 0.03 + action.BonuscritRate,
             }
         case 'ResetMyPointsFn':
             return {
