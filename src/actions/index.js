@@ -1018,7 +1018,7 @@ export const ResetMyPointsFn = (BonusVit,BonusInt) => {
     return {
         type: 'ResetMyPointsFn',
         BonusVit:BonusVit,
-        BonusInt:BonusInt
+        BonusInt:BonusInt,
     };
 };
 
@@ -1871,7 +1871,7 @@ export const BonusLUKPointsFn = (BonusStr,BonusDex,BonusLuk) => {
         BonusLuk: BonusLuk,
     };
 };
-export const BonusEquipPointsFn = (BonusStr,BonusAgi,BonusVit,Vit,BonusInt,Int,BonusDex,BonusLuk,STRPoint,AGIPoint,VITPoint,INTPoint,DEXPoint,LUKPoint, Bonusattack, Bonusspeed, BonusdodgeRate, Bonusdefence, Bonusdefencebuffer, BonushitRate, BonuscritRate) => {
+export const BonusEquipPointsFn = (BonusStr,BonusAgi,BonusVit,Vit,BonusInt,Int,BonusDex,BonusLuk,STRPoint,AGIPoint,VITPoint,INTPoint,DEXPoint,LUKPoint, Bonusattack, Bonusspeed, BonusdodgeRate, Bonusdefence, Bonusdefencebuffer, BonushitRate, BonuscritRate, BonusHealth, BonusSP) => {
     return {
         type: 'BonusEquipPointsFn',
         BonusStr: BonusStr,
@@ -1894,7 +1894,9 @@ export const BonusEquipPointsFn = (BonusStr,BonusAgi,BonusVit,Vit,BonusInt,Int,B
         Bonusdefence: Bonusdefence,
         Bonusdefencebuffer: Bonusdefencebuffer,
         BonushitRate: BonushitRate,
-        BonuscritRate: BonuscritRate
+        BonuscritRate: BonuscritRate,
+        BonusHealth: BonusHealth,
+        BonusSP: BonusSP,
 
     };
 };
