@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.33be6845.css",
-    "main.js": "/atlan/static/js/main.bcbe3306.js",
+    "main.css": "/atlan/static/css/main.f32622b7.css",
+    "main.js": "/atlan/static/js/main.524229c0.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -238,12 +238,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.33be6845.css.map": "/atlan/static/css/main.33be6845.css.map",
-    "main.bcbe3306.js.map": "/atlan/static/js/main.bcbe3306.js.map",
+    "main.f32622b7.css.map": "/atlan/static/css/main.f32622b7.css.map",
+    "main.524229c0.js.map": "/atlan/static/js/main.524229c0.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.33be6845.css",
-    "static/js/main.bcbe3306.js"
+    "static/css/main.f32622b7.css",
+    "static/js/main.524229c0.js"
   ]
 }
