@@ -12,6 +12,9 @@ import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthF
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Function
 import { AcceptQuestDialogFn, ReturnQuestDialogFn} from './actions'
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
 import GeffenDungeon1F from './GeffenDungeon1F'
@@ -270,6 +273,7 @@ function StartMenu(props){
       {
       screenControlRoom.WorldMap ? <WorldMap/> :
       screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
+      screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
       <div className="GeffenMapBackground">
         <div className="storyMapScreen">
           {screenControlRoom.AltanEquipment ? 
@@ -356,6 +360,7 @@ function StartMenu(props){
                 <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                 <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                 <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
               </div>
           </div>
         </div>

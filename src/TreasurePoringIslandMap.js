@@ -18,10 +18,6 @@ import treasureBoxOpen from './img/NPC/TreasureBoxOpen.gif'
 import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 
 function StartMenu(){
-    const questControlRoom = useSelector(state => state.questControlRoom)
-    const userStats = useSelector(state => state.userStats)
-    const userGoldItem = useSelector(state => state.userGoldItem)
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
 

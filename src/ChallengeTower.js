@@ -4,7 +4,10 @@ import { GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
-//cutscene
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
+
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
@@ -107,6 +110,7 @@ const LoadingScreen3 = () => {
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         <div className="ChallengeTowerMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -166,6 +170,7 @@ const LoadingScreen3 = () => {
                   <button className="altanItems" onClick={() => {dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>

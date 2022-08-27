@@ -20,7 +20,7 @@ function StartMenu(){
     return(
       <div>
         {/* Click startGame goes to Main */}
-        {screenControlRoom.startGame && !screenControlRoom.gameTitleOptionScreen ? <StoryLineOne />
+        {screenControlRoom.startGame ? <StoryLineOne />
         // Click Option goes to GameOption
         : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
         : 

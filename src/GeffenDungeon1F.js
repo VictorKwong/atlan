@@ -10,6 +10,9 @@ import { GeffenDungeonChest1VisitRepeatFn } from './actions'
 import { GotoGeffenDungeon1FPath4Fn , ReturnGeffenDungeonPathFn} from './actions'
 //NPC
 import { GeffenDungeon1FSelfNPCFn , GeffenDungeon1FNiaNPCFn, ResetGeffenDungeonNPCFn } from './actions'
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import Geffen from './Geffen'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -150,6 +153,7 @@ function StartMenu(props){
         {
         screenControlRoom.Geffen ? <Geffen/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         <div className={screenControlRoom.GeffenDungeon1F && screenControlRoom.GeffenDungeon2F ? "GeffenDungeon2FMapBackground" : "GeffenDungeon1FMapBackground"}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -236,6 +240,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>

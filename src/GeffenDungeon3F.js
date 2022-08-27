@@ -12,6 +12,9 @@ import { GeffenDungeon3FNiaNPCFn , ResetGeffenDungeonNPCFn} from './actions';
 import { GotoGeffenDungeon3FPath3Fn } from './actions';
 //cutscene
 import {cutsceneFourFn} from './actions'
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import GeffenDungeon1F from './GeffenDungeon1F'
 import GeffenDungeon4F from './GeffenDungeon4F'
@@ -142,6 +145,7 @@ function StartMenu(props){
         {
         screenControlRoom.GeffenDungeon1F ? <GeffenDungeon1F /> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         <div className={screenControlRoom.GeffenDungeon3F && screenControlRoom.GeffenDungeon4F ? "GeffenDungeon4FMapBackground" : "GeffenDungeon3FMapBackground"}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -237,6 +241,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>

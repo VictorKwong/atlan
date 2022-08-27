@@ -4,6 +4,9 @@ import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn, G
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
 import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn } from './actions'
 import { cutsceneSixFn } from './actions'
+//Test
+import { gameTitleOptionScreenFn } from './actions'
+
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
 import PronteraCastle from './PronteraCastle'
@@ -24,6 +27,7 @@ import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
+import GameOption from './GameOption'
 import './css/storyMainMap.css'
 import $ from 'jquery'
 
@@ -733,6 +737,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
         screenControlRoom.cutsceneSix ? <StoryLineSix /> :
         screenControlRoom.cutsceneSeven ? <StoryLineSeven /> :
         screenControlRoom.cutsceneEnd ? <StoryLineEnd /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption /> :
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -756,7 +761,6 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
-
               <div className="StoryMap">
                 <h3 className="mapTitle">World Map</h3>
                 {/* click x trigger hover */}
@@ -830,6 +834,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>

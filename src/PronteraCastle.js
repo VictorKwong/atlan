@@ -10,7 +10,9 @@ import { UserLearnAmuletRecoveryFn } from './actions'
 import { FinalBossPathFn } from './actions'
 //ITEM
 import { SpiritOfDoppelgangerFn, SpiritOfWolyafaFn, SpiritOfEclipseFn, WinRedGemstoneFn, WinCursedRubyFn, WinDiamondFn} from './actions'
-
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import Prontera from './Prontera'
 import AltanEquipment from './AltanEquipment'
@@ -148,6 +150,7 @@ function StartMenu(props){
       <div>
         {
         screenControlRoom.Prontera ? <Prontera />:
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         screenControlRoom.PronteraCastle ?
         <div className="PronteraCastleMapBackground">
           <div className="storyMapScreen">
@@ -215,6 +218,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>

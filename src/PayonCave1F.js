@@ -12,6 +12,9 @@ import { GotoPayonCave1FPath3HiddenFn, ReturnPayonCavePathFn } from './actions'
 import { PayonCave1FSelfNPCHiddenFn, ResetPayonCaveNPCFn } from './actions'
 //QUEST
 import { AcceptQuestDialogFn, ProgressQuestDialogFn } from './actions'
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -162,6 +165,7 @@ function StartMenu(props){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         <div className={screenControlRoom.PayonCave1F && screenControlRoom.PayonCave2F ? "PayonCave2FMapBackground" : screenControlRoom.PayonCave1F && screenControlRoom.PayonCave3F ? "PayonCave3FMapBackground" : screenControlRoom.PayonCave1F ? "PayonCave1FMapBackground" : null}>
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -244,6 +248,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>

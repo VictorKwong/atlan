@@ -22,6 +22,9 @@ import { WinJellopyFn, WinEmptyBottleFn} from './actions'
 import { WinResultFn, UserLevelUpFn } from './actions';
 //cutscene
 import {cutsceneTwoFn} from './actions'
+//Music Options
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import TreasurePoringIslandMap from './TreasurePoringIslandMap'
@@ -345,6 +348,7 @@ useEffect(() => {
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.BattlePoringIslandMap ? <BattlePoringIslandMap /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         <div className="PoringIslandMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -444,6 +448,7 @@ useEffect(() => {
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn()); dispatch(ResetTrainingRateFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn()); dispatch(ResetTrainingRateFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn()); dispatch(ResetTrainingRateFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn()); dispatch(ResetTrainingRateFn());}}>Option</button>
                 </div>
             </div>
           </div>

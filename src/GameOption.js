@@ -11,21 +11,27 @@ const audioBGM = new Audio(OneStepCloser);
 const audioSoundEffect = new Audio(LoginSound)
 
 
-function GameOption(){
+function GameOption(props){
     const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const screenControlRoom = useSelector(state => state.screenControlRoom)
     const dispatch = useDispatch();
 
     useEffect(() => {
-      audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
-      audioSoundEffect.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
-      let playPromise = audioBGM.play(); 
-      if (playPromise !== undefined) {
-        playPromise.then(_ => {
-          audioBGM.loop = true;
-          audioBGM.play()
-        })
-        .catch(error => {
-        });
+      if(!screenControlRoom.startGame){
+        audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+        audioSoundEffect.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+        let playPromise = audioBGM.play(); 
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            audioBGM.loop = true;
+            audioBGM.play()
+          })
+          .catch(error => {
+          });
+        }
+      }else{
+        props.audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+        audioSoundEffect.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       }
     }, [audioControlRoom, dispatch])
     const soundEffectAudio = () => {
@@ -58,7 +64,7 @@ function GameOption(){
                 <button className="gameOptionButton" onClick={audioControlRoom.AudioVolumeSoundEffectFixed > 0.01 ? () => {dispatch(AudioVolumeSoundEffectSaverFn(-0.1)); soundEffectAudio();}: null}>-</button>
             </div>
             <div>
-              <button className="menuButton" onClick={() => {dispatch(returnToTitleScreenFn()); stopAudio();}}>Return to title</button>
+              <button className="menuButton" onClick={() => {dispatch(returnToTitleScreenFn()); stopAudio();}}>Return to Game</button>
             </div>
           </div>
         </div>

@@ -16,6 +16,9 @@ import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn ,
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Win ETC Items
 import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn } from './actions'
+//Test
+import { gameTitleOptionScreenFn } from './actions'
+import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
 import AltanEquipment from './AltanEquipment'
@@ -466,6 +469,7 @@ function StartMenu(props){
         {
         screenControlRoom.WorldMap ? <WorldMap/> :
         screenControlRoom.PronteraCastle ? <PronteraCastle /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         <div className="PronteraMapBackground">
           <div className="storyMapScreen">
             {screenControlRoom.AltanEquipment ? 
@@ -547,6 +551,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>
           </div>
