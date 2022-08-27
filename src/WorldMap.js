@@ -110,6 +110,16 @@ let VITBufferWeapon = 0;
 let INTBufferWeapon = 0;
 let DEXBufferWeapon = 0;
 let LUKBufferWeapon = 0;
+let BonusattackWeapon = 0;
+let BonusspeedWeapon = 0;
+let BonusdodgeRateWeapon = 0;
+let BonusdefenceWeapon = 0;
+let BonusdefencebufferWeapon = 0;
+let BonushitRateWeapon = 0;
+let BonuscritRateWeapon = 0;
+let BonusHealthWeapon = 0;
+let BonusSPWeapon = 0;
+
 
 let STRBufferHeadGear = 0;
 let AGIBufferHeadGear = 0;
@@ -117,6 +127,15 @@ let VITBufferHeadGear = 0;
 let INTBufferHeadGear = 0;
 let DEXBufferHeadGear = 0;
 let LUKBufferHeadGear = 0;
+let BonusattackHeadGear = 0;
+let BonusspeedHeadGear = 0;
+let BonusdodgeRateHeadGear = 0;
+let BonusdefenceHeadGear = 0;
+let BonusdefencebufferHeadGear = 0;
+let BonushitRateHeadGear = 0;
+let BonuscritRateHeadGear = 0;
+let BonusHealthHeadGear = 0;
+let BonusSPHeadGear = 0;
 
 let STRBufferArmor = 0;
 let AGIBufferArmor = 0;
@@ -124,6 +143,15 @@ let VITBufferArmor = 0;
 let INTBufferArmor = 0;
 let DEXBufferArmor = 0;
 let LUKBufferArmor = 0;
+let BonusattackArmor = 0;
+let BonusspeedArmor = 0;
+let BonusdodgeRateArmor = 0;
+let BonusdefenceArmor = 0;
+let BonusdefencebufferArmor = 0;
+let BonushitRateArmor = 0;
+let BonuscritRateArmor = 0;
+let BonusHealthArmor = 0;
+let BonusSPArmor = 0;
 
 let STRBufferGarment = 0;
 let AGIBufferGarment = 0;
@@ -131,6 +159,15 @@ let VITBufferGarment = 0;
 let INTBufferGarment = 0;
 let DEXBufferGarment = 0;
 let LUKBufferGarment = 0;
+let BonusattackGarment = 0;
+let BonusspeedGarment = 0;
+let BonusdodgeRateGarment = 0;
+let BonusdefenceGarment = 0;
+let BonusdefencebufferGarment = 0;
+let BonushitRateGarment = 0;
+let BonuscritRateGarment = 0;
+let BonusHealthGarment = 0;
+let BonusSPGarment = 0;
 
 let STRBufferFootGear = 0;
 let AGIBufferFootGear = 0;
@@ -138,6 +175,15 @@ let VITBufferFootGear = 0;
 let INTBufferFootGear = 0;
 let DEXBufferFootGear = 0;
 let LUKBufferFootGear = 0;
+let BonusattackFootGear = 0;
+let BonusspeedFootGear = 0;
+let BonusdodgeRateFootGear = 0;
+let BonusdefenceFootGear = 0;
+let BonusdefencebufferFootGear = 0;
+let BonushitRateFootGear = 0;
+let BonuscritRateFootGear = 0;
+let BonusHealthFootGear = 0;
+let BonusSPFootGear = 0;
 
 let STRBufferAccessoryOne = 0;
 let AGIBufferAccessoryOne = 0;
@@ -145,6 +191,15 @@ let VITBufferAccessoryOne = 0;
 let INTBufferAccessoryOne = 0;
 let DEXBufferAccessoryOne = 0;
 let LUKBufferAccessoryOne = 0;
+let BonusattackAccessoryOne = 0;
+let BonusspeedAccessoryOne = 0;
+let BonusdodgeRateAccessoryOne = 0;
+let BonusdefenceAccessoryOne = 0;
+let BonusdefencebufferAccessoryOne = 0;
+let BonushitRateAccessoryOne = 0;
+let BonuscritRateAccessoryOne = 0;
+let BonusHealthAccessoryOne = 0;
+let BonusSPAccessoryOne = 0;
 
 let STRBufferAccessoryTwo = 0;
 let AGIBufferAccessoryTwo = 0;
@@ -152,6 +207,15 @@ let VITBufferAccessoryTwo = 0;
 let INTBufferAccessoryTwo = 0;
 let DEXBufferAccessoryTwo = 0;
 let LUKBufferAccessoryTwo = 0;
+let BonusattackAccessoryTwo = 0;
+let BonusspeedAccessoryTwo = 0;
+let BonusdodgeRateAccessoryTwo = 0;
+let BonusdefenceAccessoryTwo = 0;
+let BonusdefencebufferAccessoryTwo = 0;
+let BonushitRateAccessoryTwo = 0;
+let BonuscritRateAccessoryTwo = 0;
+let BonusHealthAccessoryTwo = 0;
+let BonusSPAccessoryTwo = 0;
 
 //Kanata
 let CurrentWeapon = 0;  
@@ -355,7 +419,27 @@ function StartMenu(){
       setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
     }
     const HeadGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-      dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferHeadGear, userAttribute.BonusAgi + BonusAGI - AGIBufferHeadGear, userAttribute.BonusVit + BonusVIT - VITBufferHeadGear, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferHeadGear, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferHeadGear, userAttribute.BonusLuk + BonusLUK - LUKBufferHeadGear, BonusSTR - STRBufferHeadGear, BonusAGI - AGIBufferHeadGear, BonusVIT - VITBufferHeadGear, BonusINT - INTBufferHeadGear, BonusDEX - DEXBufferHeadGear, BonusLUK - LUKBufferHeadGear, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+      BonusattackHeadGear = BonusAttack;
+      BonusspeedHeadGear = BonusSpeed;
+      BonusdodgeRateHeadGear = BonusDodgeRate;
+      BonusdefenceHeadGear = BonusDefence;
+      BonusdefencebufferHeadGear = BonusDefenceBuffer;
+      BonushitRateHeadGear = BonusHitRate;
+      BonuscritRateHeadGear = BonusCritRate;
+      BonusHealthHeadGear = BonusHealth;
+      BonusSPHeadGear = BonusSP;
+
+      dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferHeadGear, userAttribute.BonusAgi + BonusAGI - AGIBufferHeadGear, userAttribute.BonusVit + BonusVIT - VITBufferHeadGear, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferHeadGear, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferHeadGear, userAttribute.BonusLuk + BonusLUK - LUKBufferHeadGear, BonusSTR - STRBufferHeadGear, BonusAGI - AGIBufferHeadGear, BonusVIT - VITBufferHeadGear, BonusINT - INTBufferHeadGear, BonusDEX - DEXBufferHeadGear, BonusLUK - LUKBufferHeadGear,
+      BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+      BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+      BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+      BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+      BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+      BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+      BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+      BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+      BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
       // Note Training = BonusSTR - STRBuffer
       // BonusSTRPointFn = Update Stats
       STRBufferHeadGear = BonusSTR;
@@ -377,7 +461,27 @@ function StartMenu(){
     }
 
     const WeaponEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-      dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferWeapon, userAttribute.BonusAgi + BonusAGI - AGIBufferWeapon, userAttribute.BonusVit + BonusVIT - VITBufferWeapon, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferWeapon, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferWeapon, userAttribute.BonusLuk + BonusLUK - LUKBufferWeapon, BonusSTR - STRBufferWeapon, BonusAGI - AGIBufferWeapon, BonusVIT - VITBufferWeapon, BonusINT - INTBufferWeapon, BonusDEX - DEXBufferWeapon, BonusLUK - LUKBufferWeapon, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+      BonusattackWeapon = BonusAttack;
+      BonusspeedWeapon = BonusSpeed;
+      BonusdodgeRateWeapon = BonusDodgeRate;
+      BonusdefenceWeapon = BonusDefence;
+      BonusdefencebufferWeapon = BonusDefenceBuffer;
+      BonushitRateWeapon = BonusHitRate;
+      BonuscritRateWeapon = BonusCritRate;
+      BonusHealthWeapon = BonusHealth;
+      BonusSPWeapon = BonusSP;
+
+      dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferWeapon, userAttribute.BonusAgi + BonusAGI - AGIBufferWeapon, userAttribute.BonusVit + BonusVIT - VITBufferWeapon, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferWeapon, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferWeapon, userAttribute.BonusLuk + BonusLUK - LUKBufferWeapon, BonusSTR - STRBufferWeapon, BonusAGI - AGIBufferWeapon, BonusVIT - VITBufferWeapon, BonusINT - INTBufferWeapon, BonusDEX - DEXBufferWeapon, BonusLUK - LUKBufferWeapon, 
+      BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+      BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+      BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+      BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+      BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+      BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+      BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+      BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+      BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
       // Note Training = BonusSTR - STRBuffer
       // BonusSTRPointFn = Update Stats
       STRBufferWeapon = BonusSTR;
@@ -400,7 +504,27 @@ function StartMenu(){
   }
 
   const ArmorEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-    dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferArmor, userAttribute.BonusAgi + BonusAGI - AGIBufferArmor, userAttribute.BonusVit + BonusVIT - VITBufferArmor, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferArmor, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferArmor, userAttribute.BonusLuk + BonusLUK - LUKBufferArmor, BonusSTR - STRBufferArmor, BonusAGI - AGIBufferArmor, BonusVIT - VITBufferArmor, BonusINT - INTBufferArmor, BonusDEX - DEXBufferArmor, BonusLUK - LUKBufferArmor, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+    BonusattackArmor = BonusAttack;
+    BonusspeedArmor = BonusSpeed;
+    BonusdodgeRateArmor = BonusDodgeRate;
+    BonusdefenceArmor = BonusDefence;
+    BonusdefencebufferArmor = BonusDefenceBuffer;
+    BonushitRateArmor = BonusHitRate;
+    BonuscritRateArmor = BonusCritRate;
+    BonusHealthArmor = BonusHealth;
+    BonusSPArmor = BonusSP;
+
+    dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferArmor, userAttribute.BonusAgi + BonusAGI - AGIBufferArmor, userAttribute.BonusVit + BonusVIT - VITBufferArmor, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferArmor, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferArmor, userAttribute.BonusLuk + BonusLUK - LUKBufferArmor, BonusSTR - STRBufferArmor, BonusAGI - AGIBufferArmor, BonusVIT - VITBufferArmor, BonusINT - INTBufferArmor, BonusDEX - DEXBufferArmor, BonusLUK - LUKBufferArmor,
+    BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+    BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+    BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+    BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+    BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+    BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+    BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+    BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+    BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
     // Note Training = BonusSTR - STRBuffer
     // BonusSTRPointFn = Update Stats
     STRBufferArmor = BonusSTR;
@@ -422,7 +546,27 @@ function StartMenu(){
 }
 
 const GarmentEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferGarment, userAttribute.BonusAgi + BonusAGI - AGIBufferGarment, userAttribute.BonusVit + BonusVIT - VITBufferGarment, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferGarment, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferGarment, userAttribute.BonusLuk + BonusLUK - LUKBufferGarment, BonusSTR - STRBufferGarment, BonusAGI - AGIBufferGarment, BonusVIT - VITBufferGarment, BonusINT - INTBufferGarment, BonusDEX - DEXBufferGarment, BonusLUK - LUKBufferGarment, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+  BonusattackGarment = BonusAttack;
+  BonusspeedGarment = BonusSpeed;
+  BonusdodgeRateGarment = BonusDodgeRate;
+  BonusdefenceGarment = BonusDefence;
+  BonusdefencebufferGarment = BonusDefenceBuffer;
+  BonushitRateGarment = BonusHitRate;
+  BonuscritRateGarment = BonusCritRate;
+  BonusHealthGarment = BonusHealth;
+  BonusSPGarment = BonusSP;
+
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferGarment, userAttribute.BonusAgi + BonusAGI - AGIBufferGarment, userAttribute.BonusVit + BonusVIT - VITBufferGarment, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferGarment, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferGarment, userAttribute.BonusLuk + BonusLUK - LUKBufferGarment, BonusSTR - STRBufferGarment, BonusAGI - AGIBufferGarment, BonusVIT - VITBufferGarment, BonusINT - INTBufferGarment, BonusDEX - DEXBufferGarment, BonusLUK - LUKBufferGarment,
+  BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+  BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+  BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+  BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+  BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+  BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+  BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+  BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+  BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
   // Note Training = BonusSTR - STRBuffer
   // BonusSTRPointFn = Update Stats
   STRBufferGarment = BonusSTR;
@@ -445,7 +589,27 @@ const GarmentEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, Bonus
 
 
 const FootGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferFootGear, userAttribute.BonusAgi + BonusAGI - AGIBufferFootGear, userAttribute.BonusVit + BonusVIT - VITBufferFootGear, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferFootGear, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferFootGear, userAttribute.BonusLuk + BonusLUK - LUKBufferFootGear, BonusSTR - STRBufferFootGear, BonusAGI - AGIBufferFootGear, BonusVIT - VITBufferFootGear, BonusINT - INTBufferFootGear, BonusDEX - DEXBufferFootGear, BonusLUK - LUKBufferFootGear, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+  BonusattackFootGear = BonusAttack;
+  BonusspeedFootGear = BonusSpeed;
+  BonusdodgeRateFootGear = BonusDodgeRate;
+  BonusdefenceFootGear = BonusDefence;
+  BonusdefencebufferFootGear = BonusDefenceBuffer;
+  BonushitRateFootGear = BonusHitRate;
+  BonuscritRateFootGear = BonusCritRate;
+  BonusHealthFootGear = BonusHealth;
+  BonusSPFootGear = BonusSP;
+
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferFootGear, userAttribute.BonusAgi + BonusAGI - AGIBufferFootGear, userAttribute.BonusVit + BonusVIT - VITBufferFootGear, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferFootGear, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferFootGear, userAttribute.BonusLuk + BonusLUK - LUKBufferFootGear, BonusSTR - STRBufferFootGear, BonusAGI - AGIBufferFootGear, BonusVIT - VITBufferFootGear, BonusINT - INTBufferFootGear, BonusDEX - DEXBufferFootGear, BonusLUK - LUKBufferFootGear,
+  BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+  BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+  BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+  BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+  BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+  BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+  BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+  BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+  BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
   // Note Training = BonusSTR - STRBuffer
   // BonusSTRPointFn = Update Stats
   STRBufferFootGear = BonusSTR;
@@ -467,7 +631,27 @@ const FootGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, Bonu
 }
 
 const AccessoryOneEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferAccessoryOne, userAttribute.BonusAgi + BonusAGI - AGIBufferAccessoryOne, userAttribute.BonusVit + BonusVIT - VITBufferAccessoryOne, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferAccessoryOne, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferAccessoryOne, userAttribute.BonusLuk + BonusLUK - LUKBufferAccessoryOne, BonusSTR - STRBufferAccessoryOne, BonusAGI - AGIBufferAccessoryOne, BonusVIT - VITBufferAccessoryOne, BonusINT - INTBufferAccessoryOne, BonusDEX - DEXBufferAccessoryOne, BonusLUK - LUKBufferAccessoryOne, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+  BonusattackAccessoryOne = BonusAttack;
+  BonusspeedAccessoryOne = BonusSpeed;
+  BonusdodgeRateAccessoryOne = BonusDodgeRate;
+  BonusdefenceAccessoryOne = BonusDefence;
+  BonusdefencebufferAccessoryOne = BonusDefenceBuffer;
+  BonushitRateAccessoryOne = BonusHitRate;
+  BonuscritRateAccessoryOne = BonusCritRate;
+  BonusHealthAccessoryOne = BonusHealth;
+  BonusSPAccessoryOne = BonusSP;
+
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferAccessoryOne, userAttribute.BonusAgi + BonusAGI - AGIBufferAccessoryOne, userAttribute.BonusVit + BonusVIT - VITBufferAccessoryOne, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferAccessoryOne, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferAccessoryOne, userAttribute.BonusLuk + BonusLUK - LUKBufferAccessoryOne, BonusSTR - STRBufferAccessoryOne, BonusAGI - AGIBufferAccessoryOne, BonusVIT - VITBufferAccessoryOne, BonusINT - INTBufferAccessoryOne, BonusDEX - DEXBufferAccessoryOne, BonusLUK - LUKBufferAccessoryOne,
+  BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+  BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+  BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+  BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+  BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+  BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+  BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+  BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+  BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
   // Note Training = BonusSTR - STRBuffer
   // BonusSTRPointFn = Update Stats
   STRBufferAccessoryOne = BonusSTR;
@@ -488,7 +672,27 @@ const AccessoryOneEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
 }
 
 const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
-  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferAccessoryTwo, userAttribute.BonusAgi + BonusAGI - AGIBufferAccessoryTwo, userAttribute.BonusVit + BonusVIT - VITBufferAccessoryTwo, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferAccessoryTwo, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferAccessoryTwo, userAttribute.BonusLuk + BonusLUK - LUKBufferAccessoryTwo, BonusSTR - STRBufferAccessoryTwo, BonusAGI - AGIBufferAccessoryTwo, BonusVIT - VITBufferAccessoryTwo, BonusINT - INTBufferAccessoryTwo, BonusDEX - DEXBufferAccessoryTwo, BonusLUK - LUKBufferAccessoryTwo, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP));
+
+  BonusattackAccessoryTwo = BonusAttack;
+  BonusspeedAccessoryTwo = BonusSpeed;
+  BonusdodgeRateAccessoryTwo = BonusDodgeRate;
+  BonusdefenceAccessoryTwo = BonusDefence;
+  BonusdefencebufferAccessoryTwo = BonusDefenceBuffer;
+  BonushitRateAccessoryTwo = BonusHitRate;
+  BonuscritRateAccessoryTwo = BonusCritRate;
+  BonusHealthAccessoryTwo = BonusHealth;
+  BonusSPAccessoryTwo = BonusSP;
+
+  dispatch(BonusEquipPointsFn(userAttribute.BonusStr + BonusSTR - STRBufferAccessoryTwo, userAttribute.BonusAgi + BonusAGI - AGIBufferAccessoryTwo, userAttribute.BonusVit + BonusVIT - VITBufferAccessoryTwo, userAttribute.vit, userAttribute.BonusInt + BonusINT - INTBufferAccessoryTwo, userAttribute.int, userAttribute.BonusDex + BonusDEX - DEXBufferAccessoryTwo, userAttribute.BonusLuk + BonusLUK - LUKBufferAccessoryTwo, BonusSTR - STRBufferAccessoryTwo, BonusAGI - AGIBufferAccessoryTwo, BonusVIT - VITBufferAccessoryTwo, BonusINT - INTBufferAccessoryTwo, BonusDEX - DEXBufferAccessoryTwo, BonusLUK - LUKBufferAccessoryTwo,
+  BonusattackWeapon + BonusattackHeadGear + BonusattackArmor + BonusattackGarment + BonusattackFootGear + BonusattackAccessoryOne + BonusattackAccessoryTwo,
+  BonusspeedWeapon + BonusspeedHeadGear + BonusspeedArmor + BonusspeedGarment + BonusspeedFootGear + BonusspeedAccessoryOne + BonusspeedAccessoryTwo,
+  BonusdodgeRateWeapon + BonusdodgeRateHeadGear + BonusdodgeRateArmor + BonusdodgeRateGarment + BonusdodgeRateFootGear + BonusdodgeRateAccessoryOne + BonusdodgeRateAccessoryTwo,
+  BonusdefenceWeapon + BonusdefenceHeadGear + BonusdefenceArmor + BonusdefenceGarment + BonusdefenceFootGear + BonusdefenceAccessoryOne + BonusdefenceAccessoryTwo,
+  BonusdefencebufferWeapon + BonusdefencebufferHeadGear + BonusdefencebufferArmor + BonusdefencebufferGarment + BonusdefencebufferFootGear + BonusdefencebufferAccessoryOne + BonusdefencebufferAccessoryTwo,
+  BonushitRateWeapon + BonushitRateHeadGear + BonushitRateArmor + BonushitRateGarment + BonushitRateFootGear + BonushitRateAccessoryOne + BonushitRateAccessoryTwo,
+  BonuscritRateWeapon + BonuscritRateHeadGear + BonuscritRateArmor + BonuscritRateGarment + BonuscritRateFootGear + BonuscritRateAccessoryOne + BonuscritRateAccessoryTwo,
+  BonusHealthWeapon + BonusHealthHeadGear + BonusHealthArmor + BonusHealthGarment + BonusHealthFootGear + BonusHealthAccessoryOne + BonusHealthAccessoryTwo,
+  BonusSPWeapon + BonusSPHeadGear + BonusSPArmor + BonusSPGarment + BonusSPFootGear + BonusSPAccessoryOne + BonusSPAccessoryTwo));
   // Note Training = BonusSTR - STRBuffer
   // BonusSTRPointFn = Update Stats
   STRBufferAccessoryTwo = BonusSTR;
