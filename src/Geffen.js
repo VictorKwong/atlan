@@ -306,7 +306,7 @@ function StartMenu(props){
             <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
             <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
             <button className="GeffenBase GeffenSoldier" onClick={() =>{dispatch(GeffenSoldierNPCFn()); changePlaceFadeAudio();}}><img src={GeffenSoldier} alt="GeffenSoldier"/></button>
-            <button className="GeffenBase GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>{
+            <button className="GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>{
                 screenControlRoom.GeffenDungeon1FPath1 &&
                 screenControlRoom.GeffenDungeon1FPath2 &&
                 screenControlRoom.GeffenDungeon1FPath3 &&

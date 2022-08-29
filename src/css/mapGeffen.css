@@ -34,8 +34,13 @@
   background-size: cover;
 }
 
+.GeffenBase:hover{
+  background: linear-gradient(135deg, rgb(167, 165, 165) 0%, rgb(175, 165, 23) 100%);
+}
+
 .GeffenWorldMap::before,
-.GeffenBase::before{
+.GeffenBase::before,
+.GeffenDungeon1F::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -52,7 +57,8 @@
   border: 1px solid #e2ff3c
 }
 .GeffenWorldMap:hover::before,
-.GeffenBase:hover::before{
+.GeffenBase:hover::before,
+.GeffenDungeon1F:hover::before{
   opacity: 1;
   background-image: url('../img/Background/WorldMap.jpg');
   background-position: center;
@@ -99,7 +105,8 @@
 }
 
 .GeffenWorldMap,
-.GeffenBase{
+.GeffenBase,
+.GeffenDungeon1F{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;

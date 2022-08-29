@@ -108,6 +108,8 @@ import BakonawaAgimatTattoo from './img/Equipment/Accessory/BakonawaAgimatTattoo
 import Brisingamen from './img/Equipment/Accessory/Brisingamen.gif'
 import Megingjard from './img/Equipment/Accessory/Megingjard.gif'
 
+import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
+
 let STRBufferWeapon = 0;
 let AGIBufferWeapon = 0;
 let VITBufferWeapon = 0;
@@ -234,8 +236,10 @@ let CurrentAccessoryTwo = 0;
 
 let listResult = document.getElementsByClassName('storyChat')[0];
 
-function StartMenu(){
+const audioBGM = new Audio(audioThemeOfProntera);
 
+function StartMenu(){
+    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
@@ -407,8 +411,11 @@ function StartMenu(){
     useEffect(() => {
         $('.mapTitle').fadeIn(600);
         $('.mapTitle').delay(2400).fadeOut(600);
+      //Not Depend on audioControlRoom
+      //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [screenControlRoom])
-    
+  
+
     //LEVEL FUNCTION
     useEffect(() => {
       //MAX Lv99
@@ -737,7 +744,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
         screenControlRoom.cutsceneSix ? <StoryLineSix /> :
         screenControlRoom.cutsceneSeven ? <StoryLineSeven /> :
         screenControlRoom.cutsceneEnd ? <StoryLineEnd /> :
-        screenControlRoom.gameTitleOptionScreen ? <GameOption /> :
+        screenControlRoom.gameTitleOptionScreen ? <GameOption audioBGM={audioBGM}/> :
         screenControlRoom.WorldMap ?
         <div className="StoryMapBackground">
           <div className="storyMapScreen">
@@ -765,8 +772,8 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                 <h3 className="mapTitle">World Map</h3>
                 {/* click x trigger hover */}
                 <button className="ReturnHUDBugFix"></button>
-                <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn())}}>Prontera</button>
-                <button className="PayonCave" onClick={() => dispatch(GotoPayonCave1FFn())}>{
+                <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn()); }}>Prontera</button>
+                <button className="PayonCave" onClick={() => {dispatch(GotoPayonCave1FFn()); }}>{
                       screenControlRoom.PayonCave1FPath1 &&
                       screenControlRoom.PayonCave1FPath2Hidden &&
                       screenControlRoom.PayonCave1FPath3Hidden &&
@@ -785,7 +792,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                       screenControlRoom.PayonCave3FPath3 &&
                       screenControlRoom.PayonCave3FPath4 ? <span>Payon Cave(⭐⭐)</span> : <span>Payon Cave</span>}
                 </button>
-                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn())}}>{
+                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn()); }}>{
                     screenControlRoom.PoringIslandPath1 &&
                     screenControlRoom.PoringIslandPath2 &&
                     screenControlRoom.PoringIslandPath3 &&
@@ -796,13 +803,13 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                     screenControlRoom.PoringIslandPath8 ? <span>Poring Island(⭐)</span> : <span>Poring Island</span>}
                 
                 </button>
-                <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn())}}>Geffen</button>
+                <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn()); }}>Geffen</button>
                 {screenControlRoom.FinalBossPath ?
                 <button className="FinalBoss" onClick={
                   screenControlRoom.storyLineSix ? 
-                  () => {LoadingScreen0();}:
-                  () => {dispatch(cutsceneSixFn());}}>Baphomet Gate💢</button> : null}
-                <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn())}}>{
+                  () => {LoadingScreen0(); }:
+                  () => {dispatch(cutsceneSixFn()); }}>Baphomet Gate💢</button> : null}
+                <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn()); }}>{
                     screenControlRoom.ChallengeTowerPath1 &&
                     screenControlRoom.ChallengeTowerPath2 &&
                     screenControlRoom.ChallengeTowerPath3 ? <span>RaidTower(⭐⭐⭐⭐)</span> : <span>RaidTower</span>}

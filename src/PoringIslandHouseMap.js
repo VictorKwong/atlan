@@ -29,12 +29,12 @@ function StartMenu(){
     
     let TrainingBox = [
       //WEAPON
-      {id:20001, Img:"", name:"STR Training", result:"Complete + 10 STR Training", Points:userAttribute.BonusStr, Confirm:GotoHouseTrainingSTRFn()},
-      {id:20002, Img:"", name:"AGI Training", result:"Complete + 10 AGI Training", Points:userAttribute.BonusAgi, Confirm:GotoHouseTrainingAGIFn()},
-      {id:20003, Img:"", name:"VIT Training", result:"Complete + 10 VIT Training", Points:userAttribute.BonusVit, Confirm:GotoHouseTrainingVITFn()},
-      {id:20004, Img:"", name:"INT Training", result:"Complete + 10 INT Training", Points:userAttribute.BonusInt, Confirm:GotoHouseTrainingINTFn()},
-      {id:20005, Img:"", name:"DEX Training", result:"Complete + 10 DEX Training", Points:userAttribute.BonusDex, Confirm:GotoHouseTrainingDEXFn()},
-      {id:20006, Img:"", name:"LUK Training", result:"Complete + 10 LUK Training", Points:userAttribute.BonusLuk, Confirm:GotoHouseTrainingLUKFn()}
+      {id:20001, Img:"", name:"STR Training", result:"Complete + 10 STR Training", Points:userAttribute.TrainingStr, Confirm:GotoHouseTrainingSTRFn()},
+      {id:20002, Img:"", name:"AGI Training", result:"Complete + 10 AGI Training", Points:userAttribute.TrainingAgi, Confirm:GotoHouseTrainingAGIFn()},
+      {id:20003, Img:"", name:"VIT Training", result:"Complete + 10 VIT Training", Points:userAttribute.TrainingVit, Confirm:GotoHouseTrainingVITFn()},
+      {id:20004, Img:"", name:"INT Training", result:"Complete + 10 INT Training", Points:userAttribute.TrainingInt, Confirm:GotoHouseTrainingINTFn()},
+      {id:20005, Img:"", name:"DEX Training", result:"Complete + 10 DEX Training", Points:userAttribute.TrainingDex, Confirm:GotoHouseTrainingDEXFn()},
+      {id:20006, Img:"", name:"LUK Training", result:"Complete + 10 LUK Training", Points:userAttribute.TrainingLuk, Confirm:GotoHouseTrainingLUKFn()}
     ]
     const dispatch = useDispatch();
 

@@ -84,6 +84,15 @@
   border: solid #3c70ff 1px;
 }
 
+.PronternaKing:hover,
+.PronternaAssistant:hover,
+.PronternaRoyalGuard1:hover,
+.PronternaRoyalGuard2:hover{
+  background: linear-gradient(135deg, rgb(134, 134, 134) 0%, rgb(33, 73, 158) 100%);
+}
+
+
+
 .PronternaKing,
 .PronternaAssistant,
 .PronternaRoyalGuard1,

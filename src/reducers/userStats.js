@@ -2,7 +2,7 @@
 const Fn = {
     Level: 1,
     Experience: 0,
-    maxHealth: 149,
+    maxHealth: 150,
     currentHealth: 100,
     maxSP: 50,
     currentSP: 3,
