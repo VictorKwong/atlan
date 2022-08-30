@@ -13,6 +13,8 @@ const Fn = {
         UserLearnLifeStealAttack: false,
         UserLearnMasterItem: true,
         UserLearnAmuletRecovery: true,
+        UserFirstGift: false,
+        UserSecondGift: false,
         //UserTriggerMasterItem
         UserTriggerMasterItem: true,
         //Stable Skills Scale
@@ -293,6 +295,22 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     EnemyDefenceBreak: state['Enemy'].EnemyDefenceBreak -1,
             }
         }
+        case 'UserFirstGiftFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserFirstGift: action.trigger,
+                }
+            }
+        case 'UserSecondGiftFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    UserSecondGift: action.trigger,
+                }
+            }
         default:
             return {
                     ...state

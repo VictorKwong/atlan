@@ -238,6 +238,26 @@ export const returnToTitleScreenFn = () => {
         type: 'returnToTitleScreenFn',
     };
 };
+export const storyLineTalentFn = (walkthrough) => {
+    return {
+        type: 'storyLineTalentFn',
+        walkthrough: walkthrough
+    };
+};
+export const UserFirstGiftFn = (trigger) => {
+    return {
+        type: 'UserFirstGiftFn',
+        trigger: trigger
+    };
+};
+export const UserSecondGiftFn = (trigger) => {
+    return {
+        type: 'UserSecondGiftFn',
+        trigger: trigger
+    };
+};
+
+
 
 export const finishStoryLineOneFn = () => {
     return {

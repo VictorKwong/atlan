@@ -239,7 +239,6 @@ let listResult = document.getElementsByClassName('storyChat')[0];
 const audioBGM = new Audio(audioThemeOfProntera);
 
 function StartMenu(){
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)

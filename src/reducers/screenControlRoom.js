@@ -3,6 +3,7 @@ const Fn = {
     startGame: false,
     gameTitleOptionScreen: false,
     //Open
+    storyLineTalent: false,
     storyLineOne: false,
     //EclipseBoss
     storyLineTwo: false,
@@ -179,7 +180,11 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 gameTitleOptionScreen: !state.gameTitleOptionScreen,
-
+            }
+        case 'storyLineTalentFn':
+            return {
+                ...state,
+                storyLineTalent: action.walkthrough
             }
         case 'finishStoryLineOneFn':
             return {

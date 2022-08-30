@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startGameFn, gameTitleOptionScreenFn } from './actions';
 import StoryLineOne from './StoryLineOne'
+import StoryLineTalent from './StoryLineTalent'
 import GameOption from './GameOption';
 import './css/startMenu.css'
 
@@ -20,7 +21,7 @@ function StartMenu(){
     return(
       <div>
         {/* Click startGame goes to Main */}
-        {screenControlRoom.startGame ? <StoryLineOne />
+        {screenControlRoom.startGame ? <StoryLineTalent />
         // Click Option goes to GameOption
         : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
         : 
