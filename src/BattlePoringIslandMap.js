@@ -2219,6 +2219,16 @@ function Main(){
               dispatch(UserBattleStatsFn());
               //testing
               dispatch(EnemyAttackUserFn(1));
+              if(SkillControlRoom['User'].UserLearnMagnificat){
+                //Magnificat user AmuletRecoveryFn
+                Damage = 30;
+                SPHeal = 5;
+                dispatch(UserOnHPHealAnimationFn(true));
+                setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
+                setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);
+                setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1100);
+                dispatch(AmuletRecoveryFn(30,5));
+              }
               clockCheck = 1;
               dispatch(UserTurnFn());
               $('.storySpeech').append('<p>--------- Atlan Turn ---------</p>')

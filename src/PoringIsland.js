@@ -76,12 +76,12 @@ function StartMenu(props){
     const dispatch = useDispatch();
 
     let TrainingBox = [
-      {id:20001, Attr:TrainingSTRFn(1), name:"STR", Points:userAttribute.TrainingStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn(userAttribute.BonusStr + 1,userAttribute.BonusDex,userAttribute.BonusLuk)},
-      {id:20002, Attr:TrainingAGIFn(1), name:"AGI", Points:userAttribute.TrainingAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn(userAttribute.BonusAgi + 1, userAttribute.BonusDex)},
+      {id:20001, Attr:TrainingSTRFn(1), name:"STR", Points:userAttribute.TrainingStr, select: screenControlRoom.HouseTrainingSTR, effect:BonusSTRPointsFn()},
+      {id:20002, Attr:TrainingAGIFn(1), name:"AGI", Points:userAttribute.TrainingAgi, select: screenControlRoom.HouseTrainingAGI, effect:BonusAGIPointsFn()},
       {id:20003, Attr:TrainingVITFn(1), name:"VIT", Points:userAttribute.TrainingVit, select: screenControlRoom.HouseTrainingVIT, effect:BonusVITPointsFn(userAttribute.BonusVit + 1,userAttribute.vit)},
       {id:20004, Attr:TrainingINTFn(1), name:"INT", Points:userAttribute.TrainingInt, select: screenControlRoom.HouseTrainingINT, effect:BonusINTPointsFn(userAttribute.BonusInt + 1,userAttribute.int)},
-      {id:20005, Attr:TrainingDEXFn(1), name:"DEX", Points:userAttribute.TrainingDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn(userAttribute.BonusStr,userAttribute.BonusAgi,userAttribute.BonusDex + 1,userAttribute.TrainingLuk)},
-      {id:20006, Attr:TrainingLUKFn(1), name:"LUK", Points:userAttribute.TrainingLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn(userAttribute.BonusStr,userAttribute.BonusDex,userAttribute.BonusLuk + 1)}
+      {id:20005, Attr:TrainingDEXFn(1), name:"DEX", Points:userAttribute.TrainingDex, select: screenControlRoom.HouseTrainingDEX, effect:BonusDEXPointsFn()},
+      {id:20006, Attr:TrainingLUKFn(1), name:"LUK", Points:userAttribute.TrainingLuk, select: screenControlRoom.HouseTrainingLUK, effect:BonusLUKPointsFn()}
     ]
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);

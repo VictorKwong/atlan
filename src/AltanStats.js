@@ -4,7 +4,7 @@ import { GotoAltanStatsFn, GotoImageEquipmentFn } from './actions';
 import './css/mapAltanStats.css'
 
 import { STRPointsFn , AGIPointsFn , VITPointsFn , INTPointsFn , DEXPointsFn , LUKPointsFn } from './actions'
-import { GotoStatsChoiceFn , GotoSkillChoiceFn , GotoGuildChoiceFn } from './actions'
+import { GotoStatsChoiceFn , GotoGiftChoiceFn , GotoGuildChoiceFn } from './actions'
 
 //Skills
 import { UserSkillFirstAidFn } from './actions'
@@ -54,6 +54,16 @@ import skillKodoku from './img/Skill/pr_kodoku.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
+//GIFT
+import SwordMastery from './img/Gift/SwordMastery.gif'
+import Swiftness from './img/Gift/Swiftness.gif'
+import Gloria from './img/Gift/Gloria.gif'
+import Endure from './img/Gift/Endure.gif'
+import ImpositioManus from './img/Gift/ImpositioManus.gif'
+import AttentionConcentrate from './img/Gift/AttentionConcentrate.gif'
+import Blessing from './img/Gift/Blessing.gif'
+import Magnificat from './img/Gift/Magnificat.gif'
+
 import guildMasterItem from './img/Skill/gd_masteritem.gif'
 import guildDoubleAttack from './img/Skill/gd_doubleattack.gif'
 import guildLifeSteal from './img/Skill/gd_lifesteal.gif'
@@ -66,15 +76,25 @@ function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const dispatch = useDispatch();
-    let SkillBox = [
-      {id:20000, Img:skillFirstAid, name:"First Aid", skillLevelCheck:1, title:"SP:30, Heal small amount of health", Activate:UserSkillFirstAidFn()},
-      {id:20001, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal damage to enemy"},
-      {id:20002, Img:skillMammonite, name:"Mammonite", skillLevelCheck:1, title:"Deal small amount damage to enemy and recieved zeny"},
-      {id:20003, Img:skillKodoku, name:"Kodoku", skillLevelCheck:1, title:"Make target enemy become poison for 5 rounds"},
-      {id:20004, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal damage to enemy"},
-      {id:20005, Img:skillHeadCrush, name:"Head Crush", skillLevelCheck:1, title:"Deal damage to enemy"},
-      {id:20006, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
-      {id:20007, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
+    // let SkillBox = [
+    //   {id:20000, Img:skillFirstAid, name:"First Aid", skillLevelCheck:1, title:"SP:30, Heal small amount of health", Activate:UserSkillFirstAidFn()},
+    //   {id:20001, Img:skillBash, name:"Bash", skillLevelCheck:1, title:"Deal damage to enemy"},
+    //   {id:20002, Img:skillMammonite, name:"Mammonite", skillLevelCheck:1, title:"Deal small amount damage to enemy and recieved zeny"},
+    //   {id:20003, Img:skillKodoku, name:"Kodoku", skillLevelCheck:1, title:"Make target enemy become poison for 5 rounds"},
+    //   {id:20004, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:1, title:"Deal damage to enemy"},
+    //   {id:20005, Img:skillHeadCrush, name:"Head Crush", skillLevelCheck:1, title:"Deal damage to enemy"},
+    //   {id:20006, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
+    //   {id:20007, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
+    // ]
+        let GiftBox = [
+      {id:20000, Img:SwordMastery, name:"Sword Mastery", title:"Sword Master - Attack + 50"},
+      {id:20001, Img:Swiftness, name:"Swiftness", title:"Swiftness - Flee + 15"},
+      {id:20002, Img:Gloria, name:"Gloria", title:"Gloria - Luk + 10"},
+      {id:20003, Img:Endure, name:"Endure", title:"Endure - HP + 100 and SP + 30"},
+      {id:20004, Img:ImpositioManus, name:"Impositio Manus", title:"Impositio Manus - Attack + 30"},
+      {id:20005, Img:AttentionConcentrate, name:"Attention Concentrate", title:"Attention Concentrate - AGI/DEX + 7"},
+      {id:20006, Img:Blessing, name:"Blessing", title:"Blessing - STR/DEX/INT + 5"},
+      {id:20007, Img:Magnificat, name:"Magnificat", title:"Magnificat - Recover HP + 30 SP + 5"},
     ]
     let GuildBox = [
       {id:100, Img:guildMasterItem, name:"Master Item", skillLevelCheck:1, title:"Can Use Item x2 during your turn", condition:SkillControlRoom['User'].UserLearnMasterItem},
@@ -98,7 +118,7 @@ function StartMenu(){
       <div className="AltanStatsMap">
         <h2 className="altanStatsTitle">Status</h2>
         <button className={screenControlRoom.StatsChoice ? "StatusSelectionButton StatusSelctionButtonBeingSelect" : "StatusSelectionButton"} onClick={() => dispatch(GotoStatsChoiceFn())}>Stats</button>
-        <button className={screenControlRoom.SkillChoice ? "StatusSelectionButton StatusSelctionButtonBeingSelect" : "StatusSelectionButton"} onClick={() => dispatch(GotoSkillChoiceFn())}>Skill</button>
+        <button className={screenControlRoom.GiftChoice ? "StatusSelectionButton StatusSelctionButtonBeingSelect" : "StatusSelectionButton"} onClick={() => dispatch(GotoGiftChoiceFn())}>Gift</button>
         <button className={screenControlRoom.GuildChoice ? "StatusSelectionButton StatusSelctionButtonBeingSelect" : "StatusSelectionButton"} onClick={() => dispatch(GotoGuildChoiceFn())}>Guild</button>
         {screenControlRoom.StatsChoice ?
         <div className="statsBoxDisplay">
@@ -288,24 +308,32 @@ function StartMenu(){
             <button className="altanStatsButton statsBackButtonPosition" onClick={() =>{dispatch(GotoAltanStatsFn());}}>back</button>
           </div>
         </div> : null}
-        {screenControlRoom.SkillChoice ?
+        {screenControlRoom.GiftChoice ?
           <div className="skillBoxDisplay">
-            {SkillBox.map(Skill => {
+            {GiftBox.map(Skill => {
               return( 
+                // <span key={Skill.id}>
+                //   {Skill.name === "First Aid" ?
+                //   <button className={userStats.currentSP >= 30 ? "atlanSkillButton atlanSkillButtonFix" : "atlanSkillButton atlanSkillButtonFix atlanSkillButtonNeedMoreSP"} title={Skill.title} onClick={
+                //     userStats.currentSP >= 30 && userStats.currentHealth !== userStats.maxHealth?
+                //     () => dispatch(Skill.Activate) : null}>
+                //     <div className="adjImgCenterBox">
+                //       <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
+                //     </div>
+                //     </button> :
+                //   userStats.Level >= Skill.skillLevelCheck ? <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} disabled>
+                //     <div className="adjImgCenterBox">
+                //       <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
+                //     </div>
+                //     </button> : null}
+                // </span>
                 <span key={Skill.id}>
-                  {Skill.name === "First Aid" ?
-                  <button className={userStats.currentSP >= 30 ? "atlanSkillButton atlanSkillButtonFix" : "atlanSkillButton atlanSkillButtonFix atlanSkillButtonNeedMoreSP"} title={Skill.title} onClick={
-                    userStats.currentSP >= 30 && userStats.currentHealth !== userStats.maxHealth?
-                    () => dispatch(Skill.Activate) : null}>
+                  {Skill.name === userStats.FirstGiftName || Skill.name === userStats.SecondGiftName ?
+                  <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} disabled>
                     <div className="adjImgCenterBox">
-                      <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
+                      <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name}</p>
                     </div>
-                    </button> :
-                  userStats.Level >= Skill.skillLevelCheck ? <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} disabled>
-                    <div className="adjImgCenterBox">
-                      <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
-                    </div>
-                    </button> : null}
+                  </button> : null}
                 </span>
               )})}
             </div>: null }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { storyLineTalentFn, UserFirstGiftFn, UserSecondGiftFn } from './actions';
+
+import { GiftOneFn, GiftTwoFn } from './actions';
 import StoryLineOne from './StoryLineOne'
 import './css/storyLineTalent.css'
 import $ from 'jquery'
@@ -40,43 +42,12 @@ function StartMenu(){
       })()
     }
     const AcceptFunction = (First,Second) => {
-      (() => {
-        switch (true) {
-          case (First === 1):
-            BonusattackWeapon = 50;
-            break;
-          case (First === 2):
-            BonusdodgeRateWeapon = 0.15;
-            break;
-          case (First === 3):
-            LUKBufferWeapon = 10;
-            break;
-          case (First === 4):
-            BonusHealthWeapon = 100;
-            BonusSPWeapon = 30;
-            break;
-        }  
-      })()
-      (() => {
-        switch (true) {
-          case (Second === 5):
-            BonusattackWeapon = 50;
-            break;
-          case (Second === 6):
-            BonusdodgeRateWeapon = 0.15;
-            break;
-          case (Second === 7):
-            LUKBufferWeapon = 10;
-            break;
-          case (Second === 8):
-            BonusHealthWeapon = 100;
-            BonusSPWeapon = 30;
-            break;
-        }  
-      })()
+      dispatch(GiftOneFn(First));
+      dispatch(GiftTwoFn(Second));
+      dispatch(storyLineTalentFn(true));
     }
 
-    const refuseFunction = (First,Second) => {
+    const refuseFunction = () => {
       Story = 0;
       FirstGift = 0;
       SecondGift = 0;
@@ -144,7 +115,7 @@ function StartMenu(){
                 </button>
               </span>
               <span>
-                <button className="TalentButton altanEquipmentButtonFix" onClick={() => {refuseFunction(FirstGift,SecondGift);}}>
+                <button className="TalentButton altanEquipmentButtonFix" onClick={() => {refuseFunction();}}>
                   <div className="adjImgCenterBox">
                     <p className="adjImgCenter">NO</p>
                   </div>
@@ -154,9 +125,9 @@ function StartMenu(){
           <fieldset className="storyChat">
           <legend className="storyCharacterOne">Atlan</legend>
           <p className="storySpeech"></p>
-              <div>
+              {/* <div>
                 <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(storyLineTalentFn(true));}}>Continue</button>
-              </div>
+              </div> */}
         
           </fieldset>
         </div>

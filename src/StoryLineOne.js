@@ -30,7 +30,6 @@ function StartMenu(){
           return ;
         // Finish Reading, Not ending, Able to click Next
         case(i === (storyLineOne['storyLineOne'][textReadAndSpeed.count].text).length):
-          console.log(storyLineOne['storyLineOne'].length);
           $('.nextLine').prop("disabled", false);
           return null;
         default:

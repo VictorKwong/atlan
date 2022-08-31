@@ -44,9 +44,19 @@ const Fn = {
     BonushitRate: 0,
     BonusdodgeRate: 0,
     BonuscritRate: 0,
-
     BonusHealth:0,
     BonusSP:0,
+
+    //Training
+    Trainingattack: 0,
+    Trainingdefence: 0,
+    Trainingdefencebuffer: 0,
+    Trainingspeed: 0,
+    TraininghitRate: 0,
+    TrainingdodgeRate: 0,
+    TrainingcritRate: 0,
+    FirstGiftName: '',
+    SecondGiftName: '',
 
     //Reset
     BasemaxHealth: 149,
@@ -236,59 +246,161 @@ const userStatsReducer = (state = Fn, action) => {
         case 'BonusSTRPointsFn':
             return {
                 ...state,
-                //Recover
-                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5)
+                Trainingattack: state.Trainingattack + 1,
+                Bonusattack: state.Bonusattack + 1,
             }
         case 'BonusAGIPointsFn':
             return {
                 ...state,
                 //Recover
-                Bonusspeed: action.BonusAgi * 0.2 + action.BonusDex * 0.1,
-                BonusdodgeRate: action.BonusAgi * 0.01
+                Trainingspeed: state.Trainingspeed + 0.2,
+                TrainingdodgeRate: state.TrainingdodgeRate + 0.01,
+
+                Bonusspeed: state.Bonusspeed + 0.2,
+                BonusdodgeRate: state.BonusdodgeRate + 0.01
             }
         case 'BonusVITPointsFn':
             return {
                 ...state,
-                maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01)),
-                //Recover
-                Bonusdefence: action.BonusVit * 0.5,
-                Bonusdefencebuffer: Math.floor(action.BonusVit * 1),
+                Trainingdefence: state.defence + 0.5,
+                Trainingdefencebuffer: state.defencebuffer + 1,
+                maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + state.BonusHealth),
+
+                Bonusdefence: state.Bonusdefence + 0.5,
+                Bonusdefencebuffer: state.Bonusdefencebuffer + 1,
             }
         case 'BonusINTPointsFn':
             return {
                 ...state,
-                maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01)),
+                maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + state.BonusSP),
                 //Recover
             }
         case 'BonusDEXPointsFn':
             return {
                 ...state,
                 //Recover
-                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5),
-                Bonusspeed: action.BonusAgi * 0.2 + action.BonusDex * 0.1,
-                BonushitRate: action.BonusDex * 0.01 ,
+                Trainingattack: state.Trainingattack + 0.2,
+                Trainingspeed: state.Trainingspeed + 0.1,
+                TraininghitRate: state.TraininghitRate + 0.01,
+
+                Bonusattack: state.Bonusattack + 0.2,
+                Bonusspeed: state.Bonusspeed + 0.1,
+                BonushitRate: state.BonushitRate + 0.01
             }
         case 'BonusLUKPointsFn':
             return {
                 ...state,
                 //Recover
-                BonuscritRate: action.BonusLuk * 0.03 ,
-                Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5),
+                TrainingcritRate: state.TrainingcritRate + 0.03,
+                Trainingattack: state.attack + 0.5,
+
+                BonuscritRate: state.BonuscritRate + 0.03,
+                Bonusattack: state.Bonusattack + 0.5
+            }
+        case 'GiftOneFn':
+            switch(true){
+                case(action.One === 1):
+                    return {
+                        ...state,
+                        //Atk + 50
+                        Trainingattack: state.Trainingattack + 50,
+                        Bonusattack: state.Bonusattack + 50,
+                        FirstGiftName: 'Sword Master'
+                    }
+                case(action.One === 2):
+                    return {
+                        ...state,
+                        //Flee + 15
+                        TrainingdodgeRate: state.TrainingdodgeRate + 0.15,
+                        BonusdodgeRate: state.BonusdodgeRate + 0.15,
+                        FirstGiftName: 'Swiftness',
+                    }
+                case(action.One === 3):
+                    return {
+                        ...state,
+                        //LUK + 10
+                        TrainingcritRate: state.TrainingcritRate + 0.3,
+                        Trainingattack: state.attack + 5,
+        
+                        BonuscritRate: state.BonuscritRate + 0.3,
+                        Bonusattack: state.Bonusattack + 5,
+                        FirstGiftName: 'Gloria',
+                    }
+                case(action.One === 4):
+                    return {
+                        ...state,
+                        //HP + 100, SP + 30
+                        maxHealth: state.maxHealth + 100,
+                        maxSP: state.maxSP + 30,
+                        BasemaxHealth: state.BasemaxHealth + 100,
+                        BasemaxSP: state.BasemaxSP + 30,
+                        FirstGiftName: 'Endure',
+                    }
+                default:
+                    return{
+                        ...state,
+                    }
+            }
+        case 'GiftTwoFn':
+            switch(true){
+                case(action.Two === 5):
+                    return {
+                        ...state,
+                        //Atk + 30
+                        Trainingattack: state.Trainingattack + 30,
+                        Bonusattack: state.Bonusattack + 30,
+                        SecondGiftName: 'Impositio Manus',
+                    }
+                case(action.Two === 6):
+                    return {
+                        ...state,
+                        //AGI/DEX + 7
+                        Trainingspeed: state.Trainingspeed + 2.1,
+                        TrainingdodgeRate: state.TrainingdodgeRate + 0.07,
+                        Trainingattack: state.Trainingattack + 1.4,
+                        TraininghitRate: state.TraininghitRate + 0.07,
+
+                        Bonusspeed: state.Bonusspeed + 2.1,
+                        BonusdodgeRate: state.BonusdodgeRate + 0.07,
+                        Bonusattack: state.Bonusattack + 1.4,
+                        BonushitRate: state.BonushitRate + 0.07,
+                        SecondGiftName: 'Attention Concentrate',
+                    }
+                case(action.Two === 7):
+                    return {
+                        ...state,
+                        //STR/INT/DEX + 5
+                        Trainingattack: state.Trainingattack + 6,
+                        Trainingspeed: state.Trainingspeed + 0.5,
+                        TraininghitRate: state.TraininghitRate + 0.05,
+
+                        maxSP: Math.floor(state.BasemaxSP * (1 + (5) *0.01) + state.BonusSP),
+
+                        Bonusattack: state.Bonusattack + 6,
+                        Bonusspeed: state.Bonusspeed + 0.5,
+                        BonushitRate: state.BonushitRate + 0.05,
+                        SecondGiftName: 'Blessing',
+                    }
+                default:
+                    return{
+                        ...state,
+                        SecondGiftName: 'Magnificat',
+                    }
             }
         case 'BonusEquipPointsFn':
             switch(true){
                 case ((Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + action.BonusHealth) < state.currentHealth) && (Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + action.BonusSP) < state.currentSP)):
                     return {
                         ...state,
-                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack,
-                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed,
-                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
+                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack + state.Trainingattack,
+                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed + state.Trainingspeed,
+                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate + state.TrainingdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + action.BonusHealth),
-                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: state.Bonusdefencebuffer + Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence + state.Trainingdefence,
+                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer + state.Trainingdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + action.BonusSP),
-                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
-                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
+                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate + state.TraininghitRate,
+                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate + state.TrainingcritRate,
                         BonusHealth: action.BonusHealth,
                         BonusSP: action.BonusSP,
                         //Debug Reset Stats Point, Unequip Item
@@ -298,15 +410,15 @@ const userStatsReducer = (state = Fn, action) => {
                 case (Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + action.BonusHealth) < state.currentHealth):
                     return {
                         ...state,
-                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack,
-                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed,
-                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
+                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack + state.Trainingattack,
+                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed + state.Trainingspeed,
+                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate + state.TrainingdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + action.BonusHealth),
-                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: state.Bonusdefencebuffer + Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence + state.Trainingdefence,
+                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer + state.Trainingdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + action.BonusSP),
-                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
-                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
+                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate + state.TraininghitRate,
+                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate + state.TrainingcritRate,
                         BonusHealth: action.BonusHealth,
                         BonusSP: action.BonusSP,
                         //Debug Reset Stats Point, Unequip Item
@@ -315,16 +427,15 @@ const userStatsReducer = (state = Fn, action) => {
                 case (Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + action.BonusSP) < state.currentSP):
                     return {
                         ...state,
-                        ...state,
-                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack,
-                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed,
-                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
+                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack + state.Trainingattack,
+                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed + state.Trainingspeed,
+                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate + state.TrainingdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + action.BonusHealth),
-                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: state.Bonusdefencebuffer + Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence + state.Trainingdefence,
+                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer + state.Trainingdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + action.BonusSP),
-                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
-                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
+                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate + state.TraininghitRate,
+                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate + state.TrainingcritRate,
                         BonusHealth: action.BonusHealth,
                         BonusSP: action.BonusSP,
                         //Debug Reset Stats Point, Unequip Item
@@ -333,17 +444,17 @@ const userStatsReducer = (state = Fn, action) => {
                 default:
                     return {
                         ...state,
-                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack,
-                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed,
-                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
+                        Bonusattack: Math.floor(action.BonusStr * 1 + action.BonusDex * 0.2 + action.BonusLuk * 0.5) + action.Bonusattack + state.Trainingattack,
+                        Bonusspeed: (action.BonusAgi * 0.2 + action.BonusDex * 0.1) + action.Bonusspeed + state.Trainingspeed,
+                        BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate + state.TrainingdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + action.BonusHealth),
-                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: state.Bonusdefencebuffer + Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence + state.Trainingdefence,
+                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer + state.Trainingdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int + action.BonusInt) *0.01) + action.BonusSP),
-                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
-                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
+                        BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate + state.TraininghitRate,
+                        BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate + state.TrainingcritRate,
                         BonusHealth: action.BonusHealth,
-                        BonusSP: action.BonusSP
+                        BonusSP: action.BonusSP,
                     }
             }   
         case 'ResetMyPointsFn':

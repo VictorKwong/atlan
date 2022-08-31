@@ -151,7 +151,7 @@ const Fn = {
     EquipChoice: false,
     ETCChoice: false,
     StatsChoice: false,
-    SkillChoice: false,
+    GiftChoice: false,
     GuildChoice: false,
     //Challenge Tower Late Game
     UnlockChallengeTower:false,
@@ -307,7 +307,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
                 StatsChoice: true,
-                SkillChoice: false,
+                GiftChoice: false,
                 GuildChoice: false,
             }
         case 'GotoAltanItemFn':
@@ -467,21 +467,21 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 StatsChoice: true,
-                SkillChoice: false,
+                GiftChoice: false,
                 GuildChoice: false,
             }
-        case 'GotoSkillChoiceFn':
+        case 'GotoGiftChoiceFn':
             return {
                 ...state,
                 StatsChoice: false,
-                SkillChoice: true,
+                GiftChoice: true,
                 GuildChoice: false,
             }
         case 'GotoGuildChoiceFn':
             return {
                 ...state,
                 StatsChoice: false,
-                SkillChoice: false,
+                GiftChoice: false,
                 GuildChoice: true,
             }
         case 'ReturnWeaponEquipmentChoiceFn':

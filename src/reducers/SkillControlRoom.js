@@ -15,6 +15,7 @@ const Fn = {
         UserLearnAmuletRecovery: true,
         UserFirstGift: false,
         UserSecondGift: false,
+        UserLearnMagnificat: false,
         //UserTriggerMasterItem
         UserTriggerMasterItem: true,
         //Stable Skills Scale
@@ -311,7 +312,19 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserSecondGift: action.trigger,
                 }
             }
-
+        case 'GiftTwoFn':
+            switch(true){
+                case(action.Two === 8):
+                    return{
+                            ...state,
+                            User:{
+                                ...state['User'],
+                                UserLearnMagnificat: true,
+                            }
+                        }
+                default:
+                    return {...state};
+            }
         default:
             return {
                     ...state

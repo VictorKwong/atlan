@@ -256,7 +256,18 @@ export const UserSecondGiftFn = (trigger) => {
         trigger: trigger
     };
 };
-
+export const GiftOneFn = (One) => {
+    return {
+        type: 'GiftOneFn',
+        One: One
+    };
+};
+export const GiftTwoFn = (Two) => {
+    return {
+        type: 'GiftTwoFn',
+        Two: Two
+    };
+};
 
 
 export const finishStoryLineOneFn = () => {
@@ -419,9 +430,9 @@ export const GotoStatsChoiceFn = () => {
         type: 'GotoStatsChoiceFn',
     };
 };
-export const GotoSkillChoiceFn = () => {
+export const GotoGiftChoiceFn = () => {
     return {
-        type: 'GotoSkillChoiceFn',
+        type: 'GotoGiftChoiceFn',
     };
 };
 export const GotoGuildChoiceFn = () => {
@@ -1845,19 +1856,14 @@ export const TrainingLUKFn = (num) => {
         num: num 
     };
 };
-export const BonusSTRPointsFn = (BonusStr,BonusDex,BonusLuk) => {
+export const BonusSTRPointsFn = () => {
     return {
         type: 'BonusSTRPointsFn',
-        BonusStr: BonusStr,
-        BonusDex: BonusDex,
-        BonusLuk: BonusLuk,
     };
 };
-export const BonusAGIPointsFn = (BonusAgi,BonusDex) => {
+export const BonusAGIPointsFn = () => {
     return {
         type: 'BonusAGIPointsFn',
-        BonusAgi: BonusAgi,
-        BonusDex: BonusDex,
     };
 };
 export const BonusVITPointsFn = (BonusVit,Vit) => {
@@ -1874,21 +1880,15 @@ export const BonusINTPointsFn = (BonusInt,Int) => {
         BonusInt: BonusInt
     };
 };
-export const BonusDEXPointsFn = (BonusStr,BonusAgi,BonusDex,BonusLuk) => {
+export const BonusDEXPointsFn = () => {
     return {
         type: 'BonusDEXPointsFn',
-        BonusStr: BonusStr,
-        BonusAgi: BonusAgi,
-        BonusDex: BonusDex,
-        BonusLuk: BonusLuk,
     };
 };
-export const BonusLUKPointsFn = (BonusStr,BonusDex,BonusLuk) => {
+export const BonusLUKPointsFn = () => {
     return {
         type: 'BonusLUKPointsFn',
-        BonusStr: BonusStr,
-        BonusDex: BonusDex,
-        BonusLuk: BonusLuk,
+
     };
 };
 export const BonusEquipPointsFn = (BonusStr,BonusAgi,BonusVit,Vit,BonusInt,Int,BonusDex,BonusLuk,STRPoint,AGIPoint,VITPoint,INTPoint,DEXPoint,LUKPoint, Bonusattack, Bonusspeed, BonusdodgeRate, Bonusdefence, Bonusdefencebuffer, BonushitRate, BonuscritRate, BonusHealth, BonusSP) => {

@@ -19,7 +19,13 @@ const Fn = {
     TrainingVit: 0,
     TrainingInt: 0,
     TrainingDex: 0,
-    TrainingLuk: 0
+    TrainingLuk: 0,
+
+    GiftStr:0,
+    GiftAgi:0,
+    GiftInt:0,
+    GiftDex:0,
+    GiftLuk:0,
 }
 
 const userAttributeReducer = (state = Fn, action) => {
@@ -153,6 +159,40 @@ const userAttributeReducer = (state = Fn, action) => {
                 dex: 1,
                 luk: 1,
                 Points: state.TotalPoints
+            }
+        case 'GiftOneFn':
+            switch(true){
+                case(action.One === 3):
+                return{
+                    ...state,
+                    BonusLuk: state.BonusLuk + 10,
+                    GiftLuk: state.GiftLuk + 10
+                }
+            default:
+                return {...state};
+            }
+        case 'GiftTwoFn':
+            switch(true){
+                case(action.Two === 6):
+                    return{
+                            ...state,
+                            BonusAgi: state.BonusAgi + 7,
+                            BonusDex: state.BonusDex + 7,
+                            GiftAgi: state.GiftAgi + 7,
+                            GiftDex: state.GiftDex + 7
+                        }
+                case(action.Two === 7):
+                    return{
+                        ...state,
+                        BonusStr: state.BonusStr + 5,
+                        BonusInt: state.BonusAgi + 5,
+                        BonusDex: state.BonusDex + 5,
+                        GiftStr: state.GiftStr + 5,
+                        GiftAgi: state.GiftAgi + 5,
+                        GiftDex: state.GiftDex + 5
+                    }
+                default:
+                    return {...state};
             }
         default:
             return {...state};
