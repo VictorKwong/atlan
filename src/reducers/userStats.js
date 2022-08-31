@@ -538,6 +538,7 @@ const userStatsReducer = (state = Fn, action) => {
                     }
             } 
 
+
         //Rerender Fn
         case 'userClockDefendFn':
             return {

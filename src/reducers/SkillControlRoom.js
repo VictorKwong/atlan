@@ -311,6 +311,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserSecondGift: action.trigger,
                 }
             }
+
         default:
             return {
                     ...state

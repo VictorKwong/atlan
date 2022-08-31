@@ -5,18 +5,99 @@ import StoryLineOne from './StoryLineOne'
 import './css/storyLineTalent.css'
 import $ from 'jquery'
 
+import SwordMastery from './img/Gift/SwordMastery.gif'
+import Swiftness from './img/Gift/Swiftness.gif'
+import Gloria from './img/Gift/Gloria.gif'
+import Endure from './img/Gift/Endure.gif'
+import ImpositioManus from './img/Gift/ImpositioManus.gif'
+import AttentionConcentrate from './img/Gift/AttentionConcentrate.gif'
+import Blessing from './img/Gift/Blessing.gif'
+import Magnificat from './img/Gift/Magnificat.gif'
+
 let Story = 0;
+let FirstGift = 0;
+let SecondGift = 0;
+
 function StartMenu(){
+    const userStats = useSelector(state => state.userStats)
+    const userAttribute = useSelector(state => state.userAttribute)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const dispatch = useDispatch();
 
-
-
-    const pickedGifts = () => {
-      Story = 1;
-      dispatch(UserFirstGiftFn(true));
+    const pickedGifts = (giftNumber) => {
+      (() => {
+        switch (true) {
+          case (giftNumber >= 1 && giftNumber <= 4):
+            FirstGift = giftNumber;
+            Story++;
+            return dispatch(UserFirstGiftFn(true));
+          default:
+            SecondGift = giftNumber;
+            Story++;
+            return dispatch(UserSecondGiftFn(true));
+        }  
+      })()
     }
+    const AcceptFunction = (First,Second) => {
+      (() => {
+        switch (true) {
+          case (First === 1):
+            BonusattackWeapon = 50;
+            break;
+          case (First === 2):
+            BonusdodgeRateWeapon = 0.15;
+            break;
+          case (First === 3):
+            LUKBufferWeapon = 10;
+            break;
+          case (First === 4):
+            BonusHealthWeapon = 100;
+            BonusSPWeapon = 30;
+            break;
+        }  
+      })()
+      (() => {
+        switch (true) {
+          case (Second === 5):
+            BonusattackWeapon = 50;
+            break;
+          case (Second === 6):
+            BonusdodgeRateWeapon = 0.15;
+            break;
+          case (Second === 7):
+            LUKBufferWeapon = 10;
+            break;
+          case (Second === 8):
+            BonusHealthWeapon = 100;
+            BonusSPWeapon = 30;
+            break;
+        }  
+      })()
+    }
+
+    const refuseFunction = (First,Second) => {
+      Story = 0;
+      FirstGift = 0;
+      SecondGift = 0;
+      dispatch(UserFirstGiftFn(false));
+      dispatch(UserSecondGiftFn(false));
+
+    }
+
+    const GiftBox = [
+      {id: 1, img: SwordMastery, imgAlt:"Sword Mastery", text:"Sword Master - Attack + 50", Result:1},
+      {id: 2, img: Swiftness, imgAlt:"Swiftness", text:"Swiftness - Flee + 15", Result:2},
+      {id: 3, img: Gloria, imgAlt:"Gloria", text:"Gloria - Luk + 10", Result:3},
+      {id: 4, img: Endure, imgAlt:"Endure", text:"Endure - HP + 100 and SP + 30", Result:4},
+    ]
+
+    const GiftTwoBox = [
+      {id: 5, img: ImpositioManus, imgAlt:"Impositio Manus", text:"Impositio Manus - Attack + 30", Result:5},
+      {id: 6, img: AttentionConcentrate, imgAlt:"Attention Concentrate", text:"Attention Concentrate - AGI/DEX + 7", Result:6},
+      {id: 7, img: Blessing, imgAlt:"Blessing", text:"Blessing - STR/DEX/INT + 5", Result:7},
+      {id: 8, img: Magnificat, imgAlt:"Magnificat", text:"Magnificat - Recover HP + 30 SP + 5", Result:8},
+    ]
 
     return(
       <div>
@@ -24,22 +105,55 @@ function StartMenu(){
         <div className={"storyScreenStoryLineTalentBackground"}>
           {Story === 0 && !SkillControlRoom['User'].UserFirstGift?
           <div className="storyScreenStoryLineTalent">
-              <p>Pick you 1st Gifts</p>
-              <button onClick={() => {pickedGifts();}}>Sword Master - Attack + 50</button>
-              <button onClick={() => {pickedGifts();}}>Swiftness - Flee + 15</button>
-              <button onClick={() => {pickedGifts();}}>Gloria - Luk + 10</button>
-              <button onClick={() => {pickedGifts();}}>Body Build - HP + 100 and SP + 30</button>
+              <p className="giftTitle">Pick you 1st Gifts</p>
+              {GiftBox.map(Gift => {
+                  return(
+                    <span key={Gift.id}>
+                      <button className="TalentButton altanEquipmentButtonFix" onClick={() => {pickedGifts(Gift.Result)}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
+                        </div>
+                      </button>
+                    </span>
+                  )
+                })}
           </div> :
+          Story === 1 && !SkillControlRoom['User'].UserSecondGift ?
           <div className="storyScreenStoryLineTalent">
-              <p>Pick you 2nd Gifts</p>
-              <button>Changing Vector</button>
-              <button>Bai</button>
-              <button>Lurker</button>
-              <button>Final</button>
-          </div> }
+              <p className="giftTitle">Pick you 2nd Gifts</p>
+              {GiftTwoBox.map(Gift => {
+                  return(
+                    <span key={Gift.id}>
+                      <button className="TalentButton altanEquipmentButtonFix" onClick={() => {pickedGifts(Gift.Result)}}>
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter"><img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
+                        </div>
+                      </button>
+                    </span>
+                  )
+                })}
+          </div> : 
+          Story === 2 ?
+          <div className="storyScreenStoryLineTalent">
+              <p className="giftTitle">Confirm?</p>
+              <span>
+                <button className="TalentButton altanEquipmentButtonFix" onClick={() => {AcceptFunction(FirstGift,SecondGift);}}>
+                  <div className="adjImgCenterBox">
+                    <p className="adjImgCenter">YES</p>
+                  </div>
+                </button>
+              </span>
+              <span>
+                <button className="TalentButton altanEquipmentButtonFix" onClick={() => {refuseFunction(FirstGift,SecondGift);}}>
+                  <div className="adjImgCenterBox">
+                    <p className="adjImgCenter">NO</p>
+                  </div>
+                </button>
+              </span>
+          </div> : null}
           <fieldset className="storyChat">
-          <legend className="storyCharacterOne">???</legend>
-          <p className="storySpeech">......</p>
+          <legend className="storyCharacterOne">Atlan</legend>
+          <p className="storySpeech"></p>
               <div>
                 <button className="nextLine StoryButton StoryButtonPositon" onClick={() => {dispatch(storyLineTalentFn(true));}}>Continue</button>
               </div>

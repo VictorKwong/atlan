@@ -1,42 +1,67 @@
-.storyScreenStoryLineTalent,
 .storySpeech{
   text-align: center;
 }
 
 .storyScreenStoryLineTalent{
   height: calc(75vh - 3rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .storyScreenStoryLineTalentBackground{
-  background-image: url('../img/Background/Grass7.png');
+  background-image: url('../img/Background/Talent.jpg');
   background-position: center;
   background-size: 75% 100%;
   background-size: cover;
 }
 
+.giftTitle{ 
+  font-size: 40px;
+  text-shadow: 1px 1px 2px #536481;
+  margin-bottom: 10px;
+}
+
+/* Equipment Chat */
+.TalentButton{
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  cursor: pointer;
+  position: relative;
+  font-family: 'Balsamiq Sans', cursive;
+  width: 80%;
+  margin: 5px;
+}
+
+.TalentButton:hover{
+  text-shadow: 1px 1px 1px #657c9c;
+}
+
+.TalentButton::before{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 100%;
+  height: 0px;
+  border-top: 7px solid transparent;  
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid #764abc;
+  content: '';
+  transition: all 0.1s;
+  transform: translate3d(0,-50%,0) scale3d(0,0,1);
+  opacity: 0;
+}
+.TalentButton:hover::before{
+  transform: translate3d(0,-50%,0) scale3d(1,1,1);
+  opacity: 1;
+}
+
 .storyChat{
   height: 25vh;
-}
-
-.StoryImgFlip{
-  transform: scaleX(-1);
-}
-
-.StoryImgMonster{
-  width: 200px;
-}
-.StoryImgChar{
-  width: 70px;
-}
-.StoryImgCharDead{
-  width: 126px;
-}
-
-.StoryImgCharfadeOne{
-  opacity: 0.5;
-}
-.StoryImgCharfadeTwo{
-  opacity: 0;
 }
 
 .StoryButton{
@@ -121,13 +146,7 @@
 
 }
 @media (max-width: 467px){
-  .StoryImgMonster{
-    width: 130px;
-  }
-  .StoryImgChar{
-    width: 51px;
-  }
-  .StoryImgCharDead{
-    width: 82px;
+  .giftTitle{
+    font-size: 20px;
   }
 }
