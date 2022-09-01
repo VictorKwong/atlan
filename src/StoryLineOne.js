@@ -35,7 +35,6 @@ function StartMenu(){
         default:
           return null;
         }
-
       }
 
       const nextLine = () => {
