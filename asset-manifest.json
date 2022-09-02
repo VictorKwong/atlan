@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.f32622b7.css",
-    "main.js": "/atlan/static/js/main.524229c0.js",
+    "main.css": "/atlan/static/css/main.be66000b.css",
+    "main.js": "/atlan/static/js/main.cbd82d29.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -62,6 +62,7 @@
     "static/media/GeffenDungeon2F5.jpg": "/atlan/static/media/GeffenDungeon2F5.ad717397157e5ded05c5.jpg",
     "static/media/Sound.jpg": "/atlan/static/media/Sound.fed266924496da9437f4.jpg",
     "static/media/TreasureBoxPoringIsland1.jpg": "/atlan/static/media/TreasureBoxPoringIsland1.4628b35838b5fab3fc0b.jpg",
+    "static/media/Talent.jpg": "/atlan/static/media/Talent.682963abfa57542226e7.jpg",
     "static/media/Special1.jpg": "/atlan/static/media/Special1.eb248d51686bc48a4478.jpg",
     "static/media/TreasureBoxOpen.gif": "/atlan/static/media/TreasureBoxOpen.3081199933d1da82c07f.gif",
     "static/media/PayonCaveChest1.jpg": "/atlan/static/media/PayonCaveChest1.9ab5d4957562a2ff01af.jpg",
@@ -238,12 +239,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.f32622b7.css.map": "/atlan/static/css/main.f32622b7.css.map",
-    "main.524229c0.js.map": "/atlan/static/js/main.524229c0.js.map",
+    "main.be66000b.css.map": "/atlan/static/css/main.be66000b.css.map",
+    "main.cbd82d29.js.map": "/atlan/static/js/main.cbd82d29.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f32622b7.css",
-    "static/js/main.524229c0.js"
+    "static/css/main.be66000b.css",
+    "static/js/main.cbd82d29.js"
   ]
 }
