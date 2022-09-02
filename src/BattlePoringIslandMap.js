@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery'
-import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, UserOnHPHealAnimationFn, AmuletRecoveryFn} from './actions';
+import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FFn, GotoPayonCave3FFn , GotoGeffenDungeon1FFn , GotoGeffenDungeon2FFn , GotoGeffenDungeon3FFn , GotoGeffenDungeon4FFn, GotoChallengeTowerFn, EnemyAttackUserFn, UserAttackEnemyFn, EnemyOnHitAnimationFn, ResetEnemyOnHitAnimationFn, UserAttackAnimationFn, ResetUserAttackAnimationFn, UserOnHitAnimationFn, ResetUserOnHitAnimationFn, UserIsDeadAnimationFn , ResetUserIsDeadAnimationFn, UserIsDyingAnimationFn, ResetUserIsDyingAnimationFn , UserIsBlockAnimationFn , UserChannelAnimationFn, ResetUserChannelAnimationFn, UserWeaponImgFn, UserPickUpAnimationFn, EnemyAttackAnimationFn, EnemyDeadAnimationFn , EnemyDodgeAnimationFn, UserIsDodgeAnimationFn, UserIsCritAnimationFn , EnemyOnCritAnimationFn , EnemyOnHitDoubleAnimationFn, EnemyOnReflectNumberFn, UserOnLifeStealAnimationFn, UserOnSPHealAnimationFn, UserOnHPHealAnimationFn, AmuletRecoveryFn, UserOnHPMagnificatFn, UserOnSPMagnificatFn} from './actions';
 //Battle Reset
 import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
@@ -605,7 +605,10 @@ let clockBarObject = {
   enemyClockBar: 0,
 }
 let Damage = 0;
+let HPHeal = 0;
 let SPHeal = 0;
+let HPMagnificat = 0;
+let SPMagnificat = 0;
 let Reflecting = 0;
 let EnemyStunClock = 0;
 let EnemySlowClock = 0;
@@ -1302,16 +1305,16 @@ function Main(){
       dispatch(UserTurnBlockFn());
       // Text display
       $('.storySpeech').append('<p>Atlan Defend himself!</p>')
-      Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) > 0 ? Damage = Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) : Damage = 3;
+      Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) > 0 ? HPHeal = Math.floor(userStats.maxHealth*0.05*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02)) : HPHeal = 3;
       Math.floor(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) > 0 ? SPHeal = Math.floor(userStats.maxSP*0.02*(1+(userAttribute.int + userAttribute.BonusInt)*0.02)) : SPHeal = 1;
       if(SkillControlRoom['User'].UserLearnAmuletRecovery === true){
         dispatch(UserOnHPHealAnimationFn(true));
         setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
         setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);
         setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1100);
-        setTimeout(() => dispatch(AmuletRecoveryFn(Damage,SPHeal)), 300);
+        setTimeout(() => dispatch(AmuletRecoveryFn(HPHeal,SPHeal)), 300);
         // Text display
-        $('.storySpeech').append(`<p style="color:#3fff00;">Amulet Recovery heals ${Damage}HP ${SPHeal}SP!</p>`);
+        $('.storySpeech').append(`<p style="color:#3fff00;">Amulet Recovery heals ${HPHeal}HP ${SPHeal}SP!</p>`);
       }else{
         setTimeout(() => dispatch(userClockDefendFn()), 300);
       }
@@ -1840,7 +1843,7 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         dispatch(UserOnHPHealAnimationFn(true));
         setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-        Damage = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+        HPHeal = Math.floor(50*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
         //Rerender
         // setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseRedPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1866,7 +1869,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnHPHealAnimationFn(true));
       setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-      Damage = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02))
+      HPHeal = Math.floor(150*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02))
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseOrangePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1892,7 +1895,7 @@ function Main(){
         setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
         dispatch(UserOnHPHealAnimationFn(true));
         setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-        Damage = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+        HPHeal = Math.floor(400*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
         //Rerender
         // setTimeout(() => (Uclock = 0), 300);
         setTimeout(() => dispatch(UseYellowPotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1918,7 +1921,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnHPHealAnimationFn(true));
       setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-      Damage = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      HPHeal = Math.floor(800*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseWhitePotionFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1944,7 +1947,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnHPHealAnimationFn(true));
       setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-      Damage = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      HPHeal = Math.floor(1200*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseAnniversaryCakeFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -1970,7 +1973,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       dispatch(UserOnHPHealAnimationFn(true));
       setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-      Damage = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
+      HPHeal = Math.floor(2000*(1+(userAttribute.vit + userAttribute.BonusVit)*0.02));
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
       setTimeout(() => dispatch(UseMastelaFruitFn(userAttribute.vit + userAttribute.BonusVit)), 300);
@@ -2024,7 +2027,7 @@ function Main(){
       setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
       setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);
       setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1100);
-      Damage = userStats.maxHealth;
+      HPHeal = userStats.maxHealth;
       SPHeal = userStats.maxSP;
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
@@ -2219,19 +2222,20 @@ function Main(){
               dispatch(UserBattleStatsFn());
               //testing
               dispatch(EnemyAttackUserFn(1));
-              if(SkillControlRoom['User'].UserLearnMagnificat){
-                //Magnificat user AmuletRecoveryFn
-                Damage = 30;
-                SPHeal = 5;
-                dispatch(UserOnHPHealAnimationFn(true));
-                setTimeout(() => dispatch(UserOnHPHealAnimationFn(false)), 1000);
-                setTimeout(() => dispatch(UserOnSPHealAnimationFn(true)), 100);
-                setTimeout(() => dispatch(UserOnSPHealAnimationFn(false)), 1100);
-                dispatch(AmuletRecoveryFn(30,5));
-              }
               clockCheck = 1;
               dispatch(UserTurnFn());
               $('.storySpeech').append('<p>--------- Atlan Turn ---------</p>')
+              if(SkillControlRoom['User'].UserLearnMagnificat){
+                //Magnificat user AmuletRecoveryFn
+                HPMagnificat = 30;
+                SPMagnificat = 5;
+                dispatch(UserOnHPMagnificatFn(true));
+                setTimeout(() => dispatch(UserOnHPMagnificatFn(false)), 1000);
+                setTimeout(() => dispatch(UserOnSPMagnificatFn(true)), 100);
+                setTimeout(() => dispatch(UserOnSPMagnificatFn(false)), 1100);
+                dispatch(AmuletRecoveryFn(HPMagnificat,SPMagnificat));
+                $('.storySpeech').append(`<p style="color:#3fff00;">Magnificat Buff, Atlan Recovers ${HPMagnificat}HP ${SPMagnificat}SP.</p>\n`)
+              }
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
@@ -2464,9 +2468,11 @@ function Main(){
                     <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
                     <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>
                     <p className={ ImageControlRoom.UserOnLifeStealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}</p>
-                    <p className={ ImageControlRoom.UserOnHPHealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage)}</p>
+                    <p className={ ImageControlRoom.UserOnHPHealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(HPHeal)}</p>
                     <p className={ ImageControlRoom.UserOnLifeStealAnimation && ImageControlRoom.EnemyOnHitDouble ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale)}</p>
                     <p className={ ImageControlRoom.UserOnSPHealAnimation ? `HealSPResultNumberUser` : `DamageResultNumberHide`}>{SPHeal}</p>
+                    <p className={ ImageControlRoom.UserOnHPMagnificat ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(HPMagnificat)}</p>
+                    <p className={ ImageControlRoom.UserOnSPMagnificat ? `HealSPResultNumberUser` : `DamageResultNumberHide`}>{SPMagnificat}</p>
                     <progress className={userStats.currentHealth/userStats.maxHealth > 0.3 ? `greenHP` : userStats.currentHealth/userStats.maxHealth > 0.1 ? `yellowHP` : `redHP`} value={(userStats.currentHealth/userStats.maxHealth)*100} max="100" title={"HP:" + userStats.currentHealth + "/" + userStats.maxHealth}/>
                     <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
                     <h2 className="wordCenter titleName userNamePosition">Atlan</h2>

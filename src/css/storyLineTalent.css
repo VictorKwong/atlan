@@ -60,6 +60,22 @@
   opacity: 1;
 }
 
+.TalentResult{
+  font-size: 20px;
+  color: rgb(26, 26, 26);
+  background: rgb(221,220,224);
+  background: -moz-linear-gradient(150deg, rgba(221,220,224,1) 0%, rgba(220,181,230,1) 36%, rgba(144,207,239,1) 69%, rgba(109,248,237,1) 100%);
+  background: -webkit-linear-gradient(150deg, rgba(221,220,224,1) 0%, rgba(220,181,230,1) 36%, rgba(144,207,239,1) 69%, rgba(109,248,237,1) 100%);
+  background: linear-gradient(150deg, rgba(221,220,224,1) 0%, rgba(220,181,230,1) 36%, rgba(144,207,239,1) 69%, rgba(109,248,237,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dddce0",endColorstr="#6df8ed",GradientType=1);
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px #536481;
+  position: relative;
+  font-family: 'Balsamiq Sans', cursive;
+  width: 80%;
+  margin: 5px auto;
+}
+
 .storyChat{
   height: 25vh;
 }

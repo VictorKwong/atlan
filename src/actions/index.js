@@ -793,6 +793,19 @@ export const UserOnSPHealAnimationFn = (animation) => {
     };
 };
 
+export const UserOnHPMagnificatFn = (animation) => {
+    return {
+        type: 'UserOnHPMagnificatFn',
+        animation: animation
+    };
+};
+export const UserOnSPMagnificatFn = (animation) => {
+    return {
+        type: 'UserOnSPMagnificatFn',
+        animation: animation
+    };
+};
+
 
 export const UserWeaponImgFn = (WeaponBattleImg,WeaponAttackImg,WeaponDefendImg,WeaponOnHitImg,WeaponDyingImg,WeaponDeadImg,WeaponChannelImg,WeaponPickUpImg) => {
     return {

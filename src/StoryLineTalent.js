@@ -74,7 +74,7 @@ function StartMenu(){
       <div>
         {screenControlRoom.startGame && screenControlRoom.storyLineTalent ? <StoryLineOne /> :
         <div className={"storyScreenStoryLineTalentBackground"}>
-          {Story === 0 && !SkillControlRoom['User'].UserFirstGift?
+          {Story === 0 && !SkillControlRoom['User'].UserFirstGift ?
           <div className="storyScreenStoryLineTalent">
               <p className="giftTitle">Pick you 1st Gifts</p>
               {GiftBox.map(Gift => {
@@ -107,6 +107,30 @@ function StartMenu(){
           Story === 2 ?
           <div className="storyScreenStoryLineTalent">
               <p className="giftTitle">Confirm?</p>
+              {GiftBox.map(Gift => {
+                  return(
+                    <span key={Gift.id}>
+                    {FirstGift === Gift.Result ?
+                      <div className="TalentResult altanEquipmentButtonFix">
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter">1. <img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
+                        </div>
+                      </div> : null}
+                    </span> 
+                  )
+                })}
+                {GiftTwoBox.map(Gift => {
+                  return(
+                    <span key={Gift.id}>
+                      {SecondGift === Gift.Result ?
+                      <div className="TalentResult altanEquipmentButtonFix">
+                        <div className="adjImgCenterBox">
+                          <p className="adjImgCenter">2. <img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
+                        </div>
+                      </div> : null}
+                    </span>
+                  )
+                })}
               <span>
                 <button className="TalentButton altanEquipmentButtonFix" onClick={() => {AcceptFunction(FirstGift,SecondGift);}}>
                   <div className="adjImgCenterBox">

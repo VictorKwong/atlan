@@ -9,6 +9,8 @@ const Fn = {
     UserOnLifeStealAnimation:false,
     UserOnHPHealAnimation: false,
     UserOnSPHealAnimation: false,
+    UserOnHPMagnificat: false,
+    UserOnSPMagnificat: false,
     UserAttack: false,
     UserOnHit: false,
     UserIsDying: false,
@@ -130,6 +132,16 @@ const ImageControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 UserOnSPHealAnimation: action.animation,
+            }
+        case 'UserOnHPMagnificatFn':
+            return {
+                ...state,
+                UserOnHPMagnificat: action.animation,
+            }
+        case 'UserOnSPMagnificatFn':
+            return {
+                ...state,
+                UserOnSPMagnificat: action.animation,
             }
         case 'UserIsBlockAnimationFn':
             return {
