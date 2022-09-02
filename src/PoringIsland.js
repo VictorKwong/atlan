@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn , GotoTreasurePoringIslandMapFn, GotoPoringIslandHouseMapFn} from './actions';
-import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions';
 //CHEST
 import { Chest1VisitRepeatFn , Chest2VisitRepeatFn, ChestBoss1VisitRepeatFn} from './actions'
 //HOUSE
@@ -34,6 +34,7 @@ import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
+import AltanSkills from './AltanSkills'
 import './css/mapPoringIsland.css'
 import $ from 'jquery'
 import audioStreamside from './audio/112Streamside.mp3'
@@ -371,6 +372,11 @@ useEffect(() => {
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
+            screenControlRoom.AltanSkills ?
+              <div className="ReturnParent">
+                <AltanSkills /> 
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
+              </div>:
             // TREASURE MAP
             screenControlRoom.TreasurePoringIslandMap ?
               <div className="ReturnParent">
@@ -448,6 +454,7 @@ useEffect(() => {
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn()); dispatch(ResetTrainingRateFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn()); dispatch(ResetTrainingRateFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn()); dispatch(ResetTrainingRateFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanSkillsFn()); dispatch(ResetTrainingRateFn());}}>Skills</button>
                   <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn()); dispatch(ResetTrainingRateFn());}}>Option</button>
                 </div>
             </div>

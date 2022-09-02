@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn} from './actions';
 import { TalktoPronteraKingFn, TalktoRoyalGuard1Fn, TalktoRoyalGuard2Fn , TalktoPronteraAssistantFn, TalktoPronteraAssistantContinueFn, TalktoPronteraAssistantLearnedFn } from './actions'
-import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions'
+import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions'
 
 //Learn
 import { UserLearnAmuletRecoveryFn } from './actions'
@@ -19,6 +19,7 @@ import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
+import AltanSkills from './AltanSkills'
 import './css/mapPronteraCastle.css'
 import $ from 'jquery'
 
@@ -174,7 +175,11 @@ function StartMenu(props){
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
-
+          screenControlRoom.AltanSkills ?
+            <div className="ReturnParent">
+              <AltanSkills /> 
+              <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
+            </div>:
               <div className="PronteraCastleMap">
                 <h3 className="PronteraCastleMapTitle">Prontera Castle</h3>
                 {/* click x trigger hover */}
@@ -218,6 +223,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanSkillsFn());}}>Skills</button>
                   <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>

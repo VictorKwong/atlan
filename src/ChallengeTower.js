@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
-import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 //Loading Screen
 import { BattleLoadingScreenFn } from './actions'
 //Music Options
@@ -14,6 +14,7 @@ import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
+import AltanSkills from './AltanSkills'
 import './css/mapChallengeTower.css'
 import $ from 'jquery'
 
@@ -133,6 +134,11 @@ const LoadingScreen3 = () => {
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
+            screenControlRoom.AltanSkills ?
+              <div className="ReturnParent">
+                <AltanSkills /> 
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
+              </div>:
             <div className="ChallengeTowerMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="ChallengeTowerMapTitle">Challenge Tower</h3>
@@ -170,6 +176,7 @@ const LoadingScreen3 = () => {
                   <button className="altanItems" onClick={() => {dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanSkillsFn());}}>Skills</button>
                   <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>

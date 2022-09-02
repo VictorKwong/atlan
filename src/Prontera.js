@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoPronteraToolDealerFn, GotoPronteraWeaponArmorDealerFn, GotoPronteraHeadGearDealerFn, GotoPronteraCastleFn } from './actions';
 // EQUIP ACTION
-import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn } from './actions';
+import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 import { TalktoKafraEmployeeFn, TalktoFountainFn , TalktoQuestBoardFn, TalktoSoldierGuard1Fn, TalktoSoldierGuard2Fn, TalktoKiwiFn, TalktoLemonFn, TalktoChocolateFn, TalktoIWantToJoinGuildFn, TalktoLemonResponseFn, TalktoLemonCompleteFn ,TalktoKiwiGuildFn, TalktoChocolateGuildFn, TalktoLemonGuildFn, ResetTalktoFn} from './actions';
 //Guild
 import { UserLearnDoubleAttackFn, UserLearnLifeStealAttackFn, UserLearnReflectAttackFn, WinOldPortraitFn, WinSkelBoneFn } from './actions'
@@ -16,7 +16,7 @@ import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn ,
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Win ETC Items
 import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn } from './actions'
-//Test
+//Music Options
 import { gameTitleOptionScreenFn } from './actions'
 import GameOption from './GameOption'
 
@@ -25,6 +25,7 @@ import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
 import AltanQuest from './AltanQuest'
+import AltanSkills from './AltanSkills'
 import PronteraToolDealer from './PronteraToolDealer'
 import PronteraWeaponArmorDealer from './PronteraWeaponArmorDealer'
 import PronteraHeadGearDealer from './PronteraHeadGearDealer'
@@ -492,6 +493,11 @@ function StartMenu(props){
                 <AltanQuest /> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanQuestFn());}}>x</button>
               </div>:
+            screenControlRoom.AltanSkills ?
+              <div className="ReturnParent">
+                <AltanSkills /> 
+                <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
+              </div>:
             //Prontera Shops
             screenControlRoom.PronteraHeadGearDealer ? 
             <div className="ReturnParent">
@@ -551,6 +557,7 @@ function StartMenu(props){
                   <button className="altanItems" onClick={() =>{dispatch(GotoAltanItemFn());}}>Items</button>
                   <button className="altanStats" onClick={() => {dispatch(GotoAltanStatsFn());}}>Stats</button>
                   <button className="altanQuest" onClick={() => {dispatch(GotoAltanQuestFn());}}>Quest</button>
+                  <button className="altanQuest" onClick={() => {dispatch(GotoAltanSkillsFn());}}>Skills</button>
                   <button className="altanQuest" onClick={() => {dispatch(gameTitleOptionScreenFn());}}>Option</button>
                 </div>
             </div>

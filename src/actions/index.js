@@ -366,6 +366,11 @@ export const GotoAltanQuestFn = () => {
         type: 'GotoAltanQuestFn',
     };
 };
+export const GotoAltanSkillsFn = () => {
+    return {
+        type: 'GotoAltanSkillsFn',
+    };
+};
 
 
 
