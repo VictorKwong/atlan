@@ -9,6 +9,7 @@ const Fn = {
     VitalStrike: 40,
     BowlingBash: 70,
     //Skill Level
+    FirstAidSkillLevel: 1,
     BashSkillLevel: 1,
     MammoniteSkillLevel: 1,
     KodokuSkillLevel: 1,
@@ -35,7 +36,26 @@ const Fn = {
     SPQuicken: 180,
     SPVitalStrike: 100,
     SPBowlingBash: 250,
-
+    //Base flat Damage
+    FirstAidFlatHeal: 150,
+    BashBaseDamage: 50,
+    MammoniteBaseDamage: 30,
+    BowlingBashBaseDamage: 200,
+    //Special Effect
+    BashStunChance: 0.5,
+    MammoniteGain: 0.2,
+    HeadCrushBleedingChance: 0.7,
+    QuickenSpeed: 10,
+    VitalStrikeDefenceBreakDown: 0.25,
+    //DOT Effect
+    KodokuPoisonTurn: 5,
+    KodokuPoisonPercent: 0.05,
+    HeadCrushBleedingTurn: 4,
+    HeadCrushBleedingPercent: 0.02,
+    QuickenSpeedTurn: 5,
+    VitalStrikeDefenceBreakDownTurn: 8,
+    BowlingBashSlowClockTurn: 10,
+    BowlingBashSlowPercent: 0.25
 
 }
 

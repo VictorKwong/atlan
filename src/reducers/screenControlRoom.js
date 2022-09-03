@@ -147,13 +147,23 @@ const Fn = {
     GarmentEquipmentChoice: false,
     AccessoryOneEquipmentChoice: false,
     AccessoryTwoEquipmentChoice: false,
-    ImageEquipment:false,
+    ImageEquipment:0,
     ItemChoice: false,
     EquipChoice: false,
     ETCChoice: false,
     StatsChoice: false,
     GiftChoice: false,
     GuildChoice: false,
+    //SkillTrainingFn
+    FirstAidTraining: false,
+    BashTraining: false,
+    MammoniteTraining: false,
+    KodokuTraining: false,
+    MagnumBreakTraining: false,
+    HeadCrushTraining: false,
+    QuickenTraining: false,
+    VitalStrikeTraining: false,
+    BowlingBashTraining: false,
     //Challenge Tower Late Game
     UnlockChallengeTower:false,
 }
@@ -293,6 +303,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
+                //Skills
+                FirstAidTraining: false,
+                BashTraining: false,
+                MammoniteTraining: false,
+                KodokuTraining: false,
+                MagnumBreakTraining: false,
+                HeadCrushTraining: false,
+                QuickenTraining: false,
+                VitalStrikeTraining: false,
+                BowlingBashTraining: false,
             }
         case 'GotoAltanStatsFn':
             return {
@@ -312,6 +332,17 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 StatsChoice: true,
                 GiftChoice: false,
                 GuildChoice: false,
+                //Skills
+                FirstAidTraining: false,
+                BashTraining: false,
+                MammoniteTraining: false,
+                KodokuTraining: false,
+                MagnumBreakTraining: false,
+                HeadCrushTraining: false,
+                QuickenTraining: false,
+                VitalStrikeTraining: false,
+                BowlingBashTraining: false,
+                
             }
         case 'GotoAltanItemFn':
             return {
@@ -330,6 +361,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 ItemChoice: true,
                 EquipChoice: false,
                 ETCChoice: false,
+                //Skills
+                FirstAidTraining: false,
+                BashTraining: false,
+                MammoniteTraining: false,
+                KodokuTraining: false,
+                MagnumBreakTraining: false,
+                HeadCrushTraining: false,
+                QuickenTraining: false,
+                VitalStrikeTraining: false,
+                BowlingBashTraining: false,
             }
         case 'GotoAltanQuestFn':
             return {
@@ -346,6 +387,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
+                //Skills
+                FirstAidTraining: false,
+                BashTraining: false,
+                MammoniteTraining: false,
+                KodokuTraining: false,
+                MagnumBreakTraining: false,
+                HeadCrushTraining: false,
+                QuickenTraining: false,
+                VitalStrikeTraining: false,
+                BowlingBashTraining: false,
             }
         case 'GotoAltanSkillsFn':
             return {
@@ -362,6 +413,16 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
+                //Skills
+                FirstAidTraining: false,
+                BashTraining: false,
+                MammoniteTraining: false,
+                KodokuTraining: false,
+                MagnumBreakTraining: false,
+                HeadCrushTraining: false,
+                QuickenTraining: false,
+                VitalStrikeTraining: false,
+                BowlingBashTraining: false,
             }
         case 'GotoWeaponEquipmentChoiceFn':
             return {
@@ -373,7 +434,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoArmorEquipmentChoiceFn':
             return {
@@ -385,7 +446,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoHeadGearEquipmentChoiceFn':
             return {
@@ -397,7 +458,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoFootGearEquipmentChoiceFn':
             return {
@@ -409,7 +470,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoGarmentEquipmentChoiceFn':
             return {
@@ -421,7 +482,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: true,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: false,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoAccessoryOneEquipmentChoiceFn':
             return {
@@ -433,7 +494,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: true,
                 AccessoryTwoEquipmentChoice: false,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoAccessoryTwoEquipmentChoiceFn':
             return {
@@ -445,12 +506,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 GarmentEquipmentChoice: false,
                 AccessoryOneEquipmentChoice: false,
                 AccessoryTwoEquipmentChoice: true,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoImageEquipmentFn':
             return{
                 ...state,
-                ImageEquipment:true
+                ImageEquipment:action.ImageEquipment
             }
         case 'STRPointsFn':
         case 'AGIPointsFn':
@@ -460,7 +521,7 @@ const screenControlRoomReducer = (state = Fn, action) => {
         case 'LUKPointsFn':
             return{
                 ...state,
-                ImageEquipment:false,
+                ImageEquipment:0,
             }
         case 'GotoItemChoiceFn':
             return {
@@ -1178,6 +1239,124 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 return{
                     ...state,
                     TrainingLoadingScreenDelay: !state.TrainingLoadingScreenDelay
+                }
+            //SkillTraining
+            case 'FirstAidTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: !state.FirstAidTraining,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'BashTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: !state.BashTraining,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'MammoniteTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: !state.MammoniteTraining,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'KodokuTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: !state.KodokuTraining,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'MagnumBreakTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: !state.MagnumBreakTraining,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'HeadCrushTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: !state.HeadCrushTraining,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'QuickenTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: !state.QuickenTraining,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: false,
+                }
+            case 'VitalStrikeTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: !state.VitalStrikeTraining,
+                    BowlingBashTraining: false,
+                }
+            case 'BowlingBashTrainingFn':
+                return{
+                    ...state,
+                    FirstAidTraining: false,
+                    BashTraining: false,
+                    MammoniteTraining: false,
+                    KodokuTraining: false,
+                    MagnumBreakTraining: false,
+                    HeadCrushTraining: false,
+                    QuickenTraining: false,
+                    VitalStrikeTraining: false,
+                    BowlingBashTraining: !state.BowlingBashTraining,
                 }
             case 'ResetGameFn':
                 return{

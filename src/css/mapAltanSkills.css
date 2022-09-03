@@ -55,6 +55,10 @@
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(123, 134, 156) 50%, rgb(69, 77, 95) 100%);
 }
 
+.atlanSkillButtonUse{
+  cursor: pointer;
+}
+
 @media (max-width: 1199px){
 
 }

@@ -329,7 +329,7 @@ function StartMenu(props){
                 screenControlRoom.GeffenDungeon3FPath3 &&
                 screenControlRoom.GeffenDungeon3FPath4 &&
                 screenControlRoom.GeffenDungeon3FPath5Hidden &&
-                screenControlRoom.GeffenDungeon4FPath1 ? <span>Geffen Dungeon Entrance(⭐⭐⭐)</span> : <span>Geffen Dungeon Entrance</span>}
+                screenControlRoom.GeffenDungeon4FPath1 ? <span>Geffen Dungeon Entrance(⭐)</span> : <span>Geffen Dungeon Entrance</span>}
             </button>
           </div>
           }
@@ -521,7 +521,7 @@ function StartMenu(props){
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
-            {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+            {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
             </div> : null}

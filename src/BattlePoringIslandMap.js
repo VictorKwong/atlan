@@ -1341,7 +1341,7 @@ function Main(){
       Damage = 150;
       //Rerender
       // setTimeout(() => (Uclock = 0), 300);
-      setTimeout(() => dispatch(UserSkillFirstAidFn(skillCapChart.SPFirstAid)), 300);
+      setTimeout(() => dispatch(UserSkillFirstAidFn(skillCapChart.SPFirstAid, skillCapChart.FirstAidFlatHeal)), 300);
       // Text display
       $('.storySpeech').append('<p style="color:#3fff00;">Atlan use First Aid!Recover ' + Damage + ' hp </p>')
       listResult = document.getElementsByClassName('storyChat')[0];
@@ -1378,10 +1378,10 @@ function Main(){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1390,13 +1390,13 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt))) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }
             }
-            if(Math.random() >= 0.5){
+            if(skillCapChart.BashStunChance >= Math.random()){
               EnemyStunClock = 5;
               $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
             }
@@ -1411,7 +1411,7 @@ function Main(){
               setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBash), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBash,0), 300));
             }else{
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
               return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i,skillCapChart.SPBash)), 300);
@@ -1461,10 +1461,10 @@ function Main(){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1473,28 +1473,28 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage) : Damage = 1;
               }
             }
 
             //Display Damage
             if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
-              $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+              $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*skillCapChart.MammoniteGain)}z Receieved~</p>`)
             }else{
-              $('.storySpeech').append(`<p>Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*0.2)}z Receieved~</p>`)
+              $('.storySpeech').append(`<p>Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*skillCapChart.MammoniteGain)}z Receieved~</p>`)
             }
             if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
               dispatch(UserOnLifeStealAnimationFn(true));
               setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-              $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
+              $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp. ${Math.floor(Damage*skillCapChart.MammoniteGain)}z Receieved~</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMammonite), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMammonite,skillCapChart.MammoniteGain), 300));
             }else{
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i,skillCapChart.SPMammonite)), 300);
+              return setTimeout(() => dispatch(UserSkillMammoniteEnemyFn(Damage,i,skillCapChart.SPMammonite,skillCapChart.MammoniteGain)), 300);
             }
           // ENEMY DODGE 
           default:  
@@ -1527,7 +1527,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
-      setTimeout(() => dispatch(UserSkillKodokuFn(skillCapChart.SPKodoku)), 300);
+      setTimeout(() => dispatch(UserSkillKodokuFn(skillCapChart.SPKodoku,skillCapChart.KodokuPoisonTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack*3 + userStats.Level*30 + (userAttribute.int)*8)
       dispatch(UserAttackEnemyFn(parseInt(Damage),i));
       $('.storySpeech').append(`<p>Atlan use skill Kodoku! Enemy is become poison.</p>`)
@@ -1553,11 +1553,11 @@ function Main(){
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike)), 300);
-      Damage = Math.floor(userStats.attack + userStats.Bonusattack*1 + userStats.Level*30 + (userAttribute.int)*8)
+      Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.int)*8)
       dispatch(UserAttackEnemyFn(parseInt(Damage),i));
       $('.storySpeech').append(`<p>Atlan use skill Vital Strike! Enemy defence is breaking down...</p>`)
       $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
-      EnemyDefenceDebuff = Math.floor(enemyStats[i].defence * 0.25);
+      EnemyDefenceDebuff = Math.floor(enemyStats[i].defence * skillCapChart.VitalStrikeDefenceBreakDown);
         // End turn
         clockCheck = 0;
         Uclock = 0;
@@ -1623,7 +1623,7 @@ function Main(){
                 dispatch(UserSkillMagnumBreakFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMagnumBreak), 300));
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMagnumBreak,0), 300));
               }else{
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 dispatch(UserSkillMagnumBreakFn());
@@ -1699,18 +1699,20 @@ function Main(){
               $('.storySpeech').append(`<p>Head Crush!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
             }
 
+            //Bleeding?
+            if(skillCapChart.HeadCrushBleedingChance >= Math.random()){
+              dispatch(UserSkillHeadCrushFn(skillCapChart.HeadCrushBleedingTurn));
+              $('.storySpeech').append(`<p>${enemyStats[i].name} suffers Head Crush injury - (Bleeding Effect).</p>`)
+            }
+
             if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
               dispatch(UserOnLifeStealAnimationFn(true));
               setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
-              dispatch(UserSkillHeadCrushFn());
-              $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPHeadCrush), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPHeadCrush,0), 300));
             }else{
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              dispatch(UserSkillHeadCrushFn());
-              $('.storySpeech').append(`<p>${enemyStats[i].name} affect by bleeding</p>`)
               return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i,skillCapChart.SPHeadCrush)), 300);
             }
           // ENEMY DODGE 
@@ -1758,10 +1760,10 @@ function Main(){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1770,13 +1772,13 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 200) : Damage = 1;
+                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }
             }
-            EnemySlowClock = 10;
+            EnemySlowClock = skillCapChart.BowlingBashSlowClockTurn;
               $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
               if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1788,7 +1790,7 @@ function Main(){
                 setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);     
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBowlingBash), 300));
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBowlingBash,0), 300));
               }else{
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i,skillCapChart.SPBowlingBash)), 300);
@@ -1822,7 +1824,7 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
-      setTimeout(() => dispatch(UserSkillQuickenFn(skillCapChart.SPQuicken)), 300);
+      setTimeout(() => dispatch(UserSkillQuickenFn(skillCapChart.SPQuicken,skillCapChart.QuickenSpeedTurn)), 300);
       $('.storySpeech').append(`<p>Atlan use skill Quicken! Attack Speed has increase a period of time!</p>`)  
         // End turn
         clockCheck = 0;
@@ -2239,16 +2241,16 @@ function Main(){
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.05) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.05),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*0.05)} damage</p>\n`)
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
               }else if(SkillControlRoom['Enemy'].EnemyPoison >= 1) {
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
               }
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*0.02) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 1){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*0.02),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*0.02)} damage</p>\n`)
+              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 1){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
               }else if(SkillControlRoom['Enemy'].EnemyBurning >= 1){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
@@ -2305,25 +2307,25 @@ function Main(){
               // console.log(`enemyClock: ${clockBarObject.enemyClockBar}`)
               
               switch (true) {
-                case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemyStunClock <= 0) && (EnemySlowClock <= 0)):
+                case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock <= 0) && (EnemySlowClock <= 0)):
                   Uclock = 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + 10,
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
                             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
                           }
-                case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemyStunClock > 0)):
+                case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock > 0)):
                   Uclock = 1;
                   EnemyStunClock = EnemyStunClock - 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + 10,
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
                             enemyClockBar: clockBarObject.enemyClockBar
                           }
-                case ((SkillControlRoom['User'].userClockQuicken >= 1) && (EnemySlowClock > 0)):
+                case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemySlowClock > 0)):
                   Uclock = 1;
                   EnemySlowClock = EnemySlowClock - 1;
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + 10,
-                            enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
+                            enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent))
                           }
                 case (EnemyStunClock > 0):
                   Uclock = 1;
@@ -2337,7 +2339,7 @@ function Main(){
                     EnemySlowClock = EnemySlowClock - 1;
                     return clockBarObject = {
                               userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
-                              enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * 0.5)
+                              enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent))
                             }
                   default:
                     Uclock = 1;
@@ -2439,7 +2441,7 @@ function Main(){
                       {EnemySlowClock > 0 ? <img src={SlowEffect} alt="SlowEffectImage" title="Slow"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyPoison > 0 ? <img src={PoisonEffect} alt="PoisonEffectImage" title="Poison"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyBurning > 0 ? <img src={BurningEffect} alt="BurningEffectImage" title="Burn"></img>: null}
-                      {SkillControlRoom['Enemy'].EnemyBleeding > 0? <img src={BleedingEffect} alt="BleedingEffectImage" title="Bleed"></img>: null}
+                      {SkillControlRoom['Enemy'].EnemyBleeding > 0 ? <img src={BleedingEffect} alt="BleedingEffectImage" title="Bleed"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyDefenceBreak > 0? <img src={DefenceDownEffect} alt="DefenceDownEffectImage" title="Def Break"></img>: null}
                       
                      </div>
@@ -2455,17 +2457,17 @@ function Main(){
                 <div className="UserBox">
                   <div className="UserImageBox">
                     {/* User attack Post */}
-                    {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"} /> :
-                    ImageControlRoom.UserIsDefend && ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg battleScreenShake" : "altanImg battleScreenShake"}/> :
-                    ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                    ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                    ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
+                    {ImageControlRoom.UserAttack ? <img src={ImageControlRoom.UserAttackImg} alt="UserAttackPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"} /> :
+                    ImageControlRoom.UserIsDefend && ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg battleScreenShake" : "altanImg battleScreenShake"}/> :
+                    ImageControlRoom.UserOnHit ? <img src={ImageControlRoom.UserOnHitImg} alt="UserOnHitPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserIsDying ? <img src={ImageControlRoom.UserDyingImg} alt="UserIsDyingPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserIsDead ? <img src={ImageControlRoom.UserDeadImg} alt="UserIsDeadPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/> : 
                     // User Defend Post
-                    ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                    ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
-                    ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserIsDefend ? <img src={ImageControlRoom.UserDefendImg} alt="UserDefendPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserChannel ? <img src={ImageControlRoom.UserChannelImg} alt="UserChannelPost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/> :
+                    ImageControlRoom.UserPickUp ? <img src={ImageControlRoom.UserPickUpImg} alt="UserPickUp" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/> :
                     // User Battle Post
-                    <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 1 ? " AtlanQuicken altanImg" : "altanImg"}/>}
+                    <img src={ImageControlRoom.UserBattleImg} alt="UserBattlePost" className={SkillControlRoom['User'].userClockQuicken >= 0 ? " AtlanQuicken altanImg" : "altanImg"}/>}
                     <p className={(ImageControlRoom.EnemyAttack && ImageControlRoom.UserIsCrit) || ImageControlRoom.UserIsDodge ? `DamageResultNumberCritUser` : ImageControlRoom.EnemyAttack || ImageControlRoom.UserIsDodge ? `DamageResultNumberUser` : `DamageResultNumberHide`}>{ImageControlRoom.UserIsDodge ? "MISS" : Damage}</p>
                     <p className={ ImageControlRoom.UserOnLifeStealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)}</p>
                     <p className={ ImageControlRoom.UserOnHPHealAnimation ? `HealResultNumberUser` : `DamageResultNumberHide`}>{Math.floor(HPHeal)}</p>
@@ -2477,7 +2479,7 @@ function Main(){
                     <progress className="blueSP" value={(userStats.currentSP/userStats.maxSP)*100} max="100" title={"SP:" + userStats.currentSP + "/" + userStats.maxSP}/>
                     <h2 className="wordCenter titleName userNamePosition">Atlan</h2>
                     <div>
-                      {SkillControlRoom['User'].userClockQuicken >= 1 ? <img src={QuickenEffect} alt="QuickenEffect"></img>: null}
+                      {SkillControlRoom['User'].userClockQuicken >= 0 ? <img src={QuickenEffect} alt="QuickenEffect"></img>: null}
                      </div>
                   </div>
                 </div>

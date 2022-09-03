@@ -93,7 +93,7 @@ function StartMenu(props){
     useEffect(() => {
       switch(true){
         //GEAR LIST
-        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanSkills):
           $('.storySpeech').html('')
           $('.storyCharacter').html('')
           break;
@@ -231,11 +231,11 @@ function StartMenu(props){
           <fieldset className="storyChat">
           <legend className="storyCharacter"></legend>
           <p className="storySpeech"></p>
-            {npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) && (userGoldItem.RedGemstone >= 1 && userGoldItem.CursedRuby >= 10 && userGoldItem.Diamond >= 1) ?
+            {npcControlRoom.PronteraAssistant && npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) && (userGoldItem.RedGemstone >= 1 && userGoldItem.CursedRuby >= 10 && userGoldItem.Diamond >= 1) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnAmuletRecoveryFn(true)); dispatch(TalktoPronteraAssistantLearnedFn()); dispatch(WinRedGemstoneFn(0,-1)); dispatch(WinCursedRubyFn(0,-10)); dispatch(WinDiamondFn(0,-2));}}>Hang Over the Items - x1<img src={RedGemstone} alt="RedGemstone"/> x10<img src={CursedRuby} alt="CursedRuby"/> x2<img src={Diamond} alt="Diamond"/></button>
             </div> :
-            npcControlRoom.PronteraAssistant && !npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            npcControlRoom.PronteraAssistant && !npcControlRoom.PronteraAssistantContinue && !npcControlRoom.PronteraAssistantLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(TalktoPronteraAssistantContinueFn());}}>Research..?</button>
             </div> : null}

@@ -235,7 +235,7 @@ function StartMenu(props){
   useEffect(() => {
       switch(true){
         //GEAR LIST
-        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanSkills):
           $('.storySpeech').html('')
           $('.storyCharacter').html('')
           break;
@@ -713,17 +713,17 @@ function StartMenu(props){
               : <p>Empty Accessory Storage T^T</p>}
               </div> :
 
-              npcControlRoom.Fountain && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              npcControlRoom.Fountain && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="textCenter">
                 <p className="chatDescriptTitle">Fountain</p>
                 <button className="fountainResetPoint" onClick={() =>{dispatch(ResetMyPointsFn(userAttribute.BonusVit,userAttribute.BonusInt)); dispatch(ResetStatsPointFn());}}>Reset my Status Point</button>
                 <p className="fountainResetConfirm"></p>
               </div>: 
-              npcControlRoom.KafraEmployee && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              npcControlRoom.KafraEmployee && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="textCenter">
                 <button className="kafraEmployeeHeal" onClick={() => dispatch(KafraEmployeeHealStateFn())}>Heal</button> 
               </div> : 
-              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              (npcControlRoom.Kiwi || npcControlRoom.Lemon || npcControlRoom.Chocolate) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
               <div className="textCenter">
                 
                 {!npcControlRoom.LemonResponse && 
@@ -753,7 +753,7 @@ function StartMenu(props){
                 <button className="guildInterest" onClick={() => dispatch(TalktoLemonResponseFn())}>Hidden Story...</button> : null }
               </div> : 
               // {/* QUEST */}
-              npcControlRoom.QuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              npcControlRoom.QuestBoard && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="textCenter">
                   <p className="chatDescriptTitle">Quest Board</p>
                 <ul>
@@ -781,31 +781,31 @@ function StartMenu(props){
                 <p className="questCompleteResult"></p>
               </div> : 
               // {/* BUY SELL FN */}
-              screenControlRoom.PronteraHeadGearDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              screenControlRoom.PronteraHeadGearDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
                   <button className="buyHeadGearDealerButton" onClick={() =>{dispatch(DealerBuyFn());}}>Buy</button>
                   <button className="sellHeadGearDealerButton" onClick={() =>{dispatch(DealerSellFn());}}>Sell</button>
                   <button className="returnHeadGearDealerButton" onClick={() => {dispatch(GotoPronteraHeadGearDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave HeadGearShop</button>
                 </div> :
-              screenControlRoom.PronteraToolDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              screenControlRoom.PronteraToolDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
                   <button className="buyToolDealerButton" onClick={() =>{dispatch(DealerBuyFn())}}>Buy</button>
                   <button className="sellToolDealerButton" onClick={() =>{dispatch(DealerSellFn())}}>Sell</button>
                   <button className="returnToolDealerButton" onClick={() => {dispatch(GotoPronteraToolDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave ToolShop</button>
                 </div> :
-              npcControlRoom.WeaponDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              npcControlRoom.WeaponDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
                   <button className="buyWeaponDealerButton" onClick={() =>{dispatch(DealerBuyFn())}}>Buy Weapon</button>
                   <button className="sellWeaponDealerButton" onClick={() =>{dispatch(DealerSellFn())}}>Sell Weapon</button>
                   <button className="returnWeaponDealerButton" onClick={() =>{dispatch(ResetTalktoFn())}}>Back</button>
                 </div> :
-              npcControlRoom.ArmorDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              npcControlRoom.ArmorDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
                   <button className="buyArmorDealerButton" onClick={() =>{dispatch(DealerBuyFn())}}>Buy Armor</button>
                   <button className="sellArmorDealerButton" onClick={() =>{dispatch(DealerSellFn())}}>Sell Armor</button>
                   <button className="returnArmorDealerButton" onClick={() =>{dispatch(ResetTalktoFn())}}>Back</button>
                 </div> :
-              screenControlRoom.PronteraWeaponArmorDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+              screenControlRoom.PronteraWeaponArmorDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
                   <button className="returnWeaponArmorDealerButton" onClick={() => {dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave ToolShop</button>
                 </div>

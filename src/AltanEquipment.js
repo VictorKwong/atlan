@@ -50,16 +50,11 @@ import UserStand3_SantaPoringHat from './img/Character/UserStand3_SantaPoringHat
 import Katana from './img/Equipment/Weapon/Katana.gif'
 import CottonShirt from './img/Equipment/Armor/CottonShirt.gif'
 
+let imageCode = 0;
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
-    const npcControlRoom = useSelector(state => state.npcControlRoom)
-    const npcSpeech = useSelector(state => state.npcSpeech)
-    const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
-    const userGoldItem = useSelector(state => state.userGoldItem)
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
-    const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
     let GotoList = [
       {id:90001, name:userStats.userWeapon, DirectTo: GotoWeaponEquipmentChoiceFn(), Img:userStats.userWeaponImg, preload: Katana, wordDisplay:"Weapon:"},
@@ -84,6 +79,27 @@ function StartMenu(){
 
     const dispatch = useDispatch();
 
+    const changeImage = () => {
+      switch(true){
+        case (screenControlRoom.ImageEquipment === 0):
+          imageCode = 1;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+        case (screenControlRoom.ImageEquipment === 1):
+          imageCode = 2;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+        case (screenControlRoom.ImageEquipment === 2):
+          imageCode = 3;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+        case (screenControlRoom.ImageEquipment === 3):
+          imageCode = 0;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+      }
+    }
+
     return(
       <div className="AltanEquipmentMap">
         <h2 className="altanEquipTitle">Equipment</h2>
@@ -91,7 +107,7 @@ function StartMenu(){
         {UserDisplay.map(Image => {
           return(
             <div key={Image.id} className={userStats.userHeadGear === Image.name ? null : 'displayNone'}>
-            {userStats.userHeadGear === Image.name ? <img src={(Math.random() <= 0.25) && screenControlRoom.ImageEquipment ? Image.img3 :(Math.random() <= 0.25) && screenControlRoom.ImageEquipment ? Image.img2 : (Math.random() <= 0.25) && screenControlRoom.ImageEquipment ? Image.img1 : Image.img0} alt={Image.explain} className="ImgStandEquip" onClick={() => {dispatch(GotoImageEquipmentFn());}}/> :null}
+            {userStats.userHeadGear === Image.name ? <img src={screenControlRoom.ImageEquipment === 3 ? Image.img3 :screenControlRoom.ImageEquipment === 2 ? Image.img2 : screenControlRoom.ImageEquipment === 1 ? Image.img1 : Image.img0} alt={Image.explain} className="ImgStandEquip" onClick={() => {changeImage()}}/> :null}
             </div>
           )
         })}

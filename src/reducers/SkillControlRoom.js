@@ -109,7 +109,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 User:{
                     ...state['User'],
-                    userClockQuicken: 6
+                    userClockQuicken: action.QuickenSpeedTurn
             }
         }
         case 'UserSkillQuickenClockTickFn':
@@ -133,7 +133,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 Enemy:{
                     ...state['Enemy'],
-                    EnemyPoison: 5,
+                    EnemyPoison: action.KodokuPoisonTurn,
                 }
             }
         case 'UserSkillVitalStrikeFn':
@@ -141,7 +141,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 Enemy:{
                     ...state['Enemy'],
-                    EnemyDefenceBreak: 8,
+                    EnemyDefenceBreak: action.VitalStrikeDefenceBreakDownTurn
                 }
             }
         case 'UserSkillMagnumBreakFn':
@@ -157,7 +157,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 ...state,
                 Enemy:{
                     ...state['Enemy'],
-                    EnemyBleeding: 4,
+                    EnemyBleeding: action.HeadCrushBleedingTurn,
                 }
             }    
 

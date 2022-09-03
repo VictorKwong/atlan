@@ -107,7 +107,7 @@ function StartMenu(props){
         $('.storySpeech').html('You found a hidden passage in PayonCave2F...')  
         $('.storyCharacter').html('')
         break;
-      case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+      case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanSkills):
         $('.storySpeech').html('')  
         $('.storyCharacter').html('')
         break;
@@ -409,7 +409,7 @@ function StartMenu(props){
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
-              {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ? 
+              {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="storyScreen">
                 <button className="ReturnPayonCave" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
               </div> : null}

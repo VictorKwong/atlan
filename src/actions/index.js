@@ -27,13 +27,14 @@ export const UserLifeStealEnemyFn = (Damage,Target,LifeSteal) => {
         LifeSteal: LifeSteal
     }
 };
-export const UserSkillLifeStealEnemyFn = (Damage,Target,LifeSteal,Consume) => {
+export const UserSkillLifeStealEnemyFn = (Damage,Target,LifeSteal,Consume,ZenyPercent) => {
     return {
         type: 'UserSkillLifeStealEnemyFn',
         DamageCalculation: Damage,
         Target: Target,
         LifeSteal: LifeSteal,
-        Consume: Consume
+        Consume: Consume,
+        ZenyPercent: ZenyPercent
     }
 };
 
@@ -59,10 +60,11 @@ export const UserAttackEnemyFn = (Damage,Target) => {
         Target: Target,
     };
 };
-export const UserSkillFirstAidFn = (sp) => {
+export const UserSkillFirstAidFn = (sp, heal) => {
     return {
         type: 'UserSkillFirstAidFn',
-        sp:sp
+        sp:sp,
+        heal: heal
     };
 };
 
@@ -82,12 +84,13 @@ export const UserSkillBashMissedFn = (sp) => {
     };
 };
 
-export const UserSkillMammoniteEnemyFn = (Damage,Target,sp) => {
+export const UserSkillMammoniteEnemyFn = (Damage,Target,sp,ZenyPercent) => {
     return {
         type: 'UserSkillMammoniteEnemyFn',
         DamageCalculation: Damage,
         Target: Target,
-        sp:sp
+        sp:sp,
+        ZenyPercent:ZenyPercent
     };
 };
 export const UserSkillMammoniteMissedFn = (sp) => {
@@ -124,16 +127,18 @@ export const UserSkillBowlingBashMissedFn = (sp) => {
         sp:sp
     };
 };
-export const UserSkillQuickenFn = (sp) => {
+export const UserSkillQuickenFn = (sp,QuickenSpeedTurn) => {
     return {
         type: 'UserSkillQuickenFn',
-        sp:sp
+        sp:sp,
+        QuickenSpeedTurn:QuickenSpeedTurn
     };
 };
-export const UserSkillKodokuFn = (sp) => {
+export const UserSkillKodokuFn = (sp,KodokuPoisonTurn) => {
     return {
         type: 'UserSkillKodokuFn',
-        sp: sp
+        sp: sp,
+        KodokuPoisonTurn:KodokuPoisonTurn
     };
 };
 export const UserSkillMagnumBreakFn = () => {
@@ -141,16 +146,18 @@ export const UserSkillMagnumBreakFn = () => {
         type: 'UserSkillMagnumBreakFn',
     };
 };
-export const UserSkillHeadCrushFn = (sp) => {
+export const UserSkillHeadCrushFn = (sp,HeadCrushBleedingTurn) => {
     return {
         type: 'UserSkillHeadCrushFn',
-        sp:sp
+        sp:sp,
+        HeadCrushBleedingTurn:HeadCrushBleedingTurn
     };
 };
-export const UserSkillVitalStrikeFn = (sp) => {
+export const UserSkillVitalStrikeFn = (sp,VitalStrikeDefenceBreakDownTurn) => {
     return {
         type: 'UserSkillVitalStrikeFn',
-        sp:sp
+        sp:sp,
+        VitalStrikeDefenceBreakDownTurn:VitalStrikeDefenceBreakDownTurn
     };
 };
 
@@ -410,9 +417,10 @@ export const GotoAccessoryTwoEquipmentChoiceFn = () => {
     };
 };
 
-export const GotoImageEquipmentFn = () => {
+export const GotoImageEquipmentFn = (ImageEquipment) => {
     return {
         type: 'GotoImageEquipmentFn',
+        ImageEquipment:ImageEquipment
     };
 };
 export const GotoItemChoiceFn = () => {
@@ -2850,6 +2858,52 @@ export const BossBaphometDefeatFn = () => {
     };
 };
 
+//Skills Screen
+export const FirstAidTrainingFn = () => {
+    return {
+        type: 'FirstAidTrainingFn',
+    };
+};
+export const BashTrainingFn = () => {
+    return {
+        type: 'BashTrainingFn',
+    };
+};
+export const MammoniteTrainingFn = () => {
+    return {
+        type: 'MammoniteTrainingFn',
+    };
+};
+export const KodokuTrainingFn = () => {
+    return {
+        type: 'KodokuTrainingFn',
+    };
+};
+export const MagnumBreakTrainingFn = () => {
+    return {
+        type: 'MagnumBreakTrainingFn',
+    };
+};
+export const HeadCrushTrainingFn = () => {
+    return {
+        type: 'HeadCrushTrainingFn',
+    };
+};
+export const QuickenTrainingFn = () => {
+    return {
+        type: 'QuickenTrainingFn',
+    };
+};
+export const VitalStrikeTrainingFn = () => {
+    return {
+        type: 'VitalStrikeTrainingFn',
+    };
+};
+export const BowlingBashTrainingFn = () => {
+    return {
+        type: 'BowlingBashTrainingFn',
+    };
+};
 
 //Audio Interaction
 export const AudioVolumeBGMSaverFn = (Volume,map,Place,Threshold) => {

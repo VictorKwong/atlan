@@ -4,7 +4,7 @@ import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn, G
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions';
 import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn } from './actions'
 import { cutsceneSixFn } from './actions'
-//Test
+//Audio
 import { gameTitleOptionScreenFn } from './actions'
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
@@ -246,8 +246,23 @@ function StartMenu(){
     const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const equipmentAllStats = useSelector(state => state.equipmentAllStats)
+    const skillCapChart = useSelector(state => state.skillCapChart)
    
     const dispatch = useDispatch();
+
+    let SkillsLevelBox = [
+      {id:100, select:screenControlRoom.FirstAidTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+      {id:101, select:screenControlRoom.BashTraining, skillLevelCheck:skillCapChart.BashSkillLevel},
+      {id:102, select:screenControlRoom.MammoniteTraining, skillLevelCheck:skillCapChart.MammoniteSkillLevel},
+      {id:103, select:screenControlRoom.KodokuTraining, skillLevelCheck:skillCapChart.KodokuSkillLevel},
+      {id:104, select:screenControlRoom.MagnumBreakTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+      {id:105, select:screenControlRoom.HeadCrushTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+      {id:106, select:screenControlRoom.QuickenTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+      {id:107, select:screenControlRoom.VitalStrikeTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+      {id:108, select:screenControlRoom.BowlingBashTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+    ]
+
+
     let WeaponGearBox = [
       {id:1000, num: 1, EquipItem:ReturnWeaponEquipmentChoiceFn("Empty",null, 1), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
       BonusSTR:0, BonusAGI:0, BonusVIT:0, BonusINT:0, BonusDEX:0, BonusLUK:0, Bonusattack:0, Bonusspeed:0, BonusdodgeRate:0, Bonusdefence:0, Bonusdefencebuffer:0, BonushitRate:0, BonuscritRate:0, BonusHealth:0, BonusSP:0},
@@ -795,7 +810,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                       screenControlRoom.PayonCave3FPath1 &&
                       screenControlRoom.PayonCave3FPath2 &&
                       screenControlRoom.PayonCave3FPath3 &&
-                      screenControlRoom.PayonCave3FPath4 ? <span>Payon Cave(⭐⭐)</span> : <span>Payon Cave</span>}
+                      screenControlRoom.PayonCave3FPath4 ? <span>Payon Cave(⭐)</span> : <span>Payon Cave</span>}
                 </button>
                 <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn()); }}>{
                     screenControlRoom.PoringIslandPath1 &&
@@ -817,7 +832,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                 <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn()); }}>{
                     screenControlRoom.ChallengeTowerPath1 &&
                     screenControlRoom.ChallengeTowerPath2 &&
-                    screenControlRoom.ChallengeTowerPath3 ? <span>RaidTower(⭐⭐⭐⭐)</span> : <span>RaidTower</span>}
+                    screenControlRoom.ChallengeTowerPath3 ? <span>RaidTower(⭐)</span> : <span>RaidTower</span>}
                 </button>
               </div>
             }               
@@ -1001,6 +1016,30 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
+            {/* Skills Room */}
+            {(screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
+              (screenControlRoom.AltanSkills) ?
+                <div>
+                  {SkillsLevelBox.map(Skills => {
+                    return(
+                      <span key={Skills.id}>
+                        {Skills.select ?
+                        <p>Testing xD</p>
+                        : null}
+                        {/* {Train.select && Train.Points < 10 && userGoldItem.Zeny >= trainingSuccessRequire[Train.Points] ?
+                        <div className="storyScreen">
+                          <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
+                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);} : () => {HouseTrainingFailureButton(Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);}}>YES</button>
+                          <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
+                        </div> : 
+                        Train.select && Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ?
+                        <div className="storyScreen">
+                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
+                        </div> : null} */}
+                      </span>
+                    )
+                  })}
+                </div> : null}
           </fieldset>
         </div>
         : null }

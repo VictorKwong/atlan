@@ -70,6 +70,8 @@ import guildLifeSteal from './img/Skill/gd_lifesteal.gif'
 import guildReflect from './img/Skill/gd_reflect.gif'
 import AmuletRecovery from './img/Skill/mo_amuletrecovery.gif'
 
+let imageCode = 0;
+
 function StartMenu(){
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
@@ -86,7 +88,7 @@ function StartMenu(){
     //   {id:20006, Img:skillQuicken, name:"Quicken", skillLevelCheck:1, title:"Increase speed by 10 for 5 turns"},
     //   {id:20007, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:1, title:"Deal damage to enemy"},
     // ]
-        let GiftBox = [
+    let GiftBox = [
       {id:20000, Img:SwordMastery, name:"Sword Mastery", title:"Sword Master - Attack + 50"},
       {id:20001, Img:Swiftness, name:"Swiftness", title:"Swiftness - Flee + 15"},
       {id:20002, Img:Gloria, name:"Gloria", title:"Gloria - Luk + 10"},
@@ -114,6 +116,28 @@ function StartMenu(){
       {id:7, name:null, img0:UserStandPost , img1:UserSitPost, img2:UserStand2Post, img3:UserStand3Post, explain:"UserPost" },
     ]
 
+    const changeImage = () => {
+      
+      switch(true){
+        case (screenControlRoom.ImageEquipment === 0):
+          imageCode = 1;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+        case (screenControlRoom.ImageEquipment === 1):
+          imageCode = 2;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+        case (screenControlRoom.ImageEquipment === 2):
+          imageCode = 3;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+        case (screenControlRoom.ImageEquipment === 3):
+          imageCode = 0;
+          dispatch(GotoImageEquipmentFn(imageCode));
+          break;
+      }
+    }
+
     return(
       <div className="AltanStatsMap">
         <h2 className="altanStatsTitle">Status</h2>
@@ -126,7 +150,7 @@ function StartMenu(){
           {UserDisplay.map(Image => {
             return(
               <div key={Image.id} className={userStats.userHeadGear === Image.name ? null : 'displayNone'}>
-                {userStats.userHeadGear === Image.name ? <img src={(Math.random() <= 0.25) && screenControlRoom.ImageEquipment ? Image.img3 :(Math.random() <= 0.25) && screenControlRoom.ImageEquipment ? Image.img2 : (Math.random() <= 0.25) && screenControlRoom.ImageEquipment ? Image.img1 : Image.img0} alt={Image.explain} className="ImgStandEquip" onClick={() => {dispatch(GotoImageEquipmentFn());}}/> :null}
+                {userStats.userHeadGear === Image.name ? <img src={screenControlRoom.ImageEquipment === 3 ? Image.img3 :screenControlRoom.ImageEquipment === 2 ? Image.img2 : screenControlRoom.ImageEquipment === 1 ? Image.img1 : Image.img0} alt={Image.explain} className="ImgStandEquip" onClick={() => {changeImage()}}/> :null}
               </div>
             )
           })}
