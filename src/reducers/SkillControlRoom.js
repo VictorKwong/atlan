@@ -257,7 +257,7 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 },
                 User:{
                     ...state['User'],
-                    userClockQuicken: 0,
+                    userClockQuicken: -1,
                     UserBlock: false,
                     BattleItemScreen: false,
                     BattleSkillScreen: false,

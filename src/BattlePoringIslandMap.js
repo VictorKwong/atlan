@@ -1550,6 +1550,8 @@ function Main(){
       audioSkillVitalStrike.play();
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
+      dispatch(EnemyOnHitAnimationFn());
+      setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike)), 300);
