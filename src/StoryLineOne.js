@@ -67,6 +67,9 @@ function StartMenu(){
                 <button className="nextLine StoryButton StoryButtonPositon" onClick={() => nextLine()}>Next</button>
               </div>
             }
+            <div>
+              <button className="SkipButton SkipButtonPositon" onClick={() => {dispatch(finishStoryLineOneFn()); dispatch(GotoWorldMapFn());}}>Skip</button>
+            </div>
         
           </fieldset>
         </div>

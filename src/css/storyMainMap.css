@@ -392,6 +392,7 @@
   .altanStats,
   .altanQuest{
     width:100%;
+    height:35px;
   }
   .altanEquipment::before,
   .altanItems::before,
