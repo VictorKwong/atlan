@@ -134,6 +134,12 @@ export const UserSkillQuickenFn = (sp,QuickenSpeedTurn) => {
         QuickenSpeedTurn:QuickenSpeedTurn
     };
 };
+export const UserClockFireAttackAttributesFn = (MagnumBreakFireWeaponTurn) => {
+    return {
+        type: 'UserClockFireAttackAttributesFn',
+        MagnumBreakFireWeaponTurn:MagnumBreakFireWeaponTurn
+    };
+};
 export const UserSkillKodokuFn = (sp,KodokuPoisonTurn) => {
     return {
         type: 'UserSkillKodokuFn',
@@ -141,9 +147,10 @@ export const UserSkillKodokuFn = (sp,KodokuPoisonTurn) => {
         KodokuPoisonTurn:KodokuPoisonTurn
     };
 };
-export const UserSkillMagnumBreakFn = () => {
+export const UserSkillMagnumBreakFn = (MagnumBreakBurningTurn) => {
     return {
         type: 'UserSkillMagnumBreakFn',
+        MagnumBreakBurningTurn:MagnumBreakBurningTurn
     };
 };
 export const UserSkillHeadCrushFn = (sp,HeadCrushBleedingTurn) => {
@@ -161,11 +168,6 @@ export const UserSkillVitalStrikeFn = (sp,VitalStrikeDefenceBreakDownTurn) => {
     };
 };
 
-export const UserSkillQuickenClockTickFn = () => {
-    return {
-        type: 'UserSkillQuickenClockTickFn'
-    };
-};
 export const ResetUserSkillQuickenClockFn = () => {
     return {
         type: 'ResetUserSkillQuickenClockFn'

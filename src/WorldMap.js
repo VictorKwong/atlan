@@ -255,11 +255,11 @@ function StartMenu(){
       {id:101, select:screenControlRoom.BashTraining, skillLevelCheck:skillCapChart.BashSkillLevel},
       {id:102, select:screenControlRoom.MammoniteTraining, skillLevelCheck:skillCapChart.MammoniteSkillLevel},
       {id:103, select:screenControlRoom.KodokuTraining, skillLevelCheck:skillCapChart.KodokuSkillLevel},
-      {id:104, select:screenControlRoom.MagnumBreakTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
-      {id:105, select:screenControlRoom.HeadCrushTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
-      {id:106, select:screenControlRoom.QuickenTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
-      {id:107, select:screenControlRoom.VitalStrikeTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
-      {id:108, select:screenControlRoom.BowlingBashTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
+      {id:104, select:screenControlRoom.MagnumBreakTraining, skillLevelCheck:skillCapChart.MagnumBreakSkillLevel},
+      {id:105, select:screenControlRoom.HeadCrushTraining, skillLevelCheck:skillCapChart.HeadCrushSkillLevel},
+      {id:106, select:screenControlRoom.QuickenTraining, skillLevelCheck:skillCapChart.QuickenSkillLevel},
+      {id:107, select:screenControlRoom.VitalStrikeTraining, skillLevelCheck:skillCapChart.VitalStrikeSkillLevel},
+      {id:108, select:screenControlRoom.BowlingBashTraining, skillLevelCheck:skillCapChart.BowlingBashSkillLevel},
     ]
 
 

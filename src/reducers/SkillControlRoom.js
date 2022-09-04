@@ -6,7 +6,8 @@ const Fn = {
         UserTurn: false,
         UserBlock: false,
         //userClock Status
-        userClockQuicken: 0,
+        userClockQuicken: -1,
+        userClockFireAttackAttributes: -1,
         //Stable Skills
         UserLearnDoubleAttack: false,
         UserLearnReflectAttack: true,
@@ -26,10 +27,10 @@ const Fn = {
     Enemy:{
         EnemyTurn: false,
         EnemyBlock: false,
-        EnemyPoison: 0,
-        EnemyBurning: 0,
-        EnemyBleeding: 0,
-        EnemyDefenceBreak: 0,
+        EnemyPoison: -1,
+        EnemyBurning: -1,
+        EnemyBleeding: -1,
+        EnemyDefenceBreak: -1,
     }
     
 }
@@ -112,12 +113,12 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     userClockQuicken: action.QuickenSpeedTurn
             }
         }
-        case 'UserSkillQuickenClockTickFn':
+        case 'UserClockFireAttackAttributesFn':
             return{
                 ...state,
                 User:{
                     ...state['User'],
-                    userClockQuicken: state['User'].userClockQuicken - 1
+                    userClockFireAttackAttributes: action.MagnumBreakFireWeaponTurn
                 }
             }
         case 'ResetUserSkillQuickenClockFn':
@@ -250,14 +251,15 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     ...state['Enemy'],
                     EnemyBlock: false,
                     EnemyTurn: false,
-                    EnemyPoison: 0,
-                    EnemyBurning: 0,
-                    EnemyBleeding: 0,
-                    EnemyDefenceBreak: 0,
+                    EnemyPoison: -1,
+                    EnemyBurning: -1,
+                    EnemyBleeding: -1,
+                    EnemyDefenceBreak: -1,
                 },
                 User:{
                     ...state['User'],
                     userClockQuicken: -1,
+                    userClockFireAttackAttributes: -1,
                     UserBlock: false,
                     BattleItemScreen: false,
                     BattleSkillScreen: false,
@@ -273,7 +275,8 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserBlock: false,
                     BattleSkillScreen: false,
                     BattleItemScreen: false,
-                    userClockQuicken: state['User'].userClockQuicken - 1
+                    userClockQuicken: state['User'].userClockQuicken - 1,
+                    userClockFireAttackAttributes: state['User'].userClockFireAttackAttributes - 1
                 },
                 Enemy:{
                     ...state['Enemy'],

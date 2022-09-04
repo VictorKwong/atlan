@@ -40,6 +40,7 @@ const Fn = {
     FirstAidFlatHeal: 150,
     BashBaseDamage: 50,
     MammoniteBaseDamage: 30,
+    MagnumBreakBaseDamage: 100,
     BowlingBashBaseDamage: 200,
     //Special Effect
     BashStunChance: 0.5,
@@ -47,7 +48,9 @@ const Fn = {
     HeadCrushBleedingChance: 0.7,
     QuickenSpeed: 10,
     VitalStrikeDefenceBreakDown: 0.25,
+
     //DOT Effect
+    //3 turns, 2 1 0 = 3
     KodokuPoisonTurn: 5,
     KodokuPoisonPercent: 0.05,
     HeadCrushBleedingTurn: 4,
@@ -55,7 +58,12 @@ const Fn = {
     QuickenSpeedTurn: 5,
     VitalStrikeDefenceBreakDownTurn: 8,
     BowlingBashSlowClockTurn: 10,
-    BowlingBashSlowPercent: 0.25
+    BowlingBashSlowPercent: 0.25,
+    MagnumBreakAccuracyPercent: 1.1,
+    MagnumBreakFireWeaponTurn: 3,
+    MagnumBreakBurningTurn: 4,
+    MagnumBreakBurningPercent: 0.01,
+
 
 }
 

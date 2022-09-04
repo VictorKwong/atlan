@@ -68,7 +68,7 @@ const Fn = [
         dodgeRate: 0.05,
         critRate: 0.03,
         critResist: 0.05,
-        Experience: 200,
+        Experience: 1000,
         Zeny: (40 + Math.floor(Math.random() * 14)),
         enemyClockDefend: false,
     },
@@ -109,17 +109,17 @@ const Fn = [
     {
         name: 'Ghostring',
         level: 30,
-        maxHealth: 2000, //4400
-        currentHealth: 2000,
+        maxHealth: 1, //4400
+        currentHealth: 1,
         attack: 1,
         defence: 50,
         defencebuffer: 60, //+6
         speed: 10,
         hitRate: 0.85,
-        dodgeRate: 1,
+        dodgeRate: 0.01,
         critRate: 0.03,
         critResist: 0.05,
-        Experience: 900,
+        Experience: 1200,
         Zeny: (4000 + Math.floor(Math.random() * 100)),
         enemyClockDefend: false,
     },
