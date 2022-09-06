@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atlan/static/css/main.a8846fe3.css",
-    "main.js": "/atlan/static/js/main.d8599d0f.js",
+    "main.css": "/atlan/static/css/main.eb294a25.css",
+    "main.js": "/atlan/static/js/main.621e490b.js",
     "static/js/787.e0a67ab0.chunk.js": "/atlan/static/js/787.e0a67ab0.chunk.js",
     "static/media/Laszlo-ImaginaryFriends.mp3": "/atlan/static/media/Laszlo-ImaginaryFriends.267ccc3bb86bfca273cd.mp3",
     "static/media/108ThemeOfProntera.mp3": "/atlan/static/media/108ThemeOfProntera.986685395106123ec547.mp3",
@@ -25,6 +25,7 @@
     "static/media/PoringIslandHouse.jpg": "/atlan/static/media/PoringIslandHouse.12dcc8613e96383a269d.jpg",
     "static/media/RustyHeartsHeartbroken.mp3": "/atlan/static/media/RustyHeartsHeartbroken.2fc7039a1b67c14157e6.mp3",
     "static/media/StrugardenNEOBattle1.mp3": "/atlan/static/media/StrugardenNEOBattle1.a804f15e1ab7a78ad2a9.mp3",
+    "static/media/Title.mp3": "/atlan/static/media/Title.da5b5c9a90fd2ff4f553.mp3",
     "static/media/TreasureBoxPayonCave1F1.jpg": "/atlan/static/media/TreasureBoxPayonCave1F1.0d7570d141a7d7c843ed.jpg",
     "static/media/PayonCave2FCrossPath.jpg": "/atlan/static/media/PayonCave2FCrossPath.4797ef44de5597d6ca59.jpg",
     "static/media/Dungeon9.png": "/atlan/static/media/Dungeon9.6d424de971bae1fa8a12.png",
@@ -239,12 +240,12 @@
     "static/media/WraithdeadAttack.gif": "/atlan/static/media/WraithdeadAttack.95c5ae20edbe2a2cc2dd.gif",
     "static/media/EmptyHandHit.wav": "/atlan/static/media/EmptyHandHit.0be33782a04935df9b17.wav",
     "index.html": "/atlan/index.html",
-    "main.a8846fe3.css.map": "/atlan/static/css/main.a8846fe3.css.map",
-    "main.d8599d0f.js.map": "/atlan/static/js/main.d8599d0f.js.map",
+    "main.eb294a25.css.map": "/atlan/static/css/main.eb294a25.css.map",
+    "main.621e490b.js.map": "/atlan/static/js/main.621e490b.js.map",
     "787.e0a67ab0.chunk.js.map": "/atlan/static/js/787.e0a67ab0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8846fe3.css",
-    "static/js/main.d8599d0f.js"
+    "static/css/main.eb294a25.css",
+    "static/js/main.621e490b.js"
   ]
 }
