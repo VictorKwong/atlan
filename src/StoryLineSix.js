@@ -76,7 +76,7 @@ function StartMenu(){
               </div>
             }
             <div>
-              <button className="SkipButton SkipButtonPositon" onClick={() => {LoadingScreen2();}}>Skip</button>
+              <button className={(storyLineOne['storyLineSix'].length === textReadAndSpeed.count) ? "SkipButton SkipButtonPositon SkipButtonContinue" : "SkipButton SkipButtonPositon"} onClick={() => {LoadingScreen2();}}>Skip</button>
             </div>
           </fieldset>
         </div>

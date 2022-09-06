@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { storyLineTalentFn, UserFirstGiftFn, UserSecondGiftFn } from './actions';
 
@@ -16,6 +16,11 @@ import AttentionConcentrate from './img/Gift/AttentionConcentrate.gif'
 import Blessing from './img/Gift/Blessing.gif'
 import Magnificat from './img/Gift/Magnificat.gif'
 
+import BGMTitle from './audio/Title.mp3'
+import LoginSound from './audio/SoundEffect/RoomChat.mp3'
+const audioBGM = new Audio(BGMTitle);
+const audioSoundEffect = new Audio(LoginSound)
+
 let Story = 0;
 let FirstGift = 0;
 let SecondGift = 0;
@@ -25,9 +30,13 @@ function StartMenu(){
     const userAttribute = useSelector(state => state.userAttribute)
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
+    const audioControlRoom = useSelector(state => state.audioControlRoom)
     const dispatch = useDispatch();
 
     const pickedGifts = (giftNumber) => {
+      audioSoundEffect.pause();
+      audioSoundEffect.currentTime = 0;
+      audioSoundEffect.play();
       (() => {
         switch (true) {
           case (giftNumber >= 1 && giftNumber <= 4):
@@ -42,19 +51,63 @@ function StartMenu(){
       })()
     }
     const AcceptFunction = (First,Second) => {
+      audioSoundEffect.pause();
+      audioSoundEffect.currentTime = 0;
+      audioSoundEffect.play();
+      // audioBGM.pause();
+      // audioBGM.currentTime = 0;
       dispatch(GiftOneFn(First));
       dispatch(GiftTwoFn(Second));
       dispatch(storyLineTalentFn(true));
     }
+    const changeMapFadeAudio = () => {
+      let i = 0;
+      const fadeAudio = setInterval(() => {
+          if (audioBGM.volume === parseFloat(audioControlRoom.AudioVolumeBGMFixed.toFixed(5))){
+            i = i + 1;
+          }
+          if (audioBGM.volume !== 0) {
+            audioBGM.volume -= parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))
+            audioBGM.volume = audioBGM.volume.toFixed(5)
+          }
+          if (audioBGM.volume < parseFloat(audioControlRoom.AudioChangeMapVolume.toFixed(5))) {
+              audioBGM.volume = 0;
+              audioBGM.pause();
+              audioBGM.currentTime = 0;
+            clearInterval(fadeAudio);
+          }else if (i >= 2){
+            audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5)
+            clearInterval(fadeAudio);
+          }
+        }, 10);
+    }
 
     const refuseFunction = () => {
+      audioSoundEffect.pause();
+      audioSoundEffect.currentTime = 0;
+      audioSoundEffect.play();
       Story = 0;
       FirstGift = 0;
       SecondGift = 0;
       dispatch(UserFirstGiftFn(false));
       dispatch(UserSecondGiftFn(false));
-
     }
+
+    useEffect(() => {
+        audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
+        audioSoundEffect.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
+        let playPromise = audioBGM.play(); 
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            audioBGM.loop = true;
+            audioBGM.play()
+          })
+          .catch(error => {
+          });
+        }
+      //Not Depend on audioControlRoom
+      //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const GiftBox = [
       {id: 1, img: SwordMastery, imgAlt:"Sword Mastery", text:"Sword Master - Attack + 50", Result:1},
@@ -132,7 +185,7 @@ function StartMenu(){
                   )
                 })}
               <span>
-                <button className="TalentButton altanEquipmentButtonFix" onClick={() => {AcceptFunction(FirstGift,SecondGift);}}>
+                <button className="TalentButton altanEquipmentButtonFix" onClick={() => {AcceptFunction(FirstGift,SecondGift); changeMapFadeAudio();}}>
                   <div className="adjImgCenterBox">
                     <p className="adjImgCenter">YES</p>
                   </div>

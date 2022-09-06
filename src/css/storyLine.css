@@ -205,6 +205,10 @@
   transition: all 0.1s;
 }
 
+.SkipButtonContinue{
+  right:140px;
+}
+
 .SkipButton:hover{
   text-shadow: 1px 1px 1px #536481;
   box-shadow: 3px 3px 3px rgb(47, 96, 110);
