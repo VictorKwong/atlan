@@ -134,7 +134,8 @@
 
 .StoryButton{
   cursor: pointer;
-  position: relative;
+  /* from relative to absolute */
+  position: absolute;
   text-decoration: none;
   font-size: 18px;
   color: rgb(26, 26, 26);
@@ -255,9 +256,6 @@
   right:7px;
 }
 
-.SkipButtonPositon{
-
-}
 
 
 @media (max-width: 1199px){
