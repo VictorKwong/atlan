@@ -255,7 +255,8 @@ progress.BarBasicHUD::-webkit-progress-bar{
 }
 
 /* Equipment Chat */
-.altanEquipmentGearChatButton{
+.altanEquipmentGearChatButton,
+.altanSkillChatButton{
   font-size: 20px;
   color: rgb(26, 26, 26);
   background: linear-gradient(135deg, rgba(220,220,220,1) 0%, rgb(153, 177, 229) 50%, rgb(173, 183, 206) 100%);
@@ -267,12 +268,18 @@ progress.BarBasicHUD::-webkit-progress-bar{
   width: 30%;
   margin: 5px;
 }
+.altanSkillChatButton{
+  width: calc(100% - 40px);
+  margin: 10px 20px 0;
+}
 
-.altanEquipmentGearChatButton:hover{
+.altanEquipmentGearChatButton:hover,
+.altanSkillChatButton:hover{
   text-shadow: 1px 1px 1px #657c9c;
 }
 
-.altanEquipmentGearChatButton::before{
+.altanEquipmentGearChatButton::before,
+.altanSkillChatButton::before{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -287,9 +294,20 @@ progress.BarBasicHUD::-webkit-progress-bar{
   opacity: 0;
 }
 
-.altanEquipmentGearChatButton:hover::before{
+.altanEquipmentGearChatButton:hover::before,
+.altanSkillChatButton:hover::before{
   transform: translate3d(0,-50%,0) scale3d(1,1,1);
   opacity: 1;
+}
+
+.skillLevelDisplayTwo{
+  display:none;
+}
+.altanSkillChatButton:hover .skillLevelDisplay{
+  display:none;
+}
+.altanSkillChatButton:hover .skillLevelDisplayTwo{
+  display:block;
 }
 
 .adjImgCenterBox{

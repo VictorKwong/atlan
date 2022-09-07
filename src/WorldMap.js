@@ -1049,14 +1049,18 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                     return(
                       <span key={Skills.id}>
                         {Skills.select ?
-                        <p>{Skills.title}</p>
+                          <p className="skillChatCenter">{Skills.title}</p>
                         : null}
                         {Skills.select && skillCapChart.JobPoints >= 1 ?
-                        <div className="storyScreen">
-                          <button className="HouseSelectButton" onClick={() => {dispatch(Skills.Upgrade);}}><img src={skillOut} alt="skillOut" />LevelUp</button>
-                        </div> :  null}
+                        <span>
+                          <button className="altanSkillChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Skills.Upgrade);}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter" ><img className="skillLevelDisplay" src={skillOut} alt="skillOut"/><img className="skillLevelDisplayTwo" src={skillDown} alt="skillDown"/>LevelUp</p>
+                            </div>
+                          </button>
+                        </span> :  null}
                       </span>
-                    )
+                    ) 
                   })}
                 </div> : null}
           </fieldset>
