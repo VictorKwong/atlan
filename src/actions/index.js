@@ -2924,7 +2924,52 @@ export const AudioVolumeSoundEffectSaverFn = (Volume) => {
     };
 };
 
-
+//Skill Level Fn
+export const FirstAidSkillLevelFn = () => {
+    return {
+        type: 'FirstAidSkillLevelFn',
+    };
+};
+export const BashSkillLevelFn = () => {
+    return {
+        type: 'BashSkillLevelFn',
+    };
+};
+export const MammoniteSkillLevelFn = () => {
+    return {
+        type: 'MammoniteSkillLevelFn',
+    };
+};
+export const KodokuSkillLevelFn = () => {
+    return {
+        type: 'KodokuSkillLevelFn',
+    };
+};
+export const MagnumBreakSkillLevelFn = () => {
+    return {
+        type: 'MagnumBreakSkillLevelFn',
+    };
+};
+export const HeadCrushSkillLevelFn = () => {
+    return {
+        type: 'HeadCrushSkillLevelFn',
+    };
+};
+export const QuickenSkillLevelFn = () => {
+    return {
+        type: 'QuickenSkillLevelFn',
+    };
+};
+export const VitalStrikeSkillLevelFn = () => {
+    return {
+        type: 'VitalStrikeSkillLevelFn',
+    };
+};
+export const BowlingBashSkillLevelFn = () => {
+    return {
+        type: 'BowlingBashSkillLevelFn',
+    };
+};
 
 //Battle Loading Screen
 export const BattleLoadingScreenFn = () => {

@@ -4,8 +4,6 @@ import { easterEggFn , supportOnceFn} from './actions';
 import firebase from './firebase';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
 
-import banana from './img/Footer/banana.png'
-
 let Update = 0;
 function App(){
     const footerEasterEgg = useSelector(state => state.footerEasterEgg)
@@ -37,7 +35,7 @@ function App(){
             footerEasterEgg.Support ?
             () => {dispatch(easterEggFn());} : 
             () => {dispatch(easterEggFn()); EasterEgg(); dispatch(supportOnceFn());} }>Copyright ⓒ 2022 Victor Wong - Support</p>
-        : <p className="footerClick" onClick={() => dispatch(easterEggFn())}>Thanks for your support <img src={banana} alt="banana" />{Update - 1}<img src={banana} alt="banana" />!^^ <a href="https://github.com/VictorKwong/atlan" target="_blank" rel="noopener noreferrer">MyGitHub</a></p>}
+        : <p className="footerClick" onClick={() => dispatch(easterEggFn())}>Thank you for your support {Update - 1}!^^ <a href="https://github.com/VictorKwong/atlan" target="_blank" rel="noopener noreferrer">GitHub</a></p>}
         </footer>
     );
 }

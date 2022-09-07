@@ -1205,7 +1205,7 @@ function Main(){
       (() => {
         switch (true) {
           // Is it Hit? Either Hit or Crit 100% can't dodge
-          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
             //if Crit
             if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               // Crit Block/No-Block Calculation
@@ -1228,6 +1228,9 @@ function Main(){
                 //not blocking
                 Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)) : Damage = 1;
               }
+            }
+            if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
+              Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
               //Audio SoundEffect
               userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
@@ -1369,7 +1372,7 @@ function Main(){
       //Rerender, Block or not block
       (() => {
         switch (true) {
-          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
             //Audio SoundEffect
             userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
             dispatch(EnemyOnHitAnimationFn());
@@ -1400,6 +1403,9 @@ function Main(){
             if(skillCapChart.BashStunChance >= Math.random()){
               EnemyStunClock = 5;
               $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
+            }
+            if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
+              Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
             //Display Damage
             if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
@@ -1453,7 +1459,7 @@ function Main(){
       //Rerender, Block or not block
       (() => {
         switch (true) {
-          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
             //Audio SoundEffect
             userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 100) : setTimeout(() => audioHit.play(), 100);
             dispatch(EnemyOnHitAnimationFn());
@@ -1481,6 +1487,9 @@ function Main(){
               }
             }
 
+            if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
+              Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
+            }
             //Display Damage
             if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Mammonite!! ${enemyStats[i].name} Received ${Damage} damage. ${Math.floor(Damage*skillCapChart.MammoniteGain)}z Receieved~</p>`)
@@ -1589,7 +1598,7 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || (((userStats.hitRate + userStats.BonushitRate) * skillCapChart.MagnumBreakAccuracyPercent - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || (((userStats.hitRate + userStats.BonushitRate) * skillCapChart.MagnumBreakAccuracyPercent - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
@@ -1614,6 +1623,9 @@ function Main(){
                 //not blocking
                 Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
               }
+            }
+            if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
+              Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
             if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1672,7 +1684,7 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit):
+          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
@@ -1697,6 +1709,9 @@ function Main(){
                 //not blocking
                 Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.HeadCrushDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + 100) : Damage = 1;
               }
+            }
+            if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
+              Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
             if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
               $('.storySpeech').append(`<p>Critical Hit Head Crush!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -1757,7 +1772,7 @@ function Main(){
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit)):
+          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
@@ -1784,6 +1799,9 @@ function Main(){
               }
             }
             EnemySlowClock = skillCapChart.BowlingBashSlowClockTurn;
+            if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
+              Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
+            }
               $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
               if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
                 $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
@@ -2232,6 +2250,7 @@ function Main(){
               $('.storySpeech').append('<p>--------- Atlan Turn ---------</p>')
               if(SkillControlRoom['User'].UserLearnMagnificat){
                 //Magnificat user AmuletRecoveryFn
+                audioHeal.play();
                 HPMagnificat = 30;
                 SPMagnificat = 5;
                 dispatch(UserOnHPMagnificatFn(true));

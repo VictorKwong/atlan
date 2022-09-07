@@ -495,7 +495,7 @@ function StartMenu(props){
               </div>:
             screenControlRoom.AltanSkills ?
               <div className="ReturnParent">
-                <AltanSkills /> 
+                <AltanSkills SkillsLevelingBox={props.SkillsLevelingBox}/> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
               </div>:
             //Prontera Shops
@@ -712,7 +712,30 @@ function StartMenu(props){
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> :
-
+            // {/* Skills Room */}
+            (screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
+              (screenControlRoom.AltanSkills) ?
+                <div>
+                  {props.SkillsLevelingBox.map(Skills => {
+                    return(
+                      <span key={Skills.id}>
+                        {Skills.select ?
+                        <p>{Skills.title}</p>
+                        : null}
+                        {/* {Train.select && Train.Points < 10 && userGoldItem.Zeny >= trainingSuccessRequire[Train.Points] ?
+                        <div className="storyScreen">
+                          <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
+                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);} : () => {HouseTrainingFailureButton(Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);}}>YES</button>
+                          <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
+                        </div> : 
+                        Train.select && Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ?
+                        <div className="storyScreen">
+                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
+                        </div> : null} */}
+                      </span>
+                    )
+                  })}
+                </div> :
               npcControlRoom.Fountain && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="textCenter">
                 <p className="chatDescriptTitle">Fountain</p>

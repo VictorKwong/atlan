@@ -63,13 +63,73 @@ const Fn = {
     MagnumBreakFireWeaponTurn: 3,
     MagnumBreakBurningTurn: 4,
     MagnumBreakBurningPercent: 0.01,
+    MagnumBreakFireAdditionalDamage: 1.1,
 
-
+    JobPoints: 99,
+    TotalJobPoints: 99
 }
 
 
 const skillCapChartReducer = (state = Fn, action) => {
     switch(action.type){
+        case 'FirstAidSkillLevelFn':
+            return{
+                ...state,
+                FirstAidSkillLevel: state.FirstAidSkillLevel + 1,
+                // FirstAidFlatHeal: state.FirstAidFlatHeal + action.FirstAidFlatHeal,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'BashSkillLevelFn':
+            return{
+                ...state,
+                BashSkillLevel:state.BashSkillLevel + 1,
+                // BashBaseDamage: state.BashBaseDamage + action.BashBaseDamage,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'MammoniteSkillLevelFn':
+            return{
+                ...state,
+                MammoniteSkillLevel: state.MammoniteSkillLevel + 1,
+                // MammoniteBaseDamage: state.MammoniteBaseDamage + action.MammoniteBaseDamage,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'KodokuSkillLevelFn':
+            return{
+                ...state,
+                KodokuSkillLevel: state.KodokuSkillLevel + 1,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'MagnumBreakSkillLevelFn':
+            return{
+                ...state,
+                MagnumBreakSkillLevel: state.MagnumBreakSkillLevel + 1,
+                // MagnumBreakBaseDamage: state.MagnumBreakBaseDamage + action.MagnumBreakBaseDamage,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'HeadCrushSkillLevelFn':
+            return{
+                ...state,
+                HeadCrushSkillLevel: state.HeadCrushSkillLevel + 1,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'QuickenSkillLevelFn':
+            return{
+                ...state,
+                QuickenSkillLevel: state.QuickenSkillLevel + 1,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'VitalStrikeSkillLevelFn':
+            return{
+                ...state,
+                VitalStrikeSkillLevel: state.VitalStrikeSkillLevel + 1,
+                JobPoints: state.JobPoints - 1,
+            }
+        case 'BowlingBashSkillLevelFn':
+            return{
+                ...state,
+                BowlingBashSkillLevel: state.BowlingBashSkillLevel + 1,
+                JobPoints: state.JobPoints - 1,
+            }
         default:
             return state;
     }

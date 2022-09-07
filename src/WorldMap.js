@@ -6,6 +6,13 @@ import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn } from './actions'
 import { cutsceneSixFn } from './actions'
 //Audio
 import { gameTitleOptionScreenFn } from './actions'
+//Skills
+import { UserSkillFirstAidFn } from './actions'
+//Choose Skill Level (ScreenControlRoom)
+import {FirstAidTrainingFn, BashTrainingFn, MammoniteTrainingFn, KodokuTrainingFn, MagnumBreakTrainingFn, HeadCrushTrainingFn, QuickenTrainingFn, VitalStrikeTrainingFn, BowlingBashTrainingFn} from './actions'
+//UpGrade Skill Level
+import {FirstAidSkillLevelFn, BashSkillLevelFn, MammoniteSkillLevelFn, KodokuSkillLevelFn, MagnumBreakSkillLevelFn, HeadCrushSkillLevelFn, QuickenSkillLevelFn, VitalStrikeSkillLevelFn, BowlingBashSkillLevelFn} from './actions'
+
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
@@ -108,6 +115,19 @@ import MedalofHonor from './img/Equipment/Accessory/MedalofHonor.gif'
 import BakonawaAgimatTattoo from './img/Equipment/Accessory/BakonawaAgimatTattoo.gif'
 import Brisingamen from './img/Equipment/Accessory/Brisingamen.gif'
 import Megingjard from './img/Equipment/Accessory/Megingjard.gif'
+
+//SKILLS
+import skillFirstAid from './img/Skill/nv_firstaid.gif'
+import skillKodoku from './img/Skill/pr_kodoku.gif'
+import skillBash from './img/Skill/sm_bash.gif'
+import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillHeadCrush from './img/Skill/lk_headcrush.gif'
+import skillMammonite from './img/Skill/mc_mammonite.gif'
+import skillQuicken from './img/Skill/sm_quicken.gif'
+import skillVitalStrike from './img/Skill/lk_vitalstrike.gif'
+import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+import skillOut from './img/Skill/skill_out.gif'
+import skillDown from './img/Skill/skill_down.gif'
 
 import audioThemeOfProntera from './audio/108ThemeOfProntera.mp3'
 
@@ -250,18 +270,23 @@ function StartMenu(){
    
     const dispatch = useDispatch();
 
-    let SkillsLevelBox = [
-      {id:100, select:screenControlRoom.FirstAidTraining, skillLevelCheck:skillCapChart.FirstAidSkillLevel},
-      {id:101, select:screenControlRoom.BashTraining, skillLevelCheck:skillCapChart.BashSkillLevel},
-      {id:102, select:screenControlRoom.MammoniteTraining, skillLevelCheck:skillCapChart.MammoniteSkillLevel},
-      {id:103, select:screenControlRoom.KodokuTraining, skillLevelCheck:skillCapChart.KodokuSkillLevel},
-      {id:104, select:screenControlRoom.MagnumBreakTraining, skillLevelCheck:skillCapChart.MagnumBreakSkillLevel},
-      {id:105, select:screenControlRoom.HeadCrushTraining, skillLevelCheck:skillCapChart.HeadCrushSkillLevel},
-      {id:106, select:screenControlRoom.QuickenTraining, skillLevelCheck:skillCapChart.QuickenSkillLevel},
-      {id:107, select:screenControlRoom.VitalStrikeTraining, skillLevelCheck:skillCapChart.VitalStrikeSkillLevel},
-      {id:108, select:screenControlRoom.BowlingBashTraining, skillLevelCheck:skillCapChart.BowlingBashSkillLevel},
-    ]
+    let SkillsLevelingBox = [
+      {id:20000, select:screenControlRoom.FirstAidTraining, Img:skillFirstAid, name:"First Aid", skillLevelCheck:skillCapChart.FirstAidSkillLevel, selection:FirstAidTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:FirstAidSkillLevelFn(), title:`SP:${skillCapChart.SPFirstAid} - Heal ${skillCapChart.FirstAidFlatHeal} of health`, Activate:UserSkillFirstAidFn(skillCapChart.SPFirstAid, skillCapChart.FirstAidFlatHeal)},
 
+      {id:20001, select:screenControlRoom.BashTraining, Img:skillBash, name:"Bash", skillLevelCheck:skillCapChart.BashSkillLevel, selection:BashTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:BashSkillLevelFn(), 
+      title:`SP:${skillCapChart.SPBash} - Strike the target with a strong blow ${Math.floor((userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage)} damage to target, it has a ${skillCapChart.BashStunChance*100}% chance of leaving the target stunned.`},
+
+      {id:20002, select:screenControlRoom.MammoniteTraining, Img:skillMammonite, name:"Mammonite", skillLevelCheck:skillCapChart.MammoniteSkillLevel, selection:MammoniteTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:MammoniteSkillLevelFn(), title:`SP:${skillCapChart.SPMammonite} - Strike the target with a less lethal blow ${Math.floor((userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage)*skillCapChart.MammoniteDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MammoniteBaseDamage)} damage to target, steal zeny from ${skillCapChart.MammoniteGain*100}% of the damage.`},
+
+      {id:20003, select:screenControlRoom.KodokuTraining, Img:skillKodoku, name:"Kodoku", skillLevelCheck:skillCapChart.KodokuSkillLevel, selection:KodokuTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:KodokuSkillLevelFn(), title:`SP:${skillCapChart.SPKodoku} - inflict poison status on target for ${skillCapChart.KodokuPoisonTurn} turns. Poison target lose ${skillCapChart.KodokuPoisonPercent*100}% maximum health each turn.`},
+
+      {id:20004, select:screenControlRoom.MagnumBreakTraining, Img:skillMagnum, name:"Magnum Break", skillLevelCheck:skillCapChart.MagnumBreakSkillLevel, selection:MagnumBreakTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:MagnumBreakSkillLevelFn(), title:`SP:${skillCapChart.SPMagnumBreak} - Instant fire property skill ${Math.floor((userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage)} damage to target, increase accuracy by ${Math.floor((skillCapChart.MagnumBreakAccuracyPercent - 1)*100)}% and apply additional ${Math.floor((skillCapChart.MagnumBreakFireAdditionalDamage - 1)*100)}% Fire attack for ${skillCapChart.MagnumBreakFireWeaponTurn} Turns`},
+
+      {id:20005, select:screenControlRoom.HeadCrushTraining, Img:skillHeadCrush, name:"Head Crush", skillLevelCheck:skillCapChart.HeadCrushSkillLevel, selection:HeadCrushTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:HeadCrushSkillLevelFn(), title:`SP:${skillCapChart.SPHeadCrush} -	Strong hit against the target that has a chance to cause bleeding effect. Bleeding target lose ${skillCapChart.HeadCrushBleedingPercent*100}% maximum health each turn.`},
+      {id:20006, select:screenControlRoom.QuickenTraining, Img:skillQuicken, name:"Quicken", skillLevelCheck:skillCapChart.QuickenSkillLevel, selection:QuickenTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:QuickenSkillLevelFn(), title:`SP:${skillCapChart.SPQuicken} - Increase speed by ${skillCapChart.QuickenSpeed} for ${skillCapChart.QuickenSpeedTurn} turns`},
+      {id:20007, select:screenControlRoom.VitalStrikeTraining, Img:skillVitalStrike, name:"Vital Strike", skillLevelCheck:skillCapChart.VitalStrikeSkillLevel, selection:VitalStrikeTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:VitalStrikeSkillLevelFn(), title:`SP:${skillCapChart.SPVitalStrike} - Strikes the target with a painful blow ${Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.int)*8)} damage to target, decrease target defence ${skillCapChart.VitalStrikeDefenceBreakDown*100}% for 8 turns`},
+      {id:20008, select:screenControlRoom.BowlingBashTraining, Img:skillBowlingBash, name:"BowlingBash", skillLevelCheck:skillCapChart.BowlingBashSkillLevel, selection:BowlingBashTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:BowlingBashSkillLevelFn(), title:`SP:${skillCapChart.SPBowlingBash} - Charge to target with a fatal blow ${Math.floor((userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage)} damage to target, target reduce movement speed by ${skillCapChart.BowlingBashSlowPercent*100}%`},
+    ]
 
     let WeaponGearBox = [
       {id:1000, num: 1, EquipItem:ReturnWeaponEquipmentChoiceFn("Empty",null, 1), Img: null, name:"Empty", Equip: userClockDefendFn(), UnEquip: userClockDefendFn(),
@@ -743,7 +768,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
     return(
       <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
         {
-        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
+        screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute} SkillsLevelingBox={SkillsLevelingBox}/>:
         screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
         screenControlRoom.PoringIsland ? <PoringIsland ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
         screenControlRoom.Geffen ? <Geffen ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute}/>:
@@ -785,7 +810,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
               </div>:
             screenControlRoom.AltanSkills ?
               <div className="ReturnParent">
-                <AltanSkills /> 
+                <AltanSkills SkillsLevelingBox={SkillsLevelingBox}/> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
               </div>:
               <div className="StoryMap">
@@ -1020,22 +1045,16 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
             {(screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
               (screenControlRoom.AltanSkills) ?
                 <div>
-                  {SkillsLevelBox.map(Skills => {
+                  {SkillsLevelingBox.map(Skills => {
                     return(
                       <span key={Skills.id}>
                         {Skills.select ?
-                        <p>Testing xD</p>
+                        <p>{Skills.title}</p>
                         : null}
-                        {/* {Train.select && Train.Points < 10 && userGoldItem.Zeny >= trainingSuccessRequire[Train.Points] ?
+                        {Skills.select && skillCapChart.JobPoints >= 1 ?
                         <div className="storyScreen">
-                          <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
-                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);} : () => {HouseTrainingFailureButton(Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);}}>YES</button>
-                          <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
-                        </div> : 
-                        Train.select && Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ?
-                        <div className="storyScreen">
-                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
-                        </div> : null} */}
+                          <button className="HouseSelectButton" onClick={() => {dispatch(Skills.Upgrade);}}><img src={skillOut} alt="skillOut" />LevelUp</button>
+                        </div> :  null}
                       </span>
                     )
                   })}
