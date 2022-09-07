@@ -9,9 +9,9 @@ import { UserLearnDoubleAttackFn, UserLearnLifeStealAttackFn, UserLearnReflectAt
 //New Function
 import { TalktoHeadGearDealerFn , TalktoToolDealerFn, ResetDealerBuySellHealFn, DealerBuyFn, DealerSellFn } from './actions';
 //Npc Function
-import { KafraEmployeeHealStateFn, ResetStatsPointFn } from'./actions';
+import { KafraEmployeeHealStateFn, ResetStatsPointFn, ResetSkillPointFn} from'./actions';
 //Function
-import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn } from './actions'
+import { AcceptQuestDialogFn, ReturnQuestDialogFn , ReturnSpecialQuestDialogFn , KafraEmployeeHealFn, ResetMyPointsFn, ResetMySkillPointsFn } from './actions'
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Win ETC Items
@@ -54,6 +54,8 @@ import skillHeadCrush from './img/Skill/lk_headcrush.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 import skillVitalStrike from './img/Skill/lk_vitalstrike.gif'
+import skillOut from './img/Skill/skill_out.gif'
+import skillDown from './img/Skill/skill_down.gif'
 
 import SkelBone from './img/Etc/Skeleton_Skel-Bone8.gif'
 import OldPortrait from './img/Etc/BonGun_OldPortrait10.gif'
@@ -386,6 +388,9 @@ function StartMenu(props){
           break;
         case(npcControlRoom.Fountain && npcControlRoom.ResetStatsPoint):
           $('.fountainResetConfirm').html(`Reset all attribute point`);
+          break;
+        case(npcControlRoom.Fountain && npcControlRoom.ResetSkillPoint):
+          $('.fountainResetConfirm').html(`Reset all skill point`);
           break;
         case(npcControlRoom.Kiwi && npcControlRoom.IWantToJoinGuild && npcControlRoom.KiwiGuild):
             $('.storySpeech').html(`<p>${npcSpeech['Kiwi'][2].text}</p>`)
@@ -720,18 +725,24 @@ function StartMenu(props){
                     return(
                       <span key={Skills.id}>
                         {Skills.select ?
-                        <p>{Skills.title}</p>
+                          <p className="skillChatCenter">{Skills.title}</p>
                         : null}
-                        {/* {Train.select && Train.Points < 10 && userGoldItem.Zeny >= trainingSuccessRequire[Train.Points] ?
-                        <div className="storyScreen">
-                          <button className="HouseSelectButton" onClick={trainingSuccessRate[Train.Points] >= Math.random() ? 
-                            () => {HouseTrainingSuccessButton(Train.Attr,Train.effect,Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);} : () => {HouseTrainingFailureButton(Train.name,Train.Points); dispatch(RedPotionFn(-trainingSuccessRequire[Train.Points]),0);}}>YES</button>
-                          <button className="HouseSelectButton" onClick={() => {dispatch(ResetHouseTrainingFn()); dispatch(ResetTrainingRateFn());}}>NO</button>
-                        </div> : 
-                        Train.select && Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ?
-                        <div className="storyScreen">
-                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
-                        </div> : null} */}
+                        {Skills.name === "First Aid" && screenControlRoom.FirstAidTraining ?
+                        <button className={userStats.currentSP >= 30 ? "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse" : "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skills.title} onClick={
+                          userStats.currentSP >= 30 && userStats.currentHealth !== userStats.maxHealth?
+                          () => dispatch(Skills.Activate) : null}>
+                          <div className="adjImgCenterBox">
+                            <p className="adjImgCenter"><img src={Skills.Img} alt={Skills.name} />Use {Skills.name} - Lv.{Skills.skillLevelCheck}</p>
+                          </div>
+                          </button> : null}
+                        {Skills.select && skillCapChart.JobPoints >= 1 ?
+                        <span>
+                          <button className="altanSkillChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Skills.Upgrade);}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter" ><img className="skillLevelDisplay" src={skillOut} alt="skillOut"/><img className="skillLevelDisplayTwo" src={skillDown} alt="skillDown"/>LevelUp</p>
+                            </div>
+                          </button>
+                        </span> :  null}
                       </span>
                     )
                   })}
@@ -739,7 +750,8 @@ function StartMenu(props){
               npcControlRoom.Fountain && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="textCenter">
                 <p className="chatDescriptTitle">Fountain</p>
-                <button className="fountainResetPoint" onClick={() =>{dispatch(ResetMyPointsFn(userAttribute.BonusVit,userAttribute.BonusInt)); dispatch(ResetStatsPointFn());}}>Reset my Status Point</button>
+                <button className="fountainResetPoint" onClick={() =>{dispatch(ResetMyPointsFn(userAttribute.BonusVit,userAttribute.BonusInt)); dispatch(ResetStatsPointFn());}}>Reset Status Point</button>
+                <button className="fountainResetPoint" onClick={() =>{dispatch(ResetMySkillPointsFn(userAttribute.BonusVit,userAttribute.BonusInt)); dispatch(ResetSkillPointFn());}}>Reset Skill Point</button>
                 <p className="fountainResetConfirm"></p>
               </div>: 
               npcControlRoom.KafraEmployee && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 

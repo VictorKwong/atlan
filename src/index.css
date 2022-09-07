@@ -269,8 +269,8 @@ progress.BarBasicHUD::-webkit-progress-bar{
   margin: 5px;
 }
 .altanSkillChatButton{
-  width: calc(100% - 40px);
-  margin: 10px 20px 0;
+  width: calc(100% - 60px);
+  margin: 10px 30px 0;
 }
 
 .altanEquipmentGearChatButton:hover,
@@ -310,6 +310,10 @@ progress.BarBasicHUD::-webkit-progress-bar{
   display:block;
 }
 
+.skillPointDescription{
+  text-align: center;
+  margin: 10px 0 10px;
+}
 .adjImgCenterBox{
   position: relative;
   width: 100%;

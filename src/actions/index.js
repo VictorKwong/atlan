@@ -1080,6 +1080,11 @@ export const ResetMyPointsFn = (BonusVit,BonusInt) => {
         BonusInt:BonusInt,
     };
 };
+export const ResetMySkillPointsFn = () => {
+    return {
+        type: 'ResetMySkillPointsFn'
+    };
+};
 
 
 export const KafraEmployeeHealFn = () => {
@@ -1097,6 +1102,13 @@ export const ResetStatsPointFn = () => {
         type: 'ResetStatsPointFn'
     };
 };
+export const ResetSkillPointFn = () => {
+    return {
+        type: 'ResetSkillPointFn'
+    };
+};
+
+
 
 
 export const DealerBuyFn = () => {

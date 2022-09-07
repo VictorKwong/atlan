@@ -45,18 +45,11 @@ function StartMenu(props){
     return(
       <div className="AltanSkillsMap">
         <h2 className="altanSkillsTitle">Skills</h2>
+          <p className="skillPointDescription">Skill Point: {skillCapChart.JobPoints}</p>
             {props.SkillsLevelingBox.map(Skill => {
               return( 
                 <span key={Skill.id}>
-                  {Skill.name === "First Aid" ?
-                  <button className={userStats.currentSP >= 30 ? "atlanSkillButton atlanSkillButtonFix atlanSkillButtonUse" : "atlanSkillButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skill.title} onClick={
-                    userStats.currentSP >= 30 && userStats.currentHealth !== userStats.maxHealth?
-                    () => dispatch(Skill.Activate) : null}>
-                    <div className="adjImgCenterBox">
-                      <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>
-                    </div>
-                    </button> :
-                  true ? 
+                  {true ? 
                   <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} onClick={() => dispatch((Skill.selection))}>
                     <div className="adjImgCenterBox">
                       <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name} - Lv.{Skill.skillLevelCheck}</p>

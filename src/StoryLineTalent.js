@@ -166,7 +166,7 @@ function StartMenu(){
                     {FirstGift === Gift.Result ?
                       <div className="TalentResult altanEquipmentButtonFix">
                         <div className="adjImgCenterBox">
-                          <p className="adjImgCenter">1. <img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
+                          <p className="adjImgCenter"><img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
                         </div>
                       </div> : null}
                     </span> 
@@ -178,7 +178,7 @@ function StartMenu(){
                       {SecondGift === Gift.Result ?
                       <div className="TalentResult altanEquipmentButtonFix">
                         <div className="adjImgCenterBox">
-                          <p className="adjImgCenter">2. <img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
+                          <p className="adjImgCenter"><img src={Gift.img} alt={Gift.img === null ? "" : Gift.imgAlt} />{Gift.text}</p>
                         </div>
                       </div> : null}
                     </span>
