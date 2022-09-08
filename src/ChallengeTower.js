@@ -18,6 +18,8 @@ import AltanSkills from './AltanSkills'
 import './css/mapChallengeTower.css'
 import $ from 'jquery'
 
+import skillOut from './img/Skill/skill_out.gif'
+import skillDown from './img/Skill/skill_down.gif'
 
 import audioPampasUpas from './audio/PampasUpas.mp3'
 const audioBGM = new Audio(audioPampasUpas);
@@ -30,6 +32,7 @@ function StartMenu(props){
     const userGoldItem = useSelector(state => state.userGoldItem)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const skillCapChart = useSelector(state => state.skillCapChart)
     const dispatch = useDispatch();
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
@@ -136,7 +139,7 @@ const LoadingScreen3 = () => {
               </div>:
             screenControlRoom.AltanSkills ?
               <div className="ReturnParent">
-                <AltanSkills /> 
+                <AltanSkills SkillsLevelingBox={props.SkillsLevelingBox}/> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
               </div>:
             <div className="ChallengeTowerMap">
@@ -331,6 +334,36 @@ const LoadingScreen3 = () => {
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
+            {/* Skills Room */}
+            {(screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
+              (screenControlRoom.AltanSkills) ?
+                <div>
+                  {props.SkillsLevelingBox.map(Skills => {
+                    return(
+                      <span key={Skills.id}>
+                        {Skills.select ?
+                          <p className="skillChatCenter">{Skills.title}</p>
+                        : null}
+                        {Skills.name === "First Aid" && screenControlRoom.FirstAidTraining ?
+                        <button className={userStats.currentSP >= skillCapChart.SPFirstAid ? "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse" : "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skills.title} onClick={
+                          userStats.currentSP >= skillCapChart.SPFirstAid && userStats.currentHealth !== userStats.maxHealth?
+                          () => dispatch(Skills.Activate) : null}>
+                          <div className="adjImgCenterBox">
+                            <p className="adjImgCenter"><img src={Skills.Img} alt={Skills.name} />Use {Skills.name} - Lv.{Skills.skillLevelCheck}</p>
+                          </div>
+                          </button> : null}
+                        {Skills.select && skillCapChart.JobPoints >= 1 ?
+                        <span>
+                          <button className="altanSkillChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Skills.Upgrade);}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter" ><img className="skillLevelDisplay" src={skillOut} alt="skillOut"/><img className="skillLevelDisplayTwo" src={skillDown} alt="skillDown"/>LevelUp</p>
+                            </div>
+                          </button>
+                        </span> :  null}
+                      </span>
+                    ) 
+                  })}
+                </div> : null}
           </fieldset>
         </div>
         }

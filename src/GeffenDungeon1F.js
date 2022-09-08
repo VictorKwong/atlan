@@ -26,6 +26,9 @@ import AltanSkills from './AltanSkills'
 import './css/mapGeffenDungeon1F.css'
 import $ from 'jquery'
 
+import skillOut from './img/Skill/skill_out.gif'
+import skillDown from './img/Skill/skill_down.gif'
+
 import audioThroughTheTower from './audio/21ThroughTheTower.mp3'
 const audioBGM = new Audio(audioThroughTheTower);
 
@@ -39,7 +42,7 @@ function StartMenu(props){
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
-    const userAttribute = useSelector(state => state.userAttribute)
+    const skillCapChart = useSelector(state => state.skillCapChart)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -179,7 +182,7 @@ function StartMenu(props){
               </div>:
             screenControlRoom.AltanSkills ?
               <div className="ReturnParent">
-                <AltanSkills /> 
+                <AltanSkills SkillsLevelingBox={props.SkillsLevelingBox}/> 
                 <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
               </div>:
             screenControlRoom.TreasurePoringIslandMap ?
@@ -405,6 +408,36 @@ function StartMenu(props){
               <div className="storyScreen">
                 <button className="ReturnGeffenDungeon" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
               </div> : null}
+            {/* Skills Room */}
+            {(screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
+              (screenControlRoom.AltanSkills) ?
+                <div>
+                  {props.SkillsLevelingBox.map(Skills => {
+                    return(
+                      <span key={Skills.id}>
+                        {Skills.select ?
+                          <p className="skillChatCenter">{Skills.title}</p>
+                        : null}
+                        {Skills.name === "First Aid" && screenControlRoom.FirstAidTraining ?
+                        <button className={userStats.currentSP >= skillCapChart.SPFirstAid ? "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse" : "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skills.title} onClick={
+                          userStats.currentSP >= skillCapChart.SPFirstAid && userStats.currentHealth !== userStats.maxHealth?
+                          () => dispatch(Skills.Activate) : null}>
+                          <div className="adjImgCenterBox">
+                            <p className="adjImgCenter"><img src={Skills.Img} alt={Skills.name} />Use {Skills.name} - Lv.{Skills.skillLevelCheck}</p>
+                          </div>
+                          </button> : null}
+                        {Skills.select && skillCapChart.JobPoints >= 1 ?
+                        <span>
+                          <button className="altanSkillChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Skills.Upgrade);}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter" ><img className="skillLevelDisplay" src={skillOut} alt="skillOut"/><img className="skillLevelDisplayTwo" src={skillDown} alt="skillDown"/>LevelUp</p>
+                            </div>
+                          </button>
+                        </span> :  null}
+                      </span>
+                    ) 
+                  })}
+                </div> : null}
           </fieldset>
         </div>
         }

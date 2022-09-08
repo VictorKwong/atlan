@@ -27,14 +27,17 @@ import './css/mapGeffen.css'
 import $ from 'jquery'
 
 //SKILLS
-import skillBash from './img/Skill/sm_bash.gif'
-import skillMammonite from './img/Skill/mc_mammonite.gif'
-import skillMagnum from './img/Skill/sm_magnum.gif'
+import skillFirstAid from './img/Skill/nv_firstaid.gif'
 import skillKodoku from './img/Skill/pr_kodoku.gif'
+import skillBash from './img/Skill/sm_bash.gif'
+import skillMagnum from './img/Skill/sm_magnum.gif'
 import skillHeadCrush from './img/Skill/lk_headcrush.gif'
+import skillMammonite from './img/Skill/mc_mammonite.gif'
 import skillQuicken from './img/Skill/sm_quicken.gif'
 import skillVitalStrike from './img/Skill/lk_vitalstrike.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
+import skillOut from './img/Skill/skill_out.gif'
+import skillDown from './img/Skill/skill_down.gif'
 
 
 import GoblinYula from './img/NPC/GoblinYula.gif'
@@ -299,7 +302,7 @@ function StartMenu(props){
             </div>:
           screenControlRoom.AltanSkills ?
             <div className="ReturnParent">
-              <AltanSkills /> 
+              <AltanSkills SkillsLevelingBox={props.SkillsLevelingBox}/> 
               <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
             </div>:
           <div className="GeffenMap">
@@ -521,19 +524,49 @@ function StartMenu(props){
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
+            {/* Skills Room */}
+            {(screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
+              (screenControlRoom.AltanSkills) ?
+                <div>
+                  {props.SkillsLevelingBox.map(Skills => {
+                    return(
+                      <span key={Skills.id}>
+                        {Skills.select ?
+                          <p className="skillChatCenter">{Skills.title}</p>
+                        : null}
+                        {Skills.name === "First Aid" && screenControlRoom.FirstAidTraining ?
+                        <button className={userStats.currentSP >= skillCapChart.SPFirstAid ? "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse" : "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skills.title} onClick={
+                          userStats.currentSP >= skillCapChart.SPFirstAid && userStats.currentHealth !== userStats.maxHealth?
+                          () => dispatch(Skills.Activate) : null}>
+                          <div className="adjImgCenterBox">
+                            <p className="adjImgCenter"><img src={Skills.Img} alt={Skills.name} />Use {Skills.name} - Lv.{Skills.skillLevelCheck}</p>
+                          </div>
+                          </button> : null}
+                        {Skills.select && skillCapChart.JobPoints >= 1 ?
+                        <span>
+                          <button className="altanSkillChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Skills.Upgrade);}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter" ><img className="skillLevelDisplay" src={skillOut} alt="skillOut"/><img className="skillLevelDisplayTwo" src={skillDown} alt="skillDown"/>LevelUp</p>
+                            </div>
+                          </button>
+                        </span> :  null}
+                      </span>
+                    ) 
+                  })}
+                </div> : null}
             {screenControlRoom.TreasurePoringIslandMap && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn());}}>Return</button>
             </div> : null}
-            {npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            {npcControlRoom.GeffenGoblinYulaNPC && npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(UserLearnMasterItemFn(true)); dispatch(GeffenGoblinYulaNPCLearnedFn());}}>Hang Over the Items</button>
             </div> :
-            npcControlRoom.GeffenGoblinYulaNPC && !npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            npcControlRoom.GeffenGoblinYulaNPC && !npcControlRoom.GeffenGoblinYulaNPCInterest && !npcControlRoom.GeffenGoblinYulaNPCLearned && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenGoblinYulaNPCInterestFn());}}>I want to learn Master Item</button>
             </div> : null}
-            {npcControlRoom.GeffenCitizenNPC && !npcControlRoom.GeffenCitizenNPCContinue && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats) ?
+            {npcControlRoom.GeffenCitizenNPC && !npcControlRoom.GeffenCitizenNPCContinue && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
             <div className="storyScreen">
               <button className="ReturnPayonCave" onClick={() => {dispatch(GeffenCitizenNPCContinueFn());}}>Hey, how is it going?</button>
             </div> : null}

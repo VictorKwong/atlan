@@ -32,6 +32,9 @@ import CursedRuby from './img/Etc/Doppelganger_CursedRuby80.gif'
 import Diamond from './img/Etc/WraithDead_Diamond10.gif'
 import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 
+import skillOut from './img/Skill/skill_out.gif'
+import skillDown from './img/Skill/skill_down.gif'
+
 import audioThemeOfJuno from './audio/310ThemeOfJuno.mp3'
 const audioBGM = new Audio(audioThemeOfJuno);
 
@@ -47,6 +50,7 @@ function StartMenu(props){
     const baseEXPChart = useSelector(state => state.baseEXPChart)
     const userStats = useSelector(state => state.userStats)
     const npcSpeech = useSelector(state => state.npcSpeech)
+    const skillCapChart = useSelector(state => state.skillCapChart)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -177,7 +181,7 @@ function StartMenu(props){
               </div>:
           screenControlRoom.AltanSkills ?
             <div className="ReturnParent">
-              <AltanSkills /> 
+              <AltanSkills SkillsLevelingBox={props.SkillsLevelingBox}/> 
               <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
             </div>:
               <div className="PronteraCastleMap">
@@ -388,6 +392,36 @@ function StartMenu(props){
                 </div>
               : <p>Empty Accessory Storage T^T</p>}
               </div> : null}
+            {/* Skills Room */}
+            {(screenControlRoom.FirstAidTraining || screenControlRoom.BashTraining || screenControlRoom.MammoniteTraining || screenControlRoom.KodokuTraining || screenControlRoom.MagnumBreakTraining || screenControlRoom.HeadCrushTraining || screenControlRoom.QuickenTraining || screenControlRoom.VitalStrikeTraining || screenControlRoom.BowlingBashTraining) && 
+              (screenControlRoom.AltanSkills) ?
+                <div>
+                  {props.SkillsLevelingBox.map(Skills => {
+                    return(
+                      <span key={Skills.id}>
+                        {Skills.select ?
+                          <p className="skillChatCenter">{Skills.title}</p>
+                        : null}
+                        {Skills.name === "First Aid" && screenControlRoom.FirstAidTraining ?
+                        <button className={userStats.currentSP >= skillCapChart.SPFirstAid ? "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse" : "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skills.title} onClick={
+                          userStats.currentSP >= skillCapChart.SPFirstAid && userStats.currentHealth !== userStats.maxHealth?
+                          () => dispatch(Skills.Activate) : null}>
+                          <div className="adjImgCenterBox">
+                            <p className="adjImgCenter"><img src={Skills.Img} alt={Skills.name} />Use {Skills.name} - Lv.{Skills.skillLevelCheck}</p>
+                          </div>
+                          </button> : null}
+                        {Skills.select && skillCapChart.JobPoints >= 1 ?
+                        <span>
+                          <button className="altanSkillChatButton altanEquipmentButtonFix" onClick={() => {dispatch(Skills.Upgrade);}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter" ><img className="skillLevelDisplay" src={skillOut} alt="skillOut"/><img className="skillLevelDisplayTwo" src={skillDown} alt="skillDown"/>LevelUp</p>
+                            </div>
+                          </button>
+                        </span> :  null}
+                      </span>
+                    ) 
+                  })}
+                </div> : null}
               {userGoldItem.SpiritOfEclipse >= 1 && userGoldItem.SpiritOfWolyafa >= 1 && userGoldItem.SpiritOfDoppelganger >= 1 && screenControlRoom.PronteraCastle && npcControlRoom.PronteraKing && !screenControlRoom.FinalBossPath ?
               <div className="textCenter">
                 <button className="kafraEmployeeHeal" onClick={() => {dispatch(FinalBossPathFn()); dispatch(SpiritOfDoppelgangerFn(0,-1)); dispatch(SpiritOfWolyafaFn(0,-1)); dispatch(SpiritOfEclipseFn(0,-1));}}>Hang over the 3 souls - x1<img src={SpiritOfBoss} alt="SpiritOfBoss"/> x1<img src={SpiritOfBoss} alt="SpiritOfBoss"/> x1<img src={SpiritOfBoss} alt="SpiritOfBoss"/></button> 
