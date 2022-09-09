@@ -130,6 +130,11 @@ const skillCapChartReducer = (state = Fn, action) => {
                 BowlingBashSkillLevel: state.BowlingBashSkillLevel + 1,
                 JobPoints: state.JobPoints - 1,
             }
+        case 'UserLevelUpFn':
+            return{
+                ...state,
+                JobPoints: state.TotalJobPoints + 1,
+            }
         case 'ResetMySkillPointsFn':
             return{
                 ...state,
