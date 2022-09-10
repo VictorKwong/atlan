@@ -319,8 +319,9 @@ const userStatsReducer = (state = Fn, action) => {
                     return {
                         ...state,
                         //LUK + 10
-                        TrainingcritRate: state.TrainingcritRate + 0.3,
-                        Trainingattack: state.Trainingattack + 5,
+                        // because BonusLuk will add these stats
+                        // TrainingcritRate: state.TrainingcritRate + 0.3,
+                        // Trainingattack: state.Trainingattack + 5,
         
                         BonuscritRate: state.BonuscritRate + 0.3,
                         Bonusattack: state.Bonusattack + 5,
@@ -356,10 +357,11 @@ const userStatsReducer = (state = Fn, action) => {
                     return {
                         ...state,
                         //AGI/DEX + 7
-                        Trainingspeed: state.Trainingspeed + 2.1,
-                        TrainingdodgeRate: state.TrainingdodgeRate + 0.07,
-                        Trainingattack: state.Trainingattack + 1.4,
-                        TraininghitRate: state.TraininghitRate + 0.07,
+                        //Bonus Stats will add these
+                        // Trainingspeed: state.Trainingspeed + 2.1,
+                        // TrainingdodgeRate: state.TrainingdodgeRate + 0.07,
+                        // Trainingattack: state.Trainingattack + 1.4,
+                        // TraininghitRate: state.TraininghitRate + 0.07,
 
                         Bonusspeed: state.Bonusspeed + 2.1,
                         BonusdodgeRate: state.BonusdodgeRate + 0.07,
@@ -371,9 +373,10 @@ const userStatsReducer = (state = Fn, action) => {
                     return {
                         ...state,
                         //STR/INT/DEX + 5
-                        Trainingattack: state.Trainingattack + 6,
-                        Trainingspeed: state.Trainingspeed + 0.5,
-                        TraininghitRate: state.TraininghitRate + 0.05,
+                        //Bonus Stats will add these
+                        // Trainingattack: state.Trainingattack + 6,
+                        // Trainingspeed: state.Trainingspeed + 0.5,
+                        // TraininghitRate: state.TraininghitRate + 0.05,
 
                         maxSP: Math.floor(state.BasemaxSP * (1 + (5) *0.01) + state.BonusSP),
 
