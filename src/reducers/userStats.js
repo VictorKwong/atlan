@@ -246,15 +246,17 @@ const userStatsReducer = (state = Fn, action) => {
         case 'BonusSTRPointsFn':
             return {
                 ...state,
-                Trainingattack: state.Trainingattack + 1,
+                //Bonus Stats will add these
+                // Trainingattack: state.Trainingattack + 1,
                 Bonusattack: state.Bonusattack + 1,
             }
         case 'BonusAGIPointsFn':
             return {
                 ...state,
                 //Recover
-                Trainingspeed: state.Trainingspeed + 0.2,
-                TrainingdodgeRate: state.TrainingdodgeRate + 0.01,
+                //Bonus Stats will add these
+                // Trainingspeed: state.Trainingspeed + 0.2,
+                // TrainingdodgeRate: state.TrainingdodgeRate + 0.01,
 
                 Bonusspeed: state.Bonusspeed + 0.2,
                 BonusdodgeRate: state.BonusdodgeRate + 0.01
@@ -262,8 +264,9 @@ const userStatsReducer = (state = Fn, action) => {
         case 'BonusVITPointsFn':
             return {
                 ...state,
-                Trainingdefence: state.defence + 0.5,
-                Trainingdefencebuffer: state.defencebuffer + 1,
+                //Bonus Stats will add these
+                // Trainingdefence: state.Trainingdefence + 0.5,
+                // Trainingdefencebuffer: state.Trainingdefencebuffer + 1,
                 maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit + action.BonusVit) *0.01) + state.BonusHealth),
 
                 Bonusdefence: state.Bonusdefence + 0.5,
@@ -279,9 +282,10 @@ const userStatsReducer = (state = Fn, action) => {
             return {
                 ...state,
                 //Recover
-                Trainingattack: state.Trainingattack + 0.2,
-                Trainingspeed: state.Trainingspeed + 0.1,
-                TraininghitRate: state.TraininghitRate + 0.01,
+                //Bonus Stats will add these
+                // Trainingattack: state.Trainingattack + 0.2,
+                // Trainingspeed: state.Trainingspeed + 0.1,
+                // TraininghitRate: state.TraininghitRate + 0.01,
 
                 Bonusattack: state.Bonusattack + 0.2,
                 Bonusspeed: state.Bonusspeed + 0.1,
@@ -291,8 +295,9 @@ const userStatsReducer = (state = Fn, action) => {
             return {
                 ...state,
                 //Recover
-                TrainingcritRate: state.TrainingcritRate + 0.03,
-                Trainingattack: state.attack + 0.5,
+                //Bonus Stats will add these
+                // TrainingcritRate: state.TrainingcritRate + 0.03,
+                // Trainingattack: state.attack + 0.5,
 
                 BonuscritRate: state.BonuscritRate + 0.03,
                 Bonusattack: state.Bonusattack + 0.5
@@ -401,7 +406,7 @@ const userStatsReducer = (state = Fn, action) => {
                         BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit - 1 + action.BonusVit) *0.01) + action.BonusHealth),
                         Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefencebuffer: (action.BonusVit) + action.Bonusdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int - 1 + action.BonusInt) *0.01) + action.BonusSP),
                         BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
                         BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
@@ -419,7 +424,7 @@ const userStatsReducer = (state = Fn, action) => {
                         BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit - 1 + action.BonusVit) *0.01) + action.BonusHealth),
                         Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefencebuffer: (action.BonusVit ) + action.Bonusdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int - 1 + action.BonusInt) *0.01) + action.BonusSP),
                         BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
                         BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
@@ -436,7 +441,7 @@ const userStatsReducer = (state = Fn, action) => {
                         BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit - 1 + action.BonusVit) *0.01) + action.BonusHealth),
                         Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefencebuffer: (action.BonusVit ) + action.Bonusdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int - 1 + action.BonusInt) *0.01) + action.BonusSP),
                         BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
                         BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
@@ -453,7 +458,7 @@ const userStatsReducer = (state = Fn, action) => {
                         BonusdodgeRate: (action.BonusAgi * 0.01) + action.BonusdodgeRate,
                         maxHealth: Math.floor(state.BasemaxHealth * (1 + (action.Vit - 1 + action.BonusVit) *0.01) + action.BonusHealth),
                         Bonusdefence: (action.BonusVit * 0.5) + action.Bonusdefence,
-                        Bonusdefencebuffer: Math.floor(action.BonusVit * 1) + action.Bonusdefencebuffer,
+                        Bonusdefencebuffer: (action.BonusVit ) + action.Bonusdefencebuffer,
                         maxSP: Math.floor(state.BasemaxSP * (1 + (action.Int - 1 + action.BonusInt) *0.01) + action.BonusSP),
                         BonushitRate: (action.BonusDex * 0.01) + action.BonushitRate,
                         BonuscritRate: (action.BonusLuk * 0.03) + action.BonuscritRate,
