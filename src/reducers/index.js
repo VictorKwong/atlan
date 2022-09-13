@@ -12,6 +12,7 @@ import storyLineOneReducer from "./storyLineOne";
 import textReadAndSpeedReducer from "./textReadAndSpeed";
 import npcSpeechReducer from "./npcSpeech";
 import baseEXPChartReducer from "./baseEXPChart";
+import baseJobEXPChartReducer from "./baseJobEXPChart";
 import clockControlRoomReducer from './clockControlRoom'
 import trainingSuccessRateReducer from './trainingSuccessRate'
 import trainingSuccessRequireReducer from './trainingSuccessRequire'
@@ -20,7 +21,6 @@ import equipmentAllStatsReducer from './equipmentAllStats'
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
-
 
 const allReducers = combineReducers({
     screenControlRoom: screenControlRoomReducer,
@@ -31,6 +31,7 @@ const allReducers = combineReducers({
     npcControlRoom: npcControlRoomReducer,
     audioControlRoom: audioControlRoomReducer,
     baseEXPChart: baseEXPChartReducer,
+    baseJobEXPChart: baseJobEXPChartReducer,
     storyLineOne: storyLineOneReducer,
     textReadAndSpeed: textReadAndSpeedReducer,
     npcSpeech: npcSpeechReducer,

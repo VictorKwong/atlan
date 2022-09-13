@@ -2,6 +2,8 @@
 const Fn = {
     Level: 1,
     Experience: 0,
+    JobLevel: 1,
+    JobExperience: 0,
     maxHealth: 150,
     currentHealth: 100,
     maxSP: 50,

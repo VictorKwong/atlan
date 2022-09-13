@@ -675,22 +675,22 @@ useEffect(() => {
                 <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}
               {/* Bridge NPC */}
-              {npcControlRoom.PoringIslandBridgeNPC && !npcControlRoom.PoringIslandBridgeNPCSelectOne && !npcControlRoom.PoringIslandBridgeNPCSelectTwo ?
+              {npcControlRoom.PoringIslandBridgeNPC && !npcControlRoom.PoringIslandBridgeNPCSelectOne && !npcControlRoom.PoringIslandBridgeNPCSelectTwo && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills)  ?
                 <div className="storyScreen">
                   <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectOneFn());}}>Hidden Path...?</button>
                   <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectTwoFn());}}>Who are you?</button>
                 </div> : null}
-              {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectTwo && !npcControlRoom.PoringIslandBridgeNPCSelectThree &&
+              {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectTwo && !npcControlRoom.PoringIslandBridgeNPCSelectThree && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) &&
                userGoldItem.Jellopy >= 3 && userGoldItem.EmptyBottle >= 3 ?
                 <div className="storyScreen">
                   <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandBridgeNPCSelectThreeFn()); dispatch(WinResultFn(100,3000)); dispatch(WinJellopyFn(0,-3)); dispatch(WinEmptyBottleFn(0,-1));}}>Give 3 Jellopy & 1 Empty Bottle</button>
                 </div> : null}
-              {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectThree ?
+              {npcControlRoom.PoringIslandBridgeNPC && npcControlRoom.PoringIslandBridgeNPCSelectThree && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="storyScreen">
                   <p className="questCompleteResult"></p>
                 </div> : null}
                 {/* Fairy NPC */}
-              {(npcControlRoom.PoringIslandFairyNPC1 || npcControlRoom.PoringIslandFairyNPC2) && (!npcControlRoom.PoringIslandFairyNPCSelectOne && !npcControlRoom.PoringIslandFairyNPCSelectTwo ) ?
+              {(npcControlRoom.PoringIslandFairyNPC1 || npcControlRoom.PoringIslandFairyNPC2) && (!npcControlRoom.PoringIslandFairyNPCSelectOne && !npcControlRoom.PoringIslandFairyNPCSelectTwo ) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="storyScreen">
                   <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandFairyNPCSelectOneFn());}}>Hidden path on PayonCave..?</button>
                   <button className="ReturnPoringIsland" onClick={() => {dispatch(PoringIslandFairyNPCSelectTwoFn());}}>Hidden path on GeffenDungeon?</button>

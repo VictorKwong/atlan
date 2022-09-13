@@ -130,11 +130,6 @@
   border: 1px solid #6983A8;
 }
 
-.leveltextHUD{
-  border-radius: 5px;
-  margin: 10px 0 10px;
-  padding: 3px 0 3px;
-}
 .UserImageBox,
 .EnemyImageBox{
   position: relative;
