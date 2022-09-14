@@ -9,7 +9,7 @@ import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , R
 //Clock
 import { UserTurnFn , ResetUserTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn, TickingClockFn } from './actions';
 //Game Result (Victory/Defeat)
-import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn } from './actions';
+import { WinResultFn, ResetEnemyCurrentHealthFn, UserLevelUpFn, UserJobLevelUpFn } from './actions';
 import { ReturnCheckPointFn } from './actions'
 //BOSS Defeat
 import { BossEclipseDefeatFn, BossWolyafaDefeatFn, BossDoppelgangerDefeatFn ,BossBaphometDefeatFn } from './actions'
@@ -776,6 +776,7 @@ function Main(){
     const ImageControlRoom = useSelector(state => state.ImageControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const baseJobEXPChart = useSelector(state => state.baseJobEXPChart)
     const skillCapChart = useSelector(state => state.skillCapChart)
     const userStats = useSelector(state => state.userStats)
     const questControlRoom = useSelector(state => state.questControlRoom)
@@ -888,8 +889,8 @@ function Main(){
         
         dispatch(EnemyDeadAnimationFn(true))
         setTimeout(() => (clockCheck = 1), 300);
-        dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].Zeny));
-        $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP, +${enemyStats[i].Zeny} Zeny.</p>`)
+        dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].JobExperience,enemyStats[i].Zeny));
+        $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP +${enemyStats[i].JobExperience} JobEXP, +${enemyStats[i].Zeny} Zeny.</p>`)
         //PATH
         switch (true) {
           case (screenControlRoom.UserUnlockPath === "Path1"):
@@ -1115,10 +1116,10 @@ function Main(){
                 // dispatch(ReturnUserInSelectItemFn());
                 // dispatch(ResetUserSkillQuickenClockFn());
     }
-    // LEVEL FUNCTION
+    // LEVEL + JobLevel FUNCTION
     useEffect(() => {
       if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
-        //MAX Lv10
+        //MAX Lv99
         if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
           (() => {
             switch (true) {
@@ -1187,12 +1188,23 @@ function Main(){
                 return 0;
             }
         }
+      if((userStats.JobLevel < 70) && (userStats.JobExperience >= baseJobEXPChart[userStats.JobLevel])){
+        (() => {
+          switch (true) {
+            default:
+              return dispatch(UserJobLevelUpFn(1));
+          }
+        })()
+          $('.storySpeech').append(`\n <p>Atlan JobLvl has Level Up to Lv${userStats.JobLevel + 1}</p>`);
+        }
       }
       listResult = document.getElementsByClassName('storyChat')[0];
       listResult.scrollTop = listResult.scrollHeight
       // dependance i
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [enemyStats, dispatch, userStats, baseEXPChart]);
+    }, [enemyStats, dispatch, userStats, baseEXPChart, baseJobEXPChart, skillCapChart]);
+
+
 
     // COMBAT FUNCTION
     const userAttackEnemyButton = () => {

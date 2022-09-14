@@ -217,6 +217,13 @@ export const UserLevelUpFn = (Points) => {
         Points: Points
     };
 };
+export const UserJobLevelUpFn = (Points) => {
+    return {
+        type: 'UserJobLevelUpFn',
+        Points: Points
+    };
+};
+
 export const GetStatsPointFn = (Points) => {
     return {
         type: 'GetStatsPointFn',
@@ -918,10 +925,11 @@ export const ResetEnemyTurnBlockFn = () => {
 
 
 //Win & Lose Reset
-export const WinResultFn = (EnemyExperience, EnemyZeny) => {
+export const WinResultFn = (EnemyExperience,EnemyJobExperience, EnemyZeny) => {
     return {
         type: 'WinResultFn',
         enemyExperience: EnemyExperience,
+        enemyJobExperience: EnemyJobExperience,
         enemyZeny: EnemyZeny
     };
 };

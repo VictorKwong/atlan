@@ -262,6 +262,7 @@ const audioBGM = new Audio(audioThemeOfProntera);
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const baseJobEXPChart = useSelector(state => state.baseJobEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
@@ -880,7 +881,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                     <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
                     {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
                     <p className="destextHUD leveltext">Job Lv. {userStats.Level}</p>
-                    {userStats.Level >= 70 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    {userStats.Level >= 70 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseJobEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseJobEXPChart[userStats.Level]}></progress>}
                 </div>
                 <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div>

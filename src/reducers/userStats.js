@@ -122,6 +122,7 @@ const userStatsReducer = (state = Fn, action) => {
             return{
                 ...state,
                 Experience: state.Experience + action.enemyExperience,
+                JobExperience: state.JobExperience + action.enemyJobExperience
             }
         case 'ReturnCheckPointFn':
             return{
@@ -207,6 +208,11 @@ const userStatsReducer = (state = Fn, action) => {
                 Basedefence: state.Basedefence + 8,
                 Basedefencebuffer: state.Basedefencebuffer + 8, 
                 Basespeed: state.Basespeed + 0.03,
+            }
+        case 'UserJobLevelUpFn':
+            return{
+                ...state,
+                JobLevel: state.JobLevel + 1,
             }
         //Stats Upgrade
         case 'STRPointsFn':

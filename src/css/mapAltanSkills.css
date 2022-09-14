@@ -36,6 +36,7 @@
   font-family: 'Balsamiq Sans', cursive;
   width: calc(50% - 4px);
   margin: 2px;
+  cursor: pointer;
 }
 
 .atlanSkillButton:hover{
