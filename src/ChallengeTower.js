@@ -28,9 +28,9 @@ const audioBGM = new Audio(audioPampasUpas);
 function StartMenu(props){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const baseJobEXPChart = useSelector(state => state.baseJobEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
-    const npcControlRoom = useSelector(state => state.npcControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const skillCapChart = useSelector(state => state.skillCapChart)
     const dispatch = useDispatch();
@@ -171,6 +171,8 @@ const LoadingScreen3 = () => {
                 <div className="leveltextHUD">
                     <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
                     {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
+                    <p className="destextHUD leveltext">Job Lv. {userStats.Level}</p>
+                    {userStats.Level >= 70 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.JobExperience - baseJobEXPChart[userStats.JobLevel - 1])/(baseJobEXPChart[userStats.JobLevel] - baseJobEXPChart[userStats.JobLevel - 1])*100} max="100" title={userStats.JobExperience + "/" + baseJobEXPChart[userStats.JobLevel]}></progress>}
                     {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
                 </div>
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>

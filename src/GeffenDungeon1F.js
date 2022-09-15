@@ -37,6 +37,7 @@ function StartMenu(props){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const questControlRoom = useSelector(state => state.questControlRoom)
     const baseEXPChart = useSelector(state => state.baseEXPChart)
+    const baseJobEXPChart = useSelector(state => state.baseJobEXPChart)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
@@ -233,15 +234,9 @@ function StartMenu(props){
 
                 <div className="leveltextHUD">
                     <p className="destextHUD leveltext">Base Lv. {userStats.Level}</p>
-                    {/* <p>Player Attack {userStats.attack}</p>
-                    <p>Player Defence {userStats.defence}</p>
-                    <p>Player Speed {userStats.speed}</p>
-                    <p>Player Hit Rate {userStats.hitRate}</p>
-                    <p>Player Dodge Rate {userStats.dodgeRate}</p>
-                    <p>Player Crit Rate {userStats.critRate}</p>
-                    <p>Player Exp {userStats.Experience}</p> */}
                     {userStats.Level >= 99 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.Experience - baseEXPChart[userStats.Level - 1])/(baseEXPChart[userStats.Level] - baseEXPChart[userStats.Level - 1])*100} max="100" title={userStats.Experience + "/" + baseEXPChart[userStats.Level]}></progress>}
-                    {/* <button className="toWorldMap" onClick={() =>{dispatch(GotoPoringIslandFn()); dispatch(ResetEnemyCurrentHealthFn()); changeMapFadeAudio(); resetClockButton();}}>Press to Continue</button> */}
+                    <p className="destextHUD leveltext">Job Lv. {userStats.Level}</p>
+                    {userStats.Level >= 70 ? null : <progress className="BarBasicHUD expBarBasicHUD" value={(userStats.JobExperience - baseJobEXPChart[userStats.JobLevel - 1])/(baseJobEXPChart[userStats.JobLevel] - baseJobEXPChart[userStats.JobLevel - 1])*100} max="100" title={userStats.JobExperience + "/" + baseJobEXPChart[userStats.JobLevel]}></progress>}
                 </div>
                   <p className="zenytextHUD">Zeny {(userGoldItem.Zeny).toLocaleString(undefined, {maximumFractionDigits:2})}</p>
                 <div>
