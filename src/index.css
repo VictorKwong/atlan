@@ -336,7 +336,29 @@ progress.BarBasicHUD::-webkit-progress-bar{
   padding: 10px 0 10px;
 }
 
+/* FadeIn and FadeOut animation */
+.nextMapBackgroundExchange::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  opacity: 1;
+}
 
+.nextMapBackgroundExchange{
+  animation-name: nextMap;
+  animation-duration: 1s;
+  transition: 1s ease-in all;
+}
+
+@keyframes nextMap {
+  0%,100%{ filter: none;}
+  40%,60%{filter: brightness(5%);}
+}
 
 
 

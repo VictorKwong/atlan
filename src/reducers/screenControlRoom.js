@@ -40,6 +40,7 @@ const Fn = {
     BattlePoringIslandMapMonsterID: 0,
     //Loading Screen
     BattleLoadingScreen: false,
+    NextMapLoadingScreen: false,
     TrainingLoadingScreen: false,
     TrainingLoadingScreenDelay: false,
     //Mini Screen (TreasurePoringIsland)
@@ -1229,6 +1230,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 return{
                     ...state,
                     BattleLoadingScreen: !state.BattleLoadingScreen
+                }
+            //nextMap
+            case 'NextMapLoadingScreenFn':
+                return{
+                    ...state,
+                    NextMapLoadingScreen: !state.NextMapLoadingScreen
                 }
             case 'TrainingLoadingScreenFn':
                 return{

@@ -14,6 +14,7 @@ function StartMenu(){
 
     const startGameQtn = (e) => {
       e.preventDefault();
+      //nextMapBackgroundExchange
       dispatch(startGameFn());
     };
 

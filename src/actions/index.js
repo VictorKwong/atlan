@@ -2997,6 +2997,13 @@ export const BattleLoadingScreenFn = () => {
         type: 'BattleLoadingScreenFn',
     };
 };
+export const NextMapLoadingScreenFn = () => {
+    return {
+        type: 'NextMapLoadingScreenFn',
+    };
+};
+
+
 //Battle Reset Fn
 export const ResetAllBattleMapFn = (Turn) => {
     return {

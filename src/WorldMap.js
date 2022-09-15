@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn, GotoChallengeTowerFn, userClockDefendFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions';
-import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn } from './actions'
+import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn, NextMapLoadingScreenFn } from './actions'
 import { cutsceneSixFn } from './actions'
 //Audio
 import { gameTitleOptionScreenFn } from './actions'
@@ -12,7 +12,6 @@ import { UserSkillFirstAidFn } from './actions'
 import {FirstAidTrainingFn, BashTrainingFn, MammoniteTrainingFn, KodokuTrainingFn, MagnumBreakTrainingFn, HeadCrushTrainingFn, QuickenTrainingFn, VitalStrikeTrainingFn, BowlingBashTrainingFn} from './actions'
 //UpGrade Skill Level
 import {FirstAidSkillLevelFn, BashSkillLevelFn, MammoniteSkillLevelFn, KodokuSkillLevelFn, MagnumBreakSkillLevelFn, HeadCrushSkillLevelFn, QuickenSkillLevelFn, VitalStrikeSkillLevelFn, BowlingBashSkillLevelFn} from './actions'
-
 
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import Prontera from './Prontera'
@@ -765,9 +764,31 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
   CurrentAccessoryTwo = UnEquipItem;
 }
 
+const NextMapProteraFn = (num) => {
+  dispatch(NextMapLoadingScreenFn());
+  setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+  //1.PronteraFn
+  //2.PayonCave1F
+  //3.PoringIsland
+  //4.Geffen
+  //5.ChallengeTower
+  switch(true){
+    case (num == 1):
+      return setTimeout(() => dispatch(GotoPronteraFn()), 500);
+    case (num == 2):
+      return setTimeout(() => dispatch(GotoPayonCave1FFn()), 500);
+    case (num == 3):
+      return setTimeout(() => dispatch(GotoPoringIslandFn()), 500);
+    case (num == 4):
+      return setTimeout(() => dispatch(GotoGeffenFn()), 500);
+    case (num == 5):
+      return setTimeout(() => dispatch(GotoChallengeTowerFn()), 500);
+  }
+}
+
 
     return(
-      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : null}>
+      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : screenControlRoom.NextMapLoadingScreen ? "nextMapBackgroundExchange" :null}>
         {
         screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute} SkillsLevelingBox={SkillsLevelingBox}/>:
         screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute} SkillsLevelingBox={SkillsLevelingBox}/>:
@@ -818,8 +839,8 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                 <h3 className="mapTitle">World Map</h3>
                 {/* click x trigger hover */}
                 <button className="ReturnHUDBugFix"></button>
-                <button className="Prontera" onClick={() => {dispatch(GotoPronteraFn()); }}>Prontera</button>
-                <button className="PayonCave" onClick={() => {dispatch(GotoPayonCave1FFn()); }}>{
+                <button className="Prontera" onClick={() => {NextMapProteraFn(1);}}>Prontera</button>
+                <button className="PayonCave" onClick={() => {NextMapProteraFn(2);}}>{
                       screenControlRoom.PayonCave1FPath1 &&
                       screenControlRoom.PayonCave1FPath2Hidden &&
                       screenControlRoom.PayonCave1FPath3Hidden &&
@@ -838,7 +859,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                       screenControlRoom.PayonCave3FPath3 &&
                       screenControlRoom.PayonCave3FPath4 ? <span>Payon Cave(⭐)</span> : <span>Payon Cave</span>}
                 </button>
-                <button className="SogratDesertPoringIsland" onClick={() => {dispatch(GotoPoringIslandFn()); }}>{
+                <button className="SogratDesertPoringIsland" onClick={() => {NextMapProteraFn(3);}}>{
                     screenControlRoom.PoringIslandPath1 &&
                     screenControlRoom.PoringIslandPath2 &&
                     screenControlRoom.PoringIslandPath3 &&
@@ -849,13 +870,13 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
                     screenControlRoom.PoringIslandPath8 ? <span>Poring Island(⭐)</span> : <span>Poring Island</span>}
                 
                 </button>
-                <button className="Geffen" onClick={() => {dispatch(GotoGeffenFn()); }}>Geffen</button>
+                <button className="Geffen" onClick={() => {NextMapProteraFn(4);}}>Geffen</button>
                 {screenControlRoom.FinalBossPath ?
                 <button className="FinalBoss" onClick={
                   screenControlRoom.storyLineSix ? 
                   () => {LoadingScreen0(); }:
                   () => {dispatch(cutsceneSixFn()); }}>Baphomet Gate💢</button> : null}
-                <button className="ChallengeTower" onClick={() => {dispatch(GotoChallengeTowerFn()); }}>{
+                <button className="ChallengeTower" onClick={() => {NextMapProteraFn(5);}}>{
                     screenControlRoom.ChallengeTowerPath1 &&
                     screenControlRoom.ChallengeTowerPath2 &&
                     screenControlRoom.ChallengeTowerPath3 ? <span>RaidTower(⭐)</span> : <span>RaidTower</span>}
