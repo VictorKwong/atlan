@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn, GotoChallengeTowerFn, userClockDefendFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions';
-import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn, NextMapLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn, NextMapLoadingScreenFn, NextWorldMapLoadingScreen } from './actions'
 import { cutsceneSixFn } from './actions'
 //Audio
 import { gameTitleOptionScreenFn } from './actions'

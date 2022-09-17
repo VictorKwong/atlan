@@ -3002,7 +3002,11 @@ export const NextMapLoadingScreenFn = () => {
         type: 'NextMapLoadingScreenFn',
     };
 };
-
+export const NextWorldMapLoadingScreenFn = () => {
+    return {
+        type: 'NextWorldMapLoadingScreenFn',
+    };
+};
 
 //Battle Reset Fn
 export const ResetAllBattleMapFn = (Turn) => {

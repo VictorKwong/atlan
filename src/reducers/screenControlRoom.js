@@ -41,6 +41,7 @@ const Fn = {
     //Loading Screen
     BattleLoadingScreen: false,
     NextMapLoadingScreen: false,
+    NextWorldMapLoadingScreen: false,
     TrainingLoadingScreen: false,
     TrainingLoadingScreenDelay: false,
     //Mini Screen (TreasurePoringIsland)
@@ -1236,6 +1237,11 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 return{
                     ...state,
                     NextMapLoadingScreen: !state.NextMapLoadingScreen
+                }
+            case 'NextWorldMapLoadingScreenFn':
+                return{
+                    ...state,
+                    NextWorldMapLoadingScreen: !state.NextWorldMapLoadingScreen
                 }
             case 'TrainingLoadingScreenFn':
                 return{

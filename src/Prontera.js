@@ -863,7 +863,7 @@ function StartMenu(props){
                 </div> :
               screenControlRoom.PronteraWeaponArmorDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
-                  <button className="returnWeaponArmorDealerButton" onClick={() => {dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave ToolShop</button>
+                  <button className="returnWeaponArmorDealerButton" onClick={() => {NextMapProteraFn(3); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave ToolShop</button>
                 </div>
               : null}
               

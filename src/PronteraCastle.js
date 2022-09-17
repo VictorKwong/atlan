@@ -163,7 +163,6 @@ function StartMenu(props){
     }
   }
 
-
     return(
       <div>
         {
