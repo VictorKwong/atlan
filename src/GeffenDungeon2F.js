@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoGeffenDungeon3FFn , ProgressQuestDialogFn} from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
 //CHEST
 import { GeffenDungeonChest2VisitRepeatFn , GeffenDungeonChest3VisitRepeatFn } from './actions'
 //PATH
@@ -88,11 +88,25 @@ const PayonCave2F = (data) =>{
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath6",Math.floor(Math.random() * 2) + 18)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.GeffenDungeon1F
+    //2.GeffenDungeon3F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoGeffenDungeon1FFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoGeffenDungeon3FFn()), 500);
+      default:
+        break;
+    }
+  }
     return(
         <div className="GeffenDungeon2FMap">
           <button className="ReturnHUDBugFix"></button>
           <h3 className="GeffenDungeon2FMapTitle">Geffen Dungeon 2F</h3>
-          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon1F" onClick={() => {dispatch(GotoGeffenDungeon1FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 1F</button>
+          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon1F" onClick={() => {NextMapProteraFn(1); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 1F</button>
           {/* Path 0 Split 0 */}
           <button className="GeffenDungeonBase GeffenDungeon2FPath0Split0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Split0</button>
           {/* Path 1 Split 0 */}
@@ -123,7 +137,7 @@ const PayonCave2F = (data) =>{
           <button className="GeffenDungeonBase GeffenDungeon2FPath2Split1" onClick={() => {LoadingScreen3(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Road2B2</button> : null}
           {/* Path 4 */}
           {screenControlRoom.GeffenDungeon2FPath6 ?
-          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon3FFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button> : null}
+          <button className="GeffenDungeonBase GeffenDungeon2FToGeffenDungeon3F" onClick={() => {NextMapProteraFn(2); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button> : null}
         </div>
     );
 }

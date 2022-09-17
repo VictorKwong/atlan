@@ -12,6 +12,8 @@ import { FinalBossPathFn } from './actions'
 import { SpiritOfDoppelgangerFn, SpiritOfWolyafaFn, SpiritOfEclipseFn, WinRedGemstoneFn, WinCursedRubyFn, WinDiamondFn} from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
+//loading Screen
+import { NextMapLoadingScreenFn } from './actions'
 import GameOption from './GameOption'
 
 import Prontera from './Prontera'
@@ -149,7 +151,17 @@ function StartMenu(props){
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [npcControlRoom, npcSpeech, screenControlRoom])
 
-
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.Prontera
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoPronteraFn()), 500);
+      default:
+        break;
+    }
+  }
 
 
     return(
@@ -192,7 +204,7 @@ function StartMenu(props){
                 <button className="PronternaAssistant" onClick={() => {dispatch(TalktoPronteraAssistantFn())}}><img src={PronteraAssistantImg} alt="Prontera Assistant" /></button>
                 <button className="PronternaRoyalGuard1" onClick={() => {dispatch(TalktoRoyalGuard1Fn())}}><img src={PronteraRoyalSoldierImg} alt="Prontera RoyalSoldier 1" /></button>
                 <button className="PronternaRoyalGuard2" onClick={() => {dispatch(TalktoRoyalGuard2Fn())}}><img className="GuardDirection" src={PronteraRoyalSoldierImg} alt="Prontera RoyalSoldier 2" /></button>
-                <button className="ExitPronteraCastle" onClick={() => {dispatch(GotoPronteraFn()); changeMapFadeAudio();}}>Exit</button>
+                <button className="ExitPronteraCastle" onClick={() => {NextMapProteraFn(1); changeMapFadeAudio();}}>Exit</button>
               </div>
             }
             <div className="StoryHUD">

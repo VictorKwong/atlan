@@ -18,6 +18,8 @@ import { WinResultFn, UserLevelUpFn } from './actions';
 import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn } from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
+//Loading Screen
+import { NextMapLoadingScreenFn } from './actions'
 import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
@@ -470,6 +472,23 @@ function StartMenu(props){
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [npcControlRoom, npcSpeech, screenControlRoom])
 
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.WorldMap
+    //2.PronteraCastle
+    //3.PronteraWeaponArmorDealer
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoPronteraCastleFn()), 500);
+      case (num === 3):
+        return setTimeout(() => dispatch(GotoPronteraWeaponArmorDealerFn()), 500);
+      default:
+        break;
+    }
+  }
 
     return(
       <div>
@@ -518,24 +537,24 @@ function StartMenu(props){
             screenControlRoom.PronteraWeaponArmorDealer ? 
             <div className="ReturnParent">
               <PronteraWeaponArmorDealer />
-              <button className="ReturnHUD" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>x</button>
+              <button className="ReturnHUD" onClick={() =>{NextMapProteraFn(3); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>x</button>
             </div>:
             <div className="PronteraMap">
               <h3 className="PronteraMapTitle">Prontera</h3>
               <button className="ReturnHUDBugFix"></button>
               <button className="soldier1" onClick={() => {dispatch(TalktoSoldierGuard1Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier1" /></button>
-              <button className="castleEnterence" onClick={() => {dispatch(GotoPronteraCastleFn()); dispatch(ResetTalktoFn()); changeMapFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
+              <button className="castleEnterence" onClick={() => {NextMapProteraFn(2); dispatch(ResetTalktoFn()); changeMapFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
               <button className="soldier2" onClick={() => {dispatch(TalktoSoldierGuard2Fn());}}><img src={PronteraSoldierImg} alt="Prontera soldier2" /></button>
               <button className="kiwiGuild" onClick={() => dispatch(TalktoKiwiFn())}><img src={Kiwi} alt="NPC Kiwi" /></button>
               <button className="toolDealerNPC" onClick={() =>{dispatch(GotoPronteraToolDealerFn()); dispatch(TalktoToolDealerFn()); changePlaceFadeAudio();}}><img src={PronteraToolDealerImg} alt="Prontera Tool Dealer" /></button>
-              <button className="weaponArmorDealerNPC" onClick={() =>{dispatch(GotoPronteraWeaponArmorDealerFn()); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
+              <button className="weaponArmorDealerNPC" onClick={() =>{NextMapProteraFn(3); dispatch(ResetTalktoFn()); changePlaceFadeAudio();}}><img src={Warp} alt="Warp Portal" /></button>
               <button className="chocolateGuild" onClick={() => dispatch(TalktoChocolateFn())}><img src={Chocolate} alt="NPC Chocolate" /></button>
               <button className="kafraEmployee" onClick={() => dispatch(TalktoKafraEmployeeFn())}><img src={KafraEmployee} alt="Kafra Employee" /></button>
               <button className="pronteraFountain" onClick={() => {dispatch(TalktoFountainFn());}}><img className="pronteraFountainImg" src={Fountain} alt="Fountain" /></button>
               <button className="questBoard" onClick={() => {dispatch(TalktoQuestBoardFn());}}><img src={QuestBoard} alt="Quest Board" /></button>
               <button className="lemonGuild" onClick={() => dispatch(TalktoLemonFn())}><img src={Lemon} alt="NPC Lemon" /></button>
               <button className="headGearDealerNPC" onClick={() => {dispatch(GotoPronteraHeadGearDealerFn()); dispatch(TalktoHeadGearDealerFn()); changePlaceFadeAudio();}}><img src={PronteraHeadGearDealerImg} alt="Prontera Head Gear Dealer" /></button>
-              <button className="PronteraWorldMap" onClick={() => {dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
+              <button className="PronteraWorldMap" onClick={() => {NextMapProteraFn(1); changeMapFadeAudio(); dispatch(ResetTalktoFn());}}>PronteraSouthGate</button>
             </div>}
             <div className="StoryHUD">
               <p className="basicStatsHUD">Basic Info</p>

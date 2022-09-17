@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave2FFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
 //CHEST
 import { PayonCaveChest3VisitRepeatFn, PayonCaveChest4VisitRepeatFn } from './actions'
 //PATH
@@ -165,6 +165,20 @@ function StartMenu(props){
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave1FPath1",Math.floor(Math.random() * 2) + 6)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.WorldMap
+    //2.PayonCave1F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoPayonCave2FFn()), 500);
+      default:
+        break;
+    }
+  }
 
     return(
       <div>
@@ -214,7 +228,7 @@ function StartMenu(props){
             <div className="PayonCave1FMap">
               <button className="ReturnHUDBugFix"></button>
               <h3 className="PayonCave1FMapTitle">Payon Cave 1F</h3>
-              <button className="PayonCave1FToWorldMap" onClick={ userGoldItem.PayonCaveMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn()); dispatch(ReturnPayonCavePathFn());} }>ToWorldMap</button>
+              <button className="PayonCave1FToWorldMap" onClick={ userGoldItem.PayonCaveMap >= 1? () =>{NextMapProteraFn(1); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn()); dispatch(ReturnPayonCavePathFn());} }>ToWorldMap</button>
               {/* Path 0 */}
               <button className={Math.random() <= 0.5 ? "PayonCave1FPath0": "PayonCave1FPath0 PayonCave1FPath0Pic2"} onClick={() =>{LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>Cave1</button>
               {/* Path 2 Hidden*/}
@@ -230,7 +244,7 @@ function StartMenu(props){
               {screenControlRoom.PayonCave1FPath1 ?
                <button className="TreasureBoxPayonCave1F" onClick={npcControlRoom.PayonCaveChest3 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(PayonCaveChest3VisitRepeatFn()); dispatch(ResetPayonCaveNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("PayonCaveChest3")); dispatch(ResetPayonCaveNPCFn());}}>Treasure</button> : null}
               {screenControlRoom.PayonCave1FPath1 ?
-                <button className="PayonCave1FTo2F" onClick={() => {dispatch(GotoPayonCave2FFn()); changePlaceFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>PayonCave2F</button> : null}
+                <button className="PayonCave1FTo2F" onClick={() => {NextMapProteraFn(2); changePlaceFadeAudio(); dispatch(ResetPayonCaveNPCFn());}}>PayonCave2F</button> : null}
 
             </div>
             }

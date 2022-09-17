@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoGeffenFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon2FFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
 //CHEST
 import { GeffenDungeonChest1VisitRepeatFn } from './actions'
 //PATH
@@ -153,6 +153,22 @@ function StartMenu(props){
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
 
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.Geffen
+    //2.GeffenDungeon2F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoGeffenFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoGeffenDungeon2FFn()), 500);
+      default:
+        break;
+    }
+  }
+  
+
     return(
       <div>
         {
@@ -198,7 +214,7 @@ function StartMenu(props){
               <button className="ReturnHUDBugFix"></button>
               <h3 className="GeffenDungeon1FMapTitle">Geffen Dungeon 1F</h3>
               {/* Path 0*/}
-              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());} : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn()); dispatch(ReturnGeffenDungeonPathFn());}}>ToGeffen</button>
+              <button className="GeffenDungeon1FToGeffen" onClick={ userGoldItem.GeffenDungeonMap >= 1? () =>{NextMapProteraFn(1); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());} : () =>{dispatch(GotoGeffenFn()); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn()); dispatch(ReturnGeffenDungeonPathFn());}}>ToGeffen</button>
               <button className={Math.random() <= 0.5 ? "GeffenDungeonBase GeffenDungeon1FPath0" : "GeffenDungeonBase GeffenDungeon1FPath0 GeffenDungeon1FPath0Pic2"} onClick={() =>{changeMapFadeAudio(); LoadingScreen0(); dispatch(ResetGeffenDungeonNPCFn());}}>Path1</button>
               {/* Path 1*/}
               {screenControlRoom.GeffenDungeon1FPath1 ?
@@ -214,7 +230,7 @@ function StartMenu(props){
               <button className="GeffenDungeonBase TreasureBoxGeffenDungeon1F" onClick={npcControlRoom.GeffenDungeonChest1 ? () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(GeffenDungeonChest1VisitRepeatFn()); dispatch(ResetGeffenDungeonNPCFn());} : () => {changePlaceFadeAudio(); dispatch(GotoTreasurePoringIslandMapFn("GeffenDungeonChest1")); dispatch(ResetGeffenDungeonNPCFn());}}>Treasure chest</button> : null}
               {/* Path 5*/}
               {screenControlRoom.GeffenDungeon1FPath4 ?
-              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{dispatch(GotoGeffenDungeon2FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Geffen Dungeon 2F</button> : null}
+              <button className="GeffenDungeonBase GeffenDungeon1FTo2F" onClick={() =>{NextMapProteraFn(2); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Geffen Dungeon 2F</button> : null}
             </div>
             }
             <div className="StoryHUD">

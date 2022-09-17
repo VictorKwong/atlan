@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn} from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
 import GameOption from './GameOption'
@@ -109,6 +109,18 @@ const LoadingScreen3 = () => {
   setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
 }
 
+const NextMapProteraFn = (num) => {
+  dispatch(NextMapLoadingScreenFn());
+  setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+  //1.WorldMap
+  switch(true){
+    case (num === 1):
+      return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+    default:
+      break;
+  }
+}
+
     return(
       <div>
         {
@@ -146,7 +158,7 @@ const LoadingScreen3 = () => {
               <button className="ReturnHUDBugFix"></button>
               <h3 className="ChallengeTowerMapTitle">Challenge Tower</h3>
               {/* World Map, Reset Path Fn Optional dispatch(ReturnPoringIslandPathFn());*/}
-              <button className="ChallengeWorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} }>ToWorldMap</button>
+              <button className="ChallengeWorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{NextMapProteraFn(1); changeMapFadeAudio();} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio();} }>ToWorldMap</button>
               <button className="ChallengeTowerBase GoldenThiefBug" onClick={() =>{LoadingScreen0(); changeMapFadeAudio();}}>Golden Stage 1</button>
               <button className="ChallengeTowerBase Drake" onClick={() =>{LoadingScreen1(); changeMapFadeAudio();}}>Priate Stage 2</button>
               <button className="ChallengeTowerBase Phreeoni" onClick={() =>{LoadingScreen2(); changeMapFadeAudio();}}>Ant Stage 3</button>

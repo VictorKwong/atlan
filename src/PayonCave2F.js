@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave1FFn, GotoPayonCave3FFn } from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
 //CHEST
 import { PayonCaveChest5VisitRepeatFn , PayonCaveChest6VisitRepeatFn} from './actions'
 //PATH
@@ -100,12 +100,28 @@ const PayonCave2F = (data) =>{
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",12)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
+
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.PayonCave1F
+    //2.PayonCave3F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoPayonCave1FFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoPayonCave3FFn()), 500);
+      default:
+        break;
+    }
+  }
+
     return(
         <div className="PayonCave2FMap">
           <button className="ReturnHUDBugFix"></button>
           <h3 className="PayonCave2FMapTitle">Payon Cave 2F</h3>
           {/* Path 0 */}
-          <button className="PayonCaveBase PayonCave2FToPayonCave1F" onClick={() => {dispatch(GotoPayonCave1FFn()); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>PayonCave1F</button>
+          <button className="PayonCaveBase PayonCave2FToPayonCave1F" onClick={() => {NextMapProteraFn(1); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>PayonCave1F</button>
           <button className={Math.random() <= 0.5 ? "PayonCaveBase PayonCave2FPath0 PayonCave2FPath0Pic2" : "PayonCaveBase PayonCave2FPath0"} onClick={() => {LoadingScreen0(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Cavern</button>
           {/* Path 1 */}
           {screenControlRoom.PayonCave2FPath1 ?
@@ -143,7 +159,7 @@ const PayonCave2F = (data) =>{
           <button className="PayonCaveBase PayonCave2FPath7" onClick={() => {LoadingScreen4(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Fear</button> : null}
           {/* Path 8 */}
           {screenControlRoom.PayonCave2FPath8 ?
-          <button className="PayonCaveBase PayonCave2FToPayonCave3F" onClick={() => {dispatch(GotoPayonCave3FFn()); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>PayonCave3F</button> : null}
+          <button className="PayonCaveBase PayonCave2FToPayonCave3F" onClick={() => {NextMapProteraFn(2); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>PayonCave3F</button> : null}
         </div>
     );
 }

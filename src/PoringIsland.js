@@ -11,7 +11,7 @@ import { TrainingSuccesFn, TrainingFailureFn } from './actions'
 import { TrainingSTRFn , TrainingAGIFn , TrainingVITFn , TrainingINTFn , TrainingDEXFn , TrainingLUKFn } from './actions'
 import { BonusSTRPointsFn , BonusAGIPointsFn , BonusVITPointsFn , BonusINTPointsFn , BonusDEXPointsFn , BonusLUKPointsFn } from './actions'
 //Loading Screen
-import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreenDelayFn} from './actions'
+import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreenDelayFn, NextMapLoadingScreenFn} from './actions'
 //PATH
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
@@ -347,8 +347,21 @@ useEffect(() => {
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path5",5)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
-
-
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.WorldMap
+    //2.PoringIslandHouseMap
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoPoringIslandHouseMapFn()), 500);
+      default:
+        break;
+  }
+}
+  
     return(
       <div className={
       screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingSuccess && screenControlRoom.TrainingLoadingScreenDelay ? "loadingTrainingSuccessScreen loadingTrainingSuccessScreenImg" : screenControlRoom.TrainingLoadingScreen && npcControlRoom.TrainingSuccess ? "loadingTrainingSuccessScreen" : 
@@ -397,7 +410,7 @@ useEffect(() => {
               <button className="ReturnHUDBugFix"></button>
               <h3 className="PoringIslandMapTitle">Poring Island</h3>
               {/* World Map, Reset Path Fn Optional dispatch(ReturnPoringIslandPathFn());*/}
-              <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn()); dispatch(ReturnPoringIslandPathFn());} }>ToWorldMap</button>
+              <button className="WorldMap" onClick={ userGoldItem.PoringIslandMap >= 1? () =>{NextMapProteraFn(1); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());} : () =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn()); dispatch(ReturnPoringIslandPathFn());} }>ToWorldMap</button>
               {/* Path 0 */}
               <button className={Math.random() <= 0.5 ? "SmallIsland SmallIsland1 SmallIslandPath0": "SmallIsland SmallIslandPath0 "} onClick={() =>{LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetPoringIslandNPCFn());}}>Small Island</button>
               {/* Path 1 */}
@@ -423,7 +436,7 @@ useEffect(() => {
               <button className="SmallIsland SmallIslandBridgeHidden2 SmallIslandPathBridgeHidden2" onClick={() =>{changePlaceFadeAudio();  dispatch(GotoPoringIslandPath8Fn()); dispatch(PoringIslandFairyNPC2Fn());}}>Hidden road</button> :null}
                {/* Path 8 Hidden*/}
                {screenControlRoom.PoringIslandPath8 ?
-              <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetPoringIslandNPCFn());}}><img src={BlackSmith} alt="BlackSmith"/></button> :null}
+              <button className="SmallIsland SmallIslandBridgeHiddenNPC SmallIslandPathBridgeHiddenNPC" onClick={() =>{changePlaceFadeAudio(); NextMapProteraFn(2); dispatch(ResetPoringIslandNPCFn());}}><img src={BlackSmith} alt="BlackSmith"/></button> :null}
               {/* Path 4 */}
               {screenControlRoom.PoringIslandPath4 ?
               <button className={Math.random() <= 0.5 && npcControlRoom.BossEclipseDefeat ? "SmallIsland SmallIsland5B SmallIslandPathBoss ": "SmallIsland SmallIsland5 SmallIslandPathBoss"} onClick={
@@ -661,7 +674,7 @@ useEffect(() => {
                         </div> : 
                         Train.select && Train.Points < 10 && userGoldItem.Zeny < trainingSuccessRequire[Train.Points] ?
                         <div className="storyScreen">
-                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
+                          <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); NextMapProteraFn(2); dispatch(ResetTrainingRateFn());}}>Return</button>
                         </div> : null}
                       </span>
                     )
@@ -674,7 +687,7 @@ useEffect(() => {
               </div> : 
               screenControlRoom.PoringIslandHouseMap && !( (screenControlRoom.HouseTrainingSTR && userAttribute.BonusStr < 10) || (screenControlRoom.HouseTrainingAGI && userAttribute.BonusAgi < 10) || (screenControlRoom.HouseTrainingVIT && userAttribute.BonusVit < 10) || (screenControlRoom.HouseTrainingINT && userAttribute.BonusInt < 10) || (screenControlRoom.HouseTrainingDEX && userAttribute.BonusDex < 10) || (screenControlRoom.HouseTrainingLUK && userAttribute.BonusLuk < 10) ) && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ? 
               <div className="storyScreen">
-                <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); dispatch(GotoPoringIslandHouseMapFn()); dispatch(ResetTrainingRateFn());}}>Return</button>
+                <button className="ReturnPoringIsland" onClick={() => {changePlaceFadeAudio(); NextMapProteraFn(2); dispatch(ResetTrainingRateFn());}}>Return</button>
               </div> : null}
               {/* Bridge NPC */}
               {npcControlRoom.PoringIslandBridgeNPC && !npcControlRoom.PoringIslandBridgeNPCSelectOne && !npcControlRoom.PoringIslandBridgeNPCSelectTwo && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills)  ?

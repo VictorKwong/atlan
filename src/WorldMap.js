@@ -773,15 +773,15 @@ const NextMapProteraFn = (num) => {
   //4.Geffen
   //5.ChallengeTower
   switch(true){
-    case (num == 1):
+    case (num === 1):
       return setTimeout(() => dispatch(GotoPronteraFn()), 500);
-    case (num == 2):
+    case (num === 2):
       return setTimeout(() => dispatch(GotoPayonCave1FFn()), 500);
-    case (num == 3):
+    case (num === 3):
       return setTimeout(() => dispatch(GotoPoringIslandFn()), 500);
-    case (num == 4):
+    case (num === 4):
       return setTimeout(() => dispatch(GotoGeffenFn()), 500);
-    case (num == 5):
+    case (num === 5):
       return setTimeout(() => dispatch(GotoChallengeTowerFn()), 500);
   }
 }

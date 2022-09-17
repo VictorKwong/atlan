@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoGeffenDungeon3FFn } from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
 //NPC
 import { ResetGeffenDungeonNPCFn } from './actions'
 
@@ -74,13 +74,23 @@ const PayonCave2F = (data) =>{
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",24)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
-
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.GeffenDungeon3F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoGeffenDungeon3FFn()), 500);
+      default:
+        break;
+    }
+  }
     return(
         <div className="GeffenDungeon4FMap">
           <button className="ReturnHUDBugFix"></button>
           <h3 className="GeffenDungeon4FMapTitle">Geffen Dungeon 4F</h3>
           {/* Path 0 */}
-          <button className="GeffenDungeonBase GeffenDungeon4FToGeffenDungeon3F" onClick={() => {dispatch(GotoGeffenDungeon3FFn()); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button>
+          <button className="GeffenDungeonBase GeffenDungeon4FToGeffenDungeon3F" onClick={() => {NextMapProteraFn(1); changePlaceFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>GeffenDungeon 3F</button>
           <button className="GeffenDungeonBase GeffenDungeon4FPath0" onClick={() => {LoadingScreen0(); changeMapFadeAudio(); dispatch(ResetGeffenDungeonNPCFn());}}>Wrath</button>
           {/* Path 1 */}
           {screenControlRoom.GeffenDungeon4FPath1 ?

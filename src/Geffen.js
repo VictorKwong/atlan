@@ -14,6 +14,8 @@ import { WinResultFn, UserLevelUpFn } from './actions';
 import { AcceptQuestDialogFn, ReturnQuestDialogFn} from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
+//loading map
+import { NextMapLoadingScreenFn } from './actions'
 import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
@@ -273,6 +275,23 @@ function StartMenu(props){
           }
       }, 10);
   }
+
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.WorldMap
+    //2.GeffenDungeon1F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+      case (num === 2):
+        return setTimeout(() => dispatch(GotoGeffenDungeon1FFn()), 500);
+      default:
+        break;
+    }
+  }
+
+
   return(
     <div>
       {
@@ -309,14 +328,14 @@ function StartMenu(props){
           <div className="GeffenMap">
             <button className="ReturnHUDBugFix"></button>
             <h3 className="GeffenMapTitle">Geffen</h3>
-            <button className="GeffenWorldMap" onClick={() =>{dispatch(GotoWorldMapFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>ToWorldMap</button>
+            <button className="GeffenWorldMap" onClick={() =>{NextMapProteraFn(1); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>ToWorldMap</button>
             <button className="GeffenBase GeffenGoblinYula" onClick={() =>{dispatch(GeffenGoblinYulaNPCFn()); changePlaceFadeAudio();}}><img src={GoblinYula} alt="Goblin Yula" /></button>
             <button className="GeffenBase GeffenCitizen" onClick={() =>{dispatch(GeffenCitizenNPCFn()); changePlaceFadeAudio();}}><img src={GeffenCitizen} alt="GeffenCitizen"/></button>
             <button className="GeffenBase GeffenTimer" onClick={() =>{dispatch(GeffenTimerNPCFn()); changePlaceFadeAudio();}}><img src={GeffenTimer} alt="GeffenTimer"/></button>
             <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
             <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
             <button className="GeffenBase GeffenSoldier" onClick={() =>{dispatch(GeffenSoldierNPCFn()); changePlaceFadeAudio();}}><img src={GeffenSoldier} alt="GeffenSoldier"/></button>
-            <button className="GeffenDungeon1F" onClick={() =>{dispatch(GotoGeffenDungeon1FFn()); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>{
+            <button className="GeffenDungeon1F" onClick={() =>{NextMapProteraFn(2); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>{
                 screenControlRoom.GeffenDungeon1FPath1 &&
                 screenControlRoom.GeffenDungeon1FPath2 &&
                 screenControlRoom.GeffenDungeon1FPath3 &&

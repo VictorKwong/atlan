@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave2FFn } from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
 //CHEST
 import { ChestBoss2VisitRepeatFn } from './actions'
 //PATH
@@ -81,12 +81,24 @@ const PayonCave3F = (data) =>{
     setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath4",15)), 1000);
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
+  const NextMapProteraFn = (num) => {
+    dispatch(NextMapLoadingScreenFn());
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    //1.PayonCave2F
+    switch(true){
+      case (num === 1):
+        return setTimeout(() => dispatch(GotoPayonCave2FFn()), 500);
+      default:
+        break;
+    }
+  }
+
     return(
         <div className="PayonCave3FMap">
           <button className="ReturnHUDBugFix"></button>
           <h3 className="PayonCave3FMapTitle">Payon Cave 3F</h3>
           {/* Path 0 */}
-          <button className="PayonCaveBase PayonCave3FToPayonCave2F" onClick={() => {dispatch(GotoPayonCave2FFn()); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>PayonCave2F</button>
+          <button className="PayonCaveBase PayonCave3FToPayonCave2F" onClick={() => {NextMapProteraFn(1); dispatch(ResetPayonCaveNPCFn()); changePlaceFadeAudio();}}>PayonCave2F</button>
           <button className="PayonCaveBase PayonCave3FPath0" onClick={() => {LoadingScreen0(); dispatch(ResetPayonCaveNPCFn()); changeMapFadeAudio();}}>Ghost?</button>
           {/* Path 1 */}
           {screenControlRoom.PayonCave3FPath1 ?
