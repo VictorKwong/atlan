@@ -14,12 +14,14 @@ function StartMenu(){
     const startGameQtn = (e) => {
       e.preventDefault();
       //nextMapBackgroundExchange
+
       dispatch(startGameFn());
     };
 
     
     return(
       <div>
+        {/* <div className ={screenControlRoom.NextWorldMapLoadingScreen ? "nextWorldMapBackgroundExchange" : null}> */}
         {/* Click startGame goes to Main */}
         {screenControlRoom.startGame ? <StoryLineTalent />
         // Click Option goes to GameOption

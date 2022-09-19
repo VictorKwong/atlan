@@ -150,6 +150,30 @@
   right:7px;
 }
 
+/* .startTalent::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  opacity: 1;
+}
+
+.startTalent{
+  animation-name: talentChoice;
+  animation-duration: 1.5s;
+  transition: 1.5s ease-in all;
+}
+
+@keyframes talentChoice {
+  0%,50%{filter: brightness(0%);}
+  100%{ filter: none;}
+} */
+
+
 @media (max-width: 1199px){
 
 }
