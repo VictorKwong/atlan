@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn, GotoTreasurePoringIslandMapFn, GotoPayonCave2FFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn, NextMapLoadingScreenFn } from './actions'
+import { BattleLoadingScreenFn, NextMapLoadingScreenFn, NextWorldMapLoadingScreenFn } from './actions'
 //CHEST
 import { PayonCaveChest3VisitRepeatFn, PayonCaveChest4VisitRepeatFn } from './actions'
 //PATH
@@ -166,14 +166,17 @@ function StartMenu(props){
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const NextMapProteraFn = (num) => {
-    dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+
     //1.WorldMap
     //2.PayonCave1F
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+        dispatch(NextWorldMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
       case (num === 2):
+        dispatch(NextMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
         return setTimeout(() => dispatch(GotoPayonCave2FFn()), 500);
       default:
         break;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GotoPronteraFn, GotoPoringIslandFn, GotoGeffenFn , GotoPayonCave1FFn, GotoChallengeTowerFn, userClockDefendFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions';
-import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn, NextMapLoadingScreenFn, NextWorldMapLoadingScreen } from './actions'
+import { BattleLoadingScreenFn , GotoBattlePoringIslandMapFn, NextMapLoadingScreenFn, NextWorldMapLoadingScreenFn } from './actions'
 import { cutsceneSixFn } from './actions'
 //Audio
 import { gameTitleOptionScreenFn } from './actions'
@@ -765,8 +765,8 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
 }
 
 const NextMapProteraFn = (num) => {
-  dispatch(NextMapLoadingScreenFn());
-  setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+  dispatch(NextWorldMapLoadingScreenFn());
+  setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
   //1.PronteraFn
   //2.PayonCave1F
   //3.PoringIsland
@@ -774,21 +774,21 @@ const NextMapProteraFn = (num) => {
   //5.ChallengeTower
   switch(true){
     case (num === 1):
-      return setTimeout(() => dispatch(GotoPronteraFn()), 500);
+      return setTimeout(() => dispatch(GotoPronteraFn()), 1500);
     case (num === 2):
-      return setTimeout(() => dispatch(GotoPayonCave1FFn()), 500);
+      return setTimeout(() => dispatch(GotoPayonCave1FFn()), 1500);
     case (num === 3):
-      return setTimeout(() => dispatch(GotoPoringIslandFn()), 500);
+      return setTimeout(() => dispatch(GotoPoringIslandFn()), 1500);
     case (num === 4):
-      return setTimeout(() => dispatch(GotoGeffenFn()), 500);
+      return setTimeout(() => dispatch(GotoGeffenFn()), 1500);
     case (num === 5):
-      return setTimeout(() => dispatch(GotoChallengeTowerFn()), 500);
+      return setTimeout(() => dispatch(GotoChallengeTowerFn()), 1500);
   }
 }
 
 
     return(
-      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : screenControlRoom.NextMapLoadingScreen ? "nextMapBackgroundExchange" :null}>
+      <div className={screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattle" : screenControlRoom.BattleLoadingScreen && Math.random() <= 0.33 ? "loadingScreenBattleTwo" : screenControlRoom.BattleLoadingScreen ? "loadingScreenBattleThree" : screenControlRoom.NextMapLoadingScreen ? "nextMapBackgroundExchange" : screenControlRoom.NextWorldMapLoadingScreen ? "nextWorldMapBackgroundExchange" : null}>
         {
         screenControlRoom.Prontera ? <Prontera ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute} SkillsLevelingBox={SkillsLevelingBox}/>:
         screenControlRoom.PronteraCastle ? <PronteraCastle ArmorGearBox={ArmorGearBox} WeaponGearBox={WeaponGearBox} HeadGearBox={HeadGearBox} FootGearBox={FootGearBox} GarmentBox={GarmentBox} AccessoryOneBox={AccessoryOneBox} AccessoryTwoBox={AccessoryTwoBox} AccessoryOneEquipmentAttribute={AccessoryOneEquipmentAttribute} AccessoryTwoEquipmentAttribute={AccessoryTwoEquipmentAttribute} GarmentEquipmentAttribute={GarmentEquipmentAttribute} FootGearEquipmentAttribute={FootGearEquipmentAttribute} WeaponEquipmentAttribute={WeaponEquipmentAttribute} ArmorEquipmentAttribute={ArmorEquipmentAttribute} HeadGearEquipmentAttribute={HeadGearEquipmentAttribute} SkillsLevelingBox={SkillsLevelingBox}/>:

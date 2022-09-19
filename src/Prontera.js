@@ -19,7 +19,7 @@ import { WinJellopyFn , WinEmptyBottleFn , RedPotionFn, WinStickyMucusFn } from 
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
 //Loading Screen
-import { NextMapLoadingScreenFn } from './actions'
+import { NextMapLoadingScreenFn, NextWorldMapLoadingScreenFn } from './actions'
 import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
@@ -473,17 +473,21 @@ function StartMenu(props){
   }, [npcControlRoom, npcSpeech, screenControlRoom])
 
   const NextMapProteraFn = (num) => {
-    dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
     //1.WorldMap
     //2.PronteraCastle
     //3.PronteraWeaponArmorDealer
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+        dispatch(NextWorldMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
       case (num === 2):
+        dispatch(NextMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
         return setTimeout(() => dispatch(GotoPronteraCastleFn()), 500);
       case (num === 3):
+        dispatch(NextMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
         return setTimeout(() => dispatch(GotoPronteraWeaponArmorDealerFn()), 500);
       default:
         break;

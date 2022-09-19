@@ -360,6 +360,29 @@ progress.BarBasicHUD::-webkit-progress-bar{
   40%,60%{filter: brightness(5%);}
 }
 
+.nextWorldMapBackgroundExchange::before{
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  opacity: 1;
+}
+
+.nextWorldMapBackgroundExchange{
+  animation-name: nextWorldMap;
+  animation-duration: 3s;
+  transition: 3s ease-in all;
+}
+
+@keyframes nextWorldMap {
+  0%,100%{ filter: none;}
+  40%,60%{filter: brightness(0%);}
+}
+
 
 
 @media (max-width: 1199px){

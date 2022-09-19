@@ -11,7 +11,7 @@ import { TrainingSuccesFn, TrainingFailureFn } from './actions'
 import { TrainingSTRFn , TrainingAGIFn , TrainingVITFn , TrainingINTFn , TrainingDEXFn , TrainingLUKFn } from './actions'
 import { BonusSTRPointsFn , BonusAGIPointsFn , BonusVITPointsFn , BonusINTPointsFn , BonusDEXPointsFn , BonusLUKPointsFn } from './actions'
 //Loading Screen
-import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreenDelayFn, NextMapLoadingScreenFn} from './actions'
+import { BattleLoadingScreenFn , TrainingLoadingScreenFn , TrainingLoadingScreenDelayFn, NextMapLoadingScreenFn, NextWorldMapLoadingScreenFn} from './actions'
 //PATH
 import { GotoPoringIslandPath4Fn, GotoPoringIslandPath7Fn, GotoPoringIslandPath8Fn, ReturnPoringIslandPathFn} from './actions'
 //NPC
@@ -348,14 +348,17 @@ useEffect(() => {
     setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
   }
   const NextMapProteraFn = (num) => {
-    dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+
     //1.WorldMap
     //2.PoringIslandHouseMap
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+        dispatch(NextWorldMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
       case (num === 2):
+        dispatch(NextMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
         return setTimeout(() => dispatch(GotoPoringIslandHouseMapFn()), 500);
       default:
         break;

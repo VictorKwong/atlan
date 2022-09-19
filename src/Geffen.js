@@ -15,7 +15,7 @@ import { AcceptQuestDialogFn, ReturnQuestDialogFn} from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
 //loading map
-import { NextMapLoadingScreenFn } from './actions'
+import { NextMapLoadingScreenFn, NextWorldMapLoadingScreenFn } from './actions'
 import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
@@ -277,14 +277,17 @@ function StartMenu(props){
   }
 
   const NextMapProteraFn = (num) => {
-    dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+
     //1.WorldMap
     //2.GeffenDungeon1F
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+        dispatch(NextWorldMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
+        return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
       case (num === 2):
+        dispatch(NextMapLoadingScreenFn());
+        setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
         return setTimeout(() => dispatch(GotoGeffenDungeon1FFn()), 500);
       default:
         break;

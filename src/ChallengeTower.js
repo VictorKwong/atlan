@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GotoWorldMapFn , GotoBattlePoringIslandMapFn} from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn} from './actions';
 //Loading Screen
-import { BattleLoadingScreenFn, NextMapLoadingScreenFn} from './actions'
+import { BattleLoadingScreenFn, NextWorldMapLoadingScreenFn} from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
 import GameOption from './GameOption'
@@ -110,12 +110,12 @@ const LoadingScreen3 = () => {
 }
 
 const NextMapProteraFn = (num) => {
-  dispatch(NextMapLoadingScreenFn());
-  setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+  dispatch(NextWorldMapLoadingScreenFn());
+  setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
   //1.WorldMap
   switch(true){
     case (num === 1):
-      return setTimeout(() => dispatch(GotoWorldMapFn()), 500);
+      return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
     default:
       break;
   }
