@@ -360,7 +360,8 @@ progress.BarBasicHUD::-webkit-progress-bar{
   40%,60%{filter: brightness(5%);}
 }
 
-.nextWorldMapBackgroundExchange::before{
+.nextWorldMapBackgroundExchange::before,
+.talentBGStart::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -370,6 +371,7 @@ progress.BarBasicHUD::-webkit-progress-bar{
   height: 100%;
   z-index: 99;
   opacity: 1;
+  filter: brightness(0%);
 }
 
 .nextWorldMapBackgroundExchange{
@@ -383,6 +385,16 @@ progress.BarBasicHUD::-webkit-progress-bar{
   40%,60%{filter: brightness(0%);}
 }
 
+.talentBGStart{
+  animation-name: nextTalent;
+  animation-duration: 1.5s;
+  transition: 1.5s ease-in all;
+}
+
+@keyframes nextTalent {
+  0%{filter: brightness(0%);}
+  100%{ filter: none;}
+}
 
 
 @media (max-width: 1199px){

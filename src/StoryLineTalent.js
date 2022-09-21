@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { storyLineTalentFn, UserFirstGiftFn, UserSecondGiftFn } from './actions';
-
 import { GiftOneFn, GiftTwoFn } from './actions';
+import { NextWorldMapLoadingScreenFn } from './actions'
 import StoryLineOne from './StoryLineOne'
 import './css/storyLineTalent.css'
 import $ from 'jquery'
@@ -105,6 +105,8 @@ function StartMenu(){
           .catch(error => {
           });
         }
+        dispatch(NextWorldMapLoadingScreenFn());
+        setTimeout(() => {dispatch(NextWorldMapLoadingScreenFn())}, 1500);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -126,7 +128,7 @@ function StartMenu(){
     return(
       <div>
         {screenControlRoom.startGame && screenControlRoom.storyLineTalent ? <StoryLineOne /> :
-        <div className={"storyScreenStoryLineTalentBackground"}>
+        <div className={screenControlRoom.NextWorldMapLoadingScreen ? "storyScreenStoryLineTalentBackground talentBGStart" : "storyScreenStoryLineTalentBackground"}>
           {Story === 0 && !SkillControlRoom['User'].UserFirstGift ?
           <div className="storyScreenStoryLineTalent">
               <p className="giftTitle">Pick you 1st Gifts</p>

@@ -340,7 +340,7 @@ function StartMenu(){
                   {Skill.name === userStats.FirstGiftName || Skill.name === userStats.SecondGiftName ?
                   <button className="atlanSkillButton atlanSkillButtonFix" title={Skill.title} disabled>
                     <div className="adjImgCenterBox">
-                      <p className="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name}</p>
+                      <p c  lassName="adjImgCenter"><img src={Skill.Img} alt={Skill.name} />{Skill.name}</p>
                     </div>
                   </button> : null}
                 </span>
