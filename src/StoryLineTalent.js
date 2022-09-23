@@ -106,7 +106,7 @@ function StartMenu(){
           });
         }
         dispatch(NextWorldMapLoadingScreenFn());
-        setTimeout(() => {dispatch(NextWorldMapLoadingScreenFn())}, 1500);
+        setTimeout(() => {dispatch(NextWorldMapLoadingScreenFn())}, 5000);
       //Not Depend on audioControlRoom
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

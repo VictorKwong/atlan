@@ -361,7 +361,8 @@ progress.BarBasicHUD::-webkit-progress-bar{
 }
 
 .nextWorldMapBackgroundExchange::before,
-.talentBGStart::before{
+.talentBGStart::before,
+.gameBGStart::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -372,6 +373,10 @@ progress.BarBasicHUD::-webkit-progress-bar{
   z-index: 99;
   opacity: 1;
   filter: brightness(0%);
+}
+
+.gameBGStart::before{
+  filter: brightness(100%);
 }
 
 .nextWorldMapBackgroundExchange{
@@ -387,13 +392,29 @@ progress.BarBasicHUD::-webkit-progress-bar{
 
 .talentBGStart{
   animation-name: nextTalent;
+  animation-duration: 5s;
+  transition: 5s linear all;
+}
+
+@keyframes nextTalent {
+  0%{filter: brightness(170%) blur(3px);}
+  35%{filter: brightness(100%) blur(2px);}
+  60%{filter: brightness(0%);}
+  65%{filter: brightness(140%) blur(1px);}
+  70%{filter: brightness(0%);}
+  75%{filter: brightness(120%) blur(0px);}
+  100%{ filter: none;}
+}
+
+.gameBGStart{
+  animation-name: nextGame;
   animation-duration: 1.5s;
   transition: 1.5s ease-in all;
 }
 
-@keyframes nextTalent {
-  0%{filter: brightness(0%);}
-  100%{ filter: none;}
+@keyframes nextGame {
+  0%{ filter: none;}
+  100%{filter: brightness(0%);}
 }
 
 

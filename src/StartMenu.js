@@ -14,8 +14,10 @@ function StartMenu(){
     const startGameQtn = (e) => {
       e.preventDefault();
       //nextMapBackgroundExchange
-
-      dispatch(startGameFn());
+      dispatch(NextWorldMapLoadingScreenFn());
+      setTimeout(() => {dispatch(NextWorldMapLoadingScreenFn())}, 1500);
+      setTimeout(() => {dispatch(startGameFn())}, 1500);
+      // dispatch(startGameFn());
     };
 
     
@@ -27,7 +29,7 @@ function StartMenu(){
         // Click Option goes to GameOption
         : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
         : 
-        <div className="menuBackground">
+        <div className={screenControlRoom.NextWorldMapLoadingScreen ? "menuBackground gameBGStart" : "menuBackground"}>
           <div className="menuTitle">
             <h1>Atlan - Ragnarok</h1>
           </div>
