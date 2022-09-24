@@ -23,7 +23,6 @@ function StartMenu(){
     
     return(
       <div>
-        {/* <div className ={screenControlRoom.NextWorldMapLoadingScreen ? "nextWorldMapBackgroundExchange" : null}> */}
         {/* Click startGame goes to Main */}
         {screenControlRoom.startGame ? <StoryLineTalent />
         // Click Option goes to GameOption
