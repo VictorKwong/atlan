@@ -90,7 +90,9 @@
 }
 
 .armorDealer::before,
-.weaponDealer::before{
+.weaponDealer::before,
+.garmentDealer::before,
+.shoesDealer::before{
   content: ' ';
   display: block;
   position: absolute;
@@ -101,12 +103,16 @@
   border: none;
 }
 .armorDealer:hover::before,
-.weaponDealer:hover::before{
+.weaponDealer:hover::before,
+.garmentDealer:hover::before,
+.shoesDealer:hover::before{
   border: solid #3c70ff 1px;
 }
 
 .armorDealer,
-.weaponDealer{
+.weaponDealer,
+.garmentDealer,
+.shoesDealer{
   position: relative;
   font-family: 'Pangolin', cursive;
   font-size: 20px;
@@ -125,7 +131,8 @@
   grid-row-gap: 0px;
   height: calc(100% - 40.5px);
 }
-
+.garmentDealer { grid-area: 1 / 1 / 2 / 2; }
+.shoesDealer { grid-area: 1 / 3 / 2 / 4; }
 .armorDealer{ grid-area: 2 / 1 / 3 / 2; }
 .weaponDealer { grid-area: 2 / 3 / 3 / 4; }
 

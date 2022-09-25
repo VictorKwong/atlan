@@ -83,6 +83,50 @@ const Fn = {
             name: 'ArmorDealer',
             text: 'This item is unique, I can`t take it -.-'
     }],
+    GarmentDealer:[{
+            name: 'GarmentDealer',
+            text: 'Fashion is Always a Reflection of the Time, But it is Forgotten If it is Foolish.'
+        },{
+            name: 'GarmentDealer',
+            text: 'Please feel free to take a look ^^'
+        },{
+            name: 'GarmentDealer',
+            text: 'Thank You~ Hope you like it!'
+        },{
+            name: 'GarmentDealer',
+            text: 'T_T Not enough Zeny'
+        },{
+            name: 'GarmentDealer',
+            text: 'I only interest on collecting garments >_<'
+        },{
+            name: 'GarmentDealer',
+            text: 'Thanks :D I`ll give you back some Zeny!'
+        },{
+            name: 'GarmentDealer',
+            text: 'You don`t want to sell this to me xD! I`m not accepting it'
+    }],
+        ShoesDealer:[{
+            name: 'ShoesDealer',
+            text: 'You can wear anything as long as you put a nice pair of shoes with it.'
+        },{
+            name: 'ShoesDealer',
+            text: 'I have lots of good brand of shoes xD'
+        },{
+            name: 'ShoesDealer',
+            text: 'The shoe size should fit with you :)'
+        },{
+            name: 'ShoesDealer',
+            text: '@@ Require more Zeny to purchase my items!'
+        },{
+            name: 'ShoesDealer',
+            text: 'Any old pair of shoes you don`t want?'
+        },{
+            name: 'ShoesDealer',
+            text: 'Haha Thanks! I`ll collect them!'
+        },{
+            name: 'ShoesDealer',
+            text: 'This item is unique, I won`t accept the trade!'
+    }],
     //Welcome, talk, buy, buy success, buy failure, sell, sell success, sell failure
     //talk, buy, buy success, buy failure, sell, sell success, sell failure
     HeadGearDealer:[{

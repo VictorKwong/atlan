@@ -308,7 +308,7 @@ function StartMenu(props){
             break;
       //WEAPON & ARMOR SHOP
       //Welcome message
-        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.WeaponDealer === false && npcControlRoom.ArmorDealer === false && npcControlRoom.DealerBuy === false && npcControlRoom.DealerSell === false):
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.WeaponDealer === false && npcControlRoom.ArmorDealer === false && npcControlRoom.GarmentDealer === false && npcControlRoom.ShoesDealer === false && npcControlRoom.DealerBuy === false && npcControlRoom.DealerSell === false):
           $('.storySpeech').html(`<p>${npcSpeech['WeaponArmorDealer'][0].text}</p>`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['WeaponArmorDealer'][0].name}</p>`)
           break;
@@ -374,6 +374,68 @@ function StartMenu(props){
             $('.storySpeech').html(`<p>${npcSpeech['ArmorDealer'][4].text}</p>`)
             $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ArmorDealer'][4].name}</p>`)
             break;
+        //GARMENT SHOP
+        //Talk message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.GarmentDealer && npcControlRoom.DealerBuy === false && npcControlRoom.DealerSell === false):
+        $('.storySpeech').html(`<p>${npcSpeech['GarmentDealer'][0].text}</p>`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GarmentDealer'][0].name}</p>`)
+        break;
+      //Buy Success message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.GarmentDealer && npcControlRoom.DealerBuySuccess):
+          $('.storySpeech').html(`<p>${npcSpeech['GarmentDealer'][2].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GarmentDealer'][2].name}</p>`)
+          break;
+      //Buy Failure message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.GarmentDealer && npcControlRoom.DealerBuyFailure):
+          $('.storySpeech').html(`<p>${npcSpeech['GarmentDealer'][3].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GarmentDealer'][3].name}</p>`)
+          break;
+      //Sell Success message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.GarmentDealer && npcControlRoom.DealerSellSuccess):
+          $('.storySpeech').html(`<p>${npcSpeech['GarmentDealer'][5].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GarmentDealer'][5].name}</p>`)
+          break;
+      //Buy message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.GarmentDealer && npcControlRoom.DealerBuy):
+          $('.storySpeech').html(`<p>${npcSpeech['GarmentDealer'][1].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GarmentDealer'][1].name}</p>`)
+          break;
+      //Sell message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.GarmentDealer && npcControlRoom.DealerSell):
+          $('.storySpeech').html(`<p>${npcSpeech['GarmentDealer'][4].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GarmentDealer'][4].name}</p>`)
+          break;
+        //SHOES SHOP
+        //Talk message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.ShoesDealer && npcControlRoom.DealerBuy === false && npcControlRoom.DealerSell === false):
+        $('.storySpeech').html(`<p>${npcSpeech['ShoesDealer'][0].text}</p>`)
+        $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ShoesDealer'][0].name}</p>`)
+        break;
+      //Buy Success message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.ShoesDealer && npcControlRoom.DealerBuySuccess):
+          $('.storySpeech').html(`<p>${npcSpeech['ShoesDealer'][2].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ShoesDealer'][2].name}</p>`)
+          break;
+      //Buy Failure message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.ShoesDealer && npcControlRoom.DealerBuyFailure):
+          $('.storySpeech').html(`<p>${npcSpeech['ShoesDealer'][3].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ShoesDealer'][3].name}</p>`)
+          break;
+      //Sell Success message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.ShoesDealer && npcControlRoom.DealerSellSuccess):
+          $('.storySpeech').html(`<p>${npcSpeech['ShoesDealer'][5].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ShoesDealer'][5].name}</p>`)
+          break;
+      //Buy message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.ShoesDealer && npcControlRoom.DealerBuy):
+          $('.storySpeech').html(`<p>${npcSpeech['ShoesDealer'][1].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ShoesDealer'][1].name}</p>`)
+          break;
+      //Sell message
+        case(screenControlRoom.PronteraWeaponArmorDealer && npcControlRoom.ShoesDealer && npcControlRoom.DealerSell):
+          $('.storySpeech').html(`<p>${npcSpeech['ShoesDealer'][4].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['ShoesDealer'][4].name}</p>`)
+          break;
         //Kafra Employee
         case(npcControlRoom.KafraEmployee && npcControlRoom.KafraEmployeeHealState && userStats.currentHealth === userStats.maxHealth && userStats.currentSP === userStats.maxSP):
           $('.storySpeech').html(`<p>${npcSpeech['KafraEmployee'][2].text}</p>`)
@@ -865,6 +927,18 @@ function StartMenu(props){
                   <button className="sellArmorDealerButton" onClick={() =>{dispatch(DealerSellFn())}}>Sell Armor</button>
                   <button className="returnArmorDealerButton" onClick={() =>{dispatch(ResetTalktoFn())}}>Back</button>
                 </div> :
+              npcControlRoom.GarmentDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
+              <div className="textCenter">
+                <button className="buyArmorDealerButton" onClick={() =>{dispatch(DealerBuyFn())}}>Buy Garment</button>
+                <button className="sellArmorDealerButton" onClick={() =>{dispatch(DealerSellFn())}}>Sell Garment</button>
+                <button className="returnArmorDealerButton" onClick={() =>{dispatch(ResetTalktoFn())}}>Back</button>
+              </div> :
+              npcControlRoom.ShoesDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
+              <div className="textCenter">
+                <button className="buyArmorDealerButton" onClick={() =>{dispatch(DealerBuyFn())}}>Buy Shoes</button>
+                <button className="sellArmorDealerButton" onClick={() =>{dispatch(DealerSellFn())}}>Sell Shoes</button>
+                <button className="returnArmorDealerButton" onClick={() =>{dispatch(ResetTalktoFn())}}>Back</button>
+              </div> :
               screenControlRoom.PronteraWeaponArmorDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
                 <div className="textCenter">
                   <button className="returnWeaponArmorDealerButton" onClick={() => {NextMapProteraFn(3); dispatch(ResetTalktoFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave ToolShop</button>

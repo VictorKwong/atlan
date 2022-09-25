@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from './actions';
 //NPC INTERACTION
-import { TalktoWeaponDealerFn, TalktoArmorDealerFn} from './actions'
+import { TalktoWeaponDealerFn, TalktoArmorDealerFn, TalktoGarmentDealerFn, TalktoShoesDealerFn} from './actions'
 //WEAPON
 import { KatanaFn, BastardSwordFn , GaiaSwordFn , TwinEdgeofNaghtSiegerFn , VioletFearFn } from './actions';
 //ARMOR
@@ -55,6 +55,8 @@ import Asprika from './img/Equipment/Garment/Asprika.gif'
 
 import PronteraArmorDealerImg from './img/NPC/PronteraArmorDealer.gif'
 import PronteraWeaponDealerImg from './img/NPC/PronteraWeaponDealer.gif'
+import PronteraGarmentDealerImg from './img/NPC/PronteraGarmentDealer.gif'
+import PronteraShoesDealerImg from './img/NPC/PronteraShoesDealer.gif'
 
 // AudioCurrentTimeSaverFn
 function StartMenu(){
@@ -110,19 +112,18 @@ function StartMenu(){
       {id:93004,cost: 48000, Get:PaddedArmorFn(-48000,1), Img: PaddedArmor, name: "Padded Armor"},
       {id:93005,cost: 65000, Get:ChainMailFn(-65000,1), Img: ChainMail, name: "Chain Mail"},
       {id:93006,cost: 80000, Get:FullPlateFn(-80000,1), Img: FullPlate, name: "Full Plate"},
-      //Shoes
-      {id:3000, cost: 10, Get:SandalsFn(-10,1), Img:Sandals, name:"Sandals"},
-      {id:3001, cost: 20, Get:ShoesFn(-20,1),Img:Shoes, name:"Shoes"},
-      {id:3002, cost: 30, Get:BootsFn(-30,1),Img:Boots,name:"Boots"},
-      {id:3003, cost: 40, Get:GreavesFn(-40,1),Img:Greaves,name:"Greaves"},
-      {id:3004, cost: 50, Get:BunnySlipperFn(-50,1),Img:BunnySlipper,name:"Bunny Slipper"},
-      {id:3005, cost: 60, Get:TidalShoesFn(-60,1),Img:TidalShoes,name:"Tidal Shoes"},
-      {id:3006, cost: 70, Get:SiegeBootsFn(-70,1),Img:SiegeBoots,name:"Siege Boots"},
-      {id:3007, cost: 80, Get:SiegeGreavesFn(-80,1),Img:SiegeGreaves,name:"Siege Greaves"},
-      {id:3008, cost: 90, Get:VidarsBootsFn(-90,1),Img:VidarsBoots,name:"Vidar`s Boots"},
-      {id:3009, cost: 100, Get:VitalTreeShoesFn(-100,1),Img:VitalTreeShoes,name:"Vital Tree Shoes"},
-      {id:3010, cost: 110, Get:VariantShoesFn(-110,1),Img:VariantShoes,name:"Variant Shoes"},
-      {id:3011, cost: 120, Get:SleipnirFn(-120,1),Img:Sleipnir,name:"Sleipnir"},
+    ]
+    let ArmorSellBox = [
+      //Armor
+      {id:94000,cost: 8, Get:CottonShirtFn(8,-1), Img: CottonShirt, name: "Cotton Shirt", Item: userGoldItem.CottonShirt},
+      {id:94001,cost: 800, Get:AdventureSuitFn(800,-1), Img: AdventureSuit, name: "Adventure Suit", Item: userGoldItem.AdventureSuit},
+      {id:94002,cost: 4400, Get:WoodenMailFn(4400,-1), Img: WoodenMail, name: "WoodenMail", Item: userGoldItem.WoodenMail},
+      {id:94003,cost: 17600, Get:CoatFn(17600,-1), Img: Coat, name: "Coat", Item: userGoldItem.Coat},
+      {id:94004,cost: 38400, Get:PaddedArmorFn(38400,-1), Img: PaddedArmor, name: "Padded Armor", Item: userGoldItem.PaddedArmor},
+      {id:94005,cost: 52000, Get:ChainMailFn(52000,-1), Img: ChainMail, name: "Chain Mail", Item: userGoldItem.ChainMail},
+      {id:94006,cost: 64000, Get:FullPlateFn(640000,-1), Img: FullPlate, name: "Full Plate", Item: userGoldItem.FullPlate},
+    ]
+    let GarmentBuyBox = [
       //Garment
       {id:5000, cost: 10, Get:HoodFn(-10,1), Img:Hood, name:"Hood"},
       {id:5001, cost: 20, Get:MufflerFn(-20,1), Img:Muffler, name:"Muffler"},
@@ -135,30 +136,8 @@ function StartMenu(){
       {id:5008, cost: 90, Get:CloakofGrayFn(-90,1), Img:CloakofGray, name:"Cloak of Gray"},
       {id:5009, cost: 100, Get:ElementalCapeFn(-100,1), Img:ElementalCape, name:"Elemental Cape"},
       {id:5010, cost: 110, Get:AsprikaFn(-110,1), Img:Asprika, name:"Asprika"},
-
     ]
-    let ArmorSellBox = [
-      //Armor
-      {id:94000,cost: 8, Get:CottonShirtFn(8,-1), Img: CottonShirt, name: "Cotton Shirt", Item: userGoldItem.CottonShirt},
-      {id:94001,cost: 800, Get:AdventureSuitFn(800,-1), Img: AdventureSuit, name: "Adventure Suit", Item: userGoldItem.AdventureSuit},
-      {id:94002,cost: 4400, Get:WoodenMailFn(4400,-1), Img: WoodenMail, name: "WoodenMail", Item: userGoldItem.WoodenMail},
-      {id:94003,cost: 17600, Get:CoatFn(17600,-1), Img: Coat, name: "Coat", Item: userGoldItem.Coat},
-      {id:94004,cost: 38400, Get:PaddedArmorFn(38400,-1), Img: PaddedArmor, name: "Padded Armor", Item: userGoldItem.PaddedArmor},
-      {id:94005,cost: 52000, Get:ChainMailFn(52000,-1), Img: ChainMail, name: "Chain Mail", Item: userGoldItem.ChainMail},
-      {id:94006,cost: 64000, Get:FullPlateFn(640000,-1), Img: FullPlate, name: "Full Plate", Item: userGoldItem.FullPlate},
-      //Shoes
-      {id:4000, cost: 10, Get:SandalsFn(10,-1), Img:Sandals, name:"Sandals", Item: userGoldItem.Sandals},
-      {id:4001, cost: 10, Get:ShoesFn(10,-1), Img:Shoes, name:"Shoes", Item: userGoldItem.Shoes},
-      {id:4002, cost: 10, Get:BootsFn(10,-1), Img:Boots ,name:"Boots", Item: userGoldItem.Boots},
-      {id:4003, cost: 10, Get:GreavesFn(10,-1), Img:Greaves, name:"Greaves", Item: userGoldItem.Greaves},
-      {id:4004, cost: 10, Get:BunnySlipperFn(10,-1), Img:BunnySlipper, name:"Bunny Slipper", Item: userGoldItem.BunnySlipper},
-      {id:4005, cost: 10, Get:TidalShoesFn(10,-1), Img:TidalShoes, name:"Tidal Shoes", Item: userGoldItem.TidalShoes},
-      {id:4006, cost: 10, Get:SiegeBootsFn(10,-1), Img:SiegeBoots, name:"Siege Boots", Item: userGoldItem.SiegeBoots},
-      {id:4007, cost: 10, Get:SiegeGreavesFn(10,-1), Img:SiegeGreaves, name:"Siege Greaves", Item: userGoldItem.SiegeGreaves},
-      {id:4008, cost: 10, Get:VidarsBootsFn(10,-1), Img:VidarsBoots, name:"Vidar`s Boots", Item: userGoldItem.VidarsBoots},
-      {id:4009, cost: 10, Get:VitalTreeShoesFn(10,-1), Img:VitalTreeShoes, name:"Vital Tree Shoes", Item: userGoldItem.VitalTreeShoes},
-      {id:4010, cost: 10, Get:VariantShoesFn(10,-1), Img:VariantShoes, name:"Variant Shoes", Item: userGoldItem.VariantShoes},
-      {id:4011, cost: 10, Get:SleipnirFn(10,-1), Img:Sleipnir, name:"Sleipnir", Item: userGoldItem.Sleipnir},
+    let GarmentSellBox = [
       //Garment
       {id:6000, cost: 10, Get:HoodFn(10,-1), Img:Hood, name:"Hood", Item: userGoldItem.Hood},
       {id:6001, cost: 10, Get:MufflerFn(10,-1), Img:Muffler, name:"Muffler", Item: userGoldItem.Muffler},
@@ -172,8 +151,36 @@ function StartMenu(){
       {id:6009, cost: 10, Get:ElementalCapeFn(10,-1), Img:ElementalCape, name:"Elemental Cape", Item: userGoldItem.ElementalCape},
       {id:6010, cost: 10, Get:AsprikaFn(10,-1), Img:Asprika, name:"Asprika", Item: userGoldItem.Asprika},
     ]
-
-
+    let ShoesBuyBox = [
+      //Shoes
+      {id:3000, cost: 10, Get:SandalsFn(-10,1), Img:Sandals, name:"Sandals"},
+      {id:3001, cost: 20, Get:ShoesFn(-20,1),Img:Shoes, name:"Shoes"},
+      {id:3002, cost: 30, Get:BootsFn(-30,1),Img:Boots,name:"Boots"},
+      {id:3003, cost: 40, Get:GreavesFn(-40,1),Img:Greaves,name:"Greaves"},
+      {id:3004, cost: 50, Get:BunnySlipperFn(-50,1),Img:BunnySlipper,name:"Bunny Slipper"},
+      {id:3005, cost: 60, Get:TidalShoesFn(-60,1),Img:TidalShoes,name:"Tidal Shoes"},
+      {id:3006, cost: 70, Get:SiegeBootsFn(-70,1),Img:SiegeBoots,name:"Siege Boots"},
+      {id:3007, cost: 80, Get:SiegeGreavesFn(-80,1),Img:SiegeGreaves,name:"Siege Greaves"},
+      {id:3008, cost: 90, Get:VidarsBootsFn(-90,1),Img:VidarsBoots,name:"Vidar`s Boots"},
+      {id:3009, cost: 100, Get:VitalTreeShoesFn(-100,1),Img:VitalTreeShoes,name:"Vital Tree Shoes"},
+      {id:3010, cost: 110, Get:VariantShoesFn(-110,1),Img:VariantShoes,name:"Variant Shoes"},
+      {id:3011, cost: 120, Get:SleipnirFn(-120,1),Img:Sleipnir,name:"Sleipnir"},
+    ]
+    let ShoesSellBox = [
+      //Shoes
+      {id:4000, cost: 10, Get:SandalsFn(10,-1), Img:Sandals, name:"Sandals", Item: userGoldItem.Sandals},
+      {id:4001, cost: 10, Get:ShoesFn(10,-1), Img:Shoes, name:"Shoes", Item: userGoldItem.Shoes},
+      {id:4002, cost: 10, Get:BootsFn(10,-1), Img:Boots ,name:"Boots", Item: userGoldItem.Boots},
+      {id:4003, cost: 10, Get:GreavesFn(10,-1), Img:Greaves, name:"Greaves", Item: userGoldItem.Greaves},
+      {id:4004, cost: 10, Get:BunnySlipperFn(10,-1), Img:BunnySlipper, name:"Bunny Slipper", Item: userGoldItem.BunnySlipper},
+      {id:4005, cost: 10, Get:TidalShoesFn(10,-1), Img:TidalShoes, name:"Tidal Shoes", Item: userGoldItem.TidalShoes},
+      {id:4006, cost: 10, Get:SiegeBootsFn(10,-1), Img:SiegeBoots, name:"Siege Boots", Item: userGoldItem.SiegeBoots},
+      {id:4007, cost: 10, Get:SiegeGreavesFn(10,-1), Img:SiegeGreaves, name:"Siege Greaves", Item: userGoldItem.SiegeGreaves},
+      {id:4008, cost: 10, Get:VidarsBootsFn(10,-1), Img:VidarsBoots, name:"Vidar`s Boots", Item: userGoldItem.VidarsBoots},
+      {id:4009, cost: 10, Get:VitalTreeShoesFn(10,-1), Img:VitalTreeShoes, name:"Vital Tree Shoes", Item: userGoldItem.VitalTreeShoes},
+      {id:4010, cost: 10, Get:VariantShoesFn(10,-1), Img:VariantShoes, name:"Variant Shoes", Item: userGoldItem.VariantShoes},
+      {id:4011, cost: 10, Get:SleipnirFn(10,-1), Img:Sleipnir, name:"Sleipnir", Item: userGoldItem.Sleipnir},
+    ]
     return(
       <div className="WeaponArmorDealerMap">
               <p className="WeaponArmorDealerTitle">Equip Shop</p>
@@ -280,7 +287,71 @@ function StartMenu(){
                         )
                     })}
                   </div> 
+                : npcControlRoom.GarmentDealer && npcControlRoom.DealerBuy ?
+                <div className="WeaponArmorDealerGoodsBox">
+                  {/* 1.Zeny, 2.Buy or sell */}
+                  {/* If you have enough money, you will get item. if you don't, pass failure */}
+                  {GarmentBuyBox.map(Buy => {
+                      return(
+                        <span key={Buy.id}>
+                          <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix buyArmorDealerItemButton"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
+                            </div>
+                          </button>
+                        </span>
+                      )
+                  })}
+                </div>
+                : npcControlRoom.GarmentDealer && npcControlRoom.DealerSell ?
+                <div className="WeaponArmorDealerGoodsBox">
+                  {GarmentSellBox.map(Sell => {
+                      return(
+                        <span key={Sell.id}>
+                          {/* We have item, and (item name is not our equip name or item is not have one) */}
+                          {Sell.Item >= 1  && (userStats.userArmor !== Sell.name || Sell.Item !== 1 ) ? <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix sellWeaponArmorDealerItemButton"  onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter">{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</p>
+                            </div>
+                          </button> :null}
+                        </span>
+                      )
+                  })}
+                </div>
+                : npcControlRoom.ShoesDealer && npcControlRoom.DealerBuy ?
+                <div className="WeaponArmorDealerGoodsBox">
+                  {/* 1.Zeny, 2.Buy or sell */}
+                  {/* If you have enough money, you will get item. if you don't, pass failure */}
+                  {ShoesBuyBox.map(Buy => {
+                      return(
+                        <span key={Buy.id}>
+                          <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix buyArmorDealerItemButton"  onClick={userGoldItem.Zeny >= Buy.cost ? () =>{dispatch(Buy.Get); dispatch(DealerBuySuccessFn());} : () => {dispatch(DealerBuyFailureFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter"><img src={Buy.Img} alt={Buy.name} /> -{Buy.cost}z {Buy.name}</p>
+                            </div>
+                          </button>
+                        </span>
+                      )
+                  })}
+                </div>
+                : npcControlRoom.ShoesDealer && npcControlRoom.DealerSell ?
+                <div className="WeaponArmorDealerGoodsBox">
+                  {ShoesSellBox.map(Sell => {
+                      return(
+                        <span key={Sell.id}>
+                          {/* We have item, and (item name is not our equip name or item is not have one) */}
+                          {Sell.Item >= 1  && (userStats.userArmor !== Sell.name || Sell.Item !== 1 ) ? <button className="buyWeaponArmorDealerItemButton WeaponArmorDealerGoodsButtonFix sellWeaponArmorDealerItemButton"  onClick={() =>{dispatch(Sell.Get); dispatch(DealerSellSuccessFn());}}>
+                            <div className="adjImgCenterBox">
+                              <p className="adjImgCenter">{Sell.Item}x <img src={Sell.Img} alt={Sell.name} /> +{Sell.cost}z {Sell.name}</p>
+                            </div>
+                          </button> :null}
+                        </span>
+                      )
+                  })}
+                </div>                   
                 :  <div className="PronteraWeaponArmorDealerMap">
+                    <button className="garmentDealer" onClick={() => {dispatch(TalktoGarmentDealerFn())}}><img src={PronteraGarmentDealerImg} alt="PronteraGarmentDealer" /></button>
+                    <button className="shoesDealer" onClick={() => {dispatch(TalktoShoesDealerFn())}}><img src={PronteraShoesDealerImg} alt="PronteraShoesDealer" /></button>
                     <button className="armorDealer" onClick={() => {dispatch(TalktoArmorDealerFn())}}><img src={PronteraArmorDealerImg} alt="PronteraArmorDealer" /></button>
                     <button className="weaponDealer" onClick={() => {dispatch(TalktoWeaponDealerFn())}}><img src={PronteraWeaponDealerImg} alt="PronteraWeaponDealer" /></button>
                   </div>}

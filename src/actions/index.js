@@ -1064,6 +1064,16 @@ export const TalktoArmorDealerFn = () => {
         type: 'TalktoArmorDealerFn'
     };
 };
+export const TalktoGarmentDealerFn = () => {
+    return {
+        type: 'TalktoGarmentDealerFn'
+    };
+};
+export const TalktoShoesDealerFn = () => {
+    return {
+        type: 'TalktoShoesDealerFn'
+    };
+};
 export const TalktoHeadGearDealerFn = () => {
     return {
         type: 'TalktoHeadGearDealerFn'
