@@ -141,6 +141,7 @@ const Fn = {
     PronteraToolDealer: false,
     PronteraWeaponArmorDealer: false,
     PronteraCastle:false,
+    GeffenAccessoriesDealer: false,
     //Mini Screen (StoryChat)
     WeaponEquipmentChoice: false,
     ArmorEquipmentChoice: false,
@@ -618,6 +619,11 @@ const screenControlRoomReducer = (state = Fn, action) => {
             return {
                 ...state,
                 PronteraWeaponArmorDealer: !state.PronteraWeaponArmorDealer,
+            }
+        case 'GotoGeffenAccessoriesDealerFn':
+            return {
+                ...state,
+                GeffenAccessoriesDealer: !state.GeffenAccessoriesDealer,
             }
         // WORLD MAP
         case 'GotoPronteraFn':

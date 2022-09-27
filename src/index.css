@@ -398,11 +398,11 @@ progress.BarBasicHUD::-webkit-progress-bar{
 
 @keyframes nextTalent {
   0%{filter: brightness(170%) blur(3px);}
-  35%{filter: brightness(100%) blur(2px);}
-  60%{filter: brightness(0%);}
-  65%{filter: brightness(140%) blur(1px);}
-  70%{filter: brightness(0%);}
-  75%{filter: brightness(120%) blur(0px);}
+  55%{filter: brightness(100%) blur(2px);}
+  80%{filter: brightness(0%);}
+  85%{filter: brightness(140%) blur(1px);}
+  90%{filter: brightness(0%);}
+  95%{filter: brightness(120%) blur(0px);}
   100%{ filter: none;}
 }
 

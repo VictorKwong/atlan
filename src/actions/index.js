@@ -552,6 +552,13 @@ export const GotoPronteraWeaponArmorDealerFn = () => {
     };
 };
 
+export const GotoGeffenAccessoriesDealerFn = () => {
+    return {
+        type: 'GotoGeffenAccessoriesDealerFn',
+    };
+};
+
+
 export const GotoPronteraHeadGearDealerFn = () => {
     return {
         type: 'GotoPronteraHeadGearDealerFn',
@@ -1216,6 +1223,11 @@ export const GeffenGrandmaNPCFn = () => {
 export const GeffenSoldierNPCFn = () => {
     return {
         type: 'GeffenSoldierNPCFn'
+    };
+};
+export const GeffenAccessoriesDealerFn = () => {
+    return {
+        type: 'GeffenAccessoriesDealerFn'
     };
 };
 export const ResetGeffenNPCFn = () => {

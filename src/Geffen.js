@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn } from './actions';
+import { GotoWorldMapFn , GotoTreasurePoringIslandMapFn, GotoGeffenDungeon1FFn, GotoGeffenAccessoriesDealerFn } from './actions';
 import { GotoAltanEquipmentFn, GotoAltanStatsFn , GotoAltanItemFn , GotoAltanQuestFn, GotoAltanSkillsFn } from './actions';
 // NPC
-import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, GeffenSoldierNPCFn, GeffenCitizenNPCContinueFn, ResetGeffenNPCFn } from './actions'
+import { GeffenGoblinYulaNPCFn, GeffenCitizenNPCFn, GeffenTimerNPCFn, GeffenGrandmaNPCFn, GeffenQuestBoardFn, GeffenGoblinYulaNPCInterestFn, GeffenGoblinYulaNPCLearnedFn, GeffenSoldierNPCFn, GeffenCitizenNPCContinueFn, GeffenAccessoriesDealerFn, ResetGeffenNPCFn } from './actions'
 //Learn
 import { UserLearnMasterItemFn } from './actions'
 //Quest
@@ -11,7 +11,7 @@ import { WinPoisonSporeFn , WinJackPumpkinFn ,  WinZargonFn, WinHorrendousMouthF
 //Quest Result
 import { WinResultFn, UserLevelUpFn } from './actions';
 //Function
-import { AcceptQuestDialogFn, ReturnQuestDialogFn} from './actions'
+import { AcceptQuestDialogFn, ReturnQuestDialogFn, DealerBuyFn, DealerSellFn, ResetDealerBuySellHealFn} from './actions'
 //Music Options
 import { gameTitleOptionScreenFn } from './actions'
 //loading map
@@ -20,6 +20,7 @@ import GameOption from './GameOption'
 
 import WorldMap from './WorldMap'
 import GeffenDungeon1F from './GeffenDungeon1F'
+import GeffenAccessoriesDealer from './GeffenAccessoriesDealer'
 import AltanEquipment from './AltanEquipment'
 import AltanStats from './AltanStats'
 import AltanItem from './AltanItem'
@@ -48,6 +49,7 @@ import GeffenTimer from './img/NPC/GeffenTimer.gif'
 import GeffenGrandma from './img/NPC/GeffenGrandma.gif'
 import QuestBoard from './img/NPC/QuestBoard.gif'
 import GeffenSoldier from './img/NPC/GeffenSoldier.gif'
+import GeffenAccessoriesDealers from './img/NPC/GeffenAccessoriesDealer.gif'
 
 import audio13ThemeOfGeffen from './audio/13ThemeOfGeffen.mp3'
 import LevelUpSoundEffect from './audio/SoundEffect/LevelUpSoundEffect.mp3'
@@ -193,7 +195,7 @@ function StartMenu(props){
 
     useEffect(() => {
       switch(true){
-        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest ):
+        case(screenControlRoom.AltanEquipment || screenControlRoom.AltanStats || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanSkills):
           $('.storySpeech').html('')  
           $('.storyCharacter').html('')
           break;
@@ -233,6 +235,37 @@ function StartMenu(props){
           $('.storySpeech').html(`${npcSpeech['GeffenSoldier'][0].text}`)
           $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['GeffenSoldier'][0].name}</p>`)
           break;
+      //ACCESSORIES SHOP
+        //Talk message
+        case(screenControlRoom.GeffenAccessoriesDealer && npcControlRoom.GeffenAccessoriesDealer && npcControlRoom.DealerBuy === false && npcControlRoom.DealerSell === false):
+          $('.storySpeech').html(`<p>${npcSpeech['AccessoriesDealer'][0].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['AccessoriesDealer'][0].name}</p>`)
+          break;
+      //Buy Success message
+        case(screenControlRoom.GeffenAccessoriesDealer && npcControlRoom.GeffenAccessoriesDealer && npcControlRoom.DealerBuySuccess):
+          $('.storySpeech').html(`<p>${npcSpeech['AccessoriesDealer'][2].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['AccessoriesDealer'][2].name}</p>`)
+          break;
+      //Buy Failure message
+        case(screenControlRoom.GeffenAccessoriesDealer && npcControlRoom.GeffenAccessoriesDealer && npcControlRoom.DealerBuyFailure):
+          $('.storySpeech').html(`<p>${npcSpeech['AccessoriesDealer'][3].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['AccessoriesDealer'][3].name}</p>`)
+          break;
+      //Sell Success message
+        case(screenControlRoom.GeffenAccessoriesDealer && npcControlRoom.GeffenAccessoriesDealer && npcControlRoom.DealerSellSuccess):
+          $('.storySpeech').html(`<p>${npcSpeech['AccessoriesDealer'][5].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['AccessoriesDealer'][5].name}</p>`)
+          break;
+      //Buy message
+        case(screenControlRoom.GeffenAccessoriesDealer && npcControlRoom.GeffenAccessoriesDealer && npcControlRoom.DealerBuy):
+          $('.storySpeech').html(`<p>${npcSpeech['AccessoriesDealer'][1].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['AccessoriesDealer'][1].name}</p>`)
+          break;
+      //Sell message
+        case(screenControlRoom.GeffenAccessoriesDealer && npcControlRoom.GeffenAccessoriesDealer && npcControlRoom.DealerSell):
+          $('.storySpeech').html(`<p>${npcSpeech['AccessoriesDealer'][4].text}</p>`)
+          $('.storyCharacter').html(`<p class="storyCharacterBox">${npcSpeech['AccessoriesDealer'][4].name}</p>`)
+          break; 
         default:
           $('.storySpeech').html('')  
           $('.storyCharacter').html('')
@@ -328,16 +361,23 @@ function StartMenu(props){
               <AltanSkills SkillsLevelingBox={props.SkillsLevelingBox}/> 
               <button className="ReturnHUD" onClick={() =>{dispatch(GotoAltanSkillsFn());}}>x</button>
             </div>:
+          //GeffenA Shops
+          screenControlRoom.GeffenAccessoriesDealer ? 
+          <div className="ReturnParent">
+            <GeffenAccessoriesDealer />
+            <button className="ReturnHUD" onClick={() =>{dispatch(GotoGeffenAccessoriesDealerFn()); dispatch(ResetGeffenNPCFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>x</button>
+          </div>:
           <div className="GeffenMap">
             <button className="ReturnHUDBugFix"></button>
             <h3 className="GeffenMapTitle">Geffen</h3>
             <button className="GeffenWorldMap" onClick={() =>{NextMapProteraFn(1); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>ToWorldMap</button>
-            <button className="GeffenBase GeffenGoblinYula" onClick={() =>{dispatch(GeffenGoblinYulaNPCFn()); changePlaceFadeAudio();}}><img src={GoblinYula} alt="Goblin Yula" /></button>
-            <button className="GeffenBase GeffenCitizen" onClick={() =>{dispatch(GeffenCitizenNPCFn()); changePlaceFadeAudio();}}><img src={GeffenCitizen} alt="GeffenCitizen"/></button>
             <button className="GeffenBase GeffenTimer" onClick={() =>{dispatch(GeffenTimerNPCFn()); changePlaceFadeAudio();}}><img src={GeffenTimer} alt="GeffenTimer"/></button>
-            <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
-            <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
+            <button className="GeffenBase GeffenCitizen" onClick={() =>{dispatch(GeffenCitizenNPCFn()); changePlaceFadeAudio();}}><img src={GeffenCitizen} alt="GeffenCitizen"/></button>
+            <button className="GeffenBase GeffenGoblinYula" onClick={() =>{dispatch(GeffenGoblinYulaNPCFn()); changePlaceFadeAudio();}}><img src={GoblinYula} alt="Goblin Yula" /></button>
             <button className="GeffenBase GeffenSoldier" onClick={() =>{dispatch(GeffenSoldierNPCFn()); changePlaceFadeAudio();}}><img src={GeffenSoldier} alt="GeffenSoldier"/></button>
+            <button className="GeffenBase GeffenGrandma" onClick={() =>{dispatch(GeffenGrandmaNPCFn()); changePlaceFadeAudio();}}><img src={GeffenGrandma} alt="GeffenGrandma"/></button>
+            <button className="GeffenBase GeffenAccessoriesDealer" onClick={() =>{dispatch(GotoGeffenAccessoriesDealerFn()); dispatch(GeffenAccessoriesDealerFn()); changePlaceFadeAudio();}}><img src={GeffenAccessoriesDealers} alt="GeffenAccessoriesDealers"/></button>
+            <button className="GeffenBase GeffenQuestBoard" onClick={() =>{dispatch(GeffenQuestBoardFn()); changePlaceFadeAudio();}}><img src={QuestBoard} alt="GeffenQuestBoard"/></button>
             <button className="GeffenDungeon1F" onClick={() =>{NextMapProteraFn(2); changeMapFadeAudio(); dispatch(ResetGeffenNPCFn());}}>{
                 screenControlRoom.GeffenDungeon1FPath1 &&
                 screenControlRoom.GeffenDungeon1FPath2 &&
@@ -614,7 +654,15 @@ function StartMenu(props){
                   })}
                 </ul>
                 <p className="questCompleteResult"></p>
-              </div> : null}
+              </div> : 
+              // {/* BUY SELL FN */}
+              screenControlRoom.GeffenAccessoriesDealer && !(screenControlRoom.AltanEquipment || screenControlRoom.AltanItem || screenControlRoom.AltanQuest || screenControlRoom.AltanStats || screenControlRoom.AltanSkills) ?
+              <div className="textCenter">
+                <button className="buyHeadGearDealerButton" onClick={() =>{dispatch(DealerBuyFn());}}>Buy Accessories</button>
+                <button className="sellHeadGearDealerButton" onClick={() =>{dispatch(DealerSellFn());}}>Sell Accessories</button>
+                <button className="returnHeadGearDealerButton" onClick={() => {dispatch(GotoGeffenAccessoriesDealerFn()); dispatch(ResetGeffenNPCFn()); dispatch(ResetDealerBuySellHealFn()); changePlaceFadeAudio();}}>Leave Accessories Shop</button>
+              </div> :
+              null}
         </fieldset>
       </div>
       }

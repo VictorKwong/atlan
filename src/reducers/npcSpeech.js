@@ -151,6 +151,28 @@ const Fn = {
             name: 'HeadGearDealer',
             text: 'This item is not for sale =.='
     }],
+    AccessoriesDealer:[{
+            name: 'AccessoriesDealer',
+            text: 'Accessories make everything better~'
+        },{
+            name: 'AccessoriesDealer',
+            text: 'Buy anything you like for my accessories!'
+        },{
+            name: 'AccessoriesDealer',
+            text: 'Thanks! :D'
+        },{
+            name: 'AccessoriesDealer',
+            text: 'Not enough Zeny :O'
+        },{
+            name: 'AccessoriesDealer',
+            text: 'I can collect those accessories :D'
+        },{
+            name: 'AccessoriesDealer',
+            text: 'I`ll collect them for you, here is your zeny!'
+        },{
+            name: 'AccessoriesDealer',
+            text: 'I can`t take this item O_O'
+    }],
     SoldierGuard1:[{
             name: 'SoldierGuard',
             text: 'Welcome to Prontera! This is the Porntera Castle Enterance.'
