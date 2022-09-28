@@ -51,18 +51,6 @@ function StartMenu(){
       {id:90004,cost: 100, Get:PandaHatFn(-100,1), Img: PandaHat, name: "Panda Hat"},
       {id:90005,cost: 100, Get:ChefHatFn(-100,1), Img: ChefHat, name: "Chef Hat"},
       {id:90006,cost: 100, Get:SantaPoringHatFn(-100,1), Img: SantaPoringHat, name: "Santa Poring Hat"},
-      //Accessory
-      {id:100,cost: 100, Get:ClipFn(-100,1), Img: Clip, name: "Clip"},
-      {id:101,cost: 100, Get:RosaryFn(-100,1), Img: Rosary, name: "Rosary"},
-      {id:102,cost: 100, Get:VesperCore02Fn(-100,1), Img: VesperCore02, name: "Vesper Core 02"},
-      {id:103,cost: 100, Get:BradiumEarringFn(-100,1), Img: BradiumEarring, name: "Bradium Earring"},
-      {id:104,cost: 100, Get:GloriousRingFn(-100,1), Img: GloriousRing, name: "Glorious Ring"},
-      {id:105,cost: 100, Get:SprintRingFn(-100,1), Img: SprintRing, name: "Sprint Ring"},
-      {id:106,cost: 100, Get:DiabolusRingFn(-100,1), Img: DiabolusRing, name: "Diabolus Ring"},
-      {id:107,cost: 100, Get:MedalofHonorFn(-100,1), Img: MedalofHonor, name: "Medal of Honor"},
-      {id:108,cost: 100, Get:BakonawaAgimatTattooFn(-100,1), Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo"},
-      {id:109,cost: 100, Get:BrisingamenFn(-100,1), Img: Brisingamen, name: "Brisingamen"},
-      {id:110,cost: 100, Get:MegingjardFn(-100,1), Img: Megingjard, name: "Megingjard"},
       
     ]
     let HeadGearSellBox = [
@@ -74,18 +62,6 @@ function StartMenu(){
       {id:80004,cost: 80, Get:PandaHatFn(80,-1), Img: PandaHat, name: "Panda Hat", Item: userGoldItem.PandaHat},
       {id:80005,cost: 80, Get:ChefHatFn(80,-1), Img: ChefHat, name: "Chef Hat", Item: userGoldItem.ChefHat},
       {id:80006,cost: 80, Get:SantaPoringHatFn(80,-1), Img: SantaPoringHat, name: "Santa Poring Hat", Item: userGoldItem.SantaPoringHat},
-      //Accessory
-      {id:200,cost: 80, Get:ClipFn(80,-1), Img: Clip, name: "Clip", Item: userGoldItem.Clip},
-      {id:201,cost: 80, Get:RosaryFn(80,-1), Img: Rosary, name: "Rosary", Item: userGoldItem.Rosary},
-      {id:202,cost: 80, Get:VesperCore02Fn(80,-1), Img: VesperCore02, name: "Vesper Core 02", Item: userGoldItem.VesperCore02},
-      {id:203,cost: 80, Get:BradiumEarringFn(80,-1), Img: BradiumEarring, name: "Bradium Earring", Item: userGoldItem.BradiumEarring},
-      {id:204,cost: 80, Get:GloriousRingFn(80,-1), Img: GloriousRing, name: "Glorious Ring", Item: userGoldItem.GloriousRing},
-      {id:205,cost: 80, Get:SprintRingFn(80,-1), Img: SprintRing, name: "Sprint Ring", Item: userGoldItem.SprintRing},
-      {id:206,cost: 80, Get:DiabolusRingFn(80,-1), Img: DiabolusRing, name: "Diabolus Ring", Item: userGoldItem.DiabolusRing},
-      {id:207,cost: 80, Get:MedalofHonorFn(80,-1), Img: MedalofHonor, name: "Medal of Honor", Item: userGoldItem.MedalofHonor},
-      {id:208,cost: 80, Get:BakonawaAgimatTattooFn(80,-1), Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo", Item: userGoldItem.BakonawaAgimatTattoo},
-      {id:209,cost: 80, Get:BrisingamenFn(80,-1), Img: Brisingamen, name: "Brisingamen", Item: userGoldItem.Brisingamen},
-      {id:210,cost: 80, Get:MegingjardFn(80,-1), Img: Megingjard, name: "Megingjard", Item: userGoldItem.Megingjard},
     ]
     return(
       <div className={npcControlRoom.DealerBuy || npcControlRoom.DealerSell ? "HeadGearDealerMapSmile" : "HeadGearDealerMap"}>
