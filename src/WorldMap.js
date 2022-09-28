@@ -267,6 +267,7 @@ function StartMenu(){
     const userGoldItem = useSelector(state => state.userGoldItem)
     const equipmentAllStats = useSelector(state => state.equipmentAllStats)
     const skillCapChart = useSelector(state => state.skillCapChart)
+    const miscControlRoom = useSelector(state => state.miscControlRoom)
    
     const dispatch = useDispatch();
 
@@ -766,7 +767,7 @@ const AccessoryTwoEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, 
 
 const NextMapProteraFn = (num) => {
   dispatch(NextWorldMapLoadingScreenFn());
-  setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
+  setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), miscControlRoom.WorldMap);
   //1.PronteraFn
   //2.PayonCave1F
   //3.PoringIsland
@@ -774,15 +775,15 @@ const NextMapProteraFn = (num) => {
   //5.ChallengeTower
   switch(true){
     case (num === 1):
-      return setTimeout(() => dispatch(GotoPronteraFn()), 1500);
+      return setTimeout(() => dispatch(GotoPronteraFn()), miscControlRoom.MiniMap);
     case (num === 2):
-      return setTimeout(() => dispatch(GotoPayonCave1FFn()), 1500);
+      return setTimeout(() => dispatch(GotoPayonCave1FFn()), miscControlRoom.MiniMap);
     case (num === 3):
-      return setTimeout(() => dispatch(GotoPoringIslandFn()), 1500);
+      return setTimeout(() => dispatch(GotoPoringIslandFn()), miscControlRoom.MiniMap);
     case (num === 4):
-      return setTimeout(() => dispatch(GotoGeffenFn()), 1500);
+      return setTimeout(() => dispatch(GotoGeffenFn()), miscControlRoom.MiniMap);
     case (num === 5):
-      return setTimeout(() => dispatch(GotoChallengeTowerFn()), 1500);
+      return setTimeout(() => dispatch(GotoChallengeTowerFn()), miscControlRoom.MiniMap);
   }
 }
 
