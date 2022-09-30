@@ -23,6 +23,7 @@ const PayonCave2F = (data) =>{
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const userAttribute = useSelector(state => state.userAttribute)
+    const miscControlRoom = useSelector(state => state.miscControlRoom)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -103,14 +104,14 @@ const PayonCave2F = (data) =>{
 
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), miscControlRoom.MiniMap);
     //1.PayonCave1F
     //2.PayonCave3F
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoPayonCave1FFn()), 500);
+        return setTimeout(() => dispatch(GotoPayonCave1FFn()), miscControlRoom.MiniChangeMap);
       case (num === 2):
-        return setTimeout(() => dispatch(GotoPayonCave3FFn()), 500);
+        return setTimeout(() => dispatch(GotoPayonCave3FFn()), miscControlRoom.MiniChangeMap);
       default:
         break;
     }

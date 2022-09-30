@@ -775,15 +775,15 @@ const NextMapProteraFn = (num) => {
   //5.ChallengeTower
   switch(true){
     case (num === 1):
-      return setTimeout(() => dispatch(GotoPronteraFn()), miscControlRoom.MiniMap);
+      return setTimeout(() => dispatch(GotoPronteraFn()), miscControlRoom.WorldChangeMap);
     case (num === 2):
-      return setTimeout(() => dispatch(GotoPayonCave1FFn()), miscControlRoom.MiniMap);
+      return setTimeout(() => dispatch(GotoPayonCave1FFn()), miscControlRoom.WorldChangeMap);
     case (num === 3):
-      return setTimeout(() => dispatch(GotoPoringIslandFn()), miscControlRoom.MiniMap);
+      return setTimeout(() => dispatch(GotoPoringIslandFn()), miscControlRoom.WorldChangeMap);
     case (num === 4):
-      return setTimeout(() => dispatch(GotoGeffenFn()), miscControlRoom.MiniMap);
+      return setTimeout(() => dispatch(GotoGeffenFn()), miscControlRoom.WorldChangeMap);
     case (num === 5):
-      return setTimeout(() => dispatch(GotoChallengeTowerFn()), miscControlRoom.MiniMap);
+      return setTimeout(() => dispatch(GotoChallengeTowerFn()), miscControlRoom.WorldChangeMap);
   }
 }
 

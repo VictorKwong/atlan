@@ -44,6 +44,7 @@ function StartMenu(props){
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const skillCapChart = useSelector(state => state.skillCapChart)
+    const miscControlRoom = useSelector(state => state.miscControlRoom)
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
@@ -155,14 +156,14 @@ function StartMenu(props){
 
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), miscControlRoom.MiniMap);
     //1.Geffen
     //2.GeffenDungeon2F
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoGeffenFn()), 500);
+        return setTimeout(() => dispatch(GotoGeffenFn()), miscControlRoom.MiniChangeMap);
       case (num === 2):
-        return setTimeout(() => dispatch(GotoGeffenDungeon2FFn()), 500);
+        return setTimeout(() => dispatch(GotoGeffenDungeon2FFn()), miscControlRoom.MiniChangeMap);
       default:
         break;
     }

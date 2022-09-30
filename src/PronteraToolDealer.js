@@ -22,14 +22,8 @@ import GeffenDungeonMap from './img/Etc/GeffenDungeonMap.gif'
 
 // AudioCurrentTimeSaverFn
 function StartMenu(){
-    const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
-    const npcSpeech = useSelector(state => state.npcSpeech)
-    const baseEXPChart = useSelector(state => state.baseEXPChart)
-    const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
-    const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
     // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();

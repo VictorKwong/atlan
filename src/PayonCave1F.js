@@ -47,6 +47,7 @@ function StartMenu(props){
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const skillCapChart = useSelector(state => state.skillCapChart)
+    const miscControlRoom = useSelector(state => state.miscControlRoom)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -172,12 +173,12 @@ function StartMenu(props){
     switch(true){
       case (num === 1):
         dispatch(NextWorldMapLoadingScreenFn());
-        setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
-        return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
+        setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), miscControlRoom.WorldMap);
+        return setTimeout(() => dispatch(GotoWorldMapFn()), miscControlRoom.WorldChangeMap);
       case (num === 2):
         dispatch(NextMapLoadingScreenFn());
-        setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
-        return setTimeout(() => dispatch(GotoPayonCave2FFn()), 500);
+        setTimeout(() => dispatch(NextMapLoadingScreenFn()), miscControlRoom.MiniMap);
+        return setTimeout(() => dispatch(GotoPayonCave2FFn()), miscControlRoom.MiniChangeMap);
       default:
         break;
     }

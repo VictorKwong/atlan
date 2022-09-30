@@ -54,6 +54,7 @@ function StartMenu(props){
     const userStats = useSelector(state => state.userStats)
     const npcSpeech = useSelector(state => state.npcSpeech)
     const skillCapChart = useSelector(state => state.skillCapChart)
+    const miscControlRoom = useSelector(state => state.miscControlRoom)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -153,11 +154,11 @@ function StartMenu(props){
 
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());
-    setTimeout(() => dispatch(NextMapLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(NextMapLoadingScreenFn()), miscControlRoom.MiniMap);
     //1.Prontera
     switch(true){
       case (num === 1):
-        return setTimeout(() => dispatch(GotoPronteraFn()), 500);
+        return setTimeout(() => dispatch(GotoPronteraFn()), miscControlRoom.MiniChangeMap);
       default:
         break;
     }

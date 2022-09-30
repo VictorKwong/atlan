@@ -33,6 +33,7 @@ function StartMenu(props){
     const userGoldItem = useSelector(state => state.userGoldItem)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const skillCapChart = useSelector(state => state.skillCapChart)
+    const miscControlRoom = useSelector(state => state.miscControlRoom)
     const dispatch = useDispatch();
     useEffect(() => {
       audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
@@ -111,11 +112,11 @@ const LoadingScreen3 = () => {
 
 const NextMapProteraFn = (num) => {
   dispatch(NextWorldMapLoadingScreenFn());
-  setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), 3000);
+  setTimeout(() => dispatch(NextWorldMapLoadingScreenFn()), miscControlRoom.WorldMap);
   //1.WorldMap
   switch(true){
     case (num === 1):
-      return setTimeout(() => dispatch(GotoWorldMapFn()), 1500);
+      return setTimeout(() => dispatch(GotoWorldMapFn()), miscControlRoom.WorldChangeMap);
     default:
       break;
   }
