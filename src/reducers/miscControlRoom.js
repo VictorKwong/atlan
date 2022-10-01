@@ -3,6 +3,7 @@ const Fn = {
     WorldChangeMap: 1500,
     MiniMap: 1000,
     MiniChangeMap: 500,
+    LoadingScreen: 1000,
 }
 
 const miscControlRoomReducer = (state = Fn, action) => {
