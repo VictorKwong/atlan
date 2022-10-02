@@ -145,13 +145,13 @@ function StartMenu(props){
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",Math.floor(Math.random() * 2) + 16)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath1",Math.floor(Math.random() * 2) + 16)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",Math.floor(Math.random() * 2) + 16)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon1FPath3",Math.floor(Math.random() * 2) + 16)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
 
   const NextMapProteraFn = (num) => {

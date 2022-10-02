@@ -163,8 +163,8 @@ function StartMenu(props){
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave1FPath1",Math.floor(Math.random() * 2) + 6)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave1FPath1",Math.floor(Math.random() * 2) + 6)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const NextMapProteraFn = (num) => {
 

@@ -76,18 +76,18 @@ const PayonCave2F = (data) =>{
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath2",Math.floor(Math.random() * 2) + 18)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath2",Math.floor(Math.random() * 2) + 18)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen2 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath4",18)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath4",18)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen3 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath6",Math.floor(Math.random() * 2) + 18)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon2FPath6",Math.floor(Math.random() * 2) + 18)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());

@@ -127,23 +127,23 @@ function StartMenu(props){
   }, [npcControlRoom, screenControlRoom])
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath1",20)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath1",20)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath2",21)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath2",21)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen2 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath4",22)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath4",22)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen3 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath5Hidden",Math.floor(Math.random() * 2) + 20)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon3FPath5Hidden",Math.floor(Math.random() * 2) + 20)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());

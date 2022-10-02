@@ -68,13 +68,13 @@ const PayonCave2F = (data) =>{
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon4FPath1",23)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("GeffenDungeon4FPath1",23)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",24)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",24)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());

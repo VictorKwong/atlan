@@ -467,8 +467,8 @@ function StartMenu(){
 
     const LoadingScreen0 = () => {
       dispatch(BattleLoadingScreenFn());
-      setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), 1000);
-      setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+      setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("FinalBoss",25)), miscControlRoom.LoadingScreen);
+      setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
     }
     const HeadGearEquipmentAttribute = (BonusSTR, BonusAGI, BonusVIT, BonusINT, BonusDEX, BonusLUK, EquipItem, UnEquipItem, BonusAttack, BonusSpeed, BonusDodgeRate, BonusDefence, BonusDefenceBuffer, BonusHitRate, BonusCritRate, BonusHealth, BonusSP) => {
 

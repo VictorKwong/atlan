@@ -323,30 +323,30 @@ useEffect(() => {
 
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1",Math.round(Math.random()))), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path1",Math.round(Math.random()))), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path2",Math.round(Math.random()))), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path2",Math.round(Math.random()))), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen2 = () => {
     dispatch(BattleLoadingScreenFn())
     // setTimeout(() => dispatch(GotoBattlePoringIslandMapTwoFn("Path3")), 1000);
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path3",Math.floor(Math.random() * 2) + 2)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path3",Math.floor(Math.random() * 2) + 2)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen2Secret = () => {
     dispatch(BattleLoadingScreenFn())
     // setTimeout(() => dispatch(GotoBattlePoringIslandMapTwoSecretFn()), 1000);
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",4)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("",4)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreenThreeBoss = () => {
     dispatch(BattleLoadingScreenFn())
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path5",5)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("Path5",5)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const NextMapProteraFn = (num) => {
 

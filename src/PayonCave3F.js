@@ -69,18 +69,18 @@ const PayonCave3F = (data) =>{
   }
   const LoadingScreen0 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath1",13)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath1",13)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreen1 = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath2",14)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath2",14)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const LoadingScreenBoss = () => {
     dispatch(BattleLoadingScreenFn());
-    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath4",15)), 1000);
-    setTimeout(() => dispatch(BattleLoadingScreenFn()), 1000);
+    setTimeout(() => dispatch(GotoBattlePoringIslandMapFn("PayonCave3FPath4",15)), miscControlRoom.LoadingScreen);
+    setTimeout(() => dispatch(BattleLoadingScreenFn()), miscControlRoom.LoadingScreen);
   }
   const NextMapProteraFn = (num) => {
     dispatch(NextMapLoadingScreenFn());
