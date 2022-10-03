@@ -19,6 +19,7 @@ import trainingSuccessRequireReducer from './trainingSuccessRequire'
 import skillCapChartReducer from './skillCapChart'
 import miscControlRoomReducer from './miscControlRoom'
 import equipmentAllStatsReducer from './equipmentAllStats'
+import itemPriceChartReducer from './itemPriceChart'
 
 import enemyStatsReducer from "./enemyStats";
 import { combineReducers } from "redux";
@@ -46,6 +47,7 @@ const allReducers = combineReducers({
     skillCapChart: skillCapChartReducer,
     equipmentAllStats: equipmentAllStatsReducer,
     miscControlRoom: miscControlRoomReducer,
+    itemPriceChart: itemPriceChartReducer,
 
 });
 

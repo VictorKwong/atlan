@@ -20,19 +20,19 @@ function StartMenu(){
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
+    const itemPriceChart = useSelector(state => state.itemPriceChart)
     
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
 
     let HeadGearBuyBox = [
       //HeadGear
-      {id:90000,cost: 100, Get:LordKahosHornFn(-100,1), Img: LordKahosHorn, name: "Lord Kaho`s Horn"},
-      {id:90001,cost: 100, Get:TeddybearHatFn(-100,1), Img: TeddybearHat, name: "Teddybear Hat"},
-      {id:90002,cost: 100, Get:CrownFn(-100,1), Img: Crown, name: "Crown"},
-      {id:90003,cost: 100, Get:HelmFn(-100,1), Img: Helm, name: "Helm"},
-      {id:90004,cost: 100, Get:PandaHatFn(-100,1), Img: PandaHat, name: "Panda Hat"},
-      {id:90005,cost: 100, Get:ChefHatFn(-100,1), Img: ChefHat, name: "Chef Hat"},
-      {id:90006,cost: 100, Get:SantaPoringHatFn(-100,1), Img: SantaPoringHat, name: "Santa Poring Hat"},
+      {id:90000,cost: itemPriceChart.LordKahosHornBuy, Get:LordKahosHornFn(-itemPriceChart.LordKahosHornBuy,1), Img: LordKahosHorn, name: "Lord Kaho`s Horn"},
+      {id:90001,cost: itemPriceChart.TeddybearHatBuy, Get:TeddybearHatFn(-itemPriceChart.TeddybearHatBuy,1), Img: TeddybearHat, name: "Teddybear Hat"},
+      {id:90002,cost: itemPriceChart.CrownBuy, Get:CrownFn(-itemPriceChart.CrownBuy,1), Img: Crown, name: "Crown"},
+      {id:90003,cost: itemPriceChart.HelmBuy, Get:HelmFn(-itemPriceChart.HelmBuy,1), Img: Helm, name: "Helm"},
+      {id:90004,cost: itemPriceChart.PandaHatBuy, Get:PandaHatFn(-itemPriceChart.PandaHatBuy,1), Img: PandaHat, name: "Panda Hat"},
+      {id:90005,cost: itemPriceChart.ChefHatBuy, Get:ChefHatFn(-itemPriceChart.ChefHatBuy,1), Img: ChefHat, name: "Chef Hat"},
+      {id:90006,cost: itemPriceChart.SantaPoringHatBuy, Get:SantaPoringHatFn(-itemPriceChart.SantaPoringHatBuy,1), Img: SantaPoringHat, name: "Santa Poring Hat"},
       
     ]
     let HeadGearSellBox = [

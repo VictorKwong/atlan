@@ -18,10 +18,7 @@ import skillVitalStrike from './img/Skill/lk_vitalstrike.gif'
 import skillBowlingBash from './img/Skill/sm_blowingbash.gif'
 
 function StartMenu(props){
-    const userStats = useSelector(state => state.userStats)
-    const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const skillCapChart = useSelector(state => state.skillCapChart)
-    const userAttribute = useSelector(state => state.userAttribute)
     const dispatch = useDispatch();
     
     // let SkillBox = [
