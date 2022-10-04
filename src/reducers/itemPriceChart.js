@@ -7,6 +7,14 @@ const Fn = {
     PandaHatBuy: 100,
     ChefHatBuy: 100,
     SantaPoringHatBuy: 100,
+    //Sell
+    LordKahosHornSell: 80,
+    TeddybearHatSell: 80,
+    CrownSell: 80,
+    HelmSell: 80,
+    PandaHatSell: 80,
+    ChefHatSell: 80,
+    SantaPoringHatSell: 80,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {

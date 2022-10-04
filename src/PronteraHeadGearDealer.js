@@ -37,13 +37,13 @@ function StartMenu(){
     ]
     let HeadGearSellBox = [
       //HeadGear
-      {id:80000,cost: 80, Get:LordKahosHornFn(80,-1), Img: LordKahosHorn, name: "Lord Kaho`s Horn", Item: userGoldItem.LordKahosHorn},
-      {id:80001,cost: 80, Get:TeddybearHatFn(80,-1), Img: TeddybearHat, name: "Teddybear Hat", Item: userGoldItem.TeddybearHat},
-      {id:80002,cost: 80, Get:CrownFn(80,-1), Img: Crown, name: "Crown", Item: userGoldItem.Crown},
-      {id:80003,cost: 80, Get:HelmFn(80,-1), Img: Helm, name: "Helm", Item: userGoldItem.Helm},
-      {id:80004,cost: 80, Get:PandaHatFn(80,-1), Img: PandaHat, name: "Panda Hat", Item: userGoldItem.PandaHat},
-      {id:80005,cost: 80, Get:ChefHatFn(80,-1), Img: ChefHat, name: "Chef Hat", Item: userGoldItem.ChefHat},
-      {id:80006,cost: 80, Get:SantaPoringHatFn(80,-1), Img: SantaPoringHat, name: "Santa Poring Hat", Item: userGoldItem.SantaPoringHat},
+      {id:80000,cost: itemPriceChart.LordKahosHornSell, Get:LordKahosHornFn(itemPriceChart.LordKahosHornSell,-1), Img: LordKahosHorn, name: "Lord Kaho`s Horn", Item: userGoldItem.LordKahosHorn},
+      {id:80001,cost: itemPriceChart.TeddybearHatSell, Get:TeddybearHatFn(itemPriceChart.TeddybearHatSell,-1), Img: TeddybearHat, name: "Teddybear Hat", Item: userGoldItem.TeddybearHat},
+      {id:80002,cost: itemPriceChart.CrownSell, Get:CrownFn(itemPriceChart.CrownSell,-1), Img: Crown, name: "Crown", Item: userGoldItem.Crown},
+      {id:80003,cost: itemPriceChart.HelmSell, Get:HelmFn(itemPriceChart.HelmSell,-1), Img: Helm, name: "Helm", Item: userGoldItem.Helm},
+      {id:80004,cost: itemPriceChart.PandaHatSell, Get:PandaHatFn(itemPriceChart.PandaHatSell,-1), Img: PandaHat, name: "Panda Hat", Item: userGoldItem.PandaHat},
+      {id:80005,cost: itemPriceChart.ChefHatSell, Get:ChefHatFn(itemPriceChart.ChefHatSell,-1), Img: ChefHat, name: "Chef Hat", Item: userGoldItem.ChefHat},
+      {id:80006,cost: itemPriceChart.SantaPoringHatSell, Get:SantaPoringHatFn(itemPriceChart.SantaPoringHatSell,-1), Img: SantaPoringHat, name: "Santa Poring Hat", Item: userGoldItem.SantaPoringHat},
     ]
     return(
       <div className={npcControlRoom.DealerBuy || npcControlRoom.DealerSell ? "HeadGearDealerMapSmile" : "HeadGearDealerMap"}>
