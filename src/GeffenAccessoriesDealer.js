@@ -24,22 +24,23 @@ function StartMenu(){
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
+    const itemPriceChart = useSelector(state => state.itemPriceChart)
     
     const dispatch = useDispatch();
 
     let HeadGearBuyBox = [
       //Accessory
-      {id:100,cost: 100, Get:ClipFn(-100,1), Img: Clip, name: "Clip"},
-      {id:101,cost: 100, Get:RosaryFn(-100,1), Img: Rosary, name: "Rosary"},
-      {id:102,cost: 100, Get:VesperCore02Fn(-100,1), Img: VesperCore02, name: "Vesper Core 02"},
-      {id:103,cost: 100, Get:BradiumEarringFn(-100,1), Img: BradiumEarring, name: "Bradium Earring"},
-      {id:104,cost: 100, Get:GloriousRingFn(-100,1), Img: GloriousRing, name: "Glorious Ring"},
-      {id:105,cost: 100, Get:SprintRingFn(-100,1), Img: SprintRing, name: "Sprint Ring"},
-      {id:106,cost: 100, Get:DiabolusRingFn(-100,1), Img: DiabolusRing, name: "Diabolus Ring"},
-      {id:107,cost: 100, Get:MedalofHonorFn(-100,1), Img: MedalofHonor, name: "Medal of Honor"},
-      {id:108,cost: 100, Get:BakonawaAgimatTattooFn(-100,1), Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo"},
-      {id:109,cost: 100, Get:BrisingamenFn(-100,1), Img: Brisingamen, name: "Brisingamen"},
-      {id:110,cost: 100, Get:MegingjardFn(-100,1), Img: Megingjard, name: "Megingjard"},
+      {id:100,cost: itemPriceChart.ClipBuy, Get:ClipFn(-itemPriceChart.ClipBuy,1), Img: Clip, name: "Clip"},
+      {id:101,cost: itemPriceChart.RosaryBuy, Get:RosaryFn(-itemPriceChart.RosaryBuy,1), Img: Rosary, name: "Rosary"},
+      {id:102,cost: itemPriceChart.VesperCore02Buy, Get:VesperCore02Fn(-itemPriceChart.VesperCore02Buy,1), Img: VesperCore02, name: "Vesper Core 02"},
+      {id:103,cost: itemPriceChart.BradiumEarringBuy, Get:BradiumEarringFn(-itemPriceChart.BradiumEarringBuy,1), Img: BradiumEarring, name: "Bradium Earring"},
+      {id:104,cost: itemPriceChart.GloriousRingBuy, Get:GloriousRingFn(-itemPriceChart.GloriousRingBuy,1), Img: GloriousRing, name: "Glorious Ring"},
+      {id:105,cost: itemPriceChart.SprintRingBuy, Get:SprintRingFn(-itemPriceChart.SprintRingBuy,1), Img: SprintRing, name: "Sprint Ring"},
+      {id:106,cost: itemPriceChart.DiabolusRingBuy, Get:DiabolusRingFn(-itemPriceChart.DiabolusRingBuy,1), Img: DiabolusRing, name: "Diabolus Ring"},
+      {id:107,cost: itemPriceChart.MedalofHonorBuy, Get:MedalofHonorFn(-itemPriceChart.MedalofHonorBuy,1), Img: MedalofHonor, name: "Medal of Honor"},
+      {id:108,cost: itemPriceChart.BakonawaAgimatTattooBuy, Get:BakonawaAgimatTattooFn(-itemPriceChart.BakonawaAgimatTattooBuy,1), Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo"},
+      {id:109,cost: itemPriceChart.BrisingamenBuy, Get:BrisingamenFn(-itemPriceChart.BrisingamenBuy,1), Img: Brisingamen, name: "Brisingamen"},
+      {id:110,cost: itemPriceChart.MegingjardBuy, Get:MegingjardFn(-itemPriceChart.MegingjardBuy,1), Img: Megingjard, name: "Megingjard"},
       
     ]
     let HeadGearSellBox = [
