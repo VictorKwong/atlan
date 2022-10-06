@@ -21,6 +21,7 @@ const Fn = {
     BrisingamenBuy: 100,
     MegingjardBuy: 100,
     //Sell
+    //HEAD GEAR
     LordKahosHornSell: 80,
     TeddybearHatSell: 80,
     CrownSell: 80,
@@ -28,6 +29,18 @@ const Fn = {
     PandaHatSell: 80,
     ChefHatSell: 80,
     SantaPoringHatSell: 80,
+    //ACCESSORY
+    ClipSell: 100,
+    RosarySell: 100,
+    VesperCore02Sell: 100,
+    BradiumEarringSell: 100,
+    GloriousRingSell: 100,
+    SprintRingSell: 100,
+    DiabolusRingSell: 100,
+    MedalofHonorSell: 100,
+    BakonawaAgimatTattooSell: 100,
+    BrisingamenSell: 100,
+    MegingjardSell: 100,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {

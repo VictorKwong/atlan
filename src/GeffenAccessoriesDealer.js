@@ -45,17 +45,17 @@ function StartMenu(){
     ]
     let HeadGearSellBox = [
       //Accessory
-      {id:200,cost: 80, Get:ClipFn(80,-1), Img: Clip, name: "Clip", Item: userGoldItem.Clip},
-      {id:201,cost: 80, Get:RosaryFn(80,-1), Img: Rosary, name: "Rosary", Item: userGoldItem.Rosary},
-      {id:202,cost: 80, Get:VesperCore02Fn(80,-1), Img: VesperCore02, name: "Vesper Core 02", Item: userGoldItem.VesperCore02},
-      {id:203,cost: 80, Get:BradiumEarringFn(80,-1), Img: BradiumEarring, name: "Bradium Earring", Item: userGoldItem.BradiumEarring},
-      {id:204,cost: 80, Get:GloriousRingFn(80,-1), Img: GloriousRing, name: "Glorious Ring", Item: userGoldItem.GloriousRing},
-      {id:205,cost: 80, Get:SprintRingFn(80,-1), Img: SprintRing, name: "Sprint Ring", Item: userGoldItem.SprintRing},
-      {id:206,cost: 80, Get:DiabolusRingFn(80,-1), Img: DiabolusRing, name: "Diabolus Ring", Item: userGoldItem.DiabolusRing},
-      {id:207,cost: 80, Get:MedalofHonorFn(80,-1), Img: MedalofHonor, name: "Medal of Honor", Item: userGoldItem.MedalofHonor},
-      {id:208,cost: 80, Get:BakonawaAgimatTattooFn(80,-1), Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo", Item: userGoldItem.BakonawaAgimatTattoo},
-      {id:209,cost: 80, Get:BrisingamenFn(80,-1), Img: Brisingamen, name: "Brisingamen", Item: userGoldItem.Brisingamen},
-      {id:210,cost: 80, Get:MegingjardFn(80,-1), Img: Megingjard, name: "Megingjard", Item: userGoldItem.Megingjard},
+      {id:200,cost: itemPriceChart.ClipSell, Get:ClipFn(itemPriceChart.ClipSell,-1), Img: Clip, name: "Clip", Item: userGoldItem.Clip},
+      {id:201,cost: itemPriceChart.RosarySell, Get:RosaryFn(itemPriceChart.RosarySell,-1), Img: Rosary, name: "Rosary", Item: userGoldItem.Rosary},
+      {id:202,cost: itemPriceChart.VesperCore02Sell, Get:VesperCore02Fn(itemPriceChart.VesperCore02Sell,-1), Img: VesperCore02, name: "Vesper Core 02", Item: userGoldItem.VesperCore02},
+      {id:203,cost: itemPriceChart.BradiumEarringSell, Get:BradiumEarringFn(itemPriceChart.BradiumEarringSell,-1), Img: BradiumEarring, name: "Bradium Earring", Item: userGoldItem.BradiumEarring},
+      {id:204,cost: itemPriceChart.GloriousRingSell, Get:GloriousRingFn(itemPriceChart.GloriousRingSell,-1), Img: GloriousRing, name: "Glorious Ring", Item: userGoldItem.GloriousRing},
+      {id:205,cost: itemPriceChart.SprintRingSell, Get:SprintRingFn(itemPriceChart.SprintRingSell,-1), Img: SprintRing, name: "Sprint Ring", Item: userGoldItem.SprintRing},
+      {id:206,cost: itemPriceChart.DiabolusRingSell, Get:DiabolusRingFn(itemPriceChart.DiabolusRingSell,-1), Img: DiabolusRing, name: "Diabolus Ring", Item: userGoldItem.DiabolusRing},
+      {id:207,cost: itemPriceChart.MedalofHonorSell, Get:MedalofHonorFn(itemPriceChart.MedalofHonorSell,-1), Img: MedalofHonor, name: "Medal of Honor", Item: userGoldItem.MedalofHonor},
+      {id:208,cost: itemPriceChart.BakonawaAgimatTattooSell, Get:BakonawaAgimatTattooFn(itemPriceChart.BakonawaAgimatTattooSell,-1), Img: BakonawaAgimatTattoo, name: "Bakonawa Agimat Tattoo", Item: userGoldItem.BakonawaAgimatTattoo},
+      {id:209,cost: itemPriceChart.BrisingamenSell, Get:BrisingamenFn(itemPriceChart.BrisingamenSell,-1), Img: Brisingamen, name: "Brisingamen", Item: userGoldItem.Brisingamen},
+      {id:210,cost: itemPriceChart.MegingjardSell, Get:MegingjardFn(itemPriceChart.MegingjardSell,-1), Img: Megingjard, name: "Megingjard", Item: userGoldItem.Megingjard},
     ]
     return(
       <div className={npcControlRoom.DealerBuy || npcControlRoom.DealerSell ? "AccessoriesDealerMapSmile" : "AccessoriesDealerMap"}>
