@@ -20,6 +20,12 @@ const Fn = {
     BakonawaAgimatTattooBuy: 100,
     BrisingamenBuy: 100,
     MegingjardBuy: 100,
+    //WEAPON
+    KatanaBuy: 100,
+    BastardSwordBuy: 300,
+    GaiaSwordBuy: 800,
+    TwinEdgeofNaghtSiegerBuy: 3000,
+    VioletFearBuy: 4880,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
@@ -41,6 +47,12 @@ const Fn = {
     BakonawaAgimatTattooSell: 100,
     BrisingamenSell: 100,
     MegingjardSell: 100,
+    //WEAPON
+    KatanaSell: 80,
+    BastardSwordSell: 240,
+    GaiaSwordSell: 640,
+    TwinEdgeofNaghtSiegerSell: 1600,
+    VioletFearSell: 3904,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {

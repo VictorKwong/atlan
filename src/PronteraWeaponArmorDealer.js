@@ -63,7 +63,8 @@ function StartMenu(){
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const userStats = useSelector(state => state.userStats)
     const userGoldItem = useSelector(state => state.userGoldItem)
-  
+    const itemPriceChart = useSelector(state => state.itemPriceChart)
+
     const dispatch = useDispatch();
 
     // const talkToWeaponArmorDealerBuy = () => {
@@ -90,18 +91,18 @@ function StartMenu(){
     // }
 
     let WeaponBuyBox = [
-      {id:91000,cost: 100, Get:KatanaFn(-100,1), Img: Katana, name: "Katana"},
-      {id:91001,cost: 300, Get:BastardSwordFn(-300,1), Img: BastardSword, name: "Bastard Sword"},
-      {id:91002,cost: 800, Get:GaiaSwordFn(-800,1), Img: GaiaSword, name: "Gaia Sword"},
-      {id:91003,cost: 3000, Get:TwinEdgeofNaghtSiegerFn(-3000,1), Img: TwinEdgeofNaghtSieger, name: "Twin Edge of Naght Sieger"},
-      {id:91004,cost: 4880, Get:VioletFearFn(-4880,1), Img: VioletFear, name: "Violet Fear"},
+      {id:91000,cost: itemPriceChart.KatanaBuy, Get:KatanaFn(-itemPriceChart.KatanaBuy,1), Img: Katana, name: "Katana"},
+      {id:91001,cost: itemPriceChart.BastardSwordBuy, Get:BastardSwordFn(-itemPriceChart.BastardSwordBuy,1), Img: BastardSword, name: "Bastard Sword"},
+      {id:91002,cost: itemPriceChart.GaiaSwordBuy, Get:GaiaSwordFn(-itemPriceChart.GaiaSwordBuy,1), Img: GaiaSword, name: "Gaia Sword"},
+      {id:91003,cost: itemPriceChart.TwinEdgeofNaghtSiegerBuy, Get:TwinEdgeofNaghtSiegerFn(-itemPriceChart.TwinEdgeofNaghtSiegerBuy,1), Img: TwinEdgeofNaghtSieger, name: "Twin Edge of Naght Sieger"},
+      {id:91004,cost: itemPriceChart.VioletFearBuy, Get:VioletFearFn(-itemPriceChart.VioletFearBuy,1), Img: VioletFear, name: "Violet Fear"},
     ]
     let WeaponSellBox = [
-      {id:92000,cost: 80, Get:KatanaFn(80,-1), Img: Katana, name: "Katana", Item: userGoldItem.Katana},
-      {id:92001,cost: 240, Get:BastardSwordFn(240,-1), Img: BastardSword, name: "Bastard Sword", Item: userGoldItem.BastardSword},
-      {id:92002,cost: 640, Get:GaiaSwordFn(640,-1), Img: GaiaSword, name: "Gaia Sword", Item: userGoldItem.GaiaSword},
-      {id:92003,cost: 1600, Get:TwinEdgeofNaghtSiegerFn(1600,-1), Img: TwinEdgeofNaghtSieger, name: "Twin Edge of Naght Sieger", Item: userGoldItem.TwinEdgeofNaghtSieger},
-      {id:92004,cost: 3904, Get:VioletFearFn(3904,-1), Img: VioletFear, name: "Violet Fear", Item: userGoldItem.VioletFear},
+      {id:92000,cost: itemPriceChart.KatanaSell, Get:KatanaFn(itemPriceChart.KatanaSell,-1), Img: Katana, name: "Katana", Item: userGoldItem.Katana},
+      {id:92001,cost: itemPriceChart.BastardSwordSell, Get:BastardSwordFn(itemPriceChart.BastardSwordSell,-1), Img: BastardSword, name: "Bastard Sword", Item: userGoldItem.BastardSword},
+      {id:92002,cost: itemPriceChart.GaiaSwordSell, Get:GaiaSwordFn(itemPriceChart.GaiaSwordSell,-1), Img: GaiaSword, name: "Gaia Sword", Item: userGoldItem.GaiaSword},
+      {id:92003,cost: itemPriceChart.TwinEdgeofNaghtSiegerSell, Get:TwinEdgeofNaghtSiegerFn(itemPriceChart.TwinEdgeofNaghtSiegerSell,-1), Img: TwinEdgeofNaghtSieger, name: "Twin Edge of Naght Sieger", Item: userGoldItem.TwinEdgeofNaghtSieger},
+      {id:92004,cost: itemPriceChart.VioletFearSell, Get:VioletFearFn(itemPriceChart.VioletFearSell,-1), Img: VioletFear, name: "Violet Fear", Item: userGoldItem.VioletFear},
     ]
     let ArmorBuyBox = [
       //Armor
