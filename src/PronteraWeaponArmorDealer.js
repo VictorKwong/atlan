@@ -106,7 +106,7 @@ function StartMenu(){
     ]
     let ArmorBuyBox = [
       //Armor
-      {id:93000,cost: 10, Get:CottonShirtFn(-10,1), Img: CottonShirt, name: "Cotton Shirt"},
+      {id:93000,cost: itemPriceChart.CottonShirtBuy, Get:CottonShirtFn(-itemPriceChart.CottonShirtBuy,1), Img: CottonShirt, name: "Cotton Shirt"},
       {id:93001,cost: 1000, Get:AdventureSuitFn(-1000,1), Img: AdventureSuit, name: "Adventure Suit"},
       {id:93002,cost: 5500, Get:WoodenMailFn(-5500,1), Img: WoodenMail, name: "Wooden Mail"},
       {id:93003,cost: 22000, Get:CoatFn(-22000,1), Img: Coat, name: "Coat"},

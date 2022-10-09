@@ -26,6 +26,8 @@ const Fn = {
     GaiaSwordBuy: 800,
     TwinEdgeofNaghtSiegerBuy: 3000,
     VioletFearBuy: 4880,
+    //ARMOR
+    CottonShirtBuy: 100,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
