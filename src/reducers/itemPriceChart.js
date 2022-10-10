@@ -28,6 +28,7 @@ const Fn = {
     VioletFearBuy: 4880,
     //ARMOR
     CottonShirtBuy: 100,
+    AdventureSuitBuy: 1000,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
