@@ -29,6 +29,7 @@ const Fn = {
     //ARMOR
     CottonShirtBuy: 100,
     AdventureSuitBuy: 1000,
+    WoodenMailBuy: 5500,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
