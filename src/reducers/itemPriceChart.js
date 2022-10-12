@@ -30,6 +30,10 @@ const Fn = {
     CottonShirtBuy: 100,
     AdventureSuitBuy: 1000,
     WoodenMailBuy: 5500,
+    CoatBuy: 6000,
+    PaddedArmorBuy: 8000,
+    ChainMailBuy: 10000,
+    FullPlateBuy: 15000,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,

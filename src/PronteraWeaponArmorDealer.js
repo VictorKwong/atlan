@@ -108,11 +108,11 @@ function StartMenu(){
       //Armor
       {id:93000,cost: itemPriceChart.CottonShirtBuy, Get:CottonShirtFn(-itemPriceChart.CottonShirtBuy,1), Img: CottonShirt, name: "Cotton Shirt"},
       {id:93001,cost: itemPriceChart.AdventureSuitBuy, Get:AdventureSuitFn(-itemPriceChart.AdventureSuitBuy,1), Img: AdventureSuit, name: "Adventure Suit"},
-      {id:93002,cost: 5500, Get:WoodenMailFn(-5500,1), Img: WoodenMail, name: "Wooden Mail"},
-      {id:93003,cost: 22000, Get:CoatFn(-22000,1), Img: Coat, name: "Coat"},
-      {id:93004,cost: 48000, Get:PaddedArmorFn(-48000,1), Img: PaddedArmor, name: "Padded Armor"},
-      {id:93005,cost: 65000, Get:ChainMailFn(-65000,1), Img: ChainMail, name: "Chain Mail"},
-      {id:93006,cost: 80000, Get:FullPlateFn(-80000,1), Img: FullPlate, name: "Full Plate"},
+      {id:93002,cost: itemPriceChart.WoodenMailBuy, Get:WoodenMailFn(-itemPriceChart.WoodenMailBuy,1), Img: WoodenMail, name: "Wooden Mail"},
+      {id:93003,cost: itemPriceChart.CoatBuy, Get:CoatFn(-itemPriceChart.CoatBuy,1), Img: Coat, name: "Coat"},
+      {id:93004,cost: itemPriceChart.PaddedArmorBuy, Get:PaddedArmorFn(-itemPriceChart.PaddedArmorBuy,1), Img: PaddedArmor, name: "Padded Armor"},
+      {id:93005,cost: itemPriceChart.ChainMailBuy, Get:ChainMailFn(-itemPriceChart.ChainMailBuy,1), Img: ChainMail, name: "Chain Mail"},
+      {id:93006,cost: itemPriceChart.FullPlateBuy, Get:FullPlateFn(-itemPriceChart.FullPlateBuy,1), Img: FullPlate, name: "Full Plate"},
     ]
     let ArmorSellBox = [
       //Armor
