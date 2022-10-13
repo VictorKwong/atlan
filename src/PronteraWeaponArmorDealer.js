@@ -116,7 +116,7 @@ function StartMenu(){
     ]
     let ArmorSellBox = [
       //Armor
-      {id:94000,cost: 8, Get:CottonShirtFn(8,-1), Img: CottonShirt, name: "Cotton Shirt", Item: userGoldItem.CottonShirt},
+      {id:94000,cost: itemPriceChart.CottonShirtSell, Get:CottonShirtFn(itemPriceChart.CottonShirtSell,-1), Img: CottonShirt, name: "Cotton Shirt", Item: userGoldItem.CottonShirt},
       {id:94001,cost: 800, Get:AdventureSuitFn(800,-1), Img: AdventureSuit, name: "Adventure Suit", Item: userGoldItem.AdventureSuit},
       {id:94002,cost: 4400, Get:WoodenMailFn(4400,-1), Img: WoodenMail, name: "WoodenMail", Item: userGoldItem.WoodenMail},
       {id:94003,cost: 17600, Get:CoatFn(17600,-1), Img: Coat, name: "Coat", Item: userGoldItem.Coat},

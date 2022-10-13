@@ -61,6 +61,14 @@ const Fn = {
     GaiaSwordSell: 640,
     TwinEdgeofNaghtSiegerSell: 1600,
     VioletFearSell: 3904,
+    //ARMOR
+    CottonShirtSell: 80,
+    AdventureSuitSell: 800,
+    WoodenMailSell: 4400,
+    CoatSell: 4800,
+    PaddedArmorSell: 6400,
+    ChainMailSell: 8000,
+    FullPlateSell: 12000,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {
