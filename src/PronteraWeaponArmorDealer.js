@@ -117,12 +117,12 @@ function StartMenu(){
     let ArmorSellBox = [
       //Armor
       {id:94000,cost: itemPriceChart.CottonShirtSell, Get:CottonShirtFn(itemPriceChart.CottonShirtSell,-1), Img: CottonShirt, name: "Cotton Shirt", Item: userGoldItem.CottonShirt},
-      {id:94001,cost: 800, Get:AdventureSuitFn(800,-1), Img: AdventureSuit, name: "Adventure Suit", Item: userGoldItem.AdventureSuit},
-      {id:94002,cost: 4400, Get:WoodenMailFn(4400,-1), Img: WoodenMail, name: "WoodenMail", Item: userGoldItem.WoodenMail},
-      {id:94003,cost: 17600, Get:CoatFn(17600,-1), Img: Coat, name: "Coat", Item: userGoldItem.Coat},
-      {id:94004,cost: 38400, Get:PaddedArmorFn(38400,-1), Img: PaddedArmor, name: "Padded Armor", Item: userGoldItem.PaddedArmor},
-      {id:94005,cost: 52000, Get:ChainMailFn(52000,-1), Img: ChainMail, name: "Chain Mail", Item: userGoldItem.ChainMail},
-      {id:94006,cost: 64000, Get:FullPlateFn(640000,-1), Img: FullPlate, name: "Full Plate", Item: userGoldItem.FullPlate},
+      {id:94001,cost: itemPriceChart.AdventureSuitSell, Get:AdventureSuitFn(itemPriceChart.AdventureSuitSell,-1), Img: AdventureSuit, name: "Adventure Suit", Item: userGoldItem.AdventureSuit},
+      {id:94002,cost: itemPriceChart.WoodenMailSell, Get:WoodenMailFn(itemPriceChart.WoodenMailSell,-1), Img: WoodenMail, name: "WoodenMail", Item: userGoldItem.WoodenMail},
+      {id:94003,cost: itemPriceChart.CoatSell, Get:CoatFn(itemPriceChart.CoatSell,-1), Img: Coat, name: "Coat", Item: userGoldItem.Coat},
+      {id:94004,cost: itemPriceChart.PaddedArmorSell, Get:PaddedArmorFn(itemPriceChart.PaddedArmorSell,-1), Img: PaddedArmor, name: "Padded Armor", Item: userGoldItem.PaddedArmor},
+      {id:94005,cost: itemPriceChart.ChainMailSell, Get:ChainMailFn(itemPriceChart.ChainMailSell,-1), Img: ChainMail, name: "Chain Mail", Item: userGoldItem.ChainMail},
+      {id:94006,cost: itemPriceChart.FullPlateSell, Get:FullPlateFn(itemPriceChart.FullPlateSell,-1), Img: FullPlate, name: "Full Plate", Item: userGoldItem.FullPlate},
     ]
     let GarmentBuyBox = [
       //Garment
