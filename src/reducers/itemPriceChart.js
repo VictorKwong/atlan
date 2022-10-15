@@ -34,6 +34,12 @@ const Fn = {
     PaddedArmorBuy: 8000,
     ChainMailBuy: 10000,
     FullPlateBuy: 15000,
+    //GARMENT
+    HoodBuy: 10,
+    MufflerBuy: 20,
+    ManteauBuy: 30,
+    FalconMufflerBuy: 40,
+    ValisManteauBuy: 50,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
