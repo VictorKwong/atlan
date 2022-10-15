@@ -126,11 +126,11 @@ function StartMenu(){
     ]
     let GarmentBuyBox = [
       //Garment
-      {id:5000, cost: 10, Get:HoodFn(-10,1), Img:Hood, name:"Hood"},
-      {id:5001, cost: 20, Get:MufflerFn(-20,1), Img:Muffler, name:"Muffler"},
-      {id:5002, cost: 30, Get:ManteauFn(-30,1), Img:Manteau, name:"Manteau"},
-      {id:5003, cost: 40, Get:FalconMufflerFn(-40,1), Img:FalconMuffler, name:"Falcon Muffler"},
-      {id:5004, cost: 50, Get:ValisManteauFn(-50,1), Img:ValisManteau, name:"Vali`s Manteau"},
+      {id:5000, cost: itemPriceChart.HoodBuy, Get:HoodFn(-itemPriceChart.HoodBuy,1), Img:Hood, name:"Hood"},
+      {id:5001, cost: itemPriceChart.MufflerBuy, Get:MufflerFn(-itemPriceChart.MufflerBuy,1), Img:Muffler, name:"Muffler"},
+      {id:5002, cost: itemPriceChart.ManteauBuy, Get:ManteauFn(-itemPriceChart.ManteauBuy,1), Img:Manteau, name:"Manteau"},
+      {id:5003, cost: itemPriceChart.FalconMufflerBuy, Get:FalconMufflerFn(-itemPriceChart.FalconMufflerBuy,1), Img:FalconMuffler, name:"Falcon Muffler"},
+      {id:5004, cost: itemPriceChart.ValisManteauBuy, Get:ValisManteauFn(-itemPriceChart.ValisManteauBuy,1), Img:ValisManteau, name:"Vali`s Manteau"},
       {id:5005, cost: 60, Get:ValkyrianManteauFn(-60,1), Img:ValkyrianManteau, name:"Valkyrian Manteau"},
       {id:5006, cost: 70, Get:WoolScarfFn(-70,1), Img:WoolScarf, name:"Wool Scarf"},
       {id:5007, cost: 80, Get:FallenAngelWingFn(-80,1), Img:FallenAngelWing, name:"Fallen Angel Wing"},
