@@ -131,12 +131,12 @@ function StartMenu(){
       {id:5002, cost: itemPriceChart.ManteauBuy, Get:ManteauFn(-itemPriceChart.ManteauBuy,1), Img:Manteau, name:"Manteau"},
       {id:5003, cost: itemPriceChart.FalconMufflerBuy, Get:FalconMufflerFn(-itemPriceChart.FalconMufflerBuy,1), Img:FalconMuffler, name:"Falcon Muffler"},
       {id:5004, cost: itemPriceChart.ValisManteauBuy, Get:ValisManteauFn(-itemPriceChart.ValisManteauBuy,1), Img:ValisManteau, name:"Vali`s Manteau"},
-      {id:5005, cost: 60, Get:ValkyrianManteauFn(-60,1), Img:ValkyrianManteau, name:"Valkyrian Manteau"},
-      {id:5006, cost: 70, Get:WoolScarfFn(-70,1), Img:WoolScarf, name:"Wool Scarf"},
-      {id:5007, cost: 80, Get:FallenAngelWingFn(-80,1), Img:FallenAngelWing, name:"Fallen Angel Wing"},
-      {id:5008, cost: 90, Get:CloakofGrayFn(-90,1), Img:CloakofGray, name:"Cloak of Gray"},
-      {id:5009, cost: 100, Get:ElementalCapeFn(-100,1), Img:ElementalCape, name:"Elemental Cape"},
-      {id:5010, cost: 110, Get:AsprikaFn(-110,1), Img:Asprika, name:"Asprika"},
+      {id:5005, cost: itemPriceChart.ValkyrianManteauBuy, Get:ValkyrianManteauFn(-itemPriceChart.ValkyrianManteauBuy,1), Img:ValkyrianManteau, name:"Valkyrian Manteau"},
+      {id:5006, cost: itemPriceChart.WoolScarfBuy, Get:WoolScarfFn(-itemPriceChart.WoolScarfBuy,1), Img:WoolScarf, name:"Wool Scarf"},
+      {id:5007, cost: itemPriceChart.FallenAngelWingBuy, Get:FallenAngelWingFn(-itemPriceChart.FallenAngelWingBuy,1), Img:FallenAngelWing, name:"Fallen Angel Wing"},
+      {id:5008, cost: itemPriceChart.CloakofGrayBuy, Get:CloakofGrayFn(-itemPriceChart.CloakofGrayBuy,1), Img:CloakofGray, name:"Cloak of Gray"},
+      {id:5009, cost: itemPriceChart.ElementalCapeBuy, Get:ElementalCapeFn(-itemPriceChart.ElementalCapeBuy,1), Img:ElementalCape, name:"Elemental Cape"},
+      {id:5010, cost: itemPriceChart.AsprikaBuy, Get:AsprikaFn(-itemPriceChart.AsprikaBuy,1), Img:Asprika, name:"Asprika"},
     ]
     let GarmentSellBox = [
       //Garment

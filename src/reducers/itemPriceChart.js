@@ -40,6 +40,12 @@ const Fn = {
     ManteauBuy: 30,
     FalconMufflerBuy: 40,
     ValisManteauBuy: 50,
+    ValkyrianManteauBuy: 60,
+    WoolScarfBuy: 70,
+    FallenAngelWingBuy: 80,
+    CloakofGrayBuy: 90,
+    ElementalCapeBuy: 100,
+    AsprikaBuy: 110,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
