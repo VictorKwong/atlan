@@ -129,7 +129,7 @@ function StartMenu(){
       {id:5000, cost: itemPriceChart.HoodBuy, Get:HoodFn(-itemPriceChart.HoodBuy,1), Img:Hood, name:"Hood"},
       {id:5001, cost: itemPriceChart.MufflerBuy, Get:MufflerFn(-itemPriceChart.MufflerBuy,1), Img:Muffler, name:"Muffler"},
       {id:5002, cost: itemPriceChart.ManteauBuy, Get:ManteauFn(-itemPriceChart.ManteauBuy,1), Img:Manteau, name:"Manteau"},
-      {id:5003, cost: itemPriceChart.FalconMufflerBuy, Get:FalconMufflerFn(-itemPriceChart.FalconMufflerBuy,1), Img:FalconMuffler, name:"Falcon Muffler"},
+      {id:5003, cost: itemPriceChart.FalconMufflerB uy, Get:FalconMufflerFn(-itemPriceChart.FalconMufflerBuy,1), Img:FalconMuffler, name:"Falcon Muffler"},
       {id:5004, cost: itemPriceChart.ValisManteauBuy, Get:ValisManteauFn(-itemPriceChart.ValisManteauBuy,1), Img:ValisManteau, name:"Vali`s Manteau"},
       {id:5005, cost: itemPriceChart.ValkyrianManteauBuy, Get:ValkyrianManteauFn(-itemPriceChart.ValkyrianManteauBuy,1), Img:ValkyrianManteau, name:"Valkyrian Manteau"},
       {id:5006, cost: itemPriceChart.WoolScarfBuy, Get:WoolScarfFn(-itemPriceChart.WoolScarfBuy,1), Img:WoolScarf, name:"Wool Scarf"},
@@ -140,11 +140,11 @@ function StartMenu(){
     ]
     let GarmentSellBox = [
       //Garment
-      {id:6000, cost: 10, Get:HoodFn(10,-1), Img:Hood, name:"Hood", Item: userGoldItem.Hood},
-      {id:6001, cost: 10, Get:MufflerFn(10,-1), Img:Muffler, name:"Muffler", Item: userGoldItem.Muffler},
-      {id:6002, cost: 10, Get:ManteauFn(10,-1), Img:Manteau, name:"Manteau", Item: userGoldItem.Manteau},
-      {id:6003, cost: 10, Get:FalconMufflerFn(10,-1), Img:FalconMuffler, name:"Falcon Muffler", Item: userGoldItem.FalconMuffler},
-      {id:6004, cost: 10, Get:ValisManteauFn(10,-1), Img:ValisManteau, name:"Vali`s Manteau", Item: userGoldItem.ValisManteau},
+      {id:6000, cost: itemPriceChart.HoodSell, Get:HoodFn(itemPriceChart.HoodSell,-1), Img:Hood, name:"Hood", Item: userGoldItem.Hood},
+      {id:6001, cost: itemPriceChart.MufflerSell, Get:MufflerFn(itemPriceChart.MufflerSell,-1), Img:Muffler, name:"Muffler", Item: userGoldItem.Muffler},
+      {id:6002, cost: itemPriceChart.ManteauSell, Get:ManteauFn(itemPriceChart.ManteauSell,-1), Img:Manteau, name:"Manteau", Item: userGoldItem.Manteau},
+      {id:6003, cost: itemPriceChart.FalconMufflerSell, Get:FalconMufflerFn(itemPriceChart.FalconMufflerSell,-1), Img:FalconMuffler, name:"Falcon Muffler", Item: userGoldItem.FalconMuffler},
+      {id:6004, cost: itemPriceChart.ValisManteauSell, Get:ValisManteauFn(itemPriceChart.ValisManteauSell,-1), Img:ValisManteau, name:"Vali`s Manteau", Item: userGoldItem.ValisManteau},
       {id:6005, cost: 10, Get:ValkyrianManteauFn(10,-1), Img:ValkyrianManteau, name:"Valkyrian Manteau", Item: userGoldItem.ValkyrianManteau},
       {id:6006, cost: 10, Get:WoolScarfFn(10,-1), Img:WoolScarf, name:"Wool Scarf", Item: userGoldItem.WoolScarf},
       {id:6007, cost: 10, Get:FallenAngelWingFn(10,-1), Img:FallenAngelWing, name:"Fallen Angel Wing", Item: userGoldItem.FallenAngelWing},

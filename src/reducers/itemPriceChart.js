@@ -81,6 +81,12 @@ const Fn = {
     PaddedArmorSell: 6400,
     ChainMailSell: 8000,
     FullPlateSell: 12000,
+    //GARMENT
+    HoodSell: 10,
+    MufflerSell: 10,
+    ManteauSell: 10,
+    FalconMufflerSell: 10,
+    ValisManteauSell: 10,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {
