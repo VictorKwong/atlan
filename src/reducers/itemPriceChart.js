@@ -46,6 +46,12 @@ const Fn = {
     CloakofGrayBuy: 90,
     ElementalCapeBuy: 100,
     AsprikaBuy: 110,
+    //SHOES
+    SandalsBuy: 10,
+    ShoesBuy: 20,
+    BootsBuy: 30,
+    GreavesBuy: 40,
+    BunnySlipperFnBuy: 50,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,

@@ -154,11 +154,11 @@ function StartMenu(){
     ]
     let ShoesBuyBox = [
       //Shoes
-      {id:3000, cost: 10, Get:SandalsFn(-10,1), Img:Sandals, name:"Sandals"},
-      {id:3001, cost: 20, Get:ShoesFn(-20,1),Img:Shoes, name:"Shoes"},
-      {id:3002, cost: 30, Get:BootsFn(-30,1),Img:Boots,name:"Boots"},
-      {id:3003, cost: 40, Get:GreavesFn(-40,1),Img:Greaves,name:"Greaves"},
-      {id:3004, cost: 50, Get:BunnySlipperFn(-50,1),Img:BunnySlipper,name:"Bunny Slipper"},
+      {id:3000, cost: itemPriceChart.SandalsBuy, Get:SandalsFn(-itemPriceChart.SandalsBuy,1), Img:Sandals, name:"Sandals"},
+      {id:3001, cost: itemPriceChart.ShoesBuy, Get:ShoesFn(-itemPriceChart.ShoesBuy,1),Img:Shoes, name:"Shoes"},
+      {id:3002, cost: itemPriceChart.BootsBuy, Get:BootsFn(-itemPriceChart.BootsBuy,1),Img:Boots,name:"Boots"},
+      {id:3003, cost: itemPriceChart.GreavesBuy, Get:GreavesFn(-itemPriceChart.GreavesBuy,1),Img:Greaves,name:"Greaves"},
+      {id:3004, cost: itemPriceChart.BunnySlipperFnBuy, Get:BunnySlipperFn(-itemPriceChart.BunnySlipperBuy,1),Img:BunnySlipper,name:"Bunny Slipper"},
       {id:3005, cost: 60, Get:TidalShoesFn(-60,1),Img:TidalShoes,name:"Tidal Shoes"},
       {id:3006, cost: 70, Get:SiegeBootsFn(-70,1),Img:SiegeBoots,name:"Siege Boots"},
       {id:3007, cost: 80, Get:SiegeGreavesFn(-80,1),Img:SiegeGreaves,name:"Siege Greaves"},
