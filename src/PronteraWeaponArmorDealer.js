@@ -145,12 +145,12 @@ function StartMenu(){
       {id:6002, cost: itemPriceChart.ManteauSell, Get:ManteauFn(itemPriceChart.ManteauSell,-1), Img:Manteau, name:"Manteau", Item: userGoldItem.Manteau},
       {id:6003, cost: itemPriceChart.FalconMufflerSell, Get:FalconMufflerFn(itemPriceChart.FalconMufflerSell,-1), Img:FalconMuffler, name:"Falcon Muffler", Item: userGoldItem.FalconMuffler},
       {id:6004, cost: itemPriceChart.ValisManteauSell, Get:ValisManteauFn(itemPriceChart.ValisManteauSell,-1), Img:ValisManteau, name:"Vali`s Manteau", Item: userGoldItem.ValisManteau},
-      {id:6005, cost: 10, Get:ValkyrianManteauFn(10,-1), Img:ValkyrianManteau, name:"Valkyrian Manteau", Item: userGoldItem.ValkyrianManteau},
-      {id:6006, cost: 10, Get:WoolScarfFn(10,-1), Img:WoolScarf, name:"Wool Scarf", Item: userGoldItem.WoolScarf},
-      {id:6007, cost: 10, Get:FallenAngelWingFn(10,-1), Img:FallenAngelWing, name:"Fallen Angel Wing", Item: userGoldItem.FallenAngelWing},
-      {id:6008, cost: 10, Get:CloakofGrayFn(10,-1), Img:CloakofGray, name:"Cloak of Gray", Item: userGoldItem.CloakofGray},
-      {id:6009, cost: 10, Get:ElementalCapeFn(10,-1), Img:ElementalCape, name:"Elemental Cape", Item: userGoldItem.ElementalCape},
-      {id:6010, cost: 10, Get:AsprikaFn(10,-1), Img:Asprika, name:"Asprika", Item: userGoldItem.Asprika},
+      {id:6005, cost: itemPriceChart.ValkyrianManteauSell, Get:ValkyrianManteauFn(itemPriceChart.ValkyrianManteauSell,-1), Img:ValkyrianManteau, name:"Valkyrian Manteau", Item: userGoldItem.ValkyrianManteau},
+      {id:6006, cost: itemPriceChart.WoolScarfSell, Get:WoolScarfFn(itemPriceChart.WoolScarfSell,-1), Img:WoolScarf, name:"Wool Scarf", Item: userGoldItem.WoolScarf},
+      {id:6007, cost: itemPriceChart.FallenAngelWingSell, Get:FallenAngelWingFn(itemPriceChart.FallenAngelWingSell,-1), Img:FallenAngelWing, name:"Fallen Angel Wing", Item: userGoldItem.FallenAngelWing},
+      {id:6008, cost: itemPriceChart.CloakofGraySell, Get:CloakofGrayFn(itemPriceChart.CloakofGraySell,-1), Img:CloakofGray, name:"Cloak of Gray", Item: userGoldItem.CloakofGray},
+      {id:6009, cost: itemPriceChart.ElementalCapeSell, Get:ElementalCapeFn(itemPriceChart.ElementalCapeSell,-1), Img:ElementalCape, name:"Elemental Cape", Item: userGoldItem.ElementalCape},
+      {id:6010, cost: itemPriceChart.AsprikaSell, Get:AsprikaFn(itemPriceChart.AsprikaSell,-1), Img:Asprika, name:"Asprika", Item: userGoldItem.Asprika},
     ]
     let ShoesBuyBox = [
       //Shoes

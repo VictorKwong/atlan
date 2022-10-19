@@ -87,6 +87,12 @@ const Fn = {
     ManteauSell: 10,
     FalconMufflerSell: 10,
     ValisManteauSell: 10,
+    ValkyrianManteauSell: 10,
+    WoolScarfSell: 10,
+    FallenAngelWingSell: 10,
+    CloakofGraySell: 10,
+    ElementalCapeSell: 10,
+    AsprikaSell: 10,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {
