@@ -158,7 +158,7 @@ function StartMenu(){
       {id:3001, cost: itemPriceChart.ShoesBuy, Get:ShoesFn(-itemPriceChart.ShoesBuy,1),Img:Shoes, name:"Shoes"},
       {id:3002, cost: itemPriceChart.BootsBuy, Get:BootsFn(-itemPriceChart.BootsBuy,1),Img:Boots,name:"Boots"},
       {id:3003, cost: itemPriceChart.GreavesBuy, Get:GreavesFn(-itemPriceChart.GreavesBuy,1),Img:Greaves,name:"Greaves"},
-      {id:3004, cost: itemPriceChart.BunnySlipperFnBuy, Get:BunnySlipperFn(-itemPriceChart.BunnySlipperBuy,1),Img:BunnySlipper,name:"Bunny Slipper"},
+      {id:3004, cost: itemPriceChart.BunnySlipperBuy, Get:BunnySlipperFn(-itemPriceChart.BunnySlipperBuy,1),Img:BunnySlipper,name:"Bunny Slipper"},
       {id:3005, cost: itemPriceChart.TidalShoesBuy, Get:TidalShoesFn(-itemPriceChart.TidalShoesBuy,1),Img:TidalShoes,name:"Tidal Shoes"},
       {id:3006, cost: itemPriceChart.SiegeBootsBuy, Get:SiegeBootsFn(-itemPriceChart.SiegeBootsBuy,1),Img:SiegeBoots,name:"Siege Boots"},
       {id:3007, cost: itemPriceChart.SiegeGreavesBuy, Get:SiegeGreavesFn(-itemPriceChart.SiegeGreavesBuy,1),Img:SiegeGreaves,name:"Siege Greaves"},
