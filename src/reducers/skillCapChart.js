@@ -65,6 +65,8 @@ const Fn = {
     MagnumBreakBurningPercent: 0.01,
     MagnumBreakFireAdditionalDamage: 1.1,
 
+    //Level Up
+    LevelUpFirstAidFlatHeal: 30,
     JobPoints: 99,
     TotalJobPoints: 99
 }
@@ -76,7 +78,7 @@ const skillCapChartReducer = (state = Fn, action) => {
             return{
                 ...state,
                 FirstAidSkillLevel: state.FirstAidSkillLevel + 1,
-                // FirstAidFlatHeal: state.FirstAidFlatHeal + action.FirstAidFlatHeal,
+                FirstAidFlatHeal: state.FirstAidFlatHeal + state.LevelUpFirstAidFlatHeal,
                 JobPoints: state.JobPoints - 1,
             }
         case 'BashSkillLevelFn':

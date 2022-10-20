@@ -272,7 +272,7 @@ function StartMenu(){
     const dispatch = useDispatch();
 
     let SkillsLevelingBox = [
-      {id:20000, select:screenControlRoom.FirstAidTraining, Img:skillFirstAid, name:"First Aid", skillLevelCheck:skillCapChart.FirstAidSkillLevel, selection:FirstAidTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:FirstAidSkillLevelFn(), title:`SP:${skillCapChart.SPFirstAid} - Heal ${skillCapChart.FirstAidFlatHeal} of health`, Activate:UserSkillFirstAidFn(skillCapChart.SPFirstAid, skillCapChart.FirstAidFlatHeal)},
+      {id:20000, select:screenControlRoom.FirstAidTraining, Img:skillFirstAid, name:"First Aid", skillLevelCheck:skillCapChart.FirstAidSkillLevel, selection:FirstAidTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:FirstAidSkillLevelFn(), title:`SP:${skillCapChart.SPFirstAid} - Heal ${skillCapChart.FirstAidFlatHeal} of health`, Activate:UserSkillFirstAidFn(skillCapChart.SPFirstAid, skillCapChart.FirstAidFlatHeal), levelUpTitle:`Heal ${skillCapChart.FirstAidFlatHeal} -> ${skillCapChart.FirstAidFlatHeal + skillCapChart.LevelUpFirstAidFlatHeal}`},
 
       {id:20001, select:screenControlRoom.BashTraining, Img:skillBash, name:"Bash", skillLevelCheck:skillCapChart.BashSkillLevel, selection:BashTrainingFn(), JobPoints:skillCapChart.JobPoints, Upgrade:BashSkillLevelFn(), 
       title:`SP:${skillCapChart.SPBash} - Strike the target with a strong blow ${Math.floor((userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.str + userAttribute.BonusStr)*3 + (userAttribute.dex + userAttribute.BonusDex)/2 + (userAttribute.luk + userAttribute.BonusLuk) + userStats.BaseWeaponDamage*( 1 + 0.05*(userAttribute.str + userAttribute.BonusStr)) + userStats.BaseWeaponDamage)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage)} damage to target, it has a ${skillCapChart.BashStunChance*100}% chance of leaving the target stunned.`},
@@ -1074,7 +1074,10 @@ const NextMapProteraFn = (num) => {
                     return(
                       <span key={Skills.id}>
                         {Skills.select ?
+                        <div>
                           <p className="skillChatCenter">{Skills.title}</p>
+                          <p className="skillChatCenter">{Skills.levelUpTitle}</p>
+                        </div>
                         : null}
                         {Skills.name === "First Aid" && screenControlRoom.FirstAidTraining ?
                         <button className={userStats.currentSP >= skillCapChart.SPFirstAid ? "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse" : "altanSkillChatButton atlanSkillButtonFix atlanSkillButtonUse atlanSkillButtonNeedMoreSP"} title={Skills.title} onClick={
