@@ -52,6 +52,11 @@ const Fn = {
     BootsBuy: 30,
     GreavesBuy: 40,
     BunnySlipperFnBuy: 50,
+    TidalShoesBuy: 70,
+    SiegeBootsBuy: 80,
+    SiegeGreavesBuy: 90,
+    VidarsBootsBuy: 100,
+    VitalTreeShoesBuy: 110,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
