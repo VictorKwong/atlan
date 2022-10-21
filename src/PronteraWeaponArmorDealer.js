@@ -164,8 +164,8 @@ function StartMenu(){
       {id:3007, cost: itemPriceChart.SiegeGreavesBuy, Get:SiegeGreavesFn(-itemPriceChart.SiegeGreavesBuy,1),Img:SiegeGreaves,name:"Siege Greaves"},
       {id:3008, cost: itemPriceChart.VidarsBootsBuy, Get:VidarsBootsFn(-itemPriceChart.VidarsBootsBuy,1),Img:VidarsBoots,name:"Vidar`s Boots"},
       {id:3009, cost: itemPriceChart.VitalTreeShoesBuy, Get:VitalTreeShoesFn(-itemPriceChart.VitalTreeShoesBuy,1),Img:VitalTreeShoes,name:"Vital Tree Shoes"},
-      {id:3010, cost: 110, Get:VariantShoesFn(-110,1),Img:VariantShoes,name:"Variant Shoes"},
-      {id:3011, cost: 120, Get:SleipnirFn(-120,1),Img:Sleipnir,name:"Sleipnir"},
+      {id:3010, cost: itemPriceChart.VariantShoesBuy, Get:VariantShoesFn(-itemPriceChart.VariantShoesBuy,1),Img:VariantShoes,name:"Variant Shoes"},
+      {id:3011, cost: itemPriceChart.SleipnirBuy, Get:SleipnirFn(-itemPriceChart.SleipnirBuy,1),Img:Sleipnir,name:"Sleipnir"},
     ]
     let ShoesSellBox = [
       //Shoes

@@ -57,6 +57,8 @@ const Fn = {
     SiegeGreavesBuy: 90,
     VidarsBootsBuy: 100,
     VitalTreeShoesBuy: 110,
+    VariantShoesBuy: 120,
+    SleipnirBuy: 130,
     //Sell
     //HEAD GEAR
     LordKahosHornSell: 80,
