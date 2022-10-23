@@ -106,6 +106,9 @@ const Fn = {
     CloakofGraySell: 10,
     ElementalCapeSell: 10,
     AsprikaSell: 10,
+    //SHOES
+    SandalsSell: 10,
+    ShoesSell: 10,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {

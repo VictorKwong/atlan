@@ -169,8 +169,8 @@ function StartMenu(){
     ]
     let ShoesSellBox = [
       //Shoes
-      {id:4000, cost: 10, Get:SandalsFn(10,-1), Img:Sandals, name:"Sandals", Item: userGoldItem.Sandals},
-      {id:4001, cost: 10, Get:ShoesFn(10,-1), Img:Shoes, name:"Shoes", Item: userGoldItem.Shoes},
+      {id:4000, cost: itemPriceChart.SandalsSell, Get:SandalsFn(itemPriceChart.SandalsSell,-1), Img:Sandals, name:"Sandals", Item: userGoldItem.Sandals},
+      {id:4001, cost: itemPriceChart.ShoesSell, Get:ShoesFn(itemPriceChart.ShoesSell,-1), Img:Shoes, name:"Shoes", Item: userGoldItem.Shoes},
       {id:4002, cost: 10, Get:BootsFn(10,-1), Img:Boots ,name:"Boots", Item: userGoldItem.Boots},
       {id:4003, cost: 10, Get:GreavesFn(10,-1), Img:Greaves, name:"Greaves", Item: userGoldItem.Greaves},
       {id:4004, cost: 10, Get:BunnySlipperFn(10,-1), Img:BunnySlipper, name:"Bunny Slipper", Item: userGoldItem.BunnySlipper},
