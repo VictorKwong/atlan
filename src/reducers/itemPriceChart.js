@@ -114,6 +114,8 @@ const Fn = {
     BunnySlipperSell: 10,
     TidalShoesSell: 10,
     SiegeBootsSell: 10,
+    SiegeGreavesSell: 10,
+    VidarsBootsSell: 10,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {
