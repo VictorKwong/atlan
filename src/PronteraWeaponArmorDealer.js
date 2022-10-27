@@ -178,9 +178,9 @@ function StartMenu(){
       {id:4006, cost: itemPriceChart.SiegeBootsSell, Get:SiegeBootsFn(itemPriceChart.SiegeBootsSell,-1), Img:SiegeBoots, name:"Siege Boots", Item: userGoldItem.SiegeBoots},
       {id:4007, cost: itemPriceChart.SiegeGreavesSell, Get:SiegeGreavesFn(itemPriceChart.SiegeGreavesSell,-1), Img:SiegeGreaves, name:"Siege Greaves", Item: userGoldItem.SiegeGreaves},
       {id:4008, cost: itemPriceChart.VidarsBootsSell, Get:VidarsBootsFn(itemPriceChart.VidarsBootsSell,-1), Img:VidarsBoots, name:"Vidar`s Boots", Item: userGoldItem.VidarsBoots},
-      {id:4009, cost: 10, Get:VitalTreeShoesFn(10,-1), Img:VitalTreeShoes, name:"Vital Tree Shoes", Item: userGoldItem.VitalTreeShoes},
-      {id:4010, cost: 10, Get:VariantShoesFn(10,-1), Img:VariantShoes, name:"Variant Shoes", Item: userGoldItem.VariantShoes},
-      {id:4011, cost: 10, Get:SleipnirFn(10,-1), Img:Sleipnir, name:"Sleipnir", Item: userGoldItem.Sleipnir},
+      {id:4009, cost: itemPriceChart.VitalTreeShoesSell, Get:VitalTreeShoesFn(itemPriceChart.VitalTreeShoesSell,-1), Img:VitalTreeShoes, name:"Vital Tree Shoes", Item: userGoldItem.VitalTreeShoes},
+      {id:4010, cost: itemPriceChart.VariantShoesSell, Get:VariantShoesFn(itemPriceChart.VariantShoesSell,-1), Img:VariantShoes, name:"Variant Shoes", Item: userGoldItem.VariantShoes},
+      {id:4011, cost: itemPriceChart.SleipnirSell, Get:SleipnirFn(itemPriceChart.SleipnirSell,-1), Img:Sleipnir, name:"Sleipnir", Item: userGoldItem.Sleipnir},
     ]
     return(
       <div className="WeaponArmorDealerMap">

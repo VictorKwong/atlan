@@ -116,6 +116,9 @@ const Fn = {
     SiegeBootsSell: 10,
     SiegeGreavesSell: 10,
     VidarsBootsSell: 10,
+    VitalTreeShoesSell: 10,
+    VariantShoesSell: 10,
+    SleipnirSell: 10,
 }
 
 const itemPriceChartReducer = (state = Fn, action) => {
