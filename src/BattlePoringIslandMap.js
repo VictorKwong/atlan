@@ -1216,7 +1216,7 @@ function Main(){
       let Khit = Math.random();
       (() => {
         switch (true) {
-          // Is it Hit? Either Hit or Crit 100% can't dodge
+          // Is it Hit? Either Crit 100% or Hit or Stun
           case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
             //if Crit
             if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
@@ -1230,7 +1230,7 @@ function Main(){
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
-            //if Hit
+            //if Hit or Stun
             }else{
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
@@ -1252,8 +1252,14 @@ function Main(){
                 //Audio SoundEffect
                 userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
+                //if Crit
+                if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+                  $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
+                  $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
+                }else{
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
+                }
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale)} hp</p>`)
                 dispatch(UserOnLifeStealAnimationFn(true));
@@ -1262,12 +1268,17 @@ function Main(){
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),i,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
-              }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true ){
+              }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true){
                 //Audio SoundEffect
                 userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
+                if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+                  $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
+                  $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
+                }else{
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Math.floor(Damage)} damage</p>`)
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
+                }
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
@@ -1276,13 +1287,21 @@ function Main(){
                  // Text display
                 dispatch(UserOnLifeStealAnimationFn(true));
                 setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+                  $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                }else{
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+                }
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)), 300));
               }else{
                 // Text display
-                $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+                  $('.storySpeech').append(`<p>Critial Hit! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                }else{
+                  $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+                }
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
               }
@@ -2418,7 +2437,6 @@ function Main(){
         if (Uclock === 0){
           setTimeout(() => clockRenderQtn(), 900);
         }
-        
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userStats,enemyStats, dispatch]);
 
