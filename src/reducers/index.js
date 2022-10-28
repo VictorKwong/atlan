@@ -22,6 +22,8 @@ import equipmentAllStatsReducer from './equipmentAllStats'
 import itemPriceChartReducer from './itemPriceChart'
 
 import enemyStatsReducer from "./enemyStats";
+import enemyStatsTwoReducer from "./enemyStatsTwo";
+import enemyStatsThreeReducer from "./enemyStatsThree";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
@@ -41,6 +43,8 @@ const allReducers = combineReducers({
     userAttribute: userAttributeReducer,
     userGoldItem: userGoldItemReducer,
     enemyStats: enemyStatsReducer,
+    enemyStatsTwo: enemyStatsTwoReducer,
+    enemyStatsThree: enemyStatsThreeReducer,
     footerEasterEgg: footerEasterEggReducer,
     trainingSuccessRate: trainingSuccessRateReducer,
     trainingSuccessRequire: trainingSuccessRequireReducer,
