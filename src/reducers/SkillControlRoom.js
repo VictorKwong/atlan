@@ -31,6 +31,22 @@ const Fn = {
         EnemyBurning: -1,
         EnemyBleeding: -1,
         EnemyDefenceBreak: -1,
+    },
+    EnemyTwo:{
+        EnemyTurn: false,
+        EnemyBlock: false,
+        EnemyPoison: -1,
+        EnemyBurning: -1,
+        EnemyBleeding: -1,
+        EnemyDefenceBreak: -1,
+    },
+    EnemyThree:{
+        EnemyTurn: false,
+        EnemyBlock: false,
+        EnemyPoison: -1,
+        EnemyBurning: -1,
+        EnemyBleeding: -1,
+        EnemyDefenceBreak: -1,
     }
     
 }
