@@ -624,11 +624,13 @@ export const GotoPayonCave3FFn = () => {
     };
 };
 
-export const GotoBattlePoringIslandMapFn = (Path,MonsterID) => {
+export const GotoBattlePoringIslandMapFn = (Path,MonsterID,MonsterIDTwo = -1,MonsterIDThree = -1) => {
     return {
         type: 'GotoBattlePoringIslandMapFn',
         Path:Path,
-        num:MonsterID
+        num:MonsterID,
+        numTwo:MonsterIDTwo,
+        numThree:MonsterIDThree,
     };
 };
 export const GotoBattlePoringIslandMapTwoFn = (Path) => {

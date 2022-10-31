@@ -787,6 +787,8 @@ function Main(){
     const dispatch = useDispatch();
     //Monster Random Number 0 1 
     let i = screenControlRoom.BattlePoringIslandMapMonsterID
+    let j = screenControlRoom.BattlePoringIslandMapMonsterIDTwo
+    let k = screenControlRoom.BattlePoringIslandMapMonsterIDThree
     useEffect(() => {
       audioHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioEmptyHandHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
