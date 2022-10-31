@@ -624,7 +624,7 @@ export const GotoPayonCave3FFn = () => {
     };
 };
 
-export const GotoBattlePoringIslandMapFn = (Path,MonsterID,MonsterIDTwo = -1,MonsterIDThree = -1) => {
+export const GotoBattlePoringIslandMapFn = (Path,MonsterID,MonsterIDTwo,MonsterIDThree) => {
     return {
         type: 'GotoBattlePoringIslandMapFn',
         Path:Path,

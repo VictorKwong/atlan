@@ -1421,6 +1421,8 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     //PORING ISLAND BATTLE
                     BattlePoringIslandMap: false,
                     BattlePoringIslandMapMonsterID: 0,
+                    BattlePoringIslandMapMonsterIDTwo: 0,
+                    BattlePoringIslandMapMonsterIDThree: 0,
                     //Loading Screen
                     BattleLoadingScreen: false,
                     TrainingLoadingScreen: false,

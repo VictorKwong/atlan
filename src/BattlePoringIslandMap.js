@@ -604,6 +604,8 @@ const audioUserBlock = new Audio(UserBlock)
 let clockBarObject = {
   userClockBar: 0,
   enemyClockBar: 0,
+  enemyTwoClockBar: 0,
+  enemyThreeClockBar: 0,
 }
 let Damage = 0;
 let HPHeal = 0;
@@ -615,6 +617,13 @@ let EnemyStunClock = -1;
 let EnemySlowClock = -1;
 let EnemyDefenceDebuff = -1;
 //Monster Random Number 0 1 
+let EnemyTwoStunClock = -1;
+let EnemyTwoSlowClock = -1;
+let EnemyTwoDefenceDebuff = -1;
+
+let EnemyThreeStunClock = -1;
+let EnemyThreeSlowClock = -1;
+let EnemyThreeDefenceDebuff = -1;
 // let i = Math.round(Math.random())
 let Uclock = 0;
 let clockCheck = 0;
