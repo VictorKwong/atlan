@@ -1128,6 +1128,7 @@ function Main(){
                 // dispatch(ResetUserSkillQuickenClockFn());
     }
     // LEVEL + JobLevel FUNCTION
+    //setup the exp i j k
     useEffect(() => {
       if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
         //MAX Lv99
