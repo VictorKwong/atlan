@@ -1607,7 +1607,7 @@ function Main(){
       setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
-      setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike)), 300);
+      setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike, skillCapChart.VitalStrikeDefenceBreakDownTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.int)*8)
       dispatch(UserAttackEnemyFn(parseInt(Damage),i));
       $('.storySpeech').append(`<p>Atlan use skill Vital Strike! Enemy defence is breaking down...</p>`)
@@ -1764,7 +1764,7 @@ function Main(){
 
             //Bleeding?
             if(skillCapChart.HeadCrushBleedingChance >= Math.random()){
-              dispatch(UserSkillHeadCrushFn(skillCapChart.HeadCrushBleedingTurn));
+              dispatch(UserSkillHeadCrushFn(skillCapChart.SPHeadCrush,skillCapChart.HeadCrushBleedingTurn));
               $('.storySpeech').append(`<p>${enemyStats[i].name} suffers Head Crush injury - (Bleeding Effect).</p>`)
             }
 
@@ -2368,49 +2368,70 @@ function Main(){
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
-              
-              switch (true) {
-                case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock < 0) && (EnemySlowClock < 0)):
-                  Uclock = 1;
-                  return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
-                            enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
-                          }
-                case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock >= 0)):
-                  Uclock = 1;
-                  EnemyStunClock = EnemyStunClock - 1;
-                  return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
-                            enemyClockBar: clockBarObject.enemyClockBar
-                          }
-                case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemySlowClock >= 0)):
-                  Uclock = 1;
-                  EnemySlowClock = EnemySlowClock - 1;
-                  return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
-                            enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent))
-                          }
-                case (EnemyStunClock >= 0):
-                  Uclock = 1;
-                  EnemyStunClock = EnemyStunClock - 1;
-                  return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
-                            enemyClockBar: clockBarObject.enemyClockBar,
-                          }
-                  case (EnemySlowClock >= 0):
-                    Uclock = 1;
-                    EnemySlowClock = EnemySlowClock - 1;
-                    return clockBarObject = {
-                              userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
-                              enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent))
-                            }
-                  default:
-                    Uclock = 1;
-                    return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
-                            enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
-                          }
+              let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClock]
+              let result = [0,0];
+
+              if(EnemyStunClock >= 0){
+                result[2] = 0
+              }else{
+                result[2] = 1
               }
+
+              for (let g = 0; g < 2; g++){
+                if(arr[g] >= 0){
+                  result[g] = 1
+                }else{
+                  result[g] = 0
+                }
+              }
+
+              // switch (true) {
+                // case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock < 0) && (EnemySlowClock < 0)):
+                //   Uclock = 1;
+                //   return clockBarObject = {
+                //             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
+                //             enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                //           }
+                // case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock >= 0)):
+                //   Uclock = 1;
+                //   EnemyStunClock = EnemyStunClock - 1;
+                //   return clockBarObject = {
+                //             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed,
+                //             enemyClockBar: clockBarObject.enemyClockBar
+                //           }
+                // case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemySlowClock >= 0)):
+                // default:
+                  Uclock = 1;
+                  if(EnemyStunClock >= 0){
+                    EnemyStunClock = EnemyStunClock - 1;
+                  }else if(EnemySlowClock >= 0){
+                    EnemySlowClock = EnemySlowClock - 1;
+                  }
+                  return clockBarObject = {
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed * result[0],
+                            enemyClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent * result[1]))) * result[2]
+                          }
+                // case (EnemyStunClock >= 0):
+                //   Uclock = 1;
+                //   EnemyStunClock = EnemyStunClock - 1;
+                //   return clockBarObject = {
+                //             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
+                //             enemyClockBar: clockBarObject.enemyClockBar,
+                //           }
+                //   case (EnemySlowClock >= 0):
+                //     Uclock = 1;
+                //     EnemySlowClock = EnemySlowClock - 1;
+                //     return clockBarObject = {
+                //               userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
+                //               enemyClockBar: clockBarObject.enemyClockBar + parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent))
+                //             }
+                  // default:
+                  //   Uclock = 1;
+                  //   return clockBarObject = {
+                  //           userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed),
+                  //           enemyClockBar: clockBarObject.enemyClockBar + enemyStats[i].speed,
+                  //         }
+              // }
           }
         })()
         // console.log('ticking')
