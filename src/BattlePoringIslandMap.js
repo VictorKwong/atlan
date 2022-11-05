@@ -2368,21 +2368,22 @@ function Main(){
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
-              let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClock]
-              let result = [0,0];
+              let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClock,EnemyStunClock,enemyStats[i].currentHealth]
+              //EnemyTwoSlowClock,EnemyTwoStunClock,EnemyThreeSlowClock,EnemyThreeStunClock
+              let result = [0,0,0,0];
 
-              if(EnemyStunClock >= 0){
-                result[2] = 0
-              }else{
-                result[2] = 1
-              }
-
-              for (let g = 0; g < 2; g++){
+              for (let g = 0; g < 4; g++){
                 if(arr[g] >= 0){
                   result[g] = 1
                 }else{
                   result[g] = 0
                 }
+              }
+
+              if(EnemyStunClock >= 0){
+                result[2] = 0
+              }else{
+                result[2] = 1
               }
 
               // switch (true) {
@@ -2409,7 +2410,7 @@ function Main(){
                   }
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed * result[0],
-                            enemyClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent * result[1]))) * result[2]
+                            enemyClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent * result[1]))) * result[2] * result[3]
                           }
                 // case (EnemyStunClock >= 0):
                 //   Uclock = 1;
