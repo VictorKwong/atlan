@@ -887,6 +887,19 @@ export const ReturnUserInSelectItemFn = () => {
         type: 'ReturnUserInSelectItemFn'
     };
 };
+export const UserInSelectEnemyFn = (Enemy) => {
+    return {
+        type: 'UserInSelectEnemyFn',
+        Enemy: Enemy
+    };
+};
+
+export const UserInSelectUserFn = (User) => {
+    return {
+        type: 'UserInSelectUserFn',
+        User: User
+    };
+};
 
 
 export const EnemyTurnFn = () => {

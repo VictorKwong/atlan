@@ -3,6 +3,8 @@ const Fn = {
     User:{
         BattleSkillScreen: false,
         BattleItemScreen: false,
+        BattleTargetEnemyScreen: false,
+        BattleTargetUserScreen: false,
         UserTurn: false,
         UserBlock: false,
         //userClock Status
@@ -279,6 +281,8 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserBlock: false,
                     BattleItemScreen: false,
                     BattleSkillScreen: false,
+                    BattleTargetEnemyScreen: false,
+                    BattleTargetUserScreen: false,
                     UserTurn: false,
                     UserTriggerMasterItem: true,
                 }
@@ -291,6 +295,8 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserBlock: false,
                     BattleSkillScreen: false,
                     BattleItemScreen: false,
+                    BattleTargetEnemyScreen: false,
+                    BattleTargetUserScreen: false,
                     userClockQuicken: state['User'].userClockQuicken - 1,
                     userClockFireAttackAttributes: state['User'].userClockFireAttackAttributes - 1
                 },

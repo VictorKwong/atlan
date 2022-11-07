@@ -5,7 +5,7 @@ import { GotoWorldMapFn, GotoPoringIslandFn, GotoPayonCave1FFn, GotoPayonCave2FF
 //Battle Reset
 import { ResetAllBattleMapFn, UserBattleStatsFn, EnemyBattleStatsFn } from './actions';
 //Battle UI
-import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn } from './actions';
+import { ReturnUserInSelectSkillFn, UserInSelectSkillFn , UserInSelectItemFn , ReturnUserInSelectItemFn, UserInSelectEnemyFn, UserInSelectUserFn } from './actions';
 //Clock
 import { UserTurnFn , ResetUserTurnFn, ResetEnemyTurnFn, userClockDefendFn, enemyClockDefendFn, TickingClockFn } from './actions';
 //Game Result (Victory/Defeat)
@@ -792,6 +792,8 @@ function Main(){
     const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
     const enemyStats = useSelector(state => state.enemyStats)
+    const enemyStatsTwo = useSelector(state => state.enemyStatsTwo)
+    const enemyStatsThree = useSelector(state => state.enemyStatsThree)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
     const dispatch = useDispatch();
     //Monster Random Number 0 1 
@@ -2728,6 +2730,51 @@ function Main(){
                               </figcaption>
                             </button>: null}
                         <button className="goGoButton" onClick={() => dispatch(ReturnUserInSelectItemFn())}>
+                          <figcaption className="goGoButtonFig">
+                            <p className="goGoButtonName">Back</p>
+                          </figcaption>
+                        </button>
+                      </div>
+                      : SkillControlRoom['User'].BattleTargetEnemyScreen && SkillControlRoom['User'].UserTurn && clockBarObject.userClockBar >= 100? 
+                      <div className="userSkillBox">
+                        {enemyStats[i].currentHealth > 0 ?
+                        <button className="goGoButton" onClick={() => userAttackEnemyButton(i,1)}>
+                          <figcaption className="goGoButtonFig">
+                              {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined)?
+                              <p className="goGoButtonName">{enemyStats[i].name} 1</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
+                              }
+                          </figcaption>
+                        </button> : null }
+                        {enemyStatsTwo[j].currentHealth > 0 && j !== undefined ?
+                        <button className="goGoButton" onClick={() => userAttackEnemyButton(j,2)}>
+                          <figcaption className="goGoButtonFig">
+                              {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
+                              <p className="goGoButtonName">{enemyStats[i].name} 2</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
+                              }
+                          </figcaption>
+                        </button> : null }
+                        {enemyStatsThree[k].currentHealth > 0 && k !== undefined ?
+                        <button className="goGoButton" onClick={() => userAttackEnemyButton(k,3)}>
+                          <figcaption className="goGoButtonFig">
+                              {(enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
+                              <p className="goGoButtonName">{enemyStats[i].name} 3</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
+                              }
+                          </figcaption>
+                        </button> : null }
+                        <button className="goGoButton" onClick={() => dispatch(UserInSelectEnemyFn(false))}>
+                          <figcaption className="goGoButtonFig">
+                            <p className="goGoButtonName">Back</p>
+                          </figcaption>
+                        </button>
+                      </div>
+                      : SkillControlRoom['User'].BattleTargetUserScreen && SkillControlRoom['User'].UserTurn && clockBarObject.userClockBar >= 100? 
+                      <div className="userSkillBox">
+                        <button className="goGoButton" onClick={() => userAttackEnemyButton()}>
+                          <figcaption className="goGoButtonFig">
+                            <p className="goGoButtonName">Altan</p>
+                          </figcaption>
+                        </button>
+                          <button className="goGoButton" onClick={() => dispatch(UserInSelectUserFn(false))}>
                           <figcaption className="goGoButtonFig">
                             <p className="goGoButtonName">Back</p>
                           </figcaption>
