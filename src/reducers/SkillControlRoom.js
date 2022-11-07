@@ -25,6 +25,16 @@ const Fn = {
         UserDoubleAttackScale: 0.2,
         UserReflectAttackScale: 0.5,
         UserLifeStealAttack: 0.3,
+        //All Attack Choice
+        SkillBashSelect: false,
+        SkillMammoniteSelect: false,
+        SkillKodokuSelect: false,
+        SkillMagnumBreakSelect: false,
+        SkillHeadCrushSelect: false,
+        SkillQuickenSelect: false,
+        SkillVitalStrikeSelect: false,
+        SkillBowlingBashSelect: false,
+
     },
     Enemy:{
         EnemyTurn: false,
@@ -91,12 +101,39 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     
                 }
         }
+        case 'UserInSelectEnemyFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    BattleTargetEnemyScreen: action.Enemy,
+                    
+                }
+        }
+        case 'UserInSelectUserFn':
+            return {
+                ...state,
+                User:{
+                    ...state['User'],
+                    BattleTargetUserScreen: action.User,
+                    
+                }
+        }
+
         case 'UserTurnFn':
             return {
                     ...state,
                     User:{
                         ...state['User'],
                         UserTurn: true,
+                        SkillBashSelect: false,
+                        SkillMammoniteSelect: false,
+                        SkillKodokuSelect: false,
+                        SkillMagnumBreakSelect: false,
+                        SkillHeadCrushSelect: false,
+                        SkillQuickenSelect: false,
+                        SkillVitalStrikeSelect: false,
+                        SkillBowlingBashSelect: false,
                     }
             }
         case 'ResetUserTurnFn':
@@ -105,6 +142,14 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 User:{
                     ...state['User'],
                     UserTurn: false,
+                    SkillBashSelect: false,
+                    SkillMammoniteSelect: false,
+                    SkillKodokuSelect: false,
+                    SkillMagnumBreakSelect: false,
+                    SkillHeadCrushSelect: false,
+                    SkillQuickenSelect: false,
+                    SkillVitalStrikeSelect: false,
+                    SkillBowlingBashSelect: false,
                 }
         }
         case 'UserTurnBlockFn':
@@ -285,6 +330,15 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     BattleTargetUserScreen: false,
                     UserTurn: false,
                     UserTriggerMasterItem: true,
+                    
+                    SkillBashSelect: false,
+                    SkillMammoniteSelect: false,
+                    SkillKodokuSelect: false,
+                    SkillMagnumBreakSelect: false,
+                    SkillHeadCrushSelect: false,
+                    SkillQuickenSelect: false,
+                    SkillVitalStrikeSelect: false,
+                    SkillBowlingBashSelect: false,
                 }
             }
         case 'UserBattleStatsFn':
@@ -298,7 +352,16 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     BattleTargetEnemyScreen: false,
                     BattleTargetUserScreen: false,
                     userClockQuicken: state['User'].userClockQuicken - 1,
-                    userClockFireAttackAttributes: state['User'].userClockFireAttackAttributes - 1
+                    userClockFireAttackAttributes: state['User'].userClockFireAttackAttributes - 1,
+
+                    SkillBashSelect: false,
+                    SkillMammoniteSelect: false,
+                    SkillKodokuSelect: false,
+                    SkillMagnumBreakSelect: false,
+                    SkillHeadCrushSelect: false,
+                    SkillQuickenSelect: false,
+                    SkillVitalStrikeSelect: false,
+                    SkillBowlingBashSelect: false,
                 },
                 Enemy:{
                     ...state['Enemy'],
