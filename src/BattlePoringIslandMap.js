@@ -2738,7 +2738,16 @@ function Main(){
                       : SkillControlRoom['User'].BattleTargetEnemyScreen && SkillControlRoom['User'].UserTurn && clockBarObject.userClockBar >= 100? 
                       <div className="userSkillBox">
                         {enemyStats[i].currentHealth > 0 ?
-                        <button className="goGoButton" onClick={() => userAttackEnemyButton(i,1)}>
+                        <button className="goGoButton" onClick={
+                          SkillControlRoom['User'].UserAttackSelect ? () => userAttackEnemyButton(i,1) :
+                          SkillControlRoom['User'].SkillBashSelect ? () => userSkillBashButton(i,1) :
+                          SkillControlRoom['User'].SkillMammoniteSelect ? () => userSkillMammoniteButton(i,1) :
+                          SkillControlRoom['User'].SkillKodokuSelect ? () => userSkillKodokuButton(i,1) :
+                          SkillControlRoom['User'].SkillMagnumBreakSelect ? () => userSkillMagnumBreakButton() :
+                          SkillControlRoom['User'].SkillHeadCrushSelect ? () => userSkillHeadCrushButton() :
+                          SkillControlRoom['User'].SkillVitalStrikeSelect ? () => userSkillVitalStrikeButton() :
+                          SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton()
+                        : null}>
                           <figcaption className="goGoButtonFig">
                               {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined)?
                               <p className="goGoButtonName">{enemyStats[i].name} 1</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>

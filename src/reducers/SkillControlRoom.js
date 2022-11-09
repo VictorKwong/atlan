@@ -26,12 +26,12 @@ const Fn = {
         UserReflectAttackScale: 0.5,
         UserLifeStealAttack: 0.3,
         //All Attack Choice
+        UserAttackSelect: false,
         SkillBashSelect: false,
         SkillMammoniteSelect: false,
         SkillKodokuSelect: false,
         SkillMagnumBreakSelect: false,
         SkillHeadCrushSelect: false,
-        SkillQuickenSelect: false,
         SkillVitalStrikeSelect: false,
         SkillBowlingBashSelect: false,
 
@@ -126,12 +126,12 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     User:{
                         ...state['User'],
                         UserTurn: true,
+                        UserAttackSelect: false,
                         SkillBashSelect: false,
                         SkillMammoniteSelect: false,
                         SkillKodokuSelect: false,
                         SkillMagnumBreakSelect: false,
                         SkillHeadCrushSelect: false,
-                        SkillQuickenSelect: false,
                         SkillVitalStrikeSelect: false,
                         SkillBowlingBashSelect: false,
                     }
@@ -142,12 +142,12 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                 User:{
                     ...state['User'],
                     UserTurn: false,
+                    UserAttackSelect: false,
                     SkillBashSelect: false,
                     SkillMammoniteSelect: false,
                     SkillKodokuSelect: false,
                     SkillMagnumBreakSelect: false,
                     SkillHeadCrushSelect: false,
-                    SkillQuickenSelect: false,
                     SkillVitalStrikeSelect: false,
                     SkillBowlingBashSelect: false,
                 }
@@ -331,12 +331,12 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     UserTurn: false,
                     UserTriggerMasterItem: true,
                     
+                    UserAttackSelect: false,
                     SkillBashSelect: false,
                     SkillMammoniteSelect: false,
                     SkillKodokuSelect: false,
                     SkillMagnumBreakSelect: false,
                     SkillHeadCrushSelect: false,
-                    SkillQuickenSelect: false,
                     SkillVitalStrikeSelect: false,
                     SkillBowlingBashSelect: false,
                 }
@@ -354,12 +354,12 @@ const SkillControlRoomReducer = (state = Fn, action) => {
                     userClockQuicken: state['User'].userClockQuicken - 1,
                     userClockFireAttackAttributes: state['User'].userClockFireAttackAttributes - 1,
 
+                    UserAttackSelect: false,
                     SkillBashSelect: false,
                     SkillMammoniteSelect: false,
                     SkillKodokuSelect: false,
                     SkillMagnumBreakSelect: false,
                     SkillHeadCrushSelect: false,
-                    SkillQuickenSelect: false,
                     SkillVitalStrikeSelect: false,
                     SkillBowlingBashSelect: false,
                 },
