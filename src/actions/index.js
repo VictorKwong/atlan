@@ -887,10 +887,27 @@ export const ReturnUserInSelectItemFn = () => {
         type: 'ReturnUserInSelectItemFn'
     };
 };
-export const UserInSelectEnemyFn = (Enemy) => {
+// UserAttackSelect
+// SkillBashSelect
+// SkillMammoniteSelect
+// SkillKodokuSelect
+// SkillMagnumBreakSelect
+// SkillHeadCrushSelect
+// SkillVitalStrikeSelect
+// SkillBowlingBashSelect
+export const UserInSelectEnemyFn = (Enemy, Attack, Bash, Mammonite, Kodoku, MagnumBreak, HeadCrush, VitalStrike, BowlingBash) => {
     return {
         type: 'UserInSelectEnemyFn',
-        Enemy: Enemy
+        Enemy: Enemy,
+        Attack: Attack,
+        Bash: Bash,
+        Mammonite: Mammonite,
+        Kodoku: Kodoku,
+        MagnumBreak: MagnumBreak,
+        HeadCrush: HeadCrush,
+        VitalStrike: VitalStrike,
+        BowlingBash: BowlingBash
+        
     };
 };
 

@@ -2772,7 +2772,16 @@ function Main(){
                           </figcaption>
                         </button> : null }
                         {enemyStatsThree[k].currentHealth > 0 && k !== undefined ?
-                        <button className="goGoButton" onClick={() => userAttackEnemyButton(k,3)}>
+                        <button className="goGoButton" onClick={
+                          SkillControlRoom['User'].UserAttackSelect ? () => userAttackEnemyButton(k,3) :
+                          SkillControlRoom['User'].SkillBashSelect ? () => userSkillBashButton(k,3) :
+                          SkillControlRoom['User'].SkillMammoniteSelect ? () => userSkillMammoniteButton(k,3) :
+                          SkillControlRoom['User'].SkillKodokuSelect ? () => userSkillKodokuButton(k,3) :
+                          SkillControlRoom['User'].SkillMagnumBreakSelect ? () => userSkillMagnumBreakButton(k,3) :
+                          SkillControlRoom['User'].SkillHeadCrushSelect ? () => userSkillHeadCrushButton(k,3) :
+                          SkillControlRoom['User'].SkillVitalStrikeSelect ? () => userSkillVitalStrikeButton(k,3) :
+                          SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton(k,3)
+                        : null}>
                           <figcaption className="goGoButtonFig">
                               {(enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
                               <p className="goGoButtonName">{enemyStats[i].name} 3</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
