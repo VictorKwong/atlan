@@ -2743,10 +2743,10 @@ function Main(){
                           SkillControlRoom['User'].SkillBashSelect ? () => userSkillBashButton(i,1) :
                           SkillControlRoom['User'].SkillMammoniteSelect ? () => userSkillMammoniteButton(i,1) :
                           SkillControlRoom['User'].SkillKodokuSelect ? () => userSkillKodokuButton(i,1) :
-                          SkillControlRoom['User'].SkillMagnumBreakSelect ? () => userSkillMagnumBreakButton() :
-                          SkillControlRoom['User'].SkillHeadCrushSelect ? () => userSkillHeadCrushButton() :
-                          SkillControlRoom['User'].SkillVitalStrikeSelect ? () => userSkillVitalStrikeButton() :
-                          SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton()
+                          SkillControlRoom['User'].SkillMagnumBreakSelect ? () => userSkillMagnumBreakButton(i,1) :
+                          SkillControlRoom['User'].SkillHeadCrushSelect ? () => userSkillHeadCrushButton(i,1) :
+                          SkillControlRoom['User'].SkillVitalStrikeSelect ? () => userSkillVitalStrikeButton(i,1) :
+                          SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton(i,1)
                         : null}>
                           <figcaption className="goGoButtonFig">
                               {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined)?
@@ -2755,10 +2755,19 @@ function Main(){
                           </figcaption>
                         </button> : null }
                         {enemyStatsTwo[j].currentHealth > 0 && j !== undefined ?
-                        <button className="goGoButton" onClick={() => userAttackEnemyButton(j,2)}>
+                        <button className="goGoButton" onClick={
+                          SkillControlRoom['User'].UserAttackSelect ? () => userAttackEnemyButton(j,2) :
+                          SkillControlRoom['User'].SkillBashSelect ? () => userSkillBashButton(j,2) :
+                          SkillControlRoom['User'].SkillMammoniteSelect ? () => userSkillMammoniteButton(j,2) :
+                          SkillControlRoom['User'].SkillKodokuSelect ? () => userSkillKodokuButton(j,2) :
+                          SkillControlRoom['User'].SkillMagnumBreakSelect ? () => userSkillMagnumBreakButton(j,2) :
+                          SkillControlRoom['User'].SkillHeadCrushSelect ? () => userSkillHeadCrushButton(j,2) :
+                          SkillControlRoom['User'].SkillVitalStrikeSelect ? () => userSkillVitalStrikeButton(j,2) :
+                          SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton(j,2)
+                        : null}>
                           <figcaption className="goGoButtonFig">
                               {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
-                              <p className="goGoButtonName">{enemyStats[i].name} 2</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
+                              <p className="goGoButtonName">{enemyStatsTwo[i].name} 2</p> : <p className="goGoButtonName">{enemyStatsTwo[i].name}</p>
                               }
                           </figcaption>
                         </button> : null }
