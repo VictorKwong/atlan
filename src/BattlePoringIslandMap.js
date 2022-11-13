@@ -629,6 +629,7 @@ let Uclock = 0;
 let clockCheck = 0;
 //Target Enemy
 let enemyTarget;
+let displayEnemyName;
 //Chat reading
 let listResult = document.getElementsByClassName('storyChat')[0];
 
@@ -1232,10 +1233,18 @@ function Main(){
       //Target
       if(enemyReduceTarget === 1){
         enemyTarget = enemyStats[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+          
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
+        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
       }
 
       (() => {
@@ -2777,7 +2786,7 @@ function Main(){
                         : null}>
                           <figcaption className="goGoButtonFig">
                               {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
-                              <p className="goGoButtonName">{enemyStatsTwo[i].name} 2</p> : <p className="goGoButtonName">{enemyStatsTwo[i].name}</p>
+                              <p className="goGoButtonName">{enemyStatsTwo[j].name} 2</p> : <p className="goGoButtonName">{enemyStatsTwo[j].name}</p>
                               }
                           </figcaption>
                         </button> : null }
@@ -2794,7 +2803,7 @@ function Main(){
                         : null}>
                           <figcaption className="goGoButtonFig">
                               {(enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
-                              <p className="goGoButtonName">{enemyStats[i].name} 3</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
+                              <p className="goGoButtonName">{enemyStatsThree[k].name} 3</p> : <p className="goGoButtonName">{enemyStatsThree[k].name}</p>
                               }
                           </figcaption>
                         </button> : null }
