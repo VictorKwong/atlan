@@ -1250,16 +1250,16 @@ function Main(){
       (() => {
         switch (true) {
           // Is it Hit? Either Crit 100% or Hit or Stun
-          case(((userStats.critRate + userStats.BonuscritRate - enemyTarget[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyTarget[i].dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
+          case(((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyTarget.dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
             //if Crit
-            if ((userStats.critRate + userStats.BonuscritRate - enemyTarget[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyTarget[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyTarget[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget[i].defence + EnemyDefenceDebuff) *skillCapChart.CritDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff) *skillCapChart.CritDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1268,10 +1268,10 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyTarget[i].defencebuffer + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyTarget[i].defencebuffer + EnemyDefenceDebuff)) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyTarget[i].defence + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyTarget[i].defence + EnemyDefenceDebuff)) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)) : Damage = 1;
               }
             }
             if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
@@ -1286,7 +1286,7 @@ function Main(){
                 userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
                 //if Crit
-                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget[i].critResist).toFixed(3) >= Khit){
+                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
                   $('.storySpeech').append(`<p>Critial Hit! ${displayEnemyName} Received ${Math.floor(Damage)} damage</p>`)
                   $('.storySpeech').append(`<p>Critial Hit! ${displayEnemyName} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
                 }else{
@@ -1300,12 +1300,12 @@ function Main(){
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),i,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale)),enemyIJK,(Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack) + Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack*SkillControlRoom['User'].UserDoubleAttackScale))), 300));
               }else if(SkillControlRoom['User'].UserLearnDoubleAttack === true){
                 //Audio SoundEffect
                 userStats.userWeapon === "Empty" ? setTimeout(() => audioEmptyHandHit.play() , 150) : setTimeout(() => audioHit.play(), 150);
                 // Text display
-                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget[i].critResist).toFixed(3) >= Khit){
+                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
                   $('.storySpeech').append(`<p>Critial Hit! ${displayEnemyName} Received ${Math.floor(Damage)} damage</p>`)
                   $('.storySpeech').append(`<p>Critial Hit! ${displayEnemyName} Received ${Math.floor(Damage*SkillControlRoom['User'].UserDoubleAttackScale)} damage</p>`)
                 }else{
@@ -1315,28 +1315,28 @@ function Main(){
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(true)), 100);
                 setTimeout(() => dispatch(EnemyOnHitDoubleAnimationFn(false)), 1100);
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserAttackEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale))),i), 300);
+                return setTimeout(() => dispatch(UserAttackEnemyFn((Math.floor(Damage) + Math.floor(Damage * SkillControlRoom['User'].UserDoubleAttackScale))),enemyIJK), 300);
               }else if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                  // Text display
                 dispatch(UserOnLifeStealAnimationFn(true));
                 setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
-                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget[i].critResist).toFixed(3) >= Khit){
+                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
                   $('.storySpeech').append(`<p>Critial Hit! ${displayEnemyName} Received ${Damage} damage</p>`)
                 }else{
                   $('.storySpeech').append(`<p>${displayEnemyName} Received ${Damage} damage</p>`)
                 }
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)), 300));
+                return setTimeout(() => dispatch(UserLifeStealEnemyFn(Damage,enemyIJK,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)), 300));
               }else{
                 // Text display
-                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget[i].critResist).toFixed(3) >= Khit){
+                if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
                   $('.storySpeech').append(`<p>Critial Hit! ${displayEnemyName} Received ${Damage} damage</p>`)
                 }else{
                   $('.storySpeech').append(`<p>${displayEnemyName} Received ${Damage} damage</p>`)
                 }
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,i), 300));
+                return setTimeout(() => dispatch(UserAttackEnemyFn(Damage,enemyIJK), 300));
               }
           // ENEMY DODGE
           default:
@@ -1451,20 +1451,20 @@ function Main(){
       }
       (() => {
         switch (true) {
-          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
+          case((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyTarget.dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
             //Audio SoundEffect
             userStats.userWeapon === "Empty" ? audioEmptyHandHit.play() : audioHit.play();
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
               // Crit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1473,40 +1473,40 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.BashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BashBaseDamage) : Damage = 1;
               }
             }
             if(skillCapChart.BashStunChance >= Math.random()){
               EnemyStunClock = 5;
-              $('.storySpeech').append(`<p>Bash Stun!${enemyStats[i].name} suffer a period of stun time...</p>`)
+              $('.storySpeech').append(`<p>Bash Stun!${displayEnemyName} suffer a period of stun time...</p>`)
             }
             if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
               Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
             //Display Damage
-            if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
-              $('.storySpeech').append(`<p>Critical Hit Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+            if((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
+              $('.storySpeech').append(`<p>Critical Hit Bash!! ${displayEnemyName} Received ${Damage} damage</p>`)
             }else{
-              $('.storySpeech').append(`<p>Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Bash!! ${displayEnemyName} Received ${Damage} damage</p>`)
             }
             if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
               dispatch(UserOnLifeStealAnimationFn(true));
               setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
               $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
               //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBash,0), 300));
+              return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,enemyIJK,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBash,0), 300));
             }else{
               // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-              return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,i,skillCapChart.SPBash)), 300);
+              return setTimeout(() => dispatch(UserSkillBashEnemyFn(Damage,enemyIJK,skillCapChart.SPBash)), 300);
             }
           // ENEMY DODGE
           default:
             //Audio SoundEffect
             setTimeout(() => audioMiss.play(), 250)
-            $('.storySpeech').append(`<p>Atlan use Bash! ${enemyStats[i].name} dodge the attack.</p>`)
+            $('.storySpeech').append(`<p>Atlan use Bash! ${displayEnemyName} dodge the attack.</p>`)
             dispatch(EnemyDodgeAnimationFn(true));
             setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
             // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
