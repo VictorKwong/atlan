@@ -1424,7 +1424,7 @@ function Main(){
 
 
 
-    const userSkillBashButton = () => {
+    const userSkillBashButton = (enemyIJK,enemyReduceTarget) => {
       if (userStats.currentSP >= skillCapChart.SPBash){
       //Audio SoundEffect
       audioSkillBash.play();
@@ -1434,6 +1434,21 @@ function Main(){
       // setTimeout(() => (Uclock = 0), 300);
       let Khit = Math.random();
       //Rerender, Block or not block
+      if(enemyReduceTarget === 1){
+        enemyTarget = enemyStats[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+          
+      }else if(enemyReduceTarget === 2){
+        enemyTarget = enemyStatsTwo[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+
+      }else if(enemyReduceTarget === 3){
+        enemyTarget = enemyStatsThree[enemyIJK];
+        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+      }
       (() => {
         switch (true) {
           case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
@@ -2629,7 +2644,7 @@ function Main(){
                             </figcaption>
                           </button>
                         {userStats.Level >= skillCapChart.Bash ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillBashButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillBashButton(i,1)}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBash} alt="skillBash" /> Bash</p>
                               <span className={userStats.currentSP >= skillCapChart.SPBash ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBash} alt="skillBash"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPBash}</span>
