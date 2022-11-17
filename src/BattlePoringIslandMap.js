@@ -1630,12 +1630,27 @@ function Main(){
       dispatch(UserChannelAnimationFn());
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       // setTimeout(() => (Uclock = 0), 300);
+      if(enemyReduceTarget === 1){
+        enemyTarget = enemyStats[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+          
+      }else if(enemyReduceTarget === 2){
+        enemyTarget = enemyStatsTwo[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+
+      }else if(enemyReduceTarget === 3){
+        enemyTarget = enemyStatsThree[enemyIJK];
+        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+      }
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillKodokuFn(skillCapChart.SPKodoku,skillCapChart.KodokuPoisonTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack*3 + userStats.Level*30 + (userAttribute.int)*8)
-      dispatch(UserAttackEnemyFn(parseInt(Damage),i));
+      dispatch(UserAttackEnemyFn(parseInt(Damage),enemyIJK));
       $('.storySpeech').append(`<p>Atlan use skill Kodoku! Enemy is become poison.</p>`)
-      $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
+      $('.storySpeech').append(`<p>${displayEnemyName} Received ${Damage} damage</p>`)
         // End turn
         clockCheck = 0;
         Uclock = 0;
