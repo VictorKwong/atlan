@@ -1623,7 +1623,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
     }
 
-    const userSkillKodokuButton = () => {
+    const userSkillKodokuButton = (enemyIJK,enemyReduceTarget) => {
       if (userStats.currentSP >= skillCapChart.SPKodoku){
       //Audio SoundEffect
       audioPoison.play();
@@ -2690,7 +2690,7 @@ function Main(){
                           </button>
                         : null}
                         {userStats.Level >= skillCapChart.Kodoku ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillKodokuButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillKodokuButton(i,1)}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillKodoku} alt="skillKodoku"/> Kodoku</p>
                               <span className={userStats.currentSP >= skillCapChart.SPKodoku ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillKodoku} alt="skillKodoku" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPKodoku}</span>
