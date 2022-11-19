@@ -1692,7 +1692,7 @@ function Main(){
     }
 
 
-    const userSkillMagnumBreakButton = () => {
+    const userSkillMagnumBreakButton = (enemyIJK,enemyReduceTarget) => {
       if (userStats.currentSP >= skillCapChart.SPMagnumBreak){
       //Audio SoundEffect
       audioSkillMagBreak.play();
@@ -1704,21 +1704,37 @@ function Main(){
       //Rerender, Block or not block
       dispatch(UserClockFireAttackAttributesFn(skillCapChart.MagnumBreakFireWeaponTurn));
       $('.storySpeech').append(`<p>Atlan Weapon endowed with Fire Attributes for ${skillCapChart.MagnumBreakFireWeaponTurn} turns</p>`);
+      if(enemyReduceTarget === 1){
+        enemyTarget = enemyStats[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+          
+      }else if(enemyReduceTarget === 2){
+        enemyTarget = enemyStatsTwo[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+
+      }else if(enemyReduceTarget === 3){
+        enemyTarget = enemyStatsThree[enemyIJK];
+        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+      }
+
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || (((userStats.hitRate + userStats.BonushitRate) * skillCapChart.MagnumBreakAccuracyPercent - enemyStats[i].dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
+          case((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit) || (((userStats.hitRate + userStats.BonushitRate) * skillCapChart.MagnumBreakAccuracyPercent - enemyTarget.dodgeRate).toFixed(3) >= Khit || (EnemyStunClock >= 0)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate + userStats.BonuscritRate- enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate- enemyTarget.critResist).toFixed(3) >= Khit){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1727,19 +1743,19 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.MagnumBreakDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.MagnumBreakBaseDamage) : Damage = 1;
               }
             }
             if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
               Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
-            if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
-              $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+            if((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
+              $('.storySpeech').append(`<p>Critical Hit Magnum Break!! ${displayEnemyName} Received ${Damage} damage</p>`)
             }else{
-              $('.storySpeech').append(`<p>Magnum Break!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Magnum Break!! ${displayEnemyName} Received ${Damage} damage</p>`)
             }
 
               if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
@@ -1747,14 +1763,14 @@ function Main(){
                 setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 dispatch(UserSkillMagnumBreakFn(skillCapChart.MagnumBreakBurningTurn));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by burning</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMagnumBreak,0), 300));
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,enemyIJK,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPMagnumBreak,0), 300));
               }else{
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
                 dispatch(UserSkillMagnumBreakFn(skillCapChart.MagnumBreakBurningTurn));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by burning</p>`)
-                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,i,skillCapChart.SPMagnumBreak)), 300);
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by burning</p>`)
+                return setTimeout(() => dispatch(UserSkillMagnumBreakEnemyFn(Damage,enemyIJK,skillCapChart.SPMagnumBreak)), 300);
               }
           // ENEMY DODGE 
           default:  
@@ -1762,7 +1778,7 @@ function Main(){
               setTimeout(() => audioMiss.play(), 250)
               dispatch(EnemyDodgeAnimationFn(true));
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
-              $('.storySpeech').append(`<p>Atlan use Magnum Break! ${enemyStats[i].name} dodge the attack.</p>`)
+              $('.storySpeech').append(`<p>Atlan use Magnum Break! ${displayEnemyName} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillMagnumBreakMissedFn(skillCapChart.SPMagnumBreak)), 300);
         }
@@ -2698,7 +2714,7 @@ function Main(){
                           </button>
                         : null}
                         {userStats.Level >= skillCapChart.MagnumBreak ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillMagnumBreakButton(i,1)}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillMagnum} alt="skillMagnumBreak"/> Mag<span className="goGoButtonHide">num</span> Break</p>
                               <span className={userStats.currentSP >= skillCapChart.SPMagnumBreak ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillMagnum} alt="skillMagnumBreak" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPMagnumBreak}</span>
