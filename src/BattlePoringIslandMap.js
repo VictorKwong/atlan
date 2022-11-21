@@ -1663,7 +1663,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
     }
 
-    const userSkillVitalStrikeButton = () => {
+    const userSkillVitalStrikeButton = (enemyIJK,enemyReduceTarget) => {
       if (userStats.currentSP >= skillCapChart.SPVitalStrike){
       //Audio SoundEffect
       audioSkillVitalStrike.play();
@@ -1673,12 +1673,27 @@ function Main(){
       setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
+      if(enemyReduceTarget === 1){
+        enemyTarget = enemyStats[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+          
+      }else if(enemyReduceTarget === 2){
+        enemyTarget = enemyStatsTwo[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+
+      }else if(enemyReduceTarget === 3){
+        enemyTarget = enemyStatsThree[enemyIJK];
+        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+      }
       setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike, skillCapChart.VitalStrikeDefenceBreakDownTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.int)*8)
-      dispatch(UserAttackEnemyFn(parseInt(Damage),i));
+      dispatch(UserAttackEnemyFn(parseInt(Damage),enemyIJK));
       $('.storySpeech').append(`<p>Atlan use skill Vital Strike! Enemy defence is breaking down...</p>`)
-      $('.storySpeech').append(`<p>${enemyStats[i].name} Received ${Damage} damage</p>`)
-      EnemyDefenceDebuff = Math.floor(enemyStats[i].defence * skillCapChart.VitalStrikeDefenceBreakDown);
+      $('.storySpeech').append(`<p>${displayEnemyName} Received ${Damage} damage</p>`)
+      EnemyDefenceDebuff = Math.floor(enemyTarget.defence * skillCapChart.VitalStrikeDefenceBreakDown);
         // End turn
         clockCheck = 0;
         Uclock = 0;
@@ -2752,7 +2767,7 @@ function Main(){
                           </button>
                         : null}
                         {userStats.Level >= skillCapChart.HeadCrush ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillHeadCrushButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillHeadCrushButton(i,1)}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillHeadCrush} alt="skillMagnumBreak"/> Head Crush</p>
                               <span className={userStats.currentSP >= skillCapChart.SPHeadCrush ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillHeadCrush} alt="skillHeadCrush" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPHeadCrush}</span>
@@ -2768,7 +2783,7 @@ function Main(){
                           </button>
                         : null}
                         {userStats.Level >= skillCapChart.VitalStrike ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillVitalStrikeButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillVitalStrikeButton(i,1)}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillVitalStrike} alt="skillVitalStrike"/> Vit<span className="goGoButtonHide">ial</span> S<span className="goGoButtonHide">tri</span>k<span className="goGoButtonHide">e</span></p>
                               <span className={userStats.currentSP >= skillCapChart.SPVitalStrike ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillVitalStrike} alt="skillVitalStrike" /> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPVitalStrike}</span>
@@ -2776,7 +2791,7 @@ function Main(){
                           </button>
                         : null}
                         {userStats.Level >= skillCapChart.BowlingBash ? 
-                          <button className="goGoButtonSkills" onClick={() => userSkillBowlingBashButton()}>
+                          <button className="goGoButtonSkills" onClick={() => userSkillBowlingBashButton(i,1)}>
                             <figcaption className="goGoButtonFig">
                               <p className="goGoButtonName"><img src={skillBowlingBash} alt="skillBowlingBash" /> Bowl<span className="goGoButtonHide">ing</span> Bash</p>
                               <span className={userStats.currentSP >= skillCapChart.SPBowlingBash ? "goGoButtonSkillBash" : "goGoButtonSkillBash insufficentSP"}><img src={skillBowlingBash} alt="skillBowlingBash"/> <span className="goGoButtonHide">SP</span>:{skillCapChart.SPBowlingBash}</span>
