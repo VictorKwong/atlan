@@ -616,14 +616,10 @@ let Reflecting = 0;
 let EnemyStunClock = -1;
 let EnemySlowClock = -1;
 let EnemyDefenceDebuff = -1;
-//Monster Random Number 0 1 
-let EnemyTwoStunClock = -1;
-let EnemyTwoSlowClock = -1;
-let EnemyTwoDefenceDebuff = -1;
-
-let EnemyThreeStunClock = -1;
-let EnemyThreeSlowClock = -1;
-let EnemyThreeDefenceDebuff = -1;
+//Monster Random Number 0 1
+let EnemyStunClockArr = [-1,-1,-1];
+let EnemySlowClockArr = [-1,-1,-1];
+let EnemyDefenceDebuffArr = [-1,-1,-1];
 // let i = Math.round(Math.random())
 let Uclock = 0;
 let clockCheck = 0;
@@ -1119,6 +1115,10 @@ function Main(){
                 EnemyStunClock = -1;
                 EnemySlowClock = -1;
                 EnemyDefenceDebuff = -1;
+
+                EnemyStunClockArr = [-1,-1,-1];
+                EnemySlowClockArr = [-1,-1,-1];
+                EnemyDefenceDebuffArr = [-1,-1,-1];
                 //Summerize: ResetAllBattleMapFn
                 dispatch(ResetAllBattleMapFn(false));
                 // dispatch(EnemyDeadAnimationFn(false));
@@ -1481,6 +1481,7 @@ function Main(){
             }
             if(skillCapChart.BashStunChance >= Math.random()){
               EnemyStunClock = 5;
+              EnemyStunClockArr[enemyReduceTarget - 1] = 5;
               $('.storySpeech').append(`<p>Bash Stun!${displayEnemyName} suffer a period of stun time...</p>`)
             }
             if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
@@ -1694,6 +1695,7 @@ function Main(){
       $('.storySpeech').append(`<p>Atlan use skill Vital Strike! Enemy defence is breaking down...</p>`)
       $('.storySpeech').append(`<p>${displayEnemyName} Received ${Damage} damage</p>`)
       EnemyDefenceDebuff = Math.floor(enemyTarget.defence * skillCapChart.VitalStrikeDefenceBreakDown);
+      EnemyDefenceDebuffArr[enemyReduceTarget - 1] = Math.floor(enemyTarget.defence * skillCapChart.VitalStrikeDefenceBreakDown);
         // End turn
         clockCheck = 0;
         Uclock = 0;
@@ -1969,6 +1971,8 @@ function Main(){
               }
             }
             EnemySlowClock = skillCapChart.BowlingBashSlowClockTurn;
+            EnemySlowClockArr[enemyReduceTarget - 1] = skillCapChart.BowlingBashSlowClockTurn;
+
             if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
               Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
