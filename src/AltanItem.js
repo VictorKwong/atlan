@@ -129,13 +129,8 @@ import SpiritOfBoss from './img/Etc/SpiritOfEclipse.gif'
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const npcControlRoom = useSelector(state => state.npcControlRoom)
-    const npcSpeech = useSelector(state => state.npcSpeech)
-    const baseEXPChart = useSelector(state => state.baseEXPChart)
-    const userStats = useSelector(state => state.userStats)
-    const userAttribute = useSelector(state => state.userAttribute)
     const userGoldItem = useSelector(state => state.userGoldItem)
-    const audioControlRoom = useSelector(state => state.audioControlRoom)
-    const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
+
     
     let ItemBox = [
       //WEAPON
