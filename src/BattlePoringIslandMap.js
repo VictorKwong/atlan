@@ -1899,7 +1899,7 @@ function Main(){
       listResult.scrollTop = listResult.scrollHeight;
     }
 
-    const userSkillBowlingBashButton = () => {
+    const userSkillBowlingBashButton = (enemyIJK,enemyReduceTarget) => {
       if (userStats.currentSP >= skillCapChart.SPBowlingBash){
         //Audio SoundEffect
         audioSkillBash.play();
@@ -1909,21 +1909,36 @@ function Main(){
       // setTimeout(() => (Uclock = 0), 300);
       let Khit = Math.random();
       //Rerender, Block or not block
+      if(enemyReduceTarget === 1){
+        enemyTarget = enemyStats[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+          
+      }else if(enemyReduceTarget === 2){
+        enemyTarget = enemyStatsTwo[enemyIJK];
+        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+
+      }else if(enemyReduceTarget === 3){
+        enemyTarget = enemyStatsThree[enemyIJK];
+        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+      }
       (() => {
         switch (true) {
           // ENEMY BLOCK
-          case(((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyStats[i].dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
+          case(((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyTarget.dodgeRate).toFixed(3) >= Khit) || (EnemyStunClock >= 0)):
             dispatch(EnemyOnHitAnimationFn());
             setTimeout(() => dispatch(ResetEnemyOnHitAnimationFn()), 1000);
             //if Crit
-            if ((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
+            if ((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
               // Crit Block/No	-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.CritDamage*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }
               dispatch(EnemyOnCritAnimationFn(true));
               setTimeout(() => dispatch(EnemyOnCritAnimationFn(false)), 1000);
@@ -1932,37 +1947,37 @@ function Main(){
               //Hit Block/No-Block Calculation
               if (SkillControlRoom['Enemy'].EnemyBlock){
                 //blocking
-                Math.sign((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defencebuffer + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }else{
                 //not blocking
-                Math.sign((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyStats[i].defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
+                Math.sign((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) > 0 ? Damage = Math.floor((Damage - enemyTarget.defence + EnemyDefenceDebuff)*skillCapChart.BowlingBashDamage*(1+0.03*(userAttribute.int + userAttribute.BonusInt)) + skillCapChart.BowlingBashBaseDamage) : Damage = 1;
               }
             }
             EnemySlowClock = skillCapChart.BowlingBashSlowClockTurn;
             if(skillCapChart.MagnumBreakFireWeaponTurn >= 0){
               Damage = Math.floor(Damage * skillCapChart.MagnumBreakFireAdditionalDamage)
             }
-              $('.storySpeech').append(`<p>Bowling Bash!${enemyStats[i].name} suffer a period of slow time...</p>`)
-              if((userStats.critRate + userStats.BonuscritRate - enemyStats[i].critResist).toFixed(3) >= Khit){
-                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+              $('.storySpeech').append(`<p>Bowling Bash!${displayEnemyName} suffer a period of slow time...</p>`)
+              if((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit){
+                $('.storySpeech').append(`<p>Critical Hit Bowling Bash!! ${displayEnemyName} Received ${Damage} damage</p>`)
               }else{
-                $('.storySpeech').append(`<p>Bowling Bash!! ${enemyStats[i].name} Received ${Damage} damage</p>`)
+                $('.storySpeech').append(`<p>Bowling Bash!! ${displayEnemyName} Received ${Damage} damage</p>`)
               }
               if(SkillControlRoom['User'].UserLearnLifeStealAttack === true){
                 dispatch(UserOnLifeStealAnimationFn(true));
                 setTimeout(() => dispatch(UserOnLifeStealAnimationFn(false)), 1000);     
                 $('.storySpeech').append(`<p style="color:#3fff00;">Atlan lifesteal recover ${Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack)} hp</p>`)
                 //Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,i,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBowlingBash,0), 300));
+                return setTimeout(() => dispatch(UserSkillLifeStealEnemyFn(Damage,enemyIJK,Math.floor(Damage*SkillControlRoom['User'].UserLifeStealAttack),skillCapChart.SPBowlingBash,0), 300));
               }else{
                 // Rerender, (Level + Str*3 + Dex/2 + Luk + BWD + BWD*(0.25) - Def)*Crit*BuffAtk
-                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,i,skillCapChart.SPBowlingBash)), 300);
+                return setTimeout(() => dispatch(UserSkillBowlingBashEnemyFn(Damage,enemyIJK,skillCapChart.SPBowlingBash)), 300);
               }
           // ENEMY DODGE 
           default:
               dispatch(EnemyDodgeAnimationFn(true));
               setTimeout(() => dispatch(EnemyDodgeAnimationFn(false)), 1000);
-              $('.storySpeech').append(`<p>Atlan use Bowling Bash! ${enemyStats[i].name} dodge the attack.</p>`)
+              $('.storySpeech').append(`<p>Atlan use Bowling Bash! ${displayEnemyName} dodge the attack.</p>`)
               //Rerender
               return setTimeout(() => dispatch(UserSkillBowlingBashMissedFn(skillCapChart.SPBowlingBash)), 300);
         }
