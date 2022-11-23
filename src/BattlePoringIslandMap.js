@@ -2534,6 +2534,17 @@ function Main(){
                 // case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemySlowClock >= 0)):
                 // default:
                   Uclock = 1;
+                  for(let p = 0; p < EnemyStunClockArr.length ; p++){
+                    if(EnemyStunClockArr[p] >= 0){
+                      EnemyStunClockArr[p] = EnemyStunClockArr[p] - 1
+                    }
+                  }
+                  for(let p = 0; p < EnemySlowClockArr.length ; p++){
+                    if(EnemySlowClockArr[p] >= 0){
+                      EnemySlowClockArr[p] = EnemySlowClockArr[p] - 1
+                    }
+                  }
+
                   if(EnemyStunClock >= 0){
                     EnemyStunClock = EnemyStunClock - 1;
                   }else if(EnemySlowClock >= 0){
