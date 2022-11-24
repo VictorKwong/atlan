@@ -2499,24 +2499,26 @@ function Main(){
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
-              let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClock,EnemyStunClock,enemyStats[i].currentHealth]
-              //EnemyTwoSlowClock,EnemyTwoStunClock,EnemyThreeSlowClock,EnemyThreeStunClock
-              let result = [0,0,0,0];
 
-              for (let g = 0; g < 4; g++){
+              let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClockArr[0],enemyStats[i].currentHealth,EnemySlowClockArr[1],enemyStatsTwo[j].currentHealth,EnemySlowClockArr[2],enemyStatsThree[k].currentHealth]
+              //Quicken,Slow1,Health1,Slow2,Health2,Slow3,Health3
+              let commonResult = [0,0,0,0,0,0,0];
+
+              for (let g = 0; g < 7; g++){
                 if(arr[g] >= 0){
-                  result[g] = 1
+                  commonResult[g] = 1
                 }else{
-                  result[g] = 0
+                  commonResult[g] = 0
                 }
               }
-
-              if(EnemyStunClock >= 0){
-                result[2] = 0
-              }else{
-                result[2] = 1
+              let stunResult = [0,0,0]
+              for (let g = 0; g < 3; g++){
+                if(EnemyStunClockArr[g] >= 0){
+                  stunResult[g] = 0
+                }else{
+                  stunResult[g] = 1
+                }
               }
-
               // switch (true) {
                 // case ((SkillControlRoom['User'].userClockQuicken >= 0) && (EnemyStunClock < 0) && (EnemySlowClock < 0)):
                 //   Uclock = 1;
@@ -2551,8 +2553,10 @@ function Main(){
                     EnemySlowClock = EnemySlowClock - 1;
                   }
                   return clockBarObject = {
-                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed * result[0],
-                            enemyClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent * result[1]))) * result[2] * result[3]
+                            userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed * commonResult[0],
+                            enemyClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[1]))) * stunResult[0] * commonResult[2],
+                            enemyTwoClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStatsTwo[j].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[3]))) * stunResult[1] * commonResult[4],
+                            enemyThreeClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStatsThree[k].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[5]))) * stunResult[2] * commonResult[6],
                           }
                 // case (EnemyStunClock >= 0):
                 //   Uclock = 1;
