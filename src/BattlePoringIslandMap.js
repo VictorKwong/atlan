@@ -897,11 +897,29 @@ function Main(){
     // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
       if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
+        let WinExp = 0
+        let WinJobExp = 0
+        let WinZeny = 0
+
         
         dispatch(EnemyDeadAnimationFn(true))
-        setTimeout(() => (clockCheck = 1), 300);
-        dispatch(WinResultFn(enemyStats[i].Experience,enemyStats[i].JobExperience,enemyStats[i].Zeny));
-        $('.storySpeech').html(`<p>Victory! Received +${enemyStats[i].Experience} EXP +${enemyStats[i].JobExperience} JobEXP, +${enemyStats[i].Zeny} Zeny.</p>`)
+        setTimeout(() => (clockCheck = 1), 300)
+
+        let WinResultIDArr = [screenControlRoom.BattlePoringIslandMapMonsterID,screenControlRoom.BattlePoringIslandMapMonsterIDTwo,screenControlRoom.BattlePoringIslandMapMonsterIDThree]
+        let WinResultExpArr = [enemyStats[i].Experience, enemyStatsTwo[j].Experience, enemyStatsThree[k].Experience]
+        let WinResultJobExpArr = [enemyStats[i].JobExperience, enemyStatsTwo[j].JobExperience, enemyStatsThree[k].JobExperience]
+        let WinResultZenyArr = [enemyStats[i].Zeny, enemyStatsTwo[j].Zeny, enemyStatsThree[k].Zeny]
+
+        for(let x = 0; x < 3; x++){
+          if(WinResultIDArr[x] !== undefined){
+            WinExp += WinResultExpArr[i]
+            WinJobExp += WinResultJobExpArr[i]
+            WinZeny += WinResultZenyArr[i]
+          }
+        }
+
+        dispatch(WinResultFn(WinExp,WinJobExp,WinZeny));
+        $('.storySpeech').html(`<p>Victory! Received +${WinExp} EXP +${WinJobExp} JobEXP, +${WinZeny} Zeny.</p>`)
         //PATH
         switch (true) {
           case (screenControlRoom.UserUnlockPath === "Path1"):
@@ -2503,7 +2521,6 @@ function Main(){
               let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClockArr[0],enemyStats[i].currentHealth,EnemySlowClockArr[1],enemyStatsTwo[j].currentHealth,EnemySlowClockArr[2],enemyStatsThree[k].currentHealth]
               //Quicken,Slow1,Health1,Slow2,Health2,Slow3,Health3
               let commonResult = [0,0,0,0,0,0,0];
-
               for (let g = 0; g < 7; g++){
                 if(arr[g] >= 0){
                   commonResult[g] = 1
@@ -2511,6 +2528,7 @@ function Main(){
                   commonResult[g] = 0
                 }
               }
+
               let stunResult = [0,0,0]
               for (let g = 0; g < 3; g++){
                 if(EnemyStunClockArr[g] >= 0){
