@@ -1020,6 +1020,33 @@ function Main(){
             dispatch((EtcItems.Gain)(0,1));
             $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
           }
+          if(j !== undefined){
+            if((j === EtcItems.num) && (EtcItems.percent >= Math.random())){
+              if (obtain === false){
+                setTimeout(() => dispatch(UserPickUpAnimationFn(true)), 1050);
+                setTimeout(() => dispatch(UserPickUpAnimationFn(false)), 1350);
+                $('.storySpeech').append(`<span>Obtained: </span>`)
+                obtain = true;
+              }
+              //Zeny,Item
+              dispatch((EtcItems.Gain)(0,1));
+              $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
+            }
+          }
+          if(k !== undefined){
+            if((k === EtcItems.num) && (EtcItems.percent >= Math.random())){
+              if (obtain === false){
+                setTimeout(() => dispatch(UserPickUpAnimationFn(true)), 1050);
+                setTimeout(() => dispatch(UserPickUpAnimationFn(false)), 1350);
+                $('.storySpeech').append(`<span>Obtained: </span>`)
+                obtain = true;
+              }
+              //Zeny,Item
+              dispatch((EtcItems.Gain)(0,1));
+              $('.storySpeech').append(`<span key=${EtcItems.id}><img src=${EtcItems.img} alt=${EtcItems.name}/> ${EtcItems.name} </span>`)
+            }
+          }
+
           return null;
         })
         switch (true) {
