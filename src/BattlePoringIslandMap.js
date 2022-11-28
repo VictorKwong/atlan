@@ -1284,12 +1284,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
 
       (() => {
@@ -1487,12 +1487,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
       (() => {
         switch (true) {
@@ -1590,12 +1590,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
       (() => {
         switch (true) {
@@ -1684,12 +1684,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillKodokuFn(skillCapChart.SPKodoku,skillCapChart.KodokuPoisonTurn)), 300);
@@ -1727,12 +1727,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
       setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike, skillCapChart.VitalStrikeDefenceBreakDownTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.int)*8)
@@ -1774,12 +1774,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
 
       (() => {
@@ -1876,12 +1876,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
       (() => {
         switch (true) {
@@ -1979,12 +1979,12 @@ function Main(){
       }else if(enemyReduceTarget === 2){
         enemyTarget = enemyStatsTwo[enemyIJK];
         (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
 
       }else if(enemyReduceTarget === 3){
         enemyTarget = enemyStatsThree[enemyIJK];
         (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[i].name + " 3" : displayEnemyName = enemyStatsThree[i].name
+        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
       }
       (() => {
         switch (true) {
@@ -2530,6 +2530,38 @@ function Main(){
               if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
                 dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
                 $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
+              }else if(SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding...</p>\n`)
+              }  
+              if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak < 0){
+                EnemyDefenceDebuff = 0;
+              }else if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak >= 0){
+                $('.storySpeech').append(`<p>${displayEnemyName} defence is shredding...</p>\n`)
+              }
+            }
+
+            if(k !== undefined){
+              (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+              displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+
+              if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyPoison >= 0){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
+              }else if(SkillControlRoom['EnemyTwo'].EnemyPoison >= 0) {
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion...</p>\n`)
+              }
+              if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
+              }else if(SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
+                dispatch(UserSkillKodokuEnemyFn());
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning...</p>\n`)
+              }
+              if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
+                dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
+                $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
               }else if(SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
                 dispatch(UserSkillKodokuEnemyFn());
                 $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding...</p>\n`)
