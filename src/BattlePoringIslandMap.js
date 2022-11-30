@@ -626,6 +626,9 @@ let clockCheck = 0;
 //Target Enemy
 let enemyTarget;
 let displayEnemyName;
+let EnemyOneName;
+let EnemyTwoName;
+let EnemyThreeName;
 //Chat reading
 let listResult = document.getElementsByClassName('storyChat')[0];
 
@@ -798,6 +801,22 @@ function Main(){
     let i = screenControlRoom.BattlePoringIslandMapMonsterID
     let j = screenControlRoom.BattlePoringIslandMapMonsterIDTwo
     let k = screenControlRoom.BattlePoringIslandMapMonsterIDThree
+
+    if(i !== undefined){
+      (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
+      EnemyOneName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        
+    }
+    if(j !== undefined){
+      (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+      EnemyTwoName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+
+    }
+    if(k !== undefined){
+      (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+      EnemyThreeName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+    }
+
     useEffect(() => {
       audioHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
       audioEmptyHandHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
@@ -2775,7 +2794,7 @@ function Main(){
                       null
                     }*/}
                      <progress className="purpleHP" value={(enemyStats[i].currentHealth/enemyStats[i].maxHealth)*100} max="100" title={enemyStats[i].currentHealth + "/" + enemyStats[i].maxHealth}></progress>
-                     <h2 className="wordCenter titleName">{enemyStats[i].name}</h2>
+                     <h2 className="wordCenter titleName">{EnemyOneName}</h2>
                      <div>
                       {EnemyStunClock >= 0 ? <img src={StunEffect} alt="StunEffectImage" title="Stun"></img>: null}
                       {EnemySlowClock >= 0 ? <img src={SlowEffect} alt="SlowEffectImage" title="Slow"></img>: null}
@@ -2784,14 +2803,6 @@ function Main(){
                       {SkillControlRoom['Enemy'].EnemyBleeding >= 0 ? <img src={BleedingEffect} alt="BleedingEffectImage" title="Bleed"></img>: null}
                       {SkillControlRoom['Enemy'].EnemyDefenceBreak >= 0? <img src={DefenceDownEffect} alt="DefenceDownEffectImage" title="Def Break"></img>: null}
                      </div>
-                    {/* <p>Enemy Level {enemyStats[i].level}</p>
-                    <p>Enemy Attack {enemyStats[i].attack}</p>
-                    <p>Enemy Power {enemyStats[i].power}</p>
-                    <p>Enemy Defence {enemyStats[i].defence}</p>
-                    <p>Enemy Speed {enemyStats[i].speed}</p>
-                    <p>Enemy Hit Rate {enemyStats[i].hitRate}</p>
-                    <p>Enemy Dodge Rate {enemyStats[i].dodgeRate}</p>
-                    <p>Enemy Crit Rate {enemyStats[i].critRate}</p> */}
                 </div>
                 <div className="UserBox">
                   <div className="UserImageBox">
