@@ -801,17 +801,18 @@ function Main(){
 
     if(i !== undefined){
       (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-      EnemyOneName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+      EnemyOneName = enemyStats[i].name + " 1" : EnemyOneName = enemyStats[i].name
         
     }
     if(j !== undefined){
-      (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-      EnemyTwoName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+      (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) ?
+      EnemyTwoName = enemyStatsTwo[j].name + " 2" : (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)
+      ? EnemyTwoName = enemyStatsTwo[j].name + " 1" : EnemyTwoName = enemyStatsTwo[j].name
 
     }
     if(k !== undefined){
-      (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-      EnemyThreeName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+      (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) && (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+      EnemyThreeName = enemyStatsThree[k].name + " 3" : (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ? EnemyThreeName = enemyStatsThree[k].name + " 2" : EnemyThreeName = enemyStatsThree[k].name
     }
 
     useEffect(() => {
@@ -1289,19 +1290,16 @@ function Main(){
       let Khit = Math.random();
       //Target
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
 
       (() => {
@@ -1492,20 +1490,18 @@ function Main(){
       let Khit = Math.random();
       //Rerender, Block or not block
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
       (() => {
         switch (true) {
           case((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyTarget.dodgeRate).toFixed(3) >= Khit || (EnemyStunClockArr[0] >= 0)):
@@ -1594,20 +1590,18 @@ function Main(){
       let Khit = Math.random();
       //Rerender, Block or not block
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
       (() => {
         switch (true) {
           case((userStats.critRate + userStats.BonuscritRate - enemyTarget.critResist).toFixed(3) >= Khit) || ((userStats.hitRate + userStats.BonushitRate - enemyTarget.dodgeRate).toFixed(3) >= Khit || (EnemyStunClockArr[0] >= 0)):
@@ -1688,20 +1682,18 @@ function Main(){
       setTimeout(() => dispatch(ResetUserChannelAnimationFn()), 500);
       // setTimeout(() => (Uclock = 0), 300);
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
       //Rerender, Block or not block
       setTimeout(() => dispatch(UserSkillKodokuFn(skillCapChart.SPKodoku,skillCapChart.KodokuPoisonTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack*3 + userStats.Level*30 + (userAttribute.int)*8)
@@ -1731,20 +1723,18 @@ function Main(){
       // setTimeout(() => (Uclock = 0), 300);
       //Rerender, Block or not block
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
       setTimeout(() => dispatch(UserSkillVitalStrikeFn(skillCapChart.SPVitalStrike, skillCapChart.VitalStrikeDefenceBreakDownTurn)), 300);
       Damage = Math.floor(userStats.attack + userStats.Bonusattack + userStats.Level + (userAttribute.int)*8)
       dispatch(UserAttackEnemyFn(parseInt(Damage),enemyIJK));
@@ -1777,20 +1767,18 @@ function Main(){
       dispatch(UserClockFireAttackAttributesFn(skillCapChart.MagnumBreakFireWeaponTurn));
       $('.storySpeech').append(`<p>Atlan Weapon endowed with Fire Attributes for ${skillCapChart.MagnumBreakFireWeaponTurn} turns</p>`);
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
 
       (() => {
         switch (true) {
@@ -1879,20 +1867,18 @@ function Main(){
       let Khit = Math.random();
       //Rerender, Block or not block
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
       (() => {
         switch (true) {
           // ENEMY BLOCK
@@ -1982,20 +1968,18 @@ function Main(){
       let Khit = Math.random();
       //Rerender, Block or not block
       if(enemyReduceTarget === 1){
-        enemyTarget = enemyStats[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) ?
-        displayEnemyName = enemyStats[i].name + " 1" : displayEnemyName = enemyStats[i].name
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
           
       }else if(enemyReduceTarget === 2){
-        enemyTarget = enemyStatsTwo[enemyIJK];
-        (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsTwo[j].name + " 2" : displayEnemyName = enemyStatsTwo[j].name
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
 
       }else if(enemyReduceTarget === 3){
-        enemyTarget = enemyStatsThree[enemyIJK];
-        (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-        displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
       }
+
       (() => {
         switch (true) {
           // ENEMY BLOCK
@@ -2305,6 +2289,7 @@ function Main(){
       // setTimeout(() => (Uclock = 0), 300);
       Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef + userStats.BaseAccessoryOneDef + userStats.BaseAccessoryTwoDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef + userStats.BaseAccessoryOneDef + userStats.BaseAccessoryTwoDef) * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       let Khit = Math.random();
+      
       (() => {
           switch (true) {
           //EnemyAttack & Hit
