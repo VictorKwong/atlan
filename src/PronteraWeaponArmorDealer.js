@@ -67,28 +67,6 @@ function StartMenu(){
 
     const dispatch = useDispatch();
 
-    // const talkToWeaponArmorDealerBuy = () => {
-    //   $('.storySpeech').html(`<p>${npcSpeech['WeaponArmorDealer'][1].text}</p>`)
-    //   $('.storyCharacter').html(`<p>${npcSpeech['WeaponArmorDealer'][1].name}</p>`)
-    // }
-    // const talkToWeaponArmorDealerSell = () => {
-    //   $('.storySpeech').html(`<p>${npcSpeech['WeaponArmorDealer'][2].text}</p>`)
-    //   $('.storyCharacter').html(`<p>${npcSpeech['WeaponArmorDealer'][2].name}</p>`)
-    // }
-    // // BUY WEAPON
-    // const talkToWeaponDealerBuyKatana = () => {
-    //   (() => {
-    //     switch (true) {
-    //       case (userGoldItem.Zeny >= 100):
-    //         $('.storySpeech').html(`<p>${npcSpeech['WeaponArmorDealer'][3].text}</p>`)
-    //         $('.storyCharacter').html(`<p>${npcSpeech['WeaponArmorDealer'][3].name}</p>`)
-    //         return dispatch(BuyKatanaFn());
-    //       default:
-    //         $('.storySpeech').html(`<p>${npcSpeech['WeaponArmorDealer'][4].text}</p>`)
-    //         $('.storyCharacter').html(`<p>${npcSpeech['WeaponArmorDealer'][4].name}</p>`)
-    //     }
-    //   })()
-    // }
 
     let WeaponBuyBox = [
       {id:91000,cost: itemPriceChart.KatanaBuy, Get:KatanaFn(-itemPriceChart.KatanaBuy,1), Img: Katana, name: "Katana"},
