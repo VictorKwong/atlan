@@ -14,7 +14,6 @@ import PandaHat from './img/Equipment/HeadGear/PandaHat.gif'
 import ChefHat from './img/Equipment/HeadGear/ChefHat.gif'
 import SantaPoringHat from './img/Equipment/HeadGear/SantaPoringHat.gif'
 
-// AudioCurrentTimeSaverFn
 function StartMenu(){
     console.log('rerender')
     const npcControlRoom = useSelector(state => state.npcControlRoom)

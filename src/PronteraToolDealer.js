@@ -18,9 +18,7 @@ import Lamp from './img/Item/Lamp.gif'
 import PoringIslandMap from './img/Etc/PoringIslandMap.gif'
 import PayonCaveMap from './img/Etc/PayonCaveMap.gif'
 import GeffenDungeonMap from './img/Etc/GeffenDungeonMap.gif'
-// import useSound from 'use-sound';
 
-// AudioCurrentTimeSaverFn
 function StartMenu(){
     const npcControlRoom = useSelector(state => state.npcControlRoom)
     const userGoldItem = useSelector(state => state.userGoldItem)
