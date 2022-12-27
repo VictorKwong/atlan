@@ -4,7 +4,6 @@ import { DealerBuySuccessFn , DealerBuyFailureFn , DealerSellSuccessFn } from '.
 import { RedPotionFn , OrangePotionFn, YellowPotionFn, WhitePotionFn, AnniversaryCakeFn, MastelaFruitFn, BluePotionFn, YggdrasilBerryFn, LampFn , PoringIslandMapFn , PayonCaveMapFn, GeffenDungeonMapFn} from './actions';
 
 import './css/mapPronteraToolDealer.css'
-import $ from 'jquery'
 
 import RedPotion from './img/Item/RedPotion.gif'
 import OrangePotion from './img/Item/OrangePotion.gif'

@@ -52,6 +52,18 @@ html, body {
   position: absolute;
   bottom: 0;
   text-align: center;
+  background-color:black;
+  color:#eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footerLink{
+  color:#FEFEFF;
+  transition: 0.2s color ease-out;
+}
+.footerLink:hover{
+  color:orange;
 }
 /* setup */
 .logoBackground{

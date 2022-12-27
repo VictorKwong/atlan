@@ -35,7 +35,7 @@ function App(){
             footerEasterEgg.Support ?
             () => {dispatch(easterEggFn());} : 
             () => {dispatch(easterEggFn()); EasterEgg(); dispatch(supportOnceFn());} }>Copyright ⓒ 2022 Victor Wong - Support</p>
-        : <p className="footerClick" onClick={() => dispatch(easterEggFn())}>Thank you for your support {Update - 1}!^^ <a href="https://github.com/VictorKwong/atlan" target="_blank" rel="noopener noreferrer">GitHub</a></p>}
+        : <p className="footerClick" onClick={() => dispatch(easterEggFn())}>Thank you for your support {Update - 1}!^^ <a href="https://github.com/VictorKwong/atlan" target="_blank" rel="noopener noreferrer" className="footerLink">GitHub</a></p>}
         </footer>
     );
 }
