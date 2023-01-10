@@ -913,12 +913,17 @@ function Main(){
     // VICTORY FUCNTION
     // EXP FUNCTION + QUEST FUNCTION
     useEffect(() => {
-      if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
+      if (userStats.currentHealth >= 0 && 
+        // 1. First Enemy Only
+        ((enemyStats[i].currentHealth <= 0) ||
+        // 2. First and Second Enemy
+        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0) ||
+        // 3. 3 Enemies
+        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0 && k !== undefined && enemyStatsTwo[k].currentHealth <= 0)
+        )){
         let WinExp = 0
         let WinJobExp = 0
         let WinZeny = 0
-
-        
         dispatch(EnemyDeadAnimationFn(true))
         setTimeout(() => (clockCheck = 1), 300)
 
@@ -1083,71 +1088,19 @@ function Main(){
             break;
         }
         //QUEST
-          switch (true) {
-            //accept QUEST & Correct Event monster
-            case ((questControlRoom.QuestDialog).indexOf("Poring") > -1 && i === 0):
-              return dispatch(ProgressQuestDialogFn("Poring"));
-            case ((questControlRoom.QuestDialog).indexOf("Lunatic") > -1 && i === 1):
-              return dispatch(ProgressQuestDialogFn("Lunatic"));
-            case ((questControlRoom.QuestDialog).indexOf("Rocker") > -1 && i === 2):
-              return dispatch(ProgressQuestDialogFn("Rocker"));
-            case ((questControlRoom.QuestDialog).indexOf("Ambernite") > -1 && i === 3):
-              return dispatch(ProgressQuestDialogFn("Ambernite"));
-            case ((questControlRoom.QuestDialog).indexOf("Ghostring") > -1 && i === 4):
-              return dispatch(ProgressQuestDialogFn("Ghostring"));
-            case ((questControlRoom.QuestDialog).indexOf("Eclipse") > -1 && i === 5):
-              return dispatch(ProgressQuestDialogFn("Eclipse"));
-            case ((questControlRoom.QuestDialog).indexOf("Zombie") > -1 && i === 6):
-              return dispatch(ProgressQuestDialogFn("Zombie"));
-            case ((questControlRoom.QuestDialog).indexOf("Skeleton") > -1 && i === 7):
-              return dispatch(ProgressQuestDialogFn("Skeleton"));
-            case ((questControlRoom.QuestDialog).indexOf("Soldierskeleton") > -1 && i === 8):
-              return dispatch(ProgressQuestDialogFn("Soldierskeleton"));
-            case ((questControlRoom.QuestDialog).indexOf("Archerskeleton") > -1 && i === 9):
-              return dispatch(ProgressQuestDialogFn("Archerskeleton"));
-            case ((questControlRoom.QuestDialog).indexOf("Munak") > -1 && i === 10):
-              return dispatch(ProgressQuestDialogFn("Munak"));
-            case ((questControlRoom.QuestDialog).indexOf("Bogun") > -1 && i === 11):
-              return dispatch(ProgressQuestDialogFn("Bogun"));
-            case ((questControlRoom.QuestDialog).indexOf("Sohee") > -1 && i === 12):
-              return dispatch(ProgressQuestDialogFn("Sohee"));
-            case ((questControlRoom.QuestDialog).indexOf("Whisper") > -1 && i === 13):
-              return dispatch(ProgressQuestDialogFn("Whisper"));
-            case ((questControlRoom.QuestDialog).indexOf("Giantwhisper") > -1 && i === 14):
-              return dispatch(ProgressQuestDialogFn("Giantwhisper"));
-            case ((questControlRoom.QuestDialog).indexOf("Wolyafa") > -1 && i === 15):
-              return dispatch(ProgressQuestDialogFn("Wolyafa"));
-            case ((questControlRoom.QuestDialog).indexOf("Poporing") > -1 && i === 16):
-              return dispatch(ProgressQuestDialogFn("Poporing"));
-            case ((questControlRoom.QuestDialog).indexOf("Poisonspore") > -1 && i === 17):
-              return dispatch(ProgressQuestDialogFn("Poisonspore"));
-            case ((questControlRoom.QuestDialog).indexOf("Jakk") > -1 && i === 18):
-              return dispatch(ProgressQuestDialogFn("Jakk"));
-            case ((questControlRoom.QuestDialog).indexOf("Ghoul") > -1 && i === 19):
-              return dispatch(ProgressQuestDialogFn("Ghoul"));
-            case ((questControlRoom.QuestDialog).indexOf("Marionette") > -1 && i === 20):
-              return dispatch(ProgressQuestDialogFn("Marionette"));
-            case ((questControlRoom.QuestDialog).indexOf("Wraith") > -1 && i === 21):
-              return dispatch(ProgressQuestDialogFn("Wraith"));
-            case ((questControlRoom.QuestDialog).indexOf("Doppelganger") > -1 && i === 22):
-              return dispatch(ProgressQuestDialogFn("Doppelganger"));
-            case ((questControlRoom.QuestDialog).indexOf("Wraithdead") > -1 && i === 23):
-              return dispatch(ProgressQuestDialogFn("Wraithdead"));
-            case ((questControlRoom.QuestDialog).indexOf("Hellionrevenant") > -1 && i === 24):
-              return dispatch(ProgressQuestDialogFn("Hellionrevenant"));
-            case ((questControlRoom.QuestDialog).indexOf("Baphomet") > -1 && i === 25):
-              return dispatch(ProgressQuestDialogFn("Baphomet"));
-            case ((questControlRoom.QuestDialog).indexOf("GoldenThiefBug") > -1 && i === 26):
-              return dispatch(ProgressQuestDialogFn("GoldenThiefBug"));
-            case ((questControlRoom.QuestDialog).indexOf("Drake") > -1 && i === 27):
-              return dispatch(ProgressQuestDialogFn("Drake"));
-            case ((questControlRoom.QuestDialog).indexOf("Phreeoni") > -1 && i === 28):
-              return dispatch(ProgressQuestDialogFn("Phreeoni"));
-            case ((questControlRoom.QuestDialog).indexOf("StormyKnight") > -1 && i === 29):
-              return dispatch(ProgressQuestDialogFn("StormyKnight"));
-            default:
-              return null;
+        let MonsterNameArr = ["Poring", "Lunatic", "Rocker", "Ambernite", "Ghostring", "Eclipse", "Zombie", "Skeleton", "Soldierskeleton", "Archerskeleton", "Munak", "Bogun", "Sohee", "Whisper", "Giantwhisper", "Wolyafa", "Poporing", "Poisonspore", "Jakk", "Ghoul", "Marionette", "Wraith", "Doppelganger", "Wraithdead", "Hellionrevenant", "Baphomet", "GoldenThiefBug", "Drake", "Phreeoni", "StormyKnight"]
+        let MonsterNameID = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+        for(let x = 0; x < 3; x++){
+          if(WinResultIDArr[x] !== undefined){
+            for(let y = 0; y < MonsterNameID.length; y++){
+              //accept QUEST & Correct Event monster
+              if((questControlRoom.QuestDialog).indexOf(MonsterNameArr[y]) > -1 && WinResultIDArr[x] === MonsterNameID[y]){
+                dispatch(ProgressQuestDialogFn(MonsterNameArr[y]));
+              }
+            }
           }
+        }
+
       }
       // QuestBoard, screen not depend
       // eslint-disable-next-line react-hooks/exhaustive-deps
