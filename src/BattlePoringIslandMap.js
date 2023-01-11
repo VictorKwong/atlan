@@ -1145,7 +1145,14 @@ function Main(){
     // LEVEL + JobLevel FUNCTION
     //setup the exp i j k
     useEffect(() => {
-      if (userStats.currentHealth >= 0 && enemyStats[i].currentHealth <= 0){
+      if (userStats.currentHealth >= 0 && 
+        // 1. First Enemy Only
+        ((enemyStats[i].currentHealth <= 0) ||
+        // 2. First and Second Enemy
+        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0) ||
+        // 3. 3 Enemies
+        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0 && k !== undefined && enemyStatsTwo[k].currentHealth <= 0)
+        )){
         //MAX Lv99
         if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
           (() => {
