@@ -919,7 +919,7 @@ function Main(){
         // 2. First and Second Enemy
         (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0) ||
         // 3. 3 Enemies
-        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0 && k !== undefined && enemyStatsTwo[k].currentHealth <= 0)
+        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0 && k !== undefined && enemyStatsThree[k].currentHealth <= 0)
         )){
         let WinExp = 0
         let WinJobExp = 0
@@ -1151,7 +1151,7 @@ function Main(){
         // 2. First and Second Enemy
         (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0) ||
         // 3. 3 Enemies
-        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0 && k !== undefined && enemyStatsTwo[k].currentHealth <= 0)
+        (enemyStats[i].currentHealth <= 0 && j !== undefined && enemyStatsTwo[j].currentHealth <= 0 && k !== undefined && enemyStatsThree[k].currentHealth <= 0)
         )){
         //MAX Lv99
         if((userStats.Level < 99) && (userStats.Experience >= baseEXPChart[userStats.Level])){
@@ -2403,7 +2403,13 @@ function Main(){
 
 
   const clockBaseQtn = () => {
-    if (enemyStats[i].currentHealth > 0 && userStats.currentHealth > 0 && Uclock === 0){
+          // 1. First Enemy Only
+    if ((userStats.currentHealth > 0 && Uclock === 0 && enemyStats[i].currentHealth > 0) ||
+          // 2. First and Second Enemy
+        (userStats.currentHealth > 0 && Uclock === 0 && enemyStats[i].currentHealth > 0 && j !== undefined && enemyStatsTwo[j].currentHealth > 0) ||
+        // 3. 3 Enemies
+        (userStats.currentHealth > 0 && Uclock === 0 && enemyStats[i].currentHealth > 0 && j !== undefined && enemyStatsTwo[j].currentHealth > 0 && k !== undefined && enemyStatsThree[k].currentHealth > 0)
+        ){
       const ClockTurn = setInterval(() => {
         // *study
         (() => {
