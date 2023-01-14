@@ -2245,8 +2245,20 @@ function Main(){
       dispatch(ResetUserTurnFn());
     }
     // Enemy AI
-    const enemyDecisionQFn = () => {
+    const enemyDecisionQFn = (enemyIJK,enemyReduceTarget) => {
       // setTimeout(() => (Uclock = 0), 300);
+      if(enemyReduceTarget === 1){
+        enemyTarget = enemyStats[enemyIJK]
+        displayEnemyName = EnemyOneName
+          
+      }else if(enemyReduceTarget === 2){
+        enemyTarget = enemyStatsTwo[enemyIJK]
+        displayEnemyName = EnemyTwoName
+
+      }else if(enemyReduceTarget === 3){
+        enemyTarget = enemyStatsThree[enemyIJK]
+        displayEnemyName = EnemyThreeName
+      }
       Damage = Math.floor(((enemyStats[i].attack * (userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef + userStats.BaseAccessoryOneDef + userStats.BaseAccessoryTwoDef + 2000) / (((userStats.BaseArmorDef + userStats.BaseHeadGearDef + userStats.BaseFootGearDef + userStats.BaseGarmentDef + userStats.BaseAccessoryOneDef + userStats.BaseAccessoryTwoDef) * 10) + 2000)) - ((userAttribute.vit + userAttribute.BonusVit)*2 + (userAttribute.agi + userAttribute.BonusAgi)/2 + userStats.Level) * (Math.random() * 0.5) - 0.25));
       let Khit = Math.random();
       
