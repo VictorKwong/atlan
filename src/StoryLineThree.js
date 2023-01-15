@@ -5,8 +5,6 @@ import PayonCave1F from './PayonCave1F'
 import BattlePoringIslandMap from './BattlePoringIslandMap'
 import './css/storyLine.css'
 import $ from 'jquery'
-// import useSound from 'use-sound';
-// import audioStartUpGame from './audio/audioStartUpGame.mp3'
 
 import NineTail from './img/Character/Movie/NineTail/NineTail.gif'
 import Wolyafa from './img/Monster/Wolyafa.gif'
@@ -17,7 +15,6 @@ function StartMenu(){
     const storyLineOne = useSelector(state => state.storyLineOne)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     let i = 0;
 

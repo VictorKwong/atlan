@@ -18,7 +18,6 @@ function StartMenu(){
     const storyLineOne = useSelector(state => state.storyLineOne)
     const textReadAndSpeed = useSelector(state => state.textReadAndSpeed)
     
-    // const [play] = useSound(audioStartUpGame, {volume: 0.2, interrupt: true});
     const dispatch = useDispatch();
     let i = 0;
 
