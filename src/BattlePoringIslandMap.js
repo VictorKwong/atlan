@@ -1123,6 +1123,8 @@ function Main(){
                 $('.storySpeech').html();
                 clockBarObject.userClockBar = 0;
                 clockBarObject.enemyClockBar = 0;
+                clockBarObject.enemyTwoClockBar = 0;
+                clockBarObject.enemyThreeClockBar = 0;
                 // i = Math.round(Math.random());
                 Uclock = 0;
                 clockCheck = 0;
@@ -2426,7 +2428,14 @@ function Main(){
         // *study
         (() => {
           switch (true) {
-            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) >= enemyStats[i].speed)) || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)):
+            case (
+              ((clockBarObject.userClockBar >= 100 && (clockBarObject.enemyClockBar >= 100 && parseInt(userStats.speed) >= enemyStats[i].speed)) 
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100))
+            || ((clockBarObject.userClockBar >= 100 && (clockBarObject.enemyClockBar >= 100 && parseInt(userStats.speed) >= enemyStats[i].speed) && (j !== undefined && clockBarObject.enemyTwoClockBar >= 100 && parseInt(userStats.speed) >= enemyStatsTwo[j].speed)) 
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100)))
+            || ((clockBarObject.userClockBar >= 100 && (clockBarObject.enemyClockBar >= 100 && parseInt(userStats.speed) >= enemyStats[i].speed) && (j !== undefined && clockBarObject.enemyTwoClockBar >= 100 && parseInt(userStats.speed) >= enemyStatsTwo[j].speed) && (k !== undefined && clockBarObject.enemyThreeClockBar >= 100 && parseInt(userStats.speed) >= enemyStatsThree[k].speed)) 
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100)))
+            ):
               //Reset All Block
               // dispatch(ResetUserIsBlockAnimationFn());
               // dispatch(ResetUserTurnBlockFn());
@@ -2454,6 +2463,7 @@ function Main(){
               listResult = document.getElementsByClassName('storyChat')[0];
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
+              //continue enempyStats[i,j,k]
             if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 0){
                 dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent),i));
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
@@ -2615,8 +2625,8 @@ function Main(){
                   return clockBarObject = {
                             userClockBar: clockBarObject.userClockBar + parseInt(userStats.speed + userStats.Bonusspeed) + skillCapChart.QuickenSpeed * commonResult[0],
                             enemyClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStats[i].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[1]))) * stunResult[0] * commonResult[2],
-                            enemyTwoClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStatsTwo[j].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[3]))) * stunResult[1] * commonResult[4],
-                            enemyThreeClockBar: clockBarObject.enemyClockBar + (parseInt(enemyStatsThree[k].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[5]))) * stunResult[2] * commonResult[6],
+                            enemyTwoClockBar: clockBarObject.enemyTwoClockBar + (parseInt(enemyStatsTwo[j].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[3]))) * stunResult[1] * commonResult[4],
+                            enemyThreeClockBar: clockBarObject.enemyThreeClockBar + (parseInt(enemyStatsThree[k].speed * (1 - skillCapChart.BowlingBashSlowPercent * commonResult[5]))) * stunResult[2] * commonResult[6],
                           }
           }
         })()
@@ -2773,6 +2783,10 @@ function Main(){
                       <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={"Atlan: " + clockBarObject.userClockBar}/>
                       <p className="clockName">{enemyStats[i].name}: {clockBarObject.enemyClockBar}</p>
                       <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name + ": " + clockBarObject.enemyClockBar}/>
+                      {j !== undefined ? <p className="clockName">{enemyStatsTwo[j].name}: {clockBarObject.enemyTwoClockBar}</p> : null}
+                      {j !== undefined ? <progress value={clockBarObject.enemyTwoClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStatsTwo[j].name + ": " + clockBarObject.enemyTwoClockBar}/> : null}
+                      {k !== undefined ? <p className="clockName">{enemyStatsThree[k].name}: {clockBarObject.enemyThreeClockBar}</p> : null}
+                      {k !== undefined ? <progress value={clockBarObject.enemyThreeClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStatsThree[k].name + ": " + clockBarObject.enemyThreeClockBar}/> : null}
                 </div>
                 <div>
                       
