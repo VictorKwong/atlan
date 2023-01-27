@@ -2464,6 +2464,8 @@ function Main(){
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
               //continue enempyStats[i,j,k]
+              let skillRoomStringArray = ['Enemy', 'EnemyTwo', 'EnemyThree'];
+              let enemyTargetArray = [enemyStats[i], enemyStatsTwo[j], enemyStatsThree[k]];
             if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 0){
                 dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent),i));
                 $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
