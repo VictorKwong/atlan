@@ -2466,96 +2466,128 @@ function Main(){
               //continue enempyStats[i,j,k]
               let skillRoomStringArray = ['Enemy', 'EnemyTwo', 'EnemyThree'];
               let enemyTargetArray = [enemyStats[i], enemyStatsTwo[j], enemyStatsThree[k]];
-            if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['Enemy'].EnemyPoison >= 0) {
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
+              let displayNameArray = [EnemyOneName,EnemyTwoName,EnemyThreeName];
+              let idArray = [i,j,k];
+              for(let h = 0; h < 3; ++h){
+                if(idArray[h] !== undefined){
+                  if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyPoison >= 0){
+                    dispatch(UserAttackEnemyFn(parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Kodoku Posion, Received ${parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
+                  }else if(SkillControlRoom[skillRoomStringArray[h]].EnemyPoison >= 0) {
+                    dispatch(UserSkillKodokuEnemyFn());
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Kodoku Posion...</p>\n`)
+                  }
+                  if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyBurning >= 0){
+                    dispatch(UserAttackEnemyFn(parseInt(enemyTargetArray[h].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by MagnumBreak Burning, Received ${parseInt(enemyTargetArray[h].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
+                  }else if(SkillControlRoom[skillRoomStringArray[h]].EnemyBurning >= 0){
+                    dispatch(UserSkillKodokuEnemyFn());
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by MagnumBreak Burning...</p>\n`)
+                  }
+                  if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyBleeding >= 0){
+                    dispatch(UserAttackEnemyFn(parseInt(enemyTargetArray[h].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Head Crush Bleeding, Received ${parseInt(enemyTargetArray[h].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
+                  }else if(SkillControlRoom[skillRoomStringArray[h]].EnemyBleeding >= 0){
+                    dispatch(UserSkillKodokuEnemyFn());
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Head Crush Bleeding...</p>\n`)
+                  }  
+                  if (SkillControlRoom[skillRoomStringArray[h]].EnemyDefenceBreak < 0){
+                    EnemyDefenceDebuffArr[0] = 0;
+                  }else if (SkillControlRoom[skillRoomStringArray[h]].EnemyDefenceBreak >= 0){
+                    $('.storySpeech').append(`<p>${displayNameArray} defence is shredding...</p>\n`)
+                  }
+                }
               }
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['Enemy'].EnemyBurning >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
-              }
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['Enemy'].EnemyBleeding >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['Enemy'].EnemyBleeding >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding...</p>\n`)
-              }  
-              if (SkillControlRoom['Enemy'].EnemyDefenceBreak < 0){
-                EnemyDefenceDebuffArr[0] = 0;
-              }else if (SkillControlRoom['Enemy'].EnemyDefenceBreak >= 0){
-                $('.storySpeech').append(`<p>${enemyStats[i].name} defence is shredding...</p>\n`)
-              }
+            // if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['Enemy'].EnemyPoison >= 0) {
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
+            //   }
+            //   if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['Enemy'].EnemyBurning >= 0){
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
+            //   }
+            //   if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['Enemy'].EnemyBleeding >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['Enemy'].EnemyBleeding >= 0){
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding...</p>\n`)
+            //   }  
+            //   if (SkillControlRoom['Enemy'].EnemyDefenceBreak < 0){
+            //     EnemyDefenceDebuffArr[0] = 0;
+            //   }else if (SkillControlRoom['Enemy'].EnemyDefenceBreak >= 0){
+            //     $('.storySpeech').append(`<p>${enemyStats[i].name} defence is shredding...</p>\n`)
+            //   }
 
-            if(j !== undefined){
-              (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-              displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
+            // if(j !== undefined){
+            //   (enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+            //   displayEnemyName = enemyStatsTwo[i].name + " 2" : displayEnemyName = enemyStatsTwo[i].name
 
-              if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyPoison >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.KodokuPoisonPercent),i));
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['EnemyTwo'].EnemyPoison >= 0) {
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion...</p>\n`)
-              }
-              if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning...</p>\n`)
-              }
-              if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding...</p>\n`)
-              }  
-              if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak < 0){
-                EnemyDefenceDebuffArr[1] = 0;
-              }else if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak >= 0){
-                $('.storySpeech').append(`<p>${displayEnemyName} defence is shredding...</p>\n`)
-              }
-            }
+            //   if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyPoison >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['EnemyTwo'].EnemyPoison >= 0) {
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion...</p>\n`)
+            //   }
+            //   if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning...</p>\n`)
+            //   }
+            //   if (enemyStatsTwo[j].currentHealth - parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding, Received ${parseInt(enemyStatsTwo[j].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding...</p>\n`)
+            //   }  
+            //   if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak < 0){
+            //     EnemyDefenceDebuffArr[1] = 0;
+            //   }else if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak >= 0){
+            //     $('.storySpeech').append(`<p>${displayEnemyName} defence is shredding...</p>\n`)
+            //   }
+            // }
 
-            if(k !== undefined){
-              (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
-              displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
+            // if(k !== undefined){
+            //   (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
+            //   displayEnemyName = enemyStatsThree[k].name + " 3" : displayEnemyName = enemyStatsThree[k].name
 
-              if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyPoison >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent),i));
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['EnemyTwo'].EnemyPoison >= 0) {
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion...</p>\n`)
-              }
-              if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning...</p>\n`)
-              }
-              if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding...</p>\n`)
-              }  
-              if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak < 0){
-                EnemyDefenceDebuffArr[2] = 0;
-              }else if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak >= 0){
-                $('.storySpeech').append(`<p>${displayEnemyName} defence is shredding...</p>\n`)
-              }
-            }
+            //   if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyPoison >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['EnemyTwo'].EnemyPoison >= 0) {
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Kodoku Posion...</p>\n`)
+            //   }
+            //   if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['EnemyTwo'].EnemyBurning >= 0){
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by MagnumBreak Burning...</p>\n`)
+            //   }
+            //   if (enemyStatsThree[k].currentHealth - parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
+            //     dispatch(UserAttackEnemyFn(parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding, Received ${parseInt(enemyStatsThree[k].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
+            //   }else if(SkillControlRoom['EnemyTwo'].EnemyBleeding >= 0){
+            //     dispatch(UserSkillKodokuEnemyFn());
+            //     $('.storySpeech').append(`<p>${displayEnemyName} affect by Head Crush Bleeding...</p>\n`)
+            //   }  
+            //   if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak < 0){
+            //     EnemyDefenceDebuffArr[2] = 0;
+            //   }else if (SkillControlRoom['EnemyTwo'].EnemyDefenceBreak >= 0){
+            //     $('.storySpeech').append(`<p>${displayEnemyName} defence is shredding...</p>\n`)
+            //   }
+            // }
 
               return clearInterval(ClockTurn);
             case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
