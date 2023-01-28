@@ -814,6 +814,10 @@ function Main(){
       (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) && (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ?
       EnemyThreeName = enemyStatsThree[k].name + " 3" : (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined) ? EnemyThreeName = enemyStatsThree[k].name + " 2" : EnemyThreeName = enemyStatsThree[k].name
     }
+    let skillRoomStringArray = ['Enemy', 'EnemyTwo', 'EnemyThree'];
+    let enemyTargetArray = [enemyStats[i], enemyStatsTwo[j], enemyStatsThree[k]];
+    let displayNameArray = [EnemyOneName,EnemyTwoName,EnemyThreeName];
+    let idArray = [i,j,k];
 
     useEffect(() => {
       audioHit.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
@@ -2429,12 +2433,12 @@ function Main(){
         (() => {
           switch (true) {
             case (
-              ((clockBarObject.userClockBar >= 100 && (clockBarObject.enemyClockBar >= 100 && parseInt(userStats.speed) >= enemyStats[i].speed)) 
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100))
-            || ((clockBarObject.userClockBar >= 100 && (clockBarObject.enemyClockBar >= 100 && parseInt(userStats.speed) >= enemyStats[i].speed) && (j !== undefined && clockBarObject.enemyTwoClockBar >= 100 && parseInt(userStats.speed) >= enemyStatsTwo[j].speed)) 
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100)))
-            || ((clockBarObject.userClockBar >= 100 && (clockBarObject.enemyClockBar >= 100 && parseInt(userStats.speed) >= enemyStats[i].speed) && (j !== undefined && clockBarObject.enemyTwoClockBar >= 100 && parseInt(userStats.speed) >= enemyStatsTwo[j].speed) && (k !== undefined && clockBarObject.enemyThreeClockBar >= 100 && parseInt(userStats.speed) >= enemyStatsThree[k].speed)) 
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100)))
+              (clockBarObject.userClockBar >= 100 && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStats[i].speed) 
+            || (clockBarObject.userClockBar >= 100 && j !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStatsTwo[j].speed) 
+            || (clockBarObject.userClockBar >= 100 && k !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStatsThree[k].speed)
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100))
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100))
             ):
               //Reset All Block
               // dispatch(ResetUserIsBlockAnimationFn());
@@ -2464,10 +2468,6 @@ function Main(){
               listResult.scrollTop = listResult.scrollHeight;
               // console.log('UserTurn is good')
               //continue enempyStats[i,j,k]
-              let skillRoomStringArray = ['Enemy', 'EnemyTwo', 'EnemyThree'];
-              let enemyTargetArray = [enemyStats[i], enemyStatsTwo[j], enemyStatsThree[k]];
-              let displayNameArray = [EnemyOneName,EnemyTwoName,EnemyThreeName];
-              let idArray = [i,j,k];
               for(let h = 0; h < 3; ++h){
                 if(idArray[h] !== undefined){
                   if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyPoison >= 0){
@@ -2590,7 +2590,14 @@ function Main(){
             // }
 
               return clearInterval(ClockTurn);
-            case ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)):
+            case (
+              (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) 
+              || (clockBarObject.userClockBar >= 100 && j !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) < enemyStatsTwo[j].speed) 
+              || (clockBarObject.userClockBar >= 100 && k !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) < enemyStatsThree[k].speed)
+              || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)
+              || (clockBarObject.userClockBar < 100 && (clockBarObject.enemyClockBar >= 100 || (j !== undefined && clockBarObject.enemyTwoClockBar >= 100)))
+              || (clockBarObject.userClockBar < 100 && (clockBarObject.enemyClockBar >= 100 || (j !== undefined && clockBarObject.enemyTwoClockBar >= 100) || (k !== undefined && clockBarObject.enemyThreeClockBar >= 100)))
+              ):
 
               // dispatch(ResetEnemyTurnBlockFn());
               // dispatch(EnemyTurnFn());
@@ -2600,32 +2607,40 @@ function Main(){
               listResult.scrollTop = listResult.scrollHeight;
               clockCheck = 1;
               //Prevent Rerender
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom['Enemy'].EnemyPoison >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['Enemy'].EnemyPoison >= 0) {
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Kodoku Posion...</p>\n`)
-              }
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom['Enemy'].EnemyBurning >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['Enemy'].EnemyBurning >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by MagnumBreak Burning...</p>\n`)
-              }
-              if (enemyStats[i].currentHealth - parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom['Enemy'].EnemyBleeding >= 0){
-                dispatch(UserAttackEnemyFn(parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding, Received ${parseInt(enemyStats[i].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
-              }else if(SkillControlRoom['Enemy'].EnemyBleeding >= 0){
-                dispatch(UserSkillKodokuEnemyFn());
-                $('.storySpeech').append(`<p>${enemyStats[i].name} affect by Head Crush Bleeding...</p>\n`)
+              for(let h = 0; h < 3; ++h){
+                if(idArray[h] !== undefined){
+                  if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyPoison >= 0){
+                    dispatch(UserAttackEnemyFn(parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent),i));
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Kodoku Posion, Received ${parseInt(enemyTargetArray[h].maxHealth*skillCapChart.KodokuPoisonPercent)} damage</p>\n`)
+                  }else if(SkillControlRoom[skillRoomStringArray[h]].EnemyPoison >= 0) {
+                    dispatch(UserSkillKodokuEnemyFn());
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Kodoku Posion...</p>\n`)
+                  }
+                  if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.HeadCrushBleedingPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyBurning >= 0){
+                    dispatch(UserAttackEnemyFn(parseInt(enemyTargetArray[h].maxHealth*skillCapChart.HeadCrushBleedingPercent),i));
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by MagnumBreak Burning, Received ${parseInt(enemyTargetArray[h].maxHealth*skillCapChart.HeadCrushBleedingPercent)} damage</p>\n`)
+                  }else if(SkillControlRoom[skillRoomStringArray[h]].EnemyBurning >= 0){
+                    dispatch(UserSkillKodokuEnemyFn());
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by MagnumBreak Burning...</p>\n`)
+                  }
+                  if (enemyTargetArray[h].currentHealth - parseInt(enemyTargetArray[h].maxHealth*skillCapChart.MagnumBreakBurningPercent) > 0 && SkillControlRoom[skillRoomStringArray[h]].EnemyBleeding >= 0){
+                    dispatch(UserAttackEnemyFn(parseInt(enemyTargetArray[h].maxHealth*skillCapChart.MagnumBreakBurningPercent),i));
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Head Crush Bleeding, Received ${parseInt(enemyTargetArray[h].maxHealth*skillCapChart.MagnumBreakBurningPercent)} damage</p>\n`)
+                  }else if(SkillControlRoom[skillRoomStringArray[h]].EnemyBleeding >= 0){
+                    dispatch(UserSkillKodokuEnemyFn());
+                    $('.storySpeech').append(`<p>${displayNameArray} affect by Head Crush Bleeding...</p>\n`)
+                  }  
+                  if (SkillControlRoom[skillRoomStringArray[h]].EnemyDefenceBreak < 0){
+                    EnemyDefenceDebuffArr[0] = 0;
+                  }else if (SkillControlRoom[skillRoomStringArray[h]].EnemyDefenceBreak >= 0){
+                    $('.storySpeech').append(`<p>${displayNameArray} defence is shredding...</p>\n`)
+                  }
+                }
               }
               enemyDecisionQFn();
               // console.log('EnemyTurn is good')
               return clearInterval(ClockTurn);
             default:
-
               let arr = [SkillControlRoom['User'].userClockQuicken,EnemySlowClockArr[0],enemyStats[i].currentHealth,EnemySlowClockArr[1],enemyStatsTwo[j].currentHealth,EnemySlowClockArr[2],enemyStatsThree[k].currentHealth]
               //Quicken,Slow1,Health1,Slow2,Health2,Slow3,Health3
               let commonResult = [0,0,0,0,0,0,0];
