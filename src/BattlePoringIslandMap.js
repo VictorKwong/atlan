@@ -2436,9 +2436,10 @@ function Main(){
               (clockBarObject.userClockBar >= 100 && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStats[i].speed) 
             || (clockBarObject.userClockBar >= 100 && j !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStatsTwo[j].speed) 
             || (clockBarObject.userClockBar >= 100 && k !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStatsThree[k].speed)
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100)
             || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100))
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100))
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)
+            )
             ):
               //Reset All Block
               // dispatch(ResetUserIsBlockAnimationFn());
@@ -2594,9 +2595,9 @@ function Main(){
               (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar >= 100 && (parseInt(userStats.speed) < enemyStats[i].speed)) 
               || (clockBarObject.userClockBar >= 100 && j !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) < enemyStatsTwo[j].speed) 
               || (clockBarObject.userClockBar >= 100 && k !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) < enemyStatsThree[k].speed)
-              || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)
-              || (clockBarObject.userClockBar < 100 && (clockBarObject.enemyClockBar >= 100 || (j !== undefined && clockBarObject.enemyTwoClockBar >= 100)))
               || (clockBarObject.userClockBar < 100 && (clockBarObject.enemyClockBar >= 100 || (j !== undefined && clockBarObject.enemyTwoClockBar >= 100) || (k !== undefined && clockBarObject.enemyThreeClockBar >= 100)))
+              || (clockBarObject.userClockBar < 100 && (clockBarObject.enemyClockBar >= 100 || (j !== undefined && clockBarObject.enemyTwoClockBar >= 100)))
+              || (clockBarObject.userClockBar < 100 && clockBarObject.enemyClockBar >= 100)
               ):
 
               // dispatch(ResetEnemyTurnBlockFn());
@@ -2830,12 +2831,12 @@ function Main(){
                 <div className="zenytextHUD clockHUD">
                       <p className="clockName">Atlan: {clockBarObject.userClockBar}</p>
                       <progress value={clockBarObject.userClockBar} max="100" className="BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={"Atlan: " + clockBarObject.userClockBar}/>
-                      <p className="clockName">{enemyStats[i].name}: {clockBarObject.enemyClockBar}</p>
-                      <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStats[i].name + ": " + clockBarObject.enemyClockBar}/>
-                      {j !== undefined ? <p className="clockName">{enemyStatsTwo[j].name}: {clockBarObject.enemyTwoClockBar}</p> : null}
-                      {j !== undefined ? <progress value={clockBarObject.enemyTwoClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStatsTwo[j].name + ": " + clockBarObject.enemyTwoClockBar}/> : null}
-                      {k !== undefined ? <p className="clockName">{enemyStatsThree[k].name}: {clockBarObject.enemyThreeClockBar}</p> : null}
-                      {k !== undefined ? <progress value={clockBarObject.enemyThreeClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={enemyStatsThree[k].name + ": " + clockBarObject.enemyThreeClockBar}/> : null}
+                      <p className="clockName">{EnemyOneName}: {clockBarObject.enemyClockBar}</p>
+                      <progress value={clockBarObject.enemyClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={EnemyOneName + ": " + clockBarObject.enemyClockBar}/>
+                      {j !== undefined ? <p className="clockName">{EnemyTwoName}: {clockBarObject.enemyTwoClockBar}</p> : null}
+                      {j !== undefined ? <progress value={clockBarObject.enemyTwoClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={EnemyTwoName + ": " + clockBarObject.enemyTwoClockBar}/> : null}
+                      {k !== undefined ? <p className="clockName">{EnemyThreeName}: {clockBarObject.enemyThreeClockBar}</p> : null}
+                      {k !== undefined ? <progress value={clockBarObject.enemyThreeClockBar} max="100" className=" BarBasicHUD clockBarBasicHUD expBarBasicHUD" title={EnemyThreeName + ": " + clockBarObject.enemyThreeClockBar}/> : null}
                 </div>
                 <div>
                       
@@ -2987,9 +2988,7 @@ function Main(){
                           SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton(i,1)
                         : null}>
                           <figcaption className="goGoButtonFig">
-                              {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStats[i].name === enemyStatsThree[k].name && k !== undefined)?
-                              <p className="goGoButtonName">{enemyStats[i].name} 1</p> : <p className="goGoButtonName">{enemyStats[i].name}</p>
-                              }
+                              <p className="goGoButtonName">{EnemyOneName}</p>
                           </figcaption>
                         </button> : null }
                         {enemyStatsTwo[j].currentHealth > 0 && j !== undefined ?
@@ -3004,9 +3003,7 @@ function Main(){
                           SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton(j,2)
                         : null}>
                           <figcaption className="goGoButtonFig">
-                              {(enemyStats[i].name === enemyStatsTwo[j].name && j !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
-                              <p className="goGoButtonName">{enemyStatsTwo[j].name} 2</p> : <p className="goGoButtonName">{enemyStatsTwo[j].name}</p>
-                              }
+                              <p className="goGoButtonName">{EnemyTwoName}</p>
                           </figcaption>
                         </button> : null }
                         {enemyStatsThree[k].currentHealth > 0 && k !== undefined ?
@@ -3021,9 +3018,7 @@ function Main(){
                           SkillControlRoom['User'].SkillBowlingBashSelect ? () => userSkillBowlingBashButton(k,3)
                         : null}>
                           <figcaption className="goGoButtonFig">
-                              {(enemyStats[i].name === enemyStatsThree[k].name && k !== undefined) || (enemyStatsTwo[j].name === enemyStatsThree[k].name && k !== undefined && j !== undefined)?
-                              <p className="goGoButtonName">{enemyStatsThree[k].name} 3</p> : <p className="goGoButtonName">{enemyStatsThree[k].name}</p>
-                              }
+                              <p className="goGoButtonName">{EnemyThreeName}</p>
                           </figcaption>
                         </button> : null }
                         {/* (Enemy, Attack, Bash, Mammonite, Kodoku, MagnumBreak, HeadCrush, VitalStrike, BowlingBash) */}
