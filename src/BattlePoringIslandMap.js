@@ -601,6 +601,7 @@ const audioSkillVitalStrike = new Audio(SkillVitalStrike);
 const audioLevelUp = new Audio(LevelUpSoundEffect);
 const audioUserBlock = new Audio(UserBlock)
 
+//continueQC
 let clockBarObject = {
   userClockBar: 0,
   enemyClockBar: 0,
