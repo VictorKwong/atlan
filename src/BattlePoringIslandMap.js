@@ -278,7 +278,7 @@ import UserDefendPostVioletFear1 from './img/Character/UserDefendPostVioletFear1
 import UserOnHitPost_LordKahosHorn from './img/Character/LordKahosHorn/UserOnHitPost1_LordKahosHorn.gif'
 import UserIsDyingPost_LordKahosHorn from './img/Character/LordKahosHorn/UserDyingPost1_LordKahosHorn.png'
 import UserIsDeadPost_LordKahosHorn from './img/Character/LordKahosHorn/UserDeadPost1_LordKahosHorn.png'
-import UserChannelPost_LordKahosHorn from './img/Character//LordKahosHorn/UserChannel1_LordKahosHorn.png'
+import UserChannelPost_LordKahosHorn from './img/Character/LordKahosHorn/UserChannel1_LordKahosHorn.png'
 import UserPickUp_LordKahosHorn from './img/Character/LordKahosHorn/UserPickUp1_LordKahosHorn.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_LordKahosHorn from './img/Character/LordKahosHorn/UserBattlePostEmptyHand1_LordKahosHorn.gif'
@@ -309,7 +309,7 @@ import UserDefendPostVioletFear1_LordKahosHorn from './img/Character/LordKahosHo
 import UserOnHitPost_TeddybearHat from './img/Character/TeddybearHat/UserOnHitPost1_TeddybearHat.gif'
 import UserIsDyingPost_TeddybearHat from './img/Character/TeddybearHat/UserDyingPost1_TeddybearHat.png'
 import UserIsDeadPost_TeddybearHat from './img/Character/TeddybearHat/UserDeadPost1_TeddybearHat.png'
-import UserChannelPost_TeddybearHat from './img/Character//TeddybearHat/UserChannel1_TeddybearHat.png'
+import UserChannelPost_TeddybearHat from './img/Character/TeddybearHat/UserChannel1_TeddybearHat.png'
 import UserPickUp_TeddybearHat from './img/Character/TeddybearHat/UserPickUp1_TeddybearHat.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_TeddybearHat from './img/Character/TeddybearHat/UserBattlePostEmptyHand1_TeddybearHat.gif'
@@ -340,7 +340,7 @@ import UserDefendPostVioletFear1_TeddybearHat from './img/Character/TeddybearHat
 import UserOnHitPost_Crown from './img/Character/Crown/UserOnHitPost1_Crown.gif'
 import UserIsDyingPost_Crown from './img/Character/Crown/UserDyingPost1_Crown.png'
 import UserIsDeadPost_Crown from './img/Character/Crown/UserDeadPost1_Crown.png'
-import UserChannelPost_Crown from './img/Character//Crown/UserChannel1_Crown.png'
+import UserChannelPost_Crown from './img/Character/Crown/UserChannel1_Crown.png'
 import UserPickUp_Crown from './img/Character/Crown/UserPickUp1_Crown.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_Crown from './img/Character/Crown/UserBattlePostEmptyHand1_Crown.gif'
@@ -371,7 +371,7 @@ import UserDefendPostVioletFear1_Crown from './img/Character/Crown/UserDefendPos
 import UserOnHitPost_Helm from './img/Character/Helm/UserOnHitPost1_Helm.gif'
 import UserIsDyingPost_Helm from './img/Character/Helm/UserDyingPost1_Helm.png'
 import UserIsDeadPost_Helm from './img/Character/Helm/UserDeadPost1_Helm.png'
-import UserChannelPost_Helm from './img/Character//Helm/UserChannel1_Helm.png'
+import UserChannelPost_Helm from './img/Character/Helm/UserChannel1_Helm.png'
 import UserPickUp_Helm from './img/Character/Helm/UserPickUp1_Helm.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_Helm from './img/Character/Helm/UserBattlePostEmptyHand1_Helm.gif'
@@ -402,7 +402,7 @@ import UserDefendPostVioletFear1_Helm from './img/Character/Helm/UserDefendPostV
 import UserOnHitPost_PandaHat from './img/Character/PandaHat/UserOnHitPost1_PandaHat.gif'
 import UserIsDyingPost_PandaHat from './img/Character/PandaHat/UserDyingPost1_PandaHat.png'
 import UserIsDeadPost_PandaHat from './img/Character/PandaHat/UserDeadPost1_PandaHat.png'
-import UserChannelPost_PandaHat from './img/Character//PandaHat/UserChannel1_PandaHat.png'
+import UserChannelPost_PandaHat from './img/Character/PandaHat/UserChannel1_PandaHat.png'
 import UserPickUp_PandaHat from './img/Character/PandaHat/UserPickUp1_PandaHat.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_PandaHat from './img/Character/PandaHat/UserBattlePostEmptyHand1_PandaHat.gif'
@@ -433,7 +433,7 @@ import UserDefendPostVioletFear1_PandaHat from './img/Character/PandaHat/UserDef
 import UserOnHitPost_ChefHat from './img/Character/ChefHat/UserOnHitPost1_ChefHat.gif'
 import UserIsDyingPost_ChefHat from './img/Character/ChefHat/UserDyingPost1_ChefHat.png'
 import UserIsDeadPost_ChefHat from './img/Character/ChefHat/UserDeadPost1_ChefHat.png'
-import UserChannelPost_ChefHat from './img/Character//ChefHat/UserChannel1_ChefHat.png'
+import UserChannelPost_ChefHat from './img/Character/ChefHat/UserChannel1_ChefHat.png'
 import UserPickUp_ChefHat from './img/Character/ChefHat/UserPickUp1_ChefHat.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_ChefHat from './img/Character/ChefHat/UserBattlePostEmptyHand1_ChefHat.gif'
@@ -464,7 +464,7 @@ import UserDefendPostVioletFear1_ChefHat from './img/Character/ChefHat/UserDefen
 import UserOnHitPost_SantaPoringHat from './img/Character/SantaPoringHat/UserOnHitPost1_SantaPoringHat.gif'
 import UserIsDyingPost_SantaPoringHat from './img/Character/SantaPoringHat/UserDyingPost1_SantaPoringHat.png'
 import UserIsDeadPost_SantaPoringHat from './img/Character/SantaPoringHat/UserDeadPost1_SantaPoringHat.png'
-import UserChannelPost_SantaPoringHat from './img/Character//SantaPoringHat/UserChannel1_SantaPoringHat.png'
+import UserChannelPost_SantaPoringHat from './img/CharacterSantaPoringHat/UserChannel1_SantaPoringHat.png'
 import UserPickUp_SantaPoringHat from './img/Character/SantaPoringHat/UserPickUp1_SantaPoringHat.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostEmptyHand1_SantaPoringHat.gif'
