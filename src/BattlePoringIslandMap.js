@@ -464,7 +464,7 @@ import UserDefendPostVioletFear1_ChefHat from './img/Character/ChefHat/UserDefen
 import UserOnHitPost_SantaPoringHat from './img/Character/SantaPoringHat/UserOnHitPost1_SantaPoringHat.gif'
 import UserIsDyingPost_SantaPoringHat from './img/Character/SantaPoringHat/UserDyingPost1_SantaPoringHat.png'
 import UserIsDeadPost_SantaPoringHat from './img/Character/SantaPoringHat/UserDeadPost1_SantaPoringHat.png'
-import UserChannelPost_SantaPoringHat from './img/CharacterSantaPoringHat/UserChannel1_SantaPoringHat.png'
+import UserChannelPost_SantaPoringHat from './img/Character/SantaPoringHat/UserChannel1_SantaPoringHat.png'
 import UserPickUp_SantaPoringHat from './img/Character/SantaPoringHat/UserPickUp1_SantaPoringHat.gif'
 // EMPTY HAND
 import UserBattlePostEmptyHand1_SantaPoringHat from './img/Character/SantaPoringHat/UserBattlePostEmptyHand1_SantaPoringHat.gif'
@@ -601,7 +601,6 @@ const audioSkillVitalStrike = new Audio(SkillVitalStrike);
 const audioLevelUp = new Audio(LevelUpSoundEffect);
 const audioUserBlock = new Audio(UserBlock)
 
-//continueQC
 let clockBarObject = {
   userClockBar: 0,
   enemyClockBar: 0,

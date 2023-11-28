@@ -11,11 +11,17 @@ function App(){
     const dispatch = useDispatch();
 
     useEffect(() => {
+      const handleAudioEnded = () => {dispatch(authorLogoFn());};
+    
       audioBGM.volume = 0.1;
+      audioBGM.addEventListener('ended', handleAudioEnded);
       audioBGM.play();
-      setTimeout(() => {dispatch(authorLogoFn())}, 6400);
-      //Not Depend on audioControlRoom
-      //eslint-disable-next-line react-hooks/exhaustive-deps
+    
+      return () => {
+        audioBGM.removeEventListener('ended', handleAudioEnded);
+      };
+      // Not Depend on audioControlRoom
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return(
       <div className="logoBackground">
