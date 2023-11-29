@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startGameFn, gameTitleOptionScreenFn, NextWorldMapLoadingScreenFn } from './actions';
+import { NextWorldMapLoadingScreenFn } from './actions';
+import { setCurrentScreen } from './actions/screenActions';
 import StoryLineTalent from './StoryLineTalent'
 import GameOption from './GameOption';
 import './css/startMenu.css'
-
-
 
 function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
@@ -13,21 +12,24 @@ function StartMenu(){
 
     const startGameQtn = (e) => {
       e.preventDefault();
-      //nextMapBackgroundExchange
+
       dispatch(NextWorldMapLoadingScreenFn());
-      setTimeout(() => {dispatch(NextWorldMapLoadingScreenFn())}, 1500);
-      setTimeout(() => {dispatch(startGameFn())}, 1500);
-      // dispatch(startGameFn());
+    
+      const waitForFirstAction = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 1500);
+      });
+    
+      waitForFirstAction.then(() => {
+        dispatch(setCurrentScreen("startGameTalent"));
+        dispatch(NextWorldMapLoadingScreenFn());
+      });
     };
 
     
     return(
       <div>
-        {/* Click startGame goes to Main */}
-        {screenControlRoom.startGame ? <StoryLineTalent />
-        // Click Option goes to GameOption
-        : !screenControlRoom.startGame && screenControlRoom.gameTitleOptionScreen ? <GameOption /> 
-        : 
         <div className={screenControlRoom.NextWorldMapLoadingScreen ? "menuBackground gameBGStart" : "menuBackground"}>
           <div className="menuTitle">
             <h1>Atlan - Ragnarok</h1>
@@ -37,11 +39,10 @@ function StartMenu(){
               <button className="menuButton" onClick={startGameQtn}>New Game</button>
             </div>
             <div>
-              <button className="menuButton" onClick={() => dispatch(gameTitleOptionScreenFn())}>Options</button>
+              <button className="menuButton" onClick={() => dispatch(setCurrentScreen("gameMenuOptionScreen"))}>Options</button>
             </div>
           </div>
         </div>
-        }
       </div>
     );
 }

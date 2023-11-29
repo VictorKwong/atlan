@@ -1,19 +1,30 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authorLogoFn } from './actions';
+import { setCurrentScreen } from './actions/screenActions';
 import StartMenu from './StartMenu';
+
+import StoryLineTalent from './StoryLineTalent'
+import GameOption from './GameOption';
+import StoryLineOne from './StoryLineOne'
+
 import Footer from './Footer'
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
+import LemonekkoMonkey from './img/Misc/monkey.png'
+
+
+
 const audioBGM = new Audio(audioStartUpGame);
 
 function App(){
-    const screenControlRoom = useSelector(state => state.screenControlRoom)
+    const currentScreen = useSelector((state) => state.screenControlRoom.currentScreen);
     const dispatch = useDispatch();
 
     useEffect(() => {
-      const handleAudioEnded = () => {dispatch(authorLogoFn());};
+      const handleAudioEnded = () => {
+        dispatch(setCurrentScreen("gameMenu"));
+      };
     
-      audioBGM.volume = 0.1;
+      audioBGM.volume = 0.2;
       audioBGM.addEventListener('ended', handleAudioEnded);
       audioBGM.play();
     
@@ -27,7 +38,10 @@ function App(){
       <div className="logoBackground">
         <div className="wrapper pageFix">
             <div className="allWrapping">
-            {screenControlRoom.authorLogo ? <StartMenu/> :
+            {currentScreen === "gameMenu" ? <StartMenu/> :
+            currentScreen === "startGameTalent" ? <StoryLineTalent /> :
+            currentScreen === "gameMenuOptionScreen" ? <GameOption /> :
+            currentScreen === "storyLineOne" ? <StoryLineOne /> :
             <div className="logoBox">
               <div className="logoLine1"></div>
               <div className="logoLine2"></div>
@@ -42,7 +56,7 @@ function App(){
               <span className="logoLetter7">k</span>
               <span className="logoLetter8">k</span>
               <span className="logoLetter9">o</span>
-              <span className="logoLetter10">🍋</span>
+              <span className="logoLetter10"><img src={LemonekkoMonkey} alt="LemonekkoMoney"></img></span>
             </div>
             }
             </div>

@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { storyLineTalentFn, UserFirstGiftFn, UserSecondGiftFn } from './actions';
 import { GiftOneFn, GiftTwoFn } from './actions';
 import { NextWorldMapLoadingScreenFn } from './actions'
-import StoryLineOne from './StoryLineOne'
+import { setCurrentScreen } from './actions/screenActions';
 import './css/storyLineTalent.css'
-import $ from 'jquery'
+
 
 import SwordMastery from './img/Gift/SwordMastery.gif'
 import Swiftness from './img/Gift/Swiftness.gif'
@@ -31,6 +31,7 @@ function StartMenu(){
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const SkillControlRoom = useSelector(state => state.SkillControlRoom)
     const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const currentScreen = useSelector((state) => state.screenControlRoom.currentScreen);
     const dispatch = useDispatch();
 
     const pickedGifts = (giftNumber) => {
@@ -59,6 +60,7 @@ function StartMenu(){
       dispatch(GiftOneFn(First));
       dispatch(GiftTwoFn(Second));
       dispatch(storyLineTalentFn(true));
+      dispatch(setCurrentScreen("storyLineOne"));
     }
     const changeMapFadeAudio = () => {
       let i = 0;
@@ -127,7 +129,6 @@ function StartMenu(){
 
     return(
       <div>
-        {screenControlRoom.startGame && screenControlRoom.storyLineTalent ? <StoryLineOne /> :
         <div className={screenControlRoom.NextWorldMapLoadingScreen ? "storyScreenStoryLineTalentBackground talentBGStart" : "storyScreenStoryLineTalentBackground"}>
           {Story === 0 && !SkillControlRoom['User'].UserFirstGift ?
           <div className="storyScreenStoryLineTalent">
@@ -210,7 +211,6 @@ function StartMenu(){
         
           </fieldset>
         </div>
-        }
       </div>
     );
 }

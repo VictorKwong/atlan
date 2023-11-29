@@ -1,3 +1,5 @@
+import { SET_CURRENT_SCREEN } from '../actions/types.js';
+
 const Fn = {
     authorLogo: false,
     startGame: false,
@@ -171,14 +173,15 @@ const Fn = {
     BowlingBashTraining: false,
     //Challenge Tower Late Game
     UnlockChallengeTower:false,
+    currentScreen: 'opening'
 }
 
 const screenControlRoomReducer = (state = Fn, action) => {
     switch(action.type){
-        case 'authorLogoFn':
+        case SET_CURRENT_SCREEN:
             return {
-                ...state,
-                authorLogo: !state.authorLogo,
+              ...state,
+              currentScreen: action.screen,
             }
         case 'startGameFn':
             return {

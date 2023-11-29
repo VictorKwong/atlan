@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import './css/gameOption.css'
 import { useDispatch , useSelector } from 'react-redux';
-import { returnToTitleScreenFn } from './actions';
-
+import { setCurrentScreen } from './actions/screenActions';
 import { AudioVolumeBGMSaverFn, AudioVolumeSoundEffectSaverFn } from './actions';
 
 import OneStepCloser from './audio/205OneStepCloser.mp3'
@@ -13,11 +12,12 @@ const audioSoundEffect = new Audio(LoginSound)
 
 function GameOption(props){
     const audioControlRoom = useSelector(state => state.audioControlRoom)
+    const currentScreen = useSelector((state) => state.screenControlRoom.currentScreen);
     const screenControlRoom = useSelector(state => state.screenControlRoom)
     const dispatch = useDispatch();
 
     useEffect(() => {
-      if(!screenControlRoom.startGame){
+      if(currentScreen === "gameMenuOptionScreen"){
         audioBGM.volume = audioControlRoom.AudioVolumeBGMFixed.toFixed(5);
         audioSoundEffect.volume = audioControlRoom.AudioVolumeSoundEffectFixed.toFixed(5);
         let playPromise = audioBGM.play(); 
@@ -64,7 +64,7 @@ function GameOption(props){
                 <button className="gameOptionButton" onClick={audioControlRoom.AudioVolumeSoundEffectFixed > 0.01 ? () => {dispatch(AudioVolumeSoundEffectSaverFn(-0.1)); soundEffectAudio();}: null}>-</button>
             </div>
             <div>
-              <button className="menuButton" onClick={() => {dispatch(returnToTitleScreenFn()); stopAudio();}}>Return to Game</button>
+              <button className="menuButton" onClick={() => {dispatch(setCurrentScreen("gameMenu")); stopAudio();}}>Return to Game</button>
             </div>
           </div>
         </div>

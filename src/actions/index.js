@@ -237,12 +237,6 @@ export const startGameFn = () => {
     };
 };
 
-export const authorLogoFn = () => {
-    return {
-        type: 'authorLogoFn',
-    };
-};
-
 export const gameTitleOptionScreenFn = () => {
     return {
         type: 'gameTitleOptionScreenFn',
@@ -3098,3 +3092,4 @@ export const ResetGameFn = () => {
         type: 'ResetGameFn',
     };
 };
+
