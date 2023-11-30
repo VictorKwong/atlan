@@ -2,8 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NextWorldMapLoadingScreenFn } from './actions';
 import { setCurrentScreen } from './actions/screenActions';
-import StoryLineTalent from './StoryLineTalent'
-import GameOption from './GameOption';
+
 import './css/startMenu.css'
 
 function StartMenu(){
