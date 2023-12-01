@@ -195,11 +195,6 @@ const screenControlRoomReducer = (state = Fn, action) => {
                 gameTitleOptionScreen: !state.gameTitleOptionScreen,
 
             }
-        case 'returnToTitleScreenFn':
-            return {
-                ...state,
-                gameTitleOptionScreen: !state.gameTitleOptionScreen,
-            }
         case 'storyLineTalentFn':
             return {
                 ...state,
@@ -1440,6 +1435,12 @@ const screenControlRoomReducer = (state = Fn, action) => {
                     PoringIslandHouseMap: false,
                     UnlockChallengeTower: true,
                 }
+                case 'returnToTitleScreenFn':
+                    return {
+                        ...state,
+                        gameTitleOptionScreen: !state.gameTitleOptionScreen,
+                }
+                
         default:
             return state;
     }

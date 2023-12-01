@@ -248,6 +248,7 @@ export const returnToTitleScreenFn = () => {
         type: 'returnToTitleScreenFn',
     };
 };
+
 export const storyLineTalentFn = (walkthrough) => {
     return {
         type: 'storyLineTalentFn',

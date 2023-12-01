@@ -4,19 +4,7 @@ import { setCurrentScreen } from './actions/screenActions';
 import StartMenu from './StartMenu';
 
 import StoryLineTalent from './StoryLineTalent'
-import GameOption from './GameOption';
 import StoryLineOne from './StoryLineOne'
-import WorldMap from './WorldMap'
-
-import BattlePoringIslandMap from './BattlePoringIslandMap'
-import Prontera from './Prontera'
-import PronteraCastle from './PronteraCastle'
-import PoringIsland from './PoringIsland'
-import Geffen from './Geffen'
-import GeffenDungeon1F from './GeffenDungeon1F'
-import GeffenDungeon3F from './GeffenDungeon3F'
-import PayonCave1F from './PayonCave1F'
-import ChallengeTower from './ChallengeTower'
 import StoryLineTwo from './StoryLineTwo'
 import StoryLineThree from './StoryLineThree'
 import StoryLineFour from './StoryLineFour'
@@ -24,11 +12,6 @@ import StoryLineFive from './StoryLineFive'
 import StoryLineSix from './StoryLineSix'
 import StoryLineSeven from './StoryLineSeven'
 import StoryLineEnd from './StoryLineEnd'
-import AltanEquipment from './AltanEquipment'
-import AltanStats from './AltanStats'
-import AltanItem from './AltanItem'
-import AltanQuest from './AltanQuest'
-import AltanSkills from './AltanSkills'
 
 import Footer from './Footer'
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
@@ -63,26 +46,7 @@ function App(){
             <div className="allWrapping">
             {currentScreen === "gameMenu" ? <StartMenu/> :
             currentScreen === "startGameTalent" ? <StoryLineTalent /> :
-            currentScreen === "BattlePoringIslandMap" ? <BattlePoringIslandMap /> :
             currentScreen === "storyLineOne" ? <StoryLineOne /> :
-            currentScreen === "PoringIsland" ? <PoringIsland  /> :
-            currentScreen === "Geffen" ? <Geffen  /> :
-            currentScreen === "GeffenDungeon1F" ? <GeffenDungeon1F  /> :
-            currentScreen === "GeffenDungeon3F" ? <GeffenDungeon3F  /> :
-            currentScreen === "PayonCave1F" ? <PayonCave1F  /> :
-            currentScreen === "ChallengeTower" ? <ChallengeTower  /> :
-            currentScreen === "StoryLineTwo" ? <StoryLineTwo  /> :
-            currentScreen === "StoryLineThree" ? <StoryLineThree  /> :
-            currentScreen === "StoryLineFour" ? <StoryLineFour  /> :
-            currentScreen === "StoryLineFive" ? <StoryLineFive  /> :
-            currentScreen === "StoryLineSix" ? <StoryLineSix  /> :
-            currentScreen === "StoryLineSeven" ? <StoryLineSeven  /> :
-            currentScreen === "StoryLineEnd" ? <StoryLineEnd  /> :
-            currentScreen === "AltanEquipment" ? <AltanEquipment  /> :
-            currentScreen === "AltanStats" ? <AltanStats  /> :
-            currentScreen === "AltanItem" ? <AltanItem  /> :
-            currentScreen === "AltanQuest" ? <AltanQuest  /> :
-            currentScreen === "AltanSkills" ? <AltanSkills  /> :
             currentScreen === "opening" ?
             <div className="logoBox">
               <div className="logoLine1"></div>
