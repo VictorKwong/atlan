@@ -847,6 +847,10 @@ const userGoldItemReducer = (state = Fn, action) => {
         //Combat
         case 'UserSkillMammoniteEnemyFn':
         //Life Steal + Mammonite
+            return{
+                ...state,
+                Zeny: state.Zeny + Math.floor(action.DamageCalculation*action.ZenyPercent)
+            }
         case 'UserSkillLifeStealEnemyFn':
             return{
                 ...state,

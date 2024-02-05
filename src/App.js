@@ -17,8 +17,6 @@ import Footer from './Footer'
 import audioStartUpGame from './audio/audioStartUpGame.mp3'
 import LemonekkoMonkey from './img/Misc/monkey.png'
 
-
-
 const audioBGM = new Audio(audioStartUpGame);
 
 function App(){
@@ -53,16 +51,18 @@ function App(){
               <div className="logoLine2"></div>
               <div className="logoLine3"></div>
               <div className="logoLine4"></div>
-              <span className="logoLetter1">L</span>
-              <span className="logoLetter2">e</span>
-              <span className="logoLetter3">m</span>
-              <span className="logoLetter4">o</span>
-              <span className="logoLetter5">n</span>
-              <span className="logoLetter6">E</span>
-              <span className="logoLetter7">k</span>
-              <span className="logoLetter8">k</span>
-              <span className="logoLetter9">o</span>
-              <span className="logoLetter10"><img src={LemonekkoMonkey} alt="LemonekkoMoney"></img></span>
+              <span className="logoLetter1">C</span>
+              <span className="logoLetter2">o</span>
+              <span className="logoLetter3">d</span>
+              <span className="logoLetter4">e</span>
+              <span className="logoLetter5">L</span>
+              <span className="logoLetter6">e</span>
+              <span className="logoLetter7">m</span>
+              <span className="logoLetter8">o</span>
+              <span className="logoLetter9">n</span>
+              <span className="logoLetter10">i</span>
+              <span className="logoLetter11">x</span>
+              <span className="logoLetter12"><img src={LemonekkoMonkey} alt="LemonekkoMoney"></img></span>
             </div> : null
             }
             </div>

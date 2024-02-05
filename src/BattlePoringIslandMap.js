@@ -100,15 +100,15 @@ import SkeletonHit from './img/Monster/SkeletonHit.png'
 import SkeletonAttack from './img/Monster/SkeletonAttack.gif'
 import SkeletonDead from './img/Monster/SkeletonDead.png'
 //PayonCave2F
-import SoldierSkeleton from './img/Monster/Soldierskeleton.gif'
-import SoldierSkeletonHit from './img/Monster/SoldierskeletonHit.png'
-import SoldierSkeletonAttack from './img/Monster/SoldierskeletonAttack.gif'
-import SoldierSkeletonDead from './img/Monster/SoldierskeletonDead.png'
+import SoldierSkeleton from './img/Monster/SoldierSkeleton.gif'
+import SoldierSkeletonHit from './img/Monster/SoldierSkeletonHit.png'
+import SoldierSkeletonAttack from './img/Monster/SoldierSkeletonAttack.gif'
+import SoldierSkeletonDead from './img/Monster/SoldierSkeletonDead.png'
 
-import ArcherSkeleton from './img/Monster/Archerskeleton.gif'
-import ArcherSkeletonHit from './img/Monster/ArcherskeletonHit.png'
-import ArcherSkeletonAttack from './img/Monster/ArcherskeletonAttack.gif'
-import ArcherSkeletonDead from './img/Monster/ArcherskeletonDead.png'
+import ArcherSkeleton from './img/Monster/ArcherSkeleton.gif'
+import ArcherSkeletonHit from './img/Monster/ArcherSkeletonHit.png'
+import ArcherSkeletonAttack from './img/Monster/ArcherSkeletonAttack.gif'
+import ArcherSkeletonDead from './img/Monster/ArcherSkeletonDead.png'
 
 import Munak from './img/Monster/Munak.gif'
 import MunakHit from './img/Monster/MunakHit.png'
@@ -2436,9 +2436,9 @@ function Main(){
               (clockBarObject.userClockBar >= 100 && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStats[i].speed) 
             || (clockBarObject.userClockBar >= 100 && j !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStatsTwo[j].speed) 
             || (clockBarObject.userClockBar >= 100 && k !== undefined && parseInt(userStats.speed + userStats.Bonusspeed) >= enemyStatsThree[k].speed)
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100)
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100))
-            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100)
+            || ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100) && (k !== undefined && clockBarObject.enemyThreeClockBar < 100))
+            || ((clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100 && (j !== undefined && clockBarObject.enemyTwoClockBar < 100))
+            || (clockBarObject.userClockBar >= 100 && clockBarObject.enemyClockBar < 100))
             )
             ):
               //Reset All Block

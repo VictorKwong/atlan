@@ -9,8 +9,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
 .wrapper {
-  max-width: 1200px;
-  width: 90%;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -123,56 +122,44 @@ html, body {
 .logoLetter7,
 .logoLetter8,
 .logoLetter9,
-.logoLetter10{
+.logoLetter10,
+.logoLetter11,
+.logoLetter12
+{
   left:-1000px; 
   top: 4000px;
   font-size: 100px;
   font-family: 'Mochiy Pop One', sans-serif;
   position: relative;
   animation-name: fly;
-  animation-duration: 5.8s;
+  animation-duration: 6.8s;
 }
-.logoLetter2{
-  animation-delay: 0.05s;
-}
-.logoLetter3{
-  animation-delay: 0.1s;
-}
-.logoLetter4{
-  animation-delay: 0.15s;
-}
-.logoLetter5{
-  animation-delay: 0.2s;
-}
-.logoLetter6{
-  animation-delay: 0.25s;
-}
-.logoLetter7{
-  animation-delay: 0.3s;
-}
-.logoLetter8{
-  animation-delay: 0.35s;
-}
-.logoLetter9{
-  animation-delay: 0.4s;
-}
-.logoLetter10{
-  animation-delay: 0.45s;
-}
+.logoLetter2 { animation-delay: 0.05s; }
+.logoLetter3 { animation-delay: 0.1s; }
+.logoLetter4 { animation-delay: 0.15s; }
+.logoLetter5 { animation-delay: 0.2s; }
+.logoLetter6 { animation-delay: 0.25s; }
+.logoLetter7 { animation-delay: 0.3s; }
+.logoLetter8 { animation-delay: 0.35s; }
+.logoLetter9 { animation-delay: 0.4s; }
+.logoLetter10 { animation-delay: 0.45s; }
+.logoLetter11 { animation-delay: 0.5s; }
+.logoLetter12 { animation-delay: 0.55s; }
+
 
 @keyframes fly {
-  0%  {color:black; left:-1000px; top:4000px;}
-  20% {color:black; left:-1000px; top:4000px;}
-  39% {color:red; left: 40px; top: -40px}
-  42% {color:orange; left: 40px; top: 0px}
-  45% {color:yellow; left: 0px; top:0px}
-  47.5% {color:green; left:0px; top:-30px}
-  50% {color:cyan; left:0px; top:0px}
-  52.5% {color:blue; left:0px; top:-15px}
-  55% {color:violet; left:0px; top:0px}
-  57.5% {color:#FFEF00; left:0px; top:-5px}
-  60% {color:violet; left:0px; top:0px}
-  100% {color:#FFEF00; left:0px; top:0px}
+  0% { color: black; left: -2500px; top: 6000px; }
+  20% { color: black; left: -2500px; top: 6000px; }
+  39% { color: red; left: 40px; top: -40px; }
+  42% { color: orange; left: 40px; top: 0px; }
+  45% { color: yellow; left: 0px; top: 0px; }
+  47.5% { color: green; left: 0px; top: -30px; }
+  50% { color: cyan; left: 0px; top: 0px; }
+  52.5% { color: blue; left: 0px; top: -15px; }
+  55% { color: violet; left: 0px; top: 0px; }
+  57.5% { color: #FFEF00; left: 0px; top: -5px; }
+  60% { color: violet; left: 0px; top: 0px; }
+  100% { color: #FFEF00; left: 0px; top: 0px; }
 }
 
 
